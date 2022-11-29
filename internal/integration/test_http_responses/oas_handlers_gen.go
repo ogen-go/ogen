@@ -128,7 +128,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		err error
 	)
 
-	var response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
+	var response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -142,7 +142,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
+			Response = *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -303,7 +303,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 		err error
 	)
 
-	var response Headers200OK
+	var response *Headers200OK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -317,7 +317,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = Headers200OK
+			Response = *Headers200OK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -478,7 +478,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 		err error
 	)
 
-	var response HeadersDefaultDef
+	var response *HeadersDefaultDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -492,7 +492,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = HeadersDefaultDef
+			Response = *HeadersDefaultDef
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -556,7 +556,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 		err error
 	)
 
-	var response HeadersPattern4XX
+	var response *HeadersPattern4XX
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -570,7 +570,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = HeadersPattern4XX
+			Response = *HeadersPattern4XX
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

@@ -69,7 +69,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		}
 	}()
 
-	var response TestFormURLEncodedOK
+	var response *TestFormURLEncodedOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -81,9 +81,9 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		}
 
 		type (
-			Request  = TestForm
+			Request  = *TestForm
 			Params   = struct{}
-			Response = TestFormURLEncodedOK
+			Response = *TestFormURLEncodedOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -166,7 +166,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	var response TestMultipartOK
+	var response *TestMultipartOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -178,9 +178,9 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = TestForm
+			Request  = *TestForm
 			Params   = struct{}
-			Response = TestMultipartOK
+			Response = *TestMultipartOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -263,7 +263,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	var response TestMultipartUploadOK
+	var response *TestMultipartUploadOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -275,9 +275,9 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 		}
 
 		type (
-			Request  = TestMultipartUploadReqForm
+			Request  = *TestMultipartUploadReqForm
 			Params   = struct{}
-			Response = TestMultipartUploadOK
+			Response = *TestMultipartUploadOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -360,7 +360,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	var response TestShareFormSchemaOK
+	var response *TestShareFormSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -374,7 +374,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		type (
 			Request  = TestShareFormSchemaReq
 			Params   = struct{}
-			Response = TestShareFormSchemaOK
+			Response = *TestShareFormSchemaOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

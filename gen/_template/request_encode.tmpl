@@ -16,7 +16,7 @@
 {{ define "request_encoders/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
 func encode{{ $op.Name }}Request(
-	req {{ $op.Request.Type.Go }},
+	req {{ $op.Request.GoType }},
 	r *http.Request,
 ) error {
 {{- $contents := $op.Request.Contents }}

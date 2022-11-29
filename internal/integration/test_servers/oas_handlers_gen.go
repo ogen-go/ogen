@@ -87,7 +87,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
-			encodeErrorResponse(*errRes, w, span)
+			encodeErrorResponse(errRes, w, span)
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {

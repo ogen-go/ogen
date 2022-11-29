@@ -23,7 +23,7 @@ func (UnimplementedHandler) AnyContentTypeBinaryStringSchema(ctx context.Context
 // AnyContentTypeBinaryStringSchemaDefault implements anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
-func (UnimplementedHandler) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, _ error) {
+func (UnimplementedHandler) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -37,7 +37,7 @@ func (UnimplementedHandler) Combined(ctx context.Context, params CombinedParams)
 // Headers200 implements headers200 operation.
 //
 // GET /headers200
-func (UnimplementedHandler) Headers200(ctx context.Context) (r Headers200OK, _ error) {
+func (UnimplementedHandler) Headers200(ctx context.Context) (r *Headers200OK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -51,14 +51,14 @@ func (UnimplementedHandler) HeadersCombined(ctx context.Context, params HeadersC
 // HeadersDefault implements headersDefault operation.
 //
 // GET /headersDefault
-func (UnimplementedHandler) HeadersDefault(ctx context.Context) (r HeadersDefaultDef, _ error) {
+func (UnimplementedHandler) HeadersDefault(ctx context.Context) (r *HeadersDefaultDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // HeadersPattern implements headersPattern operation.
 //
 // GET /headersPattern
-func (UnimplementedHandler) HeadersPattern(ctx context.Context) (r HeadersPattern4XX, _ error) {
+func (UnimplementedHandler) HeadersPattern(ctx context.Context) (r *HeadersPattern4XX, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

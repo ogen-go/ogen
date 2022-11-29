@@ -15,17 +15,17 @@ type Balloon struct {
 }
 
 // GetAmountMib returns the value of AmountMib.
-func (s Balloon) GetAmountMib() int {
+func (s *Balloon) GetAmountMib() int {
 	return s.AmountMib
 }
 
 // GetDeflateOnOom returns the value of DeflateOnOom.
-func (s Balloon) GetDeflateOnOom() bool {
+func (s *Balloon) GetDeflateOnOom() bool {
 	return s.DeflateOnOom
 }
 
 // GetStatsPollingIntervalS returns the value of StatsPollingIntervalS.
-func (s Balloon) GetStatsPollingIntervalS() OptInt {
+func (s *Balloon) GetStatsPollingIntervalS() OptInt {
 	return s.StatsPollingIntervalS
 }
 
@@ -82,72 +82,72 @@ type BalloonStats struct {
 }
 
 // GetTargetPages returns the value of TargetPages.
-func (s BalloonStats) GetTargetPages() int {
+func (s *BalloonStats) GetTargetPages() int {
 	return s.TargetPages
 }
 
 // GetActualPages returns the value of ActualPages.
-func (s BalloonStats) GetActualPages() int {
+func (s *BalloonStats) GetActualPages() int {
 	return s.ActualPages
 }
 
 // GetTargetMib returns the value of TargetMib.
-func (s BalloonStats) GetTargetMib() int {
+func (s *BalloonStats) GetTargetMib() int {
 	return s.TargetMib
 }
 
 // GetActualMib returns the value of ActualMib.
-func (s BalloonStats) GetActualMib() int {
+func (s *BalloonStats) GetActualMib() int {
 	return s.ActualMib
 }
 
 // GetSwapIn returns the value of SwapIn.
-func (s BalloonStats) GetSwapIn() OptInt64 {
+func (s *BalloonStats) GetSwapIn() OptInt64 {
 	return s.SwapIn
 }
 
 // GetSwapOut returns the value of SwapOut.
-func (s BalloonStats) GetSwapOut() OptInt64 {
+func (s *BalloonStats) GetSwapOut() OptInt64 {
 	return s.SwapOut
 }
 
 // GetMajorFaults returns the value of MajorFaults.
-func (s BalloonStats) GetMajorFaults() OptInt64 {
+func (s *BalloonStats) GetMajorFaults() OptInt64 {
 	return s.MajorFaults
 }
 
 // GetMinorFaults returns the value of MinorFaults.
-func (s BalloonStats) GetMinorFaults() OptInt64 {
+func (s *BalloonStats) GetMinorFaults() OptInt64 {
 	return s.MinorFaults
 }
 
 // GetFreeMemory returns the value of FreeMemory.
-func (s BalloonStats) GetFreeMemory() OptInt64 {
+func (s *BalloonStats) GetFreeMemory() OptInt64 {
 	return s.FreeMemory
 }
 
 // GetTotalMemory returns the value of TotalMemory.
-func (s BalloonStats) GetTotalMemory() OptInt64 {
+func (s *BalloonStats) GetTotalMemory() OptInt64 {
 	return s.TotalMemory
 }
 
 // GetAvailableMemory returns the value of AvailableMemory.
-func (s BalloonStats) GetAvailableMemory() OptInt64 {
+func (s *BalloonStats) GetAvailableMemory() OptInt64 {
 	return s.AvailableMemory
 }
 
 // GetDiskCaches returns the value of DiskCaches.
-func (s BalloonStats) GetDiskCaches() OptInt64 {
+func (s *BalloonStats) GetDiskCaches() OptInt64 {
 	return s.DiskCaches
 }
 
 // GetHugetlbAllocations returns the value of HugetlbAllocations.
-func (s BalloonStats) GetHugetlbAllocations() OptInt64 {
+func (s *BalloonStats) GetHugetlbAllocations() OptInt64 {
 	return s.HugetlbAllocations
 }
 
 // GetHugetlbFailures returns the value of HugetlbFailures.
-func (s BalloonStats) GetHugetlbFailures() OptInt64 {
+func (s *BalloonStats) GetHugetlbFailures() OptInt64 {
 	return s.HugetlbFailures
 }
 
@@ -232,7 +232,7 @@ type BalloonStatsUpdate struct {
 }
 
 // GetStatsPollingIntervalS returns the value of StatsPollingIntervalS.
-func (s BalloonStatsUpdate) GetStatsPollingIntervalS() int {
+func (s *BalloonStatsUpdate) GetStatsPollingIntervalS() int {
 	return s.StatsPollingIntervalS
 }
 
@@ -249,7 +249,7 @@ type BalloonUpdate struct {
 }
 
 // GetAmountMib returns the value of AmountMib.
-func (s BalloonUpdate) GetAmountMib() int {
+func (s *BalloonUpdate) GetAmountMib() int {
 	return s.AmountMib
 }
 
@@ -270,17 +270,17 @@ type BootSource struct {
 }
 
 // GetBootArgs returns the value of BootArgs.
-func (s BootSource) GetBootArgs() OptString {
+func (s *BootSource) GetBootArgs() OptString {
 	return s.BootArgs
 }
 
 // GetInitrdPath returns the value of InitrdPath.
-func (s BootSource) GetInitrdPath() OptString {
+func (s *BootSource) GetInitrdPath() OptString {
 	return s.InitrdPath
 }
 
 // GetKernelImagePath returns the value of KernelImagePath.
-func (s BootSource) GetKernelImagePath() string {
+func (s *BootSource) GetKernelImagePath() string {
 	return s.KernelImagePath
 }
 
@@ -335,37 +335,37 @@ type Drive struct {
 }
 
 // GetDriveID returns the value of DriveID.
-func (s Drive) GetDriveID() string {
+func (s *Drive) GetDriveID() string {
 	return s.DriveID
 }
 
 // GetCacheType returns the value of CacheType.
-func (s Drive) GetCacheType() OptString {
+func (s *Drive) GetCacheType() OptString {
 	return s.CacheType
 }
 
 // GetIsReadOnly returns the value of IsReadOnly.
-func (s Drive) GetIsReadOnly() bool {
+func (s *Drive) GetIsReadOnly() bool {
 	return s.IsReadOnly
 }
 
 // GetIsRootDevice returns the value of IsRootDevice.
-func (s Drive) GetIsRootDevice() bool {
+func (s *Drive) GetIsRootDevice() bool {
 	return s.IsRootDevice
 }
 
 // GetPartuuid returns the value of Partuuid.
-func (s Drive) GetPartuuid() OptString {
+func (s *Drive) GetPartuuid() OptString {
 	return s.Partuuid
 }
 
 // GetPathOnHost returns the value of PathOnHost.
-func (s Drive) GetPathOnHost() string {
+func (s *Drive) GetPathOnHost() string {
 	return s.PathOnHost
 }
 
 // GetRateLimiter returns the value of RateLimiter.
-func (s Drive) GetRateLimiter() OptRateLimiter {
+func (s *Drive) GetRateLimiter() OptRateLimiter {
 	return s.RateLimiter
 }
 
@@ -411,7 +411,7 @@ type Error struct {
 }
 
 // GetFaultMessage returns the value of FaultMessage.
-func (s Error) GetFaultMessage() OptString {
+func (s *Error) GetFaultMessage() OptString {
 	return s.FaultMessage
 }
 
@@ -451,12 +451,12 @@ type ErrorStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s ErrorStatusCode) GetStatusCode() int {
+func (s *ErrorStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s ErrorStatusCode) GetResponse() Error {
+func (s *ErrorStatusCode) GetResponse() Error {
 	return s.Response
 }
 
@@ -513,47 +513,47 @@ type FullVmConfiguration struct {
 }
 
 // GetBalloonDevice returns the value of BalloonDevice.
-func (s FullVmConfiguration) GetBalloonDevice() OptBalloon {
+func (s *FullVmConfiguration) GetBalloonDevice() OptBalloon {
 	return s.BalloonDevice
 }
 
 // GetBlockDevices returns the value of BlockDevices.
-func (s FullVmConfiguration) GetBlockDevices() []Drive {
+func (s *FullVmConfiguration) GetBlockDevices() []Drive {
 	return s.BlockDevices
 }
 
 // GetBootSource returns the value of BootSource.
-func (s FullVmConfiguration) GetBootSource() OptBootSource {
+func (s *FullVmConfiguration) GetBootSource() OptBootSource {
 	return s.BootSource
 }
 
 // GetLogger returns the value of Logger.
-func (s FullVmConfiguration) GetLogger() OptLogger {
+func (s *FullVmConfiguration) GetLogger() OptLogger {
 	return s.Logger
 }
 
 // GetMachineConfig returns the value of MachineConfig.
-func (s FullVmConfiguration) GetMachineConfig() OptMachineConfiguration {
+func (s *FullVmConfiguration) GetMachineConfig() OptMachineConfiguration {
 	return s.MachineConfig
 }
 
 // GetMetrics returns the value of Metrics.
-func (s FullVmConfiguration) GetMetrics() OptMetrics {
+func (s *FullVmConfiguration) GetMetrics() OptMetrics {
 	return s.Metrics
 }
 
 // GetMmdsConfig returns the value of MmdsConfig.
-func (s FullVmConfiguration) GetMmdsConfig() OptMmdsConfig {
+func (s *FullVmConfiguration) GetMmdsConfig() OptMmdsConfig {
 	return s.MmdsConfig
 }
 
 // GetNetDevices returns the value of NetDevices.
-func (s FullVmConfiguration) GetNetDevices() []NetworkInterface {
+func (s *FullVmConfiguration) GetNetDevices() []NetworkInterface {
 	return s.NetDevices
 }
 
 // GetVsockDevice returns the value of VsockDevice.
-func (s FullVmConfiguration) GetVsockDevice() OptVsock {
+func (s *FullVmConfiguration) GetVsockDevice() OptVsock {
 	return s.VsockDevice
 }
 
@@ -612,7 +612,7 @@ type InstanceActionInfo struct {
 }
 
 // GetActionType returns the value of ActionType.
-func (s InstanceActionInfo) GetActionType() InstanceActionInfoActionType {
+func (s *InstanceActionInfo) GetActionType() InstanceActionInfoActionType {
 	return s.ActionType
 }
 
@@ -645,22 +645,22 @@ type InstanceInfo struct {
 }
 
 // GetAppName returns the value of AppName.
-func (s InstanceInfo) GetAppName() string {
+func (s *InstanceInfo) GetAppName() string {
 	return s.AppName
 }
 
 // GetID returns the value of ID.
-func (s InstanceInfo) GetID() string {
+func (s *InstanceInfo) GetID() string {
 	return s.ID
 }
 
 // GetState returns the value of State.
-func (s InstanceInfo) GetState() InstanceInfoState {
+func (s *InstanceInfo) GetState() InstanceInfoState {
 	return s.State
 }
 
 // GetVmmVersion returns the value of VmmVersion.
-func (s InstanceInfo) GetVmmVersion() string {
+func (s *InstanceInfo) GetVmmVersion() string {
 	return s.VmmVersion
 }
 
@@ -715,22 +715,22 @@ type Logger struct {
 }
 
 // GetLevel returns the value of Level.
-func (s Logger) GetLevel() OptLoggerLevel {
+func (s *Logger) GetLevel() OptLoggerLevel {
 	return s.Level
 }
 
 // GetLogPath returns the value of LogPath.
-func (s Logger) GetLogPath() string {
+func (s *Logger) GetLogPath() string {
 	return s.LogPath
 }
 
 // GetShowLevel returns the value of ShowLevel.
-func (s Logger) GetShowLevel() OptBool {
+func (s *Logger) GetShowLevel() OptBool {
 	return s.ShowLevel
 }
 
 // GetShowLogOrigin returns the value of ShowLogOrigin.
-func (s Logger) GetShowLogOrigin() OptBool {
+func (s *Logger) GetShowLogOrigin() OptBool {
 	return s.ShowLogOrigin
 }
 
@@ -781,27 +781,27 @@ type MachineConfiguration struct {
 }
 
 // GetCPUTemplate returns the value of CPUTemplate.
-func (s MachineConfiguration) GetCPUTemplate() OptCpuTemplate {
+func (s *MachineConfiguration) GetCPUTemplate() OptCpuTemplate {
 	return s.CPUTemplate
 }
 
 // GetHtEnabled returns the value of HtEnabled.
-func (s MachineConfiguration) GetHtEnabled() bool {
+func (s *MachineConfiguration) GetHtEnabled() bool {
 	return s.HtEnabled
 }
 
 // GetMemSizeMib returns the value of MemSizeMib.
-func (s MachineConfiguration) GetMemSizeMib() int {
+func (s *MachineConfiguration) GetMemSizeMib() int {
 	return s.MemSizeMib
 }
 
 // GetTrackDirtyPages returns the value of TrackDirtyPages.
-func (s MachineConfiguration) GetTrackDirtyPages() OptBool {
+func (s *MachineConfiguration) GetTrackDirtyPages() OptBool {
 	return s.TrackDirtyPages
 }
 
 // GetVcpuCount returns the value of VcpuCount.
-func (s MachineConfiguration) GetVcpuCount() int {
+func (s *MachineConfiguration) GetVcpuCount() int {
 	return s.VcpuCount
 }
 
@@ -840,7 +840,7 @@ type Metrics struct {
 }
 
 // GetMetricsPath returns the value of MetricsPath.
-func (s Metrics) GetMetricsPath() string {
+func (s *Metrics) GetMetricsPath() string {
 	return s.MetricsPath
 }
 
@@ -857,7 +857,7 @@ type MmdsConfig struct {
 }
 
 // GetIpv4Address returns the value of Ipv4Address.
-func (s MmdsConfig) GetIpv4Address() OptString {
+func (s *MmdsConfig) GetIpv4Address() OptString {
 	return s.Ipv4Address
 }
 
@@ -906,32 +906,32 @@ type NetworkInterface struct {
 }
 
 // GetAllowMmdsRequests returns the value of AllowMmdsRequests.
-func (s NetworkInterface) GetAllowMmdsRequests() OptBool {
+func (s *NetworkInterface) GetAllowMmdsRequests() OptBool {
 	return s.AllowMmdsRequests
 }
 
 // GetGuestMAC returns the value of GuestMAC.
-func (s NetworkInterface) GetGuestMAC() OptString {
+func (s *NetworkInterface) GetGuestMAC() OptString {
 	return s.GuestMAC
 }
 
 // GetHostDevName returns the value of HostDevName.
-func (s NetworkInterface) GetHostDevName() string {
+func (s *NetworkInterface) GetHostDevName() string {
 	return s.HostDevName
 }
 
 // GetIfaceID returns the value of IfaceID.
-func (s NetworkInterface) GetIfaceID() string {
+func (s *NetworkInterface) GetIfaceID() string {
 	return s.IfaceID
 }
 
 // GetRxRateLimiter returns the value of RxRateLimiter.
-func (s NetworkInterface) GetRxRateLimiter() OptRateLimiter {
+func (s *NetworkInterface) GetRxRateLimiter() OptRateLimiter {
 	return s.RxRateLimiter
 }
 
 // GetTxRateLimiter returns the value of TxRateLimiter.
-func (s NetworkInterface) GetTxRateLimiter() OptRateLimiter {
+func (s *NetworkInterface) GetTxRateLimiter() OptRateLimiter {
 	return s.TxRateLimiter
 }
 
@@ -1710,17 +1710,17 @@ type PartialDrive struct {
 }
 
 // GetDriveID returns the value of DriveID.
-func (s PartialDrive) GetDriveID() string {
+func (s *PartialDrive) GetDriveID() string {
 	return s.DriveID
 }
 
 // GetPathOnHost returns the value of PathOnHost.
-func (s PartialDrive) GetPathOnHost() OptString {
+func (s *PartialDrive) GetPathOnHost() OptString {
 	return s.PathOnHost
 }
 
 // GetRateLimiter returns the value of RateLimiter.
-func (s PartialDrive) GetRateLimiter() OptRateLimiter {
+func (s *PartialDrive) GetRateLimiter() OptRateLimiter {
 	return s.RateLimiter
 }
 
@@ -1751,17 +1751,17 @@ type PartialNetworkInterface struct {
 }
 
 // GetIfaceID returns the value of IfaceID.
-func (s PartialNetworkInterface) GetIfaceID() string {
+func (s *PartialNetworkInterface) GetIfaceID() string {
 	return s.IfaceID
 }
 
 // GetRxRateLimiter returns the value of RxRateLimiter.
-func (s PartialNetworkInterface) GetRxRateLimiter() OptRateLimiter {
+func (s *PartialNetworkInterface) GetRxRateLimiter() OptRateLimiter {
 	return s.RxRateLimiter
 }
 
 // GetTxRateLimiter returns the value of TxRateLimiter.
-func (s PartialNetworkInterface) GetTxRateLimiter() OptRateLimiter {
+func (s *PartialNetworkInterface) GetTxRateLimiter() OptRateLimiter {
 	return s.TxRateLimiter
 }
 
@@ -1859,12 +1859,12 @@ type RateLimiter struct {
 }
 
 // GetBandwidth returns the value of Bandwidth.
-func (s RateLimiter) GetBandwidth() OptTokenBucket {
+func (s *RateLimiter) GetBandwidth() OptTokenBucket {
 	return s.Bandwidth
 }
 
 // GetOps returns the value of Ops.
-func (s RateLimiter) GetOps() OptTokenBucket {
+func (s *RateLimiter) GetOps() OptTokenBucket {
 	return s.Ops
 }
 
@@ -1892,22 +1892,22 @@ type SnapshotCreateParams struct {
 }
 
 // GetMemFilePath returns the value of MemFilePath.
-func (s SnapshotCreateParams) GetMemFilePath() string {
+func (s *SnapshotCreateParams) GetMemFilePath() string {
 	return s.MemFilePath
 }
 
 // GetSnapshotPath returns the value of SnapshotPath.
-func (s SnapshotCreateParams) GetSnapshotPath() string {
+func (s *SnapshotCreateParams) GetSnapshotPath() string {
 	return s.SnapshotPath
 }
 
 // GetSnapshotType returns the value of SnapshotType.
-func (s SnapshotCreateParams) GetSnapshotType() OptSnapshotCreateParamsSnapshotType {
+func (s *SnapshotCreateParams) GetSnapshotType() OptSnapshotCreateParamsSnapshotType {
 	return s.SnapshotType
 }
 
 // GetVersion returns the value of Version.
-func (s SnapshotCreateParams) GetVersion() OptString {
+func (s *SnapshotCreateParams) GetVersion() OptString {
 	return s.Version
 }
 
@@ -1952,22 +1952,22 @@ type SnapshotLoadParams struct {
 }
 
 // GetEnableDiffSnapshots returns the value of EnableDiffSnapshots.
-func (s SnapshotLoadParams) GetEnableDiffSnapshots() OptBool {
+func (s *SnapshotLoadParams) GetEnableDiffSnapshots() OptBool {
 	return s.EnableDiffSnapshots
 }
 
 // GetMemFilePath returns the value of MemFilePath.
-func (s SnapshotLoadParams) GetMemFilePath() string {
+func (s *SnapshotLoadParams) GetMemFilePath() string {
 	return s.MemFilePath
 }
 
 // GetSnapshotPath returns the value of SnapshotPath.
-func (s SnapshotLoadParams) GetSnapshotPath() string {
+func (s *SnapshotLoadParams) GetSnapshotPath() string {
 	return s.SnapshotPath
 }
 
 // GetResumeVM returns the value of ResumeVM.
-func (s SnapshotLoadParams) GetResumeVM() OptBool {
+func (s *SnapshotLoadParams) GetResumeVM() OptBool {
 	return s.ResumeVM
 }
 
@@ -2008,17 +2008,17 @@ type TokenBucket struct {
 }
 
 // GetOneTimeBurst returns the value of OneTimeBurst.
-func (s TokenBucket) GetOneTimeBurst() OptInt64 {
+func (s *TokenBucket) GetOneTimeBurst() OptInt64 {
 	return s.OneTimeBurst
 }
 
 // GetRefillTime returns the value of RefillTime.
-func (s TokenBucket) GetRefillTime() int64 {
+func (s *TokenBucket) GetRefillTime() int64 {
 	return s.RefillTime
 }
 
 // GetSize returns the value of Size.
-func (s TokenBucket) GetSize() int64 {
+func (s *TokenBucket) GetSize() int64 {
 	return s.Size
 }
 
@@ -2044,7 +2044,7 @@ type VM struct {
 }
 
 // GetState returns the value of State.
-func (s VM) GetState() VMState {
+func (s *VM) GetState() VMState {
 	return s.State
 }
 
@@ -2077,17 +2077,17 @@ type Vsock struct {
 }
 
 // GetGuestCid returns the value of GuestCid.
-func (s Vsock) GetGuestCid() int {
+func (s *Vsock) GetGuestCid() int {
 	return s.GuestCid
 }
 
 // GetUdsPath returns the value of UdsPath.
-func (s Vsock) GetUdsPath() string {
+func (s *Vsock) GetUdsPath() string {
 	return s.UdsPath
 }
 
 // GetVsockID returns the value of VsockID.
-func (s Vsock) GetVsockID() string {
+func (s *Vsock) GetVsockID() string {
 	return s.VsockID
 }
 

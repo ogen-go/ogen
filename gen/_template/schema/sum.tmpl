@@ -20,7 +20,7 @@ const (
 
 {{- range $s := $.SumOf }}
 // Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
-func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.Name }} }
+func (s {{ $.ReadOnlyReceiver }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.Name }} }
 {{- end }}
 
 {{- range $s := $.SumOf }}
@@ -31,7 +31,7 @@ func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
 }
 
 // Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
-func (s {{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
+func (s {{ $.ReadOnlyReceiver }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
 	if !s.Is{{ $s.Name }}() {
 		return v, false
 	}

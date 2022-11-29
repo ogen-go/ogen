@@ -2,14 +2,14 @@
 {{- define "json/encoders_map" }}
 {{- $va := $.Validators }}
 // Encode implements json.Marshaler.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
+func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 		{{ template "json/enc" map_elem $.Item }}

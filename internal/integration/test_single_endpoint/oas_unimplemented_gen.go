@@ -22,9 +22,10 @@ func (UnimplementedHandler) ProbeLiveness(ctx context.Context) (r string, _ erro
 	return r, ht.ErrNotImplemented
 }
 
-// NewError creates ErrorStatusCode from error returned by handler.
+// NewError creates *ErrorStatusCode from error returned by handler.
 //
 // Used for common default response.
-func (UnimplementedHandler) NewError(ctx context.Context, err error) (r ErrorStatusCode) {
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r *ErrorStatusCode) {
+	r = new(ErrorStatusCode)
 	return r
 }

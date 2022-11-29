@@ -360,7 +360,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	var response MaskResponse
+	var response *MaskResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -372,9 +372,9 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 		}
 
 		type (
-			Request  = MaskContentTypeReqWithContentType
+			Request  = *MaskContentTypeReqWithContentType
 			Params   = struct{}
-			Response = MaskResponse
+			Response = *MaskResponse
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -457,7 +457,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response MaskResponse
+	var response *MaskResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -469,9 +469,9 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 		}
 
 		type (
-			Request  = MaskContentTypeOptionalReqWithContentType
+			Request  = *MaskContentTypeOptionalReqWithContentType
 			Params   = struct{}
-			Response = MaskResponse
+			Response = *MaskResponse
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

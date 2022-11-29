@@ -16,7 +16,7 @@
 {{ define "request_decoders/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Request(r *http.Request) (
-	req {{ $op.Request.Type.Go }},
+	req {{ $op.Request.GoType }},
 	close func() error,
 	rerr error,
 ) {
@@ -139,13 +139,13 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 	{{- end }}
 
     {{- if not $contentType.Mask }}
-	return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
+	return {{ if $op.Request.DoTakePtr }}&{{ end }}request, close, nil
 	{{- else }}
 	wrapped := {{ $media.Type.Go }}{
 		ContentType: ct,
 		Content: request,
 	}
-	return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}wrapped, close, nil
+	return {{ if $op.Request.DoTakePtr }}&{{ end }}wrapped, close, nil
 	{{- end }}
 {{- end }}
 	default:

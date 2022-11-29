@@ -13,8 +13,8 @@ import (
 )
 
 // Encode encodes AllRequestBodiesApplicationJSON as json.
-func (s AllRequestBodiesApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := SimpleObject(s)
+func (s *AllRequestBodiesApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*SimpleObject)(s)
 
 	unwrapped.Encode(e)
 }
@@ -38,7 +38,7 @@ func (s *AllRequestBodiesApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AllRequestBodiesApplicationJSON) MarshalJSON() ([]byte, error) {
+func (s *AllRequestBodiesApplicationJSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -51,8 +51,8 @@ func (s *AllRequestBodiesApplicationJSON) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AllRequestBodiesApplicationXWwwFormUrlencoded as json.
-func (s AllRequestBodiesApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
-	unwrapped := SimpleObject(s)
+func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
+	unwrapped := (*SimpleObject)(s)
 
 	unwrapped.Encode(e)
 }
@@ -76,7 +76,7 @@ func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AllRequestBodiesApplicationXWwwFormUrlencoded) MarshalJSON() ([]byte, error) {
+func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -89,8 +89,8 @@ func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) UnmarshalJSON(data []byt
 }
 
 // Encode encodes AllRequestBodiesMultipartFormData as json.
-func (s AllRequestBodiesMultipartFormData) Encode(e *jx.Encoder) {
-	unwrapped := SimpleObject(s)
+func (s *AllRequestBodiesMultipartFormData) Encode(e *jx.Encoder) {
+	unwrapped := (*SimpleObject)(s)
 
 	unwrapped.Encode(e)
 }
@@ -114,7 +114,7 @@ func (s *AllRequestBodiesMultipartFormData) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AllRequestBodiesMultipartFormData) MarshalJSON() ([]byte, error) {
+func (s *AllRequestBodiesMultipartFormData) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127,8 +127,8 @@ func (s *AllRequestBodiesMultipartFormData) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AllRequestBodiesOptionalApplicationJSON as json.
-func (s AllRequestBodiesOptionalApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := SimpleObject(s)
+func (s *AllRequestBodiesOptionalApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*SimpleObject)(s)
 
 	unwrapped.Encode(e)
 }
@@ -152,7 +152,7 @@ func (s *AllRequestBodiesOptionalApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AllRequestBodiesOptionalApplicationJSON) MarshalJSON() ([]byte, error) {
+func (s *AllRequestBodiesOptionalApplicationJSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165,8 +165,8 @@ func (s *AllRequestBodiesOptionalApplicationJSON) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes AllRequestBodiesOptionalApplicationXWwwFormUrlencoded as json.
-func (s AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
-	unwrapped := SimpleObject(s)
+func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
+	unwrapped := (*SimpleObject)(s)
 
 	unwrapped.Encode(e)
 }
@@ -190,7 +190,7 @@ func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) MarshalJSON() ([]byte, error) {
+func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -203,8 +203,8 @@ func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) UnmarshalJSON(da
 }
 
 // Encode encodes AllRequestBodiesOptionalMultipartFormData as json.
-func (s AllRequestBodiesOptionalMultipartFormData) Encode(e *jx.Encoder) {
-	unwrapped := SimpleObject(s)
+func (s *AllRequestBodiesOptionalMultipartFormData) Encode(e *jx.Encoder) {
+	unwrapped := (*SimpleObject)(s)
 
 	unwrapped.Encode(e)
 }
@@ -228,7 +228,7 @@ func (s *AllRequestBodiesOptionalMultipartFormData) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AllRequestBodiesOptionalMultipartFormData) MarshalJSON() ([]byte, error) {
+func (s *AllRequestBodiesOptionalMultipartFormData) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -241,14 +241,14 @@ func (s *AllRequestBodiesOptionalMultipartFormData) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s MaskResponse) Encode(e *jx.Encoder) {
+func (s *MaskResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MaskResponse) encodeFields(e *jx.Encoder) {
+func (s *MaskResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("contentType")
@@ -343,7 +343,7 @@ func (s *MaskResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MaskResponse) MarshalJSON() ([]byte, error) {
+func (s *MaskResponse) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -391,14 +391,14 @@ func (s *OptInt) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleObject) Encode(e *jx.Encoder) {
+func (s *SimpleObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleObject) encodeFields(e *jx.Encoder) {
+func (s *SimpleObject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -492,7 +492,7 @@ func (s *SimpleObject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleObject) MarshalJSON() ([]byte, error) {
+func (s *SimpleObject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

@@ -2,7 +2,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- $g := $.GenericOf -}}
 // MarshalJSON implements stdjson.Marshaler.
-func (s {{ $.Name }}) MarshalJSON() ([]byte, error) {
+func (s {{ $.ReadOnlyReceiver }}) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	{{- if $.IsGeneric }}
 	s.Encode(&e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})

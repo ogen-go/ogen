@@ -15,7 +15,7 @@ import (
 )
 
 func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request) (
-	req LimitOrderRequest,
+	req *LimitOrderRequest,
 	close func() error,
 	rerr error,
 ) {
@@ -74,14 +74,14 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request) (
-	req MarketOrderRequest,
+	req *MarketOrderRequest,
 	close func() error,
 	rerr error,
 ) {
@@ -140,14 +140,14 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request) (
-	req SandboxSetCurrencyBalanceRequest,
+	req *SandboxSetCurrencyBalanceRequest,
 	close func() error,
 	rerr error,
 ) {
@@ -206,14 +206,14 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request) (
-	req SandboxSetPositionBalanceRequest,
+	req *SandboxSetPositionBalanceRequest,
 	close func() error,
 	rerr error,
 ) {
@@ -272,7 +272,7 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

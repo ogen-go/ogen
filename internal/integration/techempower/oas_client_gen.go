@@ -150,7 +150,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 // random number generator, database driver, and database connection pool.
 //
 // GET /db
-func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
+func (c *Client) DB(ctx context.Context) (res *WorldObject, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
 	}
@@ -214,7 +214,7 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 // response header generation, and request count throughput.
 //
 // GET /json
-func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
+func (c *Client) JSON(ctx context.Context) (res *HelloWorld, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
 	}

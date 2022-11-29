@@ -292,7 +292,7 @@ func BenchmarkIntegration(b *testing.B) {
 func BenchmarkJSON(b *testing.B) {
 	b.Run("TechEmpower", func(b *testing.B) {
 		b.Run("HelloWorld", func(b *testing.B) {
-			h := techempower.HelloWorld{
+			h := &techempower.HelloWorld{
 				Message: "Hello, world!",
 			}
 			data := json.Encode(h)
@@ -323,7 +323,7 @@ func BenchmarkJSON(b *testing.B) {
 			})
 		})
 		b.Run("WorldObject", func(b *testing.B) {
-			h := techempower.WorldObject{
+			h := &techempower.WorldObject{
 				ID:           367297,
 				RandomNumber: 4761696123,
 			}
@@ -358,7 +358,7 @@ func BenchmarkJSON(b *testing.B) {
 	b.Run("Sample", func(b *testing.B) {
 		b.Run("Pet", func(b *testing.B) {
 			date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
-			pet := api.Pet{
+			pet := &api.Pet{
 				Primary:  nil,
 				ID:       42,
 				UniqueID: uuid.New(),

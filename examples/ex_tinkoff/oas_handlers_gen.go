@@ -1269,7 +1269,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		}
 
 		type (
-			Request  = LimitOrderRequest
+			Request  = *LimitOrderRequest
 			Params   = OrdersLimitOrderPostParams
 			Response = OrdersLimitOrderPostRes
 		)
@@ -1396,7 +1396,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		}
 
 		type (
-			Request  = MarketOrderRequest
+			Request  = *MarketOrderRequest
 			Params   = OrdersMarketOrderPostParams
 			Response = OrdersMarketOrderPostRes
 		)
@@ -1843,7 +1843,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		}
 
 		type (
-			Request  = SandboxSetCurrencyBalanceRequest
+			Request  = *SandboxSetCurrencyBalanceRequest
 			Params   = SandboxCurrenciesBalancePostParams
 			Response = SandboxCurrenciesBalancePostRes
 		)
@@ -1966,7 +1966,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		}
 
 		type (
-			Request  = SandboxSetPositionBalanceRequest
+			Request  = *SandboxSetPositionBalanceRequest
 			Params   = SandboxPositionsBalancePostParams
 			Response = SandboxPositionsBalancePostRes
 		)

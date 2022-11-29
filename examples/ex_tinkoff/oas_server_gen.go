@@ -79,13 +79,13 @@ type Handler interface {
 	// Создание лимитной заявки.
 	//
 	// POST /orders/limit-order
-	OrdersLimitOrderPost(ctx context.Context, req LimitOrderRequest, params OrdersLimitOrderPostParams) (OrdersLimitOrderPostRes, error)
+	OrdersLimitOrderPost(ctx context.Context, req *LimitOrderRequest, params OrdersLimitOrderPostParams) (OrdersLimitOrderPostRes, error)
 	// OrdersMarketOrderPost implements POST /orders/market-order operation.
 	//
 	// Создание рыночной заявки.
 	//
 	// POST /orders/market-order
-	OrdersMarketOrderPost(ctx context.Context, req MarketOrderRequest, params OrdersMarketOrderPostParams) (OrdersMarketOrderPostRes, error)
+	OrdersMarketOrderPost(ctx context.Context, req *MarketOrderRequest, params OrdersMarketOrderPostParams) (OrdersMarketOrderPostRes, error)
 	// PortfolioCurrenciesGet implements GET /portfolio/currencies operation.
 	//
 	// Получение валютных активов клиента.
@@ -109,13 +109,13 @@ type Handler interface {
 	// Выставление баланса по валютным позициям.
 	//
 	// POST /sandbox/currencies/balance
-	SandboxCurrenciesBalancePost(ctx context.Context, req SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (SandboxCurrenciesBalancePostRes, error)
+	SandboxCurrenciesBalancePost(ctx context.Context, req *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (SandboxCurrenciesBalancePostRes, error)
 	// SandboxPositionsBalancePost implements POST /sandbox/positions/balance operation.
 	//
 	// Выставление баланса по инструментным позициям.
 	//
 	// POST /sandbox/positions/balance
-	SandboxPositionsBalancePost(ctx context.Context, req SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (SandboxPositionsBalancePostRes, error)
+	SandboxPositionsBalancePost(ctx context.Context, req *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (SandboxPositionsBalancePostRes, error)
 	// SandboxRegisterPost implements POST /sandbox/register operation.
 	//
 	// Создание счета и валютных позиций для клиента.

@@ -18,7 +18,7 @@ import (
 )
 
 type errorHandler interface {
-	NewError(ctx context.Context, err error) ErrorStatusCode
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 var _ Handler = struct {
@@ -68,7 +68,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Creates data.
 //
 // POST /data
-func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err error) {
+func (c *Client) DataCreate(ctx context.Context, request OptData) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
 	}
@@ -133,7 +133,7 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 // Retrieve data.
 //
 // GET /data
-func (c *Client) DataGet(ctx context.Context) (res Data, err error) {
+func (c *Client) DataGet(ctx context.Context) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 	}

@@ -16,14 +16,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s APIOverview) Encode(e *jx.Encoder) {
+func (s *APIOverview) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s APIOverview) encodeFields(e *jx.Encoder) {
+func (s *APIOverview) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("verifiable_password_authentication")
@@ -388,7 +388,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s APIOverview) MarshalJSON() ([]byte, error) {
+func (s *APIOverview) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -401,14 +401,14 @@ func (s *APIOverview) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s APIOverviewSSHKeyFingerprints) Encode(e *jx.Encoder) {
+func (s *APIOverviewSSHKeyFingerprints) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s APIOverviewSSHKeyFingerprints) encodeFields(e *jx.Encoder) {
+func (s *APIOverviewSSHKeyFingerprints) encodeFields(e *jx.Encoder) {
 	{
 		if s.SHA256RSA.Set {
 			e.FieldStart("SHA256_RSA")
@@ -502,7 +502,7 @@ func (s *APIOverviewSSHKeyFingerprints) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s APIOverviewSSHKeyFingerprints) MarshalJSON() ([]byte, error) {
+func (s *APIOverviewSSHKeyFingerprints) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -515,14 +515,14 @@ func (s *APIOverviewSSHKeyFingerprints) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Accepted) Encode(e *jx.Encoder) {
+func (s *Accepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Accepted) encodeFields(e *jx.Encoder) {
+func (s *Accepted) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfAccepted = [0]string{}
@@ -547,7 +547,7 @@ func (s *Accepted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Accepted) MarshalJSON() ([]byte, error) {
+func (s *Accepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -560,8 +560,8 @@ func (s *Accepted) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ActionsApproveWorkflowRunApplicationJSONForbidden as json.
-func (s ActionsApproveWorkflowRunApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -585,7 +585,7 @@ func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsApproveWorkflowRunApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -598,8 +598,8 @@ func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) UnmarshalJSON(data [
 }
 
 // Encode encodes ActionsApproveWorkflowRunApplicationJSONNotFound as json.
-func (s ActionsApproveWorkflowRunApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -623,7 +623,7 @@ func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsApproveWorkflowRunApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -636,14 +636,14 @@ func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsBillingUsage) Encode(e *jx.Encoder) {
+func (s *ActionsBillingUsage) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsBillingUsage) encodeFields(e *jx.Encoder) {
+func (s *ActionsBillingUsage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_minutes_used")
@@ -772,7 +772,7 @@ func (s *ActionsBillingUsage) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsBillingUsage) MarshalJSON() ([]byte, error) {
+func (s *ActionsBillingUsage) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -785,14 +785,14 @@ func (s *ActionsBillingUsage) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsBillingUsageMinutesUsedBreakdown) Encode(e *jx.Encoder) {
+func (s *ActionsBillingUsageMinutesUsedBreakdown) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsBillingUsageMinutesUsedBreakdown) encodeFields(e *jx.Encoder) {
+func (s *ActionsBillingUsageMinutesUsedBreakdown) encodeFields(e *jx.Encoder) {
 	{
 		if s.UBUNTU.Set {
 			e.FieldStart("UBUNTU")
@@ -869,7 +869,7 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsBillingUsageMinutesUsedBreakdown) MarshalJSON() ([]byte, error) {
+func (s *ActionsBillingUsageMinutesUsedBreakdown) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -882,14 +882,14 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Encoder) {
+func (s *ActionsCancelWorkflowRunAccepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsCancelWorkflowRunAccepted) encodeFields(e *jx.Encoder) {
+func (s *ActionsCancelWorkflowRunAccepted) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfActionsCancelWorkflowRunAccepted = [0]string{}
@@ -914,7 +914,7 @@ func (s *ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsCancelWorkflowRunAccepted) MarshalJSON() ([]byte, error) {
+func (s *ActionsCancelWorkflowRunAccepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -927,14 +927,14 @@ func (s *ActionsCancelWorkflowRunAccepted) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsCreateOrUpdateEnvironmentSecretReq) Encode(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsCreateOrUpdateEnvironmentSecretReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateEnvironmentSecretReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("encrypted_value")
@@ -1029,7 +1029,7 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsCreateOrUpdateEnvironmentSecretReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsCreateOrUpdateEnvironmentSecretReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1042,14 +1042,14 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsCreateOrUpdateOrgSecretReq) Encode(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateOrgSecretReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsCreateOrUpdateOrgSecretReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateOrgSecretReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.EncryptedValue.Set {
 			e.FieldStart("encrypted_value")
@@ -1188,7 +1188,7 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsCreateOrUpdateOrgSecretReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsCreateOrUpdateOrgSecretReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1243,14 +1243,14 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsCreateOrUpdateRepoSecretCreated) encodeFields(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateRepoSecretCreated) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfActionsCreateOrUpdateRepoSecretCreated = [0]string{}
@@ -1275,7 +1275,7 @@ func (s *ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretCreated) MarshalJSON() ([]byte, error) {
+func (s *ActionsCreateOrUpdateRepoSecretCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1288,14 +1288,14 @@ func (s *ActionsCreateOrUpdateRepoSecretCreated) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretReq) Encode(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateRepoSecretReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsCreateOrUpdateRepoSecretReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsCreateOrUpdateRepoSecretReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.EncryptedValue.Set {
 			e.FieldStart("encrypted_value")
@@ -1355,7 +1355,7 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsCreateOrUpdateRepoSecretReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsCreateOrUpdateRepoSecretReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1368,14 +1368,14 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Encoder) {
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -1530,7 +1530,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1625,14 +1625,14 @@ func (s *ActionsEnabled) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsEnterprisePermissions) Encode(e *jx.Encoder) {
+func (s *ActionsEnterprisePermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsEnterprisePermissions) encodeFields(e *jx.Encoder) {
+func (s *ActionsEnterprisePermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled_organizations")
@@ -1758,7 +1758,7 @@ func (s *ActionsEnterprisePermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsEnterprisePermissions) MarshalJSON() ([]byte, error) {
+func (s *ActionsEnterprisePermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1771,14 +1771,14 @@ func (s *ActionsEnterprisePermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListArtifactsForRepoOK) Encode(e *jx.Encoder) {
+func (s *ActionsListArtifactsForRepoOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListArtifactsForRepoOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListArtifactsForRepoOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -1883,7 +1883,7 @@ func (s *ActionsListArtifactsForRepoOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListArtifactsForRepoOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListArtifactsForRepoOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1896,14 +1896,14 @@ func (s *ActionsListArtifactsForRepoOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListEnvironmentSecretsOK) Encode(e *jx.Encoder) {
+func (s *ActionsListEnvironmentSecretsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListEnvironmentSecretsOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListEnvironmentSecretsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2008,7 +2008,7 @@ func (s *ActionsListEnvironmentSecretsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListEnvironmentSecretsOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListEnvironmentSecretsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2021,14 +2021,14 @@ func (s *ActionsListEnvironmentSecretsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListJobsForWorkflowRunOK) Encode(e *jx.Encoder) {
+func (s *ActionsListJobsForWorkflowRunOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListJobsForWorkflowRunOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListJobsForWorkflowRunOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2133,7 +2133,7 @@ func (s *ActionsListJobsForWorkflowRunOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListJobsForWorkflowRunOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListJobsForWorkflowRunOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2146,14 +2146,14 @@ func (s *ActionsListJobsForWorkflowRunOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListOrgSecretsOK) Encode(e *jx.Encoder) {
+func (s *ActionsListOrgSecretsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListOrgSecretsOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListOrgSecretsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2258,7 +2258,7 @@ func (s *ActionsListOrgSecretsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListOrgSecretsOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListOrgSecretsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2271,14 +2271,14 @@ func (s *ActionsListOrgSecretsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Encode(e *jx.Encoder) {
+func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2383,7 +2383,7 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2396,14 +2396,14 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListRepoSecretsOK) Encode(e *jx.Encoder) {
+func (s *ActionsListRepoSecretsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListRepoSecretsOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListRepoSecretsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2508,7 +2508,7 @@ func (s *ActionsListRepoSecretsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListRepoSecretsOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListRepoSecretsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2521,14 +2521,14 @@ func (s *ActionsListRepoSecretsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListRepoWorkflowsOK) Encode(e *jx.Encoder) {
+func (s *ActionsListRepoWorkflowsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListRepoWorkflowsOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListRepoWorkflowsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2633,7 +2633,7 @@ func (s *ActionsListRepoWorkflowsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListRepoWorkflowsOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListRepoWorkflowsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2646,14 +2646,14 @@ func (s *ActionsListRepoWorkflowsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListSelectedReposForOrgSecretOK) Encode(e *jx.Encoder) {
+func (s *ActionsListSelectedReposForOrgSecretOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListSelectedReposForOrgSecretOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListSelectedReposForOrgSecretOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2758,7 +2758,7 @@ func (s *ActionsListSelectedReposForOrgSecretOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListSelectedReposForOrgSecretOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListSelectedReposForOrgSecretOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2771,14 +2771,14 @@ func (s *ActionsListSelectedReposForOrgSecretOK) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Encode(e *jx.Encoder) {
+func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -2883,7 +2883,7 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2896,14 +2896,14 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Unma
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Encode(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListSelfHostedRunnerGroupsForOrgOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -3008,7 +3008,7 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListSelfHostedRunnerGroupsForOrgOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3021,14 +3021,14 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListSelfHostedRunnersForOrgOK) Encode(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnersForOrgOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListSelfHostedRunnersForOrgOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnersForOrgOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -3133,7 +3133,7 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListSelfHostedRunnersForOrgOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListSelfHostedRunnersForOrgOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3146,14 +3146,14 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListSelfHostedRunnersForRepoOK) Encode(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnersForRepoOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListSelfHostedRunnersForRepoOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnersForRepoOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -3258,7 +3258,7 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListSelfHostedRunnersForRepoOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListSelfHostedRunnersForRepoOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3271,14 +3271,14 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) UnmarshalJSON(data []byte) error
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Encode(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListSelfHostedRunnersInGroupForOrgOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -3383,7 +3383,7 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListSelfHostedRunnersInGroupForOrgOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3396,14 +3396,14 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListWorkflowRunArtifactsOK) Encode(e *jx.Encoder) {
+func (s *ActionsListWorkflowRunArtifactsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListWorkflowRunArtifactsOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListWorkflowRunArtifactsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -3508,7 +3508,7 @@ func (s *ActionsListWorkflowRunArtifactsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListWorkflowRunArtifactsOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListWorkflowRunArtifactsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3521,14 +3521,14 @@ func (s *ActionsListWorkflowRunArtifactsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsListWorkflowRunsForRepoOK) Encode(e *jx.Encoder) {
+func (s *ActionsListWorkflowRunsForRepoOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsListWorkflowRunsForRepoOK) encodeFields(e *jx.Encoder) {
+func (s *ActionsListWorkflowRunsForRepoOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -3633,7 +3633,7 @@ func (s *ActionsListWorkflowRunsForRepoOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsListWorkflowRunsForRepoOK) MarshalJSON() ([]byte, error) {
+func (s *ActionsListWorkflowRunsForRepoOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3646,14 +3646,14 @@ func (s *ActionsListWorkflowRunsForRepoOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsOrganizationPermissions) Encode(e *jx.Encoder) {
+func (s *ActionsOrganizationPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsOrganizationPermissions) encodeFields(e *jx.Encoder) {
+func (s *ActionsOrganizationPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled_repositories")
@@ -3779,7 +3779,7 @@ func (s *ActionsOrganizationPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsOrganizationPermissions) MarshalJSON() ([]byte, error) {
+func (s *ActionsOrganizationPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3792,14 +3792,14 @@ func (s *ActionsOrganizationPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsPublicKey) Encode(e *jx.Encoder) {
+func (s *ActionsPublicKey) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsPublicKey) encodeFields(e *jx.Encoder) {
+func (s *ActionsPublicKey) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key_id")
@@ -3962,7 +3962,7 @@ func (s *ActionsPublicKey) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsPublicKey) MarshalJSON() ([]byte, error) {
+func (s *ActionsPublicKey) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3975,14 +3975,14 @@ func (s *ActionsPublicKey) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsReRunWorkflowCreated) Encode(e *jx.Encoder) {
+func (s *ActionsReRunWorkflowCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsReRunWorkflowCreated) encodeFields(e *jx.Encoder) {
+func (s *ActionsReRunWorkflowCreated) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfActionsReRunWorkflowCreated = [0]string{}
@@ -4007,7 +4007,7 @@ func (s *ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsReRunWorkflowCreated) MarshalJSON() ([]byte, error) {
+func (s *ActionsReRunWorkflowCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4020,14 +4020,14 @@ func (s *ActionsReRunWorkflowCreated) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *ActionsRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *ActionsRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled")
@@ -4136,7 +4136,7 @@ func (s *ActionsRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *ActionsRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4149,14 +4149,14 @@ func (s *ActionsRepositoryPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsRetryWorkflowCreated) Encode(e *jx.Encoder) {
+func (s *ActionsRetryWorkflowCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsRetryWorkflowCreated) encodeFields(e *jx.Encoder) {
+func (s *ActionsRetryWorkflowCreated) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfActionsRetryWorkflowCreated = [0]string{}
@@ -4181,7 +4181,7 @@ func (s *ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsRetryWorkflowCreated) MarshalJSON() ([]byte, error) {
+func (s *ActionsRetryWorkflowCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4194,14 +4194,14 @@ func (s *ActionsRetryWorkflowCreated) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsReviewPendingDeploymentsForRunReq) Encode(e *jx.Encoder) {
+func (s *ActionsReviewPendingDeploymentsForRunReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsReviewPendingDeploymentsForRunReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsReviewPendingDeploymentsForRunReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("environment_ids")
@@ -4324,7 +4324,7 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsReviewPendingDeploymentsForRunReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsReviewPendingDeploymentsForRunReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4377,14 +4377,14 @@ func (s *ActionsReviewPendingDeploymentsForRunReqState) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSecret) Encode(e *jx.Encoder) {
+func (s *ActionsSecret) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSecret) encodeFields(e *jx.Encoder) {
+func (s *ActionsSecret) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -4497,7 +4497,7 @@ func (s *ActionsSecret) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSecret) MarshalJSON() ([]byte, error) {
+func (s *ActionsSecret) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4510,14 +4510,14 @@ func (s *ActionsSecret) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSetGithubActionsPermissionsOrganizationReq) Encode(e *jx.Encoder) {
+func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSetGithubActionsPermissionsOrganizationReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsSetGithubActionsPermissionsOrganizationReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled_repositories")
@@ -4609,7 +4609,7 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSetGithubActionsPermissionsOrganizationReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsSetGithubActionsPermissionsOrganizationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4622,14 +4622,14 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) UnmarshalJSON(data [
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSetGithubActionsPermissionsRepositoryReq) Encode(e *jx.Encoder) {
+func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSetGithubActionsPermissionsRepositoryReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsSetGithubActionsPermissionsRepositoryReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled")
@@ -4721,7 +4721,7 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSetGithubActionsPermissionsRepositoryReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsSetGithubActionsPermissionsRepositoryReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4734,14 +4734,14 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Encode(e *jx.Encoder) {
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("selected_repository_ids")
@@ -4830,7 +4830,7 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4843,14 +4843,14 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSetSelectedReposForOrgSecretReq) Encode(e *jx.Encoder) {
+func (s *ActionsSetSelectedReposForOrgSecretReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSetSelectedReposForOrgSecretReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsSetSelectedReposForOrgSecretReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("selected_repository_ids")
@@ -4939,7 +4939,7 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSetSelectedReposForOrgSecretReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsSetSelectedReposForOrgSecretReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4952,14 +4952,14 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Encode(e *jx.Encoder) {
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("selected_repository_ids")
@@ -5048,7 +5048,7 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5061,14 +5061,14 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Unma
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) Encode(e *jx.Encoder) {
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("runners")
@@ -5157,7 +5157,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5170,14 +5170,14 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Encoder) {
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -5271,7 +5271,7 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5326,8 +5326,8 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalJSON(da
 }
 
 // Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5351,7 +5351,7 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5364,8 +5364,8 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) 
 }
 
 // Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound as json.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5389,7 +5389,7 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5402,8 +5402,8 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) U
 }
 
 // Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5427,7 +5427,7 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5440,8 +5440,8 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // Encode encodes ActivityDeleteThreadSubscriptionApplicationJSONForbidden as json.
-func (s ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5465,7 +5465,7 @@ func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityDeleteThreadSubscriptionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5478,8 +5478,8 @@ func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) UnmarshalJSON
 }
 
 // Encode encodes ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized as json.
-func (s ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5503,7 +5503,7 @@ func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5516,8 +5516,8 @@ func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) UnmarshalJ
 }
 
 // Encode encodes ActivityGetThreadApplicationJSONForbidden as json.
-func (s ActivityGetThreadApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityGetThreadApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5541,7 +5541,7 @@ func (s *ActivityGetThreadApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityGetThreadApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityGetThreadApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5554,8 +5554,8 @@ func (s *ActivityGetThreadApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ActivityGetThreadApplicationJSONUnauthorized as json.
-func (s ActivityGetThreadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityGetThreadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5579,7 +5579,7 @@ func (s *ActivityGetThreadApplicationJSONUnauthorized) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityGetThreadApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityGetThreadApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5592,8 +5592,8 @@ func (s *ActivityGetThreadApplicationJSONUnauthorized) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5617,7 +5617,7 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidd
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5630,8 +5630,8 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidd
 }
 
 // Encode encodes ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5655,7 +5655,7 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnautho
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5668,8 +5668,8 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnautho
 }
 
 // Encode encodes ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5693,7 +5693,7 @@ func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5706,8 +5706,8 @@ func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) 
 }
 
 // Encode encodes ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5731,7 +5731,7 @@ func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5744,8 +5744,8 @@ func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // Encode encodes ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden as json.
-func (s ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5769,7 +5769,7 @@ func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5782,8 +5782,8 @@ func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) Unmarsh
 }
 
 // Encode encodes ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently as json.
-func (s ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5807,7 +5807,7 @@ func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5820,8 +5820,8 @@ func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) 
 }
 
 // Encode encodes ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound as json.
-func (s ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5845,7 +5845,7 @@ func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5958,8 +5958,8 @@ func (s *ActivityListPublicEventsOKApplicationJSON) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -5983,7 +5983,7 @@ func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -5996,8 +5996,8 @@ func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) Un
 }
 
 // Encode encodes ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6021,7 +6021,7 @@ func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6034,8 +6034,8 @@ func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // Encode encodes ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6059,7 +6059,7 @@ func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6072,8 +6072,8 @@ func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) U
 }
 
 // Encode encodes ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6097,7 +6097,7 @@ func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6110,14 +6110,14 @@ func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 }
 
 // Encode implements json.Marshaler.
-func (s ActivityMarkNotificationsAsReadAccepted) Encode(e *jx.Encoder) {
+func (s *ActivityMarkNotificationsAsReadAccepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActivityMarkNotificationsAsReadAccepted) encodeFields(e *jx.Encoder) {
+func (s *ActivityMarkNotificationsAsReadAccepted) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -6160,7 +6160,7 @@ func (s *ActivityMarkNotificationsAsReadAccepted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityMarkNotificationsAsReadAccepted) MarshalJSON() ([]byte, error) {
+func (s *ActivityMarkNotificationsAsReadAccepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6173,8 +6173,8 @@ func (s *ActivityMarkNotificationsAsReadAccepted) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ActivityMarkNotificationsAsReadApplicationJSONForbidden as json.
-func (s ActivityMarkNotificationsAsReadApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityMarkNotificationsAsReadApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6198,7 +6198,7 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONForbidden) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityMarkNotificationsAsReadApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityMarkNotificationsAsReadApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6211,8 +6211,8 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONForbidden) UnmarshalJSON(
 }
 
 // Encode encodes ActivityMarkNotificationsAsReadApplicationJSONUnauthorized as json.
-func (s ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6236,7 +6236,7 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6249,14 +6249,14 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) UnmarshalJS
 }
 
 // Encode implements json.Marshaler.
-func (s ActivityMarkNotificationsAsReadReq) Encode(e *jx.Encoder) {
+func (s *ActivityMarkNotificationsAsReadReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActivityMarkNotificationsAsReadReq) encodeFields(e *jx.Encoder) {
+func (s *ActivityMarkNotificationsAsReadReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastReadAt.Set {
 			e.FieldStart("last_read_at")
@@ -6316,7 +6316,7 @@ func (s *ActivityMarkNotificationsAsReadReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityMarkNotificationsAsReadReq) MarshalJSON() ([]byte, error) {
+func (s *ActivityMarkNotificationsAsReadReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6329,14 +6329,14 @@ func (s *ActivityMarkNotificationsAsReadReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadAccepted) Encode(e *jx.Encoder) {
+func (s *ActivityMarkRepoNotificationsAsReadAccepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActivityMarkRepoNotificationsAsReadAccepted) encodeFields(e *jx.Encoder) {
+func (s *ActivityMarkRepoNotificationsAsReadAccepted) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -6396,7 +6396,7 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadAccepted) MarshalJSON() ([]byte, error) {
+func (s *ActivityMarkRepoNotificationsAsReadAccepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6409,14 +6409,14 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadReq) Encode(e *jx.Encoder) {
+func (s *ActivityMarkRepoNotificationsAsReadReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActivityMarkRepoNotificationsAsReadReq) encodeFields(e *jx.Encoder) {
+func (s *ActivityMarkRepoNotificationsAsReadReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastReadAt.Set {
 			e.FieldStart("last_read_at")
@@ -6459,7 +6459,7 @@ func (s *ActivityMarkRepoNotificationsAsReadReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityMarkRepoNotificationsAsReadReq) MarshalJSON() ([]byte, error) {
+func (s *ActivityMarkRepoNotificationsAsReadReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6472,14 +6472,14 @@ func (s *ActivityMarkRepoNotificationsAsReadReq) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ActivitySetRepoSubscriptionReq) Encode(e *jx.Encoder) {
+func (s *ActivitySetRepoSubscriptionReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActivitySetRepoSubscriptionReq) encodeFields(e *jx.Encoder) {
+func (s *ActivitySetRepoSubscriptionReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Subscribed.Set {
 			e.FieldStart("subscribed")
@@ -6539,7 +6539,7 @@ func (s *ActivitySetRepoSubscriptionReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivitySetRepoSubscriptionReq) MarshalJSON() ([]byte, error) {
+func (s *ActivitySetRepoSubscriptionReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6552,8 +6552,8 @@ func (s *ActivitySetRepoSubscriptionReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ActivitySetThreadSubscriptionApplicationJSONForbidden as json.
-func (s ActivitySetThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivitySetThreadSubscriptionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6577,7 +6577,7 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivitySetThreadSubscriptionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivitySetThreadSubscriptionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6590,8 +6590,8 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes ActivitySetThreadSubscriptionApplicationJSONUnauthorized as json.
-func (s ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6615,7 +6615,7 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivitySetThreadSubscriptionApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6628,14 +6628,14 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) UnmarshalJSON
 }
 
 // Encode implements json.Marshaler.
-func (s ActivitySetThreadSubscriptionReq) Encode(e *jx.Encoder) {
+func (s *ActivitySetThreadSubscriptionReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ActivitySetThreadSubscriptionReq) encodeFields(e *jx.Encoder) {
+func (s *ActivitySetThreadSubscriptionReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ignored.Set {
 			e.FieldStart("ignored")
@@ -6679,7 +6679,7 @@ func (s *ActivitySetThreadSubscriptionReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivitySetThreadSubscriptionReq) MarshalJSON() ([]byte, error) {
+func (s *ActivitySetThreadSubscriptionReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6692,8 +6692,8 @@ func (s *ActivitySetThreadSubscriptionReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6717,7 +6717,7 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6730,8 +6730,8 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) Unmarshal
 }
 
 // Encode encodes ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound as json.
-func (s ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6755,7 +6755,7 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6768,8 +6768,8 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) UnmarshalJ
 }
 
 // Encode encodes ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6793,7 +6793,7 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6806,8 +6806,8 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Unmars
 }
 
 // Encode encodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6831,7 +6831,7 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6844,8 +6844,8 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) Unmarsh
 }
 
 // Encode encodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound as json.
-func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6869,7 +6869,7 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6882,8 +6882,8 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) Unmarsha
 }
 
 // Encode encodes ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -6907,7 +6907,7 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6920,14 +6920,14 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Unma
 }
 
 // Encode implements json.Marshaler.
-func (s Actor) Encode(e *jx.Encoder) {
+func (s *Actor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Actor) encodeFields(e *jx.Encoder) {
+func (s *Actor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -7091,7 +7091,7 @@ func (s *Actor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Actor) MarshalJSON() ([]byte, error) {
+func (s *Actor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -7346,14 +7346,14 @@ func (s *AllowedActions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AppPermissions) Encode(e *jx.Encoder) {
+func (s *AppPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppPermissions) encodeFields(e *jx.Encoder) {
+func (s *AppPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Actions.Set {
 			e.FieldStart("actions")
@@ -7906,7 +7906,7 @@ func (s *AppPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppPermissions) MarshalJSON() ([]byte, error) {
+func (s *AppPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9157,14 +9157,14 @@ func (s *AppPermissionsWorkflows) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ApplicationGrant) Encode(e *jx.Encoder) {
+func (s *ApplicationGrant) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ApplicationGrant) encodeFields(e *jx.Encoder) {
+func (s *ApplicationGrant) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -9358,7 +9358,7 @@ func (s *ApplicationGrant) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ApplicationGrant) MarshalJSON() ([]byte, error) {
+func (s *ApplicationGrant) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9371,14 +9371,14 @@ func (s *ApplicationGrant) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ApplicationGrantApp) Encode(e *jx.Encoder) {
+func (s *ApplicationGrantApp) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ApplicationGrantApp) encodeFields(e *jx.Encoder) {
+func (s *ApplicationGrantApp) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("client_id")
@@ -9491,7 +9491,7 @@ func (s *ApplicationGrantApp) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ApplicationGrantApp) MarshalJSON() ([]byte, error) {
+func (s *ApplicationGrantApp) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9504,8 +9504,8 @@ func (s *ApplicationGrantApp) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AppsAddRepoToInstallationApplicationJSONForbidden as json.
-func (s AppsAddRepoToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsAddRepoToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -9529,7 +9529,7 @@ func (s *AppsAddRepoToInstallationApplicationJSONForbidden) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsAddRepoToInstallationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsAddRepoToInstallationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9542,8 +9542,8 @@ func (s *AppsAddRepoToInstallationApplicationJSONForbidden) UnmarshalJSON(data [
 }
 
 // Encode encodes AppsAddRepoToInstallationApplicationJSONNotFound as json.
-func (s AppsAddRepoToInstallationApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsAddRepoToInstallationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -9567,7 +9567,7 @@ func (s *AppsAddRepoToInstallationApplicationJSONNotFound) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsAddRepoToInstallationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsAddRepoToInstallationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9580,14 +9580,14 @@ func (s *AppsAddRepoToInstallationApplicationJSONNotFound) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s AppsCheckTokenReq) Encode(e *jx.Encoder) {
+func (s *AppsCheckTokenReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsCheckTokenReq) encodeFields(e *jx.Encoder) {
+func (s *AppsCheckTokenReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("access_token")
@@ -9664,7 +9664,7 @@ func (s *AppsCheckTokenReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCheckTokenReq) MarshalJSON() ([]byte, error) {
+func (s *AppsCheckTokenReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9677,8 +9677,8 @@ func (s *AppsCheckTokenReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AppsCreateContentAttachmentApplicationJSONForbidden as json.
-func (s AppsCreateContentAttachmentApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsCreateContentAttachmentApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -9702,7 +9702,7 @@ func (s *AppsCreateContentAttachmentApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateContentAttachmentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateContentAttachmentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9715,8 +9715,8 @@ func (s *AppsCreateContentAttachmentApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes AppsCreateContentAttachmentApplicationJSONGone as json.
-func (s AppsCreateContentAttachmentApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsCreateContentAttachmentApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -9740,7 +9740,7 @@ func (s *AppsCreateContentAttachmentApplicationJSONGone) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateContentAttachmentApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateContentAttachmentApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9753,8 +9753,8 @@ func (s *AppsCreateContentAttachmentApplicationJSONGone) UnmarshalJSON(data []by
 }
 
 // Encode encodes AppsCreateContentAttachmentApplicationJSONNotFound as json.
-func (s AppsCreateContentAttachmentApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsCreateContentAttachmentApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -9778,7 +9778,7 @@ func (s *AppsCreateContentAttachmentApplicationJSONNotFound) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateContentAttachmentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateContentAttachmentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9791,14 +9791,14 @@ func (s *AppsCreateContentAttachmentApplicationJSONNotFound) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s AppsCreateContentAttachmentReq) Encode(e *jx.Encoder) {
+func (s *AppsCreateContentAttachmentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsCreateContentAttachmentReq) encodeFields(e *jx.Encoder) {
+func (s *AppsCreateContentAttachmentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -9893,7 +9893,7 @@ func (s *AppsCreateContentAttachmentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateContentAttachmentReq) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateContentAttachmentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9906,14 +9906,14 @@ func (s *AppsCreateContentAttachmentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AppsCreateFromManifestCreated) Encode(e *jx.Encoder) {
+func (s *AppsCreateFromManifestCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsCreateFromManifestCreated) encodeFields(e *jx.Encoder) {
+func (s *AppsCreateFromManifestCreated) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -10301,7 +10301,7 @@ func (s *AppsCreateFromManifestCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateFromManifestCreated) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateFromManifestCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10372,14 +10372,14 @@ func (s *AppsCreateFromManifestCreatedAdditional) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s AppsCreateFromManifestCreatedPermissions) Encode(e *jx.Encoder) {
+func (s *AppsCreateFromManifestCreatedPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsCreateFromManifestCreatedPermissions) encodeFields(e *jx.Encoder) {
+func (s *AppsCreateFromManifestCreatedPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Issues.Set {
 			e.FieldStart("issues")
@@ -10507,7 +10507,7 @@ func (s *AppsCreateFromManifestCreatedPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateFromManifestCreatedPermissions) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateFromManifestCreatedPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10576,14 +10576,14 @@ func (s *AppsCreateFromManifestCreatedPermissionsAdditional) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s AppsCreateFromManifestReq) Encode(e *jx.Encoder) {
+func (s *AppsCreateFromManifestReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsCreateFromManifestReq) encodeFields(e *jx.Encoder) {
+func (s *AppsCreateFromManifestReq) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfAppsCreateFromManifestReq = [0]string{}
@@ -10608,7 +10608,7 @@ func (s *AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateFromManifestReq) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateFromManifestReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10621,8 +10621,8 @@ func (s *AppsCreateFromManifestReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AppsCreateInstallationAccessTokenApplicationJSONForbidden as json.
-func (s AppsCreateInstallationAccessTokenApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsCreateInstallationAccessTokenApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -10646,7 +10646,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONForbidden) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateInstallationAccessTokenApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateInstallationAccessTokenApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10659,8 +10659,8 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONForbidden) UnmarshalJSO
 }
 
 // Encode encodes AppsCreateInstallationAccessTokenApplicationJSONNotFound as json.
-func (s AppsCreateInstallationAccessTokenApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsCreateInstallationAccessTokenApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -10684,7 +10684,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONNotFound) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateInstallationAccessTokenApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateInstallationAccessTokenApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10697,8 +10697,8 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONNotFound) UnmarshalJSON
 }
 
 // Encode encodes AppsCreateInstallationAccessTokenApplicationJSONUnauthorized as json.
-func (s AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -10722,7 +10722,7 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10735,14 +10735,14 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) Unmarshal
 }
 
 // Encode implements json.Marshaler.
-func (s AppsCreateInstallationAccessTokenReq) Encode(e *jx.Encoder) {
+func (s *AppsCreateInstallationAccessTokenReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsCreateInstallationAccessTokenReq) encodeFields(e *jx.Encoder) {
+func (s *AppsCreateInstallationAccessTokenReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Repositories != nil {
 			e.FieldStart("repositories")
@@ -10845,7 +10845,7 @@ func (s *AppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsCreateInstallationAccessTokenReq) MarshalJSON() ([]byte, error) {
+func (s *AppsCreateInstallationAccessTokenReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10858,14 +10858,14 @@ func (s *AppsCreateInstallationAccessTokenReq) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s AppsDeleteAuthorizationReq) Encode(e *jx.Encoder) {
+func (s *AppsDeleteAuthorizationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsDeleteAuthorizationReq) encodeFields(e *jx.Encoder) {
+func (s *AppsDeleteAuthorizationReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("access_token")
@@ -10942,7 +10942,7 @@ func (s *AppsDeleteAuthorizationReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsDeleteAuthorizationReq) MarshalJSON() ([]byte, error) {
+func (s *AppsDeleteAuthorizationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -10955,14 +10955,14 @@ func (s *AppsDeleteAuthorizationReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AppsDeleteTokenReq) Encode(e *jx.Encoder) {
+func (s *AppsDeleteTokenReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsDeleteTokenReq) encodeFields(e *jx.Encoder) {
+func (s *AppsDeleteTokenReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("access_token")
@@ -11039,7 +11039,7 @@ func (s *AppsDeleteTokenReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsDeleteTokenReq) MarshalJSON() ([]byte, error) {
+func (s *AppsDeleteTokenReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11052,8 +11052,8 @@ func (s *AppsDeleteTokenReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AppsGetBySlugApplicationJSONForbidden as json.
-func (s AppsGetBySlugApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsGetBySlugApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11077,7 +11077,7 @@ func (s *AppsGetBySlugApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsGetBySlugApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsGetBySlugApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11090,8 +11090,8 @@ func (s *AppsGetBySlugApplicationJSONForbidden) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes AppsGetBySlugApplicationJSONNotFound as json.
-func (s AppsGetBySlugApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsGetBySlugApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11115,7 +11115,7 @@ func (s *AppsGetBySlugApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsGetBySlugApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsGetBySlugApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11128,8 +11128,8 @@ func (s *AppsGetBySlugApplicationJSONNotFound) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes AppsGetSubscriptionPlanForAccountApplicationJSONNotFound as json.
-func (s AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11153,7 +11153,7 @@ func (s *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11166,8 +11166,8 @@ func (s *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) UnmarshalJSON
 }
 
 // Encode encodes AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized as json.
-func (s AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11191,7 +11191,7 @@ func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11204,8 +11204,8 @@ func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Unmarshal
 }
 
 // Encode encodes AppsListAccountsForPlanApplicationJSONNotFound as json.
-func (s AppsListAccountsForPlanApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListAccountsForPlanApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11229,7 +11229,7 @@ func (s *AppsListAccountsForPlanApplicationJSONNotFound) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListAccountsForPlanApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsListAccountsForPlanApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11242,8 +11242,8 @@ func (s *AppsListAccountsForPlanApplicationJSONNotFound) UnmarshalJSON(data []by
 }
 
 // Encode encodes AppsListAccountsForPlanApplicationJSONUnauthorized as json.
-func (s AppsListAccountsForPlanApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11267,7 +11267,7 @@ func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListAccountsForPlanApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11280,8 +11280,8 @@ func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) UnmarshalJSON(data 
 }
 
 // Encode encodes AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden as json.
-func (s AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11305,7 +11305,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11318,8 +11318,8 @@ func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) 
 }
 
 // Encode encodes AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound as json.
-func (s AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11343,7 +11343,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11356,14 +11356,14 @@ func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) U
 }
 
 // Encode implements json.Marshaler.
-func (s AppsListInstallationReposForAuthenticatedUserOK) Encode(e *jx.Encoder) {
+func (s *AppsListInstallationReposForAuthenticatedUserOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsListInstallationReposForAuthenticatedUserOK) encodeFields(e *jx.Encoder) {
+func (s *AppsListInstallationReposForAuthenticatedUserOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -11485,7 +11485,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListInstallationReposForAuthenticatedUserOK) MarshalJSON() ([]byte, error) {
+func (s *AppsListInstallationReposForAuthenticatedUserOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11498,8 +11498,8 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) UnmarshalJSON(data []b
 }
 
 // Encode encodes AppsListPlansApplicationJSONNotFound as json.
-func (s AppsListPlansApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListPlansApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11523,7 +11523,7 @@ func (s *AppsListPlansApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListPlansApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsListPlansApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11536,8 +11536,8 @@ func (s *AppsListPlansApplicationJSONNotFound) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes AppsListPlansApplicationJSONUnauthorized as json.
-func (s AppsListPlansApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListPlansApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11561,7 +11561,7 @@ func (s *AppsListPlansApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListPlansApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsListPlansApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11574,8 +11574,8 @@ func (s *AppsListPlansApplicationJSONUnauthorized) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes AppsListReposAccessibleToInstallationApplicationJSONForbidden as json.
-func (s AppsListReposAccessibleToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11599,7 +11599,7 @@ func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListReposAccessibleToInstallationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11612,8 +11612,8 @@ func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) Unmarsha
 }
 
 // Encode encodes AppsListReposAccessibleToInstallationApplicationJSONUnauthorized as json.
-func (s AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11637,7 +11637,7 @@ func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11650,14 +11650,14 @@ func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Unmar
 }
 
 // Encode implements json.Marshaler.
-func (s AppsListReposAccessibleToInstallationOK) Encode(e *jx.Encoder) {
+func (s *AppsListReposAccessibleToInstallationOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsListReposAccessibleToInstallationOK) encodeFields(e *jx.Encoder) {
+func (s *AppsListReposAccessibleToInstallationOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -11779,7 +11779,7 @@ func (s *AppsListReposAccessibleToInstallationOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListReposAccessibleToInstallationOK) MarshalJSON() ([]byte, error) {
+func (s *AppsListReposAccessibleToInstallationOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11792,8 +11792,8 @@ func (s *AppsListReposAccessibleToInstallationOK) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound as json.
-func (s AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11817,7 +11817,7 @@ func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11830,8 +11830,8 @@ func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) Unmar
 }
 
 // Encode encodes AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11855,7 +11855,7 @@ func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11918,8 +11918,8 @@ func (s *AppsListWebhookDeliveriesOKApplicationJSON) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes AppsRemoveRepoFromInstallationApplicationJSONForbidden as json.
-func (s AppsRemoveRepoFromInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsRemoveRepoFromInstallationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11943,7 +11943,7 @@ func (s *AppsRemoveRepoFromInstallationApplicationJSONForbidden) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsRemoveRepoFromInstallationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsRemoveRepoFromInstallationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11956,8 +11956,8 @@ func (s *AppsRemoveRepoFromInstallationApplicationJSONForbidden) UnmarshalJSON(d
 }
 
 // Encode encodes AppsRemoveRepoFromInstallationApplicationJSONNotFound as json.
-func (s AppsRemoveRepoFromInstallationApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -11981,7 +11981,7 @@ func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsRemoveRepoFromInstallationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11994,14 +11994,14 @@ func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) UnmarshalJSON(da
 }
 
 // Encode implements json.Marshaler.
-func (s AppsResetTokenReq) Encode(e *jx.Encoder) {
+func (s *AppsResetTokenReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsResetTokenReq) encodeFields(e *jx.Encoder) {
+func (s *AppsResetTokenReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("access_token")
@@ -12078,7 +12078,7 @@ func (s *AppsResetTokenReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsResetTokenReq) MarshalJSON() ([]byte, error) {
+func (s *AppsResetTokenReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12091,8 +12091,8 @@ func (s *AppsResetTokenReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes AppsScopeTokenApplicationJSONForbidden as json.
-func (s AppsScopeTokenApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsScopeTokenApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -12116,7 +12116,7 @@ func (s *AppsScopeTokenApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsScopeTokenApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *AppsScopeTokenApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12129,8 +12129,8 @@ func (s *AppsScopeTokenApplicationJSONForbidden) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes AppsScopeTokenApplicationJSONNotFound as json.
-func (s AppsScopeTokenApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsScopeTokenApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -12154,7 +12154,7 @@ func (s *AppsScopeTokenApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsScopeTokenApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *AppsScopeTokenApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12167,8 +12167,8 @@ func (s *AppsScopeTokenApplicationJSONNotFound) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes AppsScopeTokenApplicationJSONUnauthorized as json.
-func (s AppsScopeTokenApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *AppsScopeTokenApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -12192,7 +12192,7 @@ func (s *AppsScopeTokenApplicationJSONUnauthorized) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsScopeTokenApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *AppsScopeTokenApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12205,14 +12205,14 @@ func (s *AppsScopeTokenApplicationJSONUnauthorized) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s AppsScopeTokenReq) Encode(e *jx.Encoder) {
+func (s *AppsScopeTokenReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsScopeTokenReq) encodeFields(e *jx.Encoder) {
+func (s *AppsScopeTokenReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("access_token")
@@ -12400,7 +12400,7 @@ func (s *AppsScopeTokenReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsScopeTokenReq) MarshalJSON() ([]byte, error) {
+func (s *AppsScopeTokenReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12413,14 +12413,14 @@ func (s *AppsScopeTokenReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AppsUpdateWebhookConfigForAppReq) Encode(e *jx.Encoder) {
+func (s *AppsUpdateWebhookConfigForAppReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AppsUpdateWebhookConfigForAppReq) encodeFields(e *jx.Encoder) {
+func (s *AppsUpdateWebhookConfigForAppReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -12514,7 +12514,7 @@ func (s *AppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AppsUpdateWebhookConfigForAppReq) MarshalJSON() ([]byte, error) {
+func (s *AppsUpdateWebhookConfigForAppReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12527,14 +12527,14 @@ func (s *AppsUpdateWebhookConfigForAppReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Artifact) Encode(e *jx.Encoder) {
+func (s *Artifact) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Artifact) encodeFields(e *jx.Encoder) {
+func (s *Artifact) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -12768,7 +12768,7 @@ func (s *Artifact) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Artifact) MarshalJSON() ([]byte, error) {
+func (s *Artifact) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12781,14 +12781,14 @@ func (s *Artifact) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AuditLogEvent) Encode(e *jx.Encoder) {
+func (s *AuditLogEvent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AuditLogEvent) encodeFields(e *jx.Encoder) {
+func (s *AuditLogEvent) encodeFields(e *jx.Encoder) {
 	{
 		if s.Timestamp.Set {
 			e.FieldStart("@timestamp")
@@ -13554,7 +13554,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AuditLogEvent) MarshalJSON() ([]byte, error) {
+func (s *AuditLogEvent) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13567,14 +13567,14 @@ func (s *AuditLogEvent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AuditLogEventActorLocation) Encode(e *jx.Encoder) {
+func (s *AuditLogEventActorLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AuditLogEventActorLocation) encodeFields(e *jx.Encoder) {
+func (s *AuditLogEventActorLocation) encodeFields(e *jx.Encoder) {
 	{
 		if s.CountryName.Set {
 			e.FieldStart("country_name")
@@ -13617,7 +13617,7 @@ func (s *AuditLogEventActorLocation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AuditLogEventActorLocation) MarshalJSON() ([]byte, error) {
+func (s *AuditLogEventActorLocation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13688,14 +13688,14 @@ func (s *AuditLogEventData) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AuthenticationToken) Encode(e *jx.Encoder) {
+func (s *AuthenticationToken) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AuthenticationToken) encodeFields(e *jx.Encoder) {
+func (s *AuthenticationToken) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("token")
@@ -13871,7 +13871,7 @@ func (s *AuthenticationToken) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AuthenticationToken) MarshalJSON() ([]byte, error) {
+func (s *AuthenticationToken) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13884,14 +13884,14 @@ func (s *AuthenticationToken) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AuthenticationTokenPermissions) Encode(e *jx.Encoder) {
+func (s *AuthenticationTokenPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AuthenticationTokenPermissions) encodeFields(e *jx.Encoder) {
+func (s *AuthenticationTokenPermissions) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfAuthenticationTokenPermissions = [0]string{}
@@ -13916,7 +13916,7 @@ func (s *AuthenticationTokenPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AuthenticationTokenPermissions) MarshalJSON() ([]byte, error) {
+func (s *AuthenticationTokenPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -14021,14 +14021,14 @@ func (s *AuthorAssociation) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Authorization) Encode(e *jx.Encoder) {
+func (s *Authorization) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Authorization) encodeFields(e *jx.Encoder) {
+func (s *Authorization) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -14365,7 +14365,7 @@ func (s *Authorization) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Authorization) MarshalJSON() ([]byte, error) {
+func (s *Authorization) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -14378,14 +14378,14 @@ func (s *Authorization) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AuthorizationApp) Encode(e *jx.Encoder) {
+func (s *AuthorizationApp) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AuthorizationApp) encodeFields(e *jx.Encoder) {
+func (s *AuthorizationApp) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("client_id")
@@ -14498,7 +14498,7 @@ func (s *AuthorizationApp) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AuthorizationApp) MarshalJSON() ([]byte, error) {
+func (s *AuthorizationApp) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -14511,14 +14511,14 @@ func (s *AuthorizationApp) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AutoMerge) Encode(e *jx.Encoder) {
+func (s *AutoMerge) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s AutoMerge) encodeFields(e *jx.Encoder) {
+func (s *AutoMerge) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled_by")
@@ -14645,7 +14645,7 @@ func (s *AutoMerge) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s AutoMerge) MarshalJSON() ([]byte, error) {
+func (s *AutoMerge) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -14700,14 +14700,14 @@ func (s *AutoMergeMergeMethod) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Autolink) Encode(e *jx.Encoder) {
+func (s *Autolink) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Autolink) encodeFields(e *jx.Encoder) {
+func (s *Autolink) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -14820,7 +14820,7 @@ func (s *Autolink) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Autolink) MarshalJSON() ([]byte, error) {
+func (s *Autolink) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -14833,14 +14833,14 @@ func (s *Autolink) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BaseGist) Encode(e *jx.Encoder) {
+func (s *BaseGist) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BaseGist) encodeFields(e *jx.Encoder) {
+func (s *BaseGist) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -15281,7 +15281,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BaseGist) MarshalJSON() ([]byte, error) {
+func (s *BaseGist) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -15348,14 +15348,14 @@ func (s *BaseGistFiles) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BaseGistFilesItem) Encode(e *jx.Encoder) {
+func (s *BaseGistFilesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BaseGistFilesItem) encodeFields(e *jx.Encoder) {
+func (s *BaseGistFilesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Filename.Set {
 			e.FieldStart("filename")
@@ -15466,7 +15466,7 @@ func (s *BaseGistFilesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BaseGistFilesItem) MarshalJSON() ([]byte, error) {
+func (s *BaseGistFilesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -15479,14 +15479,14 @@ func (s *BaseGistFilesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BasicError) Encode(e *jx.Encoder) {
+func (s *BasicError) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BasicError) encodeFields(e *jx.Encoder) {
+func (s *BasicError) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -15580,7 +15580,7 @@ func (s *BasicError) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BasicError) MarshalJSON() ([]byte, error) {
+func (s *BasicError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -15593,14 +15593,14 @@ func (s *BasicError) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Blob) Encode(e *jx.Encoder) {
+func (s *Blob) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Blob) encodeFields(e *jx.Encoder) {
+func (s *Blob) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -15782,7 +15782,7 @@ func (s *Blob) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Blob) MarshalJSON() ([]byte, error) {
+func (s *Blob) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -15795,14 +15795,14 @@ func (s *Blob) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtection) Encode(e *jx.Encoder) {
+func (s *BranchProtection) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtection) encodeFields(e *jx.Encoder) {
+func (s *BranchProtection) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -16049,7 +16049,7 @@ func (s *BranchProtection) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtection) MarshalJSON() ([]byte, error) {
+func (s *BranchProtection) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16062,14 +16062,14 @@ func (s *BranchProtection) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtectionAllowDeletions) Encode(e *jx.Encoder) {
+func (s *BranchProtectionAllowDeletions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtectionAllowDeletions) encodeFields(e *jx.Encoder) {
+func (s *BranchProtectionAllowDeletions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enabled.Set {
 			e.FieldStart("enabled")
@@ -16112,7 +16112,7 @@ func (s *BranchProtectionAllowDeletions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtectionAllowDeletions) MarshalJSON() ([]byte, error) {
+func (s *BranchProtectionAllowDeletions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16125,14 +16125,14 @@ func (s *BranchProtectionAllowDeletions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtectionAllowForcePushes) Encode(e *jx.Encoder) {
+func (s *BranchProtectionAllowForcePushes) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtectionAllowForcePushes) encodeFields(e *jx.Encoder) {
+func (s *BranchProtectionAllowForcePushes) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enabled.Set {
 			e.FieldStart("enabled")
@@ -16175,7 +16175,7 @@ func (s *BranchProtectionAllowForcePushes) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtectionAllowForcePushes) MarshalJSON() ([]byte, error) {
+func (s *BranchProtectionAllowForcePushes) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16188,14 +16188,14 @@ func (s *BranchProtectionAllowForcePushes) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtectionRequiredConversationResolution) Encode(e *jx.Encoder) {
+func (s *BranchProtectionRequiredConversationResolution) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtectionRequiredConversationResolution) encodeFields(e *jx.Encoder) {
+func (s *BranchProtectionRequiredConversationResolution) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enabled.Set {
 			e.FieldStart("enabled")
@@ -16238,7 +16238,7 @@ func (s *BranchProtectionRequiredConversationResolution) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtectionRequiredConversationResolution) MarshalJSON() ([]byte, error) {
+func (s *BranchProtectionRequiredConversationResolution) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16251,14 +16251,14 @@ func (s *BranchProtectionRequiredConversationResolution) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtectionRequiredLinearHistory) Encode(e *jx.Encoder) {
+func (s *BranchProtectionRequiredLinearHistory) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtectionRequiredLinearHistory) encodeFields(e *jx.Encoder) {
+func (s *BranchProtectionRequiredLinearHistory) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enabled.Set {
 			e.FieldStart("enabled")
@@ -16301,7 +16301,7 @@ func (s *BranchProtectionRequiredLinearHistory) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtectionRequiredLinearHistory) MarshalJSON() ([]byte, error) {
+func (s *BranchProtectionRequiredLinearHistory) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16314,14 +16314,14 @@ func (s *BranchProtectionRequiredLinearHistory) UnmarshalJSON(data []byte) error
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtectionRequiredSignatures) Encode(e *jx.Encoder) {
+func (s *BranchProtectionRequiredSignatures) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtectionRequiredSignatures) encodeFields(e *jx.Encoder) {
+func (s *BranchProtectionRequiredSignatures) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -16416,7 +16416,7 @@ func (s *BranchProtectionRequiredSignatures) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtectionRequiredSignatures) MarshalJSON() ([]byte, error) {
+func (s *BranchProtectionRequiredSignatures) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16429,14 +16429,14 @@ func (s *BranchProtectionRequiredSignatures) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchProtectionRequiredStatusChecks) Encode(e *jx.Encoder) {
+func (s *BranchProtectionRequiredStatusChecks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchProtectionRequiredStatusChecks) encodeFields(e *jx.Encoder) {
+func (s *BranchProtectionRequiredStatusChecks) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -16593,7 +16593,7 @@ func (s *BranchProtectionRequiredStatusChecks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchProtectionRequiredStatusChecks) MarshalJSON() ([]byte, error) {
+func (s *BranchProtectionRequiredStatusChecks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16606,14 +16606,14 @@ func (s *BranchProtectionRequiredStatusChecks) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s BranchRestrictionPolicy) Encode(e *jx.Encoder) {
+func (s *BranchRestrictionPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchRestrictionPolicy) encodeFields(e *jx.Encoder) {
+func (s *BranchRestrictionPolicy) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -16828,7 +16828,7 @@ func (s *BranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchRestrictionPolicy) MarshalJSON() ([]byte, error) {
+func (s *BranchRestrictionPolicy) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16841,14 +16841,14 @@ func (s *BranchRestrictionPolicy) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchRestrictionPolicyAppsItem) Encode(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyAppsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchRestrictionPolicyAppsItem) encodeFields(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyAppsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -17091,7 +17091,7 @@ func (s *BranchRestrictionPolicyAppsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchRestrictionPolicyAppsItem) MarshalJSON() ([]byte, error) {
+func (s *BranchRestrictionPolicyAppsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17104,14 +17104,14 @@ func (s *BranchRestrictionPolicyAppsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchRestrictionPolicyAppsItemOwner) Encode(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyAppsItemOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchRestrictionPolicyAppsItemOwner) encodeFields(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyAppsItemOwner) encodeFields(e *jx.Encoder) {
 	{
 		if s.Login.Set {
 			e.FieldStart("login")
@@ -17528,7 +17528,7 @@ func (s *BranchRestrictionPolicyAppsItemOwner) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchRestrictionPolicyAppsItemOwner) MarshalJSON() ([]byte, error) {
+func (s *BranchRestrictionPolicyAppsItemOwner) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17541,14 +17541,14 @@ func (s *BranchRestrictionPolicyAppsItemOwner) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s BranchRestrictionPolicyAppsItemPermissions) Encode(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyAppsItemPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchRestrictionPolicyAppsItemPermissions) encodeFields(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyAppsItemPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
 			e.FieldStart("metadata")
@@ -17642,7 +17642,7 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchRestrictionPolicyAppsItemPermissions) MarshalJSON() ([]byte, error) {
+func (s *BranchRestrictionPolicyAppsItemPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17655,14 +17655,14 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) UnmarshalJSON(data []byte) 
 }
 
 // Encode implements json.Marshaler.
-func (s BranchRestrictionPolicyTeamsItem) Encode(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyTeamsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchRestrictionPolicyTeamsItem) encodeFields(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyTeamsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -17892,7 +17892,7 @@ func (s *BranchRestrictionPolicyTeamsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchRestrictionPolicyTeamsItem) MarshalJSON() ([]byte, error) {
+func (s *BranchRestrictionPolicyTeamsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17905,14 +17905,14 @@ func (s *BranchRestrictionPolicyTeamsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchRestrictionPolicyUsersItem) Encode(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyUsersItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchRestrictionPolicyUsersItem) encodeFields(e *jx.Encoder) {
+func (s *BranchRestrictionPolicyUsersItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Login.Set {
 			e.FieldStart("login")
@@ -18244,7 +18244,7 @@ func (s *BranchRestrictionPolicyUsersItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchRestrictionPolicyUsersItem) MarshalJSON() ([]byte, error) {
+func (s *BranchRestrictionPolicyUsersItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -18257,14 +18257,14 @@ func (s *BranchRestrictionPolicyUsersItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchShort) Encode(e *jx.Encoder) {
+func (s *BranchShort) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchShort) encodeFields(e *jx.Encoder) {
+func (s *BranchShort) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -18375,7 +18375,7 @@ func (s *BranchShort) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchShort) MarshalJSON() ([]byte, error) {
+func (s *BranchShort) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -18388,14 +18388,14 @@ func (s *BranchShort) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchShortCommit) Encode(e *jx.Encoder) {
+func (s *BranchShortCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchShortCommit) encodeFields(e *jx.Encoder) {
+func (s *BranchShortCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -18490,7 +18490,7 @@ func (s *BranchShortCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchShortCommit) MarshalJSON() ([]byte, error) {
+func (s *BranchShortCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -18503,14 +18503,14 @@ func (s *BranchShortCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchWithProtection) Encode(e *jx.Encoder) {
+func (s *BranchWithProtection) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchWithProtection) encodeFields(e *jx.Encoder) {
+func (s *BranchWithProtection) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -18705,7 +18705,7 @@ func (s *BranchWithProtection) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchWithProtection) MarshalJSON() ([]byte, error) {
+func (s *BranchWithProtection) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -18718,14 +18718,14 @@ func (s *BranchWithProtection) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BranchWithProtectionLinks) Encode(e *jx.Encoder) {
+func (s *BranchWithProtectionLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s BranchWithProtectionLinks) encodeFields(e *jx.Encoder) {
+func (s *BranchWithProtectionLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("html")
@@ -18820,7 +18820,7 @@ func (s *BranchWithProtectionLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s BranchWithProtectionLinks) MarshalJSON() ([]byte, error) {
+func (s *BranchWithProtectionLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -18833,14 +18833,14 @@ func (s *BranchWithProtectionLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckAnnotation) Encode(e *jx.Encoder) {
+func (s *CheckAnnotation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckAnnotation) encodeFields(e *jx.Encoder) {
+func (s *CheckAnnotation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("path")
@@ -19068,7 +19068,7 @@ func (s *CheckAnnotation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckAnnotation) MarshalJSON() ([]byte, error) {
+func (s *CheckAnnotation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -19081,14 +19081,14 @@ func (s *CheckAnnotation) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckRun) Encode(e *jx.Encoder) {
+func (s *CheckRun) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckRun) encodeFields(e *jx.Encoder) {
+func (s *CheckRun) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -19444,7 +19444,7 @@ func (s *CheckRun) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckRun) MarshalJSON() ([]byte, error) {
+func (s *CheckRun) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -19457,14 +19457,14 @@ func (s *CheckRun) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckRunCheckSuite) Encode(e *jx.Encoder) {
+func (s *CheckRunCheckSuite) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckRunCheckSuite) encodeFields(e *jx.Encoder) {
+func (s *CheckRunCheckSuite) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -19541,7 +19541,7 @@ func (s *CheckRunCheckSuite) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckRunCheckSuite) MarshalJSON() ([]byte, error) {
+func (s *CheckRunCheckSuite) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -19604,14 +19604,14 @@ func (s *CheckRunConclusion) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckRunOutput) Encode(e *jx.Encoder) {
+func (s *CheckRunOutput) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckRunOutput) encodeFields(e *jx.Encoder) {
+func (s *CheckRunOutput) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -19754,7 +19754,7 @@ func (s *CheckRunOutput) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckRunOutput) MarshalJSON() ([]byte, error) {
+func (s *CheckRunOutput) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -19809,14 +19809,14 @@ func (s *CheckRunStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckSuite) Encode(e *jx.Encoder) {
+func (s *CheckSuite) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckSuite) encodeFields(e *jx.Encoder) {
+func (s *CheckSuite) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -20182,7 +20182,7 @@ func (s *CheckSuite) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckSuite) MarshalJSON() ([]byte, error) {
+func (s *CheckSuite) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20245,14 +20245,14 @@ func (s *CheckSuiteConclusion) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckSuitePreference) Encode(e *jx.Encoder) {
+func (s *CheckSuitePreference) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckSuitePreference) encodeFields(e *jx.Encoder) {
+func (s *CheckSuitePreference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("preferences")
@@ -20343,7 +20343,7 @@ func (s *CheckSuitePreference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckSuitePreference) MarshalJSON() ([]byte, error) {
+func (s *CheckSuitePreference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20356,14 +20356,14 @@ func (s *CheckSuitePreference) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckSuitePreferencePreferences) Encode(e *jx.Encoder) {
+func (s *CheckSuitePreferencePreferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckSuitePreferencePreferences) encodeFields(e *jx.Encoder) {
+func (s *CheckSuitePreferencePreferences) encodeFields(e *jx.Encoder) {
 	{
 		if s.AutoTriggerChecks != nil {
 			e.FieldStart("auto_trigger_checks")
@@ -20417,7 +20417,7 @@ func (s *CheckSuitePreferencePreferences) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckSuitePreferencePreferences) MarshalJSON() ([]byte, error) {
+func (s *CheckSuitePreferencePreferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20430,14 +20430,14 @@ func (s *CheckSuitePreferencePreferences) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) Encode(e *jx.Encoder) {
+func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) encodeFields(e *jx.Encoder) {
+func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("app_id")
@@ -20532,7 +20532,7 @@ func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) MarshalJSON() ([]byte, error) {
+func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20587,8 +20587,8 @@ func (s *CheckSuiteStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ChecksCreateSuiteApplicationJSONCreated as json.
-func (s ChecksCreateSuiteApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := CheckSuite(s)
+func (s *ChecksCreateSuiteApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*CheckSuite)(s)
 
 	unwrapped.Encode(e)
 }
@@ -20612,7 +20612,7 @@ func (s *ChecksCreateSuiteApplicationJSONCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksCreateSuiteApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ChecksCreateSuiteApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20625,8 +20625,8 @@ func (s *ChecksCreateSuiteApplicationJSONCreated) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ChecksCreateSuiteApplicationJSONOK as json.
-func (s ChecksCreateSuiteApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := CheckSuite(s)
+func (s *ChecksCreateSuiteApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*CheckSuite)(s)
 
 	unwrapped.Encode(e)
 }
@@ -20650,7 +20650,7 @@ func (s *ChecksCreateSuiteApplicationJSONOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksCreateSuiteApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ChecksCreateSuiteApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20663,14 +20663,14 @@ func (s *ChecksCreateSuiteApplicationJSONOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksCreateSuiteReq) Encode(e *jx.Encoder) {
+func (s *ChecksCreateSuiteReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksCreateSuiteReq) encodeFields(e *jx.Encoder) {
+func (s *ChecksCreateSuiteReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("head_sha")
@@ -20747,7 +20747,7 @@ func (s *ChecksCreateSuiteReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksCreateSuiteReq) MarshalJSON() ([]byte, error) {
+func (s *ChecksCreateSuiteReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20760,14 +20760,14 @@ func (s *ChecksCreateSuiteReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksListForRefOK) Encode(e *jx.Encoder) {
+func (s *ChecksListForRefOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksListForRefOK) encodeFields(e *jx.Encoder) {
+func (s *ChecksListForRefOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -20872,7 +20872,7 @@ func (s *ChecksListForRefOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksListForRefOK) MarshalJSON() ([]byte, error) {
+func (s *ChecksListForRefOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -20885,14 +20885,14 @@ func (s *ChecksListForRefOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksListForSuiteOK) Encode(e *jx.Encoder) {
+func (s *ChecksListForSuiteOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksListForSuiteOK) encodeFields(e *jx.Encoder) {
+func (s *ChecksListForSuiteOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -20997,7 +20997,7 @@ func (s *ChecksListForSuiteOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksListForSuiteOK) MarshalJSON() ([]byte, error) {
+func (s *ChecksListForSuiteOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21010,14 +21010,14 @@ func (s *ChecksListForSuiteOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksListSuitesForRefOK) Encode(e *jx.Encoder) {
+func (s *ChecksListSuitesForRefOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksListSuitesForRefOK) encodeFields(e *jx.Encoder) {
+func (s *ChecksListSuitesForRefOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -21122,7 +21122,7 @@ func (s *ChecksListSuitesForRefOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksListSuitesForRefOK) MarshalJSON() ([]byte, error) {
+func (s *ChecksListSuitesForRefOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21135,14 +21135,14 @@ func (s *ChecksListSuitesForRefOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksRerequestSuiteCreated) Encode(e *jx.Encoder) {
+func (s *ChecksRerequestSuiteCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksRerequestSuiteCreated) encodeFields(e *jx.Encoder) {
+func (s *ChecksRerequestSuiteCreated) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfChecksRerequestSuiteCreated = [0]string{}
@@ -21167,7 +21167,7 @@ func (s *ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksRerequestSuiteCreated) MarshalJSON() ([]byte, error) {
+func (s *ChecksRerequestSuiteCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21180,14 +21180,14 @@ func (s *ChecksRerequestSuiteCreated) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksSetSuitesPreferencesReq) Encode(e *jx.Encoder) {
+func (s *ChecksSetSuitesPreferencesReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksSetSuitesPreferencesReq) encodeFields(e *jx.Encoder) {
+func (s *ChecksSetSuitesPreferencesReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.AutoTriggerChecks != nil {
 			e.FieldStart("auto_trigger_checks")
@@ -21241,7 +21241,7 @@ func (s *ChecksSetSuitesPreferencesReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksSetSuitesPreferencesReq) MarshalJSON() ([]byte, error) {
+func (s *ChecksSetSuitesPreferencesReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21254,14 +21254,14 @@ func (s *ChecksSetSuitesPreferencesReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Encode(e *jx.Encoder) {
+func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) encodeFields(e *jx.Encoder) {
+func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("app_id")
@@ -21357,7 +21357,7 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) MarshalJSON() ([]byte, error) {
+func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21370,14 +21370,14 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s CloneTraffic) Encode(e *jx.Encoder) {
+func (s *CloneTraffic) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CloneTraffic) encodeFields(e *jx.Encoder) {
+func (s *CloneTraffic) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("count")
@@ -21500,7 +21500,7 @@ func (s *CloneTraffic) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CloneTraffic) MarshalJSON() ([]byte, error) {
+func (s *CloneTraffic) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21565,14 +21565,14 @@ func (s *CodeFrequencyStat) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeOfConduct) Encode(e *jx.Encoder) {
+func (s *CodeOfConduct) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeOfConduct) encodeFields(e *jx.Encoder) {
+func (s *CodeOfConduct) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -21718,7 +21718,7 @@ func (s *CodeOfConduct) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeOfConduct) MarshalJSON() ([]byte, error) {
+func (s *CodeOfConduct) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21731,14 +21731,14 @@ func (s *CodeOfConduct) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeOfConductSimple) Encode(e *jx.Encoder) {
+func (s *CodeOfConductSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeOfConductSimple) encodeFields(e *jx.Encoder) {
+func (s *CodeOfConductSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -21867,7 +21867,7 @@ func (s *CodeOfConductSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeOfConductSimple) MarshalJSON() ([]byte, error) {
+func (s *CodeOfConductSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -21880,14 +21880,14 @@ func (s *CodeOfConductSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlert) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlert) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlert) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlert) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("number")
@@ -22158,7 +22158,7 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlert) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlert) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -22337,14 +22337,14 @@ func (s *CodeScanningAlertEnvironment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlertInstance) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlertInstance) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlertInstance) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlertInstance) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ref.Set {
 			e.FieldStart("ref")
@@ -22551,7 +22551,7 @@ func (s *CodeScanningAlertInstance) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlertInstance) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlertInstance) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -22564,14 +22564,14 @@ func (s *CodeScanningAlertInstance) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlertInstanceMessage) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlertInstanceMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlertInstanceMessage) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlertInstanceMessage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Text.Set {
 			e.FieldStart("text")
@@ -22614,7 +22614,7 @@ func (s *CodeScanningAlertInstanceMessage) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlertInstanceMessage) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlertInstanceMessage) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -22627,14 +22627,14 @@ func (s *CodeScanningAlertInstanceMessage) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlertItems) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlertItems) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlertItems) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlertItems) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("number")
@@ -22886,7 +22886,7 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlertItems) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlertItems) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -22899,14 +22899,14 @@ func (s *CodeScanningAlertItems) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlertLocation) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlertLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlertLocation) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlertLocation) encodeFields(e *jx.Encoder) {
 	{
 		if s.Path.Set {
 			e.FieldStart("path")
@@ -23017,7 +23017,7 @@ func (s *CodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlertLocation) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlertLocation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -23030,14 +23030,14 @@ func (s *CodeScanningAlertLocation) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlertRule) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlertRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlertRule) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlertRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -23199,7 +23199,7 @@ func (s *CodeScanningAlertRule) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlertRule) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlertRule) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -23300,14 +23300,14 @@ func (s *CodeScanningAlertRuleSeverity) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAlertRuleSummary) Encode(e *jx.Encoder) {
+func (s *CodeScanningAlertRuleSummary) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAlertRuleSummary) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAlertRuleSummary) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -23401,7 +23401,7 @@ func (s *CodeScanningAlertRuleSummary) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAlertRuleSummary) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAlertRuleSummary) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -23542,14 +23542,14 @@ func (s *CodeScanningAlertState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAnalysis) Encode(e *jx.Encoder) {
+func (s *CodeScanningAnalysis) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAnalysis) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAnalysis) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref")
@@ -23879,7 +23879,7 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAnalysis) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAnalysis) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24052,14 +24052,14 @@ func (s *CodeScanningAnalysisCreatedAt) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAnalysisDeletion) Encode(e *jx.Encoder) {
+func (s *CodeScanningAnalysisDeletion) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAnalysisDeletion) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAnalysisDeletion) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("next_analysis_url")
@@ -24150,7 +24150,7 @@ func (s *CodeScanningAnalysisDeletion) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAnalysisDeletion) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAnalysisDeletion) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24283,14 +24283,14 @@ func (s *CodeScanningAnalysisSarifID) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningAnalysisTool) Encode(e *jx.Encoder) {
+func (s *CodeScanningAnalysisTool) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningAnalysisTool) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningAnalysisTool) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -24367,7 +24367,7 @@ func (s *CodeScanningAnalysisTool) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningAnalysisTool) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningAnalysisTool) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24540,8 +24540,8 @@ func (s *CodeScanningAnalysisURL) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes CodeScanningDeleteAnalysisApplicationJSONBadRequest as json.
-func (s CodeScanningDeleteAnalysisApplicationJSONBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24565,7 +24565,7 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningDeleteAnalysisApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24578,8 +24578,8 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) UnmarshalJSON(data
 }
 
 // Encode encodes CodeScanningDeleteAnalysisApplicationJSONForbidden as json.
-func (s CodeScanningDeleteAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningDeleteAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24603,7 +24603,7 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONForbidden) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningDeleteAnalysisApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningDeleteAnalysisApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24616,8 +24616,8 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONForbidden) UnmarshalJSON(data 
 }
 
 // Encode encodes CodeScanningDeleteAnalysisApplicationJSONNotFound as json.
-func (s CodeScanningDeleteAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24641,7 +24641,7 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningDeleteAnalysisApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24654,8 +24654,8 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) UnmarshalJSON(data [
 }
 
 // Encode encodes CodeScanningGetAlertApplicationJSONForbidden as json.
-func (s CodeScanningGetAlertApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningGetAlertApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24679,7 +24679,7 @@ func (s *CodeScanningGetAlertApplicationJSONForbidden) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningGetAlertApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningGetAlertApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24692,8 +24692,8 @@ func (s *CodeScanningGetAlertApplicationJSONForbidden) UnmarshalJSON(data []byte
 }
 
 // Encode encodes CodeScanningGetAlertApplicationJSONNotFound as json.
-func (s CodeScanningGetAlertApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningGetAlertApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24717,7 +24717,7 @@ func (s *CodeScanningGetAlertApplicationJSONNotFound) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningGetAlertApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningGetAlertApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24730,8 +24730,8 @@ func (s *CodeScanningGetAlertApplicationJSONNotFound) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes CodeScanningGetAnalysisApplicationJSONForbidden as json.
-func (s CodeScanningGetAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningGetAnalysisApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24755,7 +24755,7 @@ func (s *CodeScanningGetAnalysisApplicationJSONForbidden) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningGetAnalysisApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningGetAnalysisApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24768,8 +24768,8 @@ func (s *CodeScanningGetAnalysisApplicationJSONForbidden) UnmarshalJSON(data []b
 }
 
 // Encode encodes CodeScanningGetAnalysisApplicationJSONNotFound as json.
-func (s CodeScanningGetAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningGetAnalysisApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24793,7 +24793,7 @@ func (s *CodeScanningGetAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningGetAnalysisApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningGetAnalysisApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24806,8 +24806,8 @@ func (s *CodeScanningGetAnalysisApplicationJSONNotFound) UnmarshalJSON(data []by
 }
 
 // Encode encodes CodeScanningListAlertInstancesApplicationJSONForbidden as json.
-func (s CodeScanningListAlertInstancesApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24831,7 +24831,7 @@ func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningListAlertInstancesApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24844,8 +24844,8 @@ func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) UnmarshalJSON(d
 }
 
 // Encode encodes CodeScanningListAlertInstancesApplicationJSONNotFound as json.
-func (s CodeScanningListAlertInstancesApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningListAlertInstancesApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24869,7 +24869,7 @@ func (s *CodeScanningListAlertInstancesApplicationJSONNotFound) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningListAlertInstancesApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningListAlertInstancesApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24932,8 +24932,8 @@ func (s *CodeScanningListAlertInstancesOKApplicationJSON) UnmarshalJSON(data []b
 }
 
 // Encode encodes CodeScanningListAlertsForRepoApplicationJSONForbidden as json.
-func (s CodeScanningListAlertsForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningListAlertsForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24957,7 +24957,7 @@ func (s *CodeScanningListAlertsForRepoApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningListAlertsForRepoApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningListAlertsForRepoApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -24970,8 +24970,8 @@ func (s *CodeScanningListAlertsForRepoApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes CodeScanningListAlertsForRepoApplicationJSONNotFound as json.
-func (s CodeScanningListAlertsForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningListAlertsForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -24995,7 +24995,7 @@ func (s *CodeScanningListAlertsForRepoApplicationJSONNotFound) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningListAlertsForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningListAlertsForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25058,8 +25058,8 @@ func (s *CodeScanningListAlertsForRepoOKApplicationJSON) UnmarshalJSON(data []by
 }
 
 // Encode encodes CodeScanningListRecentAnalysesApplicationJSONForbidden as json.
-func (s CodeScanningListRecentAnalysesApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningListRecentAnalysesApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -25083,7 +25083,7 @@ func (s *CodeScanningListRecentAnalysesApplicationJSONForbidden) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningListRecentAnalysesApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningListRecentAnalysesApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25096,8 +25096,8 @@ func (s *CodeScanningListRecentAnalysesApplicationJSONForbidden) UnmarshalJSON(d
 }
 
 // Encode encodes CodeScanningListRecentAnalysesApplicationJSONNotFound as json.
-func (s CodeScanningListRecentAnalysesApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningListRecentAnalysesApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -25121,7 +25121,7 @@ func (s *CodeScanningListRecentAnalysesApplicationJSONNotFound) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningListRecentAnalysesApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningListRecentAnalysesApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25224,14 +25224,14 @@ func (s *CodeScanningRef) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningSarifsReceipt) Encode(e *jx.Encoder) {
+func (s *CodeScanningSarifsReceipt) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningSarifsReceipt) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningSarifsReceipt) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -25291,7 +25291,7 @@ func (s *CodeScanningSarifsReceipt) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningSarifsReceipt) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningSarifsReceipt) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25304,14 +25304,14 @@ func (s *CodeScanningSarifsReceipt) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningSarifsStatus) Encode(e *jx.Encoder) {
+func (s *CodeScanningSarifsStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningSarifsStatus) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningSarifsStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ProcessingStatus.Set {
 			e.FieldStart("processing_status")
@@ -25371,7 +25371,7 @@ func (s *CodeScanningSarifsStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningSarifsStatus) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningSarifsStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25424,8 +25424,8 @@ func (s *CodeScanningSarifsStatusProcessingStatus) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes CodeScanningUpdateAlertApplicationJSONForbidden as json.
-func (s CodeScanningUpdateAlertApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningUpdateAlertApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -25449,7 +25449,7 @@ func (s *CodeScanningUpdateAlertApplicationJSONForbidden) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningUpdateAlertApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningUpdateAlertApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25462,8 +25462,8 @@ func (s *CodeScanningUpdateAlertApplicationJSONForbidden) UnmarshalJSON(data []b
 }
 
 // Encode encodes CodeScanningUpdateAlertApplicationJSONNotFound as json.
-func (s CodeScanningUpdateAlertApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningUpdateAlertApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -25487,7 +25487,7 @@ func (s *CodeScanningUpdateAlertApplicationJSONNotFound) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningUpdateAlertApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningUpdateAlertApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25500,14 +25500,14 @@ func (s *CodeScanningUpdateAlertApplicationJSONNotFound) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningUpdateAlertReq) Encode(e *jx.Encoder) {
+func (s *CodeScanningUpdateAlertReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningUpdateAlertReq) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningUpdateAlertReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -25599,7 +25599,7 @@ func (s *CodeScanningUpdateAlertReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningUpdateAlertReq) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningUpdateAlertReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25612,8 +25612,8 @@ func (s *CodeScanningUpdateAlertReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes CodeScanningUploadSarifApplicationJSONForbidden as json.
-func (s CodeScanningUploadSarifApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningUploadSarifApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -25637,7 +25637,7 @@ func (s *CodeScanningUploadSarifApplicationJSONForbidden) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningUploadSarifApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningUploadSarifApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25650,8 +25650,8 @@ func (s *CodeScanningUploadSarifApplicationJSONForbidden) UnmarshalJSON(data []b
 }
 
 // Encode encodes CodeScanningUploadSarifApplicationJSONNotFound as json.
-func (s CodeScanningUploadSarifApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *CodeScanningUploadSarifApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -25675,7 +25675,7 @@ func (s *CodeScanningUploadSarifApplicationJSONNotFound) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningUploadSarifApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningUploadSarifApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25688,14 +25688,14 @@ func (s *CodeScanningUploadSarifApplicationJSONNotFound) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s CodeScanningUploadSarifReq) Encode(e *jx.Encoder) {
+func (s *CodeScanningUploadSarifReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeScanningUploadSarifReq) encodeFields(e *jx.Encoder) {
+func (s *CodeScanningUploadSarifReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("commit_sha")
@@ -25853,7 +25853,7 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeScanningUploadSarifReq) MarshalJSON() ([]byte, error) {
+func (s *CodeScanningUploadSarifReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -25866,14 +25866,14 @@ func (s *CodeScanningUploadSarifReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CodeSearchResultItem) Encode(e *jx.Encoder) {
+func (s *CodeSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CodeSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *CodeSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -26175,7 +26175,7 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CodeSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *CodeSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -26238,14 +26238,14 @@ func (s *CodesOfConductGetAllCodesOfConductOKApplicationJSON) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s Collaborator) Encode(e *jx.Encoder) {
+func (s *Collaborator) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Collaborator) encodeFields(e *jx.Encoder) {
+func (s *Collaborator) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -26679,7 +26679,7 @@ func (s *Collaborator) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Collaborator) MarshalJSON() ([]byte, error) {
+func (s *Collaborator) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -26692,14 +26692,14 @@ func (s *Collaborator) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CollaboratorPermissions) Encode(e *jx.Encoder) {
+func (s *CollaboratorPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CollaboratorPermissions) encodeFields(e *jx.Encoder) {
+func (s *CollaboratorPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("pull")
@@ -26846,7 +26846,7 @@ func (s *CollaboratorPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CollaboratorPermissions) MarshalJSON() ([]byte, error) {
+func (s *CollaboratorPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -26859,14 +26859,14 @@ func (s *CollaboratorPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CombinedBillingUsage) Encode(e *jx.Encoder) {
+func (s *CombinedBillingUsage) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CombinedBillingUsage) encodeFields(e *jx.Encoder) {
+func (s *CombinedBillingUsage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("days_left_in_billing_cycle")
@@ -26979,7 +26979,7 @@ func (s *CombinedBillingUsage) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CombinedBillingUsage) MarshalJSON() ([]byte, error) {
+func (s *CombinedBillingUsage) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -26992,14 +26992,14 @@ func (s *CombinedBillingUsage) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CombinedCommitStatus) Encode(e *jx.Encoder) {
+func (s *CombinedCommitStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CombinedCommitStatus) encodeFields(e *jx.Encoder) {
+func (s *CombinedCommitStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -27192,7 +27192,7 @@ func (s *CombinedCommitStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CombinedCommitStatus) MarshalJSON() ([]byte, error) {
+func (s *CombinedCommitStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -27205,14 +27205,14 @@ func (s *CombinedCommitStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Commit) Encode(e *jx.Encoder) {
+func (s *Commit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Commit) encodeFields(e *jx.Encoder) {
+func (s *Commit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -27483,7 +27483,7 @@ func (s *Commit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Commit) MarshalJSON() ([]byte, error) {
+func (s *Commit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -27496,14 +27496,14 @@ func (s *Commit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitActivity) Encode(e *jx.Encoder) {
+func (s *CommitActivity) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitActivity) encodeFields(e *jx.Encoder) {
+func (s *CommitActivity) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("days")
@@ -27628,7 +27628,7 @@ func (s *CommitActivity) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitActivity) MarshalJSON() ([]byte, error) {
+func (s *CommitActivity) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -27641,14 +27641,14 @@ func (s *CommitActivity) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitComment) Encode(e *jx.Encoder) {
+func (s *CommitComment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitComment) encodeFields(e *jx.Encoder) {
+func (s *CommitComment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("html_url")
@@ -27949,7 +27949,7 @@ func (s *CommitComment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitComment) MarshalJSON() ([]byte, error) {
+func (s *CommitComment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -27962,14 +27962,14 @@ func (s *CommitComment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitCommit) Encode(e *jx.Encoder) {
+func (s *CommitCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitCommit) encodeFields(e *jx.Encoder) {
+func (s *CommitCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -28147,7 +28147,7 @@ func (s *CommitCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitCommit) MarshalJSON() ([]byte, error) {
+func (s *CommitCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -28160,14 +28160,14 @@ func (s *CommitCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitCommitTree) Encode(e *jx.Encoder) {
+func (s *CommitCommitTree) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitCommitTree) encodeFields(e *jx.Encoder) {
+func (s *CommitCommitTree) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -28262,7 +28262,7 @@ func (s *CommitCommitTree) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitCommitTree) MarshalJSON() ([]byte, error) {
+func (s *CommitCommitTree) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -28275,14 +28275,14 @@ func (s *CommitCommitTree) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitComparison) Encode(e *jx.Encoder) {
+func (s *CommitComparison) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitComparison) encodeFields(e *jx.Encoder) {
+func (s *CommitComparison) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -28590,7 +28590,7 @@ func (s *CommitComparison) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitComparison) MarshalJSON() ([]byte, error) {
+func (s *CommitComparison) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -28647,14 +28647,14 @@ func (s *CommitComparisonStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitFilesItem) Encode(e *jx.Encoder) {
+func (s *CommitFilesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitFilesItem) encodeFields(e *jx.Encoder) {
+func (s *CommitFilesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Filename.Set {
 			e.FieldStart("filename")
@@ -28867,7 +28867,7 @@ func (s *CommitFilesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitFilesItem) MarshalJSON() ([]byte, error) {
+func (s *CommitFilesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -28880,14 +28880,14 @@ func (s *CommitFilesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitParentsItem) Encode(e *jx.Encoder) {
+func (s *CommitParentsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitParentsItem) encodeFields(e *jx.Encoder) {
+func (s *CommitParentsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -28999,7 +28999,7 @@ func (s *CommitParentsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitParentsItem) MarshalJSON() ([]byte, error) {
+func (s *CommitParentsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29012,14 +29012,14 @@ func (s *CommitParentsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitSearchResultItem) Encode(e *jx.Encoder) {
+func (s *CommitSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *CommitSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -29298,7 +29298,7 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *CommitSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29311,14 +29311,14 @@ func (s *CommitSearchResultItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitSearchResultItemCommit) Encode(e *jx.Encoder) {
+func (s *CommitSearchResultItemCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitSearchResultItemCommit) encodeFields(e *jx.Encoder) {
+func (s *CommitSearchResultItemCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("author")
@@ -29496,7 +29496,7 @@ func (s *CommitSearchResultItemCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitSearchResultItemCommit) MarshalJSON() ([]byte, error) {
+func (s *CommitSearchResultItemCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29509,14 +29509,14 @@ func (s *CommitSearchResultItemCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitSearchResultItemCommitAuthor) Encode(e *jx.Encoder) {
+func (s *CommitSearchResultItemCommitAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitSearchResultItemCommitAuthor) encodeFields(e *jx.Encoder) {
+func (s *CommitSearchResultItemCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -29629,7 +29629,7 @@ func (s *CommitSearchResultItemCommitAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitSearchResultItemCommitAuthor) MarshalJSON() ([]byte, error) {
+func (s *CommitSearchResultItemCommitAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29642,14 +29642,14 @@ func (s *CommitSearchResultItemCommitAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitSearchResultItemCommitTree) Encode(e *jx.Encoder) {
+func (s *CommitSearchResultItemCommitTree) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitSearchResultItemCommitTree) encodeFields(e *jx.Encoder) {
+func (s *CommitSearchResultItemCommitTree) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -29744,7 +29744,7 @@ func (s *CommitSearchResultItemCommitTree) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitSearchResultItemCommitTree) MarshalJSON() ([]byte, error) {
+func (s *CommitSearchResultItemCommitTree) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29757,14 +29757,14 @@ func (s *CommitSearchResultItemCommitTree) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitSearchResultItemParentsItem) Encode(e *jx.Encoder) {
+func (s *CommitSearchResultItemParentsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitSearchResultItemParentsItem) encodeFields(e *jx.Encoder) {
+func (s *CommitSearchResultItemParentsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -29841,7 +29841,7 @@ func (s *CommitSearchResultItemParentsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitSearchResultItemParentsItem) MarshalJSON() ([]byte, error) {
+func (s *CommitSearchResultItemParentsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29854,14 +29854,14 @@ func (s *CommitSearchResultItemParentsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommitStats) Encode(e *jx.Encoder) {
+func (s *CommitStats) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommitStats) encodeFields(e *jx.Encoder) {
+func (s *CommitStats) encodeFields(e *jx.Encoder) {
 	{
 		if s.Additions.Set {
 			e.FieldStart("additions")
@@ -29938,7 +29938,7 @@ func (s *CommitStats) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommitStats) MarshalJSON() ([]byte, error) {
+func (s *CommitStats) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -29951,14 +29951,14 @@ func (s *CommitStats) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommunityProfile) Encode(e *jx.Encoder) {
+func (s *CommunityProfile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommunityProfile) encodeFields(e *jx.Encoder) {
+func (s *CommunityProfile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("health_percentage")
@@ -30116,7 +30116,7 @@ func (s *CommunityProfile) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommunityProfile) MarshalJSON() ([]byte, error) {
+func (s *CommunityProfile) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -30129,14 +30129,14 @@ func (s *CommunityProfile) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CommunityProfileFiles) Encode(e *jx.Encoder) {
+func (s *CommunityProfileFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CommunityProfileFiles) encodeFields(e *jx.Encoder) {
+func (s *CommunityProfileFiles) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code_of_conduct")
@@ -30307,7 +30307,7 @@ func (s *CommunityProfileFiles) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CommunityProfileFiles) MarshalJSON() ([]byte, error) {
+func (s *CommunityProfileFiles) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -30320,14 +30320,14 @@ func (s *CommunityProfileFiles) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ContentFile) Encode(e *jx.Encoder) {
+func (s *ContentFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ContentFile) encodeFields(e *jx.Encoder) {
+func (s *ContentFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -30629,7 +30629,7 @@ func (s *ContentFile) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ContentFile) MarshalJSON() ([]byte, error) {
+func (s *ContentFile) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -30642,14 +30642,14 @@ func (s *ContentFile) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ContentFileLinks) Encode(e *jx.Encoder) {
+func (s *ContentFileLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ContentFileLinks) encodeFields(e *jx.Encoder) {
+func (s *ContentFileLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("git")
@@ -30758,7 +30758,7 @@ func (s *ContentFileLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ContentFileLinks) MarshalJSON() ([]byte, error) {
+func (s *ContentFileLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -30771,14 +30771,14 @@ func (s *ContentFileLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ContentReferenceAttachment) Encode(e *jx.Encoder) {
+func (s *ContentReferenceAttachment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ContentReferenceAttachment) encodeFields(e *jx.Encoder) {
+func (s *ContentReferenceAttachment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -30908,7 +30908,7 @@ func (s *ContentReferenceAttachment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ContentReferenceAttachment) MarshalJSON() ([]byte, error) {
+func (s *ContentReferenceAttachment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -30921,14 +30921,14 @@ func (s *ContentReferenceAttachment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ContentTraffic) Encode(e *jx.Encoder) {
+func (s *ContentTraffic) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ContentTraffic) encodeFields(e *jx.Encoder) {
+func (s *ContentTraffic) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("path")
@@ -31059,7 +31059,7 @@ func (s *ContentTraffic) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ContentTraffic) MarshalJSON() ([]byte, error) {
+func (s *ContentTraffic) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -31072,14 +31072,14 @@ func (s *ContentTraffic) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Contributor) Encode(e *jx.Encoder) {
+func (s *Contributor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Contributor) encodeFields(e *jx.Encoder) {
+func (s *Contributor) encodeFields(e *jx.Encoder) {
 	{
 		if s.Login.Set {
 			e.FieldStart("login")
@@ -31499,7 +31499,7 @@ func (s *Contributor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Contributor) MarshalJSON() ([]byte, error) {
+func (s *Contributor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -31512,14 +31512,14 @@ func (s *Contributor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ContributorActivity) Encode(e *jx.Encoder) {
+func (s *ContributorActivity) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ContributorActivity) encodeFields(e *jx.Encoder) {
+func (s *ContributorActivity) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("author")
@@ -31640,7 +31640,7 @@ func (s *ContributorActivity) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ContributorActivity) MarshalJSON() ([]byte, error) {
+func (s *ContributorActivity) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -31653,14 +31653,14 @@ func (s *ContributorActivity) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ContributorActivityWeeksItem) Encode(e *jx.Encoder) {
+func (s *ContributorActivityWeeksItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ContributorActivityWeeksItem) encodeFields(e *jx.Encoder) {
+func (s *ContributorActivityWeeksItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.W.Set {
 			e.FieldStart("w")
@@ -31754,7 +31754,7 @@ func (s *ContributorActivityWeeksItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ContributorActivityWeeksItem) MarshalJSON() ([]byte, error) {
+func (s *ContributorActivityWeeksItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -31767,14 +31767,14 @@ func (s *ContributorActivityWeeksItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CredentialAuthorization) Encode(e *jx.Encoder) {
+func (s *CredentialAuthorization) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CredentialAuthorization) encodeFields(e *jx.Encoder) {
+func (s *CredentialAuthorization) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -32038,7 +32038,7 @@ func (s *CredentialAuthorization) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CredentialAuthorization) MarshalJSON() ([]byte, error) {
+func (s *CredentialAuthorization) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -32051,14 +32051,14 @@ func (s *CredentialAuthorization) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeployKey) Encode(e *jx.Encoder) {
+func (s *DeployKey) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DeployKey) encodeFields(e *jx.Encoder) {
+func (s *DeployKey) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -32243,7 +32243,7 @@ func (s *DeployKey) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DeployKey) MarshalJSON() ([]byte, error) {
+func (s *DeployKey) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -32256,14 +32256,14 @@ func (s *DeployKey) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Deployment) Encode(e *jx.Encoder) {
+func (s *Deployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Deployment) encodeFields(e *jx.Encoder) {
+func (s *Deployment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -32638,7 +32638,7 @@ func (s *Deployment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Deployment) MarshalJSON() ([]byte, error) {
+func (s *Deployment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -32757,14 +32757,14 @@ func (s *DeploymentPayload0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeploymentSimple) Encode(e *jx.Encoder) {
+func (s *DeploymentSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DeploymentSimple) encodeFields(e *jx.Encoder) {
+func (s *DeploymentSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -33070,7 +33070,7 @@ func (s *DeploymentSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DeploymentSimple) MarshalJSON() ([]byte, error) {
+func (s *DeploymentSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -33083,14 +33083,14 @@ func (s *DeploymentSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeploymentStatus) Encode(e *jx.Encoder) {
+func (s *DeploymentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DeploymentStatus) encodeFields(e *jx.Encoder) {
+func (s *DeploymentStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -33413,7 +33413,7 @@ func (s *DeploymentStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DeploymentStatus) MarshalJSON() ([]byte, error) {
+func (s *DeploymentStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -33476,14 +33476,14 @@ func (s *DeploymentStatusState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DiffEntry) Encode(e *jx.Encoder) {
+func (s *DiffEntry) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DiffEntry) encodeFields(e *jx.Encoder) {
+func (s *DiffEntry) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -33737,7 +33737,7 @@ func (s *DiffEntry) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DiffEntry) MarshalJSON() ([]byte, error) {
+func (s *DiffEntry) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -33800,14 +33800,14 @@ func (s *DiffEntryStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Email) Encode(e *jx.Encoder) {
+func (s *Email) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Email) encodeFields(e *jx.Encoder) {
+func (s *Email) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("email")
@@ -33936,7 +33936,7 @@ func (s *Email) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Email) MarshalJSON() ([]byte, error) {
+func (s *Email) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34005,14 +34005,14 @@ func (s *EmojisGetOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EmptyObject) Encode(e *jx.Encoder) {
+func (s *EmptyObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EmptyObject) encodeFields(e *jx.Encoder) {
+func (s *EmptyObject) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfEmptyObject = [0]string{}
@@ -34037,7 +34037,7 @@ func (s *EmptyObject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EmptyObject) MarshalJSON() ([]byte, error) {
+func (s *EmptyObject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34134,14 +34134,14 @@ func (s *EnabledRepositories) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -34295,7 +34295,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34348,14 +34348,14 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) U
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -34460,7 +34460,7 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34473,14 +34473,14 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Unma
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -34585,7 +34585,7 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34598,14 +34598,14 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -34710,7 +34710,7 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34723,14 +34723,14 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) UnmarshalJSON
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
 		if s.TotalCount.Set {
 			e.FieldStart("total_count")
@@ -34801,7 +34801,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34814,14 +34814,14 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -34926,7 +34926,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -34939,14 +34939,14 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) UnmarshalJS
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -35081,7 +35081,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35094,14 +35094,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("value")
@@ -35178,7 +35178,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35191,14 +35191,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Unmarsh
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -35377,7 +35377,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35390,14 +35390,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("value")
@@ -35510,7 +35510,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35523,14 +35523,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Unmarshal
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -35573,7 +35573,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35586,14 +35586,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) Unmarshal
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("givenName")
@@ -35688,7 +35688,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35701,14 +35701,14 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) UnmarshalJSON(d
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled_organizations")
@@ -35800,7 +35800,7 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35813,14 +35813,14 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) UnmarshalJSON(
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -35955,7 +35955,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -35968,14 +35968,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Unmarsha
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("value")
@@ -36052,7 +36052,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36065,14 +36065,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -36251,7 +36251,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36264,14 +36264,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Unmarshal
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("value")
@@ -36384,7 +36384,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36397,14 +36397,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -36447,7 +36447,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36460,14 +36460,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem)
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("givenName")
@@ -36562,7 +36562,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36575,14 +36575,14 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Unmar
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("selected_organization_ids")
@@ -36671,7 +36671,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36684,14 +36684,14 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Unma
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("selected_organization_ids")
@@ -36780,7 +36780,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36793,14 +36793,14 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("runners")
@@ -36889,7 +36889,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36902,14 +36902,14 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) UnmarshalJS
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -37026,7 +37026,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37039,14 +37039,14 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("op")
@@ -37155,7 +37155,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37287,14 +37287,14 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 = [0]string{}
@@ -37319,7 +37319,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37332,14 +37332,14 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -37456,7 +37456,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37469,14 +37469,14 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem = [0]string{}
@@ -37501,7 +37501,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37514,14 +37514,14 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Unmar
 }
 
 // Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -37582,7 +37582,7 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) MarshalJSON() ([]byte, error) {
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37635,14 +37635,14 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) U
 }
 
 // Encode implements json.Marshaler.
-func (s EnvironmentApprovals) Encode(e *jx.Encoder) {
+func (s *EnvironmentApprovals) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnvironmentApprovals) encodeFields(e *jx.Encoder) {
+func (s *EnvironmentApprovals) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("environments")
@@ -37779,7 +37779,7 @@ func (s *EnvironmentApprovals) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnvironmentApprovals) MarshalJSON() ([]byte, error) {
+func (s *EnvironmentApprovals) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37792,14 +37792,14 @@ func (s *EnvironmentApprovals) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EnvironmentApprovalsEnvironmentsItem) Encode(e *jx.Encoder) {
+func (s *EnvironmentApprovalsEnvironmentsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EnvironmentApprovalsEnvironmentsItem) encodeFields(e *jx.Encoder) {
+func (s *EnvironmentApprovalsEnvironmentsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -37944,7 +37944,7 @@ func (s *EnvironmentApprovalsEnvironmentsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EnvironmentApprovalsEnvironmentsItem) MarshalJSON() ([]byte, error) {
+func (s *EnvironmentApprovalsEnvironmentsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -37997,14 +37997,14 @@ func (s *EnvironmentApprovalsState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Event) Encode(e *jx.Encoder) {
+func (s *Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Event) encodeFields(e *jx.Encoder) {
+func (s *Event) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -38196,7 +38196,7 @@ func (s *Event) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Event) MarshalJSON() ([]byte, error) {
+func (s *Event) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -38209,14 +38209,14 @@ func (s *Event) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EventPayload) Encode(e *jx.Encoder) {
+func (s *EventPayload) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EventPayload) encodeFields(e *jx.Encoder) {
+func (s *EventPayload) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
 			e.FieldStart("action")
@@ -38321,7 +38321,7 @@ func (s *EventPayload) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EventPayload) MarshalJSON() ([]byte, error) {
+func (s *EventPayload) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -38334,14 +38334,14 @@ func (s *EventPayload) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EventPayloadPagesItem) Encode(e *jx.Encoder) {
+func (s *EventPayloadPagesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EventPayloadPagesItem) encodeFields(e *jx.Encoder) {
+func (s *EventPayloadPagesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.PageName.Set {
 			e.FieldStart("page_name")
@@ -38469,7 +38469,7 @@ func (s *EventPayloadPagesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EventPayloadPagesItem) MarshalJSON() ([]byte, error) {
+func (s *EventPayloadPagesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -38482,14 +38482,14 @@ func (s *EventPayloadPagesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EventRepo) Encode(e *jx.Encoder) {
+func (s *EventRepo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s EventRepo) encodeFields(e *jx.Encoder) {
+func (s *EventRepo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -38602,7 +38602,7 @@ func (s *EventRepo) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s EventRepo) MarshalJSON() ([]byte, error) {
+func (s *EventRepo) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -38615,14 +38615,14 @@ func (s *EventRepo) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Feed) Encode(e *jx.Encoder) {
+func (s *Feed) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Feed) encodeFields(e *jx.Encoder) {
+func (s *Feed) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("timeline_url")
@@ -38849,7 +38849,7 @@ func (s *Feed) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Feed) MarshalJSON() ([]byte, error) {
+func (s *Feed) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -38862,14 +38862,14 @@ func (s *Feed) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FeedLinks) Encode(e *jx.Encoder) {
+func (s *FeedLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FeedLinks) encodeFields(e *jx.Encoder) {
+func (s *FeedLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("timeline")
@@ -39073,7 +39073,7 @@ func (s *FeedLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FeedLinks) MarshalJSON() ([]byte, error) {
+func (s *FeedLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39086,14 +39086,14 @@ func (s *FeedLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommit) Encode(e *jx.Encoder) {
+func (s *FileCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommit) encodeFields(e *jx.Encoder) {
+func (s *FileCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -39184,7 +39184,7 @@ func (s *FileCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommit) MarshalJSON() ([]byte, error) {
+func (s *FileCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39197,14 +39197,14 @@ func (s *FileCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitCommit) Encode(e *jx.Encoder) {
+func (s *FileCommitCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitCommit) encodeFields(e *jx.Encoder) {
+func (s *FileCommitCommit) encodeFields(e *jx.Encoder) {
 	{
 		if s.Sha.Set {
 			e.FieldStart("sha")
@@ -39411,7 +39411,7 @@ func (s *FileCommitCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitCommit) MarshalJSON() ([]byte, error) {
+func (s *FileCommitCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39424,14 +39424,14 @@ func (s *FileCommitCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitCommitAuthor) Encode(e *jx.Encoder) {
+func (s *FileCommitCommitAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitCommitAuthor) encodeFields(e *jx.Encoder) {
+func (s *FileCommitCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
 		if s.Date.Set {
 			e.FieldStart("date")
@@ -39508,7 +39508,7 @@ func (s *FileCommitCommitAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitCommitAuthor) MarshalJSON() ([]byte, error) {
+func (s *FileCommitCommitAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39521,14 +39521,14 @@ func (s *FileCommitCommitAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitCommitCommitter) Encode(e *jx.Encoder) {
+func (s *FileCommitCommitCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitCommitCommitter) encodeFields(e *jx.Encoder) {
+func (s *FileCommitCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
 		if s.Date.Set {
 			e.FieldStart("date")
@@ -39605,7 +39605,7 @@ func (s *FileCommitCommitCommitter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitCommitCommitter) MarshalJSON() ([]byte, error) {
+func (s *FileCommitCommitCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39618,14 +39618,14 @@ func (s *FileCommitCommitCommitter) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitCommitParentsItem) Encode(e *jx.Encoder) {
+func (s *FileCommitCommitParentsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitCommitParentsItem) encodeFields(e *jx.Encoder) {
+func (s *FileCommitCommitParentsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -39702,7 +39702,7 @@ func (s *FileCommitCommitParentsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitCommitParentsItem) MarshalJSON() ([]byte, error) {
+func (s *FileCommitCommitParentsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39715,14 +39715,14 @@ func (s *FileCommitCommitParentsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitCommitTree) Encode(e *jx.Encoder) {
+func (s *FileCommitCommitTree) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitCommitTree) encodeFields(e *jx.Encoder) {
+func (s *FileCommitCommitTree) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -39782,7 +39782,7 @@ func (s *FileCommitCommitTree) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitCommitTree) MarshalJSON() ([]byte, error) {
+func (s *FileCommitCommitTree) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39795,14 +39795,14 @@ func (s *FileCommitCommitTree) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitCommitVerification) Encode(e *jx.Encoder) {
+func (s *FileCommitCommitVerification) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitCommitVerification) encodeFields(e *jx.Encoder) {
+func (s *FileCommitCommitVerification) encodeFields(e *jx.Encoder) {
 	{
 		if s.Verified.Set {
 			e.FieldStart("verified")
@@ -39896,7 +39896,7 @@ func (s *FileCommitCommitVerification) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitCommitVerification) MarshalJSON() ([]byte, error) {
+func (s *FileCommitCommitVerification) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -39909,14 +39909,14 @@ func (s *FileCommitCommitVerification) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitContent) Encode(e *jx.Encoder) {
+func (s *FileCommitContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitContent) encodeFields(e *jx.Encoder) {
+func (s *FileCommitContent) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -40112,7 +40112,7 @@ func (s *FileCommitContent) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitContent) MarshalJSON() ([]byte, error) {
+func (s *FileCommitContent) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -40125,14 +40125,14 @@ func (s *FileCommitContent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FileCommitContentLinks) Encode(e *jx.Encoder) {
+func (s *FileCommitContentLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FileCommitContentLinks) encodeFields(e *jx.Encoder) {
+func (s *FileCommitContentLinks) encodeFields(e *jx.Encoder) {
 	{
 		if s.Self.Set {
 			e.FieldStart("self")
@@ -40209,7 +40209,7 @@ func (s *FileCommitContentLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FileCommitContentLinks) MarshalJSON() ([]byte, error) {
+func (s *FileCommitContentLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -40222,14 +40222,14 @@ func (s *FileCommitContentLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ForbiddenGist) Encode(e *jx.Encoder) {
+func (s *ForbiddenGist) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ForbiddenGist) encodeFields(e *jx.Encoder) {
+func (s *ForbiddenGist) encodeFields(e *jx.Encoder) {
 	{
 		if s.Block.Set {
 			e.FieldStart("block")
@@ -40306,7 +40306,7 @@ func (s *ForbiddenGist) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ForbiddenGist) MarshalJSON() ([]byte, error) {
+func (s *ForbiddenGist) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -40319,14 +40319,14 @@ func (s *ForbiddenGist) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ForbiddenGistBlock) Encode(e *jx.Encoder) {
+func (s *ForbiddenGistBlock) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ForbiddenGistBlock) encodeFields(e *jx.Encoder) {
+func (s *ForbiddenGistBlock) encodeFields(e *jx.Encoder) {
 	{
 		if s.Reason.Set {
 			e.FieldStart("reason")
@@ -40403,7 +40403,7 @@ func (s *ForbiddenGistBlock) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ForbiddenGistBlock) MarshalJSON() ([]byte, error) {
+func (s *ForbiddenGistBlock) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -40416,14 +40416,14 @@ func (s *ForbiddenGistBlock) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FullRepository) Encode(e *jx.Encoder) {
+func (s *FullRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FullRepository) encodeFields(e *jx.Encoder) {
+func (s *FullRepository) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -42168,7 +42168,7 @@ func (s *FullRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FullRepository) MarshalJSON() ([]byte, error) {
+func (s *FullRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -42181,14 +42181,14 @@ func (s *FullRepository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FullRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *FullRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FullRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *FullRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -42335,7 +42335,7 @@ func (s *FullRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FullRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *FullRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -42348,14 +42348,14 @@ func (s *FullRepositoryPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FullRepositorySecurityAndAnalysis) Encode(e *jx.Encoder) {
+func (s *FullRepositorySecurityAndAnalysis) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FullRepositorySecurityAndAnalysis) encodeFields(e *jx.Encoder) {
+func (s *FullRepositorySecurityAndAnalysis) encodeFields(e *jx.Encoder) {
 	{
 		if s.AdvancedSecurity.Set {
 			e.FieldStart("advanced_security")
@@ -42415,7 +42415,7 @@ func (s *FullRepositorySecurityAndAnalysis) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FullRepositorySecurityAndAnalysis) MarshalJSON() ([]byte, error) {
+func (s *FullRepositorySecurityAndAnalysis) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -42428,14 +42428,14 @@ func (s *FullRepositorySecurityAndAnalysis) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Encoder) {
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) encodeFields(e *jx.Encoder) {
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) encodeFields(e *jx.Encoder) {
 	{
 		if s.Status.Set {
 			e.FieldStart("status")
@@ -42478,7 +42478,7 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) MarshalJSON() ([]byte, error) {
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -42531,14 +42531,14 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) UnmarshalJSON(
 }
 
 // Encode implements json.Marshaler.
-func (s FullRepositorySecurityAndAnalysisSecretScanning) Encode(e *jx.Encoder) {
+func (s *FullRepositorySecurityAndAnalysisSecretScanning) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s FullRepositorySecurityAndAnalysisSecretScanning) encodeFields(e *jx.Encoder) {
+func (s *FullRepositorySecurityAndAnalysisSecretScanning) encodeFields(e *jx.Encoder) {
 	{
 		if s.Status.Set {
 			e.FieldStart("status")
@@ -42581,7 +42581,7 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanning) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s FullRepositorySecurityAndAnalysisSecretScanning) MarshalJSON() ([]byte, error) {
+func (s *FullRepositorySecurityAndAnalysisSecretScanning) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -42634,14 +42634,14 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) UnmarshalJSON(da
 }
 
 // Encode implements json.Marshaler.
-func (s GistComment) Encode(e *jx.Encoder) {
+func (s *GistComment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistComment) encodeFields(e *jx.Encoder) {
+func (s *GistComment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -42840,7 +42840,7 @@ func (s *GistComment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistComment) MarshalJSON() ([]byte, error) {
+func (s *GistComment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -42853,14 +42853,14 @@ func (s *GistComment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistCommit) Encode(e *jx.Encoder) {
+func (s *GistCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistCommit) encodeFields(e *jx.Encoder) {
+func (s *GistCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -43005,7 +43005,7 @@ func (s *GistCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistCommit) MarshalJSON() ([]byte, error) {
+func (s *GistCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -43018,14 +43018,14 @@ func (s *GistCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistCommitChangeStatus) Encode(e *jx.Encoder) {
+func (s *GistCommitChangeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistCommitChangeStatus) encodeFields(e *jx.Encoder) {
+func (s *GistCommitChangeStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Total.Set {
 			e.FieldStart("total")
@@ -43102,7 +43102,7 @@ func (s *GistCommitChangeStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistCommitChangeStatus) MarshalJSON() ([]byte, error) {
+func (s *GistCommitChangeStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -43115,14 +43115,14 @@ func (s *GistCommitChangeStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistHistory) Encode(e *jx.Encoder) {
+func (s *GistHistory) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistHistory) encodeFields(e *jx.Encoder) {
+func (s *GistHistory) encodeFields(e *jx.Encoder) {
 	{
 		if s.User.Set {
 			e.FieldStart("user")
@@ -43233,7 +43233,7 @@ func (s *GistHistory) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistHistory) MarshalJSON() ([]byte, error) {
+func (s *GistHistory) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -43246,14 +43246,14 @@ func (s *GistHistory) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistHistoryChangeStatus) Encode(e *jx.Encoder) {
+func (s *GistHistoryChangeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistHistoryChangeStatus) encodeFields(e *jx.Encoder) {
+func (s *GistHistoryChangeStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Total.Set {
 			e.FieldStart("total")
@@ -43330,7 +43330,7 @@ func (s *GistHistoryChangeStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistHistoryChangeStatus) MarshalJSON() ([]byte, error) {
+func (s *GistHistoryChangeStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -43343,14 +43343,14 @@ func (s *GistHistoryChangeStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistSimple) Encode(e *jx.Encoder) {
+func (s *GistSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistSimple) encodeFields(e *jx.Encoder) {
+func (s *GistSimple) encodeFields(e *jx.Encoder) {
 	{
 		if s.Forks.Set {
 			e.FieldStart("forks")
@@ -43733,7 +43733,7 @@ func (s *GistSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistSimple) MarshalJSON() ([]byte, error) {
+func (s *GistSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -43800,14 +43800,14 @@ func (s *GistSimpleFiles) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistSimpleFilesItem) Encode(e *jx.Encoder) {
+func (s *GistSimpleFilesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistSimpleFilesItem) encodeFields(e *jx.Encoder) {
+func (s *GistSimpleFilesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Filename.Set {
 			e.FieldStart("filename")
@@ -43952,7 +43952,7 @@ func (s *GistSimpleFilesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistSimpleFilesItem) MarshalJSON() ([]byte, error) {
+func (s *GistSimpleFilesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -43965,14 +43965,14 @@ func (s *GistSimpleFilesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistSimpleForkOf) Encode(e *jx.Encoder) {
+func (s *GistSimpleForkOf) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistSimpleForkOf) encodeFields(e *jx.Encoder) {
+func (s *GistSimpleForkOf) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -44413,7 +44413,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistSimpleForkOf) MarshalJSON() ([]byte, error) {
+func (s *GistSimpleForkOf) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44480,14 +44480,14 @@ func (s *GistSimpleForkOfFiles) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistSimpleForkOfFilesItem) Encode(e *jx.Encoder) {
+func (s *GistSimpleForkOfFilesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistSimpleForkOfFilesItem) encodeFields(e *jx.Encoder) {
+func (s *GistSimpleForkOfFilesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Filename.Set {
 			e.FieldStart("filename")
@@ -44598,7 +44598,7 @@ func (s *GistSimpleForkOfFilesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistSimpleForkOfFilesItem) MarshalJSON() ([]byte, error) {
+func (s *GistSimpleForkOfFilesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44611,14 +44611,14 @@ func (s *GistSimpleForkOfFilesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistSimpleForksItem) Encode(e *jx.Encoder) {
+func (s *GistSimpleForksItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistSimpleForksItem) encodeFields(e *jx.Encoder) {
+func (s *GistSimpleForksItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -44729,7 +44729,7 @@ func (s *GistSimpleForksItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistSimpleForksItem) MarshalJSON() ([]byte, error) {
+func (s *GistSimpleForksItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44742,14 +44742,14 @@ func (s *GistSimpleForksItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistsCheckIsStarredNotFound) Encode(e *jx.Encoder) {
+func (s *GistsCheckIsStarredNotFound) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistsCheckIsStarredNotFound) encodeFields(e *jx.Encoder) {
+func (s *GistsCheckIsStarredNotFound) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfGistsCheckIsStarredNotFound = [0]string{}
@@ -44774,7 +44774,7 @@ func (s *GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCheckIsStarredNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsCheckIsStarredNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44787,8 +44787,8 @@ func (s *GistsCheckIsStarredNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsCreateApplicationJSONForbidden as json.
-func (s GistsCreateApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsCreateApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -44812,7 +44812,7 @@ func (s *GistsCreateApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44825,8 +44825,8 @@ func (s *GistsCreateApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsCreateApplicationJSONNotFound as json.
-func (s GistsCreateApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsCreateApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -44850,7 +44850,7 @@ func (s *GistsCreateApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44863,8 +44863,8 @@ func (s *GistsCreateApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsCreateCommentApplicationJSONForbidden as json.
-func (s GistsCreateCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsCreateCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -44888,7 +44888,7 @@ func (s *GistsCreateCommentApplicationJSONForbidden) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateCommentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateCommentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44901,8 +44901,8 @@ func (s *GistsCreateCommentApplicationJSONForbidden) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes GistsCreateCommentApplicationJSONNotFound as json.
-func (s GistsCreateCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsCreateCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -44926,7 +44926,7 @@ func (s *GistsCreateCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateCommentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateCommentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -44939,14 +44939,14 @@ func (s *GistsCreateCommentApplicationJSONNotFound) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s GistsCreateCommentReq) Encode(e *jx.Encoder) {
+func (s *GistsCreateCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistsCreateCommentReq) encodeFields(e *jx.Encoder) {
+func (s *GistsCreateCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -45023,7 +45023,7 @@ func (s *GistsCreateCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateCommentReq) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45036,14 +45036,14 @@ func (s *GistsCreateCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistsCreateReq) Encode(e *jx.Encoder) {
+func (s *GistsCreateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistsCreateReq) encodeFields(e *jx.Encoder) {
+func (s *GistsCreateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -45152,7 +45152,7 @@ func (s *GistsCreateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateReq) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45219,14 +45219,14 @@ func (s *GistsCreateReqFiles) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistsCreateReqFilesItem) Encode(e *jx.Encoder) {
+func (s *GistsCreateReqFilesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistsCreateReqFilesItem) encodeFields(e *jx.Encoder) {
+func (s *GistsCreateReqFilesItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -45303,7 +45303,7 @@ func (s *GistsCreateReqFilesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsCreateReqFilesItem) MarshalJSON() ([]byte, error) {
+func (s *GistsCreateReqFilesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45404,8 +45404,8 @@ func (s *GistsCreateReqPublic1) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsDeleteApplicationJSONForbidden as json.
-func (s GistsDeleteApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsDeleteApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45429,7 +45429,7 @@ func (s *GistsDeleteApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsDeleteApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsDeleteApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45442,8 +45442,8 @@ func (s *GistsDeleteApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsDeleteApplicationJSONNotFound as json.
-func (s GistsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45467,7 +45467,7 @@ func (s *GistsDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsDeleteApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsDeleteApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45480,8 +45480,8 @@ func (s *GistsDeleteApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsDeleteCommentApplicationJSONForbidden as json.
-func (s GistsDeleteCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsDeleteCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45505,7 +45505,7 @@ func (s *GistsDeleteCommentApplicationJSONForbidden) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsDeleteCommentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsDeleteCommentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45518,8 +45518,8 @@ func (s *GistsDeleteCommentApplicationJSONForbidden) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes GistsDeleteCommentApplicationJSONNotFound as json.
-func (s GistsDeleteCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsDeleteCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45543,7 +45543,7 @@ func (s *GistsDeleteCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsDeleteCommentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsDeleteCommentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45556,8 +45556,8 @@ func (s *GistsDeleteCommentApplicationJSONNotFound) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes GistsForkApplicationJSONForbidden as json.
-func (s GistsForkApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsForkApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45581,7 +45581,7 @@ func (s *GistsForkApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsForkApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsForkApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45594,8 +45594,8 @@ func (s *GistsForkApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsForkApplicationJSONNotFound as json.
-func (s GistsForkApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsForkApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45619,7 +45619,7 @@ func (s *GistsForkApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsForkApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsForkApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45632,8 +45632,8 @@ func (s *GistsForkApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsGetRevisionApplicationJSONForbidden as json.
-func (s GistsGetRevisionApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsGetRevisionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45657,7 +45657,7 @@ func (s *GistsGetRevisionApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsGetRevisionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsGetRevisionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45670,8 +45670,8 @@ func (s *GistsGetRevisionApplicationJSONForbidden) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes GistsGetRevisionApplicationJSONNotFound as json.
-func (s GistsGetRevisionApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsGetRevisionApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45695,7 +45695,7 @@ func (s *GistsGetRevisionApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsGetRevisionApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsGetRevisionApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45708,8 +45708,8 @@ func (s *GistsGetRevisionApplicationJSONNotFound) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes GistsListCommentsApplicationJSONForbidden as json.
-func (s GistsListCommentsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListCommentsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45733,7 +45733,7 @@ func (s *GistsListCommentsApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListCommentsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsListCommentsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45746,8 +45746,8 @@ func (s *GistsListCommentsApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes GistsListCommentsApplicationJSONNotFound as json.
-func (s GistsListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45771,7 +45771,7 @@ func (s *GistsListCommentsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListCommentsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsListCommentsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45784,8 +45784,8 @@ func (s *GistsListCommentsApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes GistsListCommitsApplicationJSONForbidden as json.
-func (s GistsListCommitsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListCommitsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45809,7 +45809,7 @@ func (s *GistsListCommitsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListCommitsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsListCommitsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45822,8 +45822,8 @@ func (s *GistsListCommitsApplicationJSONForbidden) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes GistsListCommitsApplicationJSONNotFound as json.
-func (s GistsListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45847,7 +45847,7 @@ func (s *GistsListCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListCommitsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsListCommitsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45860,8 +45860,8 @@ func (s *GistsListCommitsApplicationJSONNotFound) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes GistsListForksApplicationJSONForbidden as json.
-func (s GistsListForksApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListForksApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45885,7 +45885,7 @@ func (s *GistsListForksApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListForksApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsListForksApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45898,8 +45898,8 @@ func (s *GistsListForksApplicationJSONForbidden) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes GistsListForksApplicationJSONNotFound as json.
-func (s GistsListForksApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListForksApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45923,7 +45923,7 @@ func (s *GistsListForksApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListForksApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsListForksApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45936,8 +45936,8 @@ func (s *GistsListForksApplicationJSONNotFound) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes GistsListStarredApplicationJSONForbidden as json.
-func (s GistsListStarredApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListStarredApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45961,7 +45961,7 @@ func (s *GistsListStarredApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListStarredApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsListStarredApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -45974,8 +45974,8 @@ func (s *GistsListStarredApplicationJSONForbidden) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes GistsListStarredApplicationJSONUnauthorized as json.
-func (s GistsListStarredApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsListStarredApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -45999,7 +45999,7 @@ func (s *GistsListStarredApplicationJSONUnauthorized) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsListStarredApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *GistsListStarredApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46012,8 +46012,8 @@ func (s *GistsListStarredApplicationJSONUnauthorized) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes GistsStarApplicationJSONForbidden as json.
-func (s GistsStarApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsStarApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -46037,7 +46037,7 @@ func (s *GistsStarApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsStarApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsStarApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46050,8 +46050,8 @@ func (s *GistsStarApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsStarApplicationJSONNotFound as json.
-func (s GistsStarApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsStarApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -46075,7 +46075,7 @@ func (s *GistsStarApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsStarApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsStarApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46088,8 +46088,8 @@ func (s *GistsStarApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsUnstarApplicationJSONForbidden as json.
-func (s GistsUnstarApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsUnstarApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -46113,7 +46113,7 @@ func (s *GistsUnstarApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsUnstarApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GistsUnstarApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46126,8 +46126,8 @@ func (s *GistsUnstarApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GistsUnstarApplicationJSONNotFound as json.
-func (s GistsUnstarApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GistsUnstarApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -46151,7 +46151,7 @@ func (s *GistsUnstarApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsUnstarApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GistsUnstarApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46164,14 +46164,14 @@ func (s *GistsUnstarApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistsUpdateCommentReq) Encode(e *jx.Encoder) {
+func (s *GistsUpdateCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GistsUpdateCommentReq) encodeFields(e *jx.Encoder) {
+func (s *GistsUpdateCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -46248,7 +46248,7 @@ func (s *GistsUpdateCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GistsUpdateCommentReq) MarshalJSON() ([]byte, error) {
+func (s *GistsUpdateCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46261,14 +46261,14 @@ func (s *GistsUpdateCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCommit) Encode(e *jx.Encoder) {
+func (s *GitCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCommit) encodeFields(e *jx.Encoder) {
+func (s *GitCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -46510,7 +46510,7 @@ func (s *GitCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCommit) MarshalJSON() ([]byte, error) {
+func (s *GitCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46523,14 +46523,14 @@ func (s *GitCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCommitAuthor) Encode(e *jx.Encoder) {
+func (s *GitCommitAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCommitAuthor) encodeFields(e *jx.Encoder) {
+func (s *GitCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("date")
@@ -46643,7 +46643,7 @@ func (s *GitCommitAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCommitAuthor) MarshalJSON() ([]byte, error) {
+func (s *GitCommitAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46656,14 +46656,14 @@ func (s *GitCommitAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCommitCommitter) Encode(e *jx.Encoder) {
+func (s *GitCommitCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCommitCommitter) encodeFields(e *jx.Encoder) {
+func (s *GitCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("date")
@@ -46776,7 +46776,7 @@ func (s *GitCommitCommitter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCommitCommitter) MarshalJSON() ([]byte, error) {
+func (s *GitCommitCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46789,14 +46789,14 @@ func (s *GitCommitCommitter) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCommitParentsItem) Encode(e *jx.Encoder) {
+func (s *GitCommitParentsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCommitParentsItem) encodeFields(e *jx.Encoder) {
+func (s *GitCommitParentsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -46909,7 +46909,7 @@ func (s *GitCommitParentsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCommitParentsItem) MarshalJSON() ([]byte, error) {
+func (s *GitCommitParentsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -46922,14 +46922,14 @@ func (s *GitCommitParentsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCommitTree) Encode(e *jx.Encoder) {
+func (s *GitCommitTree) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCommitTree) encodeFields(e *jx.Encoder) {
+func (s *GitCommitTree) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -47024,7 +47024,7 @@ func (s *GitCommitTree) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCommitTree) MarshalJSON() ([]byte, error) {
+func (s *GitCommitTree) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47037,14 +47037,14 @@ func (s *GitCommitTree) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCommitVerification) Encode(e *jx.Encoder) {
+func (s *GitCommitVerification) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCommitVerification) encodeFields(e *jx.Encoder) {
+func (s *GitCommitVerification) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("verified")
@@ -47171,7 +47171,7 @@ func (s *GitCommitVerification) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCommitVerification) MarshalJSON() ([]byte, error) {
+func (s *GitCommitVerification) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47184,8 +47184,8 @@ func (s *GitCommitVerification) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GitCreateBlobApplicationJSONConflict as json.
-func (s GitCreateBlobApplicationJSONConflict) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitCreateBlobApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -47209,7 +47209,7 @@ func (s *GitCreateBlobApplicationJSONConflict) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateBlobApplicationJSONConflict) MarshalJSON() ([]byte, error) {
+func (s *GitCreateBlobApplicationJSONConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47222,8 +47222,8 @@ func (s *GitCreateBlobApplicationJSONConflict) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes GitCreateBlobApplicationJSONForbidden as json.
-func (s GitCreateBlobApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitCreateBlobApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -47247,7 +47247,7 @@ func (s *GitCreateBlobApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateBlobApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GitCreateBlobApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47260,8 +47260,8 @@ func (s *GitCreateBlobApplicationJSONForbidden) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes GitCreateBlobApplicationJSONNotFound as json.
-func (s GitCreateBlobApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitCreateBlobApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -47285,7 +47285,7 @@ func (s *GitCreateBlobApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateBlobApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GitCreateBlobApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47298,14 +47298,14 @@ func (s *GitCreateBlobApplicationJSONNotFound) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateBlobReq) Encode(e *jx.Encoder) {
+func (s *GitCreateBlobReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateBlobReq) encodeFields(e *jx.Encoder) {
+func (s *GitCreateBlobReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -47400,7 +47400,7 @@ func (s *GitCreateBlobReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateBlobReq) MarshalJSON() ([]byte, error) {
+func (s *GitCreateBlobReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47413,14 +47413,14 @@ func (s *GitCreateBlobReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateCommitReq) Encode(e *jx.Encoder) {
+func (s *GitCreateCommitReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateCommitReq) encodeFields(e *jx.Encoder) {
+func (s *GitCreateCommitReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -47596,7 +47596,7 @@ func (s *GitCreateCommitReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateCommitReq) MarshalJSON() ([]byte, error) {
+func (s *GitCreateCommitReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47609,14 +47609,14 @@ func (s *GitCreateCommitReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateCommitReqAuthor) Encode(e *jx.Encoder) {
+func (s *GitCreateCommitReqAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateCommitReqAuthor) encodeFields(e *jx.Encoder) {
+func (s *GitCreateCommitReqAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -47728,7 +47728,7 @@ func (s *GitCreateCommitReqAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateCommitReqAuthor) MarshalJSON() ([]byte, error) {
+func (s *GitCreateCommitReqAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47741,14 +47741,14 @@ func (s *GitCreateCommitReqAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateCommitReqCommitter) Encode(e *jx.Encoder) {
+func (s *GitCreateCommitReqCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateCommitReqCommitter) encodeFields(e *jx.Encoder) {
+func (s *GitCreateCommitReqCommitter) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -47825,7 +47825,7 @@ func (s *GitCreateCommitReqCommitter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateCommitReqCommitter) MarshalJSON() ([]byte, error) {
+func (s *GitCreateCommitReqCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47838,14 +47838,14 @@ func (s *GitCreateCommitReqCommitter) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateRefReq) Encode(e *jx.Encoder) {
+func (s *GitCreateRefReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateRefReq) encodeFields(e *jx.Encoder) {
+func (s *GitCreateRefReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref")
@@ -47957,7 +47957,7 @@ func (s *GitCreateRefReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateRefReq) MarshalJSON() ([]byte, error) {
+func (s *GitCreateRefReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -47970,14 +47970,14 @@ func (s *GitCreateRefReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateTagReq) Encode(e *jx.Encoder) {
+func (s *GitCreateTagReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateTagReq) encodeFields(e *jx.Encoder) {
+func (s *GitCreateTagReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("tag")
@@ -48123,7 +48123,7 @@ func (s *GitCreateTagReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateTagReq) MarshalJSON() ([]byte, error) {
+func (s *GitCreateTagReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48136,14 +48136,14 @@ func (s *GitCreateTagReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateTagReqTagger) Encode(e *jx.Encoder) {
+func (s *GitCreateTagReqTagger) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateTagReqTagger) encodeFields(e *jx.Encoder) {
+func (s *GitCreateTagReqTagger) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -48255,7 +48255,7 @@ func (s *GitCreateTagReqTagger) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateTagReqTagger) MarshalJSON() ([]byte, error) {
+func (s *GitCreateTagReqTagger) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48310,8 +48310,8 @@ func (s *GitCreateTagReqType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GitCreateTreeApplicationJSONForbidden as json.
-func (s GitCreateTreeApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitCreateTreeApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -48335,7 +48335,7 @@ func (s *GitCreateTreeApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateTreeApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GitCreateTreeApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48348,8 +48348,8 @@ func (s *GitCreateTreeApplicationJSONForbidden) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes GitCreateTreeApplicationJSONNotFound as json.
-func (s GitCreateTreeApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitCreateTreeApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -48373,7 +48373,7 @@ func (s *GitCreateTreeApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateTreeApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GitCreateTreeApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48386,14 +48386,14 @@ func (s *GitCreateTreeApplicationJSONNotFound) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateTreeReq) Encode(e *jx.Encoder) {
+func (s *GitCreateTreeReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateTreeReq) encodeFields(e *jx.Encoder) {
+func (s *GitCreateTreeReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("tree")
@@ -48497,7 +48497,7 @@ func (s *GitCreateTreeReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateTreeReq) MarshalJSON() ([]byte, error) {
+func (s *GitCreateTreeReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48510,14 +48510,14 @@ func (s *GitCreateTreeReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitCreateTreeReqTreeItem) Encode(e *jx.Encoder) {
+func (s *GitCreateTreeReqTreeItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitCreateTreeReqTreeItem) encodeFields(e *jx.Encoder) {
+func (s *GitCreateTreeReqTreeItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Path.Set {
 			e.FieldStart("path")
@@ -48628,7 +48628,7 @@ func (s *GitCreateTreeReqTreeItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitCreateTreeReqTreeItem) MarshalJSON() ([]byte, error) {
+func (s *GitCreateTreeReqTreeItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48729,8 +48729,8 @@ func (s *GitCreateTreeReqTreeItemType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GitGetBlobApplicationJSONForbidden as json.
-func (s GitGetBlobApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitGetBlobApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -48754,7 +48754,7 @@ func (s *GitGetBlobApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitGetBlobApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *GitGetBlobApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48767,8 +48767,8 @@ func (s *GitGetBlobApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes GitGetBlobApplicationJSONNotFound as json.
-func (s GitGetBlobApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *GitGetBlobApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -48792,7 +48792,7 @@ func (s *GitGetBlobApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitGetBlobApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *GitGetBlobApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48805,14 +48805,14 @@ func (s *GitGetBlobApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitRef) Encode(e *jx.Encoder) {
+func (s *GitRef) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitRef) encodeFields(e *jx.Encoder) {
+func (s *GitRef) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref")
@@ -48941,7 +48941,7 @@ func (s *GitRef) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitRef) MarshalJSON() ([]byte, error) {
+func (s *GitRef) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -48954,14 +48954,14 @@ func (s *GitRef) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitRefObject) Encode(e *jx.Encoder) {
+func (s *GitRefObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitRefObject) encodeFields(e *jx.Encoder) {
+func (s *GitRefObject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -49074,7 +49074,7 @@ func (s *GitRefObject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitRefObject) MarshalJSON() ([]byte, error) {
+func (s *GitRefObject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -49087,14 +49087,14 @@ func (s *GitRefObject) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitTag) Encode(e *jx.Encoder) {
+func (s *GitTag) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitTag) encodeFields(e *jx.Encoder) {
+func (s *GitTag) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("node_id")
@@ -49292,7 +49292,7 @@ func (s *GitTag) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitTag) MarshalJSON() ([]byte, error) {
+func (s *GitTag) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -49305,14 +49305,14 @@ func (s *GitTag) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitTagObject) Encode(e *jx.Encoder) {
+func (s *GitTagObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitTagObject) encodeFields(e *jx.Encoder) {
+func (s *GitTagObject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -49425,7 +49425,7 @@ func (s *GitTagObject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitTagObject) MarshalJSON() ([]byte, error) {
+func (s *GitTagObject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -49438,14 +49438,14 @@ func (s *GitTagObject) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitTagTagger) Encode(e *jx.Encoder) {
+func (s *GitTagTagger) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitTagTagger) encodeFields(e *jx.Encoder) {
+func (s *GitTagTagger) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("date")
@@ -49558,7 +49558,7 @@ func (s *GitTagTagger) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitTagTagger) MarshalJSON() ([]byte, error) {
+func (s *GitTagTagger) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -49571,14 +49571,14 @@ func (s *GitTagTagger) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitTree) Encode(e *jx.Encoder) {
+func (s *GitTree) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitTree) encodeFields(e *jx.Encoder) {
+func (s *GitTree) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -49719,7 +49719,7 @@ func (s *GitTree) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitTree) MarshalJSON() ([]byte, error) {
+func (s *GitTree) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -49732,14 +49732,14 @@ func (s *GitTree) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitTreeTreeItem) Encode(e *jx.Encoder) {
+func (s *GitTreeTreeItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitTreeTreeItem) encodeFields(e *jx.Encoder) {
+func (s *GitTreeTreeItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Path.Set {
 			e.FieldStart("path")
@@ -49867,7 +49867,7 @@ func (s *GitTreeTreeItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitTreeTreeItem) MarshalJSON() ([]byte, error) {
+func (s *GitTreeTreeItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -49880,14 +49880,14 @@ func (s *GitTreeTreeItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GitUpdateRefReq) Encode(e *jx.Encoder) {
+func (s *GitUpdateRefReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitUpdateRefReq) encodeFields(e *jx.Encoder) {
+func (s *GitUpdateRefReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -49982,7 +49982,7 @@ func (s *GitUpdateRefReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitUpdateRefReq) MarshalJSON() ([]byte, error) {
+func (s *GitUpdateRefReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -50047,14 +50047,14 @@ func (s *GitignoreGetAllTemplatesOKApplicationJSON) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s GitignoreTemplate) Encode(e *jx.Encoder) {
+func (s *GitignoreTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GitignoreTemplate) encodeFields(e *jx.Encoder) {
+func (s *GitignoreTemplate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -50149,7 +50149,7 @@ func (s *GitignoreTemplate) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GitignoreTemplate) MarshalJSON() ([]byte, error) {
+func (s *GitignoreTemplate) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -50162,14 +50162,14 @@ func (s *GitignoreTemplate) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GpgKey) Encode(e *jx.Encoder) {
+func (s *GpgKey) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GpgKey) encodeFields(e *jx.Encoder) {
+func (s *GpgKey) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -50477,7 +50477,7 @@ func (s *GpgKey) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GpgKey) MarshalJSON() ([]byte, error) {
+func (s *GpgKey) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -50490,14 +50490,14 @@ func (s *GpgKey) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GpgKeyEmailsItem) Encode(e *jx.Encoder) {
+func (s *GpgKeyEmailsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GpgKeyEmailsItem) encodeFields(e *jx.Encoder) {
+func (s *GpgKeyEmailsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Email.Set {
 			e.FieldStart("email")
@@ -50557,7 +50557,7 @@ func (s *GpgKeyEmailsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GpgKeyEmailsItem) MarshalJSON() ([]byte, error) {
+func (s *GpgKeyEmailsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -50570,14 +50570,14 @@ func (s *GpgKeyEmailsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GpgKeySubkeysItem) Encode(e *jx.Encoder) {
+func (s *GpgKeySubkeysItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GpgKeySubkeysItem) encodeFields(e *jx.Encoder) {
+func (s *GpgKeySubkeysItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -50854,7 +50854,7 @@ func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GpgKeySubkeysItem) MarshalJSON() ([]byte, error) {
+func (s *GpgKeySubkeysItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -50867,14 +50867,14 @@ func (s *GpgKeySubkeysItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GroupMapping) Encode(e *jx.Encoder) {
+func (s *GroupMapping) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GroupMapping) encodeFields(e *jx.Encoder) {
+func (s *GroupMapping) encodeFields(e *jx.Encoder) {
 	{
 		if s.Groups != nil {
 			e.FieldStart("groups")
@@ -50928,7 +50928,7 @@ func (s *GroupMapping) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GroupMapping) MarshalJSON() ([]byte, error) {
+func (s *GroupMapping) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -50941,14 +50941,14 @@ func (s *GroupMapping) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GroupMappingGroupsItem) Encode(e *jx.Encoder) {
+func (s *GroupMappingGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s GroupMappingGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *GroupMappingGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("group_id")
@@ -51095,7 +51095,7 @@ func (s *GroupMappingGroupsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s GroupMappingGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *GroupMappingGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -51108,14 +51108,14 @@ func (s *GroupMappingGroupsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Hook) Encode(e *jx.Encoder) {
+func (s *Hook) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Hook) encodeFields(e *jx.Encoder) {
+func (s *Hook) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -51416,7 +51416,7 @@ func (s *Hook) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Hook) MarshalJSON() ([]byte, error) {
+func (s *Hook) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -51429,14 +51429,14 @@ func (s *Hook) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HookConfig) Encode(e *jx.Encoder) {
+func (s *HookConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HookConfig) encodeFields(e *jx.Encoder) {
+func (s *HookConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.Email.Set {
 			e.FieldStart("email")
@@ -51632,7 +51632,7 @@ func (s *HookConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HookConfig) MarshalJSON() ([]byte, error) {
+func (s *HookConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -51645,14 +51645,14 @@ func (s *HookConfig) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HookDelivery) Encode(e *jx.Encoder) {
+func (s *HookDelivery) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HookDelivery) encodeFields(e *jx.Encoder) {
+func (s *HookDelivery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -51953,7 +51953,7 @@ func (s *HookDelivery) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HookDelivery) MarshalJSON() ([]byte, error) {
+func (s *HookDelivery) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -51966,14 +51966,14 @@ func (s *HookDelivery) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HookDeliveryItem) Encode(e *jx.Encoder) {
+func (s *HookDeliveryItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HookDeliveryItem) encodeFields(e *jx.Encoder) {
+func (s *HookDeliveryItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -52225,7 +52225,7 @@ func (s *HookDeliveryItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HookDeliveryItem) MarshalJSON() ([]byte, error) {
+func (s *HookDeliveryItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -52238,14 +52238,14 @@ func (s *HookDeliveryItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HookDeliveryRequest) Encode(e *jx.Encoder) {
+func (s *HookDeliveryRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HookDeliveryRequest) encodeFields(e *jx.Encoder) {
+func (s *HookDeliveryRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("headers")
@@ -52336,7 +52336,7 @@ func (s *HookDeliveryRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HookDeliveryRequest) MarshalJSON() ([]byte, error) {
+func (s *HookDeliveryRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -52465,14 +52465,14 @@ func (s *HookDeliveryRequestPayload) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HookDeliveryResponse) Encode(e *jx.Encoder) {
+func (s *HookDeliveryResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HookDeliveryResponse) encodeFields(e *jx.Encoder) {
+func (s *HookDeliveryResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("headers")
@@ -52563,7 +52563,7 @@ func (s *HookDeliveryResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HookDeliveryResponse) MarshalJSON() ([]byte, error) {
+func (s *HookDeliveryResponse) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -52634,14 +52634,14 @@ func (s *HookDeliveryResponseHeaders) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HookResponse) Encode(e *jx.Encoder) {
+func (s *HookResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HookResponse) encodeFields(e *jx.Encoder) {
+func (s *HookResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -52748,7 +52748,7 @@ func (s *HookResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HookResponse) MarshalJSON() ([]byte, error) {
+func (s *HookResponse) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -52761,14 +52761,14 @@ func (s *HookResponse) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Hovercard) Encode(e *jx.Encoder) {
+func (s *Hovercard) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Hovercard) encodeFields(e *jx.Encoder) {
+func (s *Hovercard) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("contexts")
@@ -52855,7 +52855,7 @@ func (s *Hovercard) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Hovercard) MarshalJSON() ([]byte, error) {
+func (s *Hovercard) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -52868,14 +52868,14 @@ func (s *Hovercard) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s HovercardContextsItem) Encode(e *jx.Encoder) {
+func (s *HovercardContextsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HovercardContextsItem) encodeFields(e *jx.Encoder) {
+func (s *HovercardContextsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -52970,7 +52970,7 @@ func (s *HovercardContextsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HovercardContextsItem) MarshalJSON() ([]byte, error) {
+func (s *HovercardContextsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -52983,14 +52983,14 @@ func (s *HovercardContextsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Import) Encode(e *jx.Encoder) {
+func (s *Import) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Import) encodeFields(e *jx.Encoder) {
+func (s *Import) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("vcs")
@@ -53456,7 +53456,7 @@ func (s *Import) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Import) MarshalJSON() ([]byte, error) {
+func (s *Import) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -53469,14 +53469,14 @@ func (s *Import) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ImportProjectChoicesItem) Encode(e *jx.Encoder) {
+func (s *ImportProjectChoicesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ImportProjectChoicesItem) encodeFields(e *jx.Encoder) {
+func (s *ImportProjectChoicesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Vcs.Set {
 			e.FieldStart("vcs")
@@ -53553,7 +53553,7 @@ func (s *ImportProjectChoicesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ImportProjectChoicesItem) MarshalJSON() ([]byte, error) {
+func (s *ImportProjectChoicesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -53634,14 +53634,14 @@ func (s *ImportStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InstallationToken) Encode(e *jx.Encoder) {
+func (s *InstallationToken) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s InstallationToken) encodeFields(e *jx.Encoder) {
+func (s *InstallationToken) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("token")
@@ -53862,7 +53862,7 @@ func (s *InstallationToken) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s InstallationToken) MarshalJSON() ([]byte, error) {
+func (s *InstallationToken) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -53915,14 +53915,14 @@ func (s *InstallationTokenRepositorySelection) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s Integration) Encode(e *jx.Encoder) {
+func (s *Integration) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Integration) encodeFields(e *jx.Encoder) {
+func (s *Integration) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -54289,7 +54289,7 @@ func (s *Integration) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Integration) MarshalJSON() ([]byte, error) {
+func (s *Integration) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -54302,14 +54302,14 @@ func (s *Integration) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IntegrationPermissions) Encode(e *jx.Encoder) {
+func (s *IntegrationPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IntegrationPermissions) encodeFields(e *jx.Encoder) {
+func (s *IntegrationPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Issues.Set {
 			e.FieldStart("issues")
@@ -54437,7 +54437,7 @@ func (s *IntegrationPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IntegrationPermissions) MarshalJSON() ([]byte, error) {
+func (s *IntegrationPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -54594,14 +54594,14 @@ func (s *InteractionGroup) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InteractionLimit) Encode(e *jx.Encoder) {
+func (s *InteractionLimit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s InteractionLimit) encodeFields(e *jx.Encoder) {
+func (s *InteractionLimit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("limit")
@@ -54693,7 +54693,7 @@ func (s *InteractionLimit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s InteractionLimit) MarshalJSON() ([]byte, error) {
+func (s *InteractionLimit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -54706,14 +54706,14 @@ func (s *InteractionLimit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InteractionLimitResponse) Encode(e *jx.Encoder) {
+func (s *InteractionLimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s InteractionLimitResponse) encodeFields(e *jx.Encoder) {
+func (s *InteractionLimitResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("limit")
@@ -54824,7 +54824,7 @@ func (s *InteractionLimitResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s InteractionLimitResponse) MarshalJSON() ([]byte, error) {
+func (s *InteractionLimitResponse) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -54837,14 +54837,14 @@ func (s *InteractionLimitResponse) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Issue) Encode(e *jx.Encoder) {
+func (s *Issue) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Issue) encodeFields(e *jx.Encoder) {
+func (s *Issue) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -55471,7 +55471,7 @@ func (s *Issue) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Issue) MarshalJSON() ([]byte, error) {
+func (s *Issue) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -55484,14 +55484,14 @@ func (s *Issue) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueComment) Encode(e *jx.Encoder) {
+func (s *IssueComment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueComment) encodeFields(e *jx.Encoder) {
+func (s *IssueComment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -55794,7 +55794,7 @@ func (s *IssueComment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueComment) MarshalJSON() ([]byte, error) {
+func (s *IssueComment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -55807,14 +55807,14 @@ func (s *IssueComment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueEvent) Encode(e *jx.Encoder) {
+func (s *IssueEvent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueEvent) encodeFields(e *jx.Encoder) {
+func (s *IssueEvent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -56251,7 +56251,7 @@ func (s *IssueEvent) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueEvent) MarshalJSON() ([]byte, error) {
+func (s *IssueEvent) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -56264,14 +56264,14 @@ func (s *IssueEvent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueEventDismissedReview) Encode(e *jx.Encoder) {
+func (s *IssueEventDismissedReview) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueEventDismissedReview) encodeFields(e *jx.Encoder) {
+func (s *IssueEventDismissedReview) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -56399,7 +56399,7 @@ func (s *IssueEventDismissedReview) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueEventDismissedReview) MarshalJSON() ([]byte, error) {
+func (s *IssueEventDismissedReview) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -56412,14 +56412,14 @@ func (s *IssueEventDismissedReview) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueEventLabel) Encode(e *jx.Encoder) {
+func (s *IssueEventLabel) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueEventLabel) encodeFields(e *jx.Encoder) {
+func (s *IssueEventLabel) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -56510,7 +56510,7 @@ func (s *IssueEventLabel) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueEventLabel) MarshalJSON() ([]byte, error) {
+func (s *IssueEventLabel) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -56523,14 +56523,14 @@ func (s *IssueEventLabel) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueEventMilestone) Encode(e *jx.Encoder) {
+func (s *IssueEventMilestone) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueEventMilestone) encodeFields(e *jx.Encoder) {
+func (s *IssueEventMilestone) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -56607,7 +56607,7 @@ func (s *IssueEventMilestone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueEventMilestone) MarshalJSON() ([]byte, error) {
+func (s *IssueEventMilestone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -56620,14 +56620,14 @@ func (s *IssueEventMilestone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueEventProjectCard) Encode(e *jx.Encoder) {
+func (s *IssueEventProjectCard) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueEventProjectCard) encodeFields(e *jx.Encoder) {
+func (s *IssueEventProjectCard) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -56793,7 +56793,7 @@ func (s *IssueEventProjectCard) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueEventProjectCard) MarshalJSON() ([]byte, error) {
+func (s *IssueEventProjectCard) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -56806,14 +56806,14 @@ func (s *IssueEventProjectCard) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueEventRename) Encode(e *jx.Encoder) {
+func (s *IssueEventRename) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueEventRename) encodeFields(e *jx.Encoder) {
+func (s *IssueEventRename) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("from")
@@ -56908,7 +56908,7 @@ func (s *IssueEventRename) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueEventRename) MarshalJSON() ([]byte, error) {
+func (s *IssueEventRename) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -56969,14 +56969,14 @@ func (s *IssueLabelsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueLabelsItem1) Encode(e *jx.Encoder) {
+func (s *IssueLabelsItem1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueLabelsItem1) encodeFields(e *jx.Encoder) {
+func (s *IssueLabelsItem1) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -57121,7 +57121,7 @@ func (s *IssueLabelsItem1) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueLabelsItem1) MarshalJSON() ([]byte, error) {
+func (s *IssueLabelsItem1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -57134,14 +57134,14 @@ func (s *IssueLabelsItem1) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuePullRequest) Encode(e *jx.Encoder) {
+func (s *IssuePullRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuePullRequest) encodeFields(e *jx.Encoder) {
+func (s *IssuePullRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.MergedAt.Set {
 			e.FieldStart("merged_at")
@@ -57281,7 +57281,7 @@ func (s *IssuePullRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuePullRequest) MarshalJSON() ([]byte, error) {
+func (s *IssuePullRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -57294,14 +57294,14 @@ func (s *IssuePullRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueSearchResultItem) Encode(e *jx.Encoder) {
+func (s *IssueSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *IssueSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -57949,7 +57949,7 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *IssueSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -57962,14 +57962,14 @@ func (s *IssueSearchResultItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueSearchResultItemLabelsItem) Encode(e *jx.Encoder) {
+func (s *IssueSearchResultItemLabelsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueSearchResultItemLabelsItem) encodeFields(e *jx.Encoder) {
+func (s *IssueSearchResultItemLabelsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -58114,7 +58114,7 @@ func (s *IssueSearchResultItemLabelsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueSearchResultItemLabelsItem) MarshalJSON() ([]byte, error) {
+func (s *IssueSearchResultItemLabelsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -58127,14 +58127,14 @@ func (s *IssueSearchResultItemLabelsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueSearchResultItemPullRequest) Encode(e *jx.Encoder) {
+func (s *IssueSearchResultItemPullRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueSearchResultItemPullRequest) encodeFields(e *jx.Encoder) {
+func (s *IssueSearchResultItemPullRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.MergedAt.Set {
 			e.FieldStart("merged_at")
@@ -58274,7 +58274,7 @@ func (s *IssueSearchResultItemPullRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueSearchResultItemPullRequest) MarshalJSON() ([]byte, error) {
+func (s *IssueSearchResultItemPullRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -58287,14 +58287,14 @@ func (s *IssueSearchResultItemPullRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueSimple) Encode(e *jx.Encoder) {
+func (s *IssueSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueSimple) encodeFields(e *jx.Encoder) {
+func (s *IssueSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -58887,7 +58887,7 @@ func (s *IssueSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueSimple) MarshalJSON() ([]byte, error) {
+func (s *IssueSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -58900,14 +58900,14 @@ func (s *IssueSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssueSimplePullRequest) Encode(e *jx.Encoder) {
+func (s *IssueSimplePullRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssueSimplePullRequest) encodeFields(e *jx.Encoder) {
+func (s *IssueSimplePullRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.MergedAt.Set {
 			e.FieldStart("merged_at")
@@ -59047,7 +59047,7 @@ func (s *IssueSimplePullRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssueSimplePullRequest) MarshalJSON() ([]byte, error) {
+func (s *IssueSimplePullRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59060,14 +59060,14 @@ func (s *IssueSimplePullRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesAddAssigneesReq) Encode(e *jx.Encoder) {
+func (s *IssuesAddAssigneesReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesAddAssigneesReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesAddAssigneesReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Assignees != nil {
 			e.FieldStart("assignees")
@@ -59123,7 +59123,7 @@ func (s *IssuesAddAssigneesReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesAddAssigneesReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesAddAssigneesReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59136,8 +59136,8 @@ func (s *IssuesAddAssigneesReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesCreateApplicationJSONForbidden as json.
-func (s IssuesCreateApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesCreateApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -59161,7 +59161,7 @@ func (s *IssuesCreateApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59174,8 +59174,8 @@ func (s *IssuesCreateApplicationJSONForbidden) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes IssuesCreateApplicationJSONGone as json.
-func (s IssuesCreateApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesCreateApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -59199,7 +59199,7 @@ func (s *IssuesCreateApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59212,8 +59212,8 @@ func (s *IssuesCreateApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesCreateApplicationJSONNotFound as json.
-func (s IssuesCreateApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesCreateApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -59237,7 +59237,7 @@ func (s *IssuesCreateApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59250,8 +59250,8 @@ func (s *IssuesCreateApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesCreateCommentApplicationJSONForbidden as json.
-func (s IssuesCreateCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesCreateCommentApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -59275,7 +59275,7 @@ func (s *IssuesCreateCommentApplicationJSONForbidden) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateCommentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateCommentApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59288,8 +59288,8 @@ func (s *IssuesCreateCommentApplicationJSONForbidden) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes IssuesCreateCommentApplicationJSONGone as json.
-func (s IssuesCreateCommentApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesCreateCommentApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -59313,7 +59313,7 @@ func (s *IssuesCreateCommentApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateCommentApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateCommentApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59326,8 +59326,8 @@ func (s *IssuesCreateCommentApplicationJSONGone) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes IssuesCreateCommentApplicationJSONNotFound as json.
-func (s IssuesCreateCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesCreateCommentApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -59351,7 +59351,7 @@ func (s *IssuesCreateCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateCommentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateCommentApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59364,14 +59364,14 @@ func (s *IssuesCreateCommentApplicationJSONNotFound) UnmarshalJSON(data []byte) 
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesCreateCommentReq) Encode(e *jx.Encoder) {
+func (s *IssuesCreateCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesCreateCommentReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesCreateCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -59448,7 +59448,7 @@ func (s *IssuesCreateCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateCommentReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59461,14 +59461,14 @@ func (s *IssuesCreateCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesCreateLabelReq) Encode(e *jx.Encoder) {
+func (s *IssuesCreateLabelReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesCreateLabelReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesCreateLabelReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -59579,7 +59579,7 @@ func (s *IssuesCreateLabelReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateLabelReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateLabelReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59592,14 +59592,14 @@ func (s *IssuesCreateLabelReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesCreateMilestoneReq) Encode(e *jx.Encoder) {
+func (s *IssuesCreateMilestoneReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesCreateMilestoneReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesCreateMilestoneReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -59728,7 +59728,7 @@ func (s *IssuesCreateMilestoneReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateMilestoneReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateMilestoneReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -59781,14 +59781,14 @@ func (s *IssuesCreateMilestoneReqState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesCreateReq) Encode(e *jx.Encoder) {
+func (s *IssuesCreateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesCreateReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesCreateReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -59972,7 +59972,7 @@ func (s *IssuesCreateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60033,14 +60033,14 @@ func (s *IssuesCreateReqLabelsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesCreateReqLabelsItem1) Encode(e *jx.Encoder) {
+func (s *IssuesCreateReqLabelsItem1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesCreateReqLabelsItem1) encodeFields(e *jx.Encoder) {
+func (s *IssuesCreateReqLabelsItem1) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -60134,7 +60134,7 @@ func (s *IssuesCreateReqLabelsItem1) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesCreateReqLabelsItem1) MarshalJSON() ([]byte, error) {
+func (s *IssuesCreateReqLabelsItem1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60247,8 +60247,8 @@ func (s *IssuesCreateReqTitle) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesGetApplicationJSONGone as json.
-func (s IssuesGetApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesGetApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60272,7 +60272,7 @@ func (s *IssuesGetApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesGetApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesGetApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60285,8 +60285,8 @@ func (s *IssuesGetApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesGetApplicationJSONMovedPermanently as json.
-func (s IssuesGetApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesGetApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60310,7 +60310,7 @@ func (s *IssuesGetApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesGetApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
+func (s *IssuesGetApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60323,8 +60323,8 @@ func (s *IssuesGetApplicationJSONMovedPermanently) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes IssuesGetApplicationJSONNotFound as json.
-func (s IssuesGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60348,7 +60348,7 @@ func (s *IssuesGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60361,8 +60361,8 @@ func (s *IssuesGetApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesGetEventApplicationJSONForbidden as json.
-func (s IssuesGetEventApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesGetEventApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60386,7 +60386,7 @@ func (s *IssuesGetEventApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesGetEventApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *IssuesGetEventApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60399,8 +60399,8 @@ func (s *IssuesGetEventApplicationJSONForbidden) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes IssuesGetEventApplicationJSONGone as json.
-func (s IssuesGetEventApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesGetEventApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60424,7 +60424,7 @@ func (s *IssuesGetEventApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesGetEventApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesGetEventApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60437,8 +60437,8 @@ func (s *IssuesGetEventApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesGetEventApplicationJSONNotFound as json.
-func (s IssuesGetEventApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesGetEventApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60462,7 +60462,7 @@ func (s *IssuesGetEventApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesGetEventApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesGetEventApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60475,8 +60475,8 @@ func (s *IssuesGetEventApplicationJSONNotFound) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes IssuesListCommentsApplicationJSONGone as json.
-func (s IssuesListCommentsApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesListCommentsApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60500,7 +60500,7 @@ func (s *IssuesListCommentsApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesListCommentsApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesListCommentsApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60513,8 +60513,8 @@ func (s *IssuesListCommentsApplicationJSONGone) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes IssuesListCommentsApplicationJSONNotFound as json.
-func (s IssuesListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesListCommentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60538,7 +60538,7 @@ func (s *IssuesListCommentsApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesListCommentsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesListCommentsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60551,8 +60551,8 @@ func (s *IssuesListCommentsApplicationJSONNotFound) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes IssuesListForRepoApplicationJSONMovedPermanently as json.
-func (s IssuesListForRepoApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesListForRepoApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60576,7 +60576,7 @@ func (s *IssuesListForRepoApplicationJSONMovedPermanently) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesListForRepoApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
+func (s *IssuesListForRepoApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60589,8 +60589,8 @@ func (s *IssuesListForRepoApplicationJSONMovedPermanently) UnmarshalJSON(data []
 }
 
 // Encode encodes IssuesListForRepoApplicationJSONNotFound as json.
-func (s IssuesListForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesListForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60614,7 +60614,7 @@ func (s *IssuesListForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesListForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesListForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60627,8 +60627,8 @@ func (s *IssuesListForRepoApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes IssuesLockApplicationJSONForbidden as json.
-func (s IssuesLockApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesLockApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60652,7 +60652,7 @@ func (s *IssuesLockApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesLockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *IssuesLockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60665,8 +60665,8 @@ func (s *IssuesLockApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesLockApplicationJSONGone as json.
-func (s IssuesLockApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesLockApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60690,7 +60690,7 @@ func (s *IssuesLockApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesLockApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesLockApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60703,8 +60703,8 @@ func (s *IssuesLockApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesLockApplicationJSONNotFound as json.
-func (s IssuesLockApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesLockApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60728,7 +60728,7 @@ func (s *IssuesLockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesLockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesLockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60741,14 +60741,14 @@ func (s *IssuesLockApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesLockReq) Encode(e *jx.Encoder) {
+func (s *IssuesLockReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesLockReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesLockReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.LockReason.Set {
 			e.FieldStart("lock_reason")
@@ -60791,7 +60791,7 @@ func (s *IssuesLockReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesLockReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesLockReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60848,14 +60848,14 @@ func (s *IssuesLockReqLockReason) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesRemoveAssigneesReq) Encode(e *jx.Encoder) {
+func (s *IssuesRemoveAssigneesReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesRemoveAssigneesReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesRemoveAssigneesReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Assignees != nil {
 			e.FieldStart("assignees")
@@ -60911,7 +60911,7 @@ func (s *IssuesRemoveAssigneesReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesRemoveAssigneesReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesRemoveAssigneesReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60924,8 +60924,8 @@ func (s *IssuesRemoveAssigneesReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesRemoveLabelApplicationJSONGone as json.
-func (s IssuesRemoveLabelApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesRemoveLabelApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60949,7 +60949,7 @@ func (s *IssuesRemoveLabelApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesRemoveLabelApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesRemoveLabelApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -60962,8 +60962,8 @@ func (s *IssuesRemoveLabelApplicationJSONGone) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes IssuesRemoveLabelApplicationJSONNotFound as json.
-func (s IssuesRemoveLabelApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesRemoveLabelApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -60987,7 +60987,7 @@ func (s *IssuesRemoveLabelApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesRemoveLabelApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesRemoveLabelApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61050,8 +61050,8 @@ func (s *IssuesRemoveLabelOKApplicationJSON) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesUnlockApplicationJSONForbidden as json.
-func (s IssuesUnlockApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesUnlockApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -61075,7 +61075,7 @@ func (s *IssuesUnlockApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUnlockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *IssuesUnlockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61088,8 +61088,8 @@ func (s *IssuesUnlockApplicationJSONForbidden) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes IssuesUnlockApplicationJSONNotFound as json.
-func (s IssuesUnlockApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesUnlockApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -61113,7 +61113,7 @@ func (s *IssuesUnlockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUnlockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesUnlockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61126,8 +61126,8 @@ func (s *IssuesUnlockApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesUpdateApplicationJSONForbidden as json.
-func (s IssuesUpdateApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesUpdateApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -61151,7 +61151,7 @@ func (s *IssuesUpdateApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61164,8 +61164,8 @@ func (s *IssuesUpdateApplicationJSONForbidden) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes IssuesUpdateApplicationJSONGone as json.
-func (s IssuesUpdateApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesUpdateApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -61189,7 +61189,7 @@ func (s *IssuesUpdateApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61202,8 +61202,8 @@ func (s *IssuesUpdateApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes IssuesUpdateApplicationJSONMovedPermanently as json.
-func (s IssuesUpdateApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesUpdateApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -61227,7 +61227,7 @@ func (s *IssuesUpdateApplicationJSONMovedPermanently) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61240,8 +61240,8 @@ func (s *IssuesUpdateApplicationJSONMovedPermanently) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes IssuesUpdateApplicationJSONNotFound as json.
-func (s IssuesUpdateApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *IssuesUpdateApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -61265,7 +61265,7 @@ func (s *IssuesUpdateApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61278,14 +61278,14 @@ func (s *IssuesUpdateApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesUpdateCommentReq) Encode(e *jx.Encoder) {
+func (s *IssuesUpdateCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesUpdateCommentReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesUpdateCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -61362,7 +61362,7 @@ func (s *IssuesUpdateCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateCommentReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61375,14 +61375,14 @@ func (s *IssuesUpdateCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesUpdateLabelReq) Encode(e *jx.Encoder) {
+func (s *IssuesUpdateLabelReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesUpdateLabelReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesUpdateLabelReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.NewName.Set {
 			e.FieldStart("new_name")
@@ -61459,7 +61459,7 @@ func (s *IssuesUpdateLabelReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateLabelReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateLabelReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61472,14 +61472,14 @@ func (s *IssuesUpdateLabelReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesUpdateMilestoneReq) Encode(e *jx.Encoder) {
+func (s *IssuesUpdateMilestoneReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesUpdateMilestoneReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesUpdateMilestoneReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -61574,7 +61574,7 @@ func (s *IssuesUpdateMilestoneReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateMilestoneReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateMilestoneReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61627,14 +61627,14 @@ func (s *IssuesUpdateMilestoneReqState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesUpdateReq) Encode(e *jx.Encoder) {
+func (s *IssuesUpdateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesUpdateReq) encodeFields(e *jx.Encoder) {
+func (s *IssuesUpdateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -61803,7 +61803,7 @@ func (s *IssuesUpdateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateReq) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -61864,14 +61864,14 @@ func (s *IssuesUpdateReqLabelsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IssuesUpdateReqLabelsItem1) Encode(e *jx.Encoder) {
+func (s *IssuesUpdateReqLabelsItem1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IssuesUpdateReqLabelsItem1) encodeFields(e *jx.Encoder) {
+func (s *IssuesUpdateReqLabelsItem1) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -61965,7 +61965,7 @@ func (s *IssuesUpdateReqLabelsItem1) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IssuesUpdateReqLabelsItem1) MarshalJSON() ([]byte, error) {
+func (s *IssuesUpdateReqLabelsItem1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -62118,14 +62118,14 @@ func (s *IssuesUpdateReqTitle) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Job) Encode(e *jx.Encoder) {
+func (s *Job) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Job) encodeFields(e *jx.Encoder) {
+func (s *Job) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -62439,7 +62439,7 @@ func (s *Job) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Job) MarshalJSON() ([]byte, error) {
+func (s *Job) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -62494,14 +62494,14 @@ func (s *JobStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s JobStepsItem) Encode(e *jx.Encoder) {
+func (s *JobStepsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s JobStepsItem) encodeFields(e *jx.Encoder) {
+func (s *JobStepsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -62662,7 +62662,7 @@ func (s *JobStepsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s JobStepsItem) MarshalJSON() ([]byte, error) {
+func (s *JobStepsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -62717,14 +62717,14 @@ func (s *JobStepsItemStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Key) Encode(e *jx.Encoder) {
+func (s *Key) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Key) encodeFields(e *jx.Encoder) {
+func (s *Key) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -62909,7 +62909,7 @@ func (s *Key) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Key) MarshalJSON() ([]byte, error) {
+func (s *Key) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -62922,14 +62922,14 @@ func (s *Key) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s KeySimple) Encode(e *jx.Encoder) {
+func (s *KeySimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s KeySimple) encodeFields(e *jx.Encoder) {
+func (s *KeySimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -63024,7 +63024,7 @@ func (s *KeySimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s KeySimple) MarshalJSON() ([]byte, error) {
+func (s *KeySimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -63037,14 +63037,14 @@ func (s *KeySimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Label) Encode(e *jx.Encoder) {
+func (s *Label) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Label) encodeFields(e *jx.Encoder) {
+func (s *Label) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -63227,7 +63227,7 @@ func (s *Label) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Label) MarshalJSON() ([]byte, error) {
+func (s *Label) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -63240,14 +63240,14 @@ func (s *Label) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LabelSearchResultItem) Encode(e *jx.Encoder) {
+func (s *LabelSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s LabelSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *LabelSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -63468,7 +63468,7 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LabelSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *LabelSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -63537,14 +63537,14 @@ func (s *Language) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s License) Encode(e *jx.Encoder) {
+func (s *License) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s License) encodeFields(e *jx.Encoder) {
+func (s *License) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -63870,7 +63870,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s License) MarshalJSON() ([]byte, error) {
+func (s *License) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -63883,14 +63883,14 @@ func (s *License) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LicenseContent) Encode(e *jx.Encoder) {
+func (s *LicenseContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s LicenseContent) encodeFields(e *jx.Encoder) {
+func (s *LicenseContent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -64174,7 +64174,7 @@ func (s *LicenseContent) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LicenseContent) MarshalJSON() ([]byte, error) {
+func (s *LicenseContent) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64187,14 +64187,14 @@ func (s *LicenseContent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LicenseContentLinks) Encode(e *jx.Encoder) {
+func (s *LicenseContentLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s LicenseContentLinks) encodeFields(e *jx.Encoder) {
+func (s *LicenseContentLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("git")
@@ -64303,7 +64303,7 @@ func (s *LicenseContentLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LicenseContentLinks) MarshalJSON() ([]byte, error) {
+func (s *LicenseContentLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64316,14 +64316,14 @@ func (s *LicenseContentLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LicenseSimple) Encode(e *jx.Encoder) {
+func (s *LicenseSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s LicenseSimple) encodeFields(e *jx.Encoder) {
+func (s *LicenseSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -64485,7 +64485,7 @@ func (s *LicenseSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LicenseSimple) MarshalJSON() ([]byte, error) {
+func (s *LicenseSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64548,8 +64548,8 @@ func (s *LicensesGetAllCommonlyUsedOKApplicationJSON) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes LicensesGetApplicationJSONForbidden as json.
-func (s LicensesGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *LicensesGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -64573,7 +64573,7 @@ func (s *LicensesGetApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LicensesGetApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *LicensesGetApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64586,8 +64586,8 @@ func (s *LicensesGetApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes LicensesGetApplicationJSONNotFound as json.
-func (s LicensesGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *LicensesGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -64611,7 +64611,7 @@ func (s *LicensesGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LicensesGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *LicensesGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64624,14 +64624,14 @@ func (s *LicensesGetApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Link) Encode(e *jx.Encoder) {
+func (s *Link) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Link) encodeFields(e *jx.Encoder) {
+func (s *Link) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -64708,7 +64708,7 @@ func (s *Link) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Link) MarshalJSON() ([]byte, error) {
+func (s *Link) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64721,14 +64721,14 @@ func (s *Link) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LinkWithType) Encode(e *jx.Encoder) {
+func (s *LinkWithType) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s LinkWithType) encodeFields(e *jx.Encoder) {
+func (s *LinkWithType) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -64823,7 +64823,7 @@ func (s *LinkWithType) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s LinkWithType) MarshalJSON() ([]byte, error) {
+func (s *LinkWithType) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -64836,14 +64836,14 @@ func (s *LinkWithType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarkdownRenderReq) Encode(e *jx.Encoder) {
+func (s *MarkdownRenderReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MarkdownRenderReq) encodeFields(e *jx.Encoder) {
+func (s *MarkdownRenderReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("text")
@@ -64955,7 +64955,7 @@ func (s *MarkdownRenderReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MarkdownRenderReq) MarshalJSON() ([]byte, error) {
+func (s *MarkdownRenderReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -65008,14 +65008,14 @@ func (s *MarkdownRenderReqMode) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketplaceAccount) Encode(e *jx.Encoder) {
+func (s *MarketplaceAccount) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MarketplaceAccount) encodeFields(e *jx.Encoder) {
+func (s *MarketplaceAccount) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -65197,7 +65197,7 @@ func (s *MarketplaceAccount) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MarketplaceAccount) MarshalJSON() ([]byte, error) {
+func (s *MarketplaceAccount) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -65210,14 +65210,14 @@ func (s *MarketplaceAccount) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketplaceListingPlan) Encode(e *jx.Encoder) {
+func (s *MarketplaceListingPlan) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MarketplaceListingPlan) encodeFields(e *jx.Encoder) {
+func (s *MarketplaceListingPlan) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -65521,7 +65521,7 @@ func (s *MarketplaceListingPlan) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MarketplaceListingPlan) MarshalJSON() ([]byte, error) {
+func (s *MarketplaceListingPlan) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -65534,14 +65534,14 @@ func (s *MarketplaceListingPlan) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketplacePurchase) Encode(e *jx.Encoder) {
+func (s *MarketplacePurchase) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MarketplacePurchase) encodeFields(e *jx.Encoder) {
+func (s *MarketplacePurchase) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -65739,7 +65739,7 @@ func (s *MarketplacePurchase) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MarketplacePurchase) MarshalJSON() ([]byte, error) {
+func (s *MarketplacePurchase) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -65752,14 +65752,14 @@ func (s *MarketplacePurchase) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketplacePurchaseMarketplacePendingChange) Encode(e *jx.Encoder) {
+func (s *MarketplacePurchaseMarketplacePendingChange) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MarketplacePurchaseMarketplacePendingChange) encodeFields(e *jx.Encoder) {
+func (s *MarketplacePurchaseMarketplacePendingChange) encodeFields(e *jx.Encoder) {
 	{
 		if s.IsInstalled.Set {
 			e.FieldStart("is_installed")
@@ -65870,7 +65870,7 @@ func (s *MarketplacePurchaseMarketplacePendingChange) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MarketplacePurchaseMarketplacePendingChange) MarshalJSON() ([]byte, error) {
+func (s *MarketplacePurchaseMarketplacePendingChange) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -65883,14 +65883,14 @@ func (s *MarketplacePurchaseMarketplacePendingChange) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s MarketplacePurchaseMarketplacePurchase) Encode(e *jx.Encoder) {
+func (s *MarketplacePurchaseMarketplacePurchase) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MarketplacePurchaseMarketplacePurchase) encodeFields(e *jx.Encoder) {
+func (s *MarketplacePurchaseMarketplacePurchase) encodeFields(e *jx.Encoder) {
 	{
 		if s.BillingCycle.Set {
 			e.FieldStart("billing_cycle")
@@ -66052,7 +66052,7 @@ func (s *MarketplacePurchaseMarketplacePurchase) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MarketplacePurchaseMarketplacePurchase) MarshalJSON() ([]byte, error) {
+func (s *MarketplacePurchaseMarketplacePurchase) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -66065,14 +66065,14 @@ func (s *MarketplacePurchaseMarketplacePurchase) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s MergedUpstream) Encode(e *jx.Encoder) {
+func (s *MergedUpstream) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MergedUpstream) encodeFields(e *jx.Encoder) {
+func (s *MergedUpstream) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -66149,7 +66149,7 @@ func (s *MergedUpstream) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MergedUpstream) MarshalJSON() ([]byte, error) {
+func (s *MergedUpstream) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -66204,14 +66204,14 @@ func (s *MergedUpstreamMergeType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MetaRootOK) Encode(e *jx.Encoder) {
+func (s *MetaRootOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MetaRootOK) encodeFields(e *jx.Encoder) {
+func (s *MetaRootOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("current_user_url")
@@ -66867,7 +66867,7 @@ func (s *MetaRootOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MetaRootOK) MarshalJSON() ([]byte, error) {
+func (s *MetaRootOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -66880,14 +66880,14 @@ func (s *MetaRootOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Migration) Encode(e *jx.Encoder) {
+func (s *Migration) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Migration) encodeFields(e *jx.Encoder) {
+func (s *Migration) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -67275,7 +67275,7 @@ func (s *Migration) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Migration) MarshalJSON() ([]byte, error) {
+func (s *Migration) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67288,8 +67288,8 @@ func (s *Migration) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67313,7 +67313,7 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67326,8 +67326,8 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Un
 }
 
 // Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound as json.
-func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67351,7 +67351,7 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67364,8 +67364,8 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) Unm
 }
 
 // Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67389,7 +67389,7 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67402,8 +67402,8 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // Encode encodes MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67427,7 +67427,7 @@ func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67440,8 +67440,8 @@ func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) Unmar
 }
 
 // Encode encodes MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67465,7 +67465,7 @@ func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67528,8 +67528,8 @@ func (s *MigrationsGetCommitAuthorsOKApplicationJSON) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67553,7 +67553,7 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67566,8 +67566,8 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Unmars
 }
 
 // Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound as json.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67591,7 +67591,7 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67604,8 +67604,8 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Unmarsh
 }
 
 // Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67629,7 +67629,7 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67642,8 +67642,8 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Unm
 }
 
 // Encode encodes MigrationsListForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67667,7 +67667,7 @@ func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67680,8 +67680,8 @@ func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) UnmarshalJS
 }
 
 // Encode encodes MigrationsListForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67705,7 +67705,7 @@ func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67718,14 +67718,14 @@ func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Unmarsha
 }
 
 // Encode implements json.Marshaler.
-func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Encoder) {
+func (s *MigrationsMapCommitAuthorReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MigrationsMapCommitAuthorReq) encodeFields(e *jx.Encoder) {
+func (s *MigrationsMapCommitAuthorReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Email.Set {
 			e.FieldStart("email")
@@ -67785,7 +67785,7 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsMapCommitAuthorReq) MarshalJSON() ([]byte, error) {
+func (s *MigrationsMapCommitAuthorReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67798,14 +67798,14 @@ func (s *MigrationsMapCommitAuthorReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MigrationsSetLfsPreferenceReq) Encode(e *jx.Encoder) {
+func (s *MigrationsSetLfsPreferenceReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MigrationsSetLfsPreferenceReq) encodeFields(e *jx.Encoder) {
+func (s *MigrationsSetLfsPreferenceReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("use_lfs")
@@ -67880,7 +67880,7 @@ func (s *MigrationsSetLfsPreferenceReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsSetLfsPreferenceReq) MarshalJSON() ([]byte, error) {
+func (s *MigrationsSetLfsPreferenceReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67933,8 +67933,8 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes MigrationsStartForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67958,7 +67958,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONForbidden) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -67971,8 +67971,8 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONForbidden) UnmarshalJ
 }
 
 // Encode encodes MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -67996,7 +67996,7 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68009,14 +68009,14 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Unmarsh
 }
 
 // Encode implements json.Marshaler.
-func (s MigrationsStartForAuthenticatedUserReq) Encode(e *jx.Encoder) {
+func (s *MigrationsStartForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MigrationsStartForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
+func (s *MigrationsStartForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.LockRepositories.Set {
 			e.FieldStart("lock_repositories")
@@ -68201,7 +68201,7 @@ func (s *MigrationsStartForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsStartForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
+func (s *MigrationsStartForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68252,14 +68252,14 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) UnmarshalJSON(data [
 }
 
 // Encode implements json.Marshaler.
-func (s MigrationsStartForOrgReq) Encode(e *jx.Encoder) {
+func (s *MigrationsStartForOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MigrationsStartForOrgReq) encodeFields(e *jx.Encoder) {
+func (s *MigrationsStartForOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("repositories")
@@ -68445,7 +68445,7 @@ func (s *MigrationsStartForOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsStartForOrgReq) MarshalJSON() ([]byte, error) {
+func (s *MigrationsStartForOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68496,14 +68496,14 @@ func (s *MigrationsStartForOrgReqExcludeItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MigrationsStartImportReq) Encode(e *jx.Encoder) {
+func (s *MigrationsStartImportReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MigrationsStartImportReq) encodeFields(e *jx.Encoder) {
+func (s *MigrationsStartImportReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("vcs_url")
@@ -68648,7 +68648,7 @@ func (s *MigrationsStartImportReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsStartImportReq) MarshalJSON() ([]byte, error) {
+func (s *MigrationsStartImportReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68705,8 +68705,8 @@ func (s *MigrationsStartImportReqVcs) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -68730,7 +68730,7 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68743,8 +68743,8 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) Unmar
 }
 
 // Encode encodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound as json.
-func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -68768,7 +68768,7 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68781,8 +68781,8 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) Unmars
 }
 
 // Encode encodes MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -68806,7 +68806,7 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68819,14 +68819,14 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Un
 }
 
 // Encode implements json.Marshaler.
-func (s MigrationsUpdateImportReq) Encode(e *jx.Encoder) {
+func (s *MigrationsUpdateImportReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MigrationsUpdateImportReq) encodeFields(e *jx.Encoder) {
+func (s *MigrationsUpdateImportReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.VcsUsername.Set {
 			e.FieldStart("vcs_username")
@@ -68920,7 +68920,7 @@ func (s *MigrationsUpdateImportReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MigrationsUpdateImportReq) MarshalJSON() ([]byte, error) {
+func (s *MigrationsUpdateImportReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -68933,14 +68933,14 @@ func (s *MigrationsUpdateImportReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Milestone) Encode(e *jx.Encoder) {
+func (s *Milestone) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Milestone) encodeFields(e *jx.Encoder) {
+func (s *Milestone) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -69279,7 +69279,7 @@ func (s *Milestone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Milestone) MarshalJSON() ([]byte, error) {
+func (s *Milestone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -69332,14 +69332,14 @@ func (s *MilestoneState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MinimalRepository) Encode(e *jx.Encoder) {
+func (s *MinimalRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MinimalRepository) encodeFields(e *jx.Encoder) {
+func (s *MinimalRepository) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -70891,7 +70891,7 @@ func (s *MinimalRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MinimalRepository) MarshalJSON() ([]byte, error) {
+func (s *MinimalRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -70904,14 +70904,14 @@ func (s *MinimalRepository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MinimalRepositoryLicense) Encode(e *jx.Encoder) {
+func (s *MinimalRepositoryLicense) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MinimalRepositoryLicense) encodeFields(e *jx.Encoder) {
+func (s *MinimalRepositoryLicense) encodeFields(e *jx.Encoder) {
 	{
 		if s.Key.Set {
 			e.FieldStart("key")
@@ -71022,7 +71022,7 @@ func (s *MinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MinimalRepositoryLicense) MarshalJSON() ([]byte, error) {
+func (s *MinimalRepositoryLicense) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -71035,14 +71035,14 @@ func (s *MinimalRepositoryLicense) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MinimalRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *MinimalRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MinimalRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *MinimalRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Admin.Set {
 			e.FieldStart("admin")
@@ -71153,7 +71153,7 @@ func (s *MinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MinimalRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *MinimalRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -72851,14 +72851,14 @@ func (s *NilURI) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableCodeOfConductSimple) Encode(e *jx.Encoder) {
+func (s *NullableCodeOfConductSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableCodeOfConductSimple) encodeFields(e *jx.Encoder) {
+func (s *NullableCodeOfConductSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -72987,7 +72987,7 @@ func (s *NullableCodeOfConductSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableCodeOfConductSimple) MarshalJSON() ([]byte, error) {
+func (s *NullableCodeOfConductSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73000,14 +73000,14 @@ func (s *NullableCodeOfConductSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableCommunityHealthFile) Encode(e *jx.Encoder) {
+func (s *NullableCommunityHealthFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableCommunityHealthFile) encodeFields(e *jx.Encoder) {
+func (s *NullableCommunityHealthFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -73102,7 +73102,7 @@ func (s *NullableCommunityHealthFile) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableCommunityHealthFile) MarshalJSON() ([]byte, error) {
+func (s *NullableCommunityHealthFile) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73115,14 +73115,14 @@ func (s *NullableCommunityHealthFile) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableGitUser) Encode(e *jx.Encoder) {
+func (s *NullableGitUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableGitUser) encodeFields(e *jx.Encoder) {
+func (s *NullableGitUser) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -73199,7 +73199,7 @@ func (s *NullableGitUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableGitUser) MarshalJSON() ([]byte, error) {
+func (s *NullableGitUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73212,14 +73212,14 @@ func (s *NullableGitUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableIntegration) Encode(e *jx.Encoder) {
+func (s *NullableIntegration) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableIntegration) encodeFields(e *jx.Encoder) {
+func (s *NullableIntegration) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -73586,7 +73586,7 @@ func (s *NullableIntegration) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableIntegration) MarshalJSON() ([]byte, error) {
+func (s *NullableIntegration) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73599,14 +73599,14 @@ func (s *NullableIntegration) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableIntegrationPermissions) Encode(e *jx.Encoder) {
+func (s *NullableIntegrationPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableIntegrationPermissions) encodeFields(e *jx.Encoder) {
+func (s *NullableIntegrationPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Issues.Set {
 			e.FieldStart("issues")
@@ -73734,7 +73734,7 @@ func (s *NullableIntegrationPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableIntegrationPermissions) MarshalJSON() ([]byte, error) {
+func (s *NullableIntegrationPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73803,14 +73803,14 @@ func (s *NullableIntegrationPermissionsAdditional) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s NullableLicenseSimple) Encode(e *jx.Encoder) {
+func (s *NullableLicenseSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableLicenseSimple) encodeFields(e *jx.Encoder) {
+func (s *NullableLicenseSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -73972,7 +73972,7 @@ func (s *NullableLicenseSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableLicenseSimple) MarshalJSON() ([]byte, error) {
+func (s *NullableLicenseSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73985,14 +73985,14 @@ func (s *NullableLicenseSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableMilestone) Encode(e *jx.Encoder) {
+func (s *NullableMilestone) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableMilestone) encodeFields(e *jx.Encoder) {
+func (s *NullableMilestone) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -74331,7 +74331,7 @@ func (s *NullableMilestone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableMilestone) MarshalJSON() ([]byte, error) {
+func (s *NullableMilestone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -74384,14 +74384,14 @@ func (s *NullableMilestoneState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableMinimalRepository) Encode(e *jx.Encoder) {
+func (s *NullableMinimalRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableMinimalRepository) encodeFields(e *jx.Encoder) {
+func (s *NullableMinimalRepository) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -75943,7 +75943,7 @@ func (s *NullableMinimalRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableMinimalRepository) MarshalJSON() ([]byte, error) {
+func (s *NullableMinimalRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -75956,14 +75956,14 @@ func (s *NullableMinimalRepository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableMinimalRepositoryLicense) Encode(e *jx.Encoder) {
+func (s *NullableMinimalRepositoryLicense) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableMinimalRepositoryLicense) encodeFields(e *jx.Encoder) {
+func (s *NullableMinimalRepositoryLicense) encodeFields(e *jx.Encoder) {
 	{
 		if s.Key.Set {
 			e.FieldStart("key")
@@ -76074,7 +76074,7 @@ func (s *NullableMinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableMinimalRepositoryLicense) MarshalJSON() ([]byte, error) {
+func (s *NullableMinimalRepositoryLicense) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -76087,14 +76087,14 @@ func (s *NullableMinimalRepositoryLicense) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableMinimalRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *NullableMinimalRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableMinimalRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *NullableMinimalRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Admin.Set {
 			e.FieldStart("admin")
@@ -76205,7 +76205,7 @@ func (s *NullableMinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableMinimalRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *NullableMinimalRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -76218,14 +76218,14 @@ func (s *NullableMinimalRepositoryPermissions) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s NullableRepository) Encode(e *jx.Encoder) {
+func (s *NullableRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableRepository) encodeFields(e *jx.Encoder) {
+func (s *NullableRepository) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -77894,7 +77894,7 @@ func (s *NullableRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableRepository) MarshalJSON() ([]byte, error) {
+func (s *NullableRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -77907,14 +77907,14 @@ func (s *NullableRepository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *NullableRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *NullableRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -78061,7 +78061,7 @@ func (s *NullableRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *NullableRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -78074,14 +78074,14 @@ func (s *NullableRepositoryPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableRepositoryTemplateRepository) Encode(e *jx.Encoder) {
+func (s *NullableRepositoryTemplateRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableRepositoryTemplateRepository) encodeFields(e *jx.Encoder) {
+func (s *NullableRepositoryTemplateRepository) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -79497,7 +79497,7 @@ func (s *NullableRepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableRepositoryTemplateRepository) MarshalJSON() ([]byte, error) {
+func (s *NullableRepositoryTemplateRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -79510,14 +79510,14 @@ func (s *NullableRepositoryTemplateRepository) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s NullableRepositoryTemplateRepositoryOwner) Encode(e *jx.Encoder) {
+func (s *NullableRepositoryTemplateRepositoryOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableRepositoryTemplateRepositoryOwner) encodeFields(e *jx.Encoder) {
+func (s *NullableRepositoryTemplateRepositoryOwner) encodeFields(e *jx.Encoder) {
 	{
 		if s.Login.Set {
 			e.FieldStart("login")
@@ -79849,7 +79849,7 @@ func (s *NullableRepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableRepositoryTemplateRepositoryOwner) MarshalJSON() ([]byte, error) {
+func (s *NullableRepositoryTemplateRepositoryOwner) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -79862,14 +79862,14 @@ func (s *NullableRepositoryTemplateRepositoryOwner) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s NullableRepositoryTemplateRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *NullableRepositoryTemplateRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableRepositoryTemplateRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *NullableRepositoryTemplateRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Admin.Set {
 			e.FieldStart("admin")
@@ -79980,7 +79980,7 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableRepositoryTemplateRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *NullableRepositoryTemplateRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -79993,14 +79993,14 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s NullableScopedInstallation) Encode(e *jx.Encoder) {
+func (s *NullableScopedInstallation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableScopedInstallation) encodeFields(e *jx.Encoder) {
+func (s *NullableScopedInstallation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("permissions")
@@ -80188,7 +80188,7 @@ func (s *NullableScopedInstallation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableScopedInstallation) MarshalJSON() ([]byte, error) {
+func (s *NullableScopedInstallation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -80241,14 +80241,14 @@ func (s *NullableScopedInstallationRepositorySelection) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s NullableSimpleCommit) Encode(e *jx.Encoder) {
+func (s *NullableSimpleCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableSimpleCommit) encodeFields(e *jx.Encoder) {
+func (s *NullableSimpleCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -80411,7 +80411,7 @@ func (s *NullableSimpleCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableSimpleCommit) MarshalJSON() ([]byte, error) {
+func (s *NullableSimpleCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -80424,14 +80424,14 @@ func (s *NullableSimpleCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableSimpleCommitAuthor) Encode(e *jx.Encoder) {
+func (s *NullableSimpleCommitAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableSimpleCommitAuthor) encodeFields(e *jx.Encoder) {
+func (s *NullableSimpleCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -80526,7 +80526,7 @@ func (s *NullableSimpleCommitAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableSimpleCommitAuthor) MarshalJSON() ([]byte, error) {
+func (s *NullableSimpleCommitAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -80539,14 +80539,14 @@ func (s *NullableSimpleCommitAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableSimpleCommitCommitter) Encode(e *jx.Encoder) {
+func (s *NullableSimpleCommitCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableSimpleCommitCommitter) encodeFields(e *jx.Encoder) {
+func (s *NullableSimpleCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -80641,7 +80641,7 @@ func (s *NullableSimpleCommitCommitter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableSimpleCommitCommitter) MarshalJSON() ([]byte, error) {
+func (s *NullableSimpleCommitCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -80654,14 +80654,14 @@ func (s *NullableSimpleCommitCommitter) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableSimpleUser) Encode(e *jx.Encoder) {
+func (s *NullableSimpleUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableSimpleUser) encodeFields(e *jx.Encoder) {
+func (s *NullableSimpleUser) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -81095,7 +81095,7 @@ func (s *NullableSimpleUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableSimpleUser) MarshalJSON() ([]byte, error) {
+func (s *NullableSimpleUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81108,14 +81108,14 @@ func (s *NullableSimpleUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableTeamSimple) Encode(e *jx.Encoder) {
+func (s *NullableTeamSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NullableTeamSimple) encodeFields(e *jx.Encoder) {
+func (s *NullableTeamSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -81387,7 +81387,7 @@ func (s *NullableTeamSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NullableTeamSimple) MarshalJSON() ([]byte, error) {
+func (s *NullableTeamSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81400,8 +81400,8 @@ func (s *NullableTeamSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81425,7 +81425,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81438,8 +81438,8 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) Unmarsh
 }
 
 // Encode encodes OAuthAuthorizationsCreateAuthorizationApplicationJSONGone as json.
-func (s OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81463,7 +81463,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81476,8 +81476,8 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) UnmarshalJSO
 }
 
 // Encode encodes OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81501,7 +81501,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81514,14 +81514,14 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) Unma
 }
 
 // Encode implements json.Marshaler.
-func (s OAuthAuthorizationsCreateAuthorizationReq) Encode(e *jx.Encoder) {
+func (s *OAuthAuthorizationsCreateAuthorizationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OAuthAuthorizationsCreateAuthorizationReq) encodeFields(e *jx.Encoder) {
+func (s *OAuthAuthorizationsCreateAuthorizationReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scopes.Set {
 			e.FieldStart("scopes")
@@ -81649,7 +81649,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsCreateAuthorizationReq) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsCreateAuthorizationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81662,8 +81662,8 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81687,7 +81687,7 @@ func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81700,8 +81700,8 @@ func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) Unmarsh
 }
 
 // Encode encodes OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81725,7 +81725,7 @@ func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81738,8 +81738,8 @@ func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Unma
 }
 
 // Encode encodes OAuthAuthorizationsDeleteGrantApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81763,7 +81763,7 @@ func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81776,8 +81776,8 @@ func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) UnmarshalJSON(d
 }
 
 // Encode encodes OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81801,7 +81801,7 @@ func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81814,8 +81814,8 @@ func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) UnmarshalJSO
 }
 
 // Encode encodes OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81839,7 +81839,7 @@ func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81852,8 +81852,8 @@ func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) UnmarshalJ
 }
 
 // Encode encodes OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81877,7 +81877,7 @@ func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81890,8 +81890,8 @@ func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) Unmarsh
 }
 
 // Encode encodes OAuthAuthorizationsGetGrantApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsGetGrantApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsGetGrantApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81915,7 +81915,7 @@ func (s *OAuthAuthorizationsGetGrantApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetGrantApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetGrantApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81928,8 +81928,8 @@ func (s *OAuthAuthorizationsGetGrantApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes OAuthAuthorizationsGetGrantApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -81953,7 +81953,7 @@ func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -81966,14 +81966,14 @@ func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) UnmarshalJSON(d
 }
 
 // Encode implements json.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Encode(e *jx.Encoder) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) encodeFields(e *jx.Encoder) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("client_secret")
@@ -82101,7 +82101,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82114,8 +82114,8 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Unm
 }
 
 // Encode encodes OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82139,7 +82139,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidd
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82152,8 +82152,8 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidd
 }
 
 // Encode encodes OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82177,7 +82177,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnautho
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82190,14 +82190,14 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnautho
 }
 
 // Encode implements json.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Encode(e *jx.Encoder) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) encodeFields(e *jx.Encoder) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("client_secret")
@@ -82342,7 +82342,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82355,8 +82355,8 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) UnmarshalJSON(dat
 }
 
 // Encode encodes OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82380,7 +82380,7 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82393,8 +82393,8 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) Unmarsha
 }
 
 // Encode encodes OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound as json.
-func (s OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82418,7 +82418,7 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82431,8 +82431,8 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) Unmarshal
 }
 
 // Encode encodes OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82456,7 +82456,7 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82469,8 +82469,8 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) Unmar
 }
 
 // Encode encodes OAuthAuthorizationsListGrantsApplicationJSONForbidden as json.
-func (s OAuthAuthorizationsListGrantsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82494,7 +82494,7 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsListGrantsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82507,8 +82507,8 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes OAuthAuthorizationsListGrantsApplicationJSONNotFound as json.
-func (s OAuthAuthorizationsListGrantsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsListGrantsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82532,7 +82532,7 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONNotFound) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsListGrantsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsListGrantsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82545,8 +82545,8 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONNotFound) UnmarshalJSON(dat
 }
 
 // Encode encodes OAuthAuthorizationsListGrantsApplicationJSONUnauthorized as json.
-func (s OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -82570,7 +82570,7 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82583,14 +82583,14 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) UnmarshalJSON
 }
 
 // Encode implements json.Marshaler.
-func (s OAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Encoder) {
+func (s *OAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OAuthAuthorizationsUpdateAuthorizationReq) encodeFields(e *jx.Encoder) {
+func (s *OAuthAuthorizationsUpdateAuthorizationReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scopes.Set {
 			e.FieldStart("scopes")
@@ -82744,7 +82744,7 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OAuthAuthorizationsUpdateAuthorizationReq) MarshalJSON() ([]byte, error) {
+func (s *OAuthAuthorizationsUpdateAuthorizationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -94657,14 +94657,14 @@ func (s *OptWorkflowRunUsageBillableWINDOWS) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgHook) Encode(e *jx.Encoder) {
+func (s *OrgHook) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgHook) encodeFields(e *jx.Encoder) {
+func (s *OrgHook) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -94931,7 +94931,7 @@ func (s *OrgHook) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgHook) MarshalJSON() ([]byte, error) {
+func (s *OrgHook) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -94944,14 +94944,14 @@ func (s *OrgHook) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgHookConfig) Encode(e *jx.Encoder) {
+func (s *OrgHookConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgHookConfig) encodeFields(e *jx.Encoder) {
+func (s *OrgHookConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -95045,7 +95045,7 @@ func (s *OrgHookConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgHookConfig) MarshalJSON() ([]byte, error) {
+func (s *OrgHookConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -95058,14 +95058,14 @@ func (s *OrgHookConfig) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgMembership) Encode(e *jx.Encoder) {
+func (s *OrgMembership) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgMembership) encodeFields(e *jx.Encoder) {
+func (s *OrgMembership) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -95241,7 +95241,7 @@ func (s *OrgMembership) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgMembership) MarshalJSON() ([]byte, error) {
+func (s *OrgMembership) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -95254,14 +95254,14 @@ func (s *OrgMembership) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgMembershipPermissions) Encode(e *jx.Encoder) {
+func (s *OrgMembershipPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgMembershipPermissions) encodeFields(e *jx.Encoder) {
+func (s *OrgMembershipPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("can_create_repository")
@@ -95338,7 +95338,7 @@ func (s *OrgMembershipPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgMembershipPermissions) MarshalJSON() ([]byte, error) {
+func (s *OrgMembershipPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -95433,14 +95433,14 @@ func (s *OrgMembershipState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrganizationActionsSecret) Encode(e *jx.Encoder) {
+func (s *OrganizationActionsSecret) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrganizationActionsSecret) encodeFields(e *jx.Encoder) {
+func (s *OrganizationActionsSecret) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -95586,7 +95586,7 @@ func (s *OrganizationActionsSecret) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrganizationActionsSecret) MarshalJSON() ([]byte, error) {
+func (s *OrganizationActionsSecret) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -95641,14 +95641,14 @@ func (s *OrganizationActionsSecretVisibility) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrganizationFull) Encode(e *jx.Encoder) {
+func (s *OrganizationFull) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrganizationFull) encodeFields(e *jx.Encoder) {
+func (s *OrganizationFull) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -96514,7 +96514,7 @@ func (s *OrganizationFull) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrganizationFull) MarshalJSON() ([]byte, error) {
+func (s *OrganizationFull) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -96527,14 +96527,14 @@ func (s *OrganizationFull) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrganizationFullPlan) Encode(e *jx.Encoder) {
+func (s *OrganizationFullPlan) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrganizationFullPlan) encodeFields(e *jx.Encoder) {
+func (s *OrganizationFullPlan) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -96681,7 +96681,7 @@ func (s *OrganizationFullPlan) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrganizationFullPlan) MarshalJSON() ([]byte, error) {
+func (s *OrganizationFullPlan) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -96694,14 +96694,14 @@ func (s *OrganizationFullPlan) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrganizationInvitation) Encode(e *jx.Encoder) {
+func (s *OrganizationInvitation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrganizationInvitation) encodeFields(e *jx.Encoder) {
+func (s *OrganizationInvitation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -96951,7 +96951,7 @@ func (s *OrganizationInvitation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrganizationInvitation) MarshalJSON() ([]byte, error) {
+func (s *OrganizationInvitation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -96964,14 +96964,14 @@ func (s *OrganizationInvitation) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrganizationSecretScanningAlert) Encode(e *jx.Encoder) {
+func (s *OrganizationSecretScanningAlert) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrganizationSecretScanningAlert) encodeFields(e *jx.Encoder) {
+func (s *OrganizationSecretScanningAlert) encodeFields(e *jx.Encoder) {
 	{
 		if s.Number.Set {
 			e.FieldStart("number")
@@ -97201,7 +97201,7 @@ func (s *OrganizationSecretScanningAlert) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrganizationSecretScanningAlert) MarshalJSON() ([]byte, error) {
+func (s *OrganizationSecretScanningAlert) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -97214,14 +97214,14 @@ func (s *OrganizationSecretScanningAlert) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrganizationSimple) Encode(e *jx.Encoder) {
+func (s *OrganizationSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrganizationSimple) encodeFields(e *jx.Encoder) {
+func (s *OrganizationSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -97495,7 +97495,7 @@ func (s *OrganizationSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrganizationSimple) MarshalJSON() ([]byte, error) {
+func (s *OrganizationSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -97508,14 +97508,14 @@ func (s *OrganizationSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Encoder) {
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsConvertMemberToOutsideCollaboratorAccepted) encodeFields(e *jx.Encoder) {
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfOrgsConvertMemberToOutsideCollaboratorAccepted = [0]string{}
@@ -97540,7 +97540,7 @@ func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsConvertMemberToOutsideCollaboratorAccepted) MarshalJSON() ([]byte, error) {
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -97553,14 +97553,14 @@ func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsCreateInvitationReq) Encode(e *jx.Encoder) {
+func (s *OrgsCreateInvitationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsCreateInvitationReq) encodeFields(e *jx.Encoder) {
+func (s *OrgsCreateInvitationReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.InviteeID.Set {
 			e.FieldStart("invitee_id")
@@ -97668,7 +97668,7 @@ func (s *OrgsCreateInvitationReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsCreateInvitationReq) MarshalJSON() ([]byte, error) {
+func (s *OrgsCreateInvitationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -97723,14 +97723,14 @@ func (s *OrgsCreateInvitationReqRole) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsCreateWebhookReq) Encode(e *jx.Encoder) {
+func (s *OrgsCreateWebhookReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsCreateWebhookReq) encodeFields(e *jx.Encoder) {
+func (s *OrgsCreateWebhookReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -97871,7 +97871,7 @@ func (s *OrgsCreateWebhookReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsCreateWebhookReq) MarshalJSON() ([]byte, error) {
+func (s *OrgsCreateWebhookReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -97884,14 +97884,14 @@ func (s *OrgsCreateWebhookReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsCreateWebhookReqConfig) Encode(e *jx.Encoder) {
+func (s *OrgsCreateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsCreateWebhookReqConfig) encodeFields(e *jx.Encoder) {
+func (s *OrgsCreateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -98051,7 +98051,7 @@ func (s *OrgsCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsCreateWebhookReqConfig) MarshalJSON() ([]byte, error) {
+func (s *OrgsCreateWebhookReqConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98064,8 +98064,8 @@ func (s *OrgsCreateWebhookReqConfig) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden as json.
-func (s OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98089,7 +98089,7 @@ func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98102,8 +98102,8 @@ func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) Unmarsha
 }
 
 // Encode encodes OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound as json.
-func (s OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98127,7 +98127,7 @@ func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98140,8 +98140,8 @@ func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) Unmarshal
 }
 
 // Encode encodes OrgsGetMembershipForUserApplicationJSONForbidden as json.
-func (s OrgsGetMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsGetMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98165,7 +98165,7 @@ func (s *OrgsGetMembershipForUserApplicationJSONForbidden) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsGetMembershipForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OrgsGetMembershipForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98178,8 +98178,8 @@ func (s *OrgsGetMembershipForUserApplicationJSONForbidden) UnmarshalJSON(data []
 }
 
 // Encode encodes OrgsGetMembershipForUserApplicationJSONNotFound as json.
-func (s OrgsGetMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsGetMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98203,7 +98203,7 @@ func (s *OrgsGetMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsGetMembershipForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *OrgsGetMembershipForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98266,8 +98266,8 @@ func (s *OrgsListBlockedUsersOKApplicationJSON) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes OrgsListForAuthenticatedUserApplicationJSONForbidden as json.
-func (s OrgsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98291,7 +98291,7 @@ func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98304,8 +98304,8 @@ func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) UnmarshalJSON(dat
 }
 
 // Encode encodes OrgsListForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98329,7 +98329,7 @@ func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsListForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98342,8 +98342,8 @@ func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) UnmarshalJSON(
 }
 
 // Encode encodes OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden as json.
-func (s OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98367,7 +98367,7 @@ func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98380,8 +98380,8 @@ func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) Unmars
 }
 
 // Encode encodes OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98405,7 +98405,7 @@ func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98468,8 +98468,8 @@ func (s *OrgsListWebhookDeliveriesOKApplicationJSON) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes OrgsRemoveMembershipForUserApplicationJSONForbidden as json.
-func (s OrgsRemoveMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsRemoveMembershipForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98493,7 +98493,7 @@ func (s *OrgsRemoveMembershipForUserApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsRemoveMembershipForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OrgsRemoveMembershipForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98506,8 +98506,8 @@ func (s *OrgsRemoveMembershipForUserApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes OrgsRemoveMembershipForUserApplicationJSONNotFound as json.
-func (s OrgsRemoveMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98531,7 +98531,7 @@ func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsRemoveMembershipForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98544,14 +98544,14 @@ func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) Encode(e *jx.Encoder) {
+func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) encodeFields(e *jx.Encoder) {
+func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -98611,7 +98611,7 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) MarshalJSON() ([]byte, error) {
+func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98624,14 +98624,14 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsSetMembershipForUserReq) Encode(e *jx.Encoder) {
+func (s *OrgsSetMembershipForUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsSetMembershipForUserReq) encodeFields(e *jx.Encoder) {
+func (s *OrgsSetMembershipForUserReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Role.Set {
 			e.FieldStart("role")
@@ -98675,7 +98675,7 @@ func (s *OrgsSetMembershipForUserReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsSetMembershipForUserReq) MarshalJSON() ([]byte, error) {
+func (s *OrgsSetMembershipForUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98728,8 +98728,8 @@ func (s *OrgsSetMembershipForUserReqRole) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden as json.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98753,7 +98753,7 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98766,8 +98766,8 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) Unmar
 }
 
 // Encode encodes OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound as json.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -98791,7 +98791,7 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98804,14 +98804,14 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) Unmars
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsUpdateMembershipForAuthenticatedUserReq) Encode(e *jx.Encoder) {
+func (s *OrgsUpdateMembershipForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsUpdateMembershipForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
+func (s *OrgsUpdateMembershipForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -98886,7 +98886,7 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReq) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsUpdateMembershipForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
+func (s *OrgsUpdateMembershipForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -98937,14 +98937,14 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReqState) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Encoder) {
+func (s *OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsUpdateWebhookConfigForOrgReq) encodeFields(e *jx.Encoder) {
+func (s *OrgsUpdateWebhookConfigForOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -99038,7 +99038,7 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsUpdateWebhookConfigForOrgReq) MarshalJSON() ([]byte, error) {
+func (s *OrgsUpdateWebhookConfigForOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -99051,14 +99051,14 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsUpdateWebhookReq) Encode(e *jx.Encoder) {
+func (s *OrgsUpdateWebhookReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsUpdateWebhookReq) encodeFields(e *jx.Encoder) {
+func (s *OrgsUpdateWebhookReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Config.Set {
 			e.FieldStart("config")
@@ -99166,7 +99166,7 @@ func (s *OrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsUpdateWebhookReq) MarshalJSON() ([]byte, error) {
+func (s *OrgsUpdateWebhookReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -99179,14 +99179,14 @@ func (s *OrgsUpdateWebhookReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrgsUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
+func (s *OrgsUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OrgsUpdateWebhookReqConfig) encodeFields(e *jx.Encoder) {
+func (s *OrgsUpdateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -99312,7 +99312,7 @@ func (s *OrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OrgsUpdateWebhookReqConfig) MarshalJSON() ([]byte, error) {
+func (s *OrgsUpdateWebhookReqConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -99325,14 +99325,14 @@ func (s *OrgsUpdateWebhookReqConfig) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Package) Encode(e *jx.Encoder) {
+func (s *Package) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Package) encodeFields(e *jx.Encoder) {
+func (s *Package) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -99584,7 +99584,7 @@ func (s *Package) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Package) MarshalJSON() ([]byte, error) {
+func (s *Package) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -99645,14 +99645,14 @@ func (s *PackagePackageType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PackageVersion) Encode(e *jx.Encoder) {
+func (s *PackageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PackageVersion) encodeFields(e *jx.Encoder) {
+func (s *PackageVersion) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -99905,7 +99905,7 @@ func (s *PackageVersion) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackageVersion) MarshalJSON() ([]byte, error) {
+func (s *PackageVersion) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -99918,14 +99918,14 @@ func (s *PackageVersion) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PackageVersionMetadata) Encode(e *jx.Encoder) {
+func (s *PackageVersionMetadata) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PackageVersionMetadata) encodeFields(e *jx.Encoder) {
+func (s *PackageVersionMetadata) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("package_type")
@@ -100034,7 +100034,7 @@ func (s *PackageVersionMetadata) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackageVersionMetadata) MarshalJSON() ([]byte, error) {
+func (s *PackageVersionMetadata) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100047,14 +100047,14 @@ func (s *PackageVersionMetadata) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PackageVersionMetadataContainer) Encode(e *jx.Encoder) {
+func (s *PackageVersionMetadataContainer) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PackageVersionMetadataContainer) encodeFields(e *jx.Encoder) {
+func (s *PackageVersionMetadataContainer) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("tags")
@@ -100145,7 +100145,7 @@ func (s *PackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackageVersionMetadataContainer) MarshalJSON() ([]byte, error) {
+func (s *PackageVersionMetadataContainer) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100158,14 +100158,14 @@ func (s *PackageVersionMetadataContainer) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PackageVersionMetadataDocker) Encode(e *jx.Encoder) {
+func (s *PackageVersionMetadataDocker) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PackageVersionMetadataDocker) encodeFields(e *jx.Encoder) {
+func (s *PackageVersionMetadataDocker) encodeFields(e *jx.Encoder) {
 	{
 		if s.Tag != nil {
 			e.FieldStart("tag")
@@ -100223,7 +100223,7 @@ func (s *PackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackageVersionMetadataDocker) MarshalJSON() ([]byte, error) {
+func (s *PackageVersionMetadataDocker) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100324,14 +100324,14 @@ func (s *PackageVisibility) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PackagesBillingUsage) Encode(e *jx.Encoder) {
+func (s *PackagesBillingUsage) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PackagesBillingUsage) encodeFields(e *jx.Encoder) {
+func (s *PackagesBillingUsage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_gigabytes_bandwidth_used")
@@ -100444,7 +100444,7 @@ func (s *PackagesBillingUsage) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesBillingUsage) MarshalJSON() ([]byte, error) {
+func (s *PackagesBillingUsage) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100457,8 +100457,8 @@ func (s *PackagesBillingUsage) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden as json.
-func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100482,7 +100482,7 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100495,8 +100495,8 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) Unma
 }
 
 // Encode encodes PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound as json.
-func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100520,7 +100520,7 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100533,8 +100533,8 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) Unmar
 }
 
 // Encode encodes PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100558,7 +100558,7 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100571,8 +100571,8 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) U
 }
 
 // Encode encodes PackagesDeletePackageForOrgApplicationJSONForbidden as json.
-func (s PackagesDeletePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100596,7 +100596,7 @@ func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100609,8 +100609,8 @@ func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes PackagesDeletePackageForOrgApplicationJSONNotFound as json.
-func (s PackagesDeletePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100634,7 +100634,7 @@ func (s *PackagesDeletePackageForOrgApplicationJSONNotFound) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100647,8 +100647,8 @@ func (s *PackagesDeletePackageForOrgApplicationJSONNotFound) UnmarshalJSON(data 
 }
 
 // Encode encodes PackagesDeletePackageForOrgApplicationJSONUnauthorized as json.
-func (s PackagesDeletePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100672,7 +100672,7 @@ func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100685,8 +100685,8 @@ func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) UnmarshalJSON(d
 }
 
 // Encode encodes PackagesDeletePackageForUserApplicationJSONForbidden as json.
-func (s PackagesDeletePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100710,7 +100710,7 @@ func (s *PackagesDeletePackageForUserApplicationJSONForbidden) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100723,8 +100723,8 @@ func (s *PackagesDeletePackageForUserApplicationJSONForbidden) UnmarshalJSON(dat
 }
 
 // Encode encodes PackagesDeletePackageForUserApplicationJSONNotFound as json.
-func (s PackagesDeletePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100748,7 +100748,7 @@ func (s *PackagesDeletePackageForUserApplicationJSONNotFound) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100761,8 +100761,8 @@ func (s *PackagesDeletePackageForUserApplicationJSONNotFound) UnmarshalJSON(data
 }
 
 // Encode encodes PackagesDeletePackageForUserApplicationJSONUnauthorized as json.
-func (s PackagesDeletePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100786,7 +100786,7 @@ func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100799,8 +100799,8 @@ func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) UnmarshalJSON(
 }
 
 // Encode encodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden as json.
-func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100824,7 +100824,7 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidde
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100837,8 +100837,8 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidde
 }
 
 // Encode encodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound as json.
-func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100862,7 +100862,7 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100875,8 +100875,8 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
 }
 
 // Encode encodes PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100900,7 +100900,7 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthor
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100913,8 +100913,8 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthor
 }
 
 // Encode encodes PackagesDeletePackageVersionForOrgApplicationJSONForbidden as json.
-func (s PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100938,7 +100938,7 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100951,8 +100951,8 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) UnmarshalJS
 }
 
 // Encode encodes PackagesDeletePackageVersionForOrgApplicationJSONNotFound as json.
-func (s PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -100976,7 +100976,7 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -100989,8 +100989,8 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) UnmarshalJSO
 }
 
 // Encode encodes PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized as json.
-func (s PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101014,7 +101014,7 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101027,8 +101027,8 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Unmarsha
 }
 
 // Encode encodes PackagesDeletePackageVersionForUserApplicationJSONForbidden as json.
-func (s PackagesDeletePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101052,7 +101052,7 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101065,8 +101065,8 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) UnmarshalJ
 }
 
 // Encode encodes PackagesDeletePackageVersionForUserApplicationJSONNotFound as json.
-func (s PackagesDeletePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101090,7 +101090,7 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONNotFound) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101103,8 +101103,8 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONNotFound) UnmarshalJS
 }
 
 // Encode encodes PackagesDeletePackageVersionForUserApplicationJSONUnauthorized as json.
-func (s PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101128,7 +101128,7 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101141,8 +101141,8 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Unmarsh
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101166,7 +101166,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicat
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101179,8 +101179,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicat
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101204,7 +101204,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicat
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101217,8 +101217,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicat
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101242,7 +101242,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicat
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101305,8 +101305,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplic
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101330,7 +101330,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidd
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101343,8 +101343,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidd
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101368,7 +101368,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFoun
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101381,8 +101381,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFoun
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101406,7 +101406,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnautho
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101469,8 +101469,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Unm
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101494,7 +101494,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbid
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101507,8 +101507,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbid
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101532,7 +101532,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFou
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101545,8 +101545,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFou
 }
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101570,7 +101570,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauth
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101633,8 +101633,8 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Un
 }
 
 // Encode encodes PackagesListPackagesForOrganizationApplicationJSONForbidden as json.
-func (s PackagesListPackagesForOrganizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesListPackagesForOrganizationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101658,7 +101658,7 @@ func (s *PackagesListPackagesForOrganizationApplicationJSONForbidden) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesListPackagesForOrganizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesListPackagesForOrganizationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101671,8 +101671,8 @@ func (s *PackagesListPackagesForOrganizationApplicationJSONForbidden) UnmarshalJ
 }
 
 // Encode encodes PackagesListPackagesForOrganizationApplicationJSONUnauthorized as json.
-func (s PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101696,7 +101696,7 @@ func (s *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesListPackagesForOrganizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101759,8 +101759,8 @@ func (s *PackagesListPackagesForOrganizationOKApplicationJSON) UnmarshalJSON(dat
 }
 
 // Encode encodes PackagesListPackagesForUserApplicationJSONForbidden as json.
-func (s PackagesListPackagesForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesListPackagesForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101784,7 +101784,7 @@ func (s *PackagesListPackagesForUserApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesListPackagesForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesListPackagesForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101797,8 +101797,8 @@ func (s *PackagesListPackagesForUserApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes PackagesListPackagesForUserApplicationJSONUnauthorized as json.
-func (s PackagesListPackagesForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesListPackagesForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101822,7 +101822,7 @@ func (s *PackagesListPackagesForUserApplicationJSONUnauthorized) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesListPackagesForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesListPackagesForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101885,8 +101885,8 @@ func (s *PackagesListPackagesForUserOKApplicationJSON) UnmarshalJSON(data []byte
 }
 
 // Encode encodes PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden as json.
-func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101910,7 +101910,7 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101923,8 +101923,8 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) Unm
 }
 
 // Encode encodes PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound as json.
-func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101948,7 +101948,7 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101961,8 +101961,8 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) Unma
 }
 
 // Encode encodes PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -101986,7 +101986,7 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -101999,8 +101999,8 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) 
 }
 
 // Encode encodes PackagesRestorePackageForOrgApplicationJSONForbidden as json.
-func (s PackagesRestorePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102024,7 +102024,7 @@ func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102037,8 +102037,8 @@ func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) UnmarshalJSON(dat
 }
 
 // Encode encodes PackagesRestorePackageForOrgApplicationJSONNotFound as json.
-func (s PackagesRestorePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102062,7 +102062,7 @@ func (s *PackagesRestorePackageForOrgApplicationJSONNotFound) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102075,8 +102075,8 @@ func (s *PackagesRestorePackageForOrgApplicationJSONNotFound) UnmarshalJSON(data
 }
 
 // Encode encodes PackagesRestorePackageForOrgApplicationJSONUnauthorized as json.
-func (s PackagesRestorePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102100,7 +102100,7 @@ func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102113,8 +102113,8 @@ func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) UnmarshalJSON(
 }
 
 // Encode encodes PackagesRestorePackageForUserApplicationJSONForbidden as json.
-func (s PackagesRestorePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102138,7 +102138,7 @@ func (s *PackagesRestorePackageForUserApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102151,8 +102151,8 @@ func (s *PackagesRestorePackageForUserApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes PackagesRestorePackageForUserApplicationJSONNotFound as json.
-func (s PackagesRestorePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102176,7 +102176,7 @@ func (s *PackagesRestorePackageForUserApplicationJSONNotFound) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102189,8 +102189,8 @@ func (s *PackagesRestorePackageForUserApplicationJSONNotFound) UnmarshalJSON(dat
 }
 
 // Encode encodes PackagesRestorePackageForUserApplicationJSONUnauthorized as json.
-func (s PackagesRestorePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102214,7 +102214,7 @@ func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102227,8 +102227,8 @@ func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) UnmarshalJSON
 }
 
 // Encode encodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden as json.
-func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102252,7 +102252,7 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidd
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102265,8 +102265,8 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidd
 }
 
 // Encode encodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound as json.
-func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102290,7 +102290,7 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFoun
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102303,8 +102303,8 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFoun
 }
 
 // Encode encodes PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102328,7 +102328,7 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnautho
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102341,8 +102341,8 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnautho
 }
 
 // Encode encodes PackagesRestorePackageVersionForOrgApplicationJSONForbidden as json.
-func (s PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102366,7 +102366,7 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102379,8 +102379,8 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) UnmarshalJ
 }
 
 // Encode encodes PackagesRestorePackageVersionForOrgApplicationJSONNotFound as json.
-func (s PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102404,7 +102404,7 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102417,8 +102417,8 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) UnmarshalJS
 }
 
 // Encode encodes PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized as json.
-func (s PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102442,7 +102442,7 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102455,8 +102455,8 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Unmarsh
 }
 
 // Encode encodes PackagesRestorePackageVersionForUserApplicationJSONForbidden as json.
-func (s PackagesRestorePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102480,7 +102480,7 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102493,8 +102493,8 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) Unmarshal
 }
 
 // Encode encodes PackagesRestorePackageVersionForUserApplicationJSONNotFound as json.
-func (s PackagesRestorePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102518,7 +102518,7 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONNotFound) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102531,8 +102531,8 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONNotFound) UnmarshalJ
 }
 
 // Encode encodes PackagesRestorePackageVersionForUserApplicationJSONUnauthorized as json.
-func (s PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -102556,7 +102556,7 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102569,14 +102569,14 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Unmars
 }
 
 // Encode implements json.Marshaler.
-func (s Page) Encode(e *jx.Encoder) {
+func (s *Page) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Page) encodeFields(e *jx.Encoder) {
+func (s *Page) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -102825,7 +102825,7 @@ func (s *Page) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Page) MarshalJSON() ([]byte, error) {
+func (s *Page) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -102838,14 +102838,14 @@ func (s *Page) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PageBuild) Encode(e *jx.Encoder) {
+func (s *PageBuild) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PageBuild) encodeFields(e *jx.Encoder) {
+func (s *PageBuild) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -103044,7 +103044,7 @@ func (s *PageBuild) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PageBuild) MarshalJSON() ([]byte, error) {
+func (s *PageBuild) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -103057,14 +103057,14 @@ func (s *PageBuild) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PageBuildError) Encode(e *jx.Encoder) {
+func (s *PageBuildError) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PageBuildError) encodeFields(e *jx.Encoder) {
+func (s *PageBuildError) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -103139,7 +103139,7 @@ func (s *PageBuildError) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PageBuildError) MarshalJSON() ([]byte, error) {
+func (s *PageBuildError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -103152,14 +103152,14 @@ func (s *PageBuildError) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PageBuildStatus) Encode(e *jx.Encoder) {
+func (s *PageBuildStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PageBuildStatus) encodeFields(e *jx.Encoder) {
+func (s *PageBuildStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -103254,7 +103254,7 @@ func (s *PageBuildStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PageBuildStatus) MarshalJSON() ([]byte, error) {
+func (s *PageBuildStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -103351,14 +103351,14 @@ func (s *PageStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PagesHTTPSCertificate) Encode(e *jx.Encoder) {
+func (s *PagesHTTPSCertificate) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PagesHTTPSCertificate) encodeFields(e *jx.Encoder) {
+func (s *PagesHTTPSCertificate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -103500,7 +103500,7 @@ func (s *PagesHTTPSCertificate) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PagesHTTPSCertificate) MarshalJSON() ([]byte, error) {
+func (s *PagesHTTPSCertificate) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -103573,14 +103573,14 @@ func (s *PagesHTTPSCertificateState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PagesHealthCheck) Encode(e *jx.Encoder) {
+func (s *PagesHealthCheck) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PagesHealthCheck) encodeFields(e *jx.Encoder) {
+func (s *PagesHealthCheck) encodeFields(e *jx.Encoder) {
 	{
 		if s.Domain.Set {
 			e.FieldStart("domain")
@@ -103640,7 +103640,7 @@ func (s *PagesHealthCheck) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PagesHealthCheck) MarshalJSON() ([]byte, error) {
+func (s *PagesHealthCheck) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -103653,14 +103653,14 @@ func (s *PagesHealthCheck) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PagesHealthCheckAltDomain) Encode(e *jx.Encoder) {
+func (s *PagesHealthCheckAltDomain) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PagesHealthCheckAltDomain) encodeFields(e *jx.Encoder) {
+func (s *PagesHealthCheckAltDomain) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
 			e.FieldStart("host")
@@ -104162,7 +104162,7 @@ func (s *PagesHealthCheckAltDomain) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PagesHealthCheckAltDomain) MarshalJSON() ([]byte, error) {
+func (s *PagesHealthCheckAltDomain) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -104175,14 +104175,14 @@ func (s *PagesHealthCheckAltDomain) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PagesHealthCheckDomain) Encode(e *jx.Encoder) {
+func (s *PagesHealthCheckDomain) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PagesHealthCheckDomain) encodeFields(e *jx.Encoder) {
+func (s *PagesHealthCheckDomain) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
 			e.FieldStart("host")
@@ -104684,7 +104684,7 @@ func (s *PagesHealthCheckDomain) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PagesHealthCheckDomain) MarshalJSON() ([]byte, error) {
+func (s *PagesHealthCheckDomain) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -104697,14 +104697,14 @@ func (s *PagesHealthCheckDomain) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PagesSourceHash) Encode(e *jx.Encoder) {
+func (s *PagesSourceHash) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PagesSourceHash) encodeFields(e *jx.Encoder) {
+func (s *PagesSourceHash) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("branch")
@@ -104799,7 +104799,7 @@ func (s *PagesSourceHash) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PagesSourceHash) MarshalJSON() ([]byte, error) {
+func (s *PagesSourceHash) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -104812,14 +104812,14 @@ func (s *PagesSourceHash) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ParticipationStats) Encode(e *jx.Encoder) {
+func (s *ParticipationStats) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ParticipationStats) encodeFields(e *jx.Encoder) {
+func (s *ParticipationStats) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("all")
@@ -104938,7 +104938,7 @@ func (s *ParticipationStats) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ParticipationStats) MarshalJSON() ([]byte, error) {
+func (s *ParticipationStats) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -104951,14 +104951,14 @@ func (s *ParticipationStats) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PorterAuthor) Encode(e *jx.Encoder) {
+func (s *PorterAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PorterAuthor) encodeFields(e *jx.Encoder) {
+func (s *PorterAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -105143,7 +105143,7 @@ func (s *PorterAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PorterAuthor) MarshalJSON() ([]byte, error) {
+func (s *PorterAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -105156,14 +105156,14 @@ func (s *PorterAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PorterLargeFile) Encode(e *jx.Encoder) {
+func (s *PorterLargeFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PorterLargeFile) encodeFields(e *jx.Encoder) {
+func (s *PorterLargeFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref_name")
@@ -105294,7 +105294,7 @@ func (s *PorterLargeFile) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PorterLargeFile) MarshalJSON() ([]byte, error) {
+func (s *PorterLargeFile) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -105307,14 +105307,14 @@ func (s *PorterLargeFile) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PreviewHeaderMissing) Encode(e *jx.Encoder) {
+func (s *PreviewHeaderMissing) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PreviewHeaderMissing) encodeFields(e *jx.Encoder) {
+func (s *PreviewHeaderMissing) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -105409,7 +105409,7 @@ func (s *PreviewHeaderMissing) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PreviewHeaderMissing) MarshalJSON() ([]byte, error) {
+func (s *PreviewHeaderMissing) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -105422,14 +105422,14 @@ func (s *PreviewHeaderMissing) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PrivateUser) Encode(e *jx.Encoder) {
+func (s *PrivateUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PrivateUser) encodeFields(e *jx.Encoder) {
+func (s *PrivateUser) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -106228,7 +106228,7 @@ func (s *PrivateUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PrivateUser) MarshalJSON() ([]byte, error) {
+func (s *PrivateUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -106241,14 +106241,14 @@ func (s *PrivateUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PrivateUserPlan) Encode(e *jx.Encoder) {
+func (s *PrivateUserPlan) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PrivateUserPlan) encodeFields(e *jx.Encoder) {
+func (s *PrivateUserPlan) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("collaborators")
@@ -106379,7 +106379,7 @@ func (s *PrivateUserPlan) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PrivateUserPlan) MarshalJSON() ([]byte, error) {
+func (s *PrivateUserPlan) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -106392,14 +106392,14 @@ func (s *PrivateUserPlan) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Project) Encode(e *jx.Encoder) {
+func (s *Project) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Project) encodeFields(e *jx.Encoder) {
+func (s *Project) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("owner_url")
@@ -106723,7 +106723,7 @@ func (s *Project) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Project) MarshalJSON() ([]byte, error) {
+func (s *Project) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -106736,14 +106736,14 @@ func (s *Project) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectCard) Encode(e *jx.Encoder) {
+func (s *ProjectCard) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectCard) encodeFields(e *jx.Encoder) {
+func (s *ProjectCard) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -107029,7 +107029,7 @@ func (s *ProjectCard) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectCard) MarshalJSON() ([]byte, error) {
+func (s *ProjectCard) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107042,14 +107042,14 @@ func (s *ProjectCard) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectColumn) Encode(e *jx.Encoder) {
+func (s *ProjectColumn) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectColumn) encodeFields(e *jx.Encoder) {
+func (s *ProjectColumn) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -107252,7 +107252,7 @@ func (s *ProjectColumn) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectColumn) MarshalJSON() ([]byte, error) {
+func (s *ProjectColumn) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107309,8 +107309,8 @@ func (s *ProjectOrganizationPermission) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsAddCollaboratorApplicationJSONForbidden as json.
-func (s ProjectsAddCollaboratorApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsAddCollaboratorApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107334,7 +107334,7 @@ func (s *ProjectsAddCollaboratorApplicationJSONForbidden) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsAddCollaboratorApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsAddCollaboratorApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107347,8 +107347,8 @@ func (s *ProjectsAddCollaboratorApplicationJSONForbidden) UnmarshalJSON(data []b
 }
 
 // Encode encodes ProjectsAddCollaboratorApplicationJSONNotFound as json.
-func (s ProjectsAddCollaboratorApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsAddCollaboratorApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107372,7 +107372,7 @@ func (s *ProjectsAddCollaboratorApplicationJSONNotFound) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsAddCollaboratorApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsAddCollaboratorApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107385,8 +107385,8 @@ func (s *ProjectsAddCollaboratorApplicationJSONNotFound) UnmarshalJSON(data []by
 }
 
 // Encode encodes ProjectsAddCollaboratorApplicationJSONUnauthorized as json.
-func (s ProjectsAddCollaboratorApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107410,7 +107410,7 @@ func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsAddCollaboratorApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107423,14 +107423,14 @@ func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsAddCollaboratorReq) Encode(e *jx.Encoder) {
+func (s *ProjectsAddCollaboratorReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsAddCollaboratorReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsAddCollaboratorReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permission.Set {
 			e.FieldStart("permission")
@@ -107474,7 +107474,7 @@ func (s *ProjectsAddCollaboratorReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsAddCollaboratorReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsAddCollaboratorReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107529,8 +107529,8 @@ func (s *ProjectsAddCollaboratorReqPermission) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes ProjectsCreateColumnApplicationJSONForbidden as json.
-func (s ProjectsCreateColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107554,7 +107554,7 @@ func (s *ProjectsCreateColumnApplicationJSONForbidden) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107567,8 +107567,8 @@ func (s *ProjectsCreateColumnApplicationJSONForbidden) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsCreateColumnApplicationJSONUnauthorized as json.
-func (s ProjectsCreateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107592,7 +107592,7 @@ func (s *ProjectsCreateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107605,14 +107605,14 @@ func (s *ProjectsCreateColumnApplicationJSONUnauthorized) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsCreateColumnReq) Encode(e *jx.Encoder) {
+func (s *ProjectsCreateColumnReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsCreateColumnReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsCreateColumnReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -107689,7 +107689,7 @@ func (s *ProjectsCreateColumnReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateColumnReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateColumnReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107702,8 +107702,8 @@ func (s *ProjectsCreateColumnReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsCreateForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107727,7 +107727,7 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107740,8 +107740,8 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) UnmarshalJS
 }
 
 // Encode encodes ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107765,7 +107765,7 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107778,14 +107778,14 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Unmarsha
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserReq) Encode(e *jx.Encoder) {
+func (s *ProjectsCreateForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsCreateForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsCreateForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -107879,7 +107879,7 @@ func (s *ProjectsCreateForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107892,8 +107892,8 @@ func (s *ProjectsCreateForAuthenticatedUserReq) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes ProjectsCreateForOrgApplicationJSONForbidden as json.
-func (s ProjectsCreateForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107917,7 +107917,7 @@ func (s *ProjectsCreateForOrgApplicationJSONForbidden) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107930,8 +107930,8 @@ func (s *ProjectsCreateForOrgApplicationJSONForbidden) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsCreateForOrgApplicationJSONGone as json.
-func (s ProjectsCreateForOrgApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForOrgApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107955,7 +107955,7 @@ func (s *ProjectsCreateForOrgApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForOrgApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForOrgApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -107968,8 +107968,8 @@ func (s *ProjectsCreateForOrgApplicationJSONGone) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ProjectsCreateForOrgApplicationJSONNotFound as json.
-func (s ProjectsCreateForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -107993,7 +107993,7 @@ func (s *ProjectsCreateForOrgApplicationJSONNotFound) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108006,8 +108006,8 @@ func (s *ProjectsCreateForOrgApplicationJSONNotFound) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes ProjectsCreateForOrgApplicationJSONUnauthorized as json.
-func (s ProjectsCreateForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108031,7 +108031,7 @@ func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108044,14 +108044,14 @@ func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsCreateForOrgReq) Encode(e *jx.Encoder) {
+func (s *ProjectsCreateForOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsCreateForOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsCreateForOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -108145,7 +108145,7 @@ func (s *ProjectsCreateForOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108158,8 +108158,8 @@ func (s *ProjectsCreateForOrgReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsCreateForRepoApplicationJSONForbidden as json.
-func (s ProjectsCreateForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108183,7 +108183,7 @@ func (s *ProjectsCreateForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForRepoApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForRepoApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108196,8 +108196,8 @@ func (s *ProjectsCreateForRepoApplicationJSONForbidden) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ProjectsCreateForRepoApplicationJSONGone as json.
-func (s ProjectsCreateForRepoApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForRepoApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108221,7 +108221,7 @@ func (s *ProjectsCreateForRepoApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForRepoApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForRepoApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108234,8 +108234,8 @@ func (s *ProjectsCreateForRepoApplicationJSONGone) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ProjectsCreateForRepoApplicationJSONNotFound as json.
-func (s ProjectsCreateForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108259,7 +108259,7 @@ func (s *ProjectsCreateForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108272,8 +108272,8 @@ func (s *ProjectsCreateForRepoApplicationJSONNotFound) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsCreateForRepoApplicationJSONUnauthorized as json.
-func (s ProjectsCreateForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108297,7 +108297,7 @@ func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForRepoApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108310,14 +108310,14 @@ func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsCreateForRepoReq) Encode(e *jx.Encoder) {
+func (s *ProjectsCreateForRepoReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsCreateForRepoReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsCreateForRepoReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -108411,7 +108411,7 @@ func (s *ProjectsCreateForRepoReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsCreateForRepoReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsCreateForRepoReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108424,8 +108424,8 @@ func (s *ProjectsCreateForRepoReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsDeleteApplicationJSONGone as json.
-func (s ProjectsDeleteApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108449,7 +108449,7 @@ func (s *ProjectsDeleteApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108462,8 +108462,8 @@ func (s *ProjectsDeleteApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsDeleteApplicationJSONNotFound as json.
-func (s ProjectsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108487,7 +108487,7 @@ func (s *ProjectsDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108500,8 +108500,8 @@ func (s *ProjectsDeleteApplicationJSONNotFound) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes ProjectsDeleteApplicationJSONUnauthorized as json.
-func (s ProjectsDeleteApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108525,7 +108525,7 @@ func (s *ProjectsDeleteApplicationJSONUnauthorized) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108538,8 +108538,8 @@ func (s *ProjectsDeleteApplicationJSONUnauthorized) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ProjectsDeleteCardApplicationJSONNotFound as json.
-func (s ProjectsDeleteCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108563,7 +108563,7 @@ func (s *ProjectsDeleteCardApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteCardApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteCardApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108576,8 +108576,8 @@ func (s *ProjectsDeleteCardApplicationJSONNotFound) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ProjectsDeleteCardApplicationJSONUnauthorized as json.
-func (s ProjectsDeleteCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108601,7 +108601,7 @@ func (s *ProjectsDeleteCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteCardApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteCardApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108614,14 +108614,14 @@ func (s *ProjectsDeleteCardApplicationJSONUnauthorized) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsDeleteCardForbidden) Encode(e *jx.Encoder) {
+func (s *ProjectsDeleteCardForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsDeleteCardForbidden) encodeFields(e *jx.Encoder) {
+func (s *ProjectsDeleteCardForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -108711,7 +108711,7 @@ func (s *ProjectsDeleteCardForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteCardForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteCardForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108724,8 +108724,8 @@ func (s *ProjectsDeleteCardForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsDeleteColumnApplicationJSONForbidden as json.
-func (s ProjectsDeleteColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108749,7 +108749,7 @@ func (s *ProjectsDeleteColumnApplicationJSONForbidden) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108762,8 +108762,8 @@ func (s *ProjectsDeleteColumnApplicationJSONForbidden) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsDeleteColumnApplicationJSONUnauthorized as json.
-func (s ProjectsDeleteColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108787,7 +108787,7 @@ func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108800,14 +108800,14 @@ func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsDeleteForbidden) Encode(e *jx.Encoder) {
+func (s *ProjectsDeleteForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsDeleteForbidden) encodeFields(e *jx.Encoder) {
+func (s *ProjectsDeleteForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -108897,7 +108897,7 @@ func (s *ProjectsDeleteForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsDeleteForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsDeleteForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108910,8 +108910,8 @@ func (s *ProjectsDeleteForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsGetApplicationJSONForbidden as json.
-func (s ProjectsGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108935,7 +108935,7 @@ func (s *ProjectsGetApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108948,8 +108948,8 @@ func (s *ProjectsGetApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsGetApplicationJSONUnauthorized as json.
-func (s ProjectsGetApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -108973,7 +108973,7 @@ func (s *ProjectsGetApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -108986,8 +108986,8 @@ func (s *ProjectsGetApplicationJSONUnauthorized) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes ProjectsGetCardApplicationJSONForbidden as json.
-func (s ProjectsGetCardApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetCardApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109011,7 +109011,7 @@ func (s *ProjectsGetCardApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetCardApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetCardApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109024,8 +109024,8 @@ func (s *ProjectsGetCardApplicationJSONForbidden) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ProjectsGetCardApplicationJSONNotFound as json.
-func (s ProjectsGetCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109049,7 +109049,7 @@ func (s *ProjectsGetCardApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetCardApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetCardApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109062,8 +109062,8 @@ func (s *ProjectsGetCardApplicationJSONNotFound) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes ProjectsGetCardApplicationJSONUnauthorized as json.
-func (s ProjectsGetCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109087,7 +109087,7 @@ func (s *ProjectsGetCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetCardApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetCardApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109100,8 +109100,8 @@ func (s *ProjectsGetCardApplicationJSONUnauthorized) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes ProjectsGetColumnApplicationJSONForbidden as json.
-func (s ProjectsGetColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109125,7 +109125,7 @@ func (s *ProjectsGetColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109138,8 +109138,8 @@ func (s *ProjectsGetColumnApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ProjectsGetColumnApplicationJSONNotFound as json.
-func (s ProjectsGetColumnApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetColumnApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109163,7 +109163,7 @@ func (s *ProjectsGetColumnApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetColumnApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetColumnApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109176,8 +109176,8 @@ func (s *ProjectsGetColumnApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ProjectsGetColumnApplicationJSONUnauthorized as json.
-func (s ProjectsGetColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109201,7 +109201,7 @@ func (s *ProjectsGetColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109214,8 +109214,8 @@ func (s *ProjectsGetColumnApplicationJSONUnauthorized) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsGetPermissionForUserApplicationJSONForbidden as json.
-func (s ProjectsGetPermissionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetPermissionForUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109239,7 +109239,7 @@ func (s *ProjectsGetPermissionForUserApplicationJSONForbidden) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetPermissionForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetPermissionForUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109252,8 +109252,8 @@ func (s *ProjectsGetPermissionForUserApplicationJSONForbidden) UnmarshalJSON(dat
 }
 
 // Encode encodes ProjectsGetPermissionForUserApplicationJSONNotFound as json.
-func (s ProjectsGetPermissionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetPermissionForUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109277,7 +109277,7 @@ func (s *ProjectsGetPermissionForUserApplicationJSONNotFound) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetPermissionForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetPermissionForUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109290,8 +109290,8 @@ func (s *ProjectsGetPermissionForUserApplicationJSONNotFound) UnmarshalJSON(data
 }
 
 // Encode encodes ProjectsGetPermissionForUserApplicationJSONUnauthorized as json.
-func (s ProjectsGetPermissionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsGetPermissionForUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109315,7 +109315,7 @@ func (s *ProjectsGetPermissionForUserApplicationJSONUnauthorized) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsGetPermissionForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsGetPermissionForUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109328,8 +109328,8 @@ func (s *ProjectsGetPermissionForUserApplicationJSONUnauthorized) UnmarshalJSON(
 }
 
 // Encode encodes ProjectsListCardsApplicationJSONForbidden as json.
-func (s ProjectsListCardsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListCardsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109353,7 +109353,7 @@ func (s *ProjectsListCardsApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListCardsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListCardsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109366,8 +109366,8 @@ func (s *ProjectsListCardsApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ProjectsListCardsApplicationJSONUnauthorized as json.
-func (s ProjectsListCardsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListCardsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109391,7 +109391,7 @@ func (s *ProjectsListCardsApplicationJSONUnauthorized) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListCardsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListCardsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109404,8 +109404,8 @@ func (s *ProjectsListCardsApplicationJSONUnauthorized) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsListCollaboratorsApplicationJSONForbidden as json.
-func (s ProjectsListCollaboratorsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListCollaboratorsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109429,7 +109429,7 @@ func (s *ProjectsListCollaboratorsApplicationJSONForbidden) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListCollaboratorsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListCollaboratorsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109442,8 +109442,8 @@ func (s *ProjectsListCollaboratorsApplicationJSONForbidden) UnmarshalJSON(data [
 }
 
 // Encode encodes ProjectsListCollaboratorsApplicationJSONNotFound as json.
-func (s ProjectsListCollaboratorsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListCollaboratorsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109467,7 +109467,7 @@ func (s *ProjectsListCollaboratorsApplicationJSONNotFound) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListCollaboratorsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListCollaboratorsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109480,8 +109480,8 @@ func (s *ProjectsListCollaboratorsApplicationJSONNotFound) UnmarshalJSON(data []
 }
 
 // Encode encodes ProjectsListCollaboratorsApplicationJSONUnauthorized as json.
-func (s ProjectsListCollaboratorsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109505,7 +109505,7 @@ func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListCollaboratorsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109518,8 +109518,8 @@ func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) UnmarshalJSON(dat
 }
 
 // Encode encodes ProjectsListColumnsApplicationJSONForbidden as json.
-func (s ProjectsListColumnsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListColumnsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109543,7 +109543,7 @@ func (s *ProjectsListColumnsApplicationJSONForbidden) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListColumnsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListColumnsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109556,8 +109556,8 @@ func (s *ProjectsListColumnsApplicationJSONForbidden) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes ProjectsListColumnsApplicationJSONUnauthorized as json.
-func (s ProjectsListColumnsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListColumnsApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109581,7 +109581,7 @@ func (s *ProjectsListColumnsApplicationJSONUnauthorized) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListColumnsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListColumnsApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109594,8 +109594,8 @@ func (s *ProjectsListColumnsApplicationJSONUnauthorized) UnmarshalJSON(data []by
 }
 
 // Encode encodes ProjectsListForRepoApplicationJSONForbidden as json.
-func (s ProjectsListForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListForRepoApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109619,7 +109619,7 @@ func (s *ProjectsListForRepoApplicationJSONForbidden) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListForRepoApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListForRepoApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109632,8 +109632,8 @@ func (s *ProjectsListForRepoApplicationJSONForbidden) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes ProjectsListForRepoApplicationJSONGone as json.
-func (s ProjectsListForRepoApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListForRepoApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109657,7 +109657,7 @@ func (s *ProjectsListForRepoApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListForRepoApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListForRepoApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109670,8 +109670,8 @@ func (s *ProjectsListForRepoApplicationJSONGone) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes ProjectsListForRepoApplicationJSONNotFound as json.
-func (s ProjectsListForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListForRepoApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109695,7 +109695,7 @@ func (s *ProjectsListForRepoApplicationJSONNotFound) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListForRepoApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109708,8 +109708,8 @@ func (s *ProjectsListForRepoApplicationJSONNotFound) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes ProjectsListForRepoApplicationJSONUnauthorized as json.
-func (s ProjectsListForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsListForRepoApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -109733,7 +109733,7 @@ func (s *ProjectsListForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsListForRepoApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsListForRepoApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109746,14 +109746,14 @@ func (s *ProjectsListForRepoApplicationJSONUnauthorized) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveCardCreated) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveCardCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveCardCreated) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveCardCreated) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfProjectsMoveCardCreated = [0]string{}
@@ -109778,7 +109778,7 @@ func (s *ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveCardCreated) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveCardCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109791,14 +109791,14 @@ func (s *ProjectsMoveCardCreated) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveCardForbidden) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveCardForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveCardForbidden) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveCardForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -109886,7 +109886,7 @@ func (s *ProjectsMoveCardForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveCardForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveCardForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -109899,14 +109899,14 @@ func (s *ProjectsMoveCardForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveCardForbiddenErrorsItem) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveCardForbiddenErrorsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveCardForbiddenErrorsItem) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveCardForbiddenErrorsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Code.Set {
 			e.FieldStart("code")
@@ -110000,7 +110000,7 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveCardForbiddenErrorsItem) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveCardForbiddenErrorsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110013,14 +110013,14 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveCardReq) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveCardReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveCardReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveCardReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("position")
@@ -110114,7 +110114,7 @@ func (s *ProjectsMoveCardReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveCardReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveCardReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110127,14 +110127,14 @@ func (s *ProjectsMoveCardReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveCardServiceUnavailable) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveCardServiceUnavailable) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveCardServiceUnavailable) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveCardServiceUnavailable) encodeFields(e *jx.Encoder) {
 	{
 		if s.Code.Set {
 			e.FieldStart("code")
@@ -110239,7 +110239,7 @@ func (s *ProjectsMoveCardServiceUnavailable) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveCardServiceUnavailable) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveCardServiceUnavailable) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110252,14 +110252,14 @@ func (s *ProjectsMoveCardServiceUnavailable) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveCardServiceUnavailableErrorsItem) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveCardServiceUnavailableErrorsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveCardServiceUnavailableErrorsItem) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveCardServiceUnavailableErrorsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Code.Set {
 			e.FieldStart("code")
@@ -110319,7 +110319,7 @@ func (s *ProjectsMoveCardServiceUnavailableErrorsItem) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveCardServiceUnavailableErrorsItem) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveCardServiceUnavailableErrorsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110332,8 +110332,8 @@ func (s *ProjectsMoveCardServiceUnavailableErrorsItem) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsMoveColumnApplicationJSONForbidden as json.
-func (s ProjectsMoveColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsMoveColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110357,7 +110357,7 @@ func (s *ProjectsMoveColumnApplicationJSONForbidden) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110370,8 +110370,8 @@ func (s *ProjectsMoveColumnApplicationJSONForbidden) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes ProjectsMoveColumnApplicationJSONUnauthorized as json.
-func (s ProjectsMoveColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsMoveColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110395,7 +110395,7 @@ func (s *ProjectsMoveColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110408,14 +110408,14 @@ func (s *ProjectsMoveColumnApplicationJSONUnauthorized) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveColumnCreated) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveColumnCreated) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveColumnCreated) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveColumnCreated) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfProjectsMoveColumnCreated = [0]string{}
@@ -110440,7 +110440,7 @@ func (s *ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveColumnCreated) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveColumnCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110453,14 +110453,14 @@ func (s *ProjectsMoveColumnCreated) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsMoveColumnReq) Encode(e *jx.Encoder) {
+func (s *ProjectsMoveColumnReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsMoveColumnReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsMoveColumnReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("position")
@@ -110537,7 +110537,7 @@ func (s *ProjectsMoveColumnReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsMoveColumnReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsMoveColumnReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110550,8 +110550,8 @@ func (s *ProjectsMoveColumnReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsRemoveCollaboratorApplicationJSONForbidden as json.
-func (s ProjectsRemoveCollaboratorApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsRemoveCollaboratorApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110575,7 +110575,7 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONForbidden) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsRemoveCollaboratorApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsRemoveCollaboratorApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110588,8 +110588,8 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONForbidden) UnmarshalJSON(data 
 }
 
 // Encode encodes ProjectsRemoveCollaboratorApplicationJSONNotFound as json.
-func (s ProjectsRemoveCollaboratorApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsRemoveCollaboratorApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110613,7 +110613,7 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONNotFound) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsRemoveCollaboratorApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsRemoveCollaboratorApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110626,8 +110626,8 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONNotFound) UnmarshalJSON(data [
 }
 
 // Encode encodes ProjectsRemoveCollaboratorApplicationJSONUnauthorized as json.
-func (s ProjectsRemoveCollaboratorApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110651,7 +110651,7 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsRemoveCollaboratorApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110664,8 +110664,8 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) UnmarshalJSON(da
 }
 
 // Encode encodes ProjectsUpdateApplicationJSONGone as json.
-func (s ProjectsUpdateApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110689,7 +110689,7 @@ func (s *ProjectsUpdateApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110702,8 +110702,8 @@ func (s *ProjectsUpdateApplicationJSONGone) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsUpdateApplicationJSONUnauthorized as json.
-func (s ProjectsUpdateApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110727,7 +110727,7 @@ func (s *ProjectsUpdateApplicationJSONUnauthorized) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110740,8 +110740,8 @@ func (s *ProjectsUpdateApplicationJSONUnauthorized) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ProjectsUpdateCardApplicationJSONForbidden as json.
-func (s ProjectsUpdateCardApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateCardApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110765,7 +110765,7 @@ func (s *ProjectsUpdateCardApplicationJSONForbidden) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateCardApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateCardApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110778,8 +110778,8 @@ func (s *ProjectsUpdateCardApplicationJSONForbidden) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes ProjectsUpdateCardApplicationJSONNotFound as json.
-func (s ProjectsUpdateCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateCardApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110803,7 +110803,7 @@ func (s *ProjectsUpdateCardApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateCardApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateCardApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110816,8 +110816,8 @@ func (s *ProjectsUpdateCardApplicationJSONNotFound) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ProjectsUpdateCardApplicationJSONUnauthorized as json.
-func (s ProjectsUpdateCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateCardApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110841,7 +110841,7 @@ func (s *ProjectsUpdateCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateCardApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateCardApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110854,14 +110854,14 @@ func (s *ProjectsUpdateCardApplicationJSONUnauthorized) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsUpdateCardReq) Encode(e *jx.Encoder) {
+func (s *ProjectsUpdateCardReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsUpdateCardReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsUpdateCardReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Note.Set {
 			e.FieldStart("note")
@@ -110921,7 +110921,7 @@ func (s *ProjectsUpdateCardReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateCardReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateCardReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110934,8 +110934,8 @@ func (s *ProjectsUpdateCardReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ProjectsUpdateColumnApplicationJSONForbidden as json.
-func (s ProjectsUpdateColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateColumnApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110959,7 +110959,7 @@ func (s *ProjectsUpdateColumnApplicationJSONForbidden) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateColumnApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -110972,8 +110972,8 @@ func (s *ProjectsUpdateColumnApplicationJSONForbidden) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ProjectsUpdateColumnApplicationJSONUnauthorized as json.
-func (s ProjectsUpdateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -110997,7 +110997,7 @@ func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111010,14 +111010,14 @@ func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsUpdateColumnReq) Encode(e *jx.Encoder) {
+func (s *ProjectsUpdateColumnReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsUpdateColumnReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsUpdateColumnReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -111094,7 +111094,7 @@ func (s *ProjectsUpdateColumnReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateColumnReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateColumnReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111107,14 +111107,14 @@ func (s *ProjectsUpdateColumnReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsUpdateForbidden) Encode(e *jx.Encoder) {
+func (s *ProjectsUpdateForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsUpdateForbidden) encodeFields(e *jx.Encoder) {
+func (s *ProjectsUpdateForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -111204,7 +111204,7 @@ func (s *ProjectsUpdateForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateForbidden) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111217,14 +111217,14 @@ func (s *ProjectsUpdateForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProjectsUpdateReq) Encode(e *jx.Encoder) {
+func (s *ProjectsUpdateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProjectsUpdateReq) encodeFields(e *jx.Encoder) {
+func (s *ProjectsUpdateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -111335,7 +111335,7 @@ func (s *ProjectsUpdateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProjectsUpdateReq) MarshalJSON() ([]byte, error) {
+func (s *ProjectsUpdateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111392,14 +111392,14 @@ func (s *ProjectsUpdateReqOrganizationPermission) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranch) Encode(e *jx.Encoder) {
+func (s *ProtectedBranch) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranch) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranch) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -111630,7 +111630,7 @@ func (s *ProtectedBranch) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranch) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranch) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111643,14 +111643,14 @@ func (s *ProtectedBranch) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchAdminEnforced) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchAdminEnforced) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchAdminEnforced) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchAdminEnforced) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -111745,7 +111745,7 @@ func (s *ProtectedBranchAdminEnforced) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchAdminEnforced) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchAdminEnforced) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111758,14 +111758,14 @@ func (s *ProtectedBranchAdminEnforced) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchAllowDeletions) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchAllowDeletions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchAllowDeletions) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchAllowDeletions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled")
@@ -111842,7 +111842,7 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchAllowDeletions) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchAllowDeletions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111855,14 +111855,14 @@ func (s *ProtectedBranchAllowDeletions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchAllowForcePushes) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchAllowForcePushes) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchAllowForcePushes) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled")
@@ -111939,7 +111939,7 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchAllowForcePushes) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchAllowForcePushes) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111952,14 +111952,14 @@ func (s *ProtectedBranchAllowForcePushes) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchEnforceAdmins) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchEnforceAdmins) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchEnforceAdmins) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -112054,7 +112054,7 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchEnforceAdmins) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchEnforceAdmins) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112067,14 +112067,14 @@ func (s *ProtectedBranchEnforceAdmins) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchPullRequestReview) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchPullRequestReview) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchPullRequestReview) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchPullRequestReview) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -112220,7 +112220,7 @@ func (s *ProtectedBranchPullRequestReview) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchPullRequestReview) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchPullRequestReview) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112233,14 +112233,14 @@ func (s *ProtectedBranchPullRequestReview) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchPullRequestReviewDismissalRestrictions) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchPullRequestReviewDismissalRestrictions) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Users != nil {
 			e.FieldStart("users")
@@ -112373,7 +112373,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchPullRequestReviewDismissalRestrictions) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112386,14 +112386,14 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) UnmarshalJSON(da
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredConversationResolution) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchRequiredConversationResolution) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredConversationResolution) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enabled.Set {
 			e.FieldStart("enabled")
@@ -112436,7 +112436,7 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchRequiredConversationResolution) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchRequiredConversationResolution) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112449,14 +112449,14 @@ func (s *ProtectedBranchRequiredConversationResolution) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredLinearHistory) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchRequiredLinearHistory) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredLinearHistory) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("enabled")
@@ -112533,7 +112533,7 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchRequiredLinearHistory) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchRequiredLinearHistory) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112546,14 +112546,14 @@ func (s *ProtectedBranchRequiredLinearHistory) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchRequiredPullRequestReviews) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredPullRequestReviews) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchRequiredPullRequestReviews) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredPullRequestReviews) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -112698,7 +112698,7 @@ func (s *ProtectedBranchRequiredPullRequestReviews) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchRequiredPullRequestReviews) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchRequiredPullRequestReviews) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112711,14 +112711,14 @@ func (s *ProtectedBranchRequiredPullRequestReviews) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -112887,7 +112887,7 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -112900,14 +112900,14 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Unmarsh
 }
 
 // Encode implements json.Marshaler.
-func (s ProtectedBranchRequiredSignatures) Encode(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredSignatures) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProtectedBranchRequiredSignatures) encodeFields(e *jx.Encoder) {
+func (s *ProtectedBranchRequiredSignatures) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -113002,7 +113002,7 @@ func (s *ProtectedBranchRequiredSignatures) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProtectedBranchRequiredSignatures) MarshalJSON() ([]byte, error) {
+func (s *ProtectedBranchRequiredSignatures) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -113015,14 +113015,14 @@ func (s *ProtectedBranchRequiredSignatures) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PublicUser) Encode(e *jx.Encoder) {
+func (s *PublicUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PublicUser) encodeFields(e *jx.Encoder) {
+func (s *PublicUser) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -113763,7 +113763,7 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PublicUser) MarshalJSON() ([]byte, error) {
+func (s *PublicUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -113776,14 +113776,14 @@ func (s *PublicUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PublicUserPlan) Encode(e *jx.Encoder) {
+func (s *PublicUserPlan) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PublicUserPlan) encodeFields(e *jx.Encoder) {
+func (s *PublicUserPlan) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("collaborators")
@@ -113914,7 +113914,7 @@ func (s *PublicUserPlan) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PublicUserPlan) MarshalJSON() ([]byte, error) {
+func (s *PublicUserPlan) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -113927,14 +113927,14 @@ func (s *PublicUserPlan) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequest) Encode(e *jx.Encoder) {
+func (s *PullRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequest) encodeFields(e *jx.Encoder) {
+func (s *PullRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -114836,7 +114836,7 @@ func (s *PullRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequest) MarshalJSON() ([]byte, error) {
+func (s *PullRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -114849,14 +114849,14 @@ func (s *PullRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestBase) Encode(e *jx.Encoder) {
+func (s *PullRequestBase) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestBase) encodeFields(e *jx.Encoder) {
+func (s *PullRequestBase) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("label")
@@ -115001,7 +115001,7 @@ func (s *PullRequestBase) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestBase) MarshalJSON() ([]byte, error) {
+func (s *PullRequestBase) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -115014,14 +115014,14 @@ func (s *PullRequestBase) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestBaseRepo) Encode(e *jx.Encoder) {
+func (s *PullRequestBaseRepo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestBaseRepo) encodeFields(e *jx.Encoder) {
+func (s *PullRequestBaseRepo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("archive_url")
@@ -116541,7 +116541,7 @@ func (s *PullRequestBaseRepo) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestBaseRepo) MarshalJSON() ([]byte, error) {
+func (s *PullRequestBaseRepo) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -116554,14 +116554,14 @@ func (s *PullRequestBaseRepo) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestBaseRepoOwner) Encode(e *jx.Encoder) {
+func (s *PullRequestBaseRepoOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestBaseRepoOwner) encodeFields(e *jx.Encoder) {
+func (s *PullRequestBaseRepoOwner) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("avatar_url")
@@ -116944,7 +116944,7 @@ func (s *PullRequestBaseRepoOwner) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestBaseRepoOwner) MarshalJSON() ([]byte, error) {
+func (s *PullRequestBaseRepoOwner) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -116957,14 +116957,14 @@ func (s *PullRequestBaseRepoOwner) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestBaseRepoPermissions) Encode(e *jx.Encoder) {
+func (s *PullRequestBaseRepoPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestBaseRepoPermissions) encodeFields(e *jx.Encoder) {
+func (s *PullRequestBaseRepoPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -117111,7 +117111,7 @@ func (s *PullRequestBaseRepoPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestBaseRepoPermissions) MarshalJSON() ([]byte, error) {
+func (s *PullRequestBaseRepoPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -117124,14 +117124,14 @@ func (s *PullRequestBaseRepoPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestBaseUser) Encode(e *jx.Encoder) {
+func (s *PullRequestBaseUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestBaseUser) encodeFields(e *jx.Encoder) {
+func (s *PullRequestBaseUser) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("avatar_url")
@@ -117514,7 +117514,7 @@ func (s *PullRequestBaseUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestBaseUser) MarshalJSON() ([]byte, error) {
+func (s *PullRequestBaseUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -117527,14 +117527,14 @@ func (s *PullRequestBaseUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestHead) Encode(e *jx.Encoder) {
+func (s *PullRequestHead) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestHead) encodeFields(e *jx.Encoder) {
+func (s *PullRequestHead) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("label")
@@ -117679,7 +117679,7 @@ func (s *PullRequestHead) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestHead) MarshalJSON() ([]byte, error) {
+func (s *PullRequestHead) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -117692,14 +117692,14 @@ func (s *PullRequestHead) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestHeadRepo) Encode(e *jx.Encoder) {
+func (s *PullRequestHeadRepo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestHeadRepo) encodeFields(e *jx.Encoder) {
+func (s *PullRequestHeadRepo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("archive_url")
@@ -119219,7 +119219,7 @@ func (s *PullRequestHeadRepo) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestHeadRepo) MarshalJSON() ([]byte, error) {
+func (s *PullRequestHeadRepo) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -119232,14 +119232,14 @@ func (s *PullRequestHeadRepo) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestHeadRepoLicense) Encode(e *jx.Encoder) {
+func (s *PullRequestHeadRepoLicense) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestHeadRepoLicense) encodeFields(e *jx.Encoder) {
+func (s *PullRequestHeadRepoLicense) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -119384,7 +119384,7 @@ func (s *PullRequestHeadRepoLicense) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestHeadRepoLicense) MarshalJSON() ([]byte, error) {
+func (s *PullRequestHeadRepoLicense) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -119397,14 +119397,14 @@ func (s *PullRequestHeadRepoLicense) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestHeadRepoOwner) Encode(e *jx.Encoder) {
+func (s *PullRequestHeadRepoOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestHeadRepoOwner) encodeFields(e *jx.Encoder) {
+func (s *PullRequestHeadRepoOwner) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("avatar_url")
@@ -119787,7 +119787,7 @@ func (s *PullRequestHeadRepoOwner) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestHeadRepoOwner) MarshalJSON() ([]byte, error) {
+func (s *PullRequestHeadRepoOwner) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -119800,14 +119800,14 @@ func (s *PullRequestHeadRepoOwner) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestHeadRepoPermissions) Encode(e *jx.Encoder) {
+func (s *PullRequestHeadRepoPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestHeadRepoPermissions) encodeFields(e *jx.Encoder) {
+func (s *PullRequestHeadRepoPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -119954,7 +119954,7 @@ func (s *PullRequestHeadRepoPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestHeadRepoPermissions) MarshalJSON() ([]byte, error) {
+func (s *PullRequestHeadRepoPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -119967,14 +119967,14 @@ func (s *PullRequestHeadRepoPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestHeadUser) Encode(e *jx.Encoder) {
+func (s *PullRequestHeadUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestHeadUser) encodeFields(e *jx.Encoder) {
+func (s *PullRequestHeadUser) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("avatar_url")
@@ -120357,7 +120357,7 @@ func (s *PullRequestHeadUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestHeadUser) MarshalJSON() ([]byte, error) {
+func (s *PullRequestHeadUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -120370,14 +120370,14 @@ func (s *PullRequestHeadUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestLabelsItem) Encode(e *jx.Encoder) {
+func (s *PullRequestLabelsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestLabelsItem) encodeFields(e *jx.Encoder) {
+func (s *PullRequestLabelsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -120522,7 +120522,7 @@ func (s *PullRequestLabelsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestLabelsItem) MarshalJSON() ([]byte, error) {
+func (s *PullRequestLabelsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -120535,14 +120535,14 @@ func (s *PullRequestLabelsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestLinks) Encode(e *jx.Encoder) {
+func (s *PullRequestLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestLinks) encodeFields(e *jx.Encoder) {
+func (s *PullRequestLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("comments")
@@ -120729,7 +120729,7 @@ func (s *PullRequestLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestLinks) MarshalJSON() ([]byte, error) {
+func (s *PullRequestLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -120742,14 +120742,14 @@ func (s *PullRequestLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestMergeResult) Encode(e *jx.Encoder) {
+func (s *PullRequestMergeResult) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestMergeResult) encodeFields(e *jx.Encoder) {
+func (s *PullRequestMergeResult) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -120862,7 +120862,7 @@ func (s *PullRequestMergeResult) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestMergeResult) MarshalJSON() ([]byte, error) {
+func (s *PullRequestMergeResult) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -120875,14 +120875,14 @@ func (s *PullRequestMergeResult) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestMinimal) Encode(e *jx.Encoder) {
+func (s *PullRequestMinimal) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestMinimal) encodeFields(e *jx.Encoder) {
+func (s *PullRequestMinimal) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -121027,7 +121027,7 @@ func (s *PullRequestMinimal) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestMinimal) MarshalJSON() ([]byte, error) {
+func (s *PullRequestMinimal) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -121040,14 +121040,14 @@ func (s *PullRequestMinimal) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestMinimalBase) Encode(e *jx.Encoder) {
+func (s *PullRequestMinimalBase) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestMinimalBase) encodeFields(e *jx.Encoder) {
+func (s *PullRequestMinimalBase) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref")
@@ -121158,7 +121158,7 @@ func (s *PullRequestMinimalBase) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestMinimalBase) MarshalJSON() ([]byte, error) {
+func (s *PullRequestMinimalBase) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -121171,14 +121171,14 @@ func (s *PullRequestMinimalBase) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestMinimalBaseRepo) Encode(e *jx.Encoder) {
+func (s *PullRequestMinimalBaseRepo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestMinimalBaseRepo) encodeFields(e *jx.Encoder) {
+func (s *PullRequestMinimalBaseRepo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -121291,7 +121291,7 @@ func (s *PullRequestMinimalBaseRepo) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestMinimalBaseRepo) MarshalJSON() ([]byte, error) {
+func (s *PullRequestMinimalBaseRepo) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -121304,14 +121304,14 @@ func (s *PullRequestMinimalBaseRepo) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestMinimalHead) Encode(e *jx.Encoder) {
+func (s *PullRequestMinimalHead) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestMinimalHead) encodeFields(e *jx.Encoder) {
+func (s *PullRequestMinimalHead) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref")
@@ -121422,7 +121422,7 @@ func (s *PullRequestMinimalHead) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestMinimalHead) MarshalJSON() ([]byte, error) {
+func (s *PullRequestMinimalHead) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -121435,14 +121435,14 @@ func (s *PullRequestMinimalHead) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestMinimalHeadRepo) Encode(e *jx.Encoder) {
+func (s *PullRequestMinimalHeadRepo) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestMinimalHeadRepo) encodeFields(e *jx.Encoder) {
+func (s *PullRequestMinimalHeadRepo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -121555,7 +121555,7 @@ func (s *PullRequestMinimalHeadRepo) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestMinimalHeadRepo) MarshalJSON() ([]byte, error) {
+func (s *PullRequestMinimalHeadRepo) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -121568,14 +121568,14 @@ func (s *PullRequestMinimalHeadRepo) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReview) Encode(e *jx.Encoder) {
+func (s *PullRequestReview) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReview) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReview) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -121860,7 +121860,7 @@ func (s *PullRequestReview) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReview) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReview) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -121873,14 +121873,14 @@ func (s *PullRequestReview) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewComment) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewComment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewComment) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewComment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -122429,7 +122429,7 @@ func (s *PullRequestReviewComment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewComment) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewComment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -122442,14 +122442,14 @@ func (s *PullRequestReviewComment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewCommentLinks) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewCommentLinks) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("self")
@@ -122556,7 +122556,7 @@ func (s *PullRequestReviewCommentLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewCommentLinks) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewCommentLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -122569,14 +122569,14 @@ func (s *PullRequestReviewCommentLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewCommentLinksHTML) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinksHTML) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewCommentLinksHTML) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinksHTML) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -122653,7 +122653,7 @@ func (s *PullRequestReviewCommentLinksHTML) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewCommentLinksHTML) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewCommentLinksHTML) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -122666,14 +122666,14 @@ func (s *PullRequestReviewCommentLinksHTML) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewCommentLinksPullRequest) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinksPullRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewCommentLinksPullRequest) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinksPullRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -122750,7 +122750,7 @@ func (s *PullRequestReviewCommentLinksPullRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewCommentLinksPullRequest) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewCommentLinksPullRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -122763,14 +122763,14 @@ func (s *PullRequestReviewCommentLinksPullRequest) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewCommentLinksSelf) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinksSelf) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewCommentLinksSelf) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewCommentLinksSelf) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -122847,7 +122847,7 @@ func (s *PullRequestReviewCommentLinksSelf) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewCommentLinksSelf) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewCommentLinksSelf) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -122940,14 +122940,14 @@ func (s *PullRequestReviewCommentStartSide) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewLinks) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewLinks) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("html")
@@ -123038,7 +123038,7 @@ func (s *PullRequestReviewLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewLinks) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -123051,14 +123051,14 @@ func (s *PullRequestReviewLinks) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewLinksHTML) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewLinksHTML) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewLinksHTML) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewLinksHTML) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -123135,7 +123135,7 @@ func (s *PullRequestReviewLinksHTML) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewLinksHTML) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewLinksHTML) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -123148,14 +123148,14 @@ func (s *PullRequestReviewLinksHTML) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewLinksPullRequest) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewLinksPullRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewLinksPullRequest) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewLinksPullRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("href")
@@ -123232,7 +123232,7 @@ func (s *PullRequestReviewLinksPullRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewLinksPullRequest) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewLinksPullRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -123245,14 +123245,14 @@ func (s *PullRequestReviewLinksPullRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestReviewRequest) Encode(e *jx.Encoder) {
+func (s *PullRequestReviewRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestReviewRequest) encodeFields(e *jx.Encoder) {
+func (s *PullRequestReviewRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("users")
@@ -123367,7 +123367,7 @@ func (s *PullRequestReviewRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestReviewRequest) MarshalJSON() ([]byte, error) {
+func (s *PullRequestReviewRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -123380,14 +123380,14 @@ func (s *PullRequestReviewRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestSimple) Encode(e *jx.Encoder) {
+func (s *PullRequestSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestSimple) encodeFields(e *jx.Encoder) {
+func (s *PullRequestSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -124079,7 +124079,7 @@ func (s *PullRequestSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestSimple) MarshalJSON() ([]byte, error) {
+func (s *PullRequestSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -124092,14 +124092,14 @@ func (s *PullRequestSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestSimpleBase) Encode(e *jx.Encoder) {
+func (s *PullRequestSimpleBase) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestSimpleBase) encodeFields(e *jx.Encoder) {
+func (s *PullRequestSimpleBase) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("label")
@@ -124244,7 +124244,7 @@ func (s *PullRequestSimpleBase) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestSimpleBase) MarshalJSON() ([]byte, error) {
+func (s *PullRequestSimpleBase) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -124257,14 +124257,14 @@ func (s *PullRequestSimpleBase) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestSimpleHead) Encode(e *jx.Encoder) {
+func (s *PullRequestSimpleHead) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestSimpleHead) encodeFields(e *jx.Encoder) {
+func (s *PullRequestSimpleHead) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("label")
@@ -124409,7 +124409,7 @@ func (s *PullRequestSimpleHead) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestSimpleHead) MarshalJSON() ([]byte, error) {
+func (s *PullRequestSimpleHead) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -124422,14 +124422,14 @@ func (s *PullRequestSimpleHead) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestSimpleLabelsItem) Encode(e *jx.Encoder) {
+func (s *PullRequestSimpleLabelsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestSimpleLabelsItem) encodeFields(e *jx.Encoder) {
+func (s *PullRequestSimpleLabelsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -124574,7 +124574,7 @@ func (s *PullRequestSimpleLabelsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestSimpleLabelsItem) MarshalJSON() ([]byte, error) {
+func (s *PullRequestSimpleLabelsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -124587,14 +124587,14 @@ func (s *PullRequestSimpleLabelsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullRequestSimpleLinks) Encode(e *jx.Encoder) {
+func (s *PullRequestSimpleLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullRequestSimpleLinks) encodeFields(e *jx.Encoder) {
+func (s *PullRequestSimpleLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("comments")
@@ -124781,7 +124781,7 @@ func (s *PullRequestSimpleLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullRequestSimpleLinks) MarshalJSON() ([]byte, error) {
+func (s *PullRequestSimpleLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -124834,14 +124834,14 @@ func (s *PullRequestState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsCreateReplyForReviewCommentReq) Encode(e *jx.Encoder) {
+func (s *PullsCreateReplyForReviewCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsCreateReplyForReviewCommentReq) encodeFields(e *jx.Encoder) {
+func (s *PullsCreateReplyForReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -124918,7 +124918,7 @@ func (s *PullsCreateReplyForReviewCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsCreateReplyForReviewCommentReq) MarshalJSON() ([]byte, error) {
+func (s *PullsCreateReplyForReviewCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -124931,14 +124931,14 @@ func (s *PullsCreateReplyForReviewCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsCreateReq) Encode(e *jx.Encoder) {
+func (s *PullsCreateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsCreateReq) encodeFields(e *jx.Encoder) {
+func (s *PullsCreateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -125118,7 +125118,7 @@ func (s *PullsCreateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsCreateReq) MarshalJSON() ([]byte, error) {
+func (s *PullsCreateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -125131,14 +125131,14 @@ func (s *PullsCreateReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsCreateReviewCommentReq) Encode(e *jx.Encoder) {
+func (s *PullsCreateReviewCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsCreateReviewCommentReq) encodeFields(e *jx.Encoder) {
+func (s *PullsCreateReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -125352,7 +125352,7 @@ func (s *PullsCreateReviewCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsCreateReviewCommentReq) MarshalJSON() ([]byte, error) {
+func (s *PullsCreateReviewCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -125447,14 +125447,14 @@ func (s *PullsCreateReviewCommentReqStartSide) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s PullsCreateReviewReq) Encode(e *jx.Encoder) {
+func (s *PullsCreateReviewReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsCreateReviewReq) encodeFields(e *jx.Encoder) {
+func (s *PullsCreateReviewReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.CommitID.Set {
 			e.FieldStart("commit_id")
@@ -125559,7 +125559,7 @@ func (s *PullsCreateReviewReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsCreateReviewReq) MarshalJSON() ([]byte, error) {
+func (s *PullsCreateReviewReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -125572,14 +125572,14 @@ func (s *PullsCreateReviewReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsCreateReviewReqCommentsItem) Encode(e *jx.Encoder) {
+func (s *PullsCreateReviewReqCommentsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsCreateReviewReqCommentsItem) encodeFields(e *jx.Encoder) {
+func (s *PullsCreateReviewReqCommentsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("path")
@@ -125759,7 +125759,7 @@ func (s *PullsCreateReviewReqCommentsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsCreateReviewReqCommentsItem) MarshalJSON() ([]byte, error) {
+func (s *PullsCreateReviewReqCommentsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -125814,14 +125814,14 @@ func (s *PullsCreateReviewReqEvent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsDismissReviewReq) Encode(e *jx.Encoder) {
+func (s *PullsDismissReviewReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsDismissReviewReq) encodeFields(e *jx.Encoder) {
+func (s *PullsDismissReviewReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -125915,7 +125915,7 @@ func (s *PullsDismissReviewReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsDismissReviewReq) MarshalJSON() ([]byte, error) {
+func (s *PullsDismissReviewReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -125928,8 +125928,8 @@ func (s *PullsDismissReviewReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes PullsGetApplicationJSONInternalServerError as json.
-func (s PullsGetApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PullsGetApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -125953,7 +125953,7 @@ func (s *PullsGetApplicationJSONInternalServerError) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsGetApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
+func (s *PullsGetApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -125966,8 +125966,8 @@ func (s *PullsGetApplicationJSONInternalServerError) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes PullsGetApplicationJSONNotFound as json.
-func (s PullsGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PullsGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -125991,7 +125991,7 @@ func (s *PullsGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PullsGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126004,8 +126004,8 @@ func (s *PullsGetApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes PullsMergeApplicationJSONForbidden as json.
-func (s PullsMergeApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PullsMergeApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -126029,7 +126029,7 @@ func (s *PullsMergeApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsMergeApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PullsMergeApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126042,8 +126042,8 @@ func (s *PullsMergeApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes PullsMergeApplicationJSONNotFound as json.
-func (s PullsMergeApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PullsMergeApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -126067,7 +126067,7 @@ func (s *PullsMergeApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsMergeApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PullsMergeApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126080,14 +126080,14 @@ func (s *PullsMergeApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsMergeConflict) Encode(e *jx.Encoder) {
+func (s *PullsMergeConflict) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsMergeConflict) encodeFields(e *jx.Encoder) {
+func (s *PullsMergeConflict) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -126147,7 +126147,7 @@ func (s *PullsMergeConflict) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsMergeConflict) MarshalJSON() ([]byte, error) {
+func (s *PullsMergeConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126160,14 +126160,14 @@ func (s *PullsMergeConflict) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsMergeMethodNotAllowed) Encode(e *jx.Encoder) {
+func (s *PullsMergeMethodNotAllowed) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsMergeMethodNotAllowed) encodeFields(e *jx.Encoder) {
+func (s *PullsMergeMethodNotAllowed) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -126227,7 +126227,7 @@ func (s *PullsMergeMethodNotAllowed) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsMergeMethodNotAllowed) MarshalJSON() ([]byte, error) {
+func (s *PullsMergeMethodNotAllowed) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126240,14 +126240,14 @@ func (s *PullsMergeMethodNotAllowed) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsMergeReq) Encode(e *jx.Encoder) {
+func (s *PullsMergeReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsMergeReq) encodeFields(e *jx.Encoder) {
+func (s *PullsMergeReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.CommitTitle.Set {
 			e.FieldStart("commit_title")
@@ -126341,7 +126341,7 @@ func (s *PullsMergeReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsMergeReq) MarshalJSON() ([]byte, error) {
+func (s *PullsMergeReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126396,14 +126396,14 @@ func (s *PullsMergeReqMergeMethod) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsRemoveRequestedReviewersReq) Encode(e *jx.Encoder) {
+func (s *PullsRemoveRequestedReviewersReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsRemoveRequestedReviewersReq) encodeFields(e *jx.Encoder) {
+func (s *PullsRemoveRequestedReviewersReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("reviewers")
@@ -126522,7 +126522,7 @@ func (s *PullsRemoveRequestedReviewersReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsRemoveRequestedReviewersReq) MarshalJSON() ([]byte, error) {
+func (s *PullsRemoveRequestedReviewersReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126535,8 +126535,8 @@ func (s *PullsRemoveRequestedReviewersReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes PullsSubmitReviewApplicationJSONForbidden as json.
-func (s PullsSubmitReviewApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PullsSubmitReviewApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -126560,7 +126560,7 @@ func (s *PullsSubmitReviewApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsSubmitReviewApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *PullsSubmitReviewApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126573,8 +126573,8 @@ func (s *PullsSubmitReviewApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes PullsSubmitReviewApplicationJSONNotFound as json.
-func (s PullsSubmitReviewApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *PullsSubmitReviewApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -126598,7 +126598,7 @@ func (s *PullsSubmitReviewApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsSubmitReviewApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *PullsSubmitReviewApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126611,14 +126611,14 @@ func (s *PullsSubmitReviewApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s PullsSubmitReviewReq) Encode(e *jx.Encoder) {
+func (s *PullsSubmitReviewReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsSubmitReviewReq) encodeFields(e *jx.Encoder) {
+func (s *PullsSubmitReviewReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Body.Set {
 			e.FieldStart("body")
@@ -126710,7 +126710,7 @@ func (s *PullsSubmitReviewReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsSubmitReviewReq) MarshalJSON() ([]byte, error) {
+func (s *PullsSubmitReviewReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126765,14 +126765,14 @@ func (s *PullsSubmitReviewReqEvent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsUpdateBranchAccepted) Encode(e *jx.Encoder) {
+func (s *PullsUpdateBranchAccepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsUpdateBranchAccepted) encodeFields(e *jx.Encoder) {
+func (s *PullsUpdateBranchAccepted) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -126832,7 +126832,7 @@ func (s *PullsUpdateBranchAccepted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsUpdateBranchAccepted) MarshalJSON() ([]byte, error) {
+func (s *PullsUpdateBranchAccepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126845,14 +126845,14 @@ func (s *PullsUpdateBranchAccepted) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsUpdateBranchReq) Encode(e *jx.Encoder) {
+func (s *PullsUpdateBranchReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsUpdateBranchReq) encodeFields(e *jx.Encoder) {
+func (s *PullsUpdateBranchReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.ExpectedHeadSha.Set {
 			e.FieldStart("expected_head_sha")
@@ -126895,7 +126895,7 @@ func (s *PullsUpdateBranchReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsUpdateBranchReq) MarshalJSON() ([]byte, error) {
+func (s *PullsUpdateBranchReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -126908,14 +126908,14 @@ func (s *PullsUpdateBranchReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsUpdateReq) Encode(e *jx.Encoder) {
+func (s *PullsUpdateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsUpdateReq) encodeFields(e *jx.Encoder) {
+func (s *PullsUpdateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -127026,7 +127026,7 @@ func (s *PullsUpdateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsUpdateReq) MarshalJSON() ([]byte, error) {
+func (s *PullsUpdateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127079,14 +127079,14 @@ func (s *PullsUpdateReqState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsUpdateReviewCommentReq) Encode(e *jx.Encoder) {
+func (s *PullsUpdateReviewCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsUpdateReviewCommentReq) encodeFields(e *jx.Encoder) {
+func (s *PullsUpdateReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -127163,7 +127163,7 @@ func (s *PullsUpdateReviewCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsUpdateReviewCommentReq) MarshalJSON() ([]byte, error) {
+func (s *PullsUpdateReviewCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127176,14 +127176,14 @@ func (s *PullsUpdateReviewCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PullsUpdateReviewReq) Encode(e *jx.Encoder) {
+func (s *PullsUpdateReviewReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PullsUpdateReviewReq) encodeFields(e *jx.Encoder) {
+func (s *PullsUpdateReviewReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -127260,7 +127260,7 @@ func (s *PullsUpdateReviewReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PullsUpdateReviewReq) MarshalJSON() ([]byte, error) {
+func (s *PullsUpdateReviewReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127273,14 +127273,14 @@ func (s *PullsUpdateReviewReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RateLimit) Encode(e *jx.Encoder) {
+func (s *RateLimit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RateLimit) encodeFields(e *jx.Encoder) {
+func (s *RateLimit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("limit")
@@ -127411,7 +127411,7 @@ func (s *RateLimit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RateLimit) MarshalJSON() ([]byte, error) {
+func (s *RateLimit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127424,14 +127424,14 @@ func (s *RateLimit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RateLimitOverview) Encode(e *jx.Encoder) {
+func (s *RateLimitOverview) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RateLimitOverview) encodeFields(e *jx.Encoder) {
+func (s *RateLimitOverview) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("resources")
@@ -127522,7 +127522,7 @@ func (s *RateLimitOverview) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RateLimitOverview) MarshalJSON() ([]byte, error) {
+func (s *RateLimitOverview) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127535,14 +127535,14 @@ func (s *RateLimitOverview) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RateLimitOverviewResources) Encode(e *jx.Encoder) {
+func (s *RateLimitOverviewResources) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RateLimitOverviewResources) encodeFields(e *jx.Encoder) {
+func (s *RateLimitOverviewResources) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("core")
@@ -127718,7 +127718,7 @@ func (s *RateLimitOverviewResources) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RateLimitOverviewResources) MarshalJSON() ([]byte, error) {
+func (s *RateLimitOverviewResources) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127731,14 +127731,14 @@ func (s *RateLimitOverviewResources) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Reaction) Encode(e *jx.Encoder) {
+func (s *Reaction) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Reaction) encodeFields(e *jx.Encoder) {
+func (s *Reaction) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -127883,7 +127883,7 @@ func (s *Reaction) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Reaction) MarshalJSON() ([]byte, error) {
+func (s *Reaction) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -127948,14 +127948,14 @@ func (s *ReactionContent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionRollup) Encode(e *jx.Encoder) {
+func (s *ReactionRollup) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionRollup) encodeFields(e *jx.Encoder) {
+func (s *ReactionRollup) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -128195,7 +128195,7 @@ func (s *ReactionRollup) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionRollup) MarshalJSON() ([]byte, error) {
+func (s *ReactionRollup) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128208,8 +128208,8 @@ func (s *ReactionRollup) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReactionsCreateForCommitCommentApplicationJSONCreated as json.
-func (s ReactionsCreateForCommitCommentApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128233,7 +128233,7 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForCommitCommentApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128246,8 +128246,8 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) UnmarshalJSON(da
 }
 
 // Encode encodes ReactionsCreateForCommitCommentApplicationJSONOK as json.
-func (s ReactionsCreateForCommitCommentApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForCommitCommentApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128271,7 +128271,7 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONOK) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForCommitCommentApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForCommitCommentApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128284,14 +128284,14 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONOK) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForCommitCommentReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForCommitCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForCommitCommentReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForCommitCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -128366,7 +128366,7 @@ func (s *ReactionsCreateForCommitCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForCommitCommentReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForCommitCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128431,8 +128431,8 @@ func (s *ReactionsCreateForCommitCommentReqContent) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ReactionsCreateForIssueApplicationJSONCreated as json.
-func (s ReactionsCreateForIssueApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForIssueApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128456,7 +128456,7 @@ func (s *ReactionsCreateForIssueApplicationJSONCreated) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForIssueApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForIssueApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128469,8 +128469,8 @@ func (s *ReactionsCreateForIssueApplicationJSONCreated) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReactionsCreateForIssueApplicationJSONOK as json.
-func (s ReactionsCreateForIssueApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForIssueApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128494,7 +128494,7 @@ func (s *ReactionsCreateForIssueApplicationJSONOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForIssueApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForIssueApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128507,8 +128507,8 @@ func (s *ReactionsCreateForIssueApplicationJSONOK) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ReactionsCreateForIssueCommentApplicationJSONCreated as json.
-func (s ReactionsCreateForIssueCommentApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128532,7 +128532,7 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForIssueCommentApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128545,8 +128545,8 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) UnmarshalJSON(dat
 }
 
 // Encode encodes ReactionsCreateForIssueCommentApplicationJSONOK as json.
-func (s ReactionsCreateForIssueCommentApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForIssueCommentApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128570,7 +128570,7 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONOK) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForIssueCommentApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForIssueCommentApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128583,14 +128583,14 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONOK) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForIssueCommentReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForIssueCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForIssueCommentReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForIssueCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -128665,7 +128665,7 @@ func (s *ReactionsCreateForIssueCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForIssueCommentReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForIssueCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128730,14 +128730,14 @@ func (s *ReactionsCreateForIssueCommentReqContent) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForIssueReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForIssueReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForIssueReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForIssueReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -128812,7 +128812,7 @@ func (s *ReactionsCreateForIssueReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForIssueReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForIssueReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128877,8 +128877,8 @@ func (s *ReactionsCreateForIssueReqContent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated as json.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128902,7 +128902,7 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128915,8 +128915,8 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Unmar
 }
 
 // Encode encodes ReactionsCreateForPullRequestReviewCommentApplicationJSONOK as json.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -128940,7 +128940,7 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128953,14 +128953,14 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) UnmarshalJ
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForPullRequestReviewCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForPullRequestReviewCommentReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForPullRequestReviewCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -129035,7 +129035,7 @@ func (s *ReactionsCreateForPullRequestReviewCommentReq) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForPullRequestReviewCommentReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForPullRequestReviewCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129100,8 +129100,8 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) UnmarshalJSON(dat
 }
 
 // Encode encodes ReactionsCreateForReleaseApplicationJSONCreated as json.
-func (s ReactionsCreateForReleaseApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForReleaseApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -129125,7 +129125,7 @@ func (s *ReactionsCreateForReleaseApplicationJSONCreated) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForReleaseApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForReleaseApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129138,8 +129138,8 @@ func (s *ReactionsCreateForReleaseApplicationJSONCreated) UnmarshalJSON(data []b
 }
 
 // Encode encodes ReactionsCreateForReleaseApplicationJSONOK as json.
-func (s ReactionsCreateForReleaseApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForReleaseApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -129163,7 +129163,7 @@ func (s *ReactionsCreateForReleaseApplicationJSONOK) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForReleaseApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForReleaseApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129176,14 +129176,14 @@ func (s *ReactionsCreateForReleaseApplicationJSONOK) UnmarshalJSON(data []byte) 
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForReleaseReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForReleaseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForReleaseReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForReleaseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -129258,7 +129258,7 @@ func (s *ReactionsCreateForReleaseReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForReleaseReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForReleaseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129319,8 +129319,8 @@ func (s *ReactionsCreateForReleaseReqContent) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated as json.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -129344,7 +129344,7 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129357,8 +129357,8 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Unm
 }
 
 // Encode encodes ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK as json.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -129382,7 +129382,7 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129395,14 +129395,14 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Unmarsha
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -129477,7 +129477,7 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129542,14 +129542,14 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) UnmarshalJSON(d
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -129624,7 +129624,7 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129689,8 +129689,8 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) UnmarshalJSON(
 }
 
 // Encode encodes ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated as json.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -129714,7 +129714,7 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129727,8 +129727,8 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) UnmarshalJ
 }
 
 // Encode encodes ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK as json.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := Reaction(s)
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*Reaction)(s)
 
 	unwrapped.Encode(e)
 }
@@ -129752,7 +129752,7 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129765,14 +129765,14 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) UnmarshalJSON(d
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionInOrgReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForTeamDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -129847,7 +129847,7 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -129912,14 +129912,14 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ReactionsCreateForTeamDiscussionLegacyReq) Encode(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReactionsCreateForTeamDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *ReactionsCreateForTeamDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("content")
@@ -129994,7 +129994,7 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReq) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsCreateForTeamDiscussionLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *ReactionsCreateForTeamDiscussionLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130059,8 +130059,8 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) UnmarshalJSON(data []
 }
 
 // Encode encodes ReactionsDeleteLegacyApplicationJSONForbidden as json.
-func (s ReactionsDeleteLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReactionsDeleteLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -130084,7 +130084,7 @@ func (s *ReactionsDeleteLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsDeleteLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReactionsDeleteLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130097,8 +130097,8 @@ func (s *ReactionsDeleteLegacyApplicationJSONForbidden) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReactionsDeleteLegacyApplicationJSONGone as json.
-func (s ReactionsDeleteLegacyApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReactionsDeleteLegacyApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -130122,7 +130122,7 @@ func (s *ReactionsDeleteLegacyApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsDeleteLegacyApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ReactionsDeleteLegacyApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130135,8 +130135,8 @@ func (s *ReactionsDeleteLegacyApplicationJSONGone) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ReactionsDeleteLegacyApplicationJSONUnauthorized as json.
-func (s ReactionsDeleteLegacyApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -130160,7 +130160,7 @@ func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsDeleteLegacyApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130173,8 +130173,8 @@ func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) UnmarshalJSON(data []
 }
 
 // Encode encodes ReactionsListForIssueApplicationJSONGone as json.
-func (s ReactionsListForIssueApplicationJSONGone) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReactionsListForIssueApplicationJSONGone) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -130198,7 +130198,7 @@ func (s *ReactionsListForIssueApplicationJSONGone) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsListForIssueApplicationJSONGone) MarshalJSON() ([]byte, error) {
+func (s *ReactionsListForIssueApplicationJSONGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130211,8 +130211,8 @@ func (s *ReactionsListForIssueApplicationJSONGone) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ReactionsListForIssueApplicationJSONNotFound as json.
-func (s ReactionsListForIssueApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReactionsListForIssueApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -130236,7 +130236,7 @@ func (s *ReactionsListForIssueApplicationJSONNotFound) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReactionsListForIssueApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReactionsListForIssueApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130249,14 +130249,14 @@ func (s *ReactionsListForIssueApplicationJSONNotFound) UnmarshalJSON(data []byte
 }
 
 // Encode implements json.Marshaler.
-func (s ReferrerTraffic) Encode(e *jx.Encoder) {
+func (s *ReferrerTraffic) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReferrerTraffic) encodeFields(e *jx.Encoder) {
+func (s *ReferrerTraffic) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("referrer")
@@ -130369,7 +130369,7 @@ func (s *ReferrerTraffic) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReferrerTraffic) MarshalJSON() ([]byte, error) {
+func (s *ReferrerTraffic) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130382,14 +130382,14 @@ func (s *ReferrerTraffic) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Release) Encode(e *jx.Encoder) {
+func (s *Release) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Release) encodeFields(e *jx.Encoder) {
+func (s *Release) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -130858,7 +130858,7 @@ func (s *Release) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Release) MarshalJSON() ([]byte, error) {
+func (s *Release) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -130871,14 +130871,14 @@ func (s *Release) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReleaseAsset) Encode(e *jx.Encoder) {
+func (s *ReleaseAsset) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReleaseAsset) encodeFields(e *jx.Encoder) {
+func (s *ReleaseAsset) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -131166,7 +131166,7 @@ func (s *ReleaseAsset) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReleaseAsset) MarshalJSON() ([]byte, error) {
+func (s *ReleaseAsset) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -131219,14 +131219,14 @@ func (s *ReleaseAssetState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepoSearchResultItem) Encode(e *jx.Encoder) {
+func (s *RepoSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepoSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *RepoSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -132817,7 +132817,7 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepoSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *RepoSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -132830,14 +132830,14 @@ func (s *RepoSearchResultItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepoSearchResultItemPermissions) Encode(e *jx.Encoder) {
+func (s *RepoSearchResultItemPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepoSearchResultItemPermissions) encodeFields(e *jx.Encoder) {
+func (s *RepoSearchResultItemPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -132984,7 +132984,7 @@ func (s *RepoSearchResultItemPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepoSearchResultItemPermissions) MarshalJSON() ([]byte, error) {
+func (s *RepoSearchResultItemPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -132997,8 +132997,8 @@ func (s *RepoSearchResultItemPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposAcceptInvitationApplicationJSONConflict as json.
-func (s ReposAcceptInvitationApplicationJSONConflict) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposAcceptInvitationApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -133022,7 +133022,7 @@ func (s *ReposAcceptInvitationApplicationJSONConflict) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAcceptInvitationApplicationJSONConflict) MarshalJSON() ([]byte, error) {
+func (s *ReposAcceptInvitationApplicationJSONConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133035,8 +133035,8 @@ func (s *ReposAcceptInvitationApplicationJSONConflict) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ReposAcceptInvitationApplicationJSONForbidden as json.
-func (s ReposAcceptInvitationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposAcceptInvitationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -133060,7 +133060,7 @@ func (s *ReposAcceptInvitationApplicationJSONForbidden) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAcceptInvitationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposAcceptInvitationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133073,8 +133073,8 @@ func (s *ReposAcceptInvitationApplicationJSONForbidden) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReposAcceptInvitationApplicationJSONNotFound as json.
-func (s ReposAcceptInvitationApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposAcceptInvitationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -133098,7 +133098,7 @@ func (s *ReposAcceptInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAcceptInvitationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposAcceptInvitationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133221,14 +133221,14 @@ func (s *ReposAddAppAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposAddAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposAddAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposAddAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposAddAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apps")
@@ -133317,7 +133317,7 @@ func (s *ReposAddAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddAppAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposAddAppAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133330,14 +133330,14 @@ func (s *ReposAddAppAccessRestrictionsReq0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposAddCollaboratorReq) Encode(e *jx.Encoder) {
+func (s *ReposAddCollaboratorReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposAddCollaboratorReq) encodeFields(e *jx.Encoder) {
+func (s *ReposAddCollaboratorReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permission.Set {
 			e.FieldStart("permission")
@@ -133398,7 +133398,7 @@ func (s *ReposAddCollaboratorReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddCollaboratorReq) MarshalJSON() ([]byte, error) {
+func (s *ReposAddCollaboratorReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133457,8 +133457,8 @@ func (s *ReposAddCollaboratorReqPermission) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposAddStatusCheckContextsApplicationJSONForbidden as json.
-func (s ReposAddStatusCheckContextsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposAddStatusCheckContextsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -133482,7 +133482,7 @@ func (s *ReposAddStatusCheckContextsApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddStatusCheckContextsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposAddStatusCheckContextsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133495,8 +133495,8 @@ func (s *ReposAddStatusCheckContextsApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes ReposAddStatusCheckContextsApplicationJSONNotFound as json.
-func (s ReposAddStatusCheckContextsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposAddStatusCheckContextsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -133520,7 +133520,7 @@ func (s *ReposAddStatusCheckContextsApplicationJSONNotFound) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddStatusCheckContextsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposAddStatusCheckContextsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133645,14 +133645,14 @@ func (s *ReposAddStatusCheckContextsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposAddStatusCheckContextsReq0) Encode(e *jx.Encoder) {
+func (s *ReposAddStatusCheckContextsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposAddStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposAddStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("contexts")
@@ -133741,7 +133741,7 @@ func (s *ReposAddStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddStatusCheckContextsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposAddStatusCheckContextsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -133864,14 +133864,14 @@ func (s *ReposAddTeamAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposAddTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposAddTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposAddTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposAddTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("teams")
@@ -133960,7 +133960,7 @@ func (s *ReposAddTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddTeamAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposAddTeamAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134083,14 +134083,14 @@ func (s *ReposAddUserAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposAddUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposAddUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposAddUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposAddUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("users")
@@ -134179,7 +134179,7 @@ func (s *ReposAddUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposAddUserAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposAddUserAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134192,8 +134192,8 @@ func (s *ReposAddUserAccessRestrictionsReq0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposCompareCommitsApplicationJSONInternalServerError as json.
-func (s ReposCompareCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCompareCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -134217,7 +134217,7 @@ func (s *ReposCompareCommitsApplicationJSONInternalServerError) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCompareCommitsApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
+func (s *ReposCompareCommitsApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134230,8 +134230,8 @@ func (s *ReposCompareCommitsApplicationJSONInternalServerError) UnmarshalJSON(da
 }
 
 // Encode encodes ReposCompareCommitsApplicationJSONNotFound as json.
-func (s ReposCompareCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCompareCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -134255,7 +134255,7 @@ func (s *ReposCompareCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCompareCommitsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposCompareCommitsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134268,14 +134268,14 @@ func (s *ReposCompareCommitsApplicationJSONNotFound) UnmarshalJSON(data []byte) 
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateAutolinkReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateAutolinkReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateAutolinkReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateAutolinkReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key_prefix")
@@ -134370,7 +134370,7 @@ func (s *ReposCreateAutolinkReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateAutolinkReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateAutolinkReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134383,14 +134383,14 @@ func (s *ReposCreateAutolinkReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateCommitCommentReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateCommitCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateCommitCommentReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateCommitCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -134518,7 +134518,7 @@ func (s *ReposCreateCommitCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateCommitCommentReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateCommitCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134531,14 +134531,14 @@ func (s *ReposCreateCommitCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateCommitStatusReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateCommitStatusReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateCommitStatusReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateCommitStatusReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -134665,7 +134665,7 @@ func (s *ReposCreateCommitStatusReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateCommitStatusReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateCommitStatusReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134722,14 +134722,14 @@ func (s *ReposCreateCommitStatusReqState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateDeployKeyReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateDeployKeyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateDeployKeyReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateDeployKeyReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -134840,7 +134840,7 @@ func (s *ReposCreateDeployKeyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateDeployKeyReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateDeployKeyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134853,14 +134853,14 @@ func (s *ReposCreateDeployKeyReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateDeploymentAccepted) Encode(e *jx.Encoder) {
+func (s *ReposCreateDeploymentAccepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateDeploymentAccepted) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateDeploymentAccepted) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -134903,7 +134903,7 @@ func (s *ReposCreateDeploymentAccepted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateDeploymentAccepted) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateDeploymentAccepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -134916,14 +134916,14 @@ func (s *ReposCreateDeploymentAccepted) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateDeploymentReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateDeploymentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateDeploymentReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateDeploymentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ref")
@@ -135151,7 +135151,7 @@ func (s *ReposCreateDeploymentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateDeploymentReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateDeploymentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135270,14 +135270,14 @@ func (s *ReposCreateDeploymentReqPayload0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateDeploymentStatusReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateDeploymentStatusReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateDeploymentStatusReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateDeploymentStatusReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -135455,7 +135455,7 @@ func (s *ReposCreateDeploymentStatusReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateDeploymentStatusReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateDeploymentStatusReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135560,14 +135560,14 @@ func (s *ReposCreateDeploymentStatusReqState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateDispatchEventReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateDispatchEventReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateDispatchEventReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateDispatchEventReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("event_type")
@@ -135661,7 +135661,7 @@ func (s *ReposCreateDispatchEventReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateDispatchEventReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateDispatchEventReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135743,8 +135743,8 @@ func (s *ReposCreateDispatchEventReqClientPayload) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ReposCreateForAuthenticatedUserApplicationJSONBadRequest as json.
-func (s ReposCreateForAuthenticatedUserApplicationJSONBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForAuthenticatedUserApplicationJSONBadRequest) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -135768,7 +135768,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONBadRequest) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForAuthenticatedUserApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForAuthenticatedUserApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135781,8 +135781,8 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONBadRequest) UnmarshalJSON
 }
 
 // Encode encodes ReposCreateForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ReposCreateForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -135806,7 +135806,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135819,8 +135819,8 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONForbidden) UnmarshalJSON(
 }
 
 // Encode encodes ReposCreateForAuthenticatedUserApplicationJSONNotFound as json.
-func (s ReposCreateForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -135844,7 +135844,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135857,8 +135857,8 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONNotFound) UnmarshalJSON(d
 }
 
 // Encode encodes ReposCreateForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -135882,7 +135882,7 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -135895,14 +135895,14 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) UnmarshalJS
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateForAuthenticatedUserReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateForAuthenticatedUserReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateForAuthenticatedUserReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -136271,7 +136271,7 @@ func (s *ReposCreateForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForAuthenticatedUserReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136284,8 +136284,8 @@ func (s *ReposCreateForAuthenticatedUserReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposCreateForkApplicationJSONBadRequest as json.
-func (s ReposCreateForkApplicationJSONBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForkApplicationJSONBadRequest) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -136309,7 +136309,7 @@ func (s *ReposCreateForkApplicationJSONBadRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForkApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForkApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136322,8 +136322,8 @@ func (s *ReposCreateForkApplicationJSONBadRequest) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes ReposCreateForkApplicationJSONForbidden as json.
-func (s ReposCreateForkApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForkApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -136347,7 +136347,7 @@ func (s *ReposCreateForkApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForkApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForkApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136360,8 +136360,8 @@ func (s *ReposCreateForkApplicationJSONForbidden) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ReposCreateForkApplicationJSONNotFound as json.
-func (s ReposCreateForkApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateForkApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -136385,7 +136385,7 @@ func (s *ReposCreateForkApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForkApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForkApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136398,14 +136398,14 @@ func (s *ReposCreateForkApplicationJSONNotFound) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateForkReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateForkReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateForkReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateForkReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Organization.Set {
 			e.FieldStart("organization")
@@ -136448,7 +136448,7 @@ func (s *ReposCreateForkReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateForkReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateForkReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136461,14 +136461,14 @@ func (s *ReposCreateForkReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateInOrgReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -136837,7 +136837,7 @@ func (s *ReposCreateInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136894,8 +136894,8 @@ func (s *ReposCreateInOrgReqVisibility) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposCreateOrUpdateFileContentsApplicationJSONConflict as json.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONConflict) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -136919,7 +136919,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONConflict) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONConflict) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136932,8 +136932,8 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONConflict) UnmarshalJSON(d
 }
 
 // Encode encodes ReposCreateOrUpdateFileContentsApplicationJSONCreated as json.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := FileCommit(s)
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*FileCommit)(s)
 
 	unwrapped.Encode(e)
 }
@@ -136957,7 +136957,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONCreated) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -136970,8 +136970,8 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONCreated) UnmarshalJSON(da
 }
 
 // Encode encodes ReposCreateOrUpdateFileContentsApplicationJSONNotFound as json.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -136995,7 +136995,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONNotFound) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137008,8 +137008,8 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONNotFound) UnmarshalJSON(d
 }
 
 // Encode encodes ReposCreateOrUpdateFileContentsApplicationJSONOK as json.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := FileCommit(s)
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*FileCommit)(s)
 
 	unwrapped.Encode(e)
 }
@@ -137033,7 +137033,7 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONOK) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137046,14 +137046,14 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONOK) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateOrUpdateFileContentsReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateOrUpdateFileContentsReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateOrUpdateFileContentsReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateOrUpdateFileContentsReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -137216,7 +137216,7 @@ func (s *ReposCreateOrUpdateFileContentsReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137229,14 +137229,14 @@ func (s *ReposCreateOrUpdateFileContentsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateOrUpdateFileContentsReqAuthor) Encode(e *jx.Encoder) {
+func (s *ReposCreateOrUpdateFileContentsReqAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateOrUpdateFileContentsReqAuthor) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateOrUpdateFileContentsReqAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -137348,7 +137348,7 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsReqAuthor) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsReqAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137361,14 +137361,14 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateOrUpdateFileContentsReqCommitter) Encode(e *jx.Encoder) {
+func (s *ReposCreateOrUpdateFileContentsReqCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateOrUpdateFileContentsReqCommitter) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateOrUpdateFileContentsReqCommitter) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -137480,7 +137480,7 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateOrUpdateFileContentsReqCommitter) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateOrUpdateFileContentsReqCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137493,14 +137493,14 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreatePagesSiteReq) Encode(e *jx.Encoder) {
+func (s *ReposCreatePagesSiteReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreatePagesSiteReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreatePagesSiteReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -137575,7 +137575,7 @@ func (s *ReposCreatePagesSiteReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreatePagesSiteReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreatePagesSiteReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137588,14 +137588,14 @@ func (s *ReposCreatePagesSiteReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreatePagesSiteReqSource) Encode(e *jx.Encoder) {
+func (s *ReposCreatePagesSiteReqSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreatePagesSiteReqSource) encodeFields(e *jx.Encoder) {
+func (s *ReposCreatePagesSiteReqSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("branch")
@@ -137690,7 +137690,7 @@ func (s *ReposCreatePagesSiteReqSource) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreatePagesSiteReqSource) MarshalJSON() ([]byte, error) {
+func (s *ReposCreatePagesSiteReqSource) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137743,14 +137743,14 @@ func (s *ReposCreatePagesSiteReqSourcePath) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateReleaseReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateReleaseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateReleaseReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateReleaseReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("tag_name")
@@ -137930,7 +137930,7 @@ func (s *ReposCreateReleaseReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateReleaseReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateReleaseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -137943,14 +137943,14 @@ func (s *ReposCreateReleaseReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateUsingTemplateReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateUsingTemplateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateUsingTemplateReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateUsingTemplateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Owner.Set {
 			e.FieldStart("owner")
@@ -138096,7 +138096,7 @@ func (s *ReposCreateUsingTemplateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateUsingTemplateReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateUsingTemplateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138109,8 +138109,8 @@ func (s *ReposCreateUsingTemplateReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposCreateWebhookApplicationJSONForbidden as json.
-func (s ReposCreateWebhookApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateWebhookApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138134,7 +138134,7 @@ func (s *ReposCreateWebhookApplicationJSONForbidden) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateWebhookApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateWebhookApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138147,8 +138147,8 @@ func (s *ReposCreateWebhookApplicationJSONForbidden) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes ReposCreateWebhookApplicationJSONNotFound as json.
-func (s ReposCreateWebhookApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposCreateWebhookApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138172,7 +138172,7 @@ func (s *ReposCreateWebhookApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateWebhookApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateWebhookApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138185,14 +138185,14 @@ func (s *ReposCreateWebhookApplicationJSONNotFound) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateWebhookReq) Encode(e *jx.Encoder) {
+func (s *ReposCreateWebhookReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateWebhookReq) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateWebhookReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -138300,7 +138300,7 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateWebhookReq) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateWebhookReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138313,14 +138313,14 @@ func (s *ReposCreateWebhookReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposCreateWebhookReqConfig) Encode(e *jx.Encoder) {
+func (s *ReposCreateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposCreateWebhookReqConfig) encodeFields(e *jx.Encoder) {
+func (s *ReposCreateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -138448,7 +138448,7 @@ func (s *ReposCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposCreateWebhookReqConfig) MarshalJSON() ([]byte, error) {
+func (s *ReposCreateWebhookReqConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138461,8 +138461,8 @@ func (s *ReposCreateWebhookReqConfig) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposDeclineInvitationApplicationJSONConflict as json.
-func (s ReposDeclineInvitationApplicationJSONConflict) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeclineInvitationApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138486,7 +138486,7 @@ func (s *ReposDeclineInvitationApplicationJSONConflict) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeclineInvitationApplicationJSONConflict) MarshalJSON() ([]byte, error) {
+func (s *ReposDeclineInvitationApplicationJSONConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138499,8 +138499,8 @@ func (s *ReposDeclineInvitationApplicationJSONConflict) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReposDeclineInvitationApplicationJSONForbidden as json.
-func (s ReposDeclineInvitationApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeclineInvitationApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138524,7 +138524,7 @@ func (s *ReposDeclineInvitationApplicationJSONForbidden) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeclineInvitationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposDeclineInvitationApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138537,8 +138537,8 @@ func (s *ReposDeclineInvitationApplicationJSONForbidden) UnmarshalJSON(data []by
 }
 
 // Encode encodes ReposDeclineInvitationApplicationJSONNotFound as json.
-func (s ReposDeclineInvitationApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeclineInvitationApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138562,7 +138562,7 @@ func (s *ReposDeclineInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeclineInvitationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposDeclineInvitationApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138575,8 +138575,8 @@ func (s *ReposDeclineInvitationApplicationJSONNotFound) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReposDeleteApplicationJSONNotFound as json.
-func (s ReposDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeleteApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138600,7 +138600,7 @@ func (s *ReposDeleteApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138613,8 +138613,8 @@ func (s *ReposDeleteApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposDeleteApplicationJSONTemporaryRedirect as json.
-func (s ReposDeleteApplicationJSONTemporaryRedirect) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeleteApplicationJSONTemporaryRedirect) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138638,7 +138638,7 @@ func (s *ReposDeleteApplicationJSONTemporaryRedirect) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteApplicationJSONTemporaryRedirect) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteApplicationJSONTemporaryRedirect) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138651,8 +138651,8 @@ func (s *ReposDeleteApplicationJSONTemporaryRedirect) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes ReposDeleteFileApplicationJSONConflict as json.
-func (s ReposDeleteFileApplicationJSONConflict) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeleteFileApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138676,7 +138676,7 @@ func (s *ReposDeleteFileApplicationJSONConflict) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteFileApplicationJSONConflict) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteFileApplicationJSONConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138689,8 +138689,8 @@ func (s *ReposDeleteFileApplicationJSONConflict) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes ReposDeleteFileApplicationJSONNotFound as json.
-func (s ReposDeleteFileApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposDeleteFileApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -138714,7 +138714,7 @@ func (s *ReposDeleteFileApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteFileApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteFileApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138727,14 +138727,14 @@ func (s *ReposDeleteFileApplicationJSONNotFound) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ReposDeleteFileReq) Encode(e *jx.Encoder) {
+func (s *ReposDeleteFileReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposDeleteFileReq) encodeFields(e *jx.Encoder) {
+func (s *ReposDeleteFileReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -138880,7 +138880,7 @@ func (s *ReposDeleteFileReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteFileReq) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteFileReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138893,14 +138893,14 @@ func (s *ReposDeleteFileReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposDeleteFileReqAuthor) Encode(e *jx.Encoder) {
+func (s *ReposDeleteFileReqAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposDeleteFileReqAuthor) encodeFields(e *jx.Encoder) {
+func (s *ReposDeleteFileReqAuthor) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -138960,7 +138960,7 @@ func (s *ReposDeleteFileReqAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteFileReqAuthor) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteFileReqAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -138973,14 +138973,14 @@ func (s *ReposDeleteFileReqAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposDeleteFileReqCommitter) Encode(e *jx.Encoder) {
+func (s *ReposDeleteFileReqCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposDeleteFileReqCommitter) encodeFields(e *jx.Encoder) {
+func (s *ReposDeleteFileReqCommitter) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -139040,7 +139040,7 @@ func (s *ReposDeleteFileReqCommitter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteFileReqCommitter) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteFileReqCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139053,14 +139053,14 @@ func (s *ReposDeleteFileReqCommitter) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposDeleteForbidden) Encode(e *jx.Encoder) {
+func (s *ReposDeleteForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposDeleteForbidden) encodeFields(e *jx.Encoder) {
+func (s *ReposDeleteForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -139120,7 +139120,7 @@ func (s *ReposDeleteForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposDeleteForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposDeleteForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139185,8 +139185,8 @@ func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) UnmarshalJSON(data []b
 }
 
 // Encode encodes ReposGetApplicationJSONForbidden as json.
-func (s ReposGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139210,7 +139210,7 @@ func (s *ReposGetApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposGetApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139223,8 +139223,8 @@ func (s *ReposGetApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposGetApplicationJSONMovedPermanently as json.
-func (s ReposGetApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139248,7 +139248,7 @@ func (s *ReposGetApplicationJSONMovedPermanently) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
+func (s *ReposGetApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139261,8 +139261,8 @@ func (s *ReposGetApplicationJSONMovedPermanently) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ReposGetApplicationJSONNotFound as json.
-func (s ReposGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139286,7 +139286,7 @@ func (s *ReposGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposGetApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139349,8 +139349,8 @@ func (s *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) UnmarshalJSON
 }
 
 // Encode encodes ReposGetBranchApplicationJSONMovedPermanently as json.
-func (s ReposGetBranchApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetBranchApplicationJSONMovedPermanently) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139374,7 +139374,7 @@ func (s *ReposGetBranchApplicationJSONMovedPermanently) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetBranchApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
+func (s *ReposGetBranchApplicationJSONMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139387,8 +139387,8 @@ func (s *ReposGetBranchApplicationJSONMovedPermanently) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReposGetBranchApplicationJSONNotFound as json.
-func (s ReposGetBranchApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetBranchApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139412,7 +139412,7 @@ func (s *ReposGetBranchApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetBranchApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposGetBranchApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139525,8 +139525,8 @@ func (s *ReposGetCommitActivityStatsOKApplicationJSON) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ReposGetCommitApplicationJSONInternalServerError as json.
-func (s ReposGetCommitApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetCommitApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139550,7 +139550,7 @@ func (s *ReposGetCommitApplicationJSONInternalServerError) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetCommitApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
+func (s *ReposGetCommitApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139563,8 +139563,8 @@ func (s *ReposGetCommitApplicationJSONInternalServerError) UnmarshalJSON(data []
 }
 
 // Encode encodes ReposGetCommitApplicationJSONNotFound as json.
-func (s ReposGetCommitApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposGetCommitApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139588,7 +139588,7 @@ func (s *ReposGetCommitApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposGetCommitApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposGetCommitApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139951,8 +139951,8 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) UnmarshalJSON(data []b
 }
 
 // Encode encodes ReposListCommitsApplicationJSONBadRequest as json.
-func (s ReposListCommitsApplicationJSONBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListCommitsApplicationJSONBadRequest) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -139976,7 +139976,7 @@ func (s *ReposListCommitsApplicationJSONBadRequest) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListCommitsApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
+func (s *ReposListCommitsApplicationJSONBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -139989,8 +139989,8 @@ func (s *ReposListCommitsApplicationJSONBadRequest) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ReposListCommitsApplicationJSONConflict as json.
-func (s ReposListCommitsApplicationJSONConflict) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListCommitsApplicationJSONConflict) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140014,7 +140014,7 @@ func (s *ReposListCommitsApplicationJSONConflict) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListCommitsApplicationJSONConflict) MarshalJSON() ([]byte, error) {
+func (s *ReposListCommitsApplicationJSONConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140027,8 +140027,8 @@ func (s *ReposListCommitsApplicationJSONConflict) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ReposListCommitsApplicationJSONInternalServerError as json.
-func (s ReposListCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListCommitsApplicationJSONInternalServerError) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140052,7 +140052,7 @@ func (s *ReposListCommitsApplicationJSONInternalServerError) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListCommitsApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
+func (s *ReposListCommitsApplicationJSONInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140065,8 +140065,8 @@ func (s *ReposListCommitsApplicationJSONInternalServerError) UnmarshalJSON(data 
 }
 
 // Encode encodes ReposListCommitsApplicationJSONNotFound as json.
-func (s ReposListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListCommitsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140090,7 +140090,7 @@ func (s *ReposListCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListCommitsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposListCommitsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140103,8 +140103,8 @@ func (s *ReposListCommitsApplicationJSONNotFound) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes ReposListContributorsApplicationJSONForbidden as json.
-func (s ReposListContributorsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListContributorsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140128,7 +140128,7 @@ func (s *ReposListContributorsApplicationJSONForbidden) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListContributorsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposListContributorsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140141,8 +140141,8 @@ func (s *ReposListContributorsApplicationJSONForbidden) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ReposListContributorsApplicationJSONNotFound as json.
-func (s ReposListContributorsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListContributorsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140166,7 +140166,7 @@ func (s *ReposListContributorsApplicationJSONNotFound) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListContributorsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposListContributorsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140179,8 +140179,8 @@ func (s *ReposListContributorsApplicationJSONNotFound) UnmarshalJSON(data []byte
 }
 
 // Encode encodes ReposListForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ReposListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140204,7 +140204,7 @@ func (s *ReposListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140217,8 +140217,8 @@ func (s *ReposListForAuthenticatedUserApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes ReposListForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ReposListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140242,7 +140242,7 @@ func (s *ReposListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ReposListForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140305,8 +140305,8 @@ func (s *ReposListForAuthenticatedUserOKApplicationJSON) UnmarshalJSON(data []by
 }
 
 // Encode encodes ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden as json.
-func (s ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140330,7 +140330,7 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140343,8 +140343,8 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) Unmar
 }
 
 // Encode encodes ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound as json.
-func (s ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140368,7 +140368,7 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140381,8 +140381,8 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) Unmars
 }
 
 // Encode encodes ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -140406,7 +140406,7 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140469,14 +140469,14 @@ func (s *ReposListWebhookDeliveriesOKApplicationJSON) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s ReposMergeReq) Encode(e *jx.Encoder) {
+func (s *ReposMergeReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposMergeReq) encodeFields(e *jx.Encoder) {
+func (s *ReposMergeReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("base")
@@ -140588,7 +140588,7 @@ func (s *ReposMergeReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposMergeReq) MarshalJSON() ([]byte, error) {
+func (s *ReposMergeReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140601,14 +140601,14 @@ func (s *ReposMergeReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposMergeUpstreamReq) Encode(e *jx.Encoder) {
+func (s *ReposMergeUpstreamReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposMergeUpstreamReq) encodeFields(e *jx.Encoder) {
+func (s *ReposMergeUpstreamReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("branch")
@@ -140685,7 +140685,7 @@ func (s *ReposMergeUpstreamReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposMergeUpstreamReq) MarshalJSON() ([]byte, error) {
+func (s *ReposMergeUpstreamReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -140808,14 +140808,14 @@ func (s *ReposRemoveAppAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposRemoveAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposRemoveAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposRemoveAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposRemoveAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apps")
@@ -140904,7 +140904,7 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRemoveAppAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposRemoveAppAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141029,14 +141029,14 @@ func (s *ReposRemoveStatusCheckContextsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposRemoveStatusCheckContextsReq0) Encode(e *jx.Encoder) {
+func (s *ReposRemoveStatusCheckContextsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposRemoveStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposRemoveStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("contexts")
@@ -141125,7 +141125,7 @@ func (s *ReposRemoveStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRemoveStatusCheckContextsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposRemoveStatusCheckContextsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141248,14 +141248,14 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s ReposRemoveTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposRemoveTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposRemoveTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposRemoveTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("teams")
@@ -141344,7 +141344,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRemoveTeamAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposRemoveTeamAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141467,14 +141467,14 @@ func (s *ReposRemoveUserAccessRestrictionsReq) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s ReposRemoveUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposRemoveUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposRemoveUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposRemoveUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("users")
@@ -141563,7 +141563,7 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRemoveUserAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposRemoveUserAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141576,8 +141576,8 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes ReposRenameBranchApplicationJSONForbidden as json.
-func (s ReposRenameBranchApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposRenameBranchApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -141601,7 +141601,7 @@ func (s *ReposRenameBranchApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRenameBranchApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposRenameBranchApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141614,8 +141614,8 @@ func (s *ReposRenameBranchApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes ReposRenameBranchApplicationJSONNotFound as json.
-func (s ReposRenameBranchApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposRenameBranchApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -141639,7 +141639,7 @@ func (s *ReposRenameBranchApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRenameBranchApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposRenameBranchApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141652,14 +141652,14 @@ func (s *ReposRenameBranchApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s ReposRenameBranchReq) Encode(e *jx.Encoder) {
+func (s *ReposRenameBranchReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposRenameBranchReq) encodeFields(e *jx.Encoder) {
+func (s *ReposRenameBranchReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("new_name")
@@ -141736,7 +141736,7 @@ func (s *ReposRenameBranchReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposRenameBranchReq) MarshalJSON() ([]byte, error) {
+func (s *ReposRenameBranchReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141749,14 +141749,14 @@ func (s *ReposRenameBranchReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposReplaceAllTopicsReq) Encode(e *jx.Encoder) {
+func (s *ReposReplaceAllTopicsReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposReplaceAllTopicsReq) encodeFields(e *jx.Encoder) {
+func (s *ReposReplaceAllTopicsReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("names")
@@ -141845,7 +141845,7 @@ func (s *ReposReplaceAllTopicsReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposReplaceAllTopicsReq) MarshalJSON() ([]byte, error) {
+func (s *ReposReplaceAllTopicsReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -141968,14 +141968,14 @@ func (s *ReposSetAppAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposSetAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposSetAppAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposSetAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposSetAppAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apps")
@@ -142064,7 +142064,7 @@ func (s *ReposSetAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposSetAppAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposSetAppAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142189,14 +142189,14 @@ func (s *ReposSetStatusCheckContextsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposSetStatusCheckContextsReq0) Encode(e *jx.Encoder) {
+func (s *ReposSetStatusCheckContextsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposSetStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposSetStatusCheckContextsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("contexts")
@@ -142285,7 +142285,7 @@ func (s *ReposSetStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposSetStatusCheckContextsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposSetStatusCheckContextsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142408,14 +142408,14 @@ func (s *ReposSetTeamAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposSetTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposSetTeamAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposSetTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposSetTeamAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("teams")
@@ -142504,7 +142504,7 @@ func (s *ReposSetTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposSetTeamAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposSetTeamAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142627,14 +142627,14 @@ func (s *ReposSetUserAccessRestrictionsReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposSetUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
+func (s *ReposSetUserAccessRestrictionsReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposSetUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
+func (s *ReposSetUserAccessRestrictionsReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("users")
@@ -142723,7 +142723,7 @@ func (s *ReposSetUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposSetUserAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
+func (s *ReposSetUserAccessRestrictionsReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142736,14 +142736,14 @@ func (s *ReposSetUserAccessRestrictionsReq0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposTransferReq) Encode(e *jx.Encoder) {
+func (s *ReposTransferReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposTransferReq) encodeFields(e *jx.Encoder) {
+func (s *ReposTransferReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("new_owner")
@@ -142850,7 +142850,7 @@ func (s *ReposTransferReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposTransferReq) MarshalJSON() ([]byte, error) {
+func (s *ReposTransferReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142863,8 +142863,8 @@ func (s *ReposTransferReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposUpdateApplicationJSONForbidden as json.
-func (s ReposUpdateApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposUpdateApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -142888,7 +142888,7 @@ func (s *ReposUpdateApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142901,8 +142901,8 @@ func (s *ReposUpdateApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposUpdateApplicationJSONNotFound as json.
-func (s ReposUpdateApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposUpdateApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -142926,7 +142926,7 @@ func (s *ReposUpdateApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142939,8 +142939,8 @@ func (s *ReposUpdateApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReposUpdateApplicationJSONTemporaryRedirect as json.
-func (s ReposUpdateApplicationJSONTemporaryRedirect) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposUpdateApplicationJSONTemporaryRedirect) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -142964,7 +142964,7 @@ func (s *ReposUpdateApplicationJSONTemporaryRedirect) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateApplicationJSONTemporaryRedirect) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateApplicationJSONTemporaryRedirect) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -142977,8 +142977,8 @@ func (s *ReposUpdateApplicationJSONTemporaryRedirect) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes ReposUpdateBranchProtectionApplicationJSONForbidden as json.
-func (s ReposUpdateBranchProtectionApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposUpdateBranchProtectionApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -143002,7 +143002,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143015,8 +143015,8 @@ func (s *ReposUpdateBranchProtectionApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes ReposUpdateBranchProtectionApplicationJSONNotFound as json.
-func (s ReposUpdateBranchProtectionApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -143040,7 +143040,7 @@ func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143053,14 +143053,14 @@ func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateBranchProtectionReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateBranchProtectionReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required_status_checks")
@@ -143251,7 +143251,7 @@ func (s *ReposUpdateBranchProtectionReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143264,14 +143264,14 @@ func (s *ReposUpdateBranchProtectionReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviews) Encode(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviews) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) encodeFields(e *jx.Encoder) {
 	{
 		if s.DismissalRestrictions.Set {
 			e.FieldStart("dismissal_restrictions")
@@ -143365,7 +143365,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviews) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143378,14 +143378,14 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) UnmarshalJSON
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Users != nil {
 			e.FieldStart("users")
@@ -143471,7 +143471,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143484,14 +143484,14 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Encode(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("strict")
@@ -143598,7 +143598,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143611,14 +143611,14 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateBranchProtectionReqRestrictions) Encode(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRestrictions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateBranchProtectionReqRestrictions) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateBranchProtectionReqRestrictions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("users")
@@ -143767,7 +143767,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateBranchProtectionReqRestrictions) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateBranchProtectionReqRestrictions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143780,14 +143780,14 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) UnmarshalJSON(data []byte) 
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateCommitCommentReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateCommitCommentReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateCommitCommentReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateCommitCommentReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -143864,7 +143864,7 @@ func (s *ReposUpdateCommitCommentReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateCommitCommentReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateCommitCommentReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143877,14 +143877,14 @@ func (s *ReposUpdateCommitCommentReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateInvitationReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateInvitationReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateInvitationReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateInvitationReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permissions.Set {
 			e.FieldStart("permissions")
@@ -143927,7 +143927,7 @@ func (s *ReposUpdateInvitationReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateInvitationReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateInvitationReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -143986,14 +143986,14 @@ func (s *ReposUpdateInvitationReqPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdatePullRequestReviewProtectionReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdatePullRequestReviewProtectionReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdatePullRequestReviewProtectionReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdatePullRequestReviewProtectionReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.DismissalRestrictions.Set {
 			e.FieldStart("dismissal_restrictions")
@@ -144087,7 +144087,7 @@ func (s *ReposUpdatePullRequestReviewProtectionReq) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdatePullRequestReviewProtectionReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdatePullRequestReviewProtectionReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144100,14 +144100,14 @@ func (s *ReposUpdatePullRequestReviewProtectionReq) UnmarshalJSON(data []byte) e
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e *jx.Encoder) {
+func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Users != nil {
 			e.FieldStart("users")
@@ -144193,7 +144193,7 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144206,14 +144206,14 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Unmarsh
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateReleaseAssetReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateReleaseAssetReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateReleaseAssetReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateReleaseAssetReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -144290,7 +144290,7 @@ func (s *ReposUpdateReleaseAssetReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateReleaseAssetReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateReleaseAssetReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144303,14 +144303,14 @@ func (s *ReposUpdateReleaseAssetReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateReleaseReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateReleaseReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateReleaseReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateReleaseReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.TagName.Set {
 			e.FieldStart("tag_name")
@@ -144455,7 +144455,7 @@ func (s *ReposUpdateReleaseReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateReleaseReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateReleaseReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144468,14 +144468,14 @@ func (s *ReposUpdateReleaseReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -144808,7 +144808,7 @@ func (s *ReposUpdateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144821,14 +144821,14 @@ func (s *ReposUpdateReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateReqSecurityAndAnalysis) Encode(e *jx.Encoder) {
+func (s *ReposUpdateReqSecurityAndAnalysis) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateReqSecurityAndAnalysis) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateReqSecurityAndAnalysis) encodeFields(e *jx.Encoder) {
 	{
 		if s.AdvancedSecurity.Set {
 			e.FieldStart("advanced_security")
@@ -144888,7 +144888,7 @@ func (s *ReposUpdateReqSecurityAndAnalysis) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateReqSecurityAndAnalysis) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateReqSecurityAndAnalysis) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144901,14 +144901,14 @@ func (s *ReposUpdateReqSecurityAndAnalysis) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Encoder) {
+func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) encodeFields(e *jx.Encoder) {
 	{
 		if s.Status.Set {
 			e.FieldStart("status")
@@ -144951,7 +144951,7 @@ func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -144964,14 +144964,14 @@ func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) UnmarshalJSON(data [
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateReqSecurityAndAnalysisSecretScanning) Encode(e *jx.Encoder) {
+func (s *ReposUpdateReqSecurityAndAnalysisSecretScanning) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateReqSecurityAndAnalysisSecretScanning) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateReqSecurityAndAnalysisSecretScanning) encodeFields(e *jx.Encoder) {
 	{
 		if s.Status.Set {
 			e.FieldStart("status")
@@ -145014,7 +145014,7 @@ func (s *ReposUpdateReqSecurityAndAnalysisSecretScanning) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateReqSecurityAndAnalysisSecretScanning) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateReqSecurityAndAnalysisSecretScanning) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -145071,14 +145071,14 @@ func (s *ReposUpdateReqVisibility) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateStatusCheckProtectionReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateStatusCheckProtectionReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateStatusCheckProtectionReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateStatusCheckProtectionReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Strict.Set {
 			e.FieldStart("strict")
@@ -145151,7 +145151,7 @@ func (s *ReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateStatusCheckProtectionReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateStatusCheckProtectionReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -145164,14 +145164,14 @@ func (s *ReposUpdateStatusCheckProtectionReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateWebhookConfigForRepoReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateWebhookConfigForRepoReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -145265,7 +145265,7 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateWebhookConfigForRepoReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateWebhookConfigForRepoReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -145278,14 +145278,14 @@ func (s *ReposUpdateWebhookConfigForRepoReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateWebhookReq) Encode(e *jx.Encoder) {
+func (s *ReposUpdateWebhookReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateWebhookReq) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateWebhookReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Config.Set {
 			e.FieldStart("config")
@@ -145436,7 +145436,7 @@ func (s *ReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateWebhookReq) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateWebhookReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -145449,14 +145449,14 @@ func (s *ReposUpdateWebhookReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReposUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
+func (s *ReposUpdateWebhookReqConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReposUpdateWebhookReqConfig) encodeFields(e *jx.Encoder) {
+func (s *ReposUpdateWebhookReqConfig) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -145616,7 +145616,7 @@ func (s *ReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReposUpdateWebhookReqConfig) MarshalJSON() ([]byte, error) {
+func (s *ReposUpdateWebhookReqConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -145629,14 +145629,14 @@ func (s *ReposUpdateWebhookReqConfig) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Repository) Encode(e *jx.Encoder) {
+func (s *Repository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Repository) encodeFields(e *jx.Encoder) {
+func (s *Repository) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -147305,7 +147305,7 @@ func (s *Repository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Repository) MarshalJSON() ([]byte, error) {
+func (s *Repository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -147318,14 +147318,14 @@ func (s *Repository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositoryCollaboratorPermission) Encode(e *jx.Encoder) {
+func (s *RepositoryCollaboratorPermission) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositoryCollaboratorPermission) encodeFields(e *jx.Encoder) {
+func (s *RepositoryCollaboratorPermission) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("permission")
@@ -147418,7 +147418,7 @@ func (s *RepositoryCollaboratorPermission) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositoryCollaboratorPermission) MarshalJSON() ([]byte, error) {
+func (s *RepositoryCollaboratorPermission) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -147431,14 +147431,14 @@ func (s *RepositoryCollaboratorPermission) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositoryInvitation) Encode(e *jx.Encoder) {
+func (s *RepositoryInvitation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositoryInvitation) encodeFields(e *jx.Encoder) {
+func (s *RepositoryInvitation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -147669,7 +147669,7 @@ func (s *RepositoryInvitation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositoryInvitation) MarshalJSON() ([]byte, error) {
+func (s *RepositoryInvitation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -147728,14 +147728,14 @@ func (s *RepositoryInvitationPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *RepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *RepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -147882,7 +147882,7 @@ func (s *RepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *RepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -147895,14 +147895,14 @@ func (s *RepositoryPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositorySubscription) Encode(e *jx.Encoder) {
+func (s *RepositorySubscription) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositorySubscription) encodeFields(e *jx.Encoder) {
+func (s *RepositorySubscription) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("subscribed")
@@ -148067,7 +148067,7 @@ func (s *RepositorySubscription) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositorySubscription) MarshalJSON() ([]byte, error) {
+func (s *RepositorySubscription) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -148080,14 +148080,14 @@ func (s *RepositorySubscription) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositoryTemplateRepository) Encode(e *jx.Encoder) {
+func (s *RepositoryTemplateRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositoryTemplateRepository) encodeFields(e *jx.Encoder) {
+func (s *RepositoryTemplateRepository) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -149503,7 +149503,7 @@ func (s *RepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositoryTemplateRepository) MarshalJSON() ([]byte, error) {
+func (s *RepositoryTemplateRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -149516,14 +149516,14 @@ func (s *RepositoryTemplateRepository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositoryTemplateRepositoryOwner) Encode(e *jx.Encoder) {
+func (s *RepositoryTemplateRepositoryOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositoryTemplateRepositoryOwner) encodeFields(e *jx.Encoder) {
+func (s *RepositoryTemplateRepositoryOwner) encodeFields(e *jx.Encoder) {
 	{
 		if s.Login.Set {
 			e.FieldStart("login")
@@ -149855,7 +149855,7 @@ func (s *RepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositoryTemplateRepositoryOwner) MarshalJSON() ([]byte, error) {
+func (s *RepositoryTemplateRepositoryOwner) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -149868,14 +149868,14 @@ func (s *RepositoryTemplateRepositoryOwner) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RepositoryTemplateRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *RepositoryTemplateRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RepositoryTemplateRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *RepositoryTemplateRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Admin.Set {
 			e.FieldStart("admin")
@@ -149986,7 +149986,7 @@ func (s *RepositoryTemplateRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RepositoryTemplateRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *RepositoryTemplateRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -149999,14 +149999,14 @@ func (s *RepositoryTemplateRepositoryPermissions) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s ReviewComment) Encode(e *jx.Encoder) {
+func (s *ReviewComment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReviewComment) encodeFields(e *jx.Encoder) {
+func (s *ReviewComment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -150553,7 +150553,7 @@ func (s *ReviewComment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReviewComment) MarshalJSON() ([]byte, error) {
+func (s *ReviewComment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -150566,14 +150566,14 @@ func (s *ReviewComment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReviewCommentLinks) Encode(e *jx.Encoder) {
+func (s *ReviewCommentLinks) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ReviewCommentLinks) encodeFields(e *jx.Encoder) {
+func (s *ReviewCommentLinks) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("self")
@@ -150680,7 +150680,7 @@ func (s *ReviewCommentLinks) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReviewCommentLinks) MarshalJSON() ([]byte, error) {
+func (s *ReviewCommentLinks) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -150773,14 +150773,14 @@ func (s *ReviewCommentStartSide) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Runner) Encode(e *jx.Encoder) {
+func (s *Runner) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Runner) encodeFields(e *jx.Encoder) {
+func (s *Runner) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -150957,7 +150957,7 @@ func (s *Runner) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Runner) MarshalJSON() ([]byte, error) {
+func (s *Runner) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -150970,14 +150970,14 @@ func (s *Runner) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RunnerApplication) Encode(e *jx.Encoder) {
+func (s *RunnerApplication) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RunnerApplication) encodeFields(e *jx.Encoder) {
+func (s *RunnerApplication) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("os")
@@ -151142,7 +151142,7 @@ func (s *RunnerApplication) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RunnerApplication) MarshalJSON() ([]byte, error) {
+func (s *RunnerApplication) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -151155,14 +151155,14 @@ func (s *RunnerApplication) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RunnerGroupsEnterprise) Encode(e *jx.Encoder) {
+func (s *RunnerGroupsEnterprise) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RunnerGroupsEnterprise) encodeFields(e *jx.Encoder) {
+func (s *RunnerGroupsEnterprise) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -151346,7 +151346,7 @@ func (s *RunnerGroupsEnterprise) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RunnerGroupsEnterprise) MarshalJSON() ([]byte, error) {
+func (s *RunnerGroupsEnterprise) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -151359,14 +151359,14 @@ func (s *RunnerGroupsEnterprise) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RunnerGroupsOrg) Encode(e *jx.Encoder) {
+func (s *RunnerGroupsOrg) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RunnerGroupsOrg) encodeFields(e *jx.Encoder) {
+func (s *RunnerGroupsOrg) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -151586,7 +151586,7 @@ func (s *RunnerGroupsOrg) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RunnerGroupsOrg) MarshalJSON() ([]byte, error) {
+func (s *RunnerGroupsOrg) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -151599,14 +151599,14 @@ func (s *RunnerGroupsOrg) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RunnerLabelsItem) Encode(e *jx.Encoder) {
+func (s *RunnerLabelsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RunnerLabelsItem) encodeFields(e *jx.Encoder) {
+func (s *RunnerLabelsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -151683,7 +151683,7 @@ func (s *RunnerLabelsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RunnerLabelsItem) MarshalJSON() ([]byte, error) {
+func (s *RunnerLabelsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -151736,8 +151736,8 @@ func (s *RunnerLabelsItemType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ScimDeleteUserFromOrgApplicationJSONForbidden as json.
-func (s ScimDeleteUserFromOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := ScimError(s)
+func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*ScimError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -151761,7 +151761,7 @@ func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimDeleteUserFromOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -151774,8 +151774,8 @@ func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) UnmarshalJSON(data []byt
 }
 
 // Encode encodes ScimDeleteUserFromOrgApplicationJSONNotFound as json.
-func (s ScimDeleteUserFromOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := ScimError(s)
+func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*ScimError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -151799,7 +151799,7 @@ func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimDeleteUserFromOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -151812,14 +151812,14 @@ func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) UnmarshalJSON(data []byte
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseGroup) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseGroup) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseGroup) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -152005,7 +152005,7 @@ func (s *ScimEnterpriseGroup) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseGroup) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseGroup) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152018,14 +152018,14 @@ func (s *ScimEnterpriseGroup) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseGroupMembersItem) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseGroupMembersItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseGroupMembersItem) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseGroupMembersItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -152102,7 +152102,7 @@ func (s *ScimEnterpriseGroupMembersItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseGroupMembersItem) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseGroupMembersItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152115,14 +152115,14 @@ func (s *ScimEnterpriseGroupMembersItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseGroupMeta) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseGroupMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseGroupMeta) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseGroupMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.ResourceType.Set {
 			e.FieldStart("resourceType")
@@ -152216,7 +152216,7 @@ func (s *ScimEnterpriseGroupMeta) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseGroupMeta) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseGroupMeta) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152229,14 +152229,14 @@ func (s *ScimEnterpriseGroupMeta) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseUser) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseUser) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseUser) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -152485,7 +152485,7 @@ func (s *ScimEnterpriseUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseUser) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152498,14 +152498,14 @@ func (s *ScimEnterpriseUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseUserEmailsItem) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseUserEmailsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseUserEmailsItem) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseUserEmailsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -152582,7 +152582,7 @@ func (s *ScimEnterpriseUserEmailsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseUserEmailsItem) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseUserEmailsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152595,14 +152595,14 @@ func (s *ScimEnterpriseUserEmailsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseUserGroupsItem) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseUserGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseUserGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseUserGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -152645,7 +152645,7 @@ func (s *ScimEnterpriseUserGroupsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseUserGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseUserGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152658,14 +152658,14 @@ func (s *ScimEnterpriseUserGroupsItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseUserMeta) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseUserMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseUserMeta) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseUserMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.ResourceType.Set {
 			e.FieldStart("resourceType")
@@ -152759,7 +152759,7 @@ func (s *ScimEnterpriseUserMeta) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseUserMeta) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseUserMeta) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152772,14 +152772,14 @@ func (s *ScimEnterpriseUserMeta) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimEnterpriseUserName) Encode(e *jx.Encoder) {
+func (s *ScimEnterpriseUserName) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimEnterpriseUserName) encodeFields(e *jx.Encoder) {
+func (s *ScimEnterpriseUserName) encodeFields(e *jx.Encoder) {
 	{
 		if s.GivenName.Set {
 			e.FieldStart("givenName")
@@ -152839,7 +152839,7 @@ func (s *ScimEnterpriseUserName) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimEnterpriseUserName) MarshalJSON() ([]byte, error) {
+func (s *ScimEnterpriseUserName) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -152852,14 +152852,14 @@ func (s *ScimEnterpriseUserName) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimError) Encode(e *jx.Encoder) {
+func (s *ScimError) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimError) encodeFields(e *jx.Encoder) {
+func (s *ScimError) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -153000,7 +153000,7 @@ func (s *ScimError) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimError) MarshalJSON() ([]byte, error) {
+func (s *ScimError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -153013,14 +153013,14 @@ func (s *ScimError) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimGroupListEnterprise) Encode(e *jx.Encoder) {
+func (s *ScimGroupListEnterprise) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimGroupListEnterprise) encodeFields(e *jx.Encoder) {
+func (s *ScimGroupListEnterprise) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -153191,7 +153191,7 @@ func (s *ScimGroupListEnterprise) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimGroupListEnterprise) MarshalJSON() ([]byte, error) {
+func (s *ScimGroupListEnterprise) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -153204,14 +153204,14 @@ func (s *ScimGroupListEnterprise) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimGroupListEnterpriseResourcesItem) Encode(e *jx.Encoder) {
+func (s *ScimGroupListEnterpriseResourcesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimGroupListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
+func (s *ScimGroupListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -153397,7 +153397,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimGroupListEnterpriseResourcesItem) MarshalJSON() ([]byte, error) {
+func (s *ScimGroupListEnterpriseResourcesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -153410,14 +153410,14 @@ func (s *ScimGroupListEnterpriseResourcesItem) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s ScimGroupListEnterpriseResourcesItemMembersItem) Encode(e *jx.Encoder) {
+func (s *ScimGroupListEnterpriseResourcesItemMembersItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimGroupListEnterpriseResourcesItemMembersItem) encodeFields(e *jx.Encoder) {
+func (s *ScimGroupListEnterpriseResourcesItemMembersItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -153494,7 +153494,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimGroupListEnterpriseResourcesItemMembersItem) MarshalJSON() ([]byte, error) {
+func (s *ScimGroupListEnterpriseResourcesItemMembersItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -153507,14 +153507,14 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s ScimGroupListEnterpriseResourcesItemMeta) Encode(e *jx.Encoder) {
+func (s *ScimGroupListEnterpriseResourcesItemMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimGroupListEnterpriseResourcesItemMeta) encodeFields(e *jx.Encoder) {
+func (s *ScimGroupListEnterpriseResourcesItemMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.ResourceType.Set {
 			e.FieldStart("resourceType")
@@ -153608,7 +153608,7 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimGroupListEnterpriseResourcesItemMeta) MarshalJSON() ([]byte, error) {
+func (s *ScimGroupListEnterpriseResourcesItemMeta) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -153621,14 +153621,14 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s ScimUserListEnterprise) Encode(e *jx.Encoder) {
+func (s *ScimUserListEnterprise) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimUserListEnterprise) encodeFields(e *jx.Encoder) {
+func (s *ScimUserListEnterprise) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -153799,7 +153799,7 @@ func (s *ScimUserListEnterprise) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimUserListEnterprise) MarshalJSON() ([]byte, error) {
+func (s *ScimUserListEnterprise) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -153812,14 +153812,14 @@ func (s *ScimUserListEnterprise) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimUserListEnterpriseResourcesItem) Encode(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimUserListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("schemas")
@@ -154068,7 +154068,7 @@ func (s *ScimUserListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimUserListEnterpriseResourcesItem) MarshalJSON() ([]byte, error) {
+func (s *ScimUserListEnterpriseResourcesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154081,14 +154081,14 @@ func (s *ScimUserListEnterpriseResourcesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemEmailsItem) Encode(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemEmailsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimUserListEnterpriseResourcesItemEmailsItem) encodeFields(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemEmailsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -154165,7 +154165,7 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemEmailsItem) MarshalJSON() ([]byte, error) {
+func (s *ScimUserListEnterpriseResourcesItemEmailsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154178,14 +154178,14 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemGroupsItem) Encode(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimUserListEnterpriseResourcesItemGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Value.Set {
 			e.FieldStart("value")
@@ -154228,7 +154228,7 @@ func (s *ScimUserListEnterpriseResourcesItemGroupsItem) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *ScimUserListEnterpriseResourcesItemGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154241,14 +154241,14 @@ func (s *ScimUserListEnterpriseResourcesItemGroupsItem) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemMeta) Encode(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimUserListEnterpriseResourcesItemMeta) encodeFields(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.ResourceType.Set {
 			e.FieldStart("resourceType")
@@ -154342,7 +154342,7 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemMeta) MarshalJSON() ([]byte, error) {
+func (s *ScimUserListEnterpriseResourcesItemMeta) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154355,14 +154355,14 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemName) Encode(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemName) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ScimUserListEnterpriseResourcesItemName) encodeFields(e *jx.Encoder) {
+func (s *ScimUserListEnterpriseResourcesItemName) encodeFields(e *jx.Encoder) {
 	{
 		if s.GivenName.Set {
 			e.FieldStart("givenName")
@@ -154422,7 +154422,7 @@ func (s *ScimUserListEnterpriseResourcesItemName) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ScimUserListEnterpriseResourcesItemName) MarshalJSON() ([]byte, error) {
+func (s *ScimUserListEnterpriseResourcesItemName) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154435,14 +154435,14 @@ func (s *ScimUserListEnterpriseResourcesItemName) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s SearchCodeOK) Encode(e *jx.Encoder) {
+func (s *SearchCodeOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchCodeOK) encodeFields(e *jx.Encoder) {
+func (s *SearchCodeOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -154565,7 +154565,7 @@ func (s *SearchCodeOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchCodeOK) MarshalJSON() ([]byte, error) {
+func (s *SearchCodeOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154578,14 +154578,14 @@ func (s *SearchCodeOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchCommitsOK) Encode(e *jx.Encoder) {
+func (s *SearchCommitsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchCommitsOK) encodeFields(e *jx.Encoder) {
+func (s *SearchCommitsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -154708,7 +154708,7 @@ func (s *SearchCommitsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchCommitsOK) MarshalJSON() ([]byte, error) {
+func (s *SearchCommitsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154721,14 +154721,14 @@ func (s *SearchCommitsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchIssuesAndPullRequestsOK) Encode(e *jx.Encoder) {
+func (s *SearchIssuesAndPullRequestsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchIssuesAndPullRequestsOK) encodeFields(e *jx.Encoder) {
+func (s *SearchIssuesAndPullRequestsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -154851,7 +154851,7 @@ func (s *SearchIssuesAndPullRequestsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchIssuesAndPullRequestsOK) MarshalJSON() ([]byte, error) {
+func (s *SearchIssuesAndPullRequestsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154864,8 +154864,8 @@ func (s *SearchIssuesAndPullRequestsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes SearchLabelsApplicationJSONForbidden as json.
-func (s SearchLabelsApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *SearchLabelsApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -154889,7 +154889,7 @@ func (s *SearchLabelsApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchLabelsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *SearchLabelsApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154902,8 +154902,8 @@ func (s *SearchLabelsApplicationJSONForbidden) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes SearchLabelsApplicationJSONNotFound as json.
-func (s SearchLabelsApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *SearchLabelsApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -154927,7 +154927,7 @@ func (s *SearchLabelsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchLabelsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *SearchLabelsApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -154940,14 +154940,14 @@ func (s *SearchLabelsApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchLabelsOK) Encode(e *jx.Encoder) {
+func (s *SearchLabelsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchLabelsOK) encodeFields(e *jx.Encoder) {
+func (s *SearchLabelsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -155070,7 +155070,7 @@ func (s *SearchLabelsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchLabelsOK) MarshalJSON() ([]byte, error) {
+func (s *SearchLabelsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -155083,14 +155083,14 @@ func (s *SearchLabelsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchReposOK) Encode(e *jx.Encoder) {
+func (s *SearchReposOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchReposOK) encodeFields(e *jx.Encoder) {
+func (s *SearchReposOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -155213,7 +155213,7 @@ func (s *SearchReposOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchReposOK) MarshalJSON() ([]byte, error) {
+func (s *SearchReposOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -155276,14 +155276,14 @@ func (s *SearchResultTextMatches) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchResultTextMatchesItem) Encode(e *jx.Encoder) {
+func (s *SearchResultTextMatchesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchResultTextMatchesItem) encodeFields(e *jx.Encoder) {
+func (s *SearchResultTextMatchesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.ObjectURL.Set {
 			e.FieldStart("object_url")
@@ -155405,7 +155405,7 @@ func (s *SearchResultTextMatchesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchResultTextMatchesItem) MarshalJSON() ([]byte, error) {
+func (s *SearchResultTextMatchesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -155418,14 +155418,14 @@ func (s *SearchResultTextMatchesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchResultTextMatchesItemMatchesItem) Encode(e *jx.Encoder) {
+func (s *SearchResultTextMatchesItemMatchesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchResultTextMatchesItemMatchesItem) encodeFields(e *jx.Encoder) {
+func (s *SearchResultTextMatchesItemMatchesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Text.Set {
 			e.FieldStart("text")
@@ -155498,7 +155498,7 @@ func (s *SearchResultTextMatchesItemMatchesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchResultTextMatchesItemMatchesItem) MarshalJSON() ([]byte, error) {
+func (s *SearchResultTextMatchesItemMatchesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -155511,14 +155511,14 @@ func (s *SearchResultTextMatchesItemMatchesItem) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s SearchTopicsOK) Encode(e *jx.Encoder) {
+func (s *SearchTopicsOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchTopicsOK) encodeFields(e *jx.Encoder) {
+func (s *SearchTopicsOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -155641,7 +155641,7 @@ func (s *SearchTopicsOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchTopicsOK) MarshalJSON() ([]byte, error) {
+func (s *SearchTopicsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -155654,14 +155654,14 @@ func (s *SearchTopicsOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchUsersOK) Encode(e *jx.Encoder) {
+func (s *SearchUsersOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchUsersOK) encodeFields(e *jx.Encoder) {
+func (s *SearchUsersOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -155784,7 +155784,7 @@ func (s *SearchUsersOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchUsersOK) MarshalJSON() ([]byte, error) {
+func (s *SearchUsersOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -155797,14 +155797,14 @@ func (s *SearchUsersOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SecretScanningAlert) Encode(e *jx.Encoder) {
+func (s *SecretScanningAlert) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SecretScanningAlert) encodeFields(e *jx.Encoder) {
+func (s *SecretScanningAlert) encodeFields(e *jx.Encoder) {
 	{
 		if s.Number.Set {
 			e.FieldStart("number")
@@ -156017,7 +156017,7 @@ func (s *SecretScanningAlert) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SecretScanningAlert) MarshalJSON() ([]byte, error) {
+func (s *SecretScanningAlert) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156164,14 +156164,14 @@ func (s *SecretScanningListAlertsForRepoOKApplicationJSON) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s SecretScanningUpdateAlertReq) Encode(e *jx.Encoder) {
+func (s *SecretScanningUpdateAlertReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SecretScanningUpdateAlertReq) encodeFields(e *jx.Encoder) {
+func (s *SecretScanningUpdateAlertReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -156263,7 +156263,7 @@ func (s *SecretScanningUpdateAlertReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SecretScanningUpdateAlertReq) MarshalJSON() ([]byte, error) {
+func (s *SecretScanningUpdateAlertReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156276,14 +156276,14 @@ func (s *SecretScanningUpdateAlertReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SelectedActions) Encode(e *jx.Encoder) {
+func (s *SelectedActions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SelectedActions) encodeFields(e *jx.Encoder) {
+func (s *SelectedActions) encodeFields(e *jx.Encoder) {
 	{
 		if s.GithubOwnedAllowed.Set {
 			e.FieldStart("github_owned_allowed")
@@ -156373,7 +156373,7 @@ func (s *SelectedActions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SelectedActions) MarshalJSON() ([]byte, error) {
+func (s *SelectedActions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156426,14 +156426,14 @@ func (s *SelectedActionsURL) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ServiceUnavailable) Encode(e *jx.Encoder) {
+func (s *ServiceUnavailable) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ServiceUnavailable) encodeFields(e *jx.Encoder) {
+func (s *ServiceUnavailable) encodeFields(e *jx.Encoder) {
 	{
 		if s.Code.Set {
 			e.FieldStart("code")
@@ -156510,7 +156510,7 @@ func (s *ServiceUnavailable) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ServiceUnavailable) MarshalJSON() ([]byte, error) {
+func (s *ServiceUnavailable) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156523,14 +156523,14 @@ func (s *ServiceUnavailable) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShortBlob) Encode(e *jx.Encoder) {
+func (s *ShortBlob) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ShortBlob) encodeFields(e *jx.Encoder) {
+func (s *ShortBlob) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -156625,7 +156625,7 @@ func (s *ShortBlob) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ShortBlob) MarshalJSON() ([]byte, error) {
+func (s *ShortBlob) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156638,14 +156638,14 @@ func (s *ShortBlob) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShortBranch) Encode(e *jx.Encoder) {
+func (s *ShortBranch) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ShortBranch) encodeFields(e *jx.Encoder) {
+func (s *ShortBranch) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -156790,7 +156790,7 @@ func (s *ShortBranch) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ShortBranch) MarshalJSON() ([]byte, error) {
+func (s *ShortBranch) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156803,14 +156803,14 @@ func (s *ShortBranch) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShortBranchCommit) Encode(e *jx.Encoder) {
+func (s *ShortBranchCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ShortBranchCommit) encodeFields(e *jx.Encoder) {
+func (s *ShortBranchCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -156905,7 +156905,7 @@ func (s *ShortBranchCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ShortBranchCommit) MarshalJSON() ([]byte, error) {
+func (s *ShortBranchCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -156918,14 +156918,14 @@ func (s *ShortBranchCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleCommit) Encode(e *jx.Encoder) {
+func (s *SimpleCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleCommit) encodeFields(e *jx.Encoder) {
+func (s *SimpleCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -157088,7 +157088,7 @@ func (s *SimpleCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleCommit) MarshalJSON() ([]byte, error) {
+func (s *SimpleCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -157101,14 +157101,14 @@ func (s *SimpleCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleCommitAuthor) Encode(e *jx.Encoder) {
+func (s *SimpleCommitAuthor) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleCommitAuthor) encodeFields(e *jx.Encoder) {
+func (s *SimpleCommitAuthor) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -157203,7 +157203,7 @@ func (s *SimpleCommitAuthor) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleCommitAuthor) MarshalJSON() ([]byte, error) {
+func (s *SimpleCommitAuthor) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -157216,14 +157216,14 @@ func (s *SimpleCommitAuthor) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleCommitCommitter) Encode(e *jx.Encoder) {
+func (s *SimpleCommitCommitter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleCommitCommitter) encodeFields(e *jx.Encoder) {
+func (s *SimpleCommitCommitter) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -157318,7 +157318,7 @@ func (s *SimpleCommitCommitter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleCommitCommitter) MarshalJSON() ([]byte, error) {
+func (s *SimpleCommitCommitter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -157331,14 +157331,14 @@ func (s *SimpleCommitCommitter) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleCommitStatus) Encode(e *jx.Encoder) {
+func (s *SimpleCommitStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleCommitStatus) encodeFields(e *jx.Encoder) {
+func (s *SimpleCommitStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("description")
@@ -157591,7 +157591,7 @@ func (s *SimpleCommitStatus) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleCommitStatus) MarshalJSON() ([]byte, error) {
+func (s *SimpleCommitStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -157604,14 +157604,14 @@ func (s *SimpleCommitStatus) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleUser) Encode(e *jx.Encoder) {
+func (s *SimpleUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleUser) encodeFields(e *jx.Encoder) {
+func (s *SimpleUser) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -158045,7 +158045,7 @@ func (s *SimpleUser) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleUser) MarshalJSON() ([]byte, error) {
+func (s *SimpleUser) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -158058,14 +158058,14 @@ func (s *SimpleUser) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Status) Encode(e *jx.Encoder) {
+func (s *Status) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Status) encodeFields(e *jx.Encoder) {
+func (s *Status) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -158319,7 +158319,7 @@ func (s *Status) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Status) MarshalJSON() ([]byte, error) {
+func (s *Status) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -158332,14 +158332,14 @@ func (s *Status) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StatusCheckPolicy) Encode(e *jx.Encoder) {
+func (s *StatusCheckPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s StatusCheckPolicy) encodeFields(e *jx.Encoder) {
+func (s *StatusCheckPolicy) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -158482,7 +158482,7 @@ func (s *StatusCheckPolicy) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s StatusCheckPolicy) MarshalJSON() ([]byte, error) {
+func (s *StatusCheckPolicy) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -158495,14 +158495,14 @@ func (s *StatusCheckPolicy) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Tag) Encode(e *jx.Encoder) {
+func (s *Tag) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Tag) encodeFields(e *jx.Encoder) {
+func (s *Tag) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -158649,7 +158649,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Tag) MarshalJSON() ([]byte, error) {
+func (s *Tag) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -158662,14 +158662,14 @@ func (s *Tag) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TagCommit) Encode(e *jx.Encoder) {
+func (s *TagCommit) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TagCommit) encodeFields(e *jx.Encoder) {
+func (s *TagCommit) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sha")
@@ -158764,7 +158764,7 @@ func (s *TagCommit) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TagCommit) MarshalJSON() ([]byte, error) {
+func (s *TagCommit) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -158777,14 +158777,14 @@ func (s *TagCommit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Team) Encode(e *jx.Encoder) {
+func (s *Team) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Team) encodeFields(e *jx.Encoder) {
+func (s *Team) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -159072,7 +159072,7 @@ func (s *Team) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Team) MarshalJSON() ([]byte, error) {
+func (s *Team) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -159085,14 +159085,14 @@ func (s *Team) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamDiscussion) Encode(e *jx.Encoder) {
+func (s *TeamDiscussion) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamDiscussion) encodeFields(e *jx.Encoder) {
+func (s *TeamDiscussion) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("author")
@@ -159472,7 +159472,7 @@ func (s *TeamDiscussion) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamDiscussion) MarshalJSON() ([]byte, error) {
+func (s *TeamDiscussion) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -159485,14 +159485,14 @@ func (s *TeamDiscussion) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamDiscussionComment) Encode(e *jx.Encoder) {
+func (s *TeamDiscussionComment) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamDiscussionComment) encodeFields(e *jx.Encoder) {
+func (s *TeamDiscussionComment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("author")
@@ -159781,7 +159781,7 @@ func (s *TeamDiscussionComment) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamDiscussionComment) MarshalJSON() ([]byte, error) {
+func (s *TeamDiscussionComment) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -159794,14 +159794,14 @@ func (s *TeamDiscussionComment) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamFull) Encode(e *jx.Encoder) {
+func (s *TeamFull) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamFull) encodeFields(e *jx.Encoder) {
+func (s *TeamFull) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -160179,7 +160179,7 @@ func (s *TeamFull) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamFull) MarshalJSON() ([]byte, error) {
+func (s *TeamFull) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -160232,14 +160232,14 @@ func (s *TeamFullPrivacy) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamMembership) Encode(e *jx.Encoder) {
+func (s *TeamMembership) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamMembership) encodeFields(e *jx.Encoder) {
+func (s *TeamMembership) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -160349,7 +160349,7 @@ func (s *TeamMembership) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamMembership) MarshalJSON() ([]byte, error) {
+func (s *TeamMembership) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -160442,14 +160442,14 @@ func (s *TeamMembershipState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamPermissions) Encode(e *jx.Encoder) {
+func (s *TeamPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamPermissions) encodeFields(e *jx.Encoder) {
+func (s *TeamPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("pull")
@@ -160598,7 +160598,7 @@ func (s *TeamPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamPermissions) MarshalJSON() ([]byte, error) {
+func (s *TeamPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -160611,14 +160611,14 @@ func (s *TeamPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamProject) Encode(e *jx.Encoder) {
+func (s *TeamProject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamProject) encodeFields(e *jx.Encoder) {
+func (s *TeamProject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("owner_url")
@@ -160958,7 +160958,7 @@ func (s *TeamProject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamProject) MarshalJSON() ([]byte, error) {
+func (s *TeamProject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -160971,14 +160971,14 @@ func (s *TeamProject) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamProjectPermissions) Encode(e *jx.Encoder) {
+func (s *TeamProjectPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamProjectPermissions) encodeFields(e *jx.Encoder) {
+func (s *TeamProjectPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("read")
@@ -161091,7 +161091,7 @@ func (s *TeamProjectPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamProjectPermissions) MarshalJSON() ([]byte, error) {
+func (s *TeamProjectPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -161104,14 +161104,14 @@ func (s *TeamProjectPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamRepository) Encode(e *jx.Encoder) {
+func (s *TeamRepository) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamRepository) encodeFields(e *jx.Encoder) {
+func (s *TeamRepository) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -162745,7 +162745,7 @@ func (s *TeamRepository) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamRepository) MarshalJSON() ([]byte, error) {
+func (s *TeamRepository) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -162758,14 +162758,14 @@ func (s *TeamRepository) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamRepositoryPermissions) Encode(e *jx.Encoder) {
+func (s *TeamRepositoryPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamRepositoryPermissions) encodeFields(e *jx.Encoder) {
+func (s *TeamRepositoryPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admin")
@@ -162912,7 +162912,7 @@ func (s *TeamRepositoryPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamRepositoryPermissions) MarshalJSON() ([]byte, error) {
+func (s *TeamRepositoryPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -162925,14 +162925,14 @@ func (s *TeamRepositoryPermissions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamSimple) Encode(e *jx.Encoder) {
+func (s *TeamSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamSimple) encodeFields(e *jx.Encoder) {
+func (s *TeamSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -163204,7 +163204,7 @@ func (s *TeamSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamSimple) MarshalJSON() ([]byte, error) {
+func (s *TeamSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163217,14 +163217,14 @@ func (s *TeamSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateMembershipForUserInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Role.Set {
 			e.FieldStart("role")
@@ -163268,7 +163268,7 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163321,14 +163321,14 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateMembershipForUserLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Role.Set {
 			e.FieldStart("role")
@@ -163372,7 +163372,7 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateMembershipForUserLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163425,14 +163425,14 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -163492,7 +163492,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163505,14 +163505,14 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) UnmarshalJSON(data []
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permission.Set {
 			e.FieldStart("permission")
@@ -163555,7 +163555,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163610,14 +163610,14 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) UnmarshalJSON(dat
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -163677,7 +163677,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163690,14 +163690,14 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) UnmarshalJSON(data [
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permission.Set {
 			e.FieldStart("permission")
@@ -163740,7 +163740,7 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163795,14 +163795,14 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) UnmarshalJSON(da
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permission.Set {
 			e.FieldStart("permission")
@@ -163845,7 +163845,7 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -163904,14 +163904,14 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) UnmarshalJSON(data [
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Permission.Set {
 			e.FieldStart("permission")
@@ -163954,7 +163954,7 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164009,14 +164009,14 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -164093,7 +164093,7 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateDiscussionCommentInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateDiscussionCommentInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164106,14 +164106,14 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -164190,7 +164190,7 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateDiscussionCommentLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateDiscussionCommentLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164203,14 +164203,14 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) UnmarshalJSON(data []byte) error
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateDiscussionInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -164323,7 +164323,7 @@ func (s *TeamsCreateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateDiscussionInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateDiscussionInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164336,14 +164336,14 @@ func (s *TeamsCreateDiscussionInOrgReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateDiscussionLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -164456,7 +164456,7 @@ func (s *TeamsCreateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateDiscussionLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateDiscussionLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164469,14 +164469,14 @@ func (s *TeamsCreateDiscussionLegacyReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Groups != nil {
 			e.FieldStart("groups")
@@ -164530,7 +164530,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164543,14 +164543,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) UnmarshalJSON(data []by
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Encode(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("group_id")
@@ -164663,7 +164663,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164676,14 +164676,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) UnmarshalJSON
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("groups")
@@ -164787,7 +164787,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164800,14 +164800,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) UnmarshalJSON(data []b
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Encode(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("group_id")
@@ -164971,7 +164971,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -164984,14 +164984,14 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) UnmarshalJSO
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsCreateReq) Encode(e *jx.Encoder) {
+func (s *TeamsCreateReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsCreateReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsCreateReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -165197,7 +165197,7 @@ func (s *TeamsCreateReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsCreateReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsCreateReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165292,8 +165292,8 @@ func (s *TeamsCreateReqPrivacy) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes TeamsListChildLegacyApplicationJSONForbidden as json.
-func (s TeamsListChildLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsListChildLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -165317,7 +165317,7 @@ func (s *TeamsListChildLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsListChildLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *TeamsListChildLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165330,8 +165330,8 @@ func (s *TeamsListChildLegacyApplicationJSONForbidden) UnmarshalJSON(data []byte
 }
 
 // Encode encodes TeamsListChildLegacyApplicationJSONNotFound as json.
-func (s TeamsListChildLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsListChildLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -165355,7 +165355,7 @@ func (s *TeamsListChildLegacyApplicationJSONNotFound) Decode(d *jx.Decoder) erro
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsListChildLegacyApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *TeamsListChildLegacyApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165368,8 +165368,8 @@ func (s *TeamsListChildLegacyApplicationJSONNotFound) UnmarshalJSON(data []byte)
 }
 
 // Encode encodes TeamsListForAuthenticatedUserApplicationJSONForbidden as json.
-func (s TeamsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -165393,7 +165393,7 @@ func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165406,8 +165406,8 @@ func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes TeamsListForAuthenticatedUserApplicationJSONNotFound as json.
-func (s TeamsListForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -165431,7 +165431,7 @@ func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsListForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165444,8 +165444,8 @@ func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) UnmarshalJSON(dat
 }
 
 // Encode encodes TeamsListIdpGroupsForLegacyApplicationJSONForbidden as json.
-func (s TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -165469,7 +165469,7 @@ func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsListIdpGroupsForLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165482,8 +165482,8 @@ func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) UnmarshalJSON(data
 }
 
 // Encode encodes TeamsListIdpGroupsForLegacyApplicationJSONNotFound as json.
-func (s TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -165507,7 +165507,7 @@ func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) Decode(d *jx.Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsListIdpGroupsForLegacyApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165520,14 +165520,14 @@ func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsUpdateDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionCommentInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsUpdateDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionCommentInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -165604,7 +165604,7 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateDiscussionCommentInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateDiscussionCommentInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165617,14 +165617,14 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) UnmarshalJSON(data []byte) error 
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsUpdateDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionCommentLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsUpdateDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionCommentLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("body")
@@ -165701,7 +165701,7 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateDiscussionCommentLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateDiscussionCommentLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165714,14 +165714,14 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) UnmarshalJSON(data []byte) error
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsUpdateDiscussionInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsUpdateDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -165781,7 +165781,7 @@ func (s *TeamsUpdateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateDiscussionInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateDiscussionInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165794,14 +165794,14 @@ func (s *TeamsUpdateDiscussionInOrgReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsUpdateDiscussionLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsUpdateDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsUpdateDiscussionLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -165861,7 +165861,7 @@ func (s *TeamsUpdateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateDiscussionLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateDiscussionLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -165874,14 +165874,14 @@ func (s *TeamsUpdateDiscussionLegacyReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsUpdateInOrgReq) Encode(e *jx.Encoder) {
+func (s *TeamsUpdateInOrgReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsUpdateInOrgReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsUpdateInOrgReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -165993,7 +165993,7 @@ func (s *TeamsUpdateInOrgReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateInOrgReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateInOrgReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166088,8 +166088,8 @@ func (s *TeamsUpdateInOrgReqPrivacy) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes TeamsUpdateLegacyApplicationJSONCreated as json.
-func (s TeamsUpdateLegacyApplicationJSONCreated) Encode(e *jx.Encoder) {
-	unwrapped := TeamFull(s)
+func (s *TeamsUpdateLegacyApplicationJSONCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*TeamFull)(s)
 
 	unwrapped.Encode(e)
 }
@@ -166113,7 +166113,7 @@ func (s *TeamsUpdateLegacyApplicationJSONCreated) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateLegacyApplicationJSONCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166126,8 +166126,8 @@ func (s *TeamsUpdateLegacyApplicationJSONCreated) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes TeamsUpdateLegacyApplicationJSONForbidden as json.
-func (s TeamsUpdateLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsUpdateLegacyApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -166151,7 +166151,7 @@ func (s *TeamsUpdateLegacyApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateLegacyApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166164,8 +166164,8 @@ func (s *TeamsUpdateLegacyApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes TeamsUpdateLegacyApplicationJSONNotFound as json.
-func (s TeamsUpdateLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *TeamsUpdateLegacyApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -166189,7 +166189,7 @@ func (s *TeamsUpdateLegacyApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateLegacyApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166202,8 +166202,8 @@ func (s *TeamsUpdateLegacyApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes TeamsUpdateLegacyApplicationJSONOK as json.
-func (s TeamsUpdateLegacyApplicationJSONOK) Encode(e *jx.Encoder) {
-	unwrapped := TeamFull(s)
+func (s *TeamsUpdateLegacyApplicationJSONOK) Encode(e *jx.Encoder) {
+	unwrapped := (*TeamFull)(s)
 
 	unwrapped.Encode(e)
 }
@@ -166227,7 +166227,7 @@ func (s *TeamsUpdateLegacyApplicationJSONOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateLegacyApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateLegacyApplicationJSONOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166240,14 +166240,14 @@ func (s *TeamsUpdateLegacyApplicationJSONOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TeamsUpdateLegacyReq) Encode(e *jx.Encoder) {
+func (s *TeamsUpdateLegacyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TeamsUpdateLegacyReq) encodeFields(e *jx.Encoder) {
+func (s *TeamsUpdateLegacyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -166393,7 +166393,7 @@ func (s *TeamsUpdateLegacyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TeamsUpdateLegacyReq) MarshalJSON() ([]byte, error) {
+func (s *TeamsUpdateLegacyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166488,14 +166488,14 @@ func (s *TeamsUpdateLegacyReqPrivacy) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Thread) Encode(e *jx.Encoder) {
+func (s *Thread) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Thread) encodeFields(e *jx.Encoder) {
+func (s *Thread) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -166711,7 +166711,7 @@ func (s *Thread) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Thread) MarshalJSON() ([]byte, error) {
+func (s *Thread) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166724,14 +166724,14 @@ func (s *Thread) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ThreadSubject) Encode(e *jx.Encoder) {
+func (s *ThreadSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ThreadSubject) encodeFields(e *jx.Encoder) {
+func (s *ThreadSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -166862,7 +166862,7 @@ func (s *ThreadSubject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ThreadSubject) MarshalJSON() ([]byte, error) {
+func (s *ThreadSubject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -166875,14 +166875,14 @@ func (s *ThreadSubject) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ThreadSubscription) Encode(e *jx.Encoder) {
+func (s *ThreadSubscription) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ThreadSubscription) encodeFields(e *jx.Encoder) {
+func (s *ThreadSubscription) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("subscribed")
@@ -167061,7 +167061,7 @@ func (s *ThreadSubscription) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ThreadSubscription) MarshalJSON() ([]byte, error) {
+func (s *ThreadSubscription) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167074,14 +167074,14 @@ func (s *ThreadSubscription) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Topic) Encode(e *jx.Encoder) {
+func (s *Topic) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Topic) encodeFields(e *jx.Encoder) {
+func (s *Topic) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("names")
@@ -167170,7 +167170,7 @@ func (s *Topic) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Topic) MarshalJSON() ([]byte, error) {
+func (s *Topic) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167183,14 +167183,14 @@ func (s *Topic) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TopicSearchResultItem) Encode(e *jx.Encoder) {
+func (s *TopicSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TopicSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *TopicSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -167525,7 +167525,7 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TopicSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *TopicSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167538,14 +167538,14 @@ func (s *TopicSearchResultItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TopicSearchResultItemAliasesItem) Encode(e *jx.Encoder) {
+func (s *TopicSearchResultItemAliasesItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TopicSearchResultItemAliasesItem) encodeFields(e *jx.Encoder) {
+func (s *TopicSearchResultItemAliasesItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.TopicRelation.Set {
 			e.FieldStart("topic_relation")
@@ -167588,7 +167588,7 @@ func (s *TopicSearchResultItemAliasesItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TopicSearchResultItemAliasesItem) MarshalJSON() ([]byte, error) {
+func (s *TopicSearchResultItemAliasesItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167601,14 +167601,14 @@ func (s *TopicSearchResultItemAliasesItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TopicSearchResultItemAliasesItemTopicRelation) Encode(e *jx.Encoder) {
+func (s *TopicSearchResultItemAliasesItemTopicRelation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TopicSearchResultItemAliasesItemTopicRelation) encodeFields(e *jx.Encoder) {
+func (s *TopicSearchResultItemAliasesItemTopicRelation) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -167702,7 +167702,7 @@ func (s *TopicSearchResultItemAliasesItemTopicRelation) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TopicSearchResultItemAliasesItemTopicRelation) MarshalJSON() ([]byte, error) {
+func (s *TopicSearchResultItemAliasesItemTopicRelation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167715,14 +167715,14 @@ func (s *TopicSearchResultItemAliasesItemTopicRelation) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s TopicSearchResultItemRelatedItem) Encode(e *jx.Encoder) {
+func (s *TopicSearchResultItemRelatedItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TopicSearchResultItemRelatedItem) encodeFields(e *jx.Encoder) {
+func (s *TopicSearchResultItemRelatedItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.TopicRelation.Set {
 			e.FieldStart("topic_relation")
@@ -167765,7 +167765,7 @@ func (s *TopicSearchResultItemRelatedItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TopicSearchResultItemRelatedItem) MarshalJSON() ([]byte, error) {
+func (s *TopicSearchResultItemRelatedItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167778,14 +167778,14 @@ func (s *TopicSearchResultItemRelatedItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TopicSearchResultItemRelatedItemTopicRelation) Encode(e *jx.Encoder) {
+func (s *TopicSearchResultItemRelatedItemTopicRelation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TopicSearchResultItemRelatedItemTopicRelation) encodeFields(e *jx.Encoder) {
+func (s *TopicSearchResultItemRelatedItemTopicRelation) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -167879,7 +167879,7 @@ func (s *TopicSearchResultItemRelatedItemTopicRelation) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TopicSearchResultItemRelatedItemTopicRelation) MarshalJSON() ([]byte, error) {
+func (s *TopicSearchResultItemRelatedItemTopicRelation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -167892,14 +167892,14 @@ func (s *TopicSearchResultItemRelatedItemTopicRelation) UnmarshalJSON(data []byt
 }
 
 // Encode implements json.Marshaler.
-func (s Traffic) Encode(e *jx.Encoder) {
+func (s *Traffic) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Traffic) encodeFields(e *jx.Encoder) {
+func (s *Traffic) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("timestamp")
@@ -168012,7 +168012,7 @@ func (s *Traffic) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Traffic) MarshalJSON() ([]byte, error) {
+func (s *Traffic) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -168025,14 +168025,14 @@ func (s *Traffic) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UserMarketplacePurchase) Encode(e *jx.Encoder) {
+func (s *UserMarketplacePurchase) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UserMarketplacePurchase) encodeFields(e *jx.Encoder) {
+func (s *UserMarketplacePurchase) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("billing_cycle")
@@ -168223,7 +168223,7 @@ func (s *UserMarketplacePurchase) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UserMarketplacePurchase) MarshalJSON() ([]byte, error) {
+func (s *UserMarketplacePurchase) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -168236,14 +168236,14 @@ func (s *UserMarketplacePurchase) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UserSearchResultItem) Encode(e *jx.Encoder) {
+func (s *UserSearchResultItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UserSearchResultItem) encodeFields(e *jx.Encoder) {
+func (s *UserSearchResultItem) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("login")
@@ -168903,7 +168903,7 @@ func (s *UserSearchResultItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UserSearchResultItem) MarshalJSON() ([]byte, error) {
+func (s *UserSearchResultItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -168916,8 +168916,8 @@ func (s *UserSearchResultItem) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersAddEmailForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersAddEmailForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersAddEmailForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -168941,7 +168941,7 @@ func (s *UsersAddEmailForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersAddEmailForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersAddEmailForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -168954,8 +168954,8 @@ func (s *UsersAddEmailForAuthenticatedApplicationJSONForbidden) UnmarshalJSON(da
 }
 
 // Encode encodes UsersAddEmailForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersAddEmailForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersAddEmailForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -168979,7 +168979,7 @@ func (s *UsersAddEmailForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersAddEmailForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersAddEmailForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -168992,8 +168992,8 @@ func (s *UsersAddEmailForAuthenticatedApplicationJSONNotFound) UnmarshalJSON(dat
 }
 
 // Encode encodes UsersAddEmailForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169017,7 +169017,7 @@ func (s *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169149,14 +169149,14 @@ func (s *UsersAddEmailForAuthenticatedReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UsersAddEmailForAuthenticatedReq0) Encode(e *jx.Encoder) {
+func (s *UsersAddEmailForAuthenticatedReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UsersAddEmailForAuthenticatedReq0) encodeFields(e *jx.Encoder) {
+func (s *UsersAddEmailForAuthenticatedReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("emails")
@@ -169245,7 +169245,7 @@ func (s *UsersAddEmailForAuthenticatedReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersAddEmailForAuthenticatedReq0) MarshalJSON() ([]byte, error) {
+func (s *UsersAddEmailForAuthenticatedReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169258,8 +169258,8 @@ func (s *UsersAddEmailForAuthenticatedReq0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersBlockApplicationJSONForbidden as json.
-func (s UsersBlockApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersBlockApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169283,7 +169283,7 @@ func (s *UsersBlockApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersBlockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersBlockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169296,8 +169296,8 @@ func (s *UsersBlockApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersBlockApplicationJSONNotFound as json.
-func (s UsersBlockApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersBlockApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169321,7 +169321,7 @@ func (s *UsersBlockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersBlockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersBlockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169334,8 +169334,8 @@ func (s *UsersBlockApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersBlockApplicationJSONUnauthorized as json.
-func (s UsersBlockApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersBlockApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169359,7 +169359,7 @@ func (s *UsersBlockApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersBlockApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersBlockApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169372,8 +169372,8 @@ func (s *UsersBlockApplicationJSONUnauthorized) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes UsersCheckBlockedApplicationJSONForbidden as json.
-func (s UsersCheckBlockedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCheckBlockedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169397,7 +169397,7 @@ func (s *UsersCheckBlockedApplicationJSONForbidden) Decode(d *jx.Decoder) error 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCheckBlockedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersCheckBlockedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169410,8 +169410,8 @@ func (s *UsersCheckBlockedApplicationJSONForbidden) UnmarshalJSON(data []byte) e
 }
 
 // Encode encodes UsersCheckBlockedApplicationJSONNotFound as json.
-func (s UsersCheckBlockedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCheckBlockedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169435,7 +169435,7 @@ func (s *UsersCheckBlockedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCheckBlockedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersCheckBlockedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169448,8 +169448,8 @@ func (s *UsersCheckBlockedApplicationJSONNotFound) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes UsersCheckBlockedApplicationJSONUnauthorized as json.
-func (s UsersCheckBlockedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCheckBlockedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169473,7 +169473,7 @@ func (s *UsersCheckBlockedApplicationJSONUnauthorized) Decode(d *jx.Decoder) err
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCheckBlockedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersCheckBlockedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169486,8 +169486,8 @@ func (s *UsersCheckBlockedApplicationJSONUnauthorized) UnmarshalJSON(data []byte
 }
 
 // Encode encodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden as json.
-func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169511,7 +169511,7 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169524,8 +169524,8 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) Unma
 }
 
 // Encode encodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound as json.
-func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169549,7 +169549,7 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169562,8 +169562,8 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) Unmar
 }
 
 // Encode encodes UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169587,7 +169587,7 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169600,8 +169600,8 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) U
 }
 
 // Encode encodes UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169625,7 +169625,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169638,8 +169638,8 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) UnmarshalJSO
 }
 
 // Encode encodes UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169663,7 +169663,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169676,8 +169676,8 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) UnmarshalJSON
 }
 
 // Encode encodes UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169701,7 +169701,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169714,14 +169714,14 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Unmarshal
 }
 
 // Encode implements json.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedReq) Encode(e *jx.Encoder) {
+func (s *UsersCreateGpgKeyForAuthenticatedReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UsersCreateGpgKeyForAuthenticatedReq) encodeFields(e *jx.Encoder) {
+func (s *UsersCreateGpgKeyForAuthenticatedReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("armored_public_key")
@@ -169798,7 +169798,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreateGpgKeyForAuthenticatedReq) MarshalJSON() ([]byte, error) {
+func (s *UsersCreateGpgKeyForAuthenticatedReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169811,8 +169811,8 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169836,7 +169836,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169849,8 +169849,8 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Unmars
 }
 
 // Encode encodes UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169874,7 +169874,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169887,8 +169887,8 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Unmarsh
 }
 
 // Encode encodes UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -169912,7 +169912,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -169925,14 +169925,14 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Unm
 }
 
 // Encode implements json.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedReq) Encode(e *jx.Encoder) {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UsersCreatePublicSSHKeyForAuthenticatedReq) encodeFields(e *jx.Encoder) {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Title.Set {
 			e.FieldStart("title")
@@ -170026,7 +170026,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) Decode(d *jx.Decoder) error
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersCreatePublicSSHKeyForAuthenticatedReq) MarshalJSON() ([]byte, error) {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170039,8 +170039,8 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) UnmarshalJSON(data []byte) 
 }
 
 // Encode encodes UsersDeleteEmailForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170064,7 +170064,7 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170077,8 +170077,8 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) UnmarshalJSON
 }
 
 // Encode encodes UsersDeleteEmailForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170102,7 +170102,7 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170115,8 +170115,8 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) UnmarshalJSON(
 }
 
 // Encode encodes UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170140,7 +170140,7 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170222,14 +170222,14 @@ func (s *UsersDeleteEmailForAuthenticatedReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UsersDeleteEmailForAuthenticatedReq0) Encode(e *jx.Encoder) {
+func (s *UsersDeleteEmailForAuthenticatedReq0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UsersDeleteEmailForAuthenticatedReq0) encodeFields(e *jx.Encoder) {
+func (s *UsersDeleteEmailForAuthenticatedReq0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("emails")
@@ -170318,7 +170318,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteEmailForAuthenticatedReq0) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteEmailForAuthenticatedReq0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170331,8 +170331,8 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170356,7 +170356,7 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170369,8 +170369,8 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) UnmarshalJSO
 }
 
 // Encode encodes UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170394,7 +170394,7 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170407,8 +170407,8 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) UnmarshalJSON
 }
 
 // Encode encodes UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170432,7 +170432,7 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170445,8 +170445,8 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) Unmarshal
 }
 
 // Encode encodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170470,7 +170470,7 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170483,8 +170483,8 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) Unmars
 }
 
 // Encode encodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170508,7 +170508,7 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170521,8 +170521,8 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) Unmarsh
 }
 
 // Encode encodes UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170546,7 +170546,7 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170559,8 +170559,8 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Unm
 }
 
 // Encode encodes UsersFollowApplicationJSONForbidden as json.
-func (s UsersFollowApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersFollowApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170584,7 +170584,7 @@ func (s *UsersFollowApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersFollowApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersFollowApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170597,8 +170597,8 @@ func (s *UsersFollowApplicationJSONForbidden) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersFollowApplicationJSONNotFound as json.
-func (s UsersFollowApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersFollowApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170622,7 +170622,7 @@ func (s *UsersFollowApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersFollowApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersFollowApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170635,8 +170635,8 @@ func (s *UsersFollowApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersFollowApplicationJSONUnauthorized as json.
-func (s UsersFollowApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersFollowApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170660,7 +170660,7 @@ func (s *UsersFollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersFollowApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersFollowApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170673,8 +170673,8 @@ func (s *UsersFollowApplicationJSONUnauthorized) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes UsersGetAuthenticatedApplicationJSONForbidden as json.
-func (s UsersGetAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170698,7 +170698,7 @@ func (s *UsersGetAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) er
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersGetAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170711,8 +170711,8 @@ func (s *UsersGetAuthenticatedApplicationJSONForbidden) UnmarshalJSON(data []byt
 }
 
 // Encode encodes UsersGetAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersGetAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170736,7 +170736,7 @@ func (s *UsersGetAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersGetAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170919,8 +170919,8 @@ func (s *UsersGetByUsernameOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170944,7 +170944,7 @@ func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170957,8 +170957,8 @@ func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) UnmarshalJSON(d
 }
 
 // Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -170982,7 +170982,7 @@ func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -170995,8 +170995,8 @@ func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) UnmarshalJSON(da
 }
 
 // Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171020,7 +171020,7 @@ func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171033,8 +171033,8 @@ func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) UnmarshalJSO
 }
 
 // Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171058,7 +171058,7 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171071,8 +171071,8 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Unmarshal
 }
 
 // Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171096,7 +171096,7 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171109,8 +171109,8 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) UnmarshalJ
 }
 
 // Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171134,7 +171134,7 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Decode
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171147,8 +171147,8 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Unmars
 }
 
 // Encode encodes UsersListBlockedByAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListBlockedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListBlockedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171172,7 +171172,7 @@ func (s *UsersListBlockedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListBlockedByAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListBlockedByAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171185,8 +171185,8 @@ func (s *UsersListBlockedByAuthenticatedApplicationJSONForbidden) UnmarshalJSON(
 }
 
 // Encode encodes UsersListBlockedByAuthenticatedApplicationJSONNotFound as json.
-func (s UsersListBlockedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListBlockedByAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171210,7 +171210,7 @@ func (s *UsersListBlockedByAuthenticatedApplicationJSONNotFound) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListBlockedByAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersListBlockedByAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171223,8 +171223,8 @@ func (s *UsersListBlockedByAuthenticatedApplicationJSONNotFound) UnmarshalJSON(d
 }
 
 // Encode encodes UsersListBlockedByAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171248,7 +171248,7 @@ func (s *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171311,8 +171311,8 @@ func (s *UsersListBlockedByAuthenticatedOKApplicationJSON) UnmarshalJSON(data []
 }
 
 // Encode encodes UsersListEmailsForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171336,7 +171336,7 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONForbidden) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListEmailsForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListEmailsForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171349,8 +171349,8 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONForbidden) UnmarshalJSON(
 }
 
 // Encode encodes UsersListEmailsForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersListEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171374,7 +171374,7 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONNotFound) Decode(d *jx.De
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListEmailsForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersListEmailsForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171387,8 +171387,8 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONNotFound) UnmarshalJSON(d
 }
 
 // Encode encodes UsersListEmailsForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171412,7 +171412,7 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171425,8 +171425,8 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) UnmarshalJS
 }
 
 // Encode encodes UsersListFollowedByAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171450,7 +171450,7 @@ func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListFollowedByAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171463,8 +171463,8 @@ func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) UnmarshalJSON
 }
 
 // Encode encodes UsersListFollowedByAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171488,7 +171488,7 @@ func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171501,8 +171501,8 @@ func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) UnmarshalJ
 }
 
 // Encode encodes UsersListFollowersForAuthenticatedUserApplicationJSONForbidden as json.
-func (s UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171526,7 +171526,7 @@ func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171539,8 +171539,8 @@ func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) Unmarsh
 }
 
 // Encode encodes UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171564,7 +171564,7 @@ func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171577,8 +171577,8 @@ func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) Unma
 }
 
 // Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171602,7 +171602,7 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Decode(d *jx.
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171615,8 +171615,8 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) UnmarshalJSON
 }
 
 // Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171640,7 +171640,7 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Decode(d *jx.D
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171653,8 +171653,8 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) UnmarshalJSON(
 }
 
 // Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171678,7 +171678,7 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Decode(d *
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171691,8 +171691,8 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) UnmarshalJ
 }
 
 // Encode encodes UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171716,7 +171716,7 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171729,8 +171729,8 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) Unmarsha
 }
 
 // Encode encodes UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171754,7 +171754,7 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Decode(d 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171767,8 +171767,8 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) Unmarshal
 }
 
 // Encode encodes UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171792,7 +171792,7 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171805,8 +171805,8 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) Unmar
 }
 
 // Encode encodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171830,7 +171830,7 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Decode(
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171843,8 +171843,8 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) Unmarsh
 }
 
 // Encode encodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171868,7 +171868,7 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Decode(d
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171881,8 +171881,8 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) Unmarsha
 }
 
 // Encode encodes UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171906,7 +171906,7 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171919,8 +171919,8 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) Unma
 }
 
 // Encode encodes UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171944,7 +171944,7 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171957,8 +171957,8 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden)
 }
 
 // Encode encodes UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -171982,7 +171982,7 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -171995,8 +171995,8 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) 
 }
 
 // Encode encodes UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172020,7 +172020,7 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthoriz
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172083,14 +172083,14 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Unmars
 }
 
 // Encode implements json.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Encode(e *jx.Encoder) {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) encodeFields(e *jx.Encoder) {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("visibility")
@@ -172165,7 +172165,7 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Decode(d *jx.Decoder
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) MarshalJSON() ([]byte, error) {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172218,8 +172218,8 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) UnmarshalJ
 }
 
 // Encode encodes UsersUnblockApplicationJSONForbidden as json.
-func (s UsersUnblockApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUnblockApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172243,7 +172243,7 @@ func (s *UsersUnblockApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUnblockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersUnblockApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172256,8 +172256,8 @@ func (s *UsersUnblockApplicationJSONForbidden) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes UsersUnblockApplicationJSONNotFound as json.
-func (s UsersUnblockApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUnblockApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172281,7 +172281,7 @@ func (s *UsersUnblockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUnblockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersUnblockApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172294,8 +172294,8 @@ func (s *UsersUnblockApplicationJSONNotFound) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes UsersUnblockApplicationJSONUnauthorized as json.
-func (s UsersUnblockApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUnblockApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172319,7 +172319,7 @@ func (s *UsersUnblockApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUnblockApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersUnblockApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172332,8 +172332,8 @@ func (s *UsersUnblockApplicationJSONUnauthorized) UnmarshalJSON(data []byte) err
 }
 
 // Encode encodes UsersUnfollowApplicationJSONForbidden as json.
-func (s UsersUnfollowApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUnfollowApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172357,7 +172357,7 @@ func (s *UsersUnfollowApplicationJSONForbidden) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUnfollowApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersUnfollowApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172370,8 +172370,8 @@ func (s *UsersUnfollowApplicationJSONForbidden) UnmarshalJSON(data []byte) error
 }
 
 // Encode encodes UsersUnfollowApplicationJSONNotFound as json.
-func (s UsersUnfollowApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUnfollowApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172395,7 +172395,7 @@ func (s *UsersUnfollowApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUnfollowApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersUnfollowApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172408,8 +172408,8 @@ func (s *UsersUnfollowApplicationJSONNotFound) UnmarshalJSON(data []byte) error 
 }
 
 // Encode encodes UsersUnfollowApplicationJSONUnauthorized as json.
-func (s UsersUnfollowApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUnfollowApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172433,7 +172433,7 @@ func (s *UsersUnfollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUnfollowApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersUnfollowApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172446,8 +172446,8 @@ func (s *UsersUnfollowApplicationJSONUnauthorized) UnmarshalJSON(data []byte) er
 }
 
 // Encode encodes UsersUpdateAuthenticatedApplicationJSONForbidden as json.
-func (s UsersUpdateAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUpdateAuthenticatedApplicationJSONForbidden) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172471,7 +172471,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUpdateAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
+func (s *UsersUpdateAuthenticatedApplicationJSONForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172484,8 +172484,8 @@ func (s *UsersUpdateAuthenticatedApplicationJSONForbidden) UnmarshalJSON(data []
 }
 
 // Encode encodes UsersUpdateAuthenticatedApplicationJSONNotFound as json.
-func (s UsersUpdateAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUpdateAuthenticatedApplicationJSONNotFound) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172509,7 +172509,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) 
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUpdateAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
+func (s *UsersUpdateAuthenticatedApplicationJSONNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172522,8 +172522,8 @@ func (s *UsersUpdateAuthenticatedApplicationJSONNotFound) UnmarshalJSON(data []b
 }
 
 // Encode encodes UsersUpdateAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersUpdateAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := BasicError(s)
+func (s *UsersUpdateAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Encoder) {
+	unwrapped := (*BasicError)(s)
 
 	unwrapped.Encode(e)
 }
@@ -172547,7 +172547,7 @@ func (s *UsersUpdateAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUpdateAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
+func (s *UsersUpdateAuthenticatedApplicationJSONUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172560,14 +172560,14 @@ func (s *UsersUpdateAuthenticatedApplicationJSONUnauthorized) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s UsersUpdateAuthenticatedReq) Encode(e *jx.Encoder) {
+func (s *UsersUpdateAuthenticatedReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s UsersUpdateAuthenticatedReq) encodeFields(e *jx.Encoder) {
+func (s *UsersUpdateAuthenticatedReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -172729,7 +172729,7 @@ func (s *UsersUpdateAuthenticatedReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s UsersUpdateAuthenticatedReq) MarshalJSON() ([]byte, error) {
+func (s *UsersUpdateAuthenticatedReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172742,14 +172742,14 @@ func (s *UsersUpdateAuthenticatedReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ValidationError) Encode(e *jx.Encoder) {
+func (s *ValidationError) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ValidationError) encodeFields(e *jx.Encoder) {
+func (s *ValidationError) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -172872,7 +172872,7 @@ func (s *ValidationError) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ValidationError) MarshalJSON() ([]byte, error) {
+func (s *ValidationError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -172885,14 +172885,14 @@ func (s *ValidationError) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ValidationErrorErrorsItem) Encode(e *jx.Encoder) {
+func (s *ValidationErrorErrorsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ValidationErrorErrorsItem) encodeFields(e *jx.Encoder) {
+func (s *ValidationErrorErrorsItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Resource.Set {
 			e.FieldStart("resource")
@@ -173054,7 +173054,7 @@ func (s *ValidationErrorErrorsItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ValidationErrorErrorsItem) MarshalJSON() ([]byte, error) {
+func (s *ValidationErrorErrorsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -173146,14 +173146,14 @@ func (s *ValidationErrorErrorsItemValue) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ValidationErrorSimple) Encode(e *jx.Encoder) {
+func (s *ValidationErrorSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ValidationErrorSimple) encodeFields(e *jx.Encoder) {
+func (s *ValidationErrorSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -173278,7 +173278,7 @@ func (s *ValidationErrorSimple) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ValidationErrorSimple) MarshalJSON() ([]byte, error) {
+func (s *ValidationErrorSimple) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -173291,14 +173291,14 @@ func (s *ValidationErrorSimple) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Verification) Encode(e *jx.Encoder) {
+func (s *Verification) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Verification) encodeFields(e *jx.Encoder) {
+func (s *Verification) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("verified")
@@ -173425,7 +173425,7 @@ func (s *Verification) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Verification) MarshalJSON() ([]byte, error) {
+func (s *Verification) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -173438,14 +173438,14 @@ func (s *Verification) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ViewTraffic) Encode(e *jx.Encoder) {
+func (s *ViewTraffic) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ViewTraffic) encodeFields(e *jx.Encoder) {
+func (s *ViewTraffic) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("count")
@@ -173568,7 +173568,7 @@ func (s *ViewTraffic) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ViewTraffic) MarshalJSON() ([]byte, error) {
+func (s *ViewTraffic) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -173581,14 +173581,14 @@ func (s *ViewTraffic) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WebhookConfig) Encode(e *jx.Encoder) {
+func (s *WebhookConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WebhookConfig) encodeFields(e *jx.Encoder) {
+func (s *WebhookConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.URL.Set {
 			e.FieldStart("url")
@@ -173682,7 +173682,7 @@ func (s *WebhookConfig) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WebhookConfig) MarshalJSON() ([]byte, error) {
+func (s *WebhookConfig) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -173865,14 +173865,14 @@ func (s *WebhookConfigURL) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Workflow) Encode(e *jx.Encoder) {
+func (s *Workflow) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Workflow) encodeFields(e *jx.Encoder) {
+func (s *Workflow) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -174127,7 +174127,7 @@ func (s *Workflow) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Workflow) MarshalJSON() ([]byte, error) {
+func (s *Workflow) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -174140,14 +174140,14 @@ func (s *Workflow) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorkflowRun) Encode(e *jx.Encoder) {
+func (s *WorkflowRun) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorkflowRun) encodeFields(e *jx.Encoder) {
+func (s *WorkflowRun) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -174752,7 +174752,7 @@ func (s *WorkflowRun) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorkflowRun) MarshalJSON() ([]byte, error) {
+func (s *WorkflowRun) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -174765,14 +174765,14 @@ func (s *WorkflowRun) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorkflowRunUsage) Encode(e *jx.Encoder) {
+func (s *WorkflowRunUsage) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorkflowRunUsage) encodeFields(e *jx.Encoder) {
+func (s *WorkflowRunUsage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("billable")
@@ -174864,7 +174864,7 @@ func (s *WorkflowRunUsage) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorkflowRunUsage) MarshalJSON() ([]byte, error) {
+func (s *WorkflowRunUsage) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -174877,14 +174877,14 @@ func (s *WorkflowRunUsage) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorkflowRunUsageBillable) Encode(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillable) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorkflowRunUsageBillable) encodeFields(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillable) encodeFields(e *jx.Encoder) {
 	{
 		if s.UBUNTU.Set {
 			e.FieldStart("UBUNTU")
@@ -174961,7 +174961,7 @@ func (s *WorkflowRunUsageBillable) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorkflowRunUsageBillable) MarshalJSON() ([]byte, error) {
+func (s *WorkflowRunUsageBillable) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -174974,14 +174974,14 @@ func (s *WorkflowRunUsageBillable) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorkflowRunUsageBillableMACOS) Encode(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillableMACOS) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorkflowRunUsageBillableMACOS) encodeFields(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillableMACOS) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_ms")
@@ -175076,7 +175076,7 @@ func (s *WorkflowRunUsageBillableMACOS) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorkflowRunUsageBillableMACOS) MarshalJSON() ([]byte, error) {
+func (s *WorkflowRunUsageBillableMACOS) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -175089,14 +175089,14 @@ func (s *WorkflowRunUsageBillableMACOS) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorkflowRunUsageBillableUBUNTU) Encode(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillableUBUNTU) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorkflowRunUsageBillableUBUNTU) encodeFields(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillableUBUNTU) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_ms")
@@ -175191,7 +175191,7 @@ func (s *WorkflowRunUsageBillableUBUNTU) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorkflowRunUsageBillableUBUNTU) MarshalJSON() ([]byte, error) {
+func (s *WorkflowRunUsageBillableUBUNTU) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -175204,14 +175204,14 @@ func (s *WorkflowRunUsageBillableUBUNTU) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorkflowRunUsageBillableWINDOWS) Encode(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillableWINDOWS) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorkflowRunUsageBillableWINDOWS) encodeFields(e *jx.Encoder) {
+func (s *WorkflowRunUsageBillableWINDOWS) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_ms")
@@ -175306,7 +175306,7 @@ func (s *WorkflowRunUsageBillableWINDOWS) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorkflowRunUsageBillableWINDOWS) MarshalJSON() ([]byte, error) {
+func (s *WorkflowRunUsageBillableWINDOWS) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

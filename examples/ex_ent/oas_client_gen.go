@@ -64,7 +64,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Creates a new Pet and persists it to storage.
 //
 // POST /pets
-func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res CreatePetRes, err error) {
+func (c *Client) CreatePet(ctx context.Context, request *CreatePetReq) (res CreatePetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPet"),
 	}
@@ -129,7 +129,7 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 // Creates a new Category and attaches it to the Pet.
 //
 // POST /pets/{id}/categories
-func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCategoriesReq, params CreatePetCategoriesParams) (res CreatePetCategoriesRes, err error) {
+func (c *Client) CreatePetCategories(ctx context.Context, request *CreatePetCategoriesReq, params CreatePetCategoriesParams) (res CreatePetCategoriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetCategories"),
 	}
@@ -209,7 +209,7 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 // Creates a new Pet and attaches it to the Pet.
 //
 // POST /pets/{id}/friends
-func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsReq, params CreatePetFriendsParams) (res CreatePetFriendsRes, err error) {
+func (c *Client) CreatePetFriends(ctx context.Context, request *CreatePetFriendsReq, params CreatePetFriendsParams) (res CreatePetFriendsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetFriends"),
 	}
@@ -289,7 +289,7 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 // Creates a new User and attaches it to the Pet.
 //
 // POST /pets/{id}/owner
-func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, params CreatePetOwnerParams) (res CreatePetOwnerRes, err error) {
+func (c *Client) CreatePetOwner(ctx context.Context, request *CreatePetOwnerReq, params CreatePetOwnerParams) (res CreatePetOwnerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetOwner"),
 	}
@@ -1005,7 +1005,7 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 // Updates a Pet and persists changes to storage.
 //
 // PATCH /pets/{id}
-func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params UpdatePetParams) (res UpdatePetRes, err error) {
+func (c *Client) UpdatePet(ctx context.Context, request *UpdatePetReq, params UpdatePetParams) (res UpdatePetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updatePet"),
 	}

@@ -148,12 +148,12 @@ type MaskContentTypeOptionalReqWithContentType struct {
 }
 
 // GetContentType returns the value of ContentType.
-func (s MaskContentTypeOptionalReqWithContentType) GetContentType() string {
+func (s *MaskContentTypeOptionalReqWithContentType) GetContentType() string {
 	return s.ContentType
 }
 
 // GetContent returns the value of Content.
-func (s MaskContentTypeOptionalReqWithContentType) GetContent() MaskContentTypeOptionalReq {
+func (s *MaskContentTypeOptionalReqWithContentType) GetContent() MaskContentTypeOptionalReq {
 	return s.Content
 }
 
@@ -185,12 +185,12 @@ type MaskContentTypeReqWithContentType struct {
 }
 
 // GetContentType returns the value of ContentType.
-func (s MaskContentTypeReqWithContentType) GetContentType() string {
+func (s *MaskContentTypeReqWithContentType) GetContentType() string {
 	return s.ContentType
 }
 
 // GetContent returns the value of Content.
-func (s MaskContentTypeReqWithContentType) GetContent() MaskContentTypeReq {
+func (s *MaskContentTypeReqWithContentType) GetContent() MaskContentTypeReq {
 	return s.Content
 }
 
@@ -211,12 +211,12 @@ type MaskResponse struct {
 }
 
 // GetContentType returns the value of ContentType.
-func (s MaskResponse) GetContentType() string {
+func (s *MaskResponse) GetContentType() string {
 	return s.ContentType
 }
 
 // GetContent returns the value of Content.
-func (s MaskResponse) GetContent() string {
+func (s *MaskResponse) GetContent() string {
 	return s.Content
 }
 
@@ -283,12 +283,12 @@ type SimpleObject struct {
 }
 
 // GetName returns the value of Name.
-func (s SimpleObject) GetName() string {
+func (s *SimpleObject) GetName() string {
 	return s.Name
 }
 
 // GetAge returns the value of Age.
-func (s SimpleObject) GetAge() OptInt {
+func (s *SimpleObject) GetAge() OptInt {
 	return s.Age
 }
 

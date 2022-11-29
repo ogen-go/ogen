@@ -52,15 +52,15 @@ func (t techEmpowerServer) Queries(ctx context.Context, params techempower.Queri
 	return nil, nil
 }
 
-func (t techEmpowerServer) DB(ctx context.Context) (techempower.WorldObject, error) {
-	return techempower.WorldObject{
+func (t techEmpowerServer) DB(ctx context.Context) (*techempower.WorldObject, error) {
+	return &techempower.WorldObject{
 		ID:           1,
 		RandomNumber: 10,
 	}, nil
 }
 
-func (t techEmpowerServer) JSON(ctx context.Context) (techempower.HelloWorld, error) {
-	return techempower.HelloWorld{
+func (t techEmpowerServer) JSON(ctx context.Context) (*techempower.HelloWorld, error) {
+	return &techempower.HelloWorld{
 		Message: "Hello, world!",
 	}, nil
 }
@@ -81,24 +81,20 @@ func (s sampleAPIServer) DataGetFormat(ctx context.Context, params api.DataGetFo
 	), nil
 }
 
-func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderParams) (api.Hash, error) {
+func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderParams) (*api.Hash, error) {
 	h := sha256.Sum256([]byte(params.XAuthToken))
-	return api.Hash{
+	return &api.Hash{
 		Raw: h[:],
 		Hex: hex.EncodeToString(h[:]),
 	}, nil
 }
 
-func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.OptPetName) (api.PetUpdateNameAliasPostDef, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (api.PetUpdateNamePostDef, error) {
+func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (*api.PetUpdateNamePostDef, error) {
 	code := http.StatusAccepted
 	if _, ok := req.Get(); ok {
 		code = http.StatusOK
 	}
-	return api.PetUpdateNamePostDef{
+	return &api.PetUpdateNamePostDef{
 		StatusCode: code,
 	}, nil
 }
@@ -114,35 +110,15 @@ func (s sampleAPIServer) PetFriendsNamesByID(ctx context.Context, params api.Pet
 	return names, nil
 }
 
-func (s sampleAPIServer) PetNameByID(ctx context.Context, params api.PetNameByIDParams) (string, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetParams) (api.FoobarGetRes, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDef, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) FoobarPost(ctx context.Context, req api.OptPet) (api.FoobarPostRes, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (api.PetGetRes, error) {
-	panic("implement me")
-}
-
-func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.OptPet) (pet api.Pet, err error) {
+func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.OptPet) (pet *api.Pet, err error) {
 	if val, ok := req.Get(); ok {
 		s.pet = val
 	}
-	return req.Value, nil
+	return &req.Value, nil
 }
 
-func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (api.Pet, error) {
-	return s.pet, nil
+func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (*api.Pet, error) {
+	return &s.pet, nil
 }
 
 func (s *sampleAPIServer) PetGetAvatarByName(ctx context.Context, params api.PetGetAvatarByNameParams) (api.PetGetAvatarByNameRes, error) {
@@ -196,8 +172,8 @@ func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.PetUp
 	}
 }
 
-func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, error) {
-	return api.ErrorStatusCode{
+func (s *sampleAPIServer) ErrorGet(ctx context.Context) (*api.ErrorStatusCode, error) {
+	return &api.ErrorStatusCode{
 		StatusCode: http.StatusInternalServerError,
 		Response: api.Error{
 			Message: "test_error",
@@ -205,13 +181,9 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, er
 	}, nil
 }
 
-func (s sampleAPIServer) TestFloatValidation(ctx context.Context, req api.TestFloatValidation) (api.TestFloatValidationOK, error) {
-	panic("implement me")
-}
-
-func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params api.TestObjectQueryParameterParams) (api.TestObjectQueryParameterOK, error) {
+func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params api.TestObjectQueryParameterParams) (*api.TestObjectQueryParameterOK, error) {
 	if param, ok := params.FormObject.Get(); ok {
-		return api.TestObjectQueryParameterOK{
+		return &api.TestObjectQueryParameterOK{
 			Style:  "form",
 			Min:    param.Min,
 			Max:    param.Max,
@@ -219,34 +191,22 @@ func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params a
 		}, nil
 	}
 	if param, ok := params.DeepObject.Get(); ok {
-		return api.TestObjectQueryParameterOK{
+		return &api.TestObjectQueryParameterOK{
 			Style:  "deepObject",
 			Min:    param.Min,
 			Max:    param.Max,
 			Filter: param.Filter,
 		}, nil
 	}
-	return api.TestObjectQueryParameterOK{}, errors.New("invalid input")
+	return &api.TestObjectQueryParameterOK{}, errors.New("invalid input")
 }
 
-func (s sampleAPIServer) OneofBug(ctx context.Context, req api.OneOfBugs) (api.OneofBugOK, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) RecursiveMapGet(ctx context.Context) (api.RecursiveMap, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) RecursiveArrayGet(ctx context.Context) (api.RecursiveArray, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, params api.DefaultTestParams) (int32, error) {
+func (s sampleAPIServer) DefaultTest(ctx context.Context, req *api.DefaultTest, params api.DefaultTestParams) (int32, error) {
 	return params.Default.Value, nil
 }
 
-func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.NilIntStatusCode, error) {
-	return api.NilIntStatusCode{
+func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (*api.NilIntStatusCode, error) {
+	return &api.NilIntStatusCode{
 		StatusCode: 200,
 		Response:   api.NewNilInt(1337),
 	}, nil
@@ -356,14 +316,14 @@ func TestIntegration(t *testing.T) {
 		}
 
 		t.Run("Valid", func(t *testing.T) {
-			data := json.Encode(pet)
+			data := json.Encode(&pet)
 			t.Logf("%s", data)
 			require.True(t, jx.Valid(data), "json should be valid")
 			require.JSONEq(t, petTestData, string(data), "should be equal to golden json")
 		})
 
 		// Can't use assert.Equal due to time.Time type equality checks.
-		assertPet := func(t testing.TB, exp, got api.Pet) {
+		assertPet := func(t testing.TB, exp api.Pet, got *api.Pet) {
 			a := assert.New(t)
 			a.True(exp.Birthday.Equal(got.Birthday), "Birthday")
 			a.Equal(exp.ID, got.ID, "ID")
@@ -488,7 +448,7 @@ func TestIntegration(t *testing.T) {
 				got, err := client.ErrorGet(ctx)
 				require.NoError(t, err)
 
-				errStatusCode := api.ErrorStatusCode{
+				errStatusCode := &api.ErrorStatusCode{
 					StatusCode: http.StatusInternalServerError,
 					Response: api.Error{
 						Message: "test_error",
@@ -577,11 +537,11 @@ func TestIntegration(t *testing.T) {
 		t.Run("DefaultParameters", func(t *testing.T) {
 			a := require.New(t)
 
-			resp, err := client.DefaultTest(ctx, api.DefaultTest{}, api.DefaultTestParams{})
+			resp, err := client.DefaultTest(ctx, &api.DefaultTest{}, api.DefaultTestParams{})
 			a.NoError(err)
 			a.Equal(int32(10), resp)
 
-			resp, err = client.DefaultTest(ctx, api.DefaultTest{}, api.DefaultTestParams{
+			resp, err = client.DefaultTest(ctx, &api.DefaultTest{}, api.DefaultTestParams{
 				Default: api.NewOptInt32(42),
 			})
 			a.NoError(err)

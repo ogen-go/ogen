@@ -3,7 +3,7 @@
 {{- $va := $.Validators }}
 
 // EncodeURI encodes {{ $.Name }} as URI form.
-func (s {{ $.Name }}) EncodeURI(e uri.Encoder) error {
+func (s {{ $.ReadOnlyReceiver }}) EncodeURI(e uri.Encoder) error {
 	for k, elem := range s {
 		if err := e.EncodeField(k, func(e uri.Encoder) error {
     		{{ template "uri/encode" map_elem $.Item }}

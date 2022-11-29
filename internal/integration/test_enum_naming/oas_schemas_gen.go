@@ -34,22 +34,22 @@ type ProbeLivenessOK struct {
 }
 
 // GetVeryBadEnum returns the value of VeryBadEnum.
-func (s ProbeLivenessOK) GetVeryBadEnum() VeryBadEnum {
+func (s *ProbeLivenessOK) GetVeryBadEnum() VeryBadEnum {
 	return s.VeryBadEnum
 }
 
 // GetPascalStrat returns the value of PascalStrat.
-func (s ProbeLivenessOK) GetPascalStrat() PascalStrat {
+func (s *ProbeLivenessOK) GetPascalStrat() PascalStrat {
 	return s.PascalStrat
 }
 
 // GetPascalSpecialStrat returns the value of PascalSpecialStrat.
-func (s ProbeLivenessOK) GetPascalSpecialStrat() PascalSpecialStrat {
+func (s *ProbeLivenessOK) GetPascalSpecialStrat() PascalSpecialStrat {
 	return s.PascalSpecialStrat
 }
 
 // GetPascalExceptionStrat returns the value of PascalExceptionStrat.
-func (s ProbeLivenessOK) GetPascalExceptionStrat() PascalExceptionStrat {
+func (s *ProbeLivenessOK) GetPascalExceptionStrat() PascalExceptionStrat {
 	return s.PascalExceptionStrat
 }
 

@@ -48,14 +48,14 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SharedRequest) Encode(e *jx.Encoder) {
+func (s *SharedRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SharedRequest) encodeFields(e *jx.Encoder) {
+func (s *SharedRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.Filename.Set {
 			e.FieldStart("filename")
@@ -115,7 +115,7 @@ func (s *SharedRequest) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SharedRequest) MarshalJSON() ([]byte, error) {
+func (s *SharedRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -128,14 +128,14 @@ func (s *SharedRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestMultipartUploadOK) Encode(e *jx.Encoder) {
+func (s *TestMultipartUploadOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s TestMultipartUploadOK) encodeFields(e *jx.Encoder) {
+func (s *TestMultipartUploadOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file")
@@ -259,7 +259,7 @@ func (s *TestMultipartUploadOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TestMultipartUploadOK) MarshalJSON() ([]byte, error) {
+func (s *TestMultipartUploadOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

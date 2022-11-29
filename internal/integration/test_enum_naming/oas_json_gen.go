@@ -133,14 +133,14 @@ func (s *PascalStrat) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProbeLivenessOK) Encode(e *jx.Encoder) {
+func (s *ProbeLivenessOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ProbeLivenessOK) encodeFields(e *jx.Encoder) {
+func (s *ProbeLivenessOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("VeryBadEnum")
@@ -263,7 +263,7 @@ func (s *ProbeLivenessOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ProbeLivenessOK) MarshalJSON() ([]byte, error) {
+func (s *ProbeLivenessOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

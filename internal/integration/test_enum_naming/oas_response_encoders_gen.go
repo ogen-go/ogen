@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeProbeLivenessResponse(response ProbeLivenessOK, w http.ResponseWriter, span trace.Span) error {
+func encodeProbeLivenessResponse(response *ProbeLivenessOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

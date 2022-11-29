@@ -14,7 +14,7 @@ import (
 )
 
 // EncodeURI encodes TestObjectQueryParameterDeepObject as URI form.
-func (s TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
+func (s *TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(s.Min))
 	}); err != nil {
@@ -146,7 +146,7 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 }
 
 // EncodeURI encodes TestObjectQueryParameterFormObject as URI form.
-func (s TestObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
+func (s *TestObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(s.Min))
 	}); err != nil {

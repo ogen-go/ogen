@@ -7393,20 +7393,20 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLogFileHandlerResponse(resp *http.Response) (res LogFileHandlerUnauthorized, err error) {
+func decodeLogFileHandlerResponse(resp *http.Response) (res *LogFileHandlerUnauthorized, err error) {
 	switch resp.StatusCode {
 	case 401:
 		// Code 401.
-		return LogFileHandlerUnauthorized{}, nil
+		return &LogFileHandlerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLogFileListHandlerResponse(resp *http.Response) (res LogFileListHandlerUnauthorized, err error) {
+func decodeLogFileListHandlerResponse(resp *http.Response) (res *LogFileListHandlerUnauthorized, err error) {
 	switch resp.StatusCode {
 	case 401:
 		// Code 401.
-		return LogFileListHandlerUnauthorized{}, nil
+		return &LogFileListHandlerUnauthorized{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

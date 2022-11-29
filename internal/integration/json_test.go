@@ -270,7 +270,7 @@ func TestJSONArray(t *testing.T) {
 			// Make range value copy to prevent data races.
 			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-				testEncode(t, tc.Value, tc.Expected)
+				testEncode(t, &tc.Value, tc.Expected)
 			})
 		}
 	})
@@ -459,14 +459,14 @@ func TestJSONAdditionalProperties(t *testing.T) {
 			Expected string
 		}{
 			{
-				api.MapWithProperties{
+				&api.MapWithProperties{
 					Required:        1,
 					AdditionalProps: map[string]string{},
 				},
 				`{"required": 1}`,
 			},
 			{
-				api.MapWithProperties{
+				&api.MapWithProperties{
 					Required:        1,
 					Optional:        api.NewOptInt(10),
 					AdditionalProps: map[string]string{},
@@ -474,7 +474,7 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				`{"required": 1, "optional": 10}`,
 			},
 			{
-				api.MapWithProperties{
+				&api.MapWithProperties{
 					Required: 1,
 					AdditionalProps: map[string]string{
 						"runtime_field": "field",
@@ -483,7 +483,7 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				`{"required": 1, "runtime_field": "field"}`,
 			},
 			{
-				api.MapWithProperties{
+				&api.MapWithProperties{
 					Required: 1,
 					AdditionalProps: map[string]string{
 						"a": "a",
@@ -493,7 +493,7 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				`{"required": 1, "a": "a", "b":"b"}`,
 			},
 			{
-				api.MapWithProperties{},
+				&api.MapWithProperties{},
 				`{"required": 0}`,
 			},
 			{
@@ -505,7 +505,7 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				`{"a":{"b":"c"}}`,
 			},
 			{
-				api.MapWithProperties{
+				&api.MapWithProperties{
 					Required: 1,
 					SubMap: api.NewOptStringMap(api.StringMap{
 						"runtime_field": "field",
@@ -514,7 +514,7 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				`{"required": 1, "sub_map":{"runtime_field": "field"}}`,
 			},
 			{
-				api.MapWithProperties{
+				&api.MapWithProperties{
 					Required:        1,
 					AdditionalProps: map[string]string{},
 					InlinedSubMap: api.NewOptMapWithPropertiesInlinedSubMap(api.MapWithPropertiesInlinedSubMap{

@@ -20,47 +20,47 @@ type Book struct {
 }
 
 // GetID returns the value of ID.
-func (s Book) GetID() OptInt {
+func (s *Book) GetID() OptInt {
 	return s.ID
 }
 
 // GetMediaID returns the value of MediaID.
-func (s Book) GetMediaID() OptInt {
+func (s *Book) GetMediaID() OptInt {
 	return s.MediaID
 }
 
 // GetImages returns the value of Images.
-func (s Book) GetImages() OptImages {
+func (s *Book) GetImages() OptImages {
 	return s.Images
 }
 
 // GetTitle returns the value of Title.
-func (s Book) GetTitle() OptTitle {
+func (s *Book) GetTitle() OptTitle {
 	return s.Title
 }
 
 // GetTags returns the value of Tags.
-func (s Book) GetTags() []Tag {
+func (s *Book) GetTags() []Tag {
 	return s.Tags
 }
 
 // GetScanlator returns the value of Scanlator.
-func (s Book) GetScanlator() OptString {
+func (s *Book) GetScanlator() OptString {
 	return s.Scanlator
 }
 
 // GetUploadDate returns the value of UploadDate.
-func (s Book) GetUploadDate() OptInt {
+func (s *Book) GetUploadDate() OptInt {
 	return s.UploadDate
 }
 
 // GetNumPages returns the value of NumPages.
-func (s Book) GetNumPages() OptInt {
+func (s *Book) GetNumPages() OptInt {
 	return s.NumPages
 }
 
 // GetNumFavorites returns the value of NumFavorites.
-func (s Book) GetNumFavorites() OptInt {
+func (s *Book) GetNumFavorites() OptInt {
 	return s.NumFavorites
 }
 
@@ -180,17 +180,17 @@ type Image struct {
 }
 
 // GetT returns the value of T.
-func (s Image) GetT() OptString {
+func (s *Image) GetT() OptString {
 	return s.T
 }
 
 // GetW returns the value of W.
-func (s Image) GetW() OptInt {
+func (s *Image) GetW() OptInt {
 	return s.W
 }
 
 // GetH returns the value of H.
-func (s Image) GetH() OptInt {
+func (s *Image) GetH() OptInt {
 	return s.H
 }
 
@@ -217,17 +217,17 @@ type Images struct {
 }
 
 // GetPages returns the value of Pages.
-func (s Images) GetPages() []Image {
+func (s *Images) GetPages() []Image {
 	return s.Pages
 }
 
 // GetCover returns the value of Cover.
-func (s Images) GetCover() OptImage {
+func (s *Images) GetCover() OptImage {
 	return s.Cover
 }
 
 // GetThumbnail returns the value of Thumbnail.
-func (s Images) GetThumbnail() OptImage {
+func (s *Images) GetThumbnail() OptImage {
 	return s.Thumbnail
 }
 
@@ -550,17 +550,17 @@ type SearchResponse struct {
 }
 
 // GetResult returns the value of Result.
-func (s SearchResponse) GetResult() []Book {
+func (s *SearchResponse) GetResult() []Book {
 	return s.Result
 }
 
 // GetNumPages returns the value of NumPages.
-func (s SearchResponse) GetNumPages() OptInt {
+func (s *SearchResponse) GetNumPages() OptInt {
 	return s.NumPages
 }
 
 // GetPerPage returns the value of PerPage.
-func (s SearchResponse) GetPerPage() OptInt {
+func (s *SearchResponse) GetPerPage() OptInt {
 	return s.PerPage
 }
 
@@ -589,27 +589,27 @@ type Tag struct {
 }
 
 // GetID returns the value of ID.
-func (s Tag) GetID() OptInt {
+func (s *Tag) GetID() OptInt {
 	return s.ID
 }
 
 // GetType returns the value of Type.
-func (s Tag) GetType() OptTagType {
+func (s *Tag) GetType() OptTagType {
 	return s.Type
 }
 
 // GetName returns the value of Name.
-func (s Tag) GetName() OptString {
+func (s *Tag) GetName() OptString {
 	return s.Name
 }
 
 // GetURL returns the value of URL.
-func (s Tag) GetURL() OptString {
+func (s *Tag) GetURL() OptString {
 	return s.URL
 }
 
 // GetCount returns the value of Count.
-func (s Tag) GetCount() OptInt {
+func (s *Tag) GetCount() OptInt {
 	return s.Count
 }
 
@@ -658,17 +658,17 @@ type Title struct {
 }
 
 // GetEnglish returns the value of English.
-func (s Title) GetEnglish() OptString {
+func (s *Title) GetEnglish() OptString {
 	return s.English
 }
 
 // GetJapanese returns the value of Japanese.
-func (s Title) GetJapanese() OptString {
+func (s *Title) GetJapanese() OptString {
 	return s.Japanese
 }
 
 // GetPretty returns the value of Pretty.
-func (s Title) GetPretty() OptString {
+func (s *Title) GetPretty() OptString {
 	return s.Pretty
 }
 

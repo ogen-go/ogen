@@ -1018,7 +1018,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 // Создание лимитной заявки.
 //
 // POST /orders/limit-order
-func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
+func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1129,7 +1129,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 // Создание рыночной заявки.
 //
 // POST /orders/market-order
-func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
+func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1495,7 +1495,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 // Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
-func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
+func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1592,7 +1592,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 // Выставление баланса по инструментным позициям.
 //
 // POST /sandbox/positions/balance
-func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
+func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {

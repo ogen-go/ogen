@@ -15,7 +15,7 @@ import (
 )
 
 func (s *Server) decodeCreatePetRequest(r *http.Request) (
-	req CreatePetReq,
+	req *CreatePetReq,
 	close func() error,
 	rerr error,
 ) {
@@ -66,14 +66,14 @@ func (s *Server) decodeCreatePetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request) (
-	req CreatePetCategoriesReq,
+	req *CreatePetCategoriesReq,
 	close func() error,
 	rerr error,
 ) {
@@ -124,14 +124,14 @@ func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCreatePetFriendsRequest(r *http.Request) (
-	req CreatePetFriendsReq,
+	req *CreatePetFriendsReq,
 	close func() error,
 	rerr error,
 ) {
@@ -182,14 +182,14 @@ func (s *Server) decodeCreatePetFriendsRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCreatePetOwnerRequest(r *http.Request) (
-	req CreatePetOwnerReq,
+	req *CreatePetOwnerReq,
 	close func() error,
 	rerr error,
 ) {
@@ -240,14 +240,14 @@ func (s *Server) decodeCreatePetOwnerRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUpdatePetRequest(r *http.Request) (
-	req UpdatePetReq,
+	req *UpdatePetReq,
 	close func() error,
 	rerr error,
 ) {
@@ -298,7 +298,7 @@ func (s *Server) decodeUpdatePetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

@@ -49,12 +49,12 @@ type Callback struct {
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Callback) GetPattern0Props() CallbackPattern0 {
+func (s *Callback) GetPattern0Props() CallbackPattern0 {
 	return s.Pattern0Props
 }
 
 // GetPattern1Props returns the value of Pattern1Props.
-func (s Callback) GetPattern1Props() CallbackPattern1 {
+func (s *Callback) GetPattern1Props() CallbackPattern1 {
 	return s.Pattern1Props
 }
 
@@ -186,52 +186,52 @@ type Components struct {
 }
 
 // GetSchemas returns the value of Schemas.
-func (s Components) GetSchemas() OptSchemasOrReferences {
+func (s *Components) GetSchemas() OptSchemasOrReferences {
 	return s.Schemas
 }
 
 // GetResponses returns the value of Responses.
-func (s Components) GetResponses() OptResponsesOrReferences {
+func (s *Components) GetResponses() OptResponsesOrReferences {
 	return s.Responses
 }
 
 // GetParameters returns the value of Parameters.
-func (s Components) GetParameters() OptParametersOrReferences {
+func (s *Components) GetParameters() OptParametersOrReferences {
 	return s.Parameters
 }
 
 // GetExamples returns the value of Examples.
-func (s Components) GetExamples() OptExamplesOrReferences {
+func (s *Components) GetExamples() OptExamplesOrReferences {
 	return s.Examples
 }
 
 // GetRequestBodies returns the value of RequestBodies.
-func (s Components) GetRequestBodies() OptRequestBodiesOrReferences {
+func (s *Components) GetRequestBodies() OptRequestBodiesOrReferences {
 	return s.RequestBodies
 }
 
 // GetHeaders returns the value of Headers.
-func (s Components) GetHeaders() OptHeadersOrReferences {
+func (s *Components) GetHeaders() OptHeadersOrReferences {
 	return s.Headers
 }
 
 // GetSecuritySchemes returns the value of SecuritySchemes.
-func (s Components) GetSecuritySchemes() OptSecuritySchemesOrReferences {
+func (s *Components) GetSecuritySchemes() OptSecuritySchemesOrReferences {
 	return s.SecuritySchemes
 }
 
 // GetLinks returns the value of Links.
-func (s Components) GetLinks() OptLinksOrReferences {
+func (s *Components) GetLinks() OptLinksOrReferences {
 	return s.Links
 }
 
 // GetCallbacks returns the value of Callbacks.
-func (s Components) GetCallbacks() OptCallbacksOrReferences {
+func (s *Components) GetCallbacks() OptCallbacksOrReferences {
 	return s.Callbacks
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Components) GetPattern0Props() ComponentsPattern0 {
+func (s *Components) GetPattern0Props() ComponentsPattern0 {
 	return s.Pattern0Props
 }
 
@@ -307,22 +307,22 @@ type Contact struct {
 }
 
 // GetName returns the value of Name.
-func (s Contact) GetName() OptString {
+func (s *Contact) GetName() OptString {
 	return s.Name
 }
 
 // GetURL returns the value of URL.
-func (s Contact) GetURL() OptString {
+func (s *Contact) GetURL() OptString {
 	return s.URL
 }
 
 // GetEmail returns the value of Email.
-func (s Contact) GetEmail() OptString {
+func (s *Contact) GetEmail() OptString {
 	return s.Email
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Contact) GetPattern0Props() ContactPattern0 {
+func (s *Contact) GetPattern0Props() ContactPattern0 {
 	return s.Pattern0Props
 }
 
@@ -371,12 +371,12 @@ type Discriminator struct {
 }
 
 // GetPropertyName returns the value of PropertyName.
-func (s Discriminator) GetPropertyName() string {
+func (s *Discriminator) GetPropertyName() string {
 	return s.PropertyName
 }
 
 // GetMapping returns the value of Mapping.
-func (s Discriminator) GetMapping() OptStrings {
+func (s *Discriminator) GetMapping() OptStrings {
 	return s.Mapping
 }
 
@@ -403,32 +403,32 @@ type Encoding struct {
 }
 
 // GetContentType returns the value of ContentType.
-func (s Encoding) GetContentType() OptString {
+func (s *Encoding) GetContentType() OptString {
 	return s.ContentType
 }
 
 // GetHeaders returns the value of Headers.
-func (s Encoding) GetHeaders() OptHeadersOrReferences {
+func (s *Encoding) GetHeaders() OptHeadersOrReferences {
 	return s.Headers
 }
 
 // GetStyle returns the value of Style.
-func (s Encoding) GetStyle() OptString {
+func (s *Encoding) GetStyle() OptString {
 	return s.Style
 }
 
 // GetExplode returns the value of Explode.
-func (s Encoding) GetExplode() OptBool {
+func (s *Encoding) GetExplode() OptBool {
 	return s.Explode
 }
 
 // GetAllowReserved returns the value of AllowReserved.
-func (s Encoding) GetAllowReserved() OptBool {
+func (s *Encoding) GetAllowReserved() OptBool {
 	return s.AllowReserved
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Encoding) GetPattern0Props() EncodingPattern0 {
+func (s *Encoding) GetPattern0Props() EncodingPattern0 {
 	return s.Pattern0Props
 }
 
@@ -498,27 +498,27 @@ type Example struct {
 }
 
 // GetSummary returns the value of Summary.
-func (s Example) GetSummary() OptString {
+func (s *Example) GetSummary() OptString {
 	return s.Summary
 }
 
 // GetDescription returns the value of Description.
-func (s Example) GetDescription() OptString {
+func (s *Example) GetDescription() OptString {
 	return s.Description
 }
 
 // GetValue returns the value of Value.
-func (s Example) GetValue() *Any {
+func (s *Example) GetValue() *Any {
 	return s.Value
 }
 
 // GetExternalValue returns the value of ExternalValue.
-func (s Example) GetExternalValue() OptString {
+func (s *Example) GetExternalValue() OptString {
 	return s.ExternalValue
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Example) GetPattern0Props() ExamplePattern0 {
+func (s *Example) GetPattern0Props() ExamplePattern0 {
 	return s.Pattern0Props
 }
 
@@ -649,17 +649,17 @@ type ExternalDocs struct {
 }
 
 // GetDescription returns the value of Description.
-func (s ExternalDocs) GetDescription() OptString {
+func (s *ExternalDocs) GetDescription() OptString {
 	return s.Description
 }
 
 // GetURL returns the value of URL.
-func (s ExternalDocs) GetURL() string {
+func (s *ExternalDocs) GetURL() string {
 	return s.URL
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s ExternalDocs) GetPattern0Props() ExternalDocsPattern0 {
+func (s *ExternalDocs) GetPattern0Props() ExternalDocsPattern0 {
 	return s.Pattern0Props
 }
 
@@ -711,62 +711,62 @@ type Header struct {
 }
 
 // GetDescription returns the value of Description.
-func (s Header) GetDescription() OptString {
+func (s *Header) GetDescription() OptString {
 	return s.Description
 }
 
 // GetRequired returns the value of Required.
-func (s Header) GetRequired() OptBool {
+func (s *Header) GetRequired() OptBool {
 	return s.Required
 }
 
 // GetDeprecated returns the value of Deprecated.
-func (s Header) GetDeprecated() OptBool {
+func (s *Header) GetDeprecated() OptBool {
 	return s.Deprecated
 }
 
 // GetAllowEmptyValue returns the value of AllowEmptyValue.
-func (s Header) GetAllowEmptyValue() OptBool {
+func (s *Header) GetAllowEmptyValue() OptBool {
 	return s.AllowEmptyValue
 }
 
 // GetStyle returns the value of Style.
-func (s Header) GetStyle() OptString {
+func (s *Header) GetStyle() OptString {
 	return s.Style
 }
 
 // GetExplode returns the value of Explode.
-func (s Header) GetExplode() OptBool {
+func (s *Header) GetExplode() OptBool {
 	return s.Explode
 }
 
 // GetAllowReserved returns the value of AllowReserved.
-func (s Header) GetAllowReserved() OptBool {
+func (s *Header) GetAllowReserved() OptBool {
 	return s.AllowReserved
 }
 
 // GetSchema returns the value of Schema.
-func (s Header) GetSchema() OptSchemaOrReference {
+func (s *Header) GetSchema() OptSchemaOrReference {
 	return s.Schema
 }
 
 // GetExample returns the value of Example.
-func (s Header) GetExample() *Any {
+func (s *Header) GetExample() *Any {
 	return s.Example
 }
 
 // GetExamples returns the value of Examples.
-func (s Header) GetExamples() OptExamplesOrReferences {
+func (s *Header) GetExamples() OptExamplesOrReferences {
 	return s.Examples
 }
 
 // GetContent returns the value of Content.
-func (s Header) GetContent() OptMediaTypes {
+func (s *Header) GetContent() OptMediaTypes {
 	return s.Content
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Header) GetPattern0Props() HeaderPattern0 {
+func (s *Header) GetPattern0Props() HeaderPattern0 {
 	return s.Pattern0Props
 }
 
@@ -933,37 +933,37 @@ type Info struct {
 }
 
 // GetTitle returns the value of Title.
-func (s Info) GetTitle() string {
+func (s *Info) GetTitle() string {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s Info) GetDescription() OptString {
+func (s *Info) GetDescription() OptString {
 	return s.Description
 }
 
 // GetTermsOfService returns the value of TermsOfService.
-func (s Info) GetTermsOfService() OptString {
+func (s *Info) GetTermsOfService() OptString {
 	return s.TermsOfService
 }
 
 // GetContact returns the value of Contact.
-func (s Info) GetContact() OptContact {
+func (s *Info) GetContact() OptContact {
 	return s.Contact
 }
 
 // GetLicense returns the value of License.
-func (s Info) GetLicense() OptLicense {
+func (s *Info) GetLicense() OptLicense {
 	return s.License
 }
 
 // GetVersion returns the value of Version.
-func (s Info) GetVersion() string {
+func (s *Info) GetVersion() string {
 	return s.Version
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Info) GetPattern0Props() InfoPattern0 {
+func (s *Info) GetPattern0Props() InfoPattern0 {
 	return s.Pattern0Props
 }
 
@@ -1023,17 +1023,17 @@ type License struct {
 }
 
 // GetName returns the value of Name.
-func (s License) GetName() string {
+func (s *License) GetName() string {
 	return s.Name
 }
 
 // GetURL returns the value of URL.
-func (s License) GetURL() OptString {
+func (s *License) GetURL() OptString {
 	return s.URL
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s License) GetPattern0Props() LicensePattern0 {
+func (s *License) GetPattern0Props() LicensePattern0 {
 	return s.Pattern0Props
 }
 
@@ -1083,37 +1083,37 @@ type Link struct {
 }
 
 // GetOperationRef returns the value of OperationRef.
-func (s Link) GetOperationRef() OptString {
+func (s *Link) GetOperationRef() OptString {
 	return s.OperationRef
 }
 
 // GetOperationId returns the value of OperationId.
-func (s Link) GetOperationId() OptString {
+func (s *Link) GetOperationId() OptString {
 	return s.OperationId
 }
 
 // GetParameters returns the value of Parameters.
-func (s Link) GetParameters() OptAnysOrExpressions {
+func (s *Link) GetParameters() OptAnysOrExpressions {
 	return s.Parameters
 }
 
 // GetRequestBody returns the value of RequestBody.
-func (s Link) GetRequestBody() *Any {
+func (s *Link) GetRequestBody() *Any {
 	return s.RequestBody
 }
 
 // GetDescription returns the value of Description.
-func (s Link) GetDescription() OptString {
+func (s *Link) GetDescription() OptString {
 	return s.Description
 }
 
 // GetServer returns the value of Server.
-func (s Link) GetServer() OptServer {
+func (s *Link) GetServer() OptServer {
 	return s.Server
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Link) GetPattern0Props() LinkPattern0 {
+func (s *Link) GetPattern0Props() LinkPattern0 {
 	return s.Pattern0Props
 }
 
@@ -1254,27 +1254,27 @@ type MediaType struct {
 }
 
 // GetSchema returns the value of Schema.
-func (s MediaType) GetSchema() OptSchemaOrReference {
+func (s *MediaType) GetSchema() OptSchemaOrReference {
 	return s.Schema
 }
 
 // GetExample returns the value of Example.
-func (s MediaType) GetExample() *Any {
+func (s *MediaType) GetExample() *Any {
 	return s.Example
 }
 
 // GetExamples returns the value of Examples.
-func (s MediaType) GetExamples() OptExamplesOrReferences {
+func (s *MediaType) GetExamples() OptExamplesOrReferences {
 	return s.Examples
 }
 
 // GetEncoding returns the value of Encoding.
-func (s MediaType) GetEncoding() OptEncodings {
+func (s *MediaType) GetEncoding() OptEncodings {
 	return s.Encoding
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s MediaType) GetPattern0Props() MediaTypePattern0 {
+func (s *MediaType) GetPattern0Props() MediaTypePattern0 {
 	return s.Pattern0Props
 }
 
@@ -1342,27 +1342,27 @@ type OauthFlow struct {
 }
 
 // GetAuthorizationUrl returns the value of AuthorizationUrl.
-func (s OauthFlow) GetAuthorizationUrl() OptString {
+func (s *OauthFlow) GetAuthorizationUrl() OptString {
 	return s.AuthorizationUrl
 }
 
 // GetTokenUrl returns the value of TokenUrl.
-func (s OauthFlow) GetTokenUrl() OptString {
+func (s *OauthFlow) GetTokenUrl() OptString {
 	return s.TokenUrl
 }
 
 // GetRefreshUrl returns the value of RefreshUrl.
-func (s OauthFlow) GetRefreshUrl() OptString {
+func (s *OauthFlow) GetRefreshUrl() OptString {
 	return s.RefreshUrl
 }
 
 // GetScopes returns the value of Scopes.
-func (s OauthFlow) GetScopes() OptStrings {
+func (s *OauthFlow) GetScopes() OptStrings {
 	return s.Scopes
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s OauthFlow) GetPattern0Props() OauthFlowPattern0 {
+func (s *OauthFlow) GetPattern0Props() OauthFlowPattern0 {
 	return s.Pattern0Props
 }
 
@@ -1414,27 +1414,27 @@ type OauthFlows struct {
 }
 
 // GetImplicit returns the value of Implicit.
-func (s OauthFlows) GetImplicit() OptOauthFlow {
+func (s *OauthFlows) GetImplicit() OptOauthFlow {
 	return s.Implicit
 }
 
 // GetPassword returns the value of Password.
-func (s OauthFlows) GetPassword() OptOauthFlow {
+func (s *OauthFlows) GetPassword() OptOauthFlow {
 	return s.Password
 }
 
 // GetClientCredentials returns the value of ClientCredentials.
-func (s OauthFlows) GetClientCredentials() OptOauthFlow {
+func (s *OauthFlows) GetClientCredentials() OptOauthFlow {
 	return s.ClientCredentials
 }
 
 // GetAuthorizationCode returns the value of AuthorizationCode.
-func (s OauthFlows) GetAuthorizationCode() OptOauthFlow {
+func (s *OauthFlows) GetAuthorizationCode() OptOauthFlow {
 	return s.AuthorizationCode
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s OauthFlows) GetPattern0Props() OauthFlowsPattern0 {
+func (s *OauthFlows) GetPattern0Props() OauthFlowsPattern0 {
 	return s.Pattern0Props
 }
 
@@ -1494,67 +1494,67 @@ type Operation struct {
 }
 
 // GetTags returns the value of Tags.
-func (s Operation) GetTags() []string {
+func (s *Operation) GetTags() []string {
 	return s.Tags
 }
 
 // GetSummary returns the value of Summary.
-func (s Operation) GetSummary() OptString {
+func (s *Operation) GetSummary() OptString {
 	return s.Summary
 }
 
 // GetDescription returns the value of Description.
-func (s Operation) GetDescription() OptString {
+func (s *Operation) GetDescription() OptString {
 	return s.Description
 }
 
 // GetExternalDocs returns the value of ExternalDocs.
-func (s Operation) GetExternalDocs() OptExternalDocs {
+func (s *Operation) GetExternalDocs() OptExternalDocs {
 	return s.ExternalDocs
 }
 
 // GetOperationId returns the value of OperationId.
-func (s Operation) GetOperationId() OptString {
+func (s *Operation) GetOperationId() OptString {
 	return s.OperationId
 }
 
 // GetParameters returns the value of Parameters.
-func (s Operation) GetParameters() []ParameterOrReference {
+func (s *Operation) GetParameters() []ParameterOrReference {
 	return s.Parameters
 }
 
 // GetRequestBody returns the value of RequestBody.
-func (s Operation) GetRequestBody() OptRequestBodyOrReference {
+func (s *Operation) GetRequestBody() OptRequestBodyOrReference {
 	return s.RequestBody
 }
 
 // GetResponses returns the value of Responses.
-func (s Operation) GetResponses() Responses {
+func (s *Operation) GetResponses() Responses {
 	return s.Responses
 }
 
 // GetCallbacks returns the value of Callbacks.
-func (s Operation) GetCallbacks() OptCallbacksOrReferences {
+func (s *Operation) GetCallbacks() OptCallbacksOrReferences {
 	return s.Callbacks
 }
 
 // GetDeprecated returns the value of Deprecated.
-func (s Operation) GetDeprecated() OptBool {
+func (s *Operation) GetDeprecated() OptBool {
 	return s.Deprecated
 }
 
 // GetSecurity returns the value of Security.
-func (s Operation) GetSecurity() []SecurityRequirement {
+func (s *Operation) GetSecurity() []SecurityRequirement {
 	return s.Security
 }
 
 // GetServers returns the value of Servers.
-func (s Operation) GetServers() []Server {
+func (s *Operation) GetServers() []Server {
 	return s.Servers
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Operation) GetPattern0Props() OperationPattern0 {
+func (s *Operation) GetPattern0Props() OperationPattern0 {
 	return s.Pattern0Props
 }
 
@@ -3634,72 +3634,72 @@ type Parameter struct {
 }
 
 // GetName returns the value of Name.
-func (s Parameter) GetName() string {
+func (s *Parameter) GetName() string {
 	return s.Name
 }
 
 // GetIn returns the value of In.
-func (s Parameter) GetIn() ParameterIn {
+func (s *Parameter) GetIn() ParameterIn {
 	return s.In
 }
 
 // GetDescription returns the value of Description.
-func (s Parameter) GetDescription() OptString {
+func (s *Parameter) GetDescription() OptString {
 	return s.Description
 }
 
 // GetRequired returns the value of Required.
-func (s Parameter) GetRequired() OptBool {
+func (s *Parameter) GetRequired() OptBool {
 	return s.Required
 }
 
 // GetDeprecated returns the value of Deprecated.
-func (s Parameter) GetDeprecated() OptBool {
+func (s *Parameter) GetDeprecated() OptBool {
 	return s.Deprecated
 }
 
 // GetAllowEmptyValue returns the value of AllowEmptyValue.
-func (s Parameter) GetAllowEmptyValue() OptBool {
+func (s *Parameter) GetAllowEmptyValue() OptBool {
 	return s.AllowEmptyValue
 }
 
 // GetStyle returns the value of Style.
-func (s Parameter) GetStyle() OptParameterStyle {
+func (s *Parameter) GetStyle() OptParameterStyle {
 	return s.Style
 }
 
 // GetExplode returns the value of Explode.
-func (s Parameter) GetExplode() OptBool {
+func (s *Parameter) GetExplode() OptBool {
 	return s.Explode
 }
 
 // GetAllowReserved returns the value of AllowReserved.
-func (s Parameter) GetAllowReserved() OptBool {
+func (s *Parameter) GetAllowReserved() OptBool {
 	return s.AllowReserved
 }
 
 // GetSchema returns the value of Schema.
-func (s Parameter) GetSchema() OptSchemaOrReference {
+func (s *Parameter) GetSchema() OptSchemaOrReference {
 	return s.Schema
 }
 
 // GetExample returns the value of Example.
-func (s Parameter) GetExample() *Any {
+func (s *Parameter) GetExample() *Any {
 	return s.Example
 }
 
 // GetExamples returns the value of Examples.
-func (s Parameter) GetExamples() OptExamplesOrReferences {
+func (s *Parameter) GetExamples() OptExamplesOrReferences {
 	return s.Examples
 }
 
 // GetContent returns the value of Content.
-func (s Parameter) GetContent() OptMediaTypes {
+func (s *Parameter) GetContent() OptMediaTypes {
 	return s.Content
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Parameter) GetPattern0Props() ParameterPattern0 {
+func (s *Parameter) GetPattern0Props() ParameterPattern0 {
 	return s.Pattern0Props
 }
 
@@ -3905,72 +3905,72 @@ type PathItem struct {
 }
 
 // GetRef returns the value of Ref.
-func (s PathItem) GetRef() OptString {
+func (s *PathItem) GetRef() OptString {
 	return s.Ref
 }
 
 // GetSummary returns the value of Summary.
-func (s PathItem) GetSummary() OptString {
+func (s *PathItem) GetSummary() OptString {
 	return s.Summary
 }
 
 // GetDescription returns the value of Description.
-func (s PathItem) GetDescription() OptString {
+func (s *PathItem) GetDescription() OptString {
 	return s.Description
 }
 
 // GetGet returns the value of Get.
-func (s PathItem) GetGet() OptOperation {
+func (s *PathItem) GetGet() OptOperation {
 	return s.Get
 }
 
 // GetPut returns the value of Put.
-func (s PathItem) GetPut() OptOperation {
+func (s *PathItem) GetPut() OptOperation {
 	return s.Put
 }
 
 // GetPost returns the value of Post.
-func (s PathItem) GetPost() OptOperation {
+func (s *PathItem) GetPost() OptOperation {
 	return s.Post
 }
 
 // GetDelete returns the value of Delete.
-func (s PathItem) GetDelete() OptOperation {
+func (s *PathItem) GetDelete() OptOperation {
 	return s.Delete
 }
 
 // GetOptions returns the value of Options.
-func (s PathItem) GetOptions() OptOperation {
+func (s *PathItem) GetOptions() OptOperation {
 	return s.Options
 }
 
 // GetHead returns the value of Head.
-func (s PathItem) GetHead() OptOperation {
+func (s *PathItem) GetHead() OptOperation {
 	return s.Head
 }
 
 // GetPatch returns the value of Patch.
-func (s PathItem) GetPatch() OptOperation {
+func (s *PathItem) GetPatch() OptOperation {
 	return s.Patch
 }
 
 // GetTrace returns the value of Trace.
-func (s PathItem) GetTrace() OptOperation {
+func (s *PathItem) GetTrace() OptOperation {
 	return s.Trace
 }
 
 // GetServers returns the value of Servers.
-func (s PathItem) GetServers() []Server {
+func (s *PathItem) GetServers() []Server {
 	return s.Servers
 }
 
 // GetParameters returns the value of Parameters.
-func (s PathItem) GetParameters() []ParameterOrReference {
+func (s *PathItem) GetParameters() []ParameterOrReference {
 	return s.Parameters
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s PathItem) GetPattern0Props() PathItemPattern0 {
+func (s *PathItem) GetPattern0Props() PathItemPattern0 {
 	return s.Pattern0Props
 }
 
@@ -4067,12 +4067,12 @@ type Paths struct {
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Paths) GetPattern0Props() PathsPattern0 {
+func (s *Paths) GetPattern0Props() PathsPattern0 {
 	return s.Pattern0Props
 }
 
 // GetPattern1Props returns the value of Pattern1Props.
-func (s Paths) GetPattern1Props() PathsPattern1 {
+func (s *Paths) GetPattern1Props() PathsPattern1 {
 	return s.Pattern1Props
 }
 
@@ -4122,7 +4122,7 @@ type Reference struct {
 }
 
 // GetRef returns the value of Ref.
-func (s Reference) GetRef() string {
+func (s *Reference) GetRef() string {
 	return s.Ref
 }
 
@@ -4154,22 +4154,22 @@ type RequestBody struct {
 }
 
 // GetDescription returns the value of Description.
-func (s RequestBody) GetDescription() OptString {
+func (s *RequestBody) GetDescription() OptString {
 	return s.Description
 }
 
 // GetContent returns the value of Content.
-func (s RequestBody) GetContent() MediaTypes {
+func (s *RequestBody) GetContent() MediaTypes {
 	return s.Content
 }
 
 // GetRequired returns the value of Required.
-func (s RequestBody) GetRequired() OptBool {
+func (s *RequestBody) GetRequired() OptBool {
 	return s.Required
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s RequestBody) GetPattern0Props() RequestBodyPattern0 {
+func (s *RequestBody) GetPattern0Props() RequestBodyPattern0 {
 	return s.Pattern0Props
 }
 
@@ -4284,27 +4284,27 @@ type Response struct {
 }
 
 // GetDescription returns the value of Description.
-func (s Response) GetDescription() string {
+func (s *Response) GetDescription() string {
 	return s.Description
 }
 
 // GetHeaders returns the value of Headers.
-func (s Response) GetHeaders() OptHeadersOrReferences {
+func (s *Response) GetHeaders() OptHeadersOrReferences {
 	return s.Headers
 }
 
 // GetContent returns the value of Content.
-func (s Response) GetContent() OptMediaTypes {
+func (s *Response) GetContent() OptMediaTypes {
 	return s.Content
 }
 
 // GetLinks returns the value of Links.
-func (s Response) GetLinks() OptLinksOrReferences {
+func (s *Response) GetLinks() OptLinksOrReferences {
 	return s.Links
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Response) GetPattern0Props() ResponsePattern0 {
+func (s *Response) GetPattern0Props() ResponsePattern0 {
 	return s.Pattern0Props
 }
 
@@ -4428,17 +4428,17 @@ type Responses struct {
 }
 
 // GetDefault returns the value of Default.
-func (s Responses) GetDefault() OptResponseOrReference {
+func (s *Responses) GetDefault() OptResponseOrReference {
 	return s.Default
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Responses) GetPattern0Props() ResponsesPattern0 {
+func (s *Responses) GetPattern0Props() ResponsesPattern0 {
 	return s.Pattern0Props
 }
 
 // GetPattern1Props returns the value of Pattern1Props.
-func (s Responses) GetPattern1Props() ResponsesPattern1 {
+func (s *Responses) GetPattern1Props() ResponsesPattern1 {
 	return s.Pattern1Props
 }
 
@@ -4540,182 +4540,182 @@ type Schema struct {
 }
 
 // GetNullable returns the value of Nullable.
-func (s Schema) GetNullable() OptBool {
+func (s *Schema) GetNullable() OptBool {
 	return s.Nullable
 }
 
 // GetDiscriminator returns the value of Discriminator.
-func (s Schema) GetDiscriminator() OptDiscriminator {
+func (s *Schema) GetDiscriminator() OptDiscriminator {
 	return s.Discriminator
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s Schema) GetReadOnly() OptBool {
+func (s *Schema) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetWriteOnly returns the value of WriteOnly.
-func (s Schema) GetWriteOnly() OptBool {
+func (s *Schema) GetWriteOnly() OptBool {
 	return s.WriteOnly
 }
 
 // GetXML returns the value of XML.
-func (s Schema) GetXML() OptXML {
+func (s *Schema) GetXML() OptXML {
 	return s.XML
 }
 
 // GetExternalDocs returns the value of ExternalDocs.
-func (s Schema) GetExternalDocs() OptExternalDocs {
+func (s *Schema) GetExternalDocs() OptExternalDocs {
 	return s.ExternalDocs
 }
 
 // GetExample returns the value of Example.
-func (s Schema) GetExample() *Any {
+func (s *Schema) GetExample() *Any {
 	return s.Example
 }
 
 // GetDeprecated returns the value of Deprecated.
-func (s Schema) GetDeprecated() OptBool {
+func (s *Schema) GetDeprecated() OptBool {
 	return s.Deprecated
 }
 
 // GetTitle returns the value of Title.
-func (s Schema) GetTitle() OptTitle {
+func (s *Schema) GetTitle() OptTitle {
 	return s.Title
 }
 
 // GetMultipleOf returns the value of MultipleOf.
-func (s Schema) GetMultipleOf() OptMultipleOf {
+func (s *Schema) GetMultipleOf() OptMultipleOf {
 	return s.MultipleOf
 }
 
 // GetMaximum returns the value of Maximum.
-func (s Schema) GetMaximum() OptMaximum {
+func (s *Schema) GetMaximum() OptMaximum {
 	return s.Maximum
 }
 
 // GetExclusiveMaximum returns the value of ExclusiveMaximum.
-func (s Schema) GetExclusiveMaximum() OptExclusiveMaximum {
+func (s *Schema) GetExclusiveMaximum() OptExclusiveMaximum {
 	return s.ExclusiveMaximum
 }
 
 // GetMinimum returns the value of Minimum.
-func (s Schema) GetMinimum() OptMinimum {
+func (s *Schema) GetMinimum() OptMinimum {
 	return s.Minimum
 }
 
 // GetExclusiveMinimum returns the value of ExclusiveMinimum.
-func (s Schema) GetExclusiveMinimum() OptExclusiveMinimum {
+func (s *Schema) GetExclusiveMinimum() OptExclusiveMinimum {
 	return s.ExclusiveMinimum
 }
 
 // GetMaxLength returns the value of MaxLength.
-func (s Schema) GetMaxLength() OptPositiveInteger {
+func (s *Schema) GetMaxLength() OptPositiveInteger {
 	return s.MaxLength
 }
 
 // GetMinLength returns the value of MinLength.
-func (s Schema) GetMinLength() OptPositiveInteger {
+func (s *Schema) GetMinLength() OptPositiveInteger {
 	return s.MinLength
 }
 
 // GetPattern returns the value of Pattern.
-func (s Schema) GetPattern() OptPattern {
+func (s *Schema) GetPattern() OptPattern {
 	return s.Pattern
 }
 
 // GetMaxItems returns the value of MaxItems.
-func (s Schema) GetMaxItems() OptPositiveInteger {
+func (s *Schema) GetMaxItems() OptPositiveInteger {
 	return s.MaxItems
 }
 
 // GetMinItems returns the value of MinItems.
-func (s Schema) GetMinItems() OptPositiveInteger {
+func (s *Schema) GetMinItems() OptPositiveInteger {
 	return s.MinItems
 }
 
 // GetUniqueItems returns the value of UniqueItems.
-func (s Schema) GetUniqueItems() OptUniqueItems {
+func (s *Schema) GetUniqueItems() OptUniqueItems {
 	return s.UniqueItems
 }
 
 // GetMaxProperties returns the value of MaxProperties.
-func (s Schema) GetMaxProperties() OptPositiveInteger {
+func (s *Schema) GetMaxProperties() OptPositiveInteger {
 	return s.MaxProperties
 }
 
 // GetMinProperties returns the value of MinProperties.
-func (s Schema) GetMinProperties() OptPositiveInteger {
+func (s *Schema) GetMinProperties() OptPositiveInteger {
 	return s.MinProperties
 }
 
 // GetRequired returns the value of Required.
-func (s Schema) GetRequired() *StringArray {
+func (s *Schema) GetRequired() *StringArray {
 	return s.Required
 }
 
 // GetEnum returns the value of Enum.
-func (s Schema) GetEnum() *Enum {
+func (s *Schema) GetEnum() *Enum {
 	return s.Enum
 }
 
 // GetType returns the value of Type.
-func (s Schema) GetType() OptSchemaType {
+func (s *Schema) GetType() OptSchemaType {
 	return s.Type
 }
 
 // GetAllOf returns the value of AllOf.
-func (s Schema) GetAllOf() []SchemaOrReference {
+func (s *Schema) GetAllOf() []SchemaOrReference {
 	return s.AllOf
 }
 
 // GetOneOf returns the value of OneOf.
-func (s Schema) GetOneOf() []SchemaOrReference {
+func (s *Schema) GetOneOf() []SchemaOrReference {
 	return s.OneOf
 }
 
 // GetAnyOf returns the value of AnyOf.
-func (s Schema) GetAnyOf() []SchemaOrReference {
+func (s *Schema) GetAnyOf() []SchemaOrReference {
 	return s.AnyOf
 }
 
 // GetNot returns the value of Not.
-func (s Schema) GetNot() *Schema {
+func (s *Schema) GetNot() *Schema {
 	return s.Not
 }
 
 // GetItems returns the value of Items.
-func (s Schema) GetItems() *SchemaOrReference {
+func (s *Schema) GetItems() *SchemaOrReference {
 	return s.Items
 }
 
 // GetProperties returns the value of Properties.
-func (s Schema) GetProperties() OptSchemaProperties {
+func (s *Schema) GetProperties() OptSchemaProperties {
 	return s.Properties
 }
 
 // GetAdditionalProperties returns the value of AdditionalProperties.
-func (s Schema) GetAdditionalProperties() *SchemaAdditionalProperties {
+func (s *Schema) GetAdditionalProperties() *SchemaAdditionalProperties {
 	return s.AdditionalProperties
 }
 
 // GetDefault returns the value of Default.
-func (s Schema) GetDefault() *DefaultType {
+func (s *Schema) GetDefault() *DefaultType {
 	return s.Default
 }
 
 // GetDescription returns the value of Description.
-func (s Schema) GetDescription() OptString {
+func (s *Schema) GetDescription() OptString {
 	return s.Description
 }
 
 // GetFormat returns the value of Format.
-func (s Schema) GetFormat() OptString {
+func (s *Schema) GetFormat() OptString {
 	return s.Format
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Schema) GetPattern0Props() SchemaPattern0 {
+func (s *Schema) GetPattern0Props() SchemaPattern0 {
 	return s.Pattern0Props
 }
 
@@ -5116,47 +5116,47 @@ type SecurityScheme struct {
 }
 
 // GetType returns the value of Type.
-func (s SecurityScheme) GetType() string {
+func (s *SecurityScheme) GetType() string {
 	return s.Type
 }
 
 // GetDescription returns the value of Description.
-func (s SecurityScheme) GetDescription() OptString {
+func (s *SecurityScheme) GetDescription() OptString {
 	return s.Description
 }
 
 // GetName returns the value of Name.
-func (s SecurityScheme) GetName() OptString {
+func (s *SecurityScheme) GetName() OptString {
 	return s.Name
 }
 
 // GetIn returns the value of In.
-func (s SecurityScheme) GetIn() OptString {
+func (s *SecurityScheme) GetIn() OptString {
 	return s.In
 }
 
 // GetScheme returns the value of Scheme.
-func (s SecurityScheme) GetScheme() OptString {
+func (s *SecurityScheme) GetScheme() OptString {
 	return s.Scheme
 }
 
 // GetBearerFormat returns the value of BearerFormat.
-func (s SecurityScheme) GetBearerFormat() OptString {
+func (s *SecurityScheme) GetBearerFormat() OptString {
 	return s.BearerFormat
 }
 
 // GetFlows returns the value of Flows.
-func (s SecurityScheme) GetFlows() OptOauthFlows {
+func (s *SecurityScheme) GetFlows() OptOauthFlows {
 	return s.Flows
 }
 
 // GetOpenIdConnectUrl returns the value of OpenIdConnectUrl.
-func (s SecurityScheme) GetOpenIdConnectUrl() OptString {
+func (s *SecurityScheme) GetOpenIdConnectUrl() OptString {
 	return s.OpenIdConnectUrl
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s SecurityScheme) GetPattern0Props() SecuritySchemePattern0 {
+func (s *SecurityScheme) GetPattern0Props() SecuritySchemePattern0 {
 	return s.Pattern0Props
 }
 
@@ -5308,22 +5308,22 @@ type Server struct {
 }
 
 // GetURL returns the value of URL.
-func (s Server) GetURL() string {
+func (s *Server) GetURL() string {
 	return s.URL
 }
 
 // GetDescription returns the value of Description.
-func (s Server) GetDescription() OptString {
+func (s *Server) GetDescription() OptString {
 	return s.Description
 }
 
 // GetVariables returns the value of Variables.
-func (s Server) GetVariables() OptServerVariables {
+func (s *Server) GetVariables() OptServerVariables {
 	return s.Variables
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Server) GetPattern0Props() ServerPattern0 {
+func (s *Server) GetPattern0Props() ServerPattern0 {
 	return s.Pattern0Props
 }
 
@@ -5369,22 +5369,22 @@ type ServerVariable struct {
 }
 
 // GetEnum returns the value of Enum.
-func (s ServerVariable) GetEnum() []string {
+func (s *ServerVariable) GetEnum() []string {
 	return s.Enum
 }
 
 // GetDefault returns the value of Default.
-func (s ServerVariable) GetDefault() string {
+func (s *ServerVariable) GetDefault() string {
 	return s.Default
 }
 
 // GetDescription returns the value of Description.
-func (s ServerVariable) GetDescription() OptString {
+func (s *ServerVariable) GetDescription() OptString {
 	return s.Description
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s ServerVariable) GetPattern0Props() ServerVariablePattern0 {
+func (s *ServerVariable) GetPattern0Props() ServerVariablePattern0 {
 	return s.Pattern0Props
 }
 
@@ -5446,47 +5446,47 @@ type Spec struct {
 }
 
 // GetOpenapi returns the value of Openapi.
-func (s Spec) GetOpenapi() string {
+func (s *Spec) GetOpenapi() string {
 	return s.Openapi
 }
 
 // GetInfo returns the value of Info.
-func (s Spec) GetInfo() Info {
+func (s *Spec) GetInfo() Info {
 	return s.Info
 }
 
 // GetServers returns the value of Servers.
-func (s Spec) GetServers() []Server {
+func (s *Spec) GetServers() []Server {
 	return s.Servers
 }
 
 // GetPaths returns the value of Paths.
-func (s Spec) GetPaths() Paths {
+func (s *Spec) GetPaths() Paths {
 	return s.Paths
 }
 
 // GetComponents returns the value of Components.
-func (s Spec) GetComponents() OptComponents {
+func (s *Spec) GetComponents() OptComponents {
 	return s.Components
 }
 
 // GetSecurity returns the value of Security.
-func (s Spec) GetSecurity() []SecurityRequirement {
+func (s *Spec) GetSecurity() []SecurityRequirement {
 	return s.Security
 }
 
 // GetTags returns the value of Tags.
-func (s Spec) GetTags() []Tag {
+func (s *Spec) GetTags() []Tag {
 	return s.Tags
 }
 
 // GetExternalDocs returns the value of ExternalDocs.
-func (s Spec) GetExternalDocs() OptExternalDocs {
+func (s *Spec) GetExternalDocs() OptExternalDocs {
 	return s.ExternalDocs
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Spec) GetPattern0Props() SpecPattern0 {
+func (s *Spec) GetPattern0Props() SpecPattern0 {
 	return s.Pattern0Props
 }
 
@@ -5574,22 +5574,22 @@ type Tag struct {
 }
 
 // GetName returns the value of Name.
-func (s Tag) GetName() string {
+func (s *Tag) GetName() string {
 	return s.Name
 }
 
 // GetDescription returns the value of Description.
-func (s Tag) GetDescription() OptString {
+func (s *Tag) GetDescription() OptString {
 	return s.Description
 }
 
 // GetExternalDocs returns the value of ExternalDocs.
-func (s Tag) GetExternalDocs() OptExternalDocs {
+func (s *Tag) GetExternalDocs() OptExternalDocs {
 	return s.ExternalDocs
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s Tag) GetPattern0Props() TagPattern0 {
+func (s *Tag) GetPattern0Props() TagPattern0 {
 	return s.Pattern0Props
 }
 
@@ -5643,32 +5643,32 @@ type XML struct {
 }
 
 // GetName returns the value of Name.
-func (s XML) GetName() OptString {
+func (s *XML) GetName() OptString {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s XML) GetNamespace() OptString {
+func (s *XML) GetNamespace() OptString {
 	return s.Namespace
 }
 
 // GetPrefix returns the value of Prefix.
-func (s XML) GetPrefix() OptString {
+func (s *XML) GetPrefix() OptString {
 	return s.Prefix
 }
 
 // GetAttribute returns the value of Attribute.
-func (s XML) GetAttribute() OptBool {
+func (s *XML) GetAttribute() OptBool {
 	return s.Attribute
 }
 
 // GetWrapped returns the value of Wrapped.
-func (s XML) GetWrapped() OptBool {
+func (s *XML) GetWrapped() OptBool {
 	return s.Wrapped
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s XML) GetPattern0Props() XMLPattern0 {
+func (s *XML) GetPattern0Props() XMLPattern0 {
 	return s.Pattern0Props
 }
 
@@ -5826,14 +5826,14 @@ func (s *AnysOrExpressions) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Callback) Encode(e *jx.Encoder) {
+func (s *Callback) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Callback) encodeFields(e *jx.Encoder) {
+func (s *Callback) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -5906,7 +5906,7 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Callback) MarshalJSON() ([]byte, error) {
+func (s *Callback) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6164,14 +6164,14 @@ func (s *CallbacksOrReferences) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Components) Encode(e *jx.Encoder) {
+func (s *Components) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Components) encodeFields(e *jx.Encoder) {
+func (s *Components) encodeFields(e *jx.Encoder) {
 	{
 		if s.Schemas.Set {
 			e.FieldStart("schemas")
@@ -6376,7 +6376,7 @@ func (s *Components) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Components) MarshalJSON() ([]byte, error) {
+func (s *Components) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6450,14 +6450,14 @@ func (s *ComponentsPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Contact) Encode(e *jx.Encoder) {
+func (s *Contact) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Contact) encodeFields(e *jx.Encoder) {
+func (s *Contact) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -6560,7 +6560,7 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Contact) MarshalJSON() ([]byte, error) {
+func (s *Contact) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6676,14 +6676,14 @@ func (s *DefaultType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Discriminator) Encode(e *jx.Encoder) {
+func (s *Discriminator) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Discriminator) encodeFields(e *jx.Encoder) {
+func (s *Discriminator) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("propertyName")
@@ -6777,7 +6777,7 @@ func (s *Discriminator) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Discriminator) MarshalJSON() ([]byte, error) {
+func (s *Discriminator) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6790,14 +6790,14 @@ func (s *Discriminator) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Encoding) Encode(e *jx.Encoder) {
+func (s *Encoding) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Encoding) encodeFields(e *jx.Encoder) {
+func (s *Encoding) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContentType.Set {
 			e.FieldStart("contentType")
@@ -6934,7 +6934,7 @@ func (s *Encoding) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Encoding) MarshalJSON() ([]byte, error) {
+func (s *Encoding) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -7116,14 +7116,14 @@ func (s *Enum) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Example) Encode(e *jx.Encoder) {
+func (s *Example) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Example) encodeFields(e *jx.Encoder) {
+func (s *Example) encodeFields(e *jx.Encoder) {
 	{
 		if s.Summary.Set {
 			e.FieldStart("summary")
@@ -7245,7 +7245,7 @@ func (s *Example) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Example) MarshalJSON() ([]byte, error) {
+func (s *Example) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -7554,14 +7554,14 @@ func (s *ExclusiveMinimum) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ExternalDocs) Encode(e *jx.Encoder) {
+func (s *ExternalDocs) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ExternalDocs) encodeFields(e *jx.Encoder) {
+func (s *ExternalDocs) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -7681,7 +7681,7 @@ func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ExternalDocs) MarshalJSON() ([]byte, error) {
+func (s *ExternalDocs) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -7755,14 +7755,14 @@ func (s *ExternalDocsPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Header) Encode(e *jx.Encoder) {
+func (s *Header) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Header) encodeFields(e *jx.Encoder) {
+func (s *Header) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -8003,7 +8003,7 @@ func (s *Header) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Header) MarshalJSON() ([]byte, error) {
+func (s *Header) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -8288,14 +8288,14 @@ func (s *HeadersOrReferences) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Info) Encode(e *jx.Encoder) {
+func (s *Info) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Info) encodeFields(e *jx.Encoder) {
+func (s *Info) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -8484,7 +8484,7 @@ func (s *Info) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Info) MarshalJSON() ([]byte, error) {
+func (s *Info) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -8558,14 +8558,14 @@ func (s *InfoPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s License) Encode(e *jx.Encoder) {
+func (s *License) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s License) encodeFields(e *jx.Encoder) {
+func (s *License) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -8685,7 +8685,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s License) MarshalJSON() ([]byte, error) {
+func (s *License) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -8759,14 +8759,14 @@ func (s *LicensePattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Link) Encode(e *jx.Encoder) {
+func (s *Link) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Link) encodeFields(e *jx.Encoder) {
+func (s *Link) encodeFields(e *jx.Encoder) {
 	{
 		if s.OperationRef.Set {
 			e.FieldStart("operationRef")
@@ -8922,7 +8922,7 @@ func (s *Link) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Link) MarshalJSON() ([]byte, error) {
+func (s *Link) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9207,14 +9207,14 @@ func (s *Maximum) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MediaType) Encode(e *jx.Encoder) {
+func (s *MediaType) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s MediaType) encodeFields(e *jx.Encoder) {
+func (s *MediaType) encodeFields(e *jx.Encoder) {
 	{
 		if s.Schema.Set {
 			e.FieldStart("schema")
@@ -9336,7 +9336,7 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s MediaType) MarshalJSON() ([]byte, error) {
+func (s *MediaType) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9544,14 +9544,14 @@ func (s *MultipleOf) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OauthFlow) Encode(e *jx.Encoder) {
+func (s *OauthFlow) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OauthFlow) encodeFields(e *jx.Encoder) {
+func (s *OauthFlow) encodeFields(e *jx.Encoder) {
 	{
 		if s.AuthorizationUrl.Set {
 			e.FieldStart("authorizationUrl")
@@ -9671,7 +9671,7 @@ func (s *OauthFlow) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OauthFlow) MarshalJSON() ([]byte, error) {
+func (s *OauthFlow) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9745,14 +9745,14 @@ func (s *OauthFlowPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OauthFlows) Encode(e *jx.Encoder) {
+func (s *OauthFlows) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OauthFlows) encodeFields(e *jx.Encoder) {
+func (s *OauthFlows) encodeFields(e *jx.Encoder) {
 	{
 		if s.Implicit.Set {
 			e.FieldStart("implicit")
@@ -9872,7 +9872,7 @@ func (s *OauthFlows) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OauthFlows) MarshalJSON() ([]byte, error) {
+func (s *OauthFlows) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -9946,14 +9946,14 @@ func (s *OauthFlowsPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Operation) Encode(e *jx.Encoder) {
+func (s *Operation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Operation) encodeFields(e *jx.Encoder) {
+func (s *Operation) encodeFields(e *jx.Encoder) {
 	{
 		if s.Tags != nil {
 			e.FieldStart("tags")
@@ -10288,7 +10288,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Operation) MarshalJSON() ([]byte, error) {
+func (s *Operation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11800,14 +11800,14 @@ func (s *OptXML) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Parameter) Encode(e *jx.Encoder) {
+func (s *Parameter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Parameter) encodeFields(e *jx.Encoder) {
+func (s *Parameter) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -12116,7 +12116,7 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Parameter) MarshalJSON() ([]byte, error) {
+func (s *Parameter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12511,14 +12511,14 @@ func (s *ParametersOrReferences) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PathItem) Encode(e *jx.Encoder) {
+func (s *PathItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s PathItem) encodeFields(e *jx.Encoder) {
+func (s *PathItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ref.Set {
 			e.FieldStart("$ref")
@@ -12813,7 +12813,7 @@ func (s *PathItem) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s PathItem) MarshalJSON() ([]byte, error) {
+func (s *PathItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -12887,14 +12887,14 @@ func (s *PathItemPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Paths) Encode(e *jx.Encoder) {
+func (s *Paths) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Paths) encodeFields(e *jx.Encoder) {
+func (s *Paths) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -12967,7 +12967,7 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Paths) MarshalJSON() ([]byte, error) {
+func (s *Paths) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13182,14 +13182,14 @@ func (s *PositiveInteger) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Reference) Encode(e *jx.Encoder) {
+func (s *Reference) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Reference) encodeFields(e *jx.Encoder) {
+func (s *Reference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("$ref")
@@ -13266,7 +13266,7 @@ func (s *Reference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Reference) MarshalJSON() ([]byte, error) {
+func (s *Reference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13333,14 +13333,14 @@ func (s *RequestBodiesOrReferences) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RequestBody) Encode(e *jx.Encoder) {
+func (s *RequestBody) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s RequestBody) encodeFields(e *jx.Encoder) {
+func (s *RequestBody) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -13475,7 +13475,7 @@ func (s *RequestBody) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s RequestBody) MarshalJSON() ([]byte, error) {
+func (s *RequestBody) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13642,14 +13642,14 @@ func (s *RequestBodyPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Response) Encode(e *jx.Encoder) {
+func (s *Response) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Response) encodeFields(e *jx.Encoder) {
+func (s *Response) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("description")
@@ -13803,7 +13803,7 @@ func (s *Response) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Response) MarshalJSON() ([]byte, error) {
+func (s *Response) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13978,14 +13978,14 @@ func (s *ResponsePattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Responses) Encode(e *jx.Encoder) {
+func (s *Responses) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Responses) encodeFields(e *jx.Encoder) {
+func (s *Responses) encodeFields(e *jx.Encoder) {
 	{
 		if s.Default.Set {
 			e.FieldStart("default")
@@ -14076,7 +14076,7 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Responses) MarshalJSON() ([]byte, error) {
+func (s *Responses) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -14265,14 +14265,14 @@ func (s *ResponsesPattern1) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Schema) Encode(e *jx.Encoder) {
+func (s *Schema) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Schema) encodeFields(e *jx.Encoder) {
+func (s *Schema) encodeFields(e *jx.Encoder) {
 	{
 		if s.Nullable.Set {
 			e.FieldStart("nullable")
@@ -14967,7 +14967,7 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Schema) MarshalJSON() ([]byte, error) {
+func (s *Schema) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -15671,14 +15671,14 @@ func (s *SecurityRequirement) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SecurityScheme) Encode(e *jx.Encoder) {
+func (s *SecurityScheme) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SecurityScheme) encodeFields(e *jx.Encoder) {
+func (s *SecurityScheme) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -15900,7 +15900,7 @@ func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SecurityScheme) MarshalJSON() ([]byte, error) {
+func (s *SecurityScheme) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16161,14 +16161,14 @@ func (s *SecuritySchemesOrReferences) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Server) Encode(e *jx.Encoder) {
+func (s *Server) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Server) encodeFields(e *jx.Encoder) {
+func (s *Server) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -16305,7 +16305,7 @@ func (s *Server) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Server) MarshalJSON() ([]byte, error) {
+func (s *Server) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16379,14 +16379,14 @@ func (s *ServerPattern0) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ServerVariable) Encode(e *jx.Encoder) {
+func (s *ServerVariable) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ServerVariable) encodeFields(e *jx.Encoder) {
+func (s *ServerVariable) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enum != nil {
 			e.FieldStart("enum")
@@ -16536,7 +16536,7 @@ func (s *ServerVariable) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ServerVariable) MarshalJSON() ([]byte, error) {
+func (s *ServerVariable) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16664,14 +16664,14 @@ func (s *ServerVariables) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Spec) Encode(e *jx.Encoder) {
+func (s *Spec) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Spec) encodeFields(e *jx.Encoder) {
+func (s *Spec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("openapi")
@@ -16924,7 +16924,7 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Spec) MarshalJSON() ([]byte, error) {
+func (s *Spec) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17148,14 +17148,14 @@ func (s *Strings) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Tag) Encode(e *jx.Encoder) {
+func (s *Tag) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Tag) encodeFields(e *jx.Encoder) {
+func (s *Tag) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -17292,7 +17292,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Tag) MarshalJSON() ([]byte, error) {
+func (s *Tag) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17446,14 +17446,14 @@ func (s *UniqueItems) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s XML) Encode(e *jx.Encoder) {
+func (s *XML) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s XML) encodeFields(e *jx.Encoder) {
+func (s *XML) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -17590,7 +17590,7 @@ func (s *XML) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s XML) MarshalJSON() ([]byte, error) {
+func (s *XML) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -17663,7 +17663,7 @@ func (s *XMLPattern0) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-func (s Callback) Validate() error {
+func (s *Callback) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -17737,7 +17737,7 @@ func (s CallbacksOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s Components) Validate() error {
+func (s *Components) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas.Set {
@@ -17852,7 +17852,7 @@ func (s Components) Validate() error {
 	}
 	return nil
 }
-func (s Encoding) Validate() error {
+func (s *Encoding) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Headers.Set {
@@ -17912,7 +17912,7 @@ func (s Enum) Validate() error {
 	}
 	return nil
 }
-func (s Header) Validate() error {
+func (s *Header) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schema.Set {
@@ -17996,7 +17996,7 @@ func (s Maximum) Validate() error {
 	}
 	return nil
 }
-func (s MediaType) Validate() error {
+func (s *MediaType) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schema.Set {
@@ -18081,7 +18081,7 @@ func (s MultipleOf) Validate() error {
 	}
 	return nil
 }
-func (s Operation) Validate() error {
+func (s *Operation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -18186,7 +18186,7 @@ func (s Operation) Validate() error {
 	return nil
 }
 
-func (s Parameter) Validate() error {
+func (s *Parameter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.In.Validate(); err != nil {
@@ -18327,7 +18327,7 @@ func (s ParametersOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s PathItem) Validate() error {
+func (s *PathItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Get.Set {
@@ -18503,7 +18503,7 @@ func (s PathItem) Validate() error {
 	}
 	return nil
 }
-func (s Paths) Validate() error {
+func (s *Paths) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -18578,7 +18578,7 @@ func (s RequestBodiesOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s RequestBody) Validate() error {
+func (s *RequestBody) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -18610,7 +18610,7 @@ func (s RequestBodyOrReference) Validate() error {
 	}
 }
 
-func (s Response) Validate() error {
+func (s *Response) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Headers.Set {
@@ -18667,7 +18667,7 @@ func (s ResponseOrReference) Validate() error {
 	}
 }
 
-func (s Responses) Validate() error {
+func (s *Responses) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Default.Set {
@@ -18745,7 +18745,7 @@ func (s ResponsesPattern0) Validate() error {
 	}
 	return nil
 }
-func (s Schema) Validate() error {
+func (s *Schema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.MultipleOf.Set {
@@ -19255,7 +19255,7 @@ func (s SecurityRequirement) Validate() error {
 	}
 	return nil
 }
-func (s Spec) Validate() error {
+func (s *Spec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Paths.Validate(); err != nil {

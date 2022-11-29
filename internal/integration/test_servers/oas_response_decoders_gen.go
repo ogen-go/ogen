@@ -49,7 +49,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 		}
 	}
 	// Convenient error response.
-	defRes, err := func() (res ErrorStatusCode, err error) {
+	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -74,7 +74,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return ErrorStatusCode{
+			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
 			}, nil
@@ -85,5 +85,5 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "default")
 	}
-	return res, errors.Wrap(&defRes, "error")
+	return res, errors.Wrap(defRes, "error")
 }

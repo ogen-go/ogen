@@ -14,7 +14,7 @@ import (
 )
 
 // EncodeURI encodes Location as URI form.
-func (s Location) EncodeURI(e uri.Encoder) error {
+func (s *Location) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("lat", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.Float64ToString(s.Lat))
 	}); err != nil {

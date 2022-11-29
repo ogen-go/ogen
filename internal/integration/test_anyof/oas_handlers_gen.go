@@ -49,7 +49,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 		err error
 	)
 
-	var response IntegerNumber
+	var response *IntegerNumber
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -63,7 +63,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = IntegerNumber
+			Response = *IntegerNumber
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -127,7 +127,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 		err error
 	)
 
-	var response JaegerAnyOf
+	var response *JaegerAnyOf
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -141,7 +141,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = JaegerAnyOf
+			Response = *JaegerAnyOf
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -205,7 +205,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *
 		err error
 	)
 
-	var response OneUUID
+	var response *OneUUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -219,7 +219,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = OneUUID
+			Response = *OneUUID
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

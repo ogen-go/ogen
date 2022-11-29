@@ -12,13 +12,13 @@ type Handler interface {
 	//
 	{{- template "godoc_def" $op.GoDoc }}
 	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.Type.Go }}, error)
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.GoType }}, error)
 {{- end }}
 {{- if $.Error }}
-	// NewError creates {{ $.ErrorType.Go }} from error returned by handler.
+	// NewError creates {{ $.ErrorGoType }} from error returned by handler.
 	//
 	// Used for common default response.
-	NewError(ctx context.Context, err error) {{ $.ErrorType.Go }}
+	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
 {{- end }}
 }
 
@@ -55,7 +55,7 @@ type WebhookHandler interface {
 	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 	//
     {{- template "godoc_op" $op }}
-	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.Type.Go }}, error)
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.GoType }}, error)
 {{- end }}
 }
 

@@ -109,16 +109,16 @@ func (s *testMiddleware) PetUploadAvatarByID(
 	return &api.PetUploadAvatarByIDOK{}, nil
 }
 
-func (s *testMiddleware) GetHeader(ctx context.Context, params api.GetHeaderParams) (api.Hash, error) {
+func (s *testMiddleware) GetHeader(ctx context.Context, params api.GetHeaderParams) (*api.Hash, error) {
 	h := sha256.Sum256([]byte(params.XAuthToken))
-	return api.Hash{
+	return &api.Hash{
 		Raw: h[:],
 		Hex: hex.EncodeToString(h[:]),
 	}, nil
 }
 
-func (s *testMiddleware) ErrorGet(ctx context.Context) (api.ErrorStatusCode, error) {
-	return api.ErrorStatusCode{
+func (s *testMiddleware) ErrorGet(ctx context.Context) (*api.ErrorStatusCode, error) {
+	return &api.ErrorStatusCode{
 		StatusCode: http.StatusInternalServerError,
 		Response: api.Error{
 			Message: "test_error",

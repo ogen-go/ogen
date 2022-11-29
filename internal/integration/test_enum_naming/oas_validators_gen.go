@@ -38,7 +38,7 @@ func (s PascalStrat) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProbeLivenessOK) Validate() error {
+func (s *ProbeLivenessOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.VeryBadEnum.Validate(); err != nil {

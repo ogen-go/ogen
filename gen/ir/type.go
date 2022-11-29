@@ -79,15 +79,6 @@ type Type struct {
 	Features []string
 }
 
-// HasName indicates whether the type has a name.
-func (t Type) HasName() (string, bool) {
-	if t.Is(KindStruct, KindAlias, KindInterface, KindEnum, KindStream, KindGeneric, KindMap, KindSum) {
-		return t.Name, true
-	}
-
-	return "", false
-}
-
 // GoDoc returns type godoc.
 func (t Type) GoDoc() []string {
 	s := t.Schema

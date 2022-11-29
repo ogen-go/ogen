@@ -37,13 +37,13 @@ func (UnimplementedHandler) Base64Request(ctx context.Context, req Base64Request
 // MaskContentType implements maskContentType operation.
 //
 // POST /maskContentType
-func (UnimplementedHandler) MaskContentType(ctx context.Context, req MaskContentTypeReqWithContentType) (r MaskResponse, _ error) {
+func (UnimplementedHandler) MaskContentType(ctx context.Context, req *MaskContentTypeReqWithContentType) (r *MaskResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // MaskContentTypeOptional implements maskContentTypeOptional operation.
 //
 // POST /maskContentTypeOptional
-func (UnimplementedHandler) MaskContentTypeOptional(ctx context.Context, req MaskContentTypeOptionalReqWithContentType) (r MaskResponse, _ error) {
+func (UnimplementedHandler) MaskContentTypeOptional(ctx context.Context, req *MaskContentTypeOptionalReqWithContentType) (r *MaskResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }

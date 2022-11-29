@@ -15,13 +15,13 @@
 
 {{ define "response_decoders/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
-func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Type.Go }}, err error) {
+func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoType }}, err error) {
 	{{- with $statusCodes := $op.Responses.StatusCode }}
 	switch resp.StatusCode {
 	{{- range $statusCode, $response := $statusCodes }}{{/* Range over responses */}}
 	case {{ $statusCode }}:
 		// Code {{ $statusCode }}.
-		{{- template "decode_response" response_elem $response $op.Responses.Type.IsInterface }}
+		{{- template "decode_response" response_elem $response $op.Responses.DoTakePtr }}
 	{{- end }}
 	}
     {{- end }}
@@ -31,23 +31,23 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Typ
     {{- range $idx, $response := $op.Responses.Pattern }}{{- if $response }}
 	case {{ add $idx 1 }}:
 		// Pattern {{ add $idx 1 }}XX.
-    	{{- template "decode_response" response_elem $response $op.Responses.Type.IsInterface }}
+    	{{- template "decode_response" response_elem $response $op.Responses.DoTakePtr }}
     {{- end }}{{- end }}
 	}
 	{{- end }}
 
 	{{- if $op.Responses.Default }}
 		// Default response.
-		{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.Type.IsInterface }}
+		{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.DoTakePtr }}
 	{{- else if and $.Config.Error (not $op.WebhookInfo) }}
 		// Convenient error response.
-		defRes, err := func() (res {{ $.Config.ErrorType.Go }}, err error) {
-			{{- template "decode_response" response_elem $.Config.Error false }}
+		defRes, err := func() (res {{ $.Config.ErrorGoType }}, err error) {
+			{{- template "decode_response" response_elem $.Config.Error true }}
 		}()
 		if err != nil {
 			return res, errors.Wrap(err, "default")
 		}
-		return res, errors.Wrap(&defRes, "error")
+		return res, errors.Wrap(defRes, "error")
 	{{- else }}
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	{{- end }}

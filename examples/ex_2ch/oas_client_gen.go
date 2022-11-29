@@ -62,7 +62,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Получение ид для использования 2chcaptcha.
 //
 // GET /api/captcha/2chcaptcha/id
-func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res Captcha, err error) {
+func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res *Captcha, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -240,7 +240,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 // Срок жизни id: 180 секунд.
 //
 // GET /api/captcha/app/id/{public_key}
-func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (res Captcha, err error) {
+func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (res *Captcha, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -351,7 +351,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 // Получение публичного ключа invisible recaptcha.
 //
 // GET /api/captcha/invisible_recaptcha/id
-func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res Captcha, err error) {
+func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res *Captcha, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -448,7 +448,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
-func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
+func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res *APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -507,7 +507,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 // Получение публичного ключа recaptcha v2.
 //
 // GET /api/captcha/recaptcha/id
-func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res Captcha, err error) {
+func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res *Captcha, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -604,7 +604,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
-func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
+func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res *APICaptchaRecaptchaMobileGetOK, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -663,7 +663,7 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 // Добавление дизлайка на пост.
 //
 // GET /api/dislike
-func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res Like, err error) {
+func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res *Like, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -754,7 +754,7 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 // Добавление лайка на пост.
 //
 // GET /api/like
-func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res Like, err error) {
+func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res *Like, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -847,7 +847,7 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 // целиком, только для проверки новых постов.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
-func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res MobileThreadPostsAfter, err error) {
+func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res *MobileThreadPostsAfter, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1009,7 +1009,7 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 // Получение информации о треде.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
-func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res MobileThreadLastInfo, err error) {
+func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res *MobileThreadLastInfo, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1097,7 +1097,7 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 // Получение информации о посте.
 //
 // GET /api/mobile/v2/post/{board}/{num}
-func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res MobilePost, err error) {
+func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res *MobilePost, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1185,7 +1185,7 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 // Авторизация пасскода.
 //
 // POST /user/passlogin
-func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res Passcode, err error) {
+func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res *Passcode, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1343,7 +1343,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 // Отправка жалобы.
 //
 // POST /user/report
-func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostReq) (res Report, err error) {
+func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostReq) (res *Report, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.

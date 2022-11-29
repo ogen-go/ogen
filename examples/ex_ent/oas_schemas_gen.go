@@ -12,12 +12,12 @@ type CreatePetCategoriesReq struct {
 }
 
 // GetName returns the value of Name.
-func (s CreatePetCategoriesReq) GetName() string {
+func (s *CreatePetCategoriesReq) GetName() string {
 	return s.Name
 }
 
 // GetPets returns the value of Pets.
-func (s CreatePetCategoriesReq) GetPets() []int {
+func (s *CreatePetCategoriesReq) GetPets() []int {
 	return s.Pets
 }
 
@@ -41,32 +41,32 @@ type CreatePetFriendsReq struct {
 }
 
 // GetName returns the value of Name.
-func (s CreatePetFriendsReq) GetName() string {
+func (s *CreatePetFriendsReq) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s CreatePetFriendsReq) GetWeight() OptInt {
+func (s *CreatePetFriendsReq) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s CreatePetFriendsReq) GetBirthday() OptDateTime {
+func (s *CreatePetFriendsReq) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
 // GetCategories returns the value of Categories.
-func (s CreatePetFriendsReq) GetCategories() []int {
+func (s *CreatePetFriendsReq) GetCategories() []int {
 	return s.Categories
 }
 
 // GetOwner returns the value of Owner.
-func (s CreatePetFriendsReq) GetOwner() int {
+func (s *CreatePetFriendsReq) GetOwner() int {
 	return s.Owner
 }
 
 // GetFriends returns the value of Friends.
-func (s CreatePetFriendsReq) GetFriends() []int {
+func (s *CreatePetFriendsReq) GetFriends() []int {
 	return s.Friends
 }
 
@@ -107,17 +107,17 @@ type CreatePetOwnerReq struct {
 }
 
 // GetName returns the value of Name.
-func (s CreatePetOwnerReq) GetName() string {
+func (s *CreatePetOwnerReq) GetName() string {
 	return s.Name
 }
 
 // GetAge returns the value of Age.
-func (s CreatePetOwnerReq) GetAge() int {
+func (s *CreatePetOwnerReq) GetAge() int {
 	return s.Age
 }
 
 // GetPets returns the value of Pets.
-func (s CreatePetOwnerReq) GetPets() []int {
+func (s *CreatePetOwnerReq) GetPets() []int {
 	return s.Pets
 }
 
@@ -146,32 +146,32 @@ type CreatePetReq struct {
 }
 
 // GetName returns the value of Name.
-func (s CreatePetReq) GetName() string {
+func (s *CreatePetReq) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s CreatePetReq) GetWeight() OptInt {
+func (s *CreatePetReq) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s CreatePetReq) GetBirthday() OptDateTime {
+func (s *CreatePetReq) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
 // GetCategories returns the value of Categories.
-func (s CreatePetReq) GetCategories() []int {
+func (s *CreatePetReq) GetCategories() []int {
 	return s.Categories
 }
 
 // GetOwner returns the value of Owner.
-func (s CreatePetReq) GetOwner() int {
+func (s *CreatePetReq) GetOwner() int {
 	return s.Owner
 }
 
 // GetFriends returns the value of Friends.
-func (s CreatePetReq) GetFriends() []int {
+func (s *CreatePetReq) GetFriends() []int {
 	return s.Friends
 }
 
@@ -372,12 +372,12 @@ type PetCategoriesCreate struct {
 }
 
 // GetID returns the value of ID.
-func (s PetCategoriesCreate) GetID() int {
+func (s *PetCategoriesCreate) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetCategoriesCreate) GetName() string {
+func (s *PetCategoriesCreate) GetName() string {
 	return s.Name
 }
 
@@ -400,12 +400,12 @@ type PetCategoriesList struct {
 }
 
 // GetID returns the value of ID.
-func (s PetCategoriesList) GetID() int {
+func (s *PetCategoriesList) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetCategoriesList) GetName() string {
+func (s *PetCategoriesList) GetName() string {
 	return s.Name
 }
 
@@ -430,32 +430,32 @@ type PetCreate struct {
 }
 
 // GetID returns the value of ID.
-func (s PetCreate) GetID() int {
+func (s *PetCreate) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetCreate) GetName() string {
+func (s *PetCreate) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s PetCreate) GetWeight() OptInt {
+func (s *PetCreate) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s PetCreate) GetBirthday() OptDateTime {
+func (s *PetCreate) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
 // GetCategories returns the value of Categories.
-func (s PetCreate) GetCategories() []PetCreateCategories {
+func (s *PetCreate) GetCategories() []PetCreateCategories {
 	return s.Categories
 }
 
 // GetOwner returns the value of Owner.
-func (s PetCreate) GetOwner() PetCreateOwner {
+func (s *PetCreate) GetOwner() PetCreateOwner {
 	return s.Owner
 }
 
@@ -498,12 +498,12 @@ type PetCreateCategories struct {
 }
 
 // GetID returns the value of ID.
-func (s PetCreateCategories) GetID() int {
+func (s *PetCreateCategories) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetCreateCategories) GetName() string {
+func (s *PetCreateCategories) GetName() string {
 	return s.Name
 }
 
@@ -525,17 +525,17 @@ type PetCreateOwner struct {
 }
 
 // GetID returns the value of ID.
-func (s PetCreateOwner) GetID() int {
+func (s *PetCreateOwner) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetCreateOwner) GetName() string {
+func (s *PetCreateOwner) GetName() string {
 	return s.Name
 }
 
 // GetAge returns the value of Age.
-func (s PetCreateOwner) GetAge() int {
+func (s *PetCreateOwner) GetAge() int {
 	return s.Age
 }
 
@@ -563,22 +563,22 @@ type PetFriendsCreate struct {
 }
 
 // GetID returns the value of ID.
-func (s PetFriendsCreate) GetID() int {
+func (s *PetFriendsCreate) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetFriendsCreate) GetName() string {
+func (s *PetFriendsCreate) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s PetFriendsCreate) GetWeight() OptInt {
+func (s *PetFriendsCreate) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s PetFriendsCreate) GetBirthday() OptDateTime {
+func (s *PetFriendsCreate) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
@@ -613,22 +613,22 @@ type PetFriendsList struct {
 }
 
 // GetID returns the value of ID.
-func (s PetFriendsList) GetID() int {
+func (s *PetFriendsList) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetFriendsList) GetName() string {
+func (s *PetFriendsList) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s PetFriendsList) GetWeight() OptInt {
+func (s *PetFriendsList) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s PetFriendsList) GetBirthday() OptDateTime {
+func (s *PetFriendsList) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
@@ -661,22 +661,22 @@ type PetList struct {
 }
 
 // GetID returns the value of ID.
-func (s PetList) GetID() int {
+func (s *PetList) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetList) GetName() string {
+func (s *PetList) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s PetList) GetWeight() OptInt {
+func (s *PetList) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s PetList) GetBirthday() OptDateTime {
+func (s *PetList) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
@@ -708,17 +708,17 @@ type PetOwnerCreate struct {
 }
 
 // GetID returns the value of ID.
-func (s PetOwnerCreate) GetID() int {
+func (s *PetOwnerCreate) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetOwnerCreate) GetName() string {
+func (s *PetOwnerCreate) GetName() string {
 	return s.Name
 }
 
 // GetAge returns the value of Age.
-func (s PetOwnerCreate) GetAge() int {
+func (s *PetOwnerCreate) GetAge() int {
 	return s.Age
 }
 
@@ -747,17 +747,17 @@ type PetOwnerRead struct {
 }
 
 // GetID returns the value of ID.
-func (s PetOwnerRead) GetID() int {
+func (s *PetOwnerRead) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetOwnerRead) GetName() string {
+func (s *PetOwnerRead) GetName() string {
 	return s.Name
 }
 
 // GetAge returns the value of Age.
-func (s PetOwnerRead) GetAge() int {
+func (s *PetOwnerRead) GetAge() int {
 	return s.Age
 }
 
@@ -787,22 +787,22 @@ type PetRead struct {
 }
 
 // GetID returns the value of ID.
-func (s PetRead) GetID() int {
+func (s *PetRead) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetRead) GetName() string {
+func (s *PetRead) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s PetRead) GetWeight() OptInt {
+func (s *PetRead) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s PetRead) GetBirthday() OptDateTime {
+func (s *PetRead) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
@@ -837,22 +837,22 @@ type PetUpdate struct {
 }
 
 // GetID returns the value of ID.
-func (s PetUpdate) GetID() int {
+func (s *PetUpdate) GetID() int {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s PetUpdate) GetName() string {
+func (s *PetUpdate) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s PetUpdate) GetWeight() OptInt {
+func (s *PetUpdate) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s PetUpdate) GetBirthday() OptDateTime {
+func (s *PetUpdate) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
@@ -884,12 +884,12 @@ type R400 struct {
 }
 
 // GetCode returns the value of Code.
-func (s R400) GetCode() int {
+func (s *R400) GetCode() int {
 	return s.Code
 }
 
 // GetStatus returns the value of Status.
-func (s R400) GetStatus() string {
+func (s *R400) GetStatus() string {
 	return s.Status
 }
 
@@ -922,12 +922,12 @@ type R404 struct {
 }
 
 // GetCode returns the value of Code.
-func (s R404) GetCode() int {
+func (s *R404) GetCode() int {
 	return s.Code
 }
 
 // GetStatus returns the value of Status.
-func (s R404) GetStatus() string {
+func (s *R404) GetStatus() string {
 	return s.Status
 }
 
@@ -956,12 +956,12 @@ type R409 struct {
 }
 
 // GetCode returns the value of Code.
-func (s R409) GetCode() int {
+func (s *R409) GetCode() int {
 	return s.Code
 }
 
 // GetStatus returns the value of Status.
-func (s R409) GetStatus() string {
+func (s *R409) GetStatus() string {
 	return s.Status
 }
 
@@ -986,12 +986,12 @@ type R500 struct {
 }
 
 // GetCode returns the value of Code.
-func (s R500) GetCode() int {
+func (s *R500) GetCode() int {
 	return s.Code
 }
 
 // GetStatus returns the value of Status.
-func (s R500) GetStatus() string {
+func (s *R500) GetStatus() string {
 	return s.Status
 }
 
@@ -1028,32 +1028,32 @@ type UpdatePetReq struct {
 }
 
 // GetName returns the value of Name.
-func (s UpdatePetReq) GetName() string {
+func (s *UpdatePetReq) GetName() string {
 	return s.Name
 }
 
 // GetWeight returns the value of Weight.
-func (s UpdatePetReq) GetWeight() OptInt {
+func (s *UpdatePetReq) GetWeight() OptInt {
 	return s.Weight
 }
 
 // GetBirthday returns the value of Birthday.
-func (s UpdatePetReq) GetBirthday() OptDateTime {
+func (s *UpdatePetReq) GetBirthday() OptDateTime {
 	return s.Birthday
 }
 
 // GetCategories returns the value of Categories.
-func (s UpdatePetReq) GetCategories() []int {
+func (s *UpdatePetReq) GetCategories() []int {
 	return s.Categories
 }
 
 // GetOwner returns the value of Owner.
-func (s UpdatePetReq) GetOwner() int {
+func (s *UpdatePetReq) GetOwner() int {
 	return s.Owner
 }
 
 // GetFriends returns the value of Friends.
-func (s UpdatePetReq) GetFriends() []int {
+func (s *UpdatePetReq) GetFriends() []int {
 	return s.Friends
 }
 

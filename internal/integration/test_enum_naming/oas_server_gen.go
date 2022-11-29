@@ -13,7 +13,7 @@ type Handler interface {
 	// Liveness probe for kubernetes.
 	//
 	// GET /healthz
-	ProbeLiveness(ctx context.Context) (ProbeLivenessOK, error)
+	ProbeLiveness(ctx context.Context) (*ProbeLivenessOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

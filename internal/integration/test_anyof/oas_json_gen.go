@@ -80,14 +80,14 @@ func (s *AnyOfIntegerNumberString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IntegerNumber) Encode(e *jx.Encoder) {
+func (s *IntegerNumber) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s IntegerNumber) encodeFields(e *jx.Encoder) {
+func (s *IntegerNumber) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("plain")
@@ -162,7 +162,7 @@ func (s *IntegerNumber) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IntegerNumber) MarshalJSON() ([]byte, error) {
+func (s *IntegerNumber) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -175,14 +175,14 @@ func (s *IntegerNumber) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s JaegerAnyOf) Encode(e *jx.Encoder) {
+func (s *JaegerAnyOf) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s JaegerAnyOf) encodeFields(e *jx.Encoder) {
+func (s *JaegerAnyOf) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("medium")
@@ -275,7 +275,7 @@ func (s *JaegerAnyOf) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s JaegerAnyOf) MarshalJSON() ([]byte, error) {
+func (s *JaegerAnyOf) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -338,14 +338,14 @@ func (s *JaegerAnyOfSizeLimit) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneUUID) Encode(e *jx.Encoder) {
+func (s *OneUUID) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s OneUUID) encodeFields(e *jx.Encoder) {
+func (s *OneUUID) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("owner")
@@ -456,7 +456,7 @@ func (s *OneUUID) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s OneUUID) MarshalJSON() ([]byte, error) {
+func (s *OneUUID) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

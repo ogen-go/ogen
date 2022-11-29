@@ -74,7 +74,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		return
 	}
 
-	var response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+	var response *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -101,7 +101,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		type (
 			Request  = struct{}
 			Params   = ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
-			Response = ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+			Response = *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -297,7 +297,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		return
 	}
 
-	var response ActionsAddSelfHostedRunnerToGroupForOrgNoContent
+	var response *ActionsAddSelfHostedRunnerToGroupForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -324,7 +324,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		type (
 			Request  = struct{}
 			Params   = ActionsAddSelfHostedRunnerToGroupForOrgParams
-			Response = ActionsAddSelfHostedRunnerToGroupForOrgNoContent
+			Response = *ActionsAddSelfHostedRunnerToGroupForOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -517,7 +517,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 		return
 	}
 
-	var response ActionsCancelWorkflowRunAccepted
+	var response *ActionsCancelWorkflowRunAccepted
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -544,7 +544,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = ActionsCancelWorkflowRunParams
-			Response = ActionsCancelWorkflowRunAccepted
+			Response = *ActionsCancelWorkflowRunAccepted
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -717,7 +717,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		}
 
 		type (
-			Request  = ActionsCreateOrUpdateEnvironmentSecretReq
+			Request  = *ActionsCreateOrUpdateEnvironmentSecretReq
 			Params   = ActionsCreateOrUpdateEnvironmentSecretParams
 			Response = ActionsCreateOrUpdateEnvironmentSecretRes
 		)
@@ -888,7 +888,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 		}
 
 		type (
-			Request  = ActionsCreateOrUpdateOrgSecretReq
+			Request  = *ActionsCreateOrUpdateOrgSecretReq
 			Params   = ActionsCreateOrUpdateOrgSecretParams
 			Response = ActionsCreateOrUpdateOrgSecretRes
 		)
@@ -1063,7 +1063,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 		}
 
 		type (
-			Request  = ActionsCreateOrUpdateRepoSecretReq
+			Request  = *ActionsCreateOrUpdateRepoSecretReq
 			Params   = ActionsCreateOrUpdateRepoSecretParams
 			Response = ActionsCreateOrUpdateRepoSecretRes
 		)
@@ -1152,7 +1152,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		return
 	}
 
-	var response AuthenticationToken
+	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1171,7 +1171,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		type (
 			Request  = struct{}
 			Params   = ActionsCreateRegistrationTokenForOrgParams
-			Response = AuthenticationToken
+			Response = *AuthenticationToken
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1259,7 +1259,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		return
 	}
 
-	var response AuthenticationToken
+	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1282,7 +1282,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		type (
 			Request  = struct{}
 			Params   = ActionsCreateRegistrationTokenForRepoParams
-			Response = AuthenticationToken
+			Response = *AuthenticationToken
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1371,7 +1371,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 		return
 	}
 
-	var response AuthenticationToken
+	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1390,7 +1390,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActionsCreateRemoveTokenForOrgParams
-			Response = AuthenticationToken
+			Response = *AuthenticationToken
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1478,7 +1478,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 		return
 	}
 
-	var response AuthenticationToken
+	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1501,7 +1501,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 		type (
 			Request  = struct{}
 			Params   = ActionsCreateRemoveTokenForRepoParams
-			Response = AuthenticationToken
+			Response = *AuthenticationToken
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1600,7 +1600,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		}
 	}()
 
-	var response RunnerGroupsOrg
+	var response *RunnerGroupsOrg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1617,9 +1617,9 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		}
 
 		type (
-			Request  = ActionsCreateSelfHostedRunnerGroupForOrgReq
+			Request  = *ActionsCreateSelfHostedRunnerGroupForOrgReq
 			Params   = ActionsCreateSelfHostedRunnerGroupForOrgParams
-			Response = RunnerGroupsOrg
+			Response = *RunnerGroupsOrg
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1701,7 +1701,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 		return
 	}
 
-	var response ActionsDeleteArtifactNoContent
+	var response *ActionsDeleteArtifactNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1728,7 +1728,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteArtifactParams
-			Response = ActionsDeleteArtifactNoContent
+			Response = *ActionsDeleteArtifactNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1810,7 +1810,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 		return
 	}
 
-	var response ActionsDeleteEnvironmentSecretNoContent
+	var response *ActionsDeleteEnvironmentSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1837,7 +1837,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteEnvironmentSecretParams
-			Response = ActionsDeleteEnvironmentSecretNoContent
+			Response = *ActionsDeleteEnvironmentSecretNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1919,7 +1919,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 		return
 	}
 
-	var response ActionsDeleteOrgSecretNoContent
+	var response *ActionsDeleteOrgSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1942,7 +1942,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteOrgSecretParams
-			Response = ActionsDeleteOrgSecretNoContent
+			Response = *ActionsDeleteOrgSecretNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2024,7 +2024,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 		return
 	}
 
-	var response ActionsDeleteRepoSecretNoContent
+	var response *ActionsDeleteRepoSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2051,7 +2051,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteRepoSecretParams
-			Response = ActionsDeleteRepoSecretNoContent
+			Response = *ActionsDeleteRepoSecretNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2133,7 +2133,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		return
 	}
 
-	var response ActionsDeleteSelfHostedRunnerFromOrgNoContent
+	var response *ActionsDeleteSelfHostedRunnerFromOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2156,7 +2156,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteSelfHostedRunnerFromOrgParams
-			Response = ActionsDeleteSelfHostedRunnerFromOrgNoContent
+			Response = *ActionsDeleteSelfHostedRunnerFromOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2239,7 +2239,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		return
 	}
 
-	var response ActionsDeleteSelfHostedRunnerFromRepoNoContent
+	var response *ActionsDeleteSelfHostedRunnerFromRepoNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2266,7 +2266,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteSelfHostedRunnerFromRepoParams
-			Response = ActionsDeleteSelfHostedRunnerFromRepoNoContent
+			Response = *ActionsDeleteSelfHostedRunnerFromRepoNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2350,7 +2350,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		return
 	}
 
-	var response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
+	var response *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2373,7 +2373,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteSelfHostedRunnerGroupFromOrgParams
-			Response = ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
+			Response = *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2457,7 +2457,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 		return
 	}
 
-	var response ActionsDeleteWorkflowRunNoContent
+	var response *ActionsDeleteWorkflowRunNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2484,7 +2484,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteWorkflowRunParams
-			Response = ActionsDeleteWorkflowRunNoContent
+			Response = *ActionsDeleteWorkflowRunNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2566,7 +2566,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 		return
 	}
 
-	var response ActionsDeleteWorkflowRunLogsNoContent
+	var response *ActionsDeleteWorkflowRunLogsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2593,7 +2593,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 		type (
 			Request  = struct{}
 			Params   = ActionsDeleteWorkflowRunLogsParams
-			Response = ActionsDeleteWorkflowRunLogsNoContent
+			Response = *ActionsDeleteWorkflowRunLogsNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2678,7 +2678,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		return
 	}
 
-	var response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
+	var response *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2701,7 +2701,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		type (
 			Request  = struct{}
 			Params   = ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
-			Response = ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
+			Response = *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2787,7 +2787,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 		return
 	}
 
-	var response ActionsDownloadArtifactFound
+	var response *ActionsDownloadArtifactFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2818,7 +2818,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = ActionsDownloadArtifactParams
-			Response = ActionsDownloadArtifactFound
+			Response = *ActionsDownloadArtifactFound
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2906,7 +2906,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		return
 	}
 
-	var response ActionsDownloadJobLogsForWorkflowRunFound
+	var response *ActionsDownloadJobLogsForWorkflowRunFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2933,7 +2933,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		type (
 			Request  = struct{}
 			Params   = ActionsDownloadJobLogsForWorkflowRunParams
-			Response = ActionsDownloadJobLogsForWorkflowRunFound
+			Response = *ActionsDownloadJobLogsForWorkflowRunFound
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3019,7 +3019,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 		return
 	}
 
-	var response ActionsDownloadWorkflowRunLogsFound
+	var response *ActionsDownloadWorkflowRunLogsFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3046,7 +3046,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActionsDownloadWorkflowRunLogsParams
-			Response = ActionsDownloadWorkflowRunLogsFound
+			Response = *ActionsDownloadWorkflowRunLogsFound
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3131,7 +3131,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		return
 	}
 
-	var response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
+	var response *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3154,7 +3154,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		type (
 			Request  = struct{}
 			Params   = ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
-			Response = ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
+			Response = *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3239,7 +3239,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		return
 	}
 
-	var response SelectedActions
+	var response *SelectedActions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3258,7 +3258,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		type (
 			Request  = struct{}
 			Params   = ActionsGetAllowedActionsOrganizationParams
-			Response = SelectedActions
+			Response = *SelectedActions
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3343,7 +3343,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		return
 	}
 
-	var response SelectedActions
+	var response *SelectedActions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3366,7 +3366,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		type (
 			Request  = struct{}
 			Params   = ActionsGetAllowedActionsRepositoryParams
-			Response = SelectedActions
+			Response = *SelectedActions
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3448,7 +3448,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 		return
 	}
 
-	var response Artifact
+	var response *Artifact
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3475,7 +3475,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 		type (
 			Request  = struct{}
 			Params   = ActionsGetArtifactParams
-			Response = Artifact
+			Response = *Artifact
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3558,7 +3558,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 		return
 	}
 
-	var response ActionsPublicKey
+	var response *ActionsPublicKey
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3581,7 +3581,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActionsGetEnvironmentPublicKeyParams
-			Response = ActionsPublicKey
+			Response = *ActionsPublicKey
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3663,7 +3663,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 		return
 	}
 
-	var response ActionsSecret
+	var response *ActionsSecret
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3690,7 +3690,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 		type (
 			Request  = struct{}
 			Params   = ActionsGetEnvironmentSecretParams
-			Response = ActionsSecret
+			Response = *ActionsSecret
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3772,7 +3772,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		return
 	}
 
-	var response ActionsOrganizationPermissions
+	var response *ActionsOrganizationPermissions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3791,7 +3791,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		type (
 			Request  = struct{}
 			Params   = ActionsGetGithubActionsPermissionsOrganizationParams
-			Response = ActionsOrganizationPermissions
+			Response = *ActionsOrganizationPermissions
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3874,7 +3874,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		return
 	}
 
-	var response ActionsRepositoryPermissions
+	var response *ActionsRepositoryPermissions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3897,7 +3897,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		type (
 			Request  = struct{}
 			Params   = ActionsGetGithubActionsPermissionsRepositoryParams
-			Response = ActionsRepositoryPermissions
+			Response = *ActionsRepositoryPermissions
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3979,7 +3979,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 		return
 	}
 
-	var response Job
+	var response *Job
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4006,7 +4006,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 		type (
 			Request  = struct{}
 			Params   = ActionsGetJobForWorkflowRunParams
-			Response = Job
+			Response = *Job
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4089,7 +4089,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 		return
 	}
 
-	var response ActionsPublicKey
+	var response *ActionsPublicKey
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4108,7 +4108,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ActionsGetOrgPublicKeyParams
-			Response = ActionsPublicKey
+			Response = *ActionsPublicKey
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4190,7 +4190,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 		return
 	}
 
-	var response OrganizationActionsSecret
+	var response *OrganizationActionsSecret
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4213,7 +4213,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 		type (
 			Request  = struct{}
 			Params   = ActionsGetOrgSecretParams
-			Response = OrganizationActionsSecret
+			Response = *OrganizationActionsSecret
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4296,7 +4296,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 		return
 	}
 
-	var response ActionsPublicKey
+	var response *ActionsPublicKey
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4319,7 +4319,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = ActionsGetRepoPublicKeyParams
-			Response = ActionsPublicKey
+			Response = *ActionsPublicKey
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4401,7 +4401,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 		return
 	}
 
-	var response ActionsSecret
+	var response *ActionsSecret
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4428,7 +4428,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ActionsGetRepoSecretParams
-			Response = ActionsSecret
+			Response = *ActionsSecret
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4618,7 +4618,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 		return
 	}
 
-	var response Runner
+	var response *Runner
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4641,7 +4641,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 		type (
 			Request  = struct{}
 			Params   = ActionsGetSelfHostedRunnerForOrgParams
-			Response = Runner
+			Response = *Runner
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4723,7 +4723,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		return
 	}
 
-	var response Runner
+	var response *Runner
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4750,7 +4750,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		type (
 			Request  = struct{}
 			Params   = ActionsGetSelfHostedRunnerForRepoParams
-			Response = Runner
+			Response = *Runner
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4834,7 +4834,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		return
 	}
 
-	var response RunnerGroupsOrg
+	var response *RunnerGroupsOrg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4857,7 +4857,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		type (
 			Request  = struct{}
 			Params   = ActionsGetSelfHostedRunnerGroupForOrgParams
-			Response = RunnerGroupsOrg
+			Response = *RunnerGroupsOrg
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4939,7 +4939,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 		return
 	}
 
-	var response WorkflowRun
+	var response *WorkflowRun
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4966,7 +4966,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = ActionsGetWorkflowRunParams
-			Response = WorkflowRun
+			Response = *WorkflowRun
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5055,7 +5055,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 		return
 	}
 
-	var response WorkflowRunUsage
+	var response *WorkflowRunUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5082,7 +5082,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 		type (
 			Request  = struct{}
 			Params   = ActionsGetWorkflowRunUsageParams
-			Response = WorkflowRunUsage
+			Response = *WorkflowRunUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5164,7 +5164,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 		return
 	}
 
-	var response ActionsListArtifactsForRepoOKHeaders
+	var response *ActionsListArtifactsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5195,7 +5195,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 		type (
 			Request  = struct{}
 			Params   = ActionsListArtifactsForRepoParams
-			Response = ActionsListArtifactsForRepoOKHeaders
+			Response = *ActionsListArtifactsForRepoOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5277,7 +5277,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 		return
 	}
 
-	var response ActionsListEnvironmentSecretsOKHeaders
+	var response *ActionsListEnvironmentSecretsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5308,7 +5308,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 		type (
 			Request  = struct{}
 			Params   = ActionsListEnvironmentSecretsParams
-			Response = ActionsListEnvironmentSecretsOKHeaders
+			Response = *ActionsListEnvironmentSecretsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5392,7 +5392,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 		return
 	}
 
-	var response ActionsListJobsForWorkflowRunOKHeaders
+	var response *ActionsListJobsForWorkflowRunOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5431,7 +5431,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 		type (
 			Request  = struct{}
 			Params   = ActionsListJobsForWorkflowRunParams
-			Response = ActionsListJobsForWorkflowRunOKHeaders
+			Response = *ActionsListJobsForWorkflowRunOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5513,7 +5513,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 		return
 	}
 
-	var response ActionsListOrgSecretsOKHeaders
+	var response *ActionsListOrgSecretsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5540,7 +5540,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = ActionsListOrgSecretsParams
-			Response = ActionsListOrgSecretsOKHeaders
+			Response = *ActionsListOrgSecretsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5624,7 +5624,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		return
 	}
 
-	var response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+	var response *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5655,7 +5655,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		type (
 			Request  = struct{}
 			Params   = ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
-			Response = ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+			Response = *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5737,7 +5737,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 		return
 	}
 
-	var response ActionsListRepoSecretsOKHeaders
+	var response *ActionsListRepoSecretsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5768,7 +5768,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ActionsListRepoSecretsParams
-			Response = ActionsListRepoSecretsOKHeaders
+			Response = *ActionsListRepoSecretsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5850,7 +5850,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 		return
 	}
 
-	var response ActionsListRepoWorkflowsOKHeaders
+	var response *ActionsListRepoWorkflowsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5881,7 +5881,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = ActionsListRepoWorkflowsParams
-			Response = ActionsListRepoWorkflowsOKHeaders
+			Response = *ActionsListRepoWorkflowsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6168,7 +6168,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		return
 	}
 
-	var response ActionsListSelectedReposForOrgSecretOK
+	var response *ActionsListSelectedReposForOrgSecretOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6199,7 +6199,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		type (
 			Request  = struct{}
 			Params   = ActionsListSelectedReposForOrgSecretParams
-			Response = ActionsListSelectedReposForOrgSecretOK
+			Response = *ActionsListSelectedReposForOrgSecretOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6284,7 +6284,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		return
 	}
 
-	var response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+	var response *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6311,7 +6311,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		type (
 			Request  = struct{}
 			Params   = ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
-			Response = ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+			Response = *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6395,7 +6395,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		return
 	}
 
-	var response ActionsListSelfHostedRunnerGroupsForOrgOK
+	var response *ActionsListSelfHostedRunnerGroupsForOrgOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6422,7 +6422,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		type (
 			Request  = struct{}
 			Params   = ActionsListSelfHostedRunnerGroupsForOrgParams
-			Response = ActionsListSelfHostedRunnerGroupsForOrgOK
+			Response = *ActionsListSelfHostedRunnerGroupsForOrgOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6503,7 +6503,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		return
 	}
 
-	var response ActionsListSelfHostedRunnersForOrgOKHeaders
+	var response *ActionsListSelfHostedRunnersForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6530,7 +6530,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		type (
 			Request  = struct{}
 			Params   = ActionsListSelfHostedRunnersForOrgParams
-			Response = ActionsListSelfHostedRunnersForOrgOKHeaders
+			Response = *ActionsListSelfHostedRunnersForOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6611,7 +6611,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		return
 	}
 
-	var response ActionsListSelfHostedRunnersForRepoOKHeaders
+	var response *ActionsListSelfHostedRunnersForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6642,7 +6642,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		type (
 			Request  = struct{}
 			Params   = ActionsListSelfHostedRunnersForRepoParams
-			Response = ActionsListSelfHostedRunnersForRepoOKHeaders
+			Response = *ActionsListSelfHostedRunnersForRepoOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6726,7 +6726,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		return
 	}
 
-	var response ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
+	var response *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6757,7 +6757,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		type (
 			Request  = struct{}
 			Params   = ActionsListSelfHostedRunnersInGroupForOrgParams
-			Response = ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
+			Response = *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6839,7 +6839,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 		return
 	}
 
-	var response ActionsListWorkflowRunArtifactsOKHeaders
+	var response *ActionsListWorkflowRunArtifactsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6874,7 +6874,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 		type (
 			Request  = struct{}
 			Params   = ActionsListWorkflowRunArtifactsParams
-			Response = ActionsListWorkflowRunArtifactsOKHeaders
+			Response = *ActionsListWorkflowRunArtifactsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6959,7 +6959,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 		return
 	}
 
-	var response ActionsListWorkflowRunsForRepoOKHeaders
+	var response *ActionsListWorkflowRunsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7010,7 +7010,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActionsListWorkflowRunsForRepoParams
-			Response = ActionsListWorkflowRunsForRepoOKHeaders
+			Response = *ActionsListWorkflowRunsForRepoOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7097,7 +7097,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 		return
 	}
 
-	var response ActionsReRunWorkflowCreated
+	var response *ActionsReRunWorkflowCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7124,7 +7124,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ActionsReRunWorkflowParams
-			Response = ActionsReRunWorkflowCreated
+			Response = *ActionsReRunWorkflowCreated
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7211,7 +7211,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		return
 	}
 
-	var response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+	var response *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7238,7 +7238,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		type (
 			Request  = struct{}
 			Params   = ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
-			Response = ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+			Response = *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7434,7 +7434,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		return
 	}
 
-	var response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
+	var response *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7461,7 +7461,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		type (
 			Request  = struct{}
 			Params   = ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
-			Response = ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
+			Response = *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7543,7 +7543,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 		return
 	}
 
-	var response ActionsRetryWorkflowCreated
+	var response *ActionsRetryWorkflowCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7570,7 +7570,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ActionsRetryWorkflowParams
-			Response = ActionsRetryWorkflowCreated
+			Response = *ActionsRetryWorkflowCreated
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7691,7 +7691,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		}
 
 		type (
-			Request  = ActionsReviewPendingDeploymentsForRunReq
+			Request  = *ActionsReviewPendingDeploymentsForRunReq
 			Params   = ActionsReviewPendingDeploymentsForRunParams
 			Response = []Deployment
 		)
@@ -7798,7 +7798,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		}
 	}()
 
-	var response ActionsSetAllowedActionsOrganizationNoContent
+	var response *ActionsSetAllowedActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7817,7 +7817,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		type (
 			Request  = OptSelectedActions
 			Params   = ActionsSetAllowedActionsOrganizationParams
-			Response = ActionsSetAllowedActionsOrganizationNoContent
+			Response = *ActionsSetAllowedActionsOrganizationNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7921,7 +7921,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		}
 	}()
 
-	var response ActionsSetAllowedActionsRepositoryNoContent
+	var response *ActionsSetAllowedActionsRepositoryNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7944,7 +7944,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		type (
 			Request  = OptSelectedActions
 			Params   = ActionsSetAllowedActionsRepositoryParams
-			Response = ActionsSetAllowedActionsRepositoryNoContent
+			Response = *ActionsSetAllowedActionsRepositoryNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8044,7 +8044,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		}
 	}()
 
-	var response ActionsSetGithubActionsPermissionsOrganizationNoContent
+	var response *ActionsSetGithubActionsPermissionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8061,9 +8061,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		}
 
 		type (
-			Request  = ActionsSetGithubActionsPermissionsOrganizationReq
+			Request  = *ActionsSetGithubActionsPermissionsOrganizationReq
 			Params   = ActionsSetGithubActionsPermissionsOrganizationParams
-			Response = ActionsSetGithubActionsPermissionsOrganizationNoContent
+			Response = *ActionsSetGithubActionsPermissionsOrganizationNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8164,7 +8164,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		}
 	}()
 
-	var response ActionsSetGithubActionsPermissionsRepositoryNoContent
+	var response *ActionsSetGithubActionsPermissionsRepositoryNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8185,9 +8185,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		}
 
 		type (
-			Request  = ActionsSetGithubActionsPermissionsRepositoryReq
+			Request  = *ActionsSetGithubActionsPermissionsRepositoryReq
 			Params   = ActionsSetGithubActionsPermissionsRepositoryParams
-			Response = ActionsSetGithubActionsPermissionsRepositoryNoContent
+			Response = *ActionsSetGithubActionsPermissionsRepositoryNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8287,7 +8287,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 	}()
 
-	var response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+	var response *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8308,9 +8308,9 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 
 		type (
-			Request  = ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
+			Request  = *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
 			Params   = ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
-			Response = ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+			Response = *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8409,7 +8409,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		}
 	}()
 
-	var response ActionsSetSelectedReposForOrgSecretNoContent
+	var response *ActionsSetSelectedReposForOrgSecretNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8430,9 +8430,9 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		}
 
 		type (
-			Request  = ActionsSetSelectedReposForOrgSecretReq
+			Request  = *ActionsSetSelectedReposForOrgSecretReq
 			Params   = ActionsSetSelectedReposForOrgSecretParams
-			Response = ActionsSetSelectedReposForOrgSecretNoContent
+			Response = *ActionsSetSelectedReposForOrgSecretNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8532,7 +8532,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}
 	}()
 
-	var response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
+	var response *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8549,9 +8549,9 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}
 
 		type (
-			Request  = ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
+			Request  = *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
 			Params   = ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
-			Response = ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
+			Response = *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8650,7 +8650,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		}
 	}()
 
-	var response ActionsSetSelfHostedRunnersInGroupForOrgNoContent
+	var response *ActionsSetSelfHostedRunnersInGroupForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8671,9 +8671,9 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		}
 
 		type (
-			Request  = ActionsSetSelfHostedRunnersInGroupForOrgReq
+			Request  = *ActionsSetSelfHostedRunnersInGroupForOrgReq
 			Params   = ActionsSetSelfHostedRunnersInGroupForOrgParams
-			Response = ActionsSetSelfHostedRunnersInGroupForOrgNoContent
+			Response = *ActionsSetSelfHostedRunnersInGroupForOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8772,7 +8772,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		}
 	}()
 
-	var response RunnerGroupsOrg
+	var response *RunnerGroupsOrg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8793,9 +8793,9 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		}
 
 		type (
-			Request  = ActionsUpdateSelfHostedRunnerGroupForOrgReq
+			Request  = *ActionsUpdateSelfHostedRunnerGroupForOrgReq
 			Params   = ActionsUpdateSelfHostedRunnerGroupForOrgParams
-			Response = RunnerGroupsOrg
+			Response = *RunnerGroupsOrg
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8980,7 +8980,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 		return
 	}
 
-	var response ActivityDeleteRepoSubscriptionNoContent
+	var response *ActivityDeleteRepoSubscriptionNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9003,7 +9003,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActivityDeleteRepoSubscriptionParams
-			Response = ActivityDeleteRepoSubscriptionNoContent
+			Response = *ActivityDeleteRepoSubscriptionNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9186,7 +9186,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 		err error
 	)
 
-	var response Feed
+	var response *Feed
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9200,7 +9200,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = Feed
+			Response = *Feed
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10678,7 +10678,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		return
 	}
 
-	var response ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
+	var response *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10725,7 +10725,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		type (
 			Request  = struct{}
 			Params   = ActivityListRepoNotificationsForAuthenticatedUserParams
-			Response = ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
+			Response = *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10918,7 +10918,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 		return
 	}
 
-	var response ActivityListReposWatchedByUserOKHeaders
+	var response *ActivityListReposWatchedByUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10945,7 +10945,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 		type (
 			Request  = struct{}
 			Params   = ActivityListReposWatchedByUserParams
-			Response = ActivityListReposWatchedByUserOKHeaders
+			Response = *ActivityListReposWatchedByUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11128,7 +11128,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 		return
 	}
 
-	var response ActivityListWatchersForRepoOKHeaders
+	var response *ActivityListWatchersForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11159,7 +11159,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 		type (
 			Request  = struct{}
 			Params   = ActivityListWatchersForRepoParams
-			Response = ActivityListWatchersForRepoOKHeaders
+			Response = *ActivityListWatchersForRepoOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11585,7 +11585,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		}
 	}()
 
-	var response RepositorySubscription
+	var response *RepositorySubscription
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11608,7 +11608,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		type (
 			Request  = OptActivitySetRepoSubscriptionReq
 			Params   = ActivitySetRepoSubscriptionParams
-			Response = RepositorySubscription
+			Response = *RepositorySubscription
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12162,7 +12162,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 		}
 
 		type (
-			Request  = AppsCheckTokenReq
+			Request  = *AppsCheckTokenReq
 			Params   = AppsCheckTokenParams
 			Response = AppsCheckTokenRes
 		)
@@ -12293,7 +12293,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 		}
 
 		type (
-			Request  = AppsCreateContentAttachmentReq
+			Request  = *AppsCreateContentAttachmentReq
 			Params   = AppsCreateContentAttachmentParams
 			Response = AppsCreateContentAttachmentRes
 		)
@@ -12656,7 +12656,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 		}
 
 		type (
-			Request  = AppsDeleteAuthorizationReq
+			Request  = *AppsDeleteAuthorizationReq
 			Params   = AppsDeleteAuthorizationParams
 			Response = AppsDeleteAuthorizationRes
 		)
@@ -12877,7 +12877,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 		}
 
 		type (
-			Request  = AppsDeleteTokenReq
+			Request  = *AppsDeleteTokenReq
 			Params   = AppsDeleteTokenParams
 			Response = AppsDeleteTokenRes
 		)
@@ -12952,7 +12952,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 		err error
 	)
 
-	var response Integration
+	var response *Integration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12966,7 +12966,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = Integration
+			Response = *Integration
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13354,7 +13354,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 		err error
 	)
 
-	var response WebhookConfig
+	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13368,7 +13368,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = WebhookConfig
+			Response = *WebhookConfig
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14794,7 +14794,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 		}
 
 		type (
-			Request  = AppsResetTokenReq
+			Request  = *AppsResetTokenReq
 			Params   = AppsResetTokenParams
 			Response = AppsResetTokenRes
 		)
@@ -14871,7 +14871,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 		err error
 	)
 
-	var response AppsRevokeInstallationAccessTokenNoContent
+	var response *AppsRevokeInstallationAccessTokenNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14885,7 +14885,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = AppsRevokeInstallationAccessTokenNoContent
+			Response = *AppsRevokeInstallationAccessTokenNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15002,7 +15002,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 		}
 
 		type (
-			Request  = AppsScopeTokenReq
+			Request  = *AppsScopeTokenReq
 			Params   = AppsScopeTokenParams
 			Response = AppsScopeTokenRes
 		)
@@ -15299,7 +15299,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 		}
 	}()
 
-	var response WebhookConfig
+	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15313,7 +15313,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 		type (
 			Request  = OptAppsUpdateWebhookConfigForAppReq
 			Params   = struct{}
-			Response = WebhookConfig
+			Response = *WebhookConfig
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15400,7 +15400,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		return
 	}
 
-	var response ActionsBillingUsage
+	var response *ActionsBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15419,7 +15419,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		type (
 			Request  = struct{}
 			Params   = BillingGetGithubActionsBillingGheParams
-			Response = ActionsBillingUsage
+			Response = *ActionsBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15506,7 +15506,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		return
 	}
 
-	var response ActionsBillingUsage
+	var response *ActionsBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15525,7 +15525,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		type (
 			Request  = struct{}
 			Params   = BillingGetGithubActionsBillingOrgParams
-			Response = ActionsBillingUsage
+			Response = *ActionsBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15612,7 +15612,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		return
 	}
 
-	var response ActionsBillingUsage
+	var response *ActionsBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15631,7 +15631,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		type (
 			Request  = struct{}
 			Params   = BillingGetGithubActionsBillingUserParams
-			Response = ActionsBillingUsage
+			Response = *ActionsBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15715,7 +15715,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		return
 	}
 
-	var response PackagesBillingUsage
+	var response *PackagesBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15734,7 +15734,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		type (
 			Request  = struct{}
 			Params   = BillingGetGithubPackagesBillingGheParams
-			Response = PackagesBillingUsage
+			Response = *PackagesBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15818,7 +15818,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		return
 	}
 
-	var response PackagesBillingUsage
+	var response *PackagesBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15837,7 +15837,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		type (
 			Request  = struct{}
 			Params   = BillingGetGithubPackagesBillingOrgParams
-			Response = PackagesBillingUsage
+			Response = *PackagesBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15921,7 +15921,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		return
 	}
 
-	var response PackagesBillingUsage
+	var response *PackagesBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15940,7 +15940,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		type (
 			Request  = struct{}
 			Params   = BillingGetGithubPackagesBillingUserParams
-			Response = PackagesBillingUsage
+			Response = *PackagesBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16024,7 +16024,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		return
 	}
 
-	var response CombinedBillingUsage
+	var response *CombinedBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16043,7 +16043,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		type (
 			Request  = struct{}
 			Params   = BillingGetSharedStorageBillingGheParams
-			Response = CombinedBillingUsage
+			Response = *CombinedBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16127,7 +16127,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		return
 	}
 
-	var response CombinedBillingUsage
+	var response *CombinedBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16146,7 +16146,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		type (
 			Request  = struct{}
 			Params   = BillingGetSharedStorageBillingOrgParams
-			Response = CombinedBillingUsage
+			Response = *CombinedBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16230,7 +16230,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		return
 	}
 
-	var response CombinedBillingUsage
+	var response *CombinedBillingUsage
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16249,7 +16249,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		type (
 			Request  = struct{}
 			Params   = BillingGetSharedStorageBillingUserParams
-			Response = CombinedBillingUsage
+			Response = *CombinedBillingUsage
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16373,7 +16373,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 		}
 
 		type (
-			Request  = ChecksCreateSuiteReq
+			Request  = *ChecksCreateSuiteReq
 			Params   = ChecksCreateSuiteParams
 			Response = ChecksCreateSuiteRes
 		)
@@ -16460,7 +16460,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 		return
 	}
 
-	var response CheckRun
+	var response *CheckRun
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16487,7 +16487,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 		type (
 			Request  = struct{}
 			Params   = ChecksGetParams
-			Response = CheckRun
+			Response = *CheckRun
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16572,7 +16572,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	var response CheckSuite
+	var response *CheckSuite
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16599,7 +16599,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 		type (
 			Request  = struct{}
 			Params   = ChecksGetSuiteParams
-			Response = CheckSuite
+			Response = *CheckSuite
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16682,7 +16682,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 		return
 	}
 
-	var response ChecksListAnnotationsOKHeaders
+	var response *ChecksListAnnotationsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16717,7 +16717,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = ChecksListAnnotationsParams
-			Response = ChecksListAnnotationsOKHeaders
+			Response = *ChecksListAnnotationsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16803,7 +16803,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	var response ChecksListForRefOKHeaders
+	var response *ChecksListForRefOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16854,7 +16854,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 		type (
 			Request  = struct{}
 			Params   = ChecksListForRefParams
-			Response = ChecksListForRefOKHeaders
+			Response = *ChecksListForRefOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16939,7 +16939,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 		return
 	}
 
-	var response ChecksListForSuiteOKHeaders
+	var response *ChecksListForSuiteOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16986,7 +16986,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 		type (
 			Request  = struct{}
 			Params   = ChecksListForSuiteParams
-			Response = ChecksListForSuiteOKHeaders
+			Response = *ChecksListForSuiteOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17072,7 +17072,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 		return
 	}
 
-	var response ChecksListSuitesForRefOKHeaders
+	var response *ChecksListSuitesForRefOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17115,7 +17115,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ChecksListSuitesForRefParams
-			Response = ChecksListSuitesForRefOKHeaders
+			Response = *ChecksListSuitesForRefOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17200,7 +17200,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 		return
 	}
 
-	var response ChecksRerequestSuiteCreated
+	var response *ChecksRerequestSuiteCreated
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17227,7 +17227,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ChecksRerequestSuiteParams
-			Response = ChecksRerequestSuiteCreated
+			Response = *ChecksRerequestSuiteCreated
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17326,7 +17326,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		}
 	}()
 
-	var response CheckSuitePreference
+	var response *CheckSuitePreference
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17347,9 +17347,9 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		}
 
 		type (
-			Request  = ChecksSetSuitesPreferencesReq
+			Request  = *ChecksSetSuitesPreferencesReq
 			Params   = ChecksSetSuitesPreferencesParams
-			Response = CheckSuitePreference
+			Response = *CheckSuitePreference
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18386,7 +18386,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 		}
 
 		type (
-			Request  = CodeScanningUpdateAlertReq
+			Request  = *CodeScanningUpdateAlertReq
 			Params   = CodeScanningUpdateAlertParams
 			Response = CodeScanningUpdateAlertRes
 		)
@@ -18530,7 +18530,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 		}
 
 		type (
-			Request  = CodeScanningUploadSarifReq
+			Request  = *CodeScanningUploadSarifReq
 			Params   = CodeScanningUploadSarifParams
 			Response = CodeScanningUploadSarifRes
 		)
@@ -18875,7 +18875,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		return
 	}
 
-	var response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+	var response *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18902,7 +18902,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-			Response = EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+			Response = *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18984,7 +18984,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		return
 	}
 
-	var response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
+	var response *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19011,7 +19011,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
-			Response = EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
+			Response = *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19098,7 +19098,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		return
 	}
 
-	var response AuthenticationToken
+	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19117,7 +19117,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
-			Response = AuthenticationToken
+			Response = *AuthenticationToken
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19206,7 +19206,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		return
 	}
 
-	var response AuthenticationToken
+	var response *AuthenticationToken
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19225,7 +19225,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminCreateRemoveTokenForEnterpriseParams
-			Response = AuthenticationToken
+			Response = *AuthenticationToken
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19321,7 +19321,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}
 	}()
 
-	var response RunnerGroupsEnterprise
+	var response *RunnerGroupsEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19338,9 +19338,9 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}
 
 		type (
-			Request  = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
+			Request  = *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
 			Params   = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
-			Response = RunnerGroupsEnterprise
+			Response = *RunnerGroupsEnterprise
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19421,7 +19421,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		return
 	}
 
-	var response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
+	var response *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19444,7 +19444,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminDeleteScimGroupFromEnterpriseParams
-			Response = EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
+			Response = *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19526,7 +19526,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		return
 	}
 
-	var response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
+	var response *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19549,7 +19549,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
-			Response = EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
+			Response = *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19630,7 +19630,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		return
 	}
 
-	var response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
+	var response *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19653,7 +19653,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
-			Response = EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
+			Response = *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19734,7 +19734,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		return
 	}
 
-	var response EnterpriseAdminDeleteUserFromEnterpriseNoContent
+	var response *EnterpriseAdminDeleteUserFromEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19757,7 +19757,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminDeleteUserFromEnterpriseParams
-			Response = EnterpriseAdminDeleteUserFromEnterpriseNoContent
+			Response = *EnterpriseAdminDeleteUserFromEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19841,7 +19841,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		return
 	}
 
-	var response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
+	var response *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19864,7 +19864,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
-			Response = EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
+			Response = *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19948,7 +19948,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		return
 	}
 
-	var response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
+	var response *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19971,7 +19971,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
-			Response = EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
+			Response = *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20055,7 +20055,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		return
 	}
 
-	var response SelectedActions
+	var response *SelectedActions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20074,7 +20074,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminGetAllowedActionsEnterpriseParams
-			Response = SelectedActions
+			Response = *SelectedActions
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20283,7 +20283,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		return
 	}
 
-	var response ActionsEnterprisePermissions
+	var response *ActionsEnterprisePermissions
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20302,7 +20302,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
-			Response = ActionsEnterprisePermissions
+			Response = *ActionsEnterprisePermissions
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20383,7 +20383,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		return
 	}
 
-	var response ScimEnterpriseGroup
+	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20410,7 +20410,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
-			Response = ScimEnterpriseGroup
+			Response = *ScimEnterpriseGroup
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20491,7 +20491,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		return
 	}
 
-	var response ScimEnterpriseUser
+	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20514,7 +20514,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
-			Response = ScimEnterpriseUser
+			Response = *ScimEnterpriseUser
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20595,7 +20595,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		return
 	}
 
-	var response Runner
+	var response *Runner
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20618,7 +20618,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
-			Response = Runner
+			Response = *Runner
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20699,7 +20699,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		return
 	}
 
-	var response RunnerGroupsEnterprise
+	var response *RunnerGroupsEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20722,7 +20722,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
-			Response = RunnerGroupsEnterprise
+			Response = *RunnerGroupsEnterprise
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20803,7 +20803,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		return
 	}
 
-	var response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+	var response *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20834,7 +20834,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-			Response = EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+			Response = *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20915,7 +20915,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		return
 	}
 
-	var response ScimGroupListEnterprise
+	var response *ScimGroupListEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20950,7 +20950,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListProvisionedGroupsEnterpriseParams
-			Response = ScimGroupListEnterprise
+			Response = *ScimGroupListEnterprise
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21056,7 +21056,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		return
 	}
 
-	var response ScimUserListEnterprise
+	var response *ScimUserListEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21087,7 +21087,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
-			Response = ScimUserListEnterprise
+			Response = *ScimUserListEnterprise
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21271,7 +21271,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		return
 	}
 
-	var response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+	var response *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21298,7 +21298,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
-			Response = EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+			Response = *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21379,7 +21379,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		return
 	}
 
-	var response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+	var response *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21406,7 +21406,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
-			Response = EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+			Response = *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21487,7 +21487,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		return
 	}
 
-	var response EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
+	var response *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21514,7 +21514,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
-			Response = EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
+			Response = *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21595,7 +21595,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		return
 	}
 
-	var response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
+	var response *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21626,7 +21626,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
-			Response = EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
+			Response = *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21725,7 +21725,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		}
 	}()
 
-	var response ScimEnterpriseGroup
+	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21742,9 +21742,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		}
 
 		type (
-			Request  = EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
+			Request  = *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
 			Params   = EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
-			Response = ScimEnterpriseGroup
+			Response = *ScimEnterpriseGroup
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21845,7 +21845,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		}
 	}()
 
-	var response ScimEnterpriseUser
+	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21862,9 +21862,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		}
 
 		type (
-			Request  = EnterpriseAdminProvisionAndInviteEnterpriseUserReq
+			Request  = *EnterpriseAdminProvisionAndInviteEnterpriseUserReq
 			Params   = EnterpriseAdminProvisionAndInviteEnterpriseUserParams
-			Response = ScimEnterpriseUser
+			Response = *ScimEnterpriseUser
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21948,7 +21948,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		return
 	}
 
-	var response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+	var response *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21975,7 +21975,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-			Response = EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+			Response = *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22057,7 +22057,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		return
 	}
 
-	var response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
+	var response *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22084,7 +22084,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		type (
 			Request  = struct{}
 			Params   = EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
-			Response = EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
+			Response = *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22183,7 +22183,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		}
 	}()
 
-	var response EnterpriseAdminSetAllowedActionsEnterpriseNoContent
+	var response *EnterpriseAdminSetAllowedActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22200,9 +22200,9 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		}
 
 		type (
-			Request  = SelectedActions
+			Request  = *SelectedActions
 			Params   = EnterpriseAdminSetAllowedActionsEnterpriseParams
-			Response = EnterpriseAdminSetAllowedActionsEnterpriseNoContent
+			Response = *EnterpriseAdminSetAllowedActionsEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22298,7 +22298,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}
 	}()
 
-	var response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
+	var response *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22315,9 +22315,9 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}
 
 		type (
-			Request  = EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
+			Request  = *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
 			Params   = EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
-			Response = EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
+			Response = *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22418,7 +22418,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}
 	}()
 
-	var response ScimEnterpriseGroup
+	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22439,9 +22439,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}
 
 		type (
-			Request  = EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
+			Request  = *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
 			Params   = EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
-			Response = ScimEnterpriseGroup
+			Response = *ScimEnterpriseGroup
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22545,7 +22545,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}
 	}()
 
-	var response ScimEnterpriseUser
+	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22566,9 +22566,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}
 
 		type (
-			Request  = EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
+			Request  = *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
 			Params   = EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
-			Response = ScimEnterpriseUser
+			Response = *ScimEnterpriseUser
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22665,7 +22665,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 	}()
 
-	var response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+	var response *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22686,9 +22686,9 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 
 		type (
-			Request  = EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
+			Request  = *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
 			Params   = EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-			Response = EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+			Response = *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22787,7 +22787,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}
 	}()
 
-	var response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
+	var response *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22804,9 +22804,9 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}
 
 		type (
-			Request  = EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
+			Request  = *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 			Params   = EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
-			Response = EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
+			Response = *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22902,7 +22902,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}
 	}()
 
-	var response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
+	var response *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22923,9 +22923,9 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}
 
 		type (
-			Request  = EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
+			Request  = *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
 			Params   = EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
-			Response = EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
+			Response = *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23025,7 +23025,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		}
 	}()
 
-	var response ScimEnterpriseGroup
+	var response *ScimEnterpriseGroup
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23046,9 +23046,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		}
 
 		type (
-			Request  = EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
+			Request  = *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
 			Params   = EnterpriseAdminUpdateAttributeForEnterpriseGroupParams
-			Response = ScimEnterpriseGroup
+			Response = *ScimEnterpriseGroup
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23165,7 +23165,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		}
 	}()
 
-	var response ScimEnterpriseUser
+	var response *ScimEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23186,9 +23186,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		}
 
 		type (
-			Request  = EnterpriseAdminUpdateAttributeForEnterpriseUserReq
+			Request  = *EnterpriseAdminUpdateAttributeForEnterpriseUserReq
 			Params   = EnterpriseAdminUpdateAttributeForEnterpriseUserParams
-			Response = ScimEnterpriseUser
+			Response = *ScimEnterpriseUser
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23284,7 +23284,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		}
 	}()
 
-	var response RunnerGroupsEnterprise
+	var response *RunnerGroupsEnterprise
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23307,7 +23307,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		type (
 			Request  = OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
 			Params   = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
-			Response = RunnerGroupsEnterprise
+			Response = *RunnerGroupsEnterprise
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23505,7 +23505,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 		}
 
 		type (
-			Request  = GistsCreateReq
+			Request  = *GistsCreateReq
 			Params   = struct{}
 			Response = GistsCreateRes
 		)
@@ -23619,7 +23619,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 		}
 
 		type (
-			Request  = GistsCreateCommentReq
+			Request  = *GistsCreateCommentReq
 			Params   = GistsCreateCommentParams
 			Response = GistsCreateCommentRes
 		)
@@ -25300,7 +25300,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 		}
 
 		type (
-			Request  = GistsUpdateCommentReq
+			Request  = *GistsUpdateCommentReq
 			Params   = GistsUpdateCommentParams
 			Response = GistsUpdateCommentRes
 		)
@@ -25418,7 +25418,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = GitCreateBlobReq
+			Request  = *GitCreateBlobReq
 			Params   = GitCreateBlobParams
 			Response = GitCreateBlobRes
 		)
@@ -25569,7 +25569,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 		}
 
 		type (
-			Request  = GitCreateCommitReq
+			Request  = *GitCreateCommitReq
 			Params   = GitCreateCommitParams
 			Response = GitCreateCommitRes
 		)
@@ -25689,7 +25689,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 		}
 
 		type (
-			Request  = GitCreateRefReq
+			Request  = *GitCreateRefReq
 			Params   = GitCreateRefParams
 			Response = GitCreateRefRes
 		)
@@ -25843,7 +25843,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 		}
 
 		type (
-			Request  = GitCreateTagReq
+			Request  = *GitCreateTagReq
 			Params   = GitCreateTagParams
 			Response = GitCreateTagRes
 		)
@@ -25967,7 +25967,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = GitCreateTreeReq
+			Request  = *GitCreateTreeReq
 			Params   = GitCreateTreeParams
 			Response = GitCreateTreeRes
 		)
@@ -26784,7 +26784,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 		return
 	}
 
-	var response GitListMatchingRefsOKHeaders
+	var response *GitListMatchingRefsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26819,7 +26819,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 		type (
 			Request  = struct{}
 			Params   = GitListMatchingRefsParams
-			Response = GitListMatchingRefsOKHeaders
+			Response = *GitListMatchingRefsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26939,7 +26939,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 		}
 
 		type (
-			Request  = GitUpdateRefReq
+			Request  = *GitUpdateRefReq
 			Params   = GitUpdateRefParams
 			Response = GitUpdateRefRes
 		)
@@ -27189,7 +27189,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 		err error
 	)
 
-	var response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
+	var response *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27203,7 +27203,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
+			Response = *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27284,7 +27284,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		return
 	}
 
-	var response InteractionsRemoveRestrictionsForOrgNoContent
+	var response *InteractionsRemoveRestrictionsForOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27303,7 +27303,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		type (
 			Request  = struct{}
 			Params   = InteractionsRemoveRestrictionsForOrgParams
-			Response = InteractionsRemoveRestrictionsForOrgNoContent
+			Response = *InteractionsRemoveRestrictionsForOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27508,7 +27508,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		}
 
 		type (
-			Request  = InteractionLimit
+			Request  = *InteractionLimit
 			Params   = struct{}
 			Response = InteractionsSetRestrictionsForAuthenticatedUserRes
 		)
@@ -27625,7 +27625,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		}
 
 		type (
-			Request  = InteractionLimit
+			Request  = *InteractionLimit
 			Params   = InteractionsSetRestrictionsForOrgParams
 			Response = InteractionsSetRestrictionsForOrgRes
 		)
@@ -27746,7 +27746,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		}
 
 		type (
-			Request  = InteractionLimit
+			Request  = *InteractionLimit
 			Params   = InteractionsSetRestrictionsForRepoParams
 			Response = InteractionsSetRestrictionsForRepoRes
 		)
@@ -27843,7 +27843,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		}
 	}()
 
-	var response IssueSimple
+	var response *IssueSimple
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27870,7 +27870,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		type (
 			Request  = OptIssuesAddAssigneesReq
 			Params   = IssuesAddAssigneesParams
-			Response = IssueSimple
+			Response = *IssueSimple
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28105,7 +28105,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 		}
 
 		type (
-			Request  = IssuesCreateReq
+			Request  = *IssuesCreateReq
 			Params   = IssuesCreateParams
 			Response = IssuesCreateRes
 		)
@@ -28233,7 +28233,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 		}
 
 		type (
-			Request  = IssuesCreateCommentReq
+			Request  = *IssuesCreateCommentReq
 			Params   = IssuesCreateCommentParams
 			Response = IssuesCreateCommentRes
 		)
@@ -28351,7 +28351,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 		}
 
 		type (
-			Request  = IssuesCreateLabelReq
+			Request  = *IssuesCreateLabelReq
 			Params   = IssuesCreateLabelParams
 			Response = IssuesCreateLabelRes
 		)
@@ -28469,7 +28469,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 		}
 
 		type (
-			Request  = IssuesCreateMilestoneReq
+			Request  = *IssuesCreateMilestoneReq
 			Params   = IssuesCreateMilestoneParams
 			Response = IssuesCreateMilestoneRes
 		)
@@ -28551,7 +28551,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 		return
 	}
 
-	var response IssuesDeleteCommentNoContent
+	var response *IssuesDeleteCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28578,7 +28578,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 		type (
 			Request  = struct{}
 			Params   = IssuesDeleteCommentParams
-			Response = IssuesDeleteCommentNoContent
+			Response = *IssuesDeleteCommentNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28658,7 +28658,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 		return
 	}
 
-	var response IssuesDeleteLabelNoContent
+	var response *IssuesDeleteLabelNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28685,7 +28685,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 		type (
 			Request  = struct{}
 			Params   = IssuesDeleteLabelParams
-			Response = IssuesDeleteLabelNoContent
+			Response = *IssuesDeleteLabelNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30474,7 +30474,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 		return
 	}
 
-	var response IssuesListLabelsForMilestoneOKHeaders
+	var response *IssuesListLabelsForMilestoneOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30509,7 +30509,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 		type (
 			Request  = struct{}
 			Params   = IssuesListLabelsForMilestoneParams
-			Response = IssuesListLabelsForMilestoneOKHeaders
+			Response = *IssuesListLabelsForMilestoneOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31185,7 +31185,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		}
 	}()
 
-	var response IssueSimple
+	var response *IssueSimple
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31212,7 +31212,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		type (
 			Request  = OptIssuesRemoveAssigneesReq
 			Params   = IssuesRemoveAssigneesParams
-			Response = IssueSimple
+			Response = *IssueSimple
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31673,7 +31673,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 		}
 
 		type (
-			Request  = IssuesUpdateCommentReq
+			Request  = *IssuesUpdateCommentReq
 			Params   = IssuesUpdateCommentParams
 			Response = IssuesUpdateCommentRes
 		)
@@ -31770,7 +31770,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		}
 	}()
 
-	var response Label
+	var response *Label
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31797,7 +31797,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		type (
 			Request  = OptIssuesUpdateLabelReq
 			Params   = IssuesUpdateLabelParams
-			Response = Label
+			Response = *Label
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31892,7 +31892,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		}
 	}()
 
-	var response Milestone
+	var response *Milestone
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31919,7 +31919,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		type (
 			Request  = OptIssuesUpdateMilestoneReq
 			Params   = IssuesUpdateMilestoneParams
-			Response = Milestone
+			Response = *Milestone
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32209,7 +32209,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 		return
 	}
 
-	var response LicenseContent
+	var response *LicenseContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32232,7 +32232,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 		type (
 			Request  = struct{}
 			Params   = LicensesGetForRepoParams
-			Response = LicenseContent
+			Response = *LicenseContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32329,7 +32329,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWrit
 		}
 
 		type (
-			Request  = MarkdownRenderReq
+			Request  = *MarkdownRenderReq
 			Params   = struct{}
 			Response = MarkdownRenderRes
 		)
@@ -32762,7 +32762,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 		err error
 	)
 
-	var response MetaRootOK
+	var response *MetaRootOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32776,7 +32776,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = MetaRootOK
+			Response = *MetaRootOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32856,7 +32856,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 		return
 	}
 
-	var response MigrationsCancelImportNoContent
+	var response *MigrationsCancelImportNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32879,7 +32879,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = MigrationsCancelImportParams
-			Response = MigrationsCancelImportNoContent
+			Response = *MigrationsCancelImportNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34085,7 +34085,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 		return
 	}
 
-	var response MigrationsListForOrgOKHeaders
+	var response *MigrationsListForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34116,7 +34116,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = MigrationsListForOrgParams
-			Response = MigrationsListForOrgOKHeaders
+			Response = *MigrationsListForOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34576,7 +34576,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 		}
 
 		type (
-			Request  = MigrationsSetLfsPreferenceReq
+			Request  = *MigrationsSetLfsPreferenceReq
 			Params   = MigrationsSetLfsPreferenceParams
 			Response = MigrationsSetLfsPreferenceRes
 		)
@@ -34675,7 +34675,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		}
 
 		type (
-			Request  = MigrationsStartForAuthenticatedUserReq
+			Request  = *MigrationsStartForAuthenticatedUserReq
 			Params   = struct{}
 			Response = MigrationsStartForAuthenticatedUserRes
 		)
@@ -34789,7 +34789,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 		}
 
 		type (
-			Request  = MigrationsStartForOrgReq
+			Request  = *MigrationsStartForOrgReq
 			Params   = MigrationsStartForOrgParams
 			Response = MigrationsStartForOrgRes
 		)
@@ -34907,7 +34907,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 		}
 
 		type (
-			Request  = MigrationsStartImportReq
+			Request  = *MigrationsStartImportReq
 			Params   = MigrationsStartImportParams
 			Response = MigrationsStartImportRes
 		)
@@ -35222,7 +35222,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		}
 	}()
 
-	var response Import
+	var response *Import
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35245,7 +35245,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		type (
 			Request  = OptNilMigrationsUpdateImportReq
 			Params   = MigrationsUpdateImportParams
-			Response = Import
+			Response = *Import
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35948,7 +35948,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		}
 
 		type (
-			Request  = OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
+			Request  = *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
 			Params   = OAuthAuthorizationsGetOrCreateAuthorizationForAppParams
 			Response = OAuthAuthorizationsGetOrCreateAuthorizationForAppRes
 		)
@@ -36089,7 +36089,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		}
 
 		type (
-			Request  = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
+			Request  = *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
 			Params   = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 			Response = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes
 		)
@@ -37320,7 +37320,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 		}
 
 		type (
-			Request  = OrgsCreateWebhookReq
+			Request  = *OrgsCreateWebhookReq
 			Params   = OrgsCreateWebhookParams
 			Response = OrgsCreateWebhookRes
 		)
@@ -38057,7 +38057,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 		return
 	}
 
-	var response WebhookConfig
+	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38080,7 +38080,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 		type (
 			Request  = struct{}
 			Params   = OrgsGetWebhookConfigForOrgParams
-			Response = WebhookConfig
+			Response = *WebhookConfig
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38693,7 +38693,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	var response OrgsListForUserOKHeaders
+	var response *OrgsListForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38720,7 +38720,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = OrgsListForUserParams
-			Response = OrgsListForUserOKHeaders
+			Response = *OrgsListForUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39135,7 +39135,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 		return
 	}
 
-	var response OrgsListOutsideCollaboratorsOKHeaders
+	var response *OrgsListOutsideCollaboratorsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39166,7 +39166,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 		type (
 			Request  = struct{}
 			Params   = OrgsListOutsideCollaboratorsParams
-			Response = OrgsListOutsideCollaboratorsOKHeaders
+			Response = *OrgsListOutsideCollaboratorsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39356,7 +39356,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 		return
 	}
 
-	var response OrgsListPublicMembersOKHeaders
+	var response *OrgsListPublicMembersOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39383,7 +39383,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = OrgsListPublicMembersParams
-			Response = OrgsListPublicMembersOKHeaders
+			Response = *OrgsListPublicMembersOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40312,7 +40312,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		return
 	}
 
-	var response OrgsRemovePublicMembershipForAuthenticatedUserNoContent
+	var response *OrgsRemovePublicMembershipForAuthenticatedUserNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40335,7 +40335,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		type (
 			Request  = struct{}
 			Params   = OrgsRemovePublicMembershipForAuthenticatedUserParams
-			Response = OrgsRemovePublicMembershipForAuthenticatedUserNoContent
+			Response = *OrgsRemovePublicMembershipForAuthenticatedUserNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40762,7 +40762,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 		return
 	}
 
-	var response OrgsUnblockUserNoContent
+	var response *OrgsUnblockUserNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40785,7 +40785,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = OrgsUnblockUserParams
-			Response = OrgsUnblockUserNoContent
+			Response = *OrgsUnblockUserNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40897,7 +40897,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		}
 
 		type (
-			Request  = OrgsUpdateMembershipForAuthenticatedUserReq
+			Request  = *OrgsUpdateMembershipForAuthenticatedUserReq
 			Params   = OrgsUpdateMembershipForAuthenticatedUserParams
 			Response = OrgsUpdateMembershipForAuthenticatedUserRes
 		)
@@ -41120,7 +41120,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		}
 	}()
 
-	var response WebhookConfig
+	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41143,7 +41143,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		type (
 			Request  = OptOrgsUpdateWebhookConfigForOrgReq
 			Params   = OrgsUpdateWebhookConfigForOrgParams
-			Response = WebhookConfig
+			Response = *WebhookConfig
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42256,7 +42256,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		return
 	}
 
-	var response Package
+	var response *Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42279,7 +42279,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		type (
 			Request  = struct{}
 			Params   = PackagesGetPackageForAuthenticatedUserParams
-			Response = Package
+			Response = *Package
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42361,7 +42361,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		return
 	}
 
-	var response Package
+	var response *Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42388,7 +42388,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		type (
 			Request  = struct{}
 			Params   = PackagesGetPackageForOrganizationParams
-			Response = Package
+			Response = *Package
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42470,7 +42470,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 		return
 	}
 
-	var response Package
+	var response *Package
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42497,7 +42497,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 		type (
 			Request  = struct{}
 			Params   = PackagesGetPackageForUserParams
-			Response = Package
+			Response = *Package
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42579,7 +42579,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		return
 	}
 
-	var response PackageVersion
+	var response *PackageVersion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42606,7 +42606,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		type (
 			Request  = struct{}
 			Params   = PackagesGetPackageVersionForAuthenticatedUserParams
-			Response = PackageVersion
+			Response = *PackageVersion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42688,7 +42688,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		return
 	}
 
-	var response PackageVersion
+	var response *PackageVersion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42719,7 +42719,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		type (
 			Request  = struct{}
 			Params   = PackagesGetPackageVersionForOrganizationParams
-			Response = PackageVersion
+			Response = *PackageVersion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42802,7 +42802,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 		return
 	}
 
-	var response PackageVersion
+	var response *PackageVersion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42833,7 +42833,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 		type (
 			Request  = struct{}
 			Params   = PackagesGetPackageVersionForUserParams
-			Response = PackageVersion
+			Response = *PackageVersion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44107,7 +44107,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 		}
 
 		type (
-			Request  = ProjectsCreateColumnReq
+			Request  = *ProjectsCreateColumnReq
 			Params   = ProjectsCreateColumnParams
 			Response = ProjectsCreateColumnRes
 		)
@@ -44206,7 +44206,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		}
 
 		type (
-			Request  = ProjectsCreateForAuthenticatedUserReq
+			Request  = *ProjectsCreateForAuthenticatedUserReq
 			Params   = struct{}
 			Response = ProjectsCreateForAuthenticatedUserRes
 		)
@@ -44322,7 +44322,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 		}
 
 		type (
-			Request  = ProjectsCreateForOrgReq
+			Request  = *ProjectsCreateForOrgReq
 			Params   = ProjectsCreateForOrgParams
 			Response = ProjectsCreateForOrgRes
 		)
@@ -44442,7 +44442,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 		}
 
 		type (
-			Request  = ProjectsCreateForRepoReq
+			Request  = *ProjectsCreateForRepoReq
 			Params   = ProjectsCreateForRepoParams
 			Response = ProjectsCreateForRepoRes
 		)
@@ -45931,7 +45931,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 		}
 
 		type (
-			Request  = ProjectsMoveCardReq
+			Request  = *ProjectsMoveCardReq
 			Params   = ProjectsMoveCardParams
 			Response = ProjectsMoveCardRes
 		)
@@ -46045,7 +46045,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 		}
 
 		type (
-			Request  = ProjectsMoveColumnReq
+			Request  = *ProjectsMoveColumnReq
 			Params   = ProjectsMoveColumnParams
 			Response = ProjectsMoveColumnRes
 		)
@@ -46493,7 +46493,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 		}
 
 		type (
-			Request  = ProjectsUpdateColumnReq
+			Request  = *ProjectsUpdateColumnReq
 			Params   = ProjectsUpdateColumnParams
 			Response = ProjectsUpdateColumnRes
 		)
@@ -46733,7 +46733,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 		}
 
 		type (
-			Request  = PullsCreateReq
+			Request  = *PullsCreateReq
 			Params   = PullsCreateParams
 			Response = PullsCreateRes
 		)
@@ -46868,7 +46868,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 		}
 
 		type (
-			Request  = PullsCreateReplyForReviewCommentReq
+			Request  = *PullsCreateReplyForReviewCommentReq
 			Params   = PullsCreateReplyForReviewCommentParams
 			Response = PullsCreateReplyForReviewCommentRes
 		)
@@ -47149,7 +47149,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 		}
 
 		type (
-			Request  = PullsCreateReviewCommentReq
+			Request  = *PullsCreateReviewCommentReq
 			Params   = PullsCreateReviewCommentParams
 			Response = PullsCreateReviewCommentRes
 		)
@@ -47495,7 +47495,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 		}
 
 		type (
-			Request  = PullsDismissReviewReq
+			Request  = *PullsDismissReviewReq
 			Params   = PullsDismissReviewParams
 			Response = PullsDismissReviewRes
 		)
@@ -48191,7 +48191,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	var response PullsListCommitsOKHeaders
+	var response *PullsListCommitsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48226,7 +48226,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 		type (
 			Request  = struct{}
 			Params   = PullsListCommitsParams
-			Response = PullsListCommitsOKHeaders
+			Response = *PullsListCommitsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48422,7 +48422,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 		return
 	}
 
-	var response PullRequestReviewRequestHeaders
+	var response *PullRequestReviewRequestHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48457,7 +48457,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 		type (
 			Request  = struct{}
 			Params   = PullsListRequestedReviewersParams
-			Response = PullRequestReviewRequestHeaders
+			Response = *PullRequestReviewRequestHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48538,7 +48538,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 		return
 	}
 
-	var response PullsListReviewCommentsOKHeaders
+	var response *PullsListReviewCommentsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48585,7 +48585,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = PullsListReviewCommentsParams
-			Response = PullsListReviewCommentsOKHeaders
+			Response = *PullsListReviewCommentsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48666,7 +48666,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 		return
 	}
 
-	var response PullsListReviewCommentsForRepoOKHeaders
+	var response *PullsListReviewCommentsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48709,7 +48709,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 		type (
 			Request  = struct{}
 			Params   = PullsListReviewCommentsForRepoParams
-			Response = PullsListReviewCommentsForRepoOKHeaders
+			Response = *PullsListReviewCommentsForRepoOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48789,7 +48789,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	var response PullsListReviewsOKHeaders
+	var response *PullsListReviewsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48824,7 +48824,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 		type (
 			Request  = struct{}
 			Params   = PullsListReviewsParams
-			Response = PullsListReviewsOKHeaders
+			Response = *PullsListReviewsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -49072,7 +49072,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 		}
 
 		type (
-			Request  = PullsRemoveRequestedReviewersReq
+			Request  = *PullsRemoveRequestedReviewersReq
 			Params   = PullsRemoveRequestedReviewersParams
 			Response = PullsRemoveRequestedReviewersRes
 		)
@@ -49198,7 +49198,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 		}
 
 		type (
-			Request  = PullsSubmitReviewReq
+			Request  = *PullsSubmitReviewReq
 			Params   = PullsSubmitReviewParams
 			Response = PullsSubmitReviewRes
 		)
@@ -49576,7 +49576,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 		}
 
 		type (
-			Request  = PullsUpdateReviewReq
+			Request  = *PullsUpdateReviewReq
 			Params   = PullsUpdateReviewParams
 			Response = PullsUpdateReviewRes
 		)
@@ -49673,7 +49673,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		}
 	}()
 
-	var response PullRequestReviewComment
+	var response *PullRequestReviewComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -49698,9 +49698,9 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		}
 
 		type (
-			Request  = PullsUpdateReviewCommentReq
+			Request  = *PullsUpdateReviewCommentReq
 			Params   = PullsUpdateReviewCommentParams
-			Response = PullRequestReviewComment
+			Response = *PullRequestReviewComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -49905,7 +49905,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 		}
 
 		type (
-			Request  = ReactionsCreateForCommitCommentReq
+			Request  = *ReactionsCreateForCommitCommentReq
 			Params   = ReactionsCreateForCommitCommentParams
 			Response = ReactionsCreateForCommitCommentRes
 		)
@@ -50028,7 +50028,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 		}
 
 		type (
-			Request  = ReactionsCreateForIssueReq
+			Request  = *ReactionsCreateForIssueReq
 			Params   = ReactionsCreateForIssueParams
 			Response = ReactionsCreateForIssueRes
 		)
@@ -50152,7 +50152,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 		}
 
 		type (
-			Request  = ReactionsCreateForIssueCommentReq
+			Request  = *ReactionsCreateForIssueCommentReq
 			Params   = ReactionsCreateForIssueCommentParams
 			Response = ReactionsCreateForIssueCommentRes
 		)
@@ -50276,7 +50276,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		}
 
 		type (
-			Request  = ReactionsCreateForPullRequestReviewCommentReq
+			Request  = *ReactionsCreateForPullRequestReviewCommentReq
 			Params   = ReactionsCreateForPullRequestReviewCommentParams
 			Response = ReactionsCreateForPullRequestReviewCommentRes
 		)
@@ -50399,7 +50399,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 		}
 
 		type (
-			Request  = ReactionsCreateForReleaseReq
+			Request  = *ReactionsCreateForReleaseReq
 			Params   = ReactionsCreateForReleaseParams
 			Response = ReactionsCreateForReleaseRes
 		)
@@ -50531,7 +50531,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		}
 
 		type (
-			Request  = ReactionsCreateForTeamDiscussionCommentInOrgReq
+			Request  = *ReactionsCreateForTeamDiscussionCommentInOrgReq
 			Params   = ReactionsCreateForTeamDiscussionCommentInOrgParams
 			Response = ReactionsCreateForTeamDiscussionCommentInOrgRes
 		)
@@ -50638,7 +50638,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		}
 	}()
 
-	var response Reaction
+	var response *Reaction
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -50663,9 +50663,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		}
 
 		type (
-			Request  = ReactionsCreateForTeamDiscussionCommentLegacyReq
+			Request  = *ReactionsCreateForTeamDiscussionCommentLegacyReq
 			Params   = ReactionsCreateForTeamDiscussionCommentLegacyParams
-			Response = Reaction
+			Response = *Reaction
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -50792,7 +50792,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		}
 
 		type (
-			Request  = ReactionsCreateForTeamDiscussionInOrgReq
+			Request  = *ReactionsCreateForTeamDiscussionInOrgReq
 			Params   = ReactionsCreateForTeamDiscussionInOrgParams
 			Response = ReactionsCreateForTeamDiscussionInOrgRes
 		)
@@ -50900,7 +50900,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		}
 	}()
 
-	var response Reaction
+	var response *Reaction
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -50921,9 +50921,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		}
 
 		type (
-			Request  = ReactionsCreateForTeamDiscussionLegacyReq
+			Request  = *ReactionsCreateForTeamDiscussionLegacyReq
 			Params   = ReactionsCreateForTeamDiscussionLegacyParams
-			Response = Reaction
+			Response = *Reaction
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -51005,7 +51005,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 		return
 	}
 
-	var response ReactionsDeleteForCommitCommentNoContent
+	var response *ReactionsDeleteForCommitCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -51036,7 +51036,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 		type (
 			Request  = struct{}
 			Params   = ReactionsDeleteForCommitCommentParams
-			Response = ReactionsDeleteForCommitCommentNoContent
+			Response = *ReactionsDeleteForCommitCommentNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -51118,7 +51118,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 		return
 	}
 
-	var response ReactionsDeleteForIssueNoContent
+	var response *ReactionsDeleteForIssueNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -51149,7 +51149,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = ReactionsDeleteForIssueParams
-			Response = ReactionsDeleteForIssueNoContent
+			Response = *ReactionsDeleteForIssueNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -51231,7 +51231,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 		return
 	}
 
-	var response ReactionsDeleteForIssueCommentNoContent
+	var response *ReactionsDeleteForIssueCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -51262,7 +51262,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 		type (
 			Request  = struct{}
 			Params   = ReactionsDeleteForIssueCommentParams
-			Response = ReactionsDeleteForIssueCommentNoContent
+			Response = *ReactionsDeleteForIssueCommentNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -51345,7 +51345,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		return
 	}
 
-	var response ReactionsDeleteForPullRequestCommentNoContent
+	var response *ReactionsDeleteForPullRequestCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -51376,7 +51376,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		type (
 			Request  = struct{}
 			Params   = ReactionsDeleteForPullRequestCommentParams
-			Response = ReactionsDeleteForPullRequestCommentNoContent
+			Response = *ReactionsDeleteForPullRequestCommentNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -51463,7 +51463,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 		return
 	}
 
-	var response ReactionsDeleteForTeamDiscussionNoContent
+	var response *ReactionsDeleteForTeamDiscussionNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -51494,7 +51494,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 		type (
 			Request  = struct{}
 			Params   = ReactionsDeleteForTeamDiscussionParams
-			Response = ReactionsDeleteForTeamDiscussionNoContent
+			Response = *ReactionsDeleteForTeamDiscussionNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -51579,7 +51579,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		return
 	}
 
-	var response ReactionsDeleteForTeamDiscussionCommentNoContent
+	var response *ReactionsDeleteForTeamDiscussionCommentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -51614,7 +51614,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		type (
 			Request  = struct{}
 			Params   = ReactionsDeleteForTeamDiscussionCommentParams
-			Response = ReactionsDeleteForTeamDiscussionCommentNoContent
+			Response = *ReactionsDeleteForTeamDiscussionCommentNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -52283,7 +52283,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		return
 	}
 
-	var response ReactionsListForTeamDiscussionCommentInOrgOKHeaders
+	var response *ReactionsListForTeamDiscussionCommentInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -52326,7 +52326,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		type (
 			Request  = struct{}
 			Params   = ReactionsListForTeamDiscussionCommentInOrgParams
-			Response = ReactionsListForTeamDiscussionCommentInOrgOKHeaders
+			Response = *ReactionsListForTeamDiscussionCommentInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -52414,7 +52414,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		return
 	}
 
-	var response ReactionsListForTeamDiscussionCommentLegacyOKHeaders
+	var response *ReactionsListForTeamDiscussionCommentLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -52453,7 +52453,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		type (
 			Request  = struct{}
 			Params   = ReactionsListForTeamDiscussionCommentLegacyParams
-			Response = ReactionsListForTeamDiscussionCommentLegacyOKHeaders
+			Response = *ReactionsListForTeamDiscussionCommentLegacyOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -52537,7 +52537,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		return
 	}
 
-	var response ReactionsListForTeamDiscussionInOrgOKHeaders
+	var response *ReactionsListForTeamDiscussionInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -52576,7 +52576,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		type (
 			Request  = struct{}
 			Params   = ReactionsListForTeamDiscussionInOrgParams
-			Response = ReactionsListForTeamDiscussionInOrgOKHeaders
+			Response = *ReactionsListForTeamDiscussionInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -52664,7 +52664,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		return
 	}
 
-	var response ReactionsListForTeamDiscussionLegacyOKHeaders
+	var response *ReactionsListForTeamDiscussionLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -52699,7 +52699,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		type (
 			Request  = struct{}
 			Params   = ReactionsListForTeamDiscussionLegacyParams
-			Response = ReactionsListForTeamDiscussionLegacyOKHeaders
+			Response = *ReactionsListForTeamDiscussionLegacyOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -53974,7 +53974,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 		}
 
 		type (
-			Request  = ReposCreateAutolinkReq
+			Request  = *ReposCreateAutolinkReq
 			Params   = ReposCreateAutolinkParams
 			Response = ReposCreateAutolinkRes
 		)
@@ -54103,7 +54103,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 		}
 
 		type (
-			Request  = ReposCreateCommitCommentReq
+			Request  = *ReposCreateCommitCommentReq
 			Params   = ReposCreateCommitCommentParams
 			Response = ReposCreateCommitCommentRes
 		)
@@ -54315,7 +54315,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		}
 	}()
 
-	var response StatusHeaders
+	var response *StatusHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -54340,9 +54340,9 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		}
 
 		type (
-			Request  = ReposCreateCommitStatusReq
+			Request  = *ReposCreateCommitStatusReq
 			Params   = ReposCreateCommitStatusParams
-			Response = StatusHeaders
+			Response = *StatusHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -54458,7 +54458,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 		}
 
 		type (
-			Request  = ReposCreateDeployKeyReq
+			Request  = *ReposCreateDeployKeyReq
 			Params   = ReposCreateDeployKeyParams
 			Response = ReposCreateDeployKeyRes
 		)
@@ -54631,7 +54631,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 		}
 
 		type (
-			Request  = ReposCreateDeploymentReq
+			Request  = *ReposCreateDeploymentReq
 			Params   = ReposCreateDeploymentParams
 			Response = ReposCreateDeploymentRes
 		)
@@ -54755,7 +54755,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 		}
 
 		type (
-			Request  = ReposCreateDeploymentStatusReq
+			Request  = *ReposCreateDeploymentStatusReq
 			Params   = ReposCreateDeploymentStatusParams
 			Response = ReposCreateDeploymentStatusRes
 		)
@@ -54892,7 +54892,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 		}
 
 		type (
-			Request  = ReposCreateDispatchEventReq
+			Request  = *ReposCreateDispatchEventReq
 			Params   = ReposCreateDispatchEventParams
 			Response = ReposCreateDispatchEventRes
 		)
@@ -54997,7 +54997,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 		}
 
 		type (
-			Request  = ReposCreateForAuthenticatedUserReq
+			Request  = *ReposCreateForAuthenticatedUserReq
 			Params   = struct{}
 			Response = ReposCreateForAuthenticatedUserRes
 		)
@@ -55239,7 +55239,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 		}
 
 		type (
-			Request  = ReposCreateInOrgReq
+			Request  = *ReposCreateInOrgReq
 			Params   = ReposCreateInOrgParams
 			Response = ReposCreateInOrgRes
 		)
@@ -55361,7 +55361,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 		}
 
 		type (
-			Request  = ReposCreateOrUpdateFileContentsReq
+			Request  = *ReposCreateOrUpdateFileContentsReq
 			Params   = ReposCreateOrUpdateFileContentsParams
 			Response = ReposCreateOrUpdateFileContentsRes
 		)
@@ -55605,7 +55605,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 		}
 
 		type (
-			Request  = ReposCreateReleaseReq
+			Request  = *ReposCreateReleaseReq
 			Params   = ReposCreateReleaseParams
 			Response = ReposCreateReleaseRes
 		)
@@ -55713,7 +55713,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		}
 	}()
 
-	var response RepositoryHeaders
+	var response *RepositoryHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -55734,9 +55734,9 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		}
 
 		type (
-			Request  = ReposCreateUsingTemplateReq
+			Request  = *ReposCreateUsingTemplateReq
 			Params   = ReposCreateUsingTemplateParams
-			Response = RepositoryHeaders
+			Response = *RepositoryHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -56146,7 +56146,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 		return
 	}
 
-	var response ReposDeleteAccessRestrictionsNoContent
+	var response *ReposDeleteAccessRestrictionsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -56173,7 +56173,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 		type (
 			Request  = struct{}
 			Params   = ReposDeleteAccessRestrictionsParams
-			Response = ReposDeleteAccessRestrictionsNoContent
+			Response = *ReposDeleteAccessRestrictionsNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -56366,7 +56366,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 		return
 	}
 
-	var response ReposDeleteAnEnvironmentNoContent
+	var response *ReposDeleteAnEnvironmentNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -56393,7 +56393,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = ReposDeleteAnEnvironmentParams
-			Response = ReposDeleteAnEnvironmentNoContent
+			Response = *ReposDeleteAnEnvironmentNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -56914,7 +56914,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 		return
 	}
 
-	var response ReposDeleteDeployKeyNoContent
+	var response *ReposDeleteDeployKeyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -56941,7 +56941,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ReposDeleteDeployKeyParams
-			Response = ReposDeleteDeployKeyNoContent
+			Response = *ReposDeleteDeployKeyNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -57183,7 +57183,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 		}
 
 		type (
-			Request  = ReposDeleteFileReq
+			Request  = *ReposDeleteFileReq
 			Params   = ReposDeleteFileParams
 			Response = ReposDeleteFileRes
 		)
@@ -57265,7 +57265,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 		return
 	}
 
-	var response ReposDeleteInvitationNoContent
+	var response *ReposDeleteInvitationNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -57292,7 +57292,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = ReposDeleteInvitationParams
-			Response = ReposDeleteInvitationNoContent
+			Response = *ReposDeleteInvitationNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -57586,7 +57586,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 		return
 	}
 
-	var response ReposDeleteReleaseNoContent
+	var response *ReposDeleteReleaseNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -57613,7 +57613,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 		type (
 			Request  = struct{}
 			Params   = ReposDeleteReleaseParams
-			Response = ReposDeleteReleaseNoContent
+			Response = *ReposDeleteReleaseNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -57693,7 +57693,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 		return
 	}
 
-	var response ReposDeleteReleaseAssetNoContent
+	var response *ReposDeleteReleaseAssetNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -57720,7 +57720,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = ReposDeleteReleaseAssetParams
-			Response = ReposDeleteReleaseAssetNoContent
+			Response = *ReposDeleteReleaseAssetNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -57909,7 +57909,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		return
 	}
 
-	var response ReposDisableAutomatedSecurityFixesNoContent
+	var response *ReposDisableAutomatedSecurityFixesNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -57932,7 +57932,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		type (
 			Request  = struct{}
 			Params   = ReposDisableAutomatedSecurityFixesParams
-			Response = ReposDisableAutomatedSecurityFixesNoContent
+			Response = *ReposDisableAutomatedSecurityFixesNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58012,7 +58012,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 		return
 	}
 
-	var response ReposDisableLfsForRepoNoContent
+	var response *ReposDisableLfsForRepoNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -58035,7 +58035,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ReposDisableLfsForRepoParams
-			Response = ReposDisableLfsForRepoNoContent
+			Response = *ReposDisableLfsForRepoNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58118,7 +58118,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 		return
 	}
 
-	var response ReposDisableVulnerabilityAlertsNoContent
+	var response *ReposDisableVulnerabilityAlertsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -58141,7 +58141,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 		type (
 			Request  = struct{}
 			Params   = ReposDisableVulnerabilityAlertsParams
-			Response = ReposDisableVulnerabilityAlertsNoContent
+			Response = *ReposDisableVulnerabilityAlertsNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58226,7 +58226,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 		return
 	}
 
-	var response ReposDownloadTarballArchiveFound
+	var response *ReposDownloadTarballArchiveFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -58253,7 +58253,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 		type (
 			Request  = struct{}
 			Params   = ReposDownloadTarballArchiveParams
-			Response = ReposDownloadTarballArchiveFound
+			Response = *ReposDownloadTarballArchiveFound
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58338,7 +58338,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 		return
 	}
 
-	var response ReposDownloadZipballArchiveFound
+	var response *ReposDownloadZipballArchiveFound
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -58365,7 +58365,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 		type (
 			Request  = struct{}
 			Params   = ReposDownloadZipballArchiveParams
-			Response = ReposDownloadZipballArchiveFound
+			Response = *ReposDownloadZipballArchiveFound
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58447,7 +58447,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		return
 	}
 
-	var response ReposEnableAutomatedSecurityFixesNoContent
+	var response *ReposEnableAutomatedSecurityFixesNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -58470,7 +58470,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		type (
 			Request  = struct{}
 			Params   = ReposEnableAutomatedSecurityFixesParams
-			Response = ReposEnableAutomatedSecurityFixesNoContent
+			Response = *ReposEnableAutomatedSecurityFixesNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58656,7 +58656,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 		return
 	}
 
-	var response ReposEnableVulnerabilityAlertsNoContent
+	var response *ReposEnableVulnerabilityAlertsNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -58679,7 +58679,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 		type (
 			Request  = struct{}
 			Params   = ReposEnableVulnerabilityAlertsParams
-			Response = ReposEnableVulnerabilityAlertsNoContent
+			Response = *ReposEnableVulnerabilityAlertsNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -58981,7 +58981,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 		return
 	}
 
-	var response ProtectedBranchAdminEnforced
+	var response *ProtectedBranchAdminEnforced
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -59008,7 +59008,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 		type (
 			Request  = struct{}
 			Params   = ReposGetAdminBranchProtectionParams
-			Response = ProtectedBranchAdminEnforced
+			Response = *ProtectedBranchAdminEnforced
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -60689,7 +60689,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 		return
 	}
 
-	var response CommunityProfile
+	var response *CommunityProfile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -60712,7 +60712,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 		type (
 			Request  = struct{}
 			Params   = ReposGetCommunityProfileMetricsParams
-			Response = CommunityProfile
+			Response = *CommunityProfile
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -61225,7 +61225,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 		return
 	}
 
-	var response PageBuild
+	var response *PageBuild
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -61248,7 +61248,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = ReposGetLatestPagesBuildParams
-			Response = PageBuild
+			Response = *PageBuild
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -61331,7 +61331,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 		return
 	}
 
-	var response Release
+	var response *Release
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -61354,7 +61354,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = ReposGetLatestReleaseParams
-			Response = Release
+			Response = *Release
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -61537,7 +61537,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 		return
 	}
 
-	var response PageBuild
+	var response *PageBuild
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -61564,7 +61564,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 		type (
 			Request  = struct{}
 			Params   = ReposGetPagesBuildParams
-			Response = PageBuild
+			Response = *PageBuild
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -61863,7 +61863,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		return
 	}
 
-	var response ProtectedBranchPullRequestReview
+	var response *ProtectedBranchPullRequestReview
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -61890,7 +61890,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		type (
 			Request  = struct{}
 			Params   = ReposGetPullRequestReviewProtectionParams
-			Response = ProtectedBranchPullRequestReview
+			Response = *ProtectedBranchPullRequestReview
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -63388,7 +63388,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 		return
 	}
 
-	var response WebhookConfig
+	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -63415,7 +63415,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 		type (
 			Request  = struct{}
 			Params   = ReposGetWebhookConfigForRepoParams
-			Response = WebhookConfig
+			Response = *WebhookConfig
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -64060,7 +64060,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 		return
 	}
 
-	var response ReposListCommentsForCommitOKHeaders
+	var response *ReposListCommentsForCommitOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -64095,7 +64095,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 		type (
 			Request  = struct{}
 			Params   = ReposListCommentsForCommitParams
-			Response = ReposListCommentsForCommitOKHeaders
+			Response = *ReposListCommentsForCommitOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -64178,7 +64178,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 		return
 	}
 
-	var response ReposListCommitCommentsForRepoOKHeaders
+	var response *ReposListCommitCommentsForRepoOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -64209,7 +64209,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 		type (
 			Request  = struct{}
 			Params   = ReposListCommitCommentsForRepoParams
-			Response = ReposListCommitCommentsForRepoOKHeaders
+			Response = *ReposListCommitCommentsForRepoOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -64690,7 +64690,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 		return
 	}
 
-	var response ReposListDeployKeysOKHeaders
+	var response *ReposListDeployKeysOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -64721,7 +64721,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 		type (
 			Request  = struct{}
 			Params   = ReposListDeployKeysParams
-			Response = ReposListDeployKeysOKHeaders
+			Response = *ReposListDeployKeysOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -64916,7 +64916,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 		return
 	}
 
-	var response ReposListDeploymentsOKHeaders
+	var response *ReposListDeploymentsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -64963,7 +64963,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ReposListDeploymentsParams
-			Response = ReposListDeploymentsOKHeaders
+			Response = *ReposListDeploymentsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -65177,7 +65177,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	var response ReposListForOrgOKHeaders
+	var response *ReposListForOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -65216,7 +65216,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = ReposListForOrgParams
-			Response = ReposListForOrgOKHeaders
+			Response = *ReposListForOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -65297,7 +65297,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 		return
 	}
 
-	var response ReposListForUserOKHeaders
+	var response *ReposListForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -65336,7 +65336,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 		type (
 			Request  = struct{}
 			Params   = ReposListForUserParams
-			Response = ReposListForUserOKHeaders
+			Response = *ReposListForUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -65532,7 +65532,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 		return
 	}
 
-	var response ReposListInvitationsOKHeaders
+	var response *ReposListInvitationsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -65563,7 +65563,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ReposListInvitationsParams
-			Response = ReposListInvitationsOKHeaders
+			Response = *ReposListInvitationsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -65851,7 +65851,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 		return
 	}
 
-	var response ReposListPagesBuildsOKHeaders
+	var response *ReposListPagesBuildsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -65882,7 +65882,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = ReposListPagesBuildsParams
-			Response = ReposListPagesBuildsOKHeaders
+			Response = *ReposListPagesBuildsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -66072,7 +66072,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		return
 	}
 
-	var response ReposListPullRequestsAssociatedWithCommitOKHeaders
+	var response *ReposListPullRequestsAssociatedWithCommitOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -66107,7 +66107,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		type (
 			Request  = struct{}
 			Params   = ReposListPullRequestsAssociatedWithCommitParams
-			Response = ReposListPullRequestsAssociatedWithCommitOKHeaders
+			Response = *ReposListPullRequestsAssociatedWithCommitOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -66187,7 +66187,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 		return
 	}
 
-	var response ReposListReleaseAssetsOKHeaders
+	var response *ReposListReleaseAssetsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -66222,7 +66222,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ReposListReleaseAssetsParams
-			Response = ReposListReleaseAssetsOKHeaders
+			Response = *ReposListReleaseAssetsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -66417,7 +66417,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 		return
 	}
 
-	var response ReposListTagsOKHeaders
+	var response *ReposListTagsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -66448,7 +66448,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 		type (
 			Request  = struct{}
 			Params   = ReposListTagsParams
-			Response = ReposListTagsOKHeaders
+			Response = *ReposListTagsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -66528,7 +66528,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	var response ReposListTeamsOKHeaders
+	var response *ReposListTeamsOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -66559,7 +66559,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 		type (
 			Request  = struct{}
 			Params   = ReposListTeamsParams
-			Response = ReposListTeamsOKHeaders
+			Response = *ReposListTeamsOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -66901,7 +66901,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 		}
 
 		type (
-			Request  = ReposMergeReq
+			Request  = *ReposMergeReq
 			Params   = ReposMergeParams
 			Response = ReposMergeRes
 		)
@@ -67020,7 +67020,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 		}
 
 		type (
-			Request  = ReposMergeUpstreamReq
+			Request  = *ReposMergeUpstreamReq
 			Params   = ReposMergeUpstreamParams
 			Response = ReposMergeUpstreamRes
 		)
@@ -67457,7 +67457,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 		return
 	}
 
-	var response ReposRemoveCollaboratorNoContent
+	var response *ReposRemoveCollaboratorNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -67484,7 +67484,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = ReposRemoveCollaboratorParams
-			Response = ReposRemoveCollaboratorNoContent
+			Response = *ReposRemoveCollaboratorNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -67694,7 +67694,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 		return
 	}
 
-	var response ReposRemoveStatusCheckProtectionNoContent
+	var response *ReposRemoveStatusCheckProtectionNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -67721,7 +67721,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 		type (
 			Request  = struct{}
 			Params   = ReposRemoveStatusCheckProtectionParams
-			Response = ReposRemoveStatusCheckProtectionNoContent
+			Response = *ReposRemoveStatusCheckProtectionNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -68242,7 +68242,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 		}
 
 		type (
-			Request  = ReposReplaceAllTopicsReq
+			Request  = *ReposReplaceAllTopicsReq
 			Params   = ReposReplaceAllTopicsParams
 			Response = ReposReplaceAllTopicsRes
 		)
@@ -68329,7 +68329,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 		return
 	}
 
-	var response PageBuildStatus
+	var response *PageBuildStatus
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -68352,7 +68352,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = ReposRequestPagesBuildParams
-			Response = PageBuildStatus
+			Response = *PageBuildStatus
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -68438,7 +68438,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 		return
 	}
 
-	var response ProtectedBranchAdminEnforced
+	var response *ProtectedBranchAdminEnforced
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -68465,7 +68465,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 		type (
 			Request  = struct{}
 			Params   = ReposSetAdminBranchProtectionParams
-			Response = ProtectedBranchAdminEnforced
+			Response = *ProtectedBranchAdminEnforced
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -69211,7 +69211,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		}
 	}()
 
-	var response MinimalRepository
+	var response *MinimalRepository
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -69232,9 +69232,9 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = ReposTransferReq
+			Request  = *ReposTransferReq
 			Params   = ReposTransferParams
-			Response = MinimalRepository
+			Response = *MinimalRepository
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -69480,7 +69480,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 		}
 
 		type (
-			Request  = ReposUpdateBranchProtectionReq
+			Request  = *ReposUpdateBranchProtectionReq
 			Params   = ReposUpdateBranchProtectionParams
 			Response = ReposUpdateBranchProtectionRes
 		)
@@ -69602,7 +69602,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 		}
 
 		type (
-			Request  = ReposUpdateCommitCommentReq
+			Request  = *ReposUpdateCommitCommentReq
 			Params   = ReposUpdateCommitCommentParams
 			Response = ReposUpdateCommitCommentRes
 		)
@@ -69699,7 +69699,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		}
 	}()
 
-	var response RepositoryInvitation
+	var response *RepositoryInvitation
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -69726,7 +69726,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		type (
 			Request  = OptReposUpdateInvitationReq
 			Params   = ReposUpdateInvitationParams
-			Response = RepositoryInvitation
+			Response = *RepositoryInvitation
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -70072,7 +70072,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		}
 	}()
 
-	var response ReleaseAsset
+	var response *ReleaseAsset
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -70099,7 +70099,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		type (
 			Request  = OptReposUpdateReleaseAssetReq
 			Params   = ReposUpdateReleaseAssetParams
-			Response = ReleaseAsset
+			Response = *ReleaseAsset
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -70451,7 +70451,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		}
 	}()
 
-	var response WebhookConfig
+	var response *WebhookConfig
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -70478,7 +70478,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		type (
 			Request  = OptReposUpdateWebhookConfigForRepoReq
 			Params   = ReposUpdateWebhookConfigForRepoParams
-			Response = WebhookConfig
+			Response = *WebhookConfig
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -70598,7 +70598,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 		}
 	}()
 
-	var response ReleaseAsset
+	var response *ReleaseAsset
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -70631,9 +70631,9 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 		}
 
 		type (
-			Request  = ReposUploadReleaseAssetReqWithContentType
+			Request  = *ReposUploadReleaseAssetReqWithContentType
 			Params   = ReposUploadReleaseAssetParams
-			Response = ReleaseAsset
+			Response = *ReleaseAsset
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -72110,7 +72110,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 		}
 
 		type (
-			Request  = SecretScanningUpdateAlertReq
+			Request  = *SecretScanningUpdateAlertReq
 			Params   = SecretScanningUpdateAlertParams
 			Response = SecretScanningUpdateAlertRes
 		)
@@ -72881,7 +72881,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		}
 	}()
 
-	var response TeamsAddOrUpdateRepoPermissionsInOrgNoContent
+	var response *TeamsAddOrUpdateRepoPermissionsInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -72912,7 +72912,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		type (
 			Request  = OptTeamsAddOrUpdateRepoPermissionsInOrgReq
 			Params   = TeamsAddOrUpdateRepoPermissionsInOrgParams
-			Response = TeamsAddOrUpdateRepoPermissionsInOrgNoContent
+			Response = *TeamsAddOrUpdateRepoPermissionsInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -73621,7 +73621,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 		}
 
 		type (
-			Request  = TeamsCreateReq
+			Request  = *TeamsCreateReq
 			Params   = TeamsCreateParams
 			Response = TeamsCreateRes
 		)
@@ -73728,7 +73728,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		}
 	}()
 
-	var response TeamDiscussionComment
+	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -73753,9 +73753,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		}
 
 		type (
-			Request  = TeamsCreateDiscussionCommentInOrgReq
+			Request  = *TeamsCreateDiscussionCommentInOrgReq
 			Params   = TeamsCreateDiscussionCommentInOrgParams
-			Response = TeamDiscussionComment
+			Response = *TeamDiscussionComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -73863,7 +73863,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		}
 	}()
 
-	var response TeamDiscussionComment
+	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -73884,9 +73884,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		}
 
 		type (
-			Request  = TeamsCreateDiscussionCommentLegacyReq
+			Request  = *TeamsCreateDiscussionCommentLegacyReq
 			Params   = TeamsCreateDiscussionCommentLegacyParams
-			Response = TeamDiscussionComment
+			Response = *TeamDiscussionComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -73991,7 +73991,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		}
 	}()
 
-	var response TeamDiscussion
+	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74012,9 +74012,9 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		}
 
 		type (
-			Request  = TeamsCreateDiscussionInOrgReq
+			Request  = *TeamsCreateDiscussionInOrgReq
 			Params   = TeamsCreateDiscussionInOrgParams
-			Response = TeamDiscussion
+			Response = *TeamDiscussion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74122,7 +74122,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		}
 	}()
 
-	var response TeamDiscussion
+	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74139,9 +74139,9 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		}
 
 		type (
-			Request  = TeamsCreateDiscussionLegacyReq
+			Request  = *TeamsCreateDiscussionLegacyReq
 			Params   = TeamsCreateDiscussionLegacyParams
-			Response = TeamDiscussion
+			Response = *TeamDiscussion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74243,7 +74243,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		}
 	}()
 
-	var response GroupMapping
+	var response *GroupMapping
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74264,9 +74264,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		}
 
 		type (
-			Request  = TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+			Request  = *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
 			Params   = TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
-			Response = GroupMapping
+			Response = *GroupMapping
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74389,7 +74389,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		}
 
 		type (
-			Request  = TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
+			Request  = *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
 			Params   = TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams
 			Response = TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes
 		)
@@ -74474,7 +74474,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		return
 	}
 
-	var response TeamsDeleteDiscussionCommentInOrgNoContent
+	var response *TeamsDeleteDiscussionCommentInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74505,7 +74505,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		type (
 			Request  = struct{}
 			Params   = TeamsDeleteDiscussionCommentInOrgParams
-			Response = TeamsDeleteDiscussionCommentInOrgNoContent
+			Response = *TeamsDeleteDiscussionCommentInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74591,7 +74591,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		return
 	}
 
-	var response TeamsDeleteDiscussionCommentLegacyNoContent
+	var response *TeamsDeleteDiscussionCommentLegacyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74618,7 +74618,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		type (
 			Request  = struct{}
 			Params   = TeamsDeleteDiscussionCommentLegacyParams
-			Response = TeamsDeleteDiscussionCommentLegacyNoContent
+			Response = *TeamsDeleteDiscussionCommentLegacyNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74701,7 +74701,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 		return
 	}
 
-	var response TeamsDeleteDiscussionInOrgNoContent
+	var response *TeamsDeleteDiscussionInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74728,7 +74728,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 		type (
 			Request  = struct{}
 			Params   = TeamsDeleteDiscussionInOrgParams
-			Response = TeamsDeleteDiscussionInOrgNoContent
+			Response = *TeamsDeleteDiscussionInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74814,7 +74814,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 		return
 	}
 
-	var response TeamsDeleteDiscussionLegacyNoContent
+	var response *TeamsDeleteDiscussionLegacyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74837,7 +74837,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 		type (
 			Request  = struct{}
 			Params   = TeamsDeleteDiscussionLegacyParams
-			Response = TeamsDeleteDiscussionLegacyNoContent
+			Response = *TeamsDeleteDiscussionLegacyNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -74921,7 +74921,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 		return
 	}
 
-	var response TeamsDeleteInOrgNoContent
+	var response *TeamsDeleteInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -74944,7 +74944,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 		type (
 			Request  = struct{}
 			Params   = TeamsDeleteInOrgParams
-			Response = TeamsDeleteInOrgNoContent
+			Response = *TeamsDeleteInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -75238,7 +75238,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 		return
 	}
 
-	var response TeamDiscussionComment
+	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -75269,7 +75269,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 		type (
 			Request  = struct{}
 			Params   = TeamsGetDiscussionCommentInOrgParams
-			Response = TeamDiscussionComment
+			Response = *TeamDiscussionComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -75355,7 +75355,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 		return
 	}
 
-	var response TeamDiscussionComment
+	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -75382,7 +75382,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 		type (
 			Request  = struct{}
 			Params   = TeamsGetDiscussionCommentLegacyParams
-			Response = TeamDiscussionComment
+			Response = *TeamDiscussionComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -75465,7 +75465,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 		return
 	}
 
-	var response TeamDiscussion
+	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -75492,7 +75492,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = TeamsGetDiscussionInOrgParams
-			Response = TeamDiscussion
+			Response = *TeamDiscussion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -75578,7 +75578,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 		return
 	}
 
-	var response TeamDiscussion
+	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -75601,7 +75601,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = TeamsGetDiscussionLegacyParams
-			Response = TeamDiscussion
+			Response = *TeamDiscussion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -76229,7 +76229,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 		return
 	}
 
-	var response TeamsListChildInOrgOKHeaders
+	var response *TeamsListChildInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -76260,7 +76260,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 		type (
 			Request  = struct{}
 			Params   = TeamsListChildInOrgParams
-			Response = TeamsListChildInOrgOKHeaders
+			Response = *TeamsListChildInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -76454,7 +76454,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 		return
 	}
 
-	var response TeamsListDiscussionCommentsInOrgOKHeaders
+	var response *TeamsListDiscussionCommentsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -76493,7 +76493,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 		type (
 			Request  = struct{}
 			Params   = TeamsListDiscussionCommentsInOrgParams
-			Response = TeamsListDiscussionCommentsInOrgOKHeaders
+			Response = *TeamsListDiscussionCommentsInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -76579,7 +76579,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		return
 	}
 
-	var response TeamsListDiscussionCommentsLegacyOKHeaders
+	var response *TeamsListDiscussionCommentsLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -76614,7 +76614,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		type (
 			Request  = struct{}
 			Params   = TeamsListDiscussionCommentsLegacyParams
-			Response = TeamsListDiscussionCommentsLegacyOKHeaders
+			Response = *TeamsListDiscussionCommentsLegacyOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -76697,7 +76697,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 		return
 	}
 
-	var response TeamsListDiscussionsInOrgOKHeaders
+	var response *TeamsListDiscussionsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -76736,7 +76736,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 		type (
 			Request  = struct{}
 			Params   = TeamsListDiscussionsInOrgParams
-			Response = TeamsListDiscussionsInOrgOKHeaders
+			Response = *TeamsListDiscussionsInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -76822,7 +76822,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 		return
 	}
 
-	var response TeamsListDiscussionsLegacyOKHeaders
+	var response *TeamsListDiscussionsLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -76853,7 +76853,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 		type (
 			Request  = struct{}
 			Params   = TeamsListDiscussionsLegacyParams
-			Response = TeamsListDiscussionsLegacyOKHeaders
+			Response = *TeamsListDiscussionsLegacyOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -77152,7 +77152,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 		return
 	}
 
-	var response GroupMappingHeaders
+	var response *GroupMappingHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -77179,7 +77179,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = TeamsListIdpGroupsForOrgParams
-			Response = GroupMappingHeaders
+			Response = *GroupMappingHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -77264,7 +77264,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 		return
 	}
 
-	var response GroupMapping
+	var response *GroupMapping
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -77287,7 +77287,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = TeamsListIdpGroupsInOrgParams
-			Response = GroupMapping
+			Response = *GroupMapping
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -77368,7 +77368,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 		return
 	}
 
-	var response TeamsListMembersInOrgOKHeaders
+	var response *TeamsListMembersInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -77403,7 +77403,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = TeamsListMembersInOrgParams
-			Response = TeamsListMembersInOrgOKHeaders
+			Response = *TeamsListMembersInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -77604,7 +77604,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 		return
 	}
 
-	var response TeamsListPendingInvitationsInOrgOKHeaders
+	var response *TeamsListPendingInvitationsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -77635,7 +77635,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 		type (
 			Request  = struct{}
 			Params   = TeamsListPendingInvitationsInOrgParams
-			Response = TeamsListPendingInvitationsInOrgOKHeaders
+			Response = *TeamsListPendingInvitationsInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -77723,7 +77723,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		return
 	}
 
-	var response TeamsListPendingInvitationsLegacyOKHeaders
+	var response *TeamsListPendingInvitationsLegacyOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -77750,7 +77750,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		type (
 			Request  = struct{}
 			Params   = TeamsListPendingInvitationsLegacyParams
-			Response = TeamsListPendingInvitationsLegacyOKHeaders
+			Response = *TeamsListPendingInvitationsLegacyOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -77832,7 +77832,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 		return
 	}
 
-	var response TeamsListProjectsInOrgOKHeaders
+	var response *TeamsListProjectsInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -77863,7 +77863,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 		type (
 			Request  = struct{}
 			Params   = TeamsListProjectsInOrgParams
-			Response = TeamsListProjectsInOrgOKHeaders
+			Response = *TeamsListProjectsInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -78057,7 +78057,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 		return
 	}
 
-	var response TeamsListReposInOrgOKHeaders
+	var response *TeamsListReposInOrgOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -78088,7 +78088,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 		type (
 			Request  = struct{}
 			Params   = TeamsListReposInOrgParams
-			Response = TeamsListReposInOrgOKHeaders
+			Response = *TeamsListReposInOrgOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -78648,7 +78648,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 		return
 	}
 
-	var response TeamsRemoveProjectInOrgNoContent
+	var response *TeamsRemoveProjectInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -78675,7 +78675,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = TeamsRemoveProjectInOrgParams
-			Response = TeamsRemoveProjectInOrgNoContent
+			Response = *TeamsRemoveProjectInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -78871,7 +78871,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 		return
 	}
 
-	var response TeamsRemoveRepoInOrgNoContent
+	var response *TeamsRemoveRepoInOrgNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -78902,7 +78902,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = TeamsRemoveRepoInOrgParams
-			Response = TeamsRemoveRepoInOrgNoContent
+			Response = *TeamsRemoveRepoInOrgNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -78990,7 +78990,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 		return
 	}
 
-	var response TeamsRemoveRepoLegacyNoContent
+	var response *TeamsRemoveRepoLegacyNoContent
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -79017,7 +79017,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 		type (
 			Request  = struct{}
 			Params   = TeamsRemoveRepoLegacyParams
-			Response = TeamsRemoveRepoLegacyNoContent
+			Response = *TeamsRemoveRepoLegacyNoContent
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -79115,7 +79115,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		}
 	}()
 
-	var response TeamDiscussionComment
+	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -79144,9 +79144,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		}
 
 		type (
-			Request  = TeamsUpdateDiscussionCommentInOrgReq
+			Request  = *TeamsUpdateDiscussionCommentInOrgReq
 			Params   = TeamsUpdateDiscussionCommentInOrgParams
-			Response = TeamDiscussionComment
+			Response = *TeamDiscussionComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -79247,7 +79247,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		}
 	}()
 
-	var response TeamDiscussionComment
+	var response *TeamDiscussionComment
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -79272,9 +79272,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		}
 
 		type (
-			Request  = TeamsUpdateDiscussionCommentLegacyReq
+			Request  = *TeamsUpdateDiscussionCommentLegacyReq
 			Params   = TeamsUpdateDiscussionCommentLegacyParams
-			Response = TeamDiscussionComment
+			Response = *TeamDiscussionComment
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -79373,7 +79373,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		}
 	}()
 
-	var response TeamDiscussion
+	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -79400,7 +79400,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		type (
 			Request  = OptTeamsUpdateDiscussionInOrgReq
 			Params   = TeamsUpdateDiscussionInOrgParams
-			Response = TeamDiscussion
+			Response = *TeamDiscussion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -79502,7 +79502,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		}
 	}()
 
-	var response TeamDiscussion
+	var response *TeamDiscussion
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -79525,7 +79525,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		type (
 			Request  = OptTeamsUpdateDiscussionLegacyReq
 			Params   = TeamsUpdateDiscussionLegacyParams
-			Response = TeamDiscussion
+			Response = *TeamDiscussion
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -79622,7 +79622,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		}
 	}()
 
-	var response TeamFull
+	var response *TeamFull
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -79645,7 +79645,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		type (
 			Request  = OptTeamsUpdateInOrgReq
 			Params   = TeamsUpdateInOrgParams
-			Response = TeamFull
+			Response = *TeamFull
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -79763,7 +79763,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 		}
 
 		type (
-			Request  = TeamsUpdateLegacyReq
+			Request  = *TeamsUpdateLegacyReq
 			Params   = TeamsUpdateLegacyParams
 			Response = TeamsUpdateLegacyRes
 		)
@@ -80363,7 +80363,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		}
 
 		type (
-			Request  = UsersCreateGpgKeyForAuthenticatedReq
+			Request  = *UsersCreateGpgKeyForAuthenticatedReq
 			Params   = struct{}
 			Response = UsersCreateGpgKeyForAuthenticatedRes
 		)
@@ -80464,7 +80464,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		}
 
 		type (
-			Request  = UsersCreatePublicSSHKeyForAuthenticatedReq
+			Request  = *UsersCreatePublicSSHKeyForAuthenticatedReq
 			Params   = struct{}
 			Response = UsersCreatePublicSSHKeyForAuthenticatedRes
 		)
@@ -81961,7 +81961,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 		return
 	}
 
-	var response UsersListFollowersForUserOKHeaders
+	var response *UsersListFollowersForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -81988,7 +81988,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 		type (
 			Request  = struct{}
 			Params   = UsersListFollowersForUserParams
-			Response = UsersListFollowersForUserOKHeaders
+			Response = *UsersListFollowersForUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -82068,7 +82068,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 		return
 	}
 
-	var response UsersListFollowingForUserOKHeaders
+	var response *UsersListFollowingForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -82095,7 +82095,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 		type (
 			Request  = struct{}
 			Params   = UsersListFollowingForUserParams
-			Response = UsersListFollowingForUserOKHeaders
+			Response = *UsersListFollowingForUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -82280,7 +82280,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 		return
 	}
 
-	var response UsersListGpgKeysForUserOKHeaders
+	var response *UsersListGpgKeysForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -82307,7 +82307,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = UsersListGpgKeysForUserParams
-			Response = UsersListGpgKeysForUserOKHeaders
+			Response = *UsersListGpgKeysForUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -82493,7 +82493,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 		return
 	}
 
-	var response UsersListPublicKeysForUserOKHeaders
+	var response *UsersListPublicKeysForUserOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -82520,7 +82520,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 		type (
 			Request  = struct{}
 			Params   = UsersListPublicKeysForUserParams
-			Response = UsersListPublicKeysForUserOKHeaders
+			Response = *UsersListPublicKeysForUserOKHeaders
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -82722,7 +82722,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		}
 
 		type (
-			Request  = UsersSetPrimaryEmailVisibilityForAuthenticatedReq
+			Request  = *UsersSetPrimaryEmailVisibilityForAuthenticatedReq
 			Params   = struct{}
 			Response = UsersSetPrimaryEmailVisibilityForAuthenticatedRes
 		)

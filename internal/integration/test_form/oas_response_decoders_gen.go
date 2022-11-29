@@ -13,25 +13,25 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeTestFormURLEncodedResponse(resp *http.Response) (res TestFormURLEncodedOK, err error) {
+func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEncodedOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return TestFormURLEncodedOK{}, nil
+		return &TestFormURLEncodedOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestMultipartResponse(resp *http.Response) (res TestMultipartOK, err error) {
+func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return TestMultipartOK{}, nil
+		return &TestMultipartOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestMultipartUploadResponse(resp *http.Response) (res TestMultipartUploadOK, err error) {
+func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartUploadOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -59,7 +59,7 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res TestMultipartUp
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -67,11 +67,11 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res TestMultipartUp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestShareFormSchemaResponse(resp *http.Response) (res TestShareFormSchemaOK, err error) {
+func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return TestShareFormSchemaOK{}, nil
+		return &TestShareFormSchemaOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

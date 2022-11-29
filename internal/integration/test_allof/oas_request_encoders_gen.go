@@ -31,7 +31,7 @@ func encodeNullableStringsRequest(
 }
 
 func encodeObjectsWithConflictingArrayPropertyRequest(
-	req ObjectsWithConflictingArrayPropertyReq,
+	req *ObjectsWithConflictingArrayPropertyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -45,7 +45,7 @@ func encodeObjectsWithConflictingArrayPropertyRequest(
 }
 
 func encodeObjectsWithConflictingPropertiesRequest(
-	req ObjectsWithConflictingPropertiesReq,
+	req *ObjectsWithConflictingPropertiesReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -218,7 +218,7 @@ func encodeSimpleIntegerRequest(
 }
 
 func encodeSimpleObjectsRequest(
-	req SimpleObjectsReq,
+	req *SimpleObjectsReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

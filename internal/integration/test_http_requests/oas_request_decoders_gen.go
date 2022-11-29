@@ -500,7 +500,7 @@ func (s *Server) decodeBase64RequestRequest(r *http.Request) (
 }
 
 func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
-	req MaskContentTypeReqWithContentType,
+	req *MaskContentTypeReqWithContentType,
 	close func() error,
 	rerr error,
 ) {
@@ -531,14 +531,14 @@ func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
 			ContentType: ct,
 			Content:     request,
 		}
-		return wrapped, close, nil
+		return &wrapped, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
-	req MaskContentTypeOptionalReqWithContentType,
+	req *MaskContentTypeOptionalReqWithContentType,
 	close func() error,
 	rerr error,
 ) {
@@ -572,7 +572,7 @@ func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 			ContentType: ct,
 			Content:     request,
 		}
-		return wrapped, close, nil
+		return &wrapped, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

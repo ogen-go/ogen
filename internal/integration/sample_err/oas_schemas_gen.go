@@ -17,7 +17,7 @@ type Data struct {
 }
 
 // GetName returns the value of Name.
-func (s Data) GetName() string {
+func (s *Data) GetName() string {
 	return s.Name
 }
 
@@ -34,12 +34,12 @@ type Error struct {
 }
 
 // GetCode returns the value of Code.
-func (s Error) GetCode() int64 {
+func (s *Error) GetCode() int64 {
 	return s.Code
 }
 
 // GetMessage returns the value of Message.
-func (s Error) GetMessage() string {
+func (s *Error) GetMessage() string {
 	return s.Message
 }
 
@@ -60,12 +60,12 @@ type ErrorStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s ErrorStatusCode) GetStatusCode() int {
+func (s *ErrorStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s ErrorStatusCode) GetResponse() Error {
+func (s *ErrorStatusCode) GetResponse() Error {
 	return s.Response
 }
 

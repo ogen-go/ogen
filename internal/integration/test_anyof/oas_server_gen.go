@@ -11,15 +11,15 @@ type Handler interface {
 	// IntegerNumber implements integerNumber operation.
 	//
 	// GET /integerNumber
-	IntegerNumber(ctx context.Context) (IntegerNumber, error)
+	IntegerNumber(ctx context.Context) (*IntegerNumber, error)
 	// JaegerAnyOf implements jaegerAnyOf operation.
 	//
 	// GET /jaegerAnyOf
-	JaegerAnyOf(ctx context.Context) (JaegerAnyOf, error)
+	JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error)
 	// OneUUID implements oneUUID operation.
 	//
 	// GET /oneUUID
-	OneUUID(ctx context.Context) (OneUUID, error)
+	OneUUID(ctx context.Context) (*OneUUID, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

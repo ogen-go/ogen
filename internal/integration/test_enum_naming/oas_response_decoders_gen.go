@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeProbeLivenessResponse(resp *http.Response) (res ProbeLivenessOK, err error) {
+func decodeProbeLivenessResponse(resp *http.Response) (res *ProbeLivenessOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41,7 +41,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res ProbeLivenessOK, err 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

@@ -14,14 +14,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s Location) Encode(e *jx.Encoder) {
+func (s *Location) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Location) encodeFields(e *jx.Encoder) {
+func (s *Location) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("lat")
@@ -116,7 +116,7 @@ func (s *Location) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Location) MarshalJSON() ([]byte, error) {
+func (s *Location) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -175,14 +175,14 @@ func (s *NilString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ObjectsWithConflictingArrayPropertyReq) Encode(e *jx.Encoder) {
+func (s *ObjectsWithConflictingArrayPropertyReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ObjectsWithConflictingArrayPropertyReq) encodeFields(e *jx.Encoder) {
+func (s *ObjectsWithConflictingArrayPropertyReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("foo")
@@ -289,7 +289,7 @@ func (s *ObjectsWithConflictingArrayPropertyReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ObjectsWithConflictingArrayPropertyReq) MarshalJSON() ([]byte, error) {
+func (s *ObjectsWithConflictingArrayPropertyReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -302,14 +302,14 @@ func (s *ObjectsWithConflictingArrayPropertyReq) UnmarshalJSON(data []byte) erro
 }
 
 // Encode implements json.Marshaler.
-func (s ObjectsWithConflictingPropertiesReq) Encode(e *jx.Encoder) {
+func (s *ObjectsWithConflictingPropertiesReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s ObjectsWithConflictingPropertiesReq) encodeFields(e *jx.Encoder) {
+func (s *ObjectsWithConflictingPropertiesReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("foo")
@@ -403,7 +403,7 @@ func (s *ObjectsWithConflictingPropertiesReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ObjectsWithConflictingPropertiesReq) MarshalJSON() ([]byte, error) {
+func (s *ObjectsWithConflictingPropertiesReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -521,8 +521,8 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReferencedAllofApplicationJSON as json.
-func (s ReferencedAllofApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := Robot(s)
+func (s *ReferencedAllofApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*Robot)(s)
 
 	unwrapped.Encode(e)
 }
@@ -546,7 +546,7 @@ func (s *ReferencedAllofApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReferencedAllofApplicationJSON) MarshalJSON() ([]byte, error) {
+func (s *ReferencedAllofApplicationJSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -559,8 +559,8 @@ func (s *ReferencedAllofApplicationJSON) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReferencedAllofMultipartFormData as json.
-func (s ReferencedAllofMultipartFormData) Encode(e *jx.Encoder) {
-	unwrapped := Robot(s)
+func (s *ReferencedAllofMultipartFormData) Encode(e *jx.Encoder) {
+	unwrapped := (*Robot)(s)
 
 	unwrapped.Encode(e)
 }
@@ -584,7 +584,7 @@ func (s *ReferencedAllofMultipartFormData) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReferencedAllofMultipartFormData) MarshalJSON() ([]byte, error) {
+func (s *ReferencedAllofMultipartFormData) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -597,8 +597,8 @@ func (s *ReferencedAllofMultipartFormData) UnmarshalJSON(data []byte) error {
 }
 
 // Encode encodes ReferencedAllofOptionalApplicationJSON as json.
-func (s ReferencedAllofOptionalApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := Robot(s)
+func (s *ReferencedAllofOptionalApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*Robot)(s)
 
 	unwrapped.Encode(e)
 }
@@ -622,7 +622,7 @@ func (s *ReferencedAllofOptionalApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReferencedAllofOptionalApplicationJSON) MarshalJSON() ([]byte, error) {
+func (s *ReferencedAllofOptionalApplicationJSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -635,8 +635,8 @@ func (s *ReferencedAllofOptionalApplicationJSON) UnmarshalJSON(data []byte) erro
 }
 
 // Encode encodes ReferencedAllofOptionalMultipartFormData as json.
-func (s ReferencedAllofOptionalMultipartFormData) Encode(e *jx.Encoder) {
-	unwrapped := Robot(s)
+func (s *ReferencedAllofOptionalMultipartFormData) Encode(e *jx.Encoder) {
+	unwrapped := (*Robot)(s)
 
 	unwrapped.Encode(e)
 }
@@ -660,7 +660,7 @@ func (s *ReferencedAllofOptionalMultipartFormData) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ReferencedAllofOptionalMultipartFormData) MarshalJSON() ([]byte, error) {
+func (s *ReferencedAllofOptionalMultipartFormData) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -673,14 +673,14 @@ func (s *ReferencedAllofOptionalMultipartFormData) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s Robot) Encode(e *jx.Encoder) {
+func (s *Robot) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Robot) encodeFields(e *jx.Encoder) {
+func (s *Robot) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
@@ -789,7 +789,7 @@ func (s *Robot) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Robot) MarshalJSON() ([]byte, error) {
+func (s *Robot) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -842,14 +842,14 @@ func (s *RobotState) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SimpleObjectsReq) Encode(e *jx.Encoder) {
+func (s *SimpleObjectsReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SimpleObjectsReq) encodeFields(e *jx.Encoder) {
+func (s *SimpleObjectsReq) encodeFields(e *jx.Encoder) {
 	{
 		if s.Foo.Set {
 			e.FieldStart("foo")
@@ -909,7 +909,7 @@ func (s *SimpleObjectsReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SimpleObjectsReq) MarshalJSON() ([]byte, error) {
+func (s *SimpleObjectsReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

@@ -83,7 +83,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -418,7 +418,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 		type (
 			Request  = string
 			Params   = TestQueryParameterParams
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -501,7 +501,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -515,7 +515,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 		type (
 			Request  = jx.Raw
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -598,7 +598,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -612,7 +612,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 		type (
 			Request  = OptBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -695,7 +695,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -709,7 +709,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 		type (
 			Request  = []bool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -792,7 +792,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -806,7 +806,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 		type (
 			Request  = [][]bool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -889,7 +889,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -903,7 +903,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 		type (
 			Request  = OptNilBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -986,7 +986,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1000,7 +1000,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 		type (
 			Request  = []NilBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1083,7 +1083,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1097,7 +1097,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]NilBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1180,7 +1180,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1194,7 +1194,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 		type (
 			Request  = *TestRequestEmptyStructReq
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1277,7 +1277,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1291,7 +1291,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 		type (
 			Request  = OptTestRequestFormatTestReq
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1374,7 +1374,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1388,7 +1388,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 		type (
 			Request  = OptInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1471,7 +1471,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1485,7 +1485,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 		type (
 			Request  = []int
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1568,7 +1568,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1582,7 +1582,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 		type (
 			Request  = [][]int
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1665,7 +1665,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1679,7 +1679,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 		type (
 			Request  = OptInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1762,7 +1762,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1776,7 +1776,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 		type (
 			Request  = []int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1859,7 +1859,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1873,7 +1873,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][]int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1956,7 +1956,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1970,7 +1970,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 		type (
 			Request  = OptNilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2053,7 +2053,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2067,7 +2067,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 		type (
 			Request  = []NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2150,7 +2150,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2164,7 +2164,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 		type (
 			Request  = [][]NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2247,7 +2247,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2261,7 +2261,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 		type (
 			Request  = OptInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2344,7 +2344,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2358,7 +2358,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 		type (
 			Request  = []int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2441,7 +2441,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2455,7 +2455,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][]int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2538,7 +2538,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2552,7 +2552,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 		type (
 			Request  = OptNilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2635,7 +2635,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2649,7 +2649,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 		type (
 			Request  = []NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2732,7 +2732,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2746,7 +2746,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 		type (
 			Request  = [][]NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2829,7 +2829,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2843,7 +2843,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 		type (
 			Request  = OptNilInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2926,7 +2926,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2940,7 +2940,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 		type (
 			Request  = []NilInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3023,7 +3023,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3037,7 +3037,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]NilInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3120,7 +3120,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3134,7 +3134,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 		type (
 			Request  = OptUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3217,7 +3217,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3231,7 +3231,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 		type (
 			Request  = OptUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3314,7 +3314,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3328,7 +3328,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 		type (
 			Request  = []uint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3411,7 +3411,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3425,7 +3425,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 		type (
 			Request  = [][]uint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3508,7 +3508,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3522,7 +3522,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 		type (
 			Request  = OptNilUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3605,7 +3605,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3619,7 +3619,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 		type (
 			Request  = []NilUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3702,7 +3702,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3716,7 +3716,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 		type (
 			Request  = [][]NilUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3799,7 +3799,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3813,7 +3813,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 		type (
 			Request  = OptUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3896,7 +3896,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -3910,7 +3910,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 		type (
 			Request  = []uint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -3993,7 +3993,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4007,7 +4007,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 		type (
 			Request  = [][]uint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4090,7 +4090,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4104,7 +4104,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 		type (
 			Request  = OptNilUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4187,7 +4187,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4201,7 +4201,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 		type (
 			Request  = []NilUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4284,7 +4284,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4298,7 +4298,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 		type (
 			Request  = [][]NilUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4381,7 +4381,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4395,7 +4395,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 		type (
 			Request  = []uint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4478,7 +4478,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4492,7 +4492,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]uint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4575,7 +4575,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4589,7 +4589,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4672,7 +4672,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4686,7 +4686,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 		type (
 			Request  = []NilUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4769,7 +4769,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4783,7 +4783,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4866,7 +4866,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4880,7 +4880,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 		type (
 			Request  = OptUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -4963,7 +4963,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -4977,7 +4977,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5060,7 +5060,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5074,7 +5074,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5157,7 +5157,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5171,7 +5171,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 		type (
 			Request  = OptUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5254,7 +5254,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5268,7 +5268,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5351,7 +5351,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5365,7 +5365,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5448,7 +5448,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5462,7 +5462,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 		type (
 			Request  = OptNilUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5545,7 +5545,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5559,7 +5559,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 		type (
 			Request  = []NilUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5642,7 +5642,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5656,7 +5656,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 		type (
 			Request  = [][]NilUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5739,7 +5739,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5753,7 +5753,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 		type (
 			Request  = OptUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5836,7 +5836,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5850,7 +5850,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -5933,7 +5933,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -5947,7 +5947,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6030,7 +6030,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6044,7 +6044,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 		type (
 			Request  = OptNilUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6127,7 +6127,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6141,7 +6141,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 		type (
 			Request  = []NilUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6224,7 +6224,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6238,7 +6238,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 		type (
 			Request  = [][]NilUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6321,7 +6321,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6335,7 +6335,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 		type (
 			Request  = OptUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6418,7 +6418,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6432,7 +6432,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6515,7 +6515,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6529,7 +6529,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6612,7 +6612,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6626,7 +6626,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 		type (
 			Request  = OptNilUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6709,7 +6709,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6723,7 +6723,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 		type (
 			Request  = []NilUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6806,7 +6806,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6820,7 +6820,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 		type (
 			Request  = [][]NilUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -6903,7 +6903,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -6917,7 +6917,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7000,7 +7000,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7014,7 +7014,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 		type (
 			Request  = []NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7097,7 +7097,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7111,7 +7111,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7194,7 +7194,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7208,7 +7208,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 		type (
 			Request  = OptUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7291,7 +7291,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7305,7 +7305,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7388,7 +7388,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7402,7 +7402,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7485,7 +7485,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7499,7 +7499,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 		type (
 			Request  = OptNilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7582,7 +7582,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7596,7 +7596,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 		type (
 			Request  = []NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7679,7 +7679,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7693,7 +7693,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7776,7 +7776,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7790,7 +7790,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = OptNull
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7873,7 +7873,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7887,7 +7887,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 		type (
 			Request  = []struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -7970,7 +7970,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -7984,7 +7984,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 		type (
 			Request  = [][]struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8067,7 +8067,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8081,7 +8081,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 		type (
 			Request  = OptNull
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8164,7 +8164,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8178,7 +8178,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 		type (
 			Request  = []struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8261,7 +8261,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8275,7 +8275,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][]struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8358,7 +8358,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8372,7 +8372,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 		type (
 			Request  = OptFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8455,7 +8455,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8469,7 +8469,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 		type (
 			Request  = []float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8552,7 +8552,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8566,7 +8566,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 		type (
 			Request  = [][]float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8649,7 +8649,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8663,7 +8663,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 		type (
 			Request  = OptFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8746,7 +8746,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8760,7 +8760,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 		type (
 			Request  = []float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8843,7 +8843,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8857,7 +8857,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][]float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -8940,7 +8940,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -8954,7 +8954,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 		type (
 			Request  = OptNilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9037,7 +9037,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9051,7 +9051,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 		type (
 			Request  = []NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9134,7 +9134,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9148,7 +9148,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 		type (
 			Request  = [][]NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9231,7 +9231,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9245,7 +9245,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 		type (
 			Request  = OptFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9328,7 +9328,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9342,7 +9342,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 		type (
 			Request  = []float32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9425,7 +9425,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9439,7 +9439,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]float32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9522,7 +9522,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9536,7 +9536,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9619,7 +9619,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9633,7 +9633,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 		type (
 			Request  = []NilFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9716,7 +9716,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9730,7 +9730,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9813,7 +9813,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9827,7 +9827,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 		type (
 			Request  = OptInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -9910,7 +9910,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -9924,7 +9924,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 		type (
 			Request  = []int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10007,7 +10007,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10021,7 +10021,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10104,7 +10104,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10118,7 +10118,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10201,7 +10201,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10215,7 +10215,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 		type (
 			Request  = []NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10298,7 +10298,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10312,7 +10312,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10395,7 +10395,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10409,7 +10409,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 		type (
 			Request  = OptInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10492,7 +10492,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10506,7 +10506,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 		type (
 			Request  = []int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10589,7 +10589,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10603,7 +10603,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10686,7 +10686,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10700,7 +10700,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10783,7 +10783,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10797,7 +10797,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 		type (
 			Request  = []NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10880,7 +10880,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10894,7 +10894,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -10977,7 +10977,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -10991,7 +10991,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 		type (
 			Request  = OptNilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11074,7 +11074,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11088,7 +11088,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 		type (
 			Request  = []NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11171,7 +11171,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11185,7 +11185,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11268,7 +11268,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11282,7 +11282,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 		type (
 			Request  = jx.Raw
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11365,7 +11365,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11379,7 +11379,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 		type (
 			Request  = bool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11462,7 +11462,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11476,7 +11476,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 		type (
 			Request  = []bool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11559,7 +11559,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11573,7 +11573,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]bool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11656,7 +11656,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11670,7 +11670,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 		type (
 			Request  = NilBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11753,7 +11753,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11767,7 +11767,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 		type (
 			Request  = []NilBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11850,7 +11850,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11864,7 +11864,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 		type (
 			Request  = [][]NilBool
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -11947,7 +11947,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -11959,9 +11959,9 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 		}
 
 		type (
-			Request  = TestRequestRequiredEmptyStructReq
+			Request  = *TestRequestRequiredEmptyStructReq
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12044,7 +12044,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12056,9 +12056,9 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 		}
 
 		type (
-			Request  = TestRequestRequiredFormatTestReq
+			Request  = *TestRequestRequiredFormatTestReq
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12141,7 +12141,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12155,7 +12155,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 		type (
 			Request  = int
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12238,7 +12238,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12252,7 +12252,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 		type (
 			Request  = []int
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12335,7 +12335,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12349,7 +12349,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]int
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12432,7 +12432,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12446,7 +12446,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 		type (
 			Request  = int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12529,7 +12529,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12543,7 +12543,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 		type (
 			Request  = []int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12626,7 +12626,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12640,7 +12640,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 		type (
 			Request  = [][]int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12723,7 +12723,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12737,7 +12737,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 		type (
 			Request  = NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12820,7 +12820,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12834,7 +12834,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 		type (
 			Request  = []NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -12917,7 +12917,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -12931,7 +12931,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		type (
 			Request  = [][]NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13014,7 +13014,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13028,7 +13028,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 		type (
 			Request  = int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13111,7 +13111,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13125,7 +13125,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 		type (
 			Request  = []int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13208,7 +13208,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13222,7 +13222,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 		type (
 			Request  = [][]int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13305,7 +13305,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13319,7 +13319,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 		type (
 			Request  = NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13402,7 +13402,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13416,7 +13416,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 		type (
 			Request  = []NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13499,7 +13499,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13513,7 +13513,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		type (
 			Request  = [][]NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13596,7 +13596,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13610,7 +13610,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 		type (
 			Request  = NilInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13693,7 +13693,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13707,7 +13707,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 		type (
 			Request  = []NilInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13790,7 +13790,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13804,7 +13804,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 		type (
 			Request  = [][]NilInt
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13887,7 +13887,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13901,7 +13901,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 		type (
 			Request  = uint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -13984,7 +13984,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -13998,7 +13998,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 		type (
 			Request  = uint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14081,7 +14081,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14095,7 +14095,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 		type (
 			Request  = []uint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14178,7 +14178,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14192,7 +14192,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 		type (
 			Request  = [][]uint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14275,7 +14275,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14289,7 +14289,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 		type (
 			Request  = NilUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14372,7 +14372,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14386,7 +14386,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 		type (
 			Request  = []NilUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14469,7 +14469,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14483,7 +14483,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 		type (
 			Request  = [][]NilUint32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14566,7 +14566,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14580,7 +14580,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 		type (
 			Request  = uint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14663,7 +14663,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14677,7 +14677,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 		type (
 			Request  = []uint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14760,7 +14760,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14774,7 +14774,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 		type (
 			Request  = [][]uint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14857,7 +14857,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14871,7 +14871,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 		type (
 			Request  = NilUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -14954,7 +14954,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -14968,7 +14968,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 		type (
 			Request  = []NilUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15051,7 +15051,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15065,7 +15065,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 		type (
 			Request  = [][]NilUint64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15148,7 +15148,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15162,7 +15162,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 		type (
 			Request  = []uint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15245,7 +15245,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15259,7 +15259,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]uint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15342,7 +15342,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15356,7 +15356,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 		type (
 			Request  = NilUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15439,7 +15439,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15453,7 +15453,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 		type (
 			Request  = []NilUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15536,7 +15536,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15550,7 +15550,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilUint
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15633,7 +15633,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15647,7 +15647,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15730,7 +15730,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15744,7 +15744,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15827,7 +15827,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15841,7 +15841,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -15924,7 +15924,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -15938,7 +15938,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16021,7 +16021,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16035,7 +16035,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16118,7 +16118,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16132,7 +16132,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16215,7 +16215,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16229,7 +16229,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 		type (
 			Request  = NilUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16312,7 +16312,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16326,7 +16326,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 		type (
 			Request  = []NilUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16409,7 +16409,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16423,7 +16423,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 		type (
 			Request  = [][]NilUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16506,7 +16506,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16520,7 +16520,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16603,7 +16603,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16617,7 +16617,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16700,7 +16700,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16714,7 +16714,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16797,7 +16797,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16811,7 +16811,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 		type (
 			Request  = NilUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16894,7 +16894,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -16908,7 +16908,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 		type (
 			Request  = []NilUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -16991,7 +16991,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17005,7 +17005,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 		type (
 			Request  = [][]NilUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17088,7 +17088,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17102,7 +17102,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17185,7 +17185,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17199,7 +17199,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17282,7 +17282,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17296,7 +17296,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17379,7 +17379,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17393,7 +17393,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 		type (
 			Request  = NilUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17476,7 +17476,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17490,7 +17490,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 		type (
 			Request  = []NilUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17573,7 +17573,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17587,7 +17587,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 		type (
 			Request  = [][]NilUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17670,7 +17670,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17684,7 +17684,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 		type (
 			Request  = NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17767,7 +17767,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17781,7 +17781,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 		type (
 			Request  = []NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17864,7 +17864,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17878,7 +17878,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -17961,7 +17961,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -17975,7 +17975,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18058,7 +18058,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18072,7 +18072,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18155,7 +18155,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18169,7 +18169,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18252,7 +18252,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18266,7 +18266,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 		type (
 			Request  = NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18349,7 +18349,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18363,7 +18363,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 		type (
 			Request  = []NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18446,7 +18446,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18460,7 +18460,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 		type (
 			Request  = [][]NilUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18543,7 +18543,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18557,7 +18557,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18640,7 +18640,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18654,7 +18654,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 		type (
 			Request  = []struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18737,7 +18737,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18751,7 +18751,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][]struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18834,7 +18834,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18848,7 +18848,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -18931,7 +18931,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -18945,7 +18945,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 		type (
 			Request  = []struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19028,7 +19028,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19042,7 +19042,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 		type (
 			Request  = [][]struct{}
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19125,7 +19125,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19139,7 +19139,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 		type (
 			Request  = float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19222,7 +19222,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19236,7 +19236,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 		type (
 			Request  = []float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19319,7 +19319,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19333,7 +19333,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19416,7 +19416,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19430,7 +19430,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 		type (
 			Request  = float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19513,7 +19513,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19527,7 +19527,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 		type (
 			Request  = []float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19610,7 +19610,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19624,7 +19624,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 		type (
 			Request  = [][]float64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19707,7 +19707,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19721,7 +19721,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 		type (
 			Request  = NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19804,7 +19804,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19818,7 +19818,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 		type (
 			Request  = []NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19901,7 +19901,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -19915,7 +19915,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		type (
 			Request  = [][]NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -19998,7 +19998,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20012,7 +20012,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 		type (
 			Request  = float32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20095,7 +20095,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20109,7 +20109,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 		type (
 			Request  = []float32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20192,7 +20192,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20206,7 +20206,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]float32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20289,7 +20289,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20303,7 +20303,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 		type (
 			Request  = NilFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20386,7 +20386,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20400,7 +20400,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 		type (
 			Request  = []NilFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20483,7 +20483,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20497,7 +20497,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilFloat32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20580,7 +20580,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20594,7 +20594,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 		type (
 			Request  = int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20677,7 +20677,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20691,7 +20691,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 		type (
 			Request  = []int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20774,7 +20774,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20788,7 +20788,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20871,7 +20871,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20885,7 +20885,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 		type (
 			Request  = NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -20968,7 +20968,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -20982,7 +20982,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 		type (
 			Request  = []NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21065,7 +21065,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21079,7 +21079,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21162,7 +21162,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21176,7 +21176,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 		type (
 			Request  = int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21259,7 +21259,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21273,7 +21273,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 		type (
 			Request  = []int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21356,7 +21356,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21370,7 +21370,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21453,7 +21453,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21467,7 +21467,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 		type (
 			Request  = NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21550,7 +21550,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21564,7 +21564,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 		type (
 			Request  = []NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21647,7 +21647,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21661,7 +21661,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21744,7 +21744,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21758,7 +21758,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 		type (
 			Request  = NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21841,7 +21841,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21855,7 +21855,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -21938,7 +21938,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -21952,7 +21952,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilFloat64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22035,7 +22035,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22049,7 +22049,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22132,7 +22132,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22146,7 +22146,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22229,7 +22229,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22243,7 +22243,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22326,7 +22326,7 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22340,7 +22340,7 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, w 
 		type (
 			Request  = []byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22423,7 +22423,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22437,7 +22437,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22520,7 +22520,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22534,7 +22534,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22617,7 +22617,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22631,7 +22631,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 		type (
 			Request  = []byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22714,7 +22714,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22728,7 +22728,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22811,7 +22811,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22825,7 +22825,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -22908,7 +22908,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -22922,7 +22922,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23005,7 +23005,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23019,7 +23019,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23102,7 +23102,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23116,7 +23116,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23199,7 +23199,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23213,7 +23213,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 		type (
 			Request  = NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23296,7 +23296,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23310,7 +23310,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23393,7 +23393,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23407,7 +23407,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23490,7 +23490,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23504,7 +23504,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 		type (
 			Request  = []byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23587,7 +23587,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23601,7 +23601,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23684,7 +23684,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23698,7 +23698,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23781,7 +23781,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23795,7 +23795,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 		type (
 			Request  = []byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23878,7 +23878,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23892,7 +23892,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -23975,7 +23975,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -23989,7 +23989,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24072,7 +24072,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24086,7 +24086,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24169,7 +24169,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24183,7 +24183,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24266,7 +24266,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24280,7 +24280,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24363,7 +24363,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24377,7 +24377,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 		type (
 			Request  = NilDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24460,7 +24460,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24474,7 +24474,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 		type (
 			Request  = []NilDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24557,7 +24557,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24571,7 +24571,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24654,7 +24654,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24668,7 +24668,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24751,7 +24751,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24765,7 +24765,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24848,7 +24848,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24862,7 +24862,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -24945,7 +24945,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -24959,7 +24959,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 		type (
 			Request  = NilDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25042,7 +25042,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25056,7 +25056,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 		type (
 			Request  = []NilDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25139,7 +25139,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25153,7 +25153,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		type (
 			Request  = [][]NilDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25236,7 +25236,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25250,7 +25250,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 		type (
 			Request  = time.Duration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25333,7 +25333,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25347,7 +25347,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 		type (
 			Request  = []time.Duration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25430,7 +25430,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25444,7 +25444,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 		type (
 			Request  = [][]time.Duration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25527,7 +25527,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25541,7 +25541,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 		type (
 			Request  = NilDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25624,7 +25624,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25638,7 +25638,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 		type (
 			Request  = []NilDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25721,7 +25721,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25735,7 +25735,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 		type (
 			Request  = [][]NilDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25818,7 +25818,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25832,7 +25832,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -25915,7 +25915,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25929,7 +25929,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26012,7 +26012,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26026,7 +26026,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26109,7 +26109,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26123,7 +26123,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 		type (
 			Request  = NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26206,7 +26206,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26220,7 +26220,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26303,7 +26303,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26317,7 +26317,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26400,7 +26400,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26414,7 +26414,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26497,7 +26497,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26511,7 +26511,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26594,7 +26594,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26608,7 +26608,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26691,7 +26691,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26705,7 +26705,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 		type (
 			Request  = NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26788,7 +26788,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26802,7 +26802,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26885,7 +26885,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26899,7 +26899,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26982,7 +26982,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26996,7 +26996,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 		type (
 			Request  = netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27079,7 +27079,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27093,7 +27093,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 		type (
 			Request  = []netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27176,7 +27176,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27190,7 +27190,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 		type (
 			Request  = [][]netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27273,7 +27273,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27287,7 +27287,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 		type (
 			Request  = NilIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27370,7 +27370,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27384,7 +27384,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 		type (
 			Request  = []NilIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27467,7 +27467,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27481,7 +27481,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 		type (
 			Request  = [][]NilIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27564,7 +27564,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27578,7 +27578,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 		type (
 			Request  = int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27661,7 +27661,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27675,7 +27675,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 		type (
 			Request  = []int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27758,7 +27758,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27772,7 +27772,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27855,7 +27855,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27869,7 +27869,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 		type (
 			Request  = NilStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -27952,7 +27952,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -27966,7 +27966,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 		type (
 			Request  = []NilStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28049,7 +28049,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28063,7 +28063,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28146,7 +28146,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28160,7 +28160,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 		type (
 			Request  = int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28243,7 +28243,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28257,7 +28257,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 		type (
 			Request  = []int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28340,7 +28340,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28354,7 +28354,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28437,7 +28437,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28451,7 +28451,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 		type (
 			Request  = NilStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28534,7 +28534,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28548,7 +28548,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 		type (
 			Request  = []NilStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28631,7 +28631,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28645,7 +28645,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 		type (
 			Request  = [][]NilStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28728,7 +28728,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28742,7 +28742,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 		type (
 			Request  = netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28825,7 +28825,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28839,7 +28839,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 		type (
 			Request  = []netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -28922,7 +28922,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -28936,7 +28936,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29019,7 +29019,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29033,7 +29033,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 		type (
 			Request  = NilIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29116,7 +29116,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29130,7 +29130,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 		type (
 			Request  = []NilIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29213,7 +29213,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29227,7 +29227,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29310,7 +29310,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29324,7 +29324,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 		type (
 			Request  = netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29407,7 +29407,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29421,7 +29421,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 		type (
 			Request  = []netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29504,7 +29504,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29518,7 +29518,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29601,7 +29601,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29615,7 +29615,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 		type (
 			Request  = NilIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29698,7 +29698,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29712,7 +29712,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 		type (
 			Request  = []NilIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29795,7 +29795,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29809,7 +29809,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29892,7 +29892,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -29906,7 +29906,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 		type (
 			Request  = NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -29989,7 +29989,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30003,7 +30003,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30086,7 +30086,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30100,7 +30100,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30183,7 +30183,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30197,7 +30197,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30280,7 +30280,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30294,7 +30294,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30377,7 +30377,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30391,7 +30391,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30474,7 +30474,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30488,7 +30488,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 		type (
 			Request  = NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30571,7 +30571,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30585,7 +30585,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30668,7 +30668,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30682,7 +30682,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30765,7 +30765,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30779,7 +30779,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30862,7 +30862,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30876,7 +30876,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -30959,7 +30959,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -30973,7 +30973,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31056,7 +31056,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31070,7 +31070,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 		type (
 			Request  = NilTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31153,7 +31153,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31167,7 +31167,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 		type (
 			Request  = []NilTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31250,7 +31250,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31264,7 +31264,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31347,7 +31347,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31361,7 +31361,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 		type (
 			Request  = url.URL
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31444,7 +31444,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31458,7 +31458,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 		type (
 			Request  = []url.URL
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31541,7 +31541,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31555,7 +31555,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 		type (
 			Request  = [][]url.URL
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31638,7 +31638,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31652,7 +31652,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 		type (
 			Request  = NilURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31735,7 +31735,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31749,7 +31749,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 		type (
 			Request  = []NilURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31832,7 +31832,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31846,7 +31846,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 		type (
 			Request  = [][]NilURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -31929,7 +31929,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -31943,7 +31943,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 		type (
 			Request  = uuid.UUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32026,7 +32026,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32040,7 +32040,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 		type (
 			Request  = []uuid.UUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32123,7 +32123,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32137,7 +32137,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]uuid.UUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32220,7 +32220,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32234,7 +32234,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 		type (
 			Request  = NilUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32317,7 +32317,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32331,7 +32331,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 		type (
 			Request  = []NilUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32414,7 +32414,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32428,7 +32428,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32511,7 +32511,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32525,7 +32525,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32608,7 +32608,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32622,7 +32622,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32705,7 +32705,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32719,7 +32719,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32802,7 +32802,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32816,7 +32816,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32899,7 +32899,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -32913,7 +32913,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -32996,7 +32996,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33010,7 +33010,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33093,7 +33093,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33107,7 +33107,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 		type (
 			Request  = NilStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33190,7 +33190,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33204,7 +33204,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 		type (
 			Request  = []NilStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33287,7 +33287,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33301,7 +33301,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		type (
 			Request  = [][]NilStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33384,7 +33384,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33398,7 +33398,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33481,7 +33481,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33495,7 +33495,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33578,7 +33578,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33592,7 +33592,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33675,7 +33675,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33689,7 +33689,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 		type (
 			Request  = NilStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33772,7 +33772,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33786,7 +33786,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 		type (
 			Request  = []NilStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33869,7 +33869,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33883,7 +33883,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		type (
 			Request  = [][]NilStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -33966,7 +33966,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -33980,7 +33980,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34063,7 +34063,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34077,7 +34077,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34160,7 +34160,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34174,7 +34174,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34257,7 +34257,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34271,7 +34271,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 		type (
 			Request  = NilStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34354,7 +34354,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34368,7 +34368,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 		type (
 			Request  = []NilStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34451,7 +34451,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34465,7 +34465,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		type (
 			Request  = [][]NilStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34548,7 +34548,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34562,7 +34562,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 		type (
 			Request  = NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34645,7 +34645,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34659,7 +34659,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 		type (
 			Request  = []NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34742,7 +34742,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34756,7 +34756,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 		type (
 			Request  = [][]NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34839,7 +34839,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34853,7 +34853,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 		type (
 			Request  = time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -34936,7 +34936,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -34950,7 +34950,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35033,7 +35033,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35047,7 +35047,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35130,7 +35130,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35144,7 +35144,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 		type (
 			Request  = NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35227,7 +35227,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35241,7 +35241,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		type (
 			Request  = []NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35324,7 +35324,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35338,7 +35338,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		type (
 			Request  = [][]NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35421,7 +35421,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35435,7 +35435,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 		type (
 			Request  = OptString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35518,7 +35518,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35532,7 +35532,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35615,7 +35615,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35629,7 +35629,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35712,7 +35712,7 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35726,7 +35726,7 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, w http.Res
 		type (
 			Request  = []byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35809,7 +35809,7 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35823,7 +35823,7 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, w htt
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -35906,7 +35906,7 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -35920,7 +35920,7 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36003,7 +36003,7 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36017,7 +36017,7 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, w 
 		type (
 			Request  = OptNilByte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36100,7 +36100,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36114,7 +36114,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36197,7 +36197,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36211,7 +36211,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36294,7 +36294,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36308,7 +36308,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 		type (
 			Request  = OptString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36391,7 +36391,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36405,7 +36405,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36488,7 +36488,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36502,7 +36502,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36585,7 +36585,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36599,7 +36599,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 		type (
 			Request  = OptNilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36682,7 +36682,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36696,7 +36696,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36779,7 +36779,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36793,7 +36793,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36876,7 +36876,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36890,7 +36890,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 		type (
 			Request  = []byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -36973,7 +36973,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -36987,7 +36987,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37070,7 +37070,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37084,7 +37084,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37167,7 +37167,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37181,7 +37181,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilByte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37264,7 +37264,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37278,7 +37278,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 		type (
 			Request  = [][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37361,7 +37361,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37375,7 +37375,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][][]byte
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37458,7 +37458,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37472,7 +37472,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 		type (
 			Request  = OptDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37555,7 +37555,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37569,7 +37569,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37652,7 +37652,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37666,7 +37666,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37749,7 +37749,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37763,7 +37763,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37846,7 +37846,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37860,7 +37860,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 		type (
 			Request  = []NilDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -37943,7 +37943,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -37957,7 +37957,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]NilDate
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38040,7 +38040,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38054,7 +38054,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 		type (
 			Request  = OptDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38137,7 +38137,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38151,7 +38151,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38234,7 +38234,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38248,7 +38248,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38331,7 +38331,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38345,7 +38345,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 		type (
 			Request  = OptNilDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38428,7 +38428,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38442,7 +38442,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38525,7 +38525,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38539,7 +38539,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilDateTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38622,7 +38622,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38636,7 +38636,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 		type (
 			Request  = OptDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38719,7 +38719,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38733,7 +38733,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 		type (
 			Request  = []time.Duration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38816,7 +38816,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38830,7 +38830,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]time.Duration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -38913,7 +38913,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -38927,7 +38927,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 		type (
 			Request  = OptNilDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39010,7 +39010,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39024,7 +39024,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39107,7 +39107,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39121,7 +39121,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilDuration
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39204,7 +39204,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39218,7 +39218,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 		type (
 			Request  = OptString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39301,7 +39301,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39315,7 +39315,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39398,7 +39398,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39412,7 +39412,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39495,7 +39495,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39509,7 +39509,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39592,7 +39592,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39606,7 +39606,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39689,7 +39689,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39703,7 +39703,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39786,7 +39786,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39800,7 +39800,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 		type (
 			Request  = OptString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39883,7 +39883,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39897,7 +39897,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -39980,7 +39980,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -39994,7 +39994,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40077,7 +40077,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40091,7 +40091,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 		type (
 			Request  = OptNilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40174,7 +40174,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40188,7 +40188,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40271,7 +40271,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40285,7 +40285,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40368,7 +40368,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40382,7 +40382,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 		type (
 			Request  = OptIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40465,7 +40465,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40479,7 +40479,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 		type (
 			Request  = []netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40562,7 +40562,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40576,7 +40576,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 		type (
 			Request  = [][]netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40659,7 +40659,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40673,7 +40673,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 		type (
 			Request  = OptNilIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40756,7 +40756,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40770,7 +40770,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 		type (
 			Request  = []NilIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40853,7 +40853,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40867,7 +40867,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 		type (
 			Request  = [][]NilIP
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -40950,7 +40950,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -40964,7 +40964,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 		type (
 			Request  = OptStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41047,7 +41047,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41061,7 +41061,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 		type (
 			Request  = []int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41144,7 +41144,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41158,7 +41158,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]int32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41241,7 +41241,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41255,7 +41255,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41338,7 +41338,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41352,7 +41352,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 		type (
 			Request  = []NilStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41435,7 +41435,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41449,7 +41449,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilStringInt32
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41532,7 +41532,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41546,7 +41546,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 		type (
 			Request  = OptStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41629,7 +41629,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41643,7 +41643,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 		type (
 			Request  = []int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41726,7 +41726,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41740,7 +41740,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 		type (
 			Request  = [][]int64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41823,7 +41823,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41837,7 +41837,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 		type (
 			Request  = OptNilStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -41920,7 +41920,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -41934,7 +41934,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 		type (
 			Request  = []NilStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42017,7 +42017,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42031,7 +42031,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 		type (
 			Request  = [][]NilStringInt64
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42114,7 +42114,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42128,7 +42128,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 		type (
 			Request  = OptIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42211,7 +42211,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42225,7 +42225,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 		type (
 			Request  = []netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42308,7 +42308,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42322,7 +42322,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][]netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42405,7 +42405,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42419,7 +42419,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42502,7 +42502,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42516,7 +42516,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 		type (
 			Request  = []NilIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42599,7 +42599,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42613,7 +42613,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]NilIPv4
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42696,7 +42696,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42710,7 +42710,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 		type (
 			Request  = OptIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42793,7 +42793,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42807,7 +42807,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 		type (
 			Request  = []netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42890,7 +42890,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -42904,7 +42904,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][]netip.Addr
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -42987,7 +42987,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43001,7 +43001,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43084,7 +43084,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43098,7 +43098,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 		type (
 			Request  = []NilIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43181,7 +43181,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43195,7 +43195,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]NilIPv6
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43278,7 +43278,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43292,7 +43292,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 		type (
 			Request  = OptNilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43375,7 +43375,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43389,7 +43389,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43472,7 +43472,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43486,7 +43486,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43569,7 +43569,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43583,7 +43583,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 		type (
 			Request  = OptString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43666,7 +43666,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43680,7 +43680,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 		type (
 			Request  = []string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43763,7 +43763,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43777,7 +43777,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]string
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43860,7 +43860,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43874,7 +43874,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 		type (
 			Request  = OptNilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -43957,7 +43957,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -43971,7 +43971,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44054,7 +44054,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44068,7 +44068,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilString
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44151,7 +44151,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44165,7 +44165,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 		type (
 			Request  = OptTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44248,7 +44248,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44262,7 +44262,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44345,7 +44345,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44359,7 +44359,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44442,7 +44442,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44456,7 +44456,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44539,7 +44539,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44553,7 +44553,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 		type (
 			Request  = []NilTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44636,7 +44636,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44650,7 +44650,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]NilTime
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44733,7 +44733,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44747,7 +44747,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 		type (
 			Request  = OptURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44830,7 +44830,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44844,7 +44844,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 		type (
 			Request  = []url.URL
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -44927,7 +44927,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -44941,7 +44941,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 		type (
 			Request  = [][]url.URL
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45024,7 +45024,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45038,7 +45038,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 		type (
 			Request  = OptNilURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45121,7 +45121,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45135,7 +45135,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 		type (
 			Request  = []NilURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45218,7 +45218,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45232,7 +45232,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 		type (
 			Request  = [][]NilURI
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45315,7 +45315,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45329,7 +45329,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 		type (
 			Request  = OptUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45412,7 +45412,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45426,7 +45426,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 		type (
 			Request  = []uuid.UUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45509,7 +45509,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45523,7 +45523,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][]uuid.UUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45606,7 +45606,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45620,7 +45620,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45703,7 +45703,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45717,7 +45717,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 		type (
 			Request  = []NilUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45800,7 +45800,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45814,7 +45814,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]NilUUID
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45897,7 +45897,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -45911,7 +45911,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 		type (
 			Request  = OptStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -45994,7 +45994,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46008,7 +46008,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46091,7 +46091,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46105,7 +46105,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46188,7 +46188,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46202,7 +46202,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 		type (
 			Request  = OptStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46285,7 +46285,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46299,7 +46299,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46382,7 +46382,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46396,7 +46396,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46479,7 +46479,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46493,7 +46493,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 		type (
 			Request  = OptNilStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46576,7 +46576,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46590,7 +46590,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 		type (
 			Request  = []NilStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46673,7 +46673,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46687,7 +46687,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 		type (
 			Request  = [][]NilStringUnixMicro
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46770,7 +46770,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46784,7 +46784,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 		type (
 			Request  = OptStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46867,7 +46867,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46881,7 +46881,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -46964,7 +46964,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -46978,7 +46978,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47061,7 +47061,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47075,7 +47075,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 		type (
 			Request  = OptNilStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47158,7 +47158,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47172,7 +47172,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 		type (
 			Request  = []NilStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47255,7 +47255,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47269,7 +47269,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 		type (
 			Request  = [][]NilStringUnixMilli
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47352,7 +47352,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47366,7 +47366,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 		type (
 			Request  = OptStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47449,7 +47449,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47463,7 +47463,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47546,7 +47546,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47560,7 +47560,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47643,7 +47643,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47657,7 +47657,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 		type (
 			Request  = OptNilStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47740,7 +47740,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47754,7 +47754,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 		type (
 			Request  = []NilStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47837,7 +47837,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47851,7 +47851,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 		type (
 			Request  = [][]NilStringUnixNano
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -47934,7 +47934,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -47948,7 +47948,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 		type (
 			Request  = OptNilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48031,7 +48031,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48045,7 +48045,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 		type (
 			Request  = []NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48128,7 +48128,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48142,7 +48142,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 		type (
 			Request  = [][]NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48225,7 +48225,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48239,7 +48239,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 		type (
 			Request  = OptStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48322,7 +48322,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48336,7 +48336,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 		type (
 			Request  = []time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48419,7 +48419,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48433,7 +48433,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 		type (
 			Request  = [][]time.Time
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48516,7 +48516,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48530,7 +48530,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 		type (
 			Request  = OptNilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48613,7 +48613,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48627,7 +48627,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 		type (
 			Request  = []NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -48710,7 +48710,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 		}
 	}()
 
-	var response Error
+	var response *Error
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -48724,7 +48724,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 		type (
 			Request  = [][]NilStringUnixSeconds
 			Params   = struct{}
-			Response = Error
+			Response = *Error
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -49486,7 +49486,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response TestResponseEmptyStructOK
+	var response *TestResponseEmptyStructOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -49500,7 +49500,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = TestResponseEmptyStructOK
+			Response = *TestResponseEmptyStructOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -49583,7 +49583,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response TestResponseFormatTestOK
+	var response *TestResponseFormatTestOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -49597,7 +49597,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = TestResponseFormatTestOK
+			Response = *TestResponseFormatTestOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

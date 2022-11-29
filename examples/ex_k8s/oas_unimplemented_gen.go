@@ -1843,14 +1843,14 @@ func (UnimplementedHandler) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx c
 // LogFileHandler implements logFileHandler operation.
 //
 // GET /logs/{logpath}
-func (UnimplementedHandler) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (r LogFileHandlerUnauthorized, _ error) {
+func (UnimplementedHandler) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (r *LogFileHandlerUnauthorized, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // LogFileListHandler implements logFileListHandler operation.
 //
 // GET /logs/
-func (UnimplementedHandler) LogFileListHandler(ctx context.Context) (r LogFileListHandlerUnauthorized, _ error) {
+func (UnimplementedHandler) LogFileListHandler(ctx context.Context) (r *LogFileListHandlerUnauthorized, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

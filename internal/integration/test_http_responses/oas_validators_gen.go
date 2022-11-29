@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s CombinedDefStatusCode) Validate() error {
+func (s *CombinedDefStatusCode) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {

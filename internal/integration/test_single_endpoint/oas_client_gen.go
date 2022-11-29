@@ -18,7 +18,7 @@ import (
 )
 
 type errorHandler interface {
-	NewError(ctx context.Context, err error) ErrorStatusCode
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 var _ Handler = struct {

@@ -24,12 +24,12 @@ type AnyContentTypeBinaryStringSchemaDefaultDefStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetStatusCode() int {
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetResponse() AnyContentTypeBinaryStringSchemaDefaultDef {
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetResponse() AnyContentTypeBinaryStringSchemaDefaultDef {
 	return s.Response
 }
 
@@ -61,12 +61,12 @@ type Combined2XXStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s Combined2XXStatusCode) GetStatusCode() int {
+func (s *Combined2XXStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s Combined2XXStatusCode) GetResponse() int {
+func (s *Combined2XXStatusCode) GetResponse() int {
 	return s.Response
 }
 
@@ -89,12 +89,12 @@ type Combined5XXStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s Combined5XXStatusCode) GetStatusCode() int {
+func (s *Combined5XXStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s Combined5XXStatusCode) GetResponse() bool {
+func (s *Combined5XXStatusCode) GetResponse() bool {
 	return s.Response
 }
 
@@ -117,12 +117,12 @@ type CombinedDefStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s CombinedDefStatusCode) GetStatusCode() int {
+func (s *CombinedDefStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s CombinedDefStatusCode) GetResponse() []string {
+func (s *CombinedDefStatusCode) GetResponse() []string {
 	return s.Response
 }
 
@@ -143,7 +143,7 @@ type CombinedOK struct {
 }
 
 // GetOk returns the value of Ok.
-func (s CombinedOK) GetOk() string {
+func (s *CombinedOK) GetOk() string {
 	return s.Ok
 }
 
@@ -169,7 +169,7 @@ type Headers200OK struct {
 }
 
 // GetTestHeader returns the value of TestHeader.
-func (s Headers200OK) GetTestHeader() string {
+func (s *Headers200OK) GetTestHeader() string {
 	return s.TestHeader
 }
 
@@ -185,12 +185,12 @@ type HeadersCombined4XX struct {
 }
 
 // GetTestHeader returns the value of TestHeader.
-func (s HeadersCombined4XX) GetTestHeader() string {
+func (s *HeadersCombined4XX) GetTestHeader() string {
 	return s.TestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s HeadersCombined4XX) GetStatusCode() int {
+func (s *HeadersCombined4XX) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -213,12 +213,12 @@ type HeadersCombinedDef struct {
 }
 
 // GetTestHeader returns the value of TestHeader.
-func (s HeadersCombinedDef) GetTestHeader() string {
+func (s *HeadersCombinedDef) GetTestHeader() string {
 	return s.TestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s HeadersCombinedDef) GetStatusCode() int {
+func (s *HeadersCombinedDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -240,7 +240,7 @@ type HeadersCombinedOK struct {
 }
 
 // GetTestHeader returns the value of TestHeader.
-func (s HeadersCombinedOK) GetTestHeader() string {
+func (s *HeadersCombinedOK) GetTestHeader() string {
 	return s.TestHeader
 }
 
@@ -266,12 +266,12 @@ type HeadersDefaultDef struct {
 }
 
 // GetTestHeader returns the value of TestHeader.
-func (s HeadersDefaultDef) GetTestHeader() string {
+func (s *HeadersDefaultDef) GetTestHeader() string {
 	return s.TestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s HeadersDefaultDef) GetStatusCode() int {
+func (s *HeadersDefaultDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -292,12 +292,12 @@ type HeadersPattern4XX struct {
 }
 
 // GetTestHeader returns the value of TestHeader.
-func (s HeadersPattern4XX) GetTestHeader() string {
+func (s *HeadersPattern4XX) GetTestHeader() string {
 	return s.TestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s HeadersPattern4XX) GetStatusCode() int {
+func (s *HeadersPattern4XX) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -318,12 +318,12 @@ type IntersectPatternCode2XXStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s IntersectPatternCode2XXStatusCode) GetStatusCode() int {
+func (s *IntersectPatternCode2XXStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s IntersectPatternCode2XXStatusCode) GetResponse() int {
+func (s *IntersectPatternCode2XXStatusCode) GetResponse() int {
 	return s.Response
 }
 

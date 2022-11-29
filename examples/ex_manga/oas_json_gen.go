@@ -8,14 +8,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s Book) Encode(e *jx.Encoder) {
+func (s *Book) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Book) encodeFields(e *jx.Encoder) {
+func (s *Book) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -205,7 +205,7 @@ func (s *Book) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Book) MarshalJSON() ([]byte, error) {
+func (s *Book) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -218,14 +218,14 @@ func (s *Book) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Image) Encode(e *jx.Encoder) {
+func (s *Image) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Image) encodeFields(e *jx.Encoder) {
+func (s *Image) encodeFields(e *jx.Encoder) {
 	{
 		if s.T.Set {
 			e.FieldStart("t")
@@ -302,7 +302,7 @@ func (s *Image) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Image) MarshalJSON() ([]byte, error) {
+func (s *Image) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -315,14 +315,14 @@ func (s *Image) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Images) Encode(e *jx.Encoder) {
+func (s *Images) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Images) encodeFields(e *jx.Encoder) {
+func (s *Images) encodeFields(e *jx.Encoder) {
 	{
 		if s.Pages != nil {
 			e.FieldStart("pages")
@@ -410,7 +410,7 @@ func (s *Images) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Images) MarshalJSON() ([]byte, error) {
+func (s *Images) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -725,14 +725,14 @@ func (s *SearchOKApplicationJSON) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchResponse) Encode(e *jx.Encoder) {
+func (s *SearchResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s SearchResponse) encodeFields(e *jx.Encoder) {
+func (s *SearchResponse) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -820,7 +820,7 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SearchResponse) MarshalJSON() ([]byte, error) {
+func (s *SearchResponse) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -833,14 +833,14 @@ func (s *SearchResponse) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Tag) Encode(e *jx.Encoder) {
+func (s *Tag) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Tag) encodeFields(e *jx.Encoder) {
+func (s *Tag) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -951,7 +951,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Tag) MarshalJSON() ([]byte, error) {
+func (s *Tag) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1014,14 +1014,14 @@ func (s *TagType) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Title) Encode(e *jx.Encoder) {
+func (s *Title) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Title) encodeFields(e *jx.Encoder) {
+func (s *Title) encodeFields(e *jx.Encoder) {
 	{
 		if s.English.Set {
 			e.FieldStart("english")
@@ -1098,7 +1098,7 @@ func (s *Title) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Title) MarshalJSON() ([]byte, error) {
+func (s *Title) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

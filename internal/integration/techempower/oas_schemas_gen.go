@@ -9,7 +9,7 @@ type HelloWorld struct {
 }
 
 // GetMessage returns the value of Message.
-func (s HelloWorld) GetMessage() string {
+func (s *HelloWorld) GetMessage() string {
 	return s.Message
 }
 
@@ -25,12 +25,12 @@ type WorldObject struct {
 }
 
 // GetID returns the value of ID.
-func (s WorldObject) GetID() int64 {
+func (s *WorldObject) GetID() int64 {
 	return s.ID
 }
 
 // GetRandomNumber returns the value of RandomNumber.
-func (s WorldObject) GetRandomNumber() int64 {
+func (s *WorldObject) GetRandomNumber() int64 {
 	return s.RandomNumber
 }
 

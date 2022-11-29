@@ -11,11 +11,11 @@ type Handler interface {
 	// PublishEvent implements publishEvent operation.
 	//
 	// POST /event
-	PublishEvent(ctx context.Context, req OptEvent) (Event, error)
-	// NewError creates ErrorStatusCode from error returned by handler.
+	PublishEvent(ctx context.Context, req OptEvent) (*Event, error)
+	// NewError creates *ErrorStatusCode from error returned by handler.
 	//
 	// Used for common default response.
-	NewError(ctx context.Context, err error) ErrorStatusCode
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 // Server implements http server based on OpenAPI v3 specification and
@@ -41,7 +41,7 @@ func NewServer(h Handler, opts ...ServerOption) (*Server, error) {
 type WebhookHandler interface {
 	// StatusWebhook implements statusWebhook operation.
 	//
-	StatusWebhook(ctx context.Context) (StatusWebhookOK, error)
+	StatusWebhook(ctx context.Context) (*StatusWebhookOK, error)
 	// UpdateDelete implements DELETE update operation.
 	//
 	UpdateDelete(ctx context.Context) (UpdateDeleteRes, error)

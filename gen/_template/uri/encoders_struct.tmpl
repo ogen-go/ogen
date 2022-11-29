@@ -6,7 +6,7 @@
 {{- $va := $.Validators }}
 
 // EncodeURI encodes {{ $.Name }} as URI form.
-func (s {{ $.Name }}) EncodeURI(e uri.Encoder) error {
+func (s {{ $.ReadOnlyReceiver }}) EncodeURI(e uri.Encoder) error {
 	{{- range $f := $fields }}
 		if err := e.EncodeField({{ quote $f.Tag.JSON }}, func(e uri.Encoder) error {
 			{{- template "uri/encode" field_elem $f }}

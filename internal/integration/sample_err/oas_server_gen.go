@@ -13,17 +13,17 @@ type Handler interface {
 	// Creates data.
 	//
 	// POST /data
-	DataCreate(ctx context.Context, req OptData) (Data, error)
+	DataCreate(ctx context.Context, req OptData) (*Data, error)
 	// DataGet implements dataGet operation.
 	//
 	// Retrieve data.
 	//
 	// GET /data
-	DataGet(ctx context.Context) (Data, error)
-	// NewError creates ErrorStatusCode from error returned by handler.
+	DataGet(ctx context.Context) (*Data, error)
+	// NewError creates *ErrorStatusCode from error returned by handler.
 	//
 	// Used for common default response.
-	NewError(ctx context.Context, err error) ErrorStatusCode
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 // Server implements http server based on OpenAPI v3 specification and

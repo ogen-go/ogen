@@ -8,7 +8,7 @@
 {{ end }}
 
 {{- if $.Error }}
-func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, span trace.Span) error {
+func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, span trace.Span) error {
 	{{- if eq (len $.Error.ResponseInfo) 1 }}
 		{{- range $info := $.Error.ResponseInfo }}
 			{{- template "respond" $info }}
@@ -34,7 +34,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 
 {{ define "response_encoders/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
-func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
+func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, span trace.Span) error {
 	{{- if eq (len $op.ListResponseTypes) 1 }}
 		{{- range $info := $op.ListResponseTypes }}
 			{{- template "respond" $info }}

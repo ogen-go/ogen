@@ -10,7 +10,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s Book) Validate() error {
+func (s *Book) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ID.Set {
@@ -168,7 +168,7 @@ func (s Book) Validate() error {
 	}
 	return nil
 }
-func (s Image) Validate() error {
+func (s *Image) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.W.Set {
@@ -229,7 +229,7 @@ func (s Image) Validate() error {
 	}
 	return nil
 }
-func (s Images) Validate() error {
+func (s *Images) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -344,7 +344,7 @@ func (s SearchOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s SearchResponse) Validate() error {
+func (s *SearchResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -376,7 +376,7 @@ func (s SearchResponse) Validate() error {
 	}
 	return nil
 }
-func (s Tag) Validate() error {
+func (s *Tag) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ID.Set {

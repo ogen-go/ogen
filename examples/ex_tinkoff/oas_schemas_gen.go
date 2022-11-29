@@ -28,42 +28,42 @@ type Candle struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s Candle) GetFigi() string {
+func (s *Candle) GetFigi() string {
 	return s.Figi
 }
 
 // GetInterval returns the value of Interval.
-func (s Candle) GetInterval() CandleResolution {
+func (s *Candle) GetInterval() CandleResolution {
 	return s.Interval
 }
 
 // GetO returns the value of O.
-func (s Candle) GetO() float64 {
+func (s *Candle) GetO() float64 {
 	return s.O
 }
 
 // GetC returns the value of C.
-func (s Candle) GetC() float64 {
+func (s *Candle) GetC() float64 {
 	return s.C
 }
 
 // GetH returns the value of H.
-func (s Candle) GetH() float64 {
+func (s *Candle) GetH() float64 {
 	return s.H
 }
 
 // GetL returns the value of L.
-func (s Candle) GetL() float64 {
+func (s *Candle) GetL() float64 {
 	return s.L
 }
 
 // GetV returns the value of V.
-func (s Candle) GetV() int32 {
+func (s *Candle) GetV() int32 {
 	return s.V
 }
 
 // GetTime returns the value of Time.
-func (s Candle) GetTime() time.Time {
+func (s *Candle) GetTime() time.Time {
 	return s.Time
 }
 
@@ -144,17 +144,17 @@ type Candles struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s Candles) GetFigi() string {
+func (s *Candles) GetFigi() string {
 	return s.Figi
 }
 
 // GetInterval returns the value of Interval.
-func (s Candles) GetInterval() CandleResolution {
+func (s *Candles) GetInterval() CandleResolution {
 	return s.Interval
 }
 
 // GetCandles returns the value of Candles.
-func (s Candles) GetCandles() []Candle {
+func (s *Candles) GetCandles() []Candle {
 	return s.Candles
 }
 
@@ -181,17 +181,17 @@ type CandlesResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s CandlesResponse) GetTrackingId() string {
+func (s *CandlesResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s CandlesResponse) GetStatus() string {
+func (s *CandlesResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s CandlesResponse) GetPayload() Candles {
+func (s *CandlesResponse) GetPayload() Candles {
 	return s.Payload
 }
 
@@ -218,7 +218,7 @@ type Currencies struct {
 }
 
 // GetCurrencies returns the value of Currencies.
-func (s Currencies) GetCurrencies() []CurrencyPosition {
+func (s *Currencies) GetCurrencies() []CurrencyPosition {
 	return s.Currencies
 }
 
@@ -250,17 +250,17 @@ type CurrencyPosition struct {
 }
 
 // GetCurrency returns the value of Currency.
-func (s CurrencyPosition) GetCurrency() Currency {
+func (s *CurrencyPosition) GetCurrency() Currency {
 	return s.Currency
 }
 
 // GetBalance returns the value of Balance.
-func (s CurrencyPosition) GetBalance() float64 {
+func (s *CurrencyPosition) GetBalance() float64 {
 	return s.Balance
 }
 
 // GetBlocked returns the value of Blocked.
-func (s CurrencyPosition) GetBlocked() OptFloat64 {
+func (s *CurrencyPosition) GetBlocked() OptFloat64 {
 	return s.Blocked
 }
 
@@ -287,17 +287,17 @@ type Empty struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s Empty) GetTrackingId() string {
+func (s *Empty) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetPayload returns the value of Payload.
-func (s Empty) GetPayload() EmptyPayload {
+func (s *Empty) GetPayload() EmptyPayload {
 	return s.Payload
 }
 
 // GetStatus returns the value of Status.
-func (s Empty) GetStatus() string {
+func (s *Empty) GetStatus() string {
 	return s.Status
 }
 
@@ -332,17 +332,17 @@ type Error struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s Error) GetTrackingId() string {
+func (s *Error) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s Error) GetStatus() string {
+func (s *Error) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s Error) GetPayload() ErrorPayload {
+func (s *Error) GetPayload() ErrorPayload {
 	return s.Payload
 }
 
@@ -389,12 +389,12 @@ type ErrorPayload struct {
 }
 
 // GetMessage returns the value of Message.
-func (s ErrorPayload) GetMessage() OptString {
+func (s *ErrorPayload) GetMessage() OptString {
 	return s.Message
 }
 
 // GetCode returns the value of Code.
-func (s ErrorPayload) GetCode() OptString {
+func (s *ErrorPayload) GetCode() OptString {
 	return s.Code
 }
 
@@ -426,17 +426,17 @@ type LimitOrderRequest struct {
 }
 
 // GetLots returns the value of Lots.
-func (s LimitOrderRequest) GetLots() int32 {
+func (s *LimitOrderRequest) GetLots() int32 {
 	return s.Lots
 }
 
 // GetOperation returns the value of Operation.
-func (s LimitOrderRequest) GetOperation() OperationType {
+func (s *LimitOrderRequest) GetOperation() OperationType {
 	return s.Operation
 }
 
 // GetPrice returns the value of Price.
-func (s LimitOrderRequest) GetPrice() float64 {
+func (s *LimitOrderRequest) GetPrice() float64 {
 	return s.Price
 }
 
@@ -463,17 +463,17 @@ type LimitOrderResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s LimitOrderResponse) GetTrackingId() string {
+func (s *LimitOrderResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s LimitOrderResponse) GetStatus() string {
+func (s *LimitOrderResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s LimitOrderResponse) GetPayload() PlacedLimitOrder {
+func (s *LimitOrderResponse) GetPayload() PlacedLimitOrder {
 	return s.Payload
 }
 
@@ -511,47 +511,47 @@ type MarketInstrument struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s MarketInstrument) GetFigi() string {
+func (s *MarketInstrument) GetFigi() string {
 	return s.Figi
 }
 
 // GetTicker returns the value of Ticker.
-func (s MarketInstrument) GetTicker() string {
+func (s *MarketInstrument) GetTicker() string {
 	return s.Ticker
 }
 
 // GetIsin returns the value of Isin.
-func (s MarketInstrument) GetIsin() OptString {
+func (s *MarketInstrument) GetIsin() OptString {
 	return s.Isin
 }
 
 // GetMinPriceIncrement returns the value of MinPriceIncrement.
-func (s MarketInstrument) GetMinPriceIncrement() OptFloat64 {
+func (s *MarketInstrument) GetMinPriceIncrement() OptFloat64 {
 	return s.MinPriceIncrement
 }
 
 // GetLot returns the value of Lot.
-func (s MarketInstrument) GetLot() int32 {
+func (s *MarketInstrument) GetLot() int32 {
 	return s.Lot
 }
 
 // GetMinQuantity returns the value of MinQuantity.
-func (s MarketInstrument) GetMinQuantity() OptInt32 {
+func (s *MarketInstrument) GetMinQuantity() OptInt32 {
 	return s.MinQuantity
 }
 
 // GetCurrency returns the value of Currency.
-func (s MarketInstrument) GetCurrency() OptCurrency {
+func (s *MarketInstrument) GetCurrency() OptCurrency {
 	return s.Currency
 }
 
 // GetName returns the value of Name.
-func (s MarketInstrument) GetName() string {
+func (s *MarketInstrument) GetName() string {
 	return s.Name
 }
 
 // GetType returns the value of Type.
-func (s MarketInstrument) GetType() InstrumentType {
+func (s *MarketInstrument) GetType() InstrumentType {
 	return s.Type
 }
 
@@ -607,12 +607,12 @@ type MarketInstrumentList struct {
 }
 
 // GetTotal returns the value of Total.
-func (s MarketInstrumentList) GetTotal() int32 {
+func (s *MarketInstrumentList) GetTotal() int32 {
 	return s.Total
 }
 
 // GetInstruments returns the value of Instruments.
-func (s MarketInstrumentList) GetInstruments() []MarketInstrument {
+func (s *MarketInstrumentList) GetInstruments() []MarketInstrument {
 	return s.Instruments
 }
 
@@ -634,17 +634,17 @@ type MarketInstrumentListResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s MarketInstrumentListResponse) GetTrackingId() string {
+func (s *MarketInstrumentListResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s MarketInstrumentListResponse) GetStatus() string {
+func (s *MarketInstrumentListResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s MarketInstrumentListResponse) GetPayload() MarketInstrumentList {
+func (s *MarketInstrumentListResponse) GetPayload() MarketInstrumentList {
 	return s.Payload
 }
 
@@ -676,12 +676,12 @@ type MarketOrderRequest struct {
 }
 
 // GetLots returns the value of Lots.
-func (s MarketOrderRequest) GetLots() int32 {
+func (s *MarketOrderRequest) GetLots() int32 {
 	return s.Lots
 }
 
 // GetOperation returns the value of Operation.
-func (s MarketOrderRequest) GetOperation() OperationType {
+func (s *MarketOrderRequest) GetOperation() OperationType {
 	return s.Operation
 }
 
@@ -703,17 +703,17 @@ type MarketOrderResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s MarketOrderResponse) GetTrackingId() string {
+func (s *MarketOrderResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s MarketOrderResponse) GetStatus() string {
+func (s *MarketOrderResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s MarketOrderResponse) GetPayload() PlacedMarketOrder {
+func (s *MarketOrderResponse) GetPayload() PlacedMarketOrder {
 	return s.Payload
 }
 
@@ -741,12 +741,12 @@ type MoneyAmount struct {
 }
 
 // GetCurrency returns the value of Currency.
-func (s MoneyAmount) GetCurrency() Currency {
+func (s *MoneyAmount) GetCurrency() Currency {
 	return s.Currency
 }
 
 // GetValue returns the value of Value.
-func (s MoneyAmount) GetValue() float64 {
+func (s *MoneyAmount) GetValue() float64 {
 	return s.Value
 }
 
@@ -782,72 +782,72 @@ type Operation struct {
 }
 
 // GetID returns the value of ID.
-func (s Operation) GetID() string {
+func (s *Operation) GetID() string {
 	return s.ID
 }
 
 // GetStatus returns the value of Status.
-func (s Operation) GetStatus() OperationStatus {
+func (s *Operation) GetStatus() OperationStatus {
 	return s.Status
 }
 
 // GetTrades returns the value of Trades.
-func (s Operation) GetTrades() []OperationTrade {
+func (s *Operation) GetTrades() []OperationTrade {
 	return s.Trades
 }
 
 // GetCommission returns the value of Commission.
-func (s Operation) GetCommission() OptMoneyAmount {
+func (s *Operation) GetCommission() OptMoneyAmount {
 	return s.Commission
 }
 
 // GetCurrency returns the value of Currency.
-func (s Operation) GetCurrency() Currency {
+func (s *Operation) GetCurrency() Currency {
 	return s.Currency
 }
 
 // GetPayment returns the value of Payment.
-func (s Operation) GetPayment() float64 {
+func (s *Operation) GetPayment() float64 {
 	return s.Payment
 }
 
 // GetPrice returns the value of Price.
-func (s Operation) GetPrice() OptFloat64 {
+func (s *Operation) GetPrice() OptFloat64 {
 	return s.Price
 }
 
 // GetQuantity returns the value of Quantity.
-func (s Operation) GetQuantity() OptInt32 {
+func (s *Operation) GetQuantity() OptInt32 {
 	return s.Quantity
 }
 
 // GetQuantityExecuted returns the value of QuantityExecuted.
-func (s Operation) GetQuantityExecuted() OptInt32 {
+func (s *Operation) GetQuantityExecuted() OptInt32 {
 	return s.QuantityExecuted
 }
 
 // GetFigi returns the value of Figi.
-func (s Operation) GetFigi() OptString {
+func (s *Operation) GetFigi() OptString {
 	return s.Figi
 }
 
 // GetInstrumentType returns the value of InstrumentType.
-func (s Operation) GetInstrumentType() OptInstrumentType {
+func (s *Operation) GetInstrumentType() OptInstrumentType {
 	return s.InstrumentType
 }
 
 // GetIsMarginCall returns the value of IsMarginCall.
-func (s Operation) GetIsMarginCall() bool {
+func (s *Operation) GetIsMarginCall() bool {
 	return s.IsMarginCall
 }
 
 // GetDate returns the value of Date.
-func (s Operation) GetDate() time.Time {
+func (s *Operation) GetDate() time.Time {
 	return s.Date
 }
 
 // GetOperationType returns the value of OperationType.
-func (s Operation) GetOperationType() OptOperationTypeWithCommission {
+func (s *Operation) GetOperationType() OptOperationTypeWithCommission {
 	return s.OperationType
 }
 
@@ -941,22 +941,22 @@ type OperationTrade struct {
 }
 
 // GetTradeId returns the value of TradeId.
-func (s OperationTrade) GetTradeId() string {
+func (s *OperationTrade) GetTradeId() string {
 	return s.TradeId
 }
 
 // GetDate returns the value of Date.
-func (s OperationTrade) GetDate() time.Time {
+func (s *OperationTrade) GetDate() time.Time {
 	return s.Date
 }
 
 // GetPrice returns the value of Price.
-func (s OperationTrade) GetPrice() float64 {
+func (s *OperationTrade) GetPrice() float64 {
 	return s.Price
 }
 
 // GetQuantity returns the value of Quantity.
-func (s OperationTrade) GetQuantity() int32 {
+func (s *OperationTrade) GetQuantity() int32 {
 	return s.Quantity
 }
 
@@ -1021,7 +1021,7 @@ type Operations struct {
 }
 
 // GetOperations returns the value of Operations.
-func (s Operations) GetOperations() []Operation {
+func (s *Operations) GetOperations() []Operation {
 	return s.Operations
 }
 
@@ -1038,17 +1038,17 @@ type OperationsResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s OperationsResponse) GetTrackingId() string {
+func (s *OperationsResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s OperationsResponse) GetStatus() string {
+func (s *OperationsResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s OperationsResponse) GetPayload() Operations {
+func (s *OperationsResponse) GetPayload() Operations {
 	return s.Payload
 }
 
@@ -1496,42 +1496,42 @@ type Order struct {
 }
 
 // GetOrderId returns the value of OrderId.
-func (s Order) GetOrderId() string {
+func (s *Order) GetOrderId() string {
 	return s.OrderId
 }
 
 // GetFigi returns the value of Figi.
-func (s Order) GetFigi() string {
+func (s *Order) GetFigi() string {
 	return s.Figi
 }
 
 // GetOperation returns the value of Operation.
-func (s Order) GetOperation() OperationType {
+func (s *Order) GetOperation() OperationType {
 	return s.Operation
 }
 
 // GetStatus returns the value of Status.
-func (s Order) GetStatus() OrderStatus {
+func (s *Order) GetStatus() OrderStatus {
 	return s.Status
 }
 
 // GetRequestedLots returns the value of RequestedLots.
-func (s Order) GetRequestedLots() int32 {
+func (s *Order) GetRequestedLots() int32 {
 	return s.RequestedLots
 }
 
 // GetExecutedLots returns the value of ExecutedLots.
-func (s Order) GetExecutedLots() int32 {
+func (s *Order) GetExecutedLots() int32 {
 	return s.ExecutedLots
 }
 
 // GetType returns the value of Type.
-func (s Order) GetType() OrderType {
+func (s *Order) GetType() OrderType {
 	return s.Type
 }
 
 // GetPrice returns the value of Price.
-func (s Order) GetPrice() float64 {
+func (s *Order) GetPrice() float64 {
 	return s.Price
 }
 
@@ -1582,12 +1582,12 @@ type OrderResponse struct {
 }
 
 // GetPrice returns the value of Price.
-func (s OrderResponse) GetPrice() float64 {
+func (s *OrderResponse) GetPrice() float64 {
 	return s.Price
 }
 
 // GetQuantity returns the value of Quantity.
-func (s OrderResponse) GetQuantity() int32 {
+func (s *OrderResponse) GetQuantity() int32 {
 	return s.Quantity
 }
 
@@ -1646,57 +1646,57 @@ type Orderbook struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s Orderbook) GetFigi() string {
+func (s *Orderbook) GetFigi() string {
 	return s.Figi
 }
 
 // GetDepth returns the value of Depth.
-func (s Orderbook) GetDepth() int32 {
+func (s *Orderbook) GetDepth() int32 {
 	return s.Depth
 }
 
 // GetBids returns the value of Bids.
-func (s Orderbook) GetBids() []OrderResponse {
+func (s *Orderbook) GetBids() []OrderResponse {
 	return s.Bids
 }
 
 // GetAsks returns the value of Asks.
-func (s Orderbook) GetAsks() []OrderResponse {
+func (s *Orderbook) GetAsks() []OrderResponse {
 	return s.Asks
 }
 
 // GetTradeStatus returns the value of TradeStatus.
-func (s Orderbook) GetTradeStatus() TradeStatus {
+func (s *Orderbook) GetTradeStatus() TradeStatus {
 	return s.TradeStatus
 }
 
 // GetMinPriceIncrement returns the value of MinPriceIncrement.
-func (s Orderbook) GetMinPriceIncrement() float64 {
+func (s *Orderbook) GetMinPriceIncrement() float64 {
 	return s.MinPriceIncrement
 }
 
 // GetFaceValue returns the value of FaceValue.
-func (s Orderbook) GetFaceValue() OptFloat64 {
+func (s *Orderbook) GetFaceValue() OptFloat64 {
 	return s.FaceValue
 }
 
 // GetLastPrice returns the value of LastPrice.
-func (s Orderbook) GetLastPrice() OptFloat64 {
+func (s *Orderbook) GetLastPrice() OptFloat64 {
 	return s.LastPrice
 }
 
 // GetClosePrice returns the value of ClosePrice.
-func (s Orderbook) GetClosePrice() OptFloat64 {
+func (s *Orderbook) GetClosePrice() OptFloat64 {
 	return s.ClosePrice
 }
 
 // GetLimitUp returns the value of LimitUp.
-func (s Orderbook) GetLimitUp() OptFloat64 {
+func (s *Orderbook) GetLimitUp() OptFloat64 {
 	return s.LimitUp
 }
 
 // GetLimitDown returns the value of LimitDown.
-func (s Orderbook) GetLimitDown() OptFloat64 {
+func (s *Orderbook) GetLimitDown() OptFloat64 {
 	return s.LimitDown
 }
 
@@ -1763,17 +1763,17 @@ type OrderbookResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s OrderbookResponse) GetTrackingId() string {
+func (s *OrderbookResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s OrderbookResponse) GetStatus() string {
+func (s *OrderbookResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s OrderbookResponse) GetPayload() Orderbook {
+func (s *OrderbookResponse) GetPayload() Orderbook {
 	return s.Payload
 }
 
@@ -1802,17 +1802,17 @@ type OrdersResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s OrdersResponse) GetTrackingId() string {
+func (s *OrdersResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s OrdersResponse) GetStatus() string {
+func (s *OrdersResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s OrdersResponse) GetPayload() []Order {
+func (s *OrdersResponse) GetPayload() []Order {
 	return s.Payload
 }
 
@@ -1847,42 +1847,42 @@ type PlacedLimitOrder struct {
 }
 
 // GetOrderId returns the value of OrderId.
-func (s PlacedLimitOrder) GetOrderId() string {
+func (s *PlacedLimitOrder) GetOrderId() string {
 	return s.OrderId
 }
 
 // GetOperation returns the value of Operation.
-func (s PlacedLimitOrder) GetOperation() OperationType {
+func (s *PlacedLimitOrder) GetOperation() OperationType {
 	return s.Operation
 }
 
 // GetStatus returns the value of Status.
-func (s PlacedLimitOrder) GetStatus() OrderStatus {
+func (s *PlacedLimitOrder) GetStatus() OrderStatus {
 	return s.Status
 }
 
 // GetRejectReason returns the value of RejectReason.
-func (s PlacedLimitOrder) GetRejectReason() OptString {
+func (s *PlacedLimitOrder) GetRejectReason() OptString {
 	return s.RejectReason
 }
 
 // GetMessage returns the value of Message.
-func (s PlacedLimitOrder) GetMessage() OptString {
+func (s *PlacedLimitOrder) GetMessage() OptString {
 	return s.Message
 }
 
 // GetRequestedLots returns the value of RequestedLots.
-func (s PlacedLimitOrder) GetRequestedLots() int {
+func (s *PlacedLimitOrder) GetRequestedLots() int {
 	return s.RequestedLots
 }
 
 // GetExecutedLots returns the value of ExecutedLots.
-func (s PlacedLimitOrder) GetExecutedLots() int {
+func (s *PlacedLimitOrder) GetExecutedLots() int {
 	return s.ExecutedLots
 }
 
 // GetCommission returns the value of Commission.
-func (s PlacedLimitOrder) GetCommission() OptMoneyAmount {
+func (s *PlacedLimitOrder) GetCommission() OptMoneyAmount {
 	return s.Commission
 }
 
@@ -1940,42 +1940,42 @@ type PlacedMarketOrder struct {
 }
 
 // GetOrderId returns the value of OrderId.
-func (s PlacedMarketOrder) GetOrderId() string {
+func (s *PlacedMarketOrder) GetOrderId() string {
 	return s.OrderId
 }
 
 // GetOperation returns the value of Operation.
-func (s PlacedMarketOrder) GetOperation() OperationType {
+func (s *PlacedMarketOrder) GetOperation() OperationType {
 	return s.Operation
 }
 
 // GetStatus returns the value of Status.
-func (s PlacedMarketOrder) GetStatus() OrderStatus {
+func (s *PlacedMarketOrder) GetStatus() OrderStatus {
 	return s.Status
 }
 
 // GetRejectReason returns the value of RejectReason.
-func (s PlacedMarketOrder) GetRejectReason() OptString {
+func (s *PlacedMarketOrder) GetRejectReason() OptString {
 	return s.RejectReason
 }
 
 // GetMessage returns the value of Message.
-func (s PlacedMarketOrder) GetMessage() OptString {
+func (s *PlacedMarketOrder) GetMessage() OptString {
 	return s.Message
 }
 
 // GetRequestedLots returns the value of RequestedLots.
-func (s PlacedMarketOrder) GetRequestedLots() int {
+func (s *PlacedMarketOrder) GetRequestedLots() int {
 	return s.RequestedLots
 }
 
 // GetExecutedLots returns the value of ExecutedLots.
-func (s PlacedMarketOrder) GetExecutedLots() int {
+func (s *PlacedMarketOrder) GetExecutedLots() int {
 	return s.ExecutedLots
 }
 
 // GetCommission returns the value of Commission.
-func (s PlacedMarketOrder) GetCommission() OptMoneyAmount {
+func (s *PlacedMarketOrder) GetCommission() OptMoneyAmount {
 	return s.Commission
 }
 
@@ -2025,7 +2025,7 @@ type Portfolio struct {
 }
 
 // GetPositions returns the value of Positions.
-func (s Portfolio) GetPositions() []PortfolioPosition {
+func (s *Portfolio) GetPositions() []PortfolioPosition {
 	return s.Positions
 }
 
@@ -2042,17 +2042,17 @@ type PortfolioCurrenciesResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s PortfolioCurrenciesResponse) GetTrackingId() string {
+func (s *PortfolioCurrenciesResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s PortfolioCurrenciesResponse) GetStatus() string {
+func (s *PortfolioCurrenciesResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s PortfolioCurrenciesResponse) GetPayload() Currencies {
+func (s *PortfolioCurrenciesResponse) GetPayload() Currencies {
 	return s.Payload
 }
 
@@ -2089,57 +2089,57 @@ type PortfolioPosition struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s PortfolioPosition) GetFigi() string {
+func (s *PortfolioPosition) GetFigi() string {
 	return s.Figi
 }
 
 // GetTicker returns the value of Ticker.
-func (s PortfolioPosition) GetTicker() OptString {
+func (s *PortfolioPosition) GetTicker() OptString {
 	return s.Ticker
 }
 
 // GetIsin returns the value of Isin.
-func (s PortfolioPosition) GetIsin() OptString {
+func (s *PortfolioPosition) GetIsin() OptString {
 	return s.Isin
 }
 
 // GetInstrumentType returns the value of InstrumentType.
-func (s PortfolioPosition) GetInstrumentType() InstrumentType {
+func (s *PortfolioPosition) GetInstrumentType() InstrumentType {
 	return s.InstrumentType
 }
 
 // GetBalance returns the value of Balance.
-func (s PortfolioPosition) GetBalance() float64 {
+func (s *PortfolioPosition) GetBalance() float64 {
 	return s.Balance
 }
 
 // GetBlocked returns the value of Blocked.
-func (s PortfolioPosition) GetBlocked() OptFloat64 {
+func (s *PortfolioPosition) GetBlocked() OptFloat64 {
 	return s.Blocked
 }
 
 // GetExpectedYield returns the value of ExpectedYield.
-func (s PortfolioPosition) GetExpectedYield() OptMoneyAmount {
+func (s *PortfolioPosition) GetExpectedYield() OptMoneyAmount {
 	return s.ExpectedYield
 }
 
 // GetLots returns the value of Lots.
-func (s PortfolioPosition) GetLots() int32 {
+func (s *PortfolioPosition) GetLots() int32 {
 	return s.Lots
 }
 
 // GetAveragePositionPrice returns the value of AveragePositionPrice.
-func (s PortfolioPosition) GetAveragePositionPrice() OptMoneyAmount {
+func (s *PortfolioPosition) GetAveragePositionPrice() OptMoneyAmount {
 	return s.AveragePositionPrice
 }
 
 // GetAveragePositionPriceNoNkd returns the value of AveragePositionPriceNoNkd.
-func (s PortfolioPosition) GetAveragePositionPriceNoNkd() OptMoneyAmount {
+func (s *PortfolioPosition) GetAveragePositionPriceNoNkd() OptMoneyAmount {
 	return s.AveragePositionPriceNoNkd
 }
 
 // GetName returns the value of Name.
-func (s PortfolioPosition) GetName() string {
+func (s *PortfolioPosition) GetName() string {
 	return s.Name
 }
 
@@ -2206,17 +2206,17 @@ type PortfolioResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s PortfolioResponse) GetTrackingId() string {
+func (s *PortfolioResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s PortfolioResponse) GetStatus() string {
+func (s *PortfolioResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s PortfolioResponse) GetPayload() Portfolio {
+func (s *PortfolioResponse) GetPayload() Portfolio {
 	return s.Payload
 }
 
@@ -2242,7 +2242,7 @@ type SSOAuth struct {
 }
 
 // GetToken returns the value of Token.
-func (s SSOAuth) GetToken() string {
+func (s *SSOAuth) GetToken() string {
 	return s.Token
 }
 
@@ -2258,12 +2258,12 @@ type SandboxAccount struct {
 }
 
 // GetBrokerAccountType returns the value of BrokerAccountType.
-func (s SandboxAccount) GetBrokerAccountType() BrokerAccountType {
+func (s *SandboxAccount) GetBrokerAccountType() BrokerAccountType {
 	return s.BrokerAccountType
 }
 
 // GetBrokerAccountId returns the value of BrokerAccountId.
-func (s SandboxAccount) GetBrokerAccountId() string {
+func (s *SandboxAccount) GetBrokerAccountId() string {
 	return s.BrokerAccountId
 }
 
@@ -2298,7 +2298,7 @@ type SandboxRegisterRequest struct {
 }
 
 // GetBrokerAccountType returns the value of BrokerAccountType.
-func (s SandboxRegisterRequest) GetBrokerAccountType() OptBrokerAccountType {
+func (s *SandboxRegisterRequest) GetBrokerAccountType() OptBrokerAccountType {
 	return s.BrokerAccountType
 }
 
@@ -2315,17 +2315,17 @@ type SandboxRegisterResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s SandboxRegisterResponse) GetTrackingId() string {
+func (s *SandboxRegisterResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s SandboxRegisterResponse) GetStatus() string {
+func (s *SandboxRegisterResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s SandboxRegisterResponse) GetPayload() SandboxAccount {
+func (s *SandboxRegisterResponse) GetPayload() SandboxAccount {
 	return s.Payload
 }
 
@@ -2353,12 +2353,12 @@ type SandboxSetCurrencyBalanceRequest struct {
 }
 
 // GetCurrency returns the value of Currency.
-func (s SandboxSetCurrencyBalanceRequest) GetCurrency() SandboxCurrency {
+func (s *SandboxSetCurrencyBalanceRequest) GetCurrency() SandboxCurrency {
 	return s.Currency
 }
 
 // GetBalance returns the value of Balance.
-func (s SandboxSetCurrencyBalanceRequest) GetBalance() float64 {
+func (s *SandboxSetCurrencyBalanceRequest) GetBalance() float64 {
 	return s.Balance
 }
 
@@ -2379,12 +2379,12 @@ type SandboxSetPositionBalanceRequest struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s SandboxSetPositionBalanceRequest) GetFigi() OptString {
+func (s *SandboxSetPositionBalanceRequest) GetFigi() OptString {
 	return s.Figi
 }
 
 // GetBalance returns the value of Balance.
-func (s SandboxSetPositionBalanceRequest) GetBalance() float64 {
+func (s *SandboxSetPositionBalanceRequest) GetBalance() float64 {
 	return s.Balance
 }
 
@@ -2412,42 +2412,42 @@ type SearchMarketInstrument struct {
 }
 
 // GetFigi returns the value of Figi.
-func (s SearchMarketInstrument) GetFigi() string {
+func (s *SearchMarketInstrument) GetFigi() string {
 	return s.Figi
 }
 
 // GetTicker returns the value of Ticker.
-func (s SearchMarketInstrument) GetTicker() string {
+func (s *SearchMarketInstrument) GetTicker() string {
 	return s.Ticker
 }
 
 // GetIsin returns the value of Isin.
-func (s SearchMarketInstrument) GetIsin() OptString {
+func (s *SearchMarketInstrument) GetIsin() OptString {
 	return s.Isin
 }
 
 // GetMinPriceIncrement returns the value of MinPriceIncrement.
-func (s SearchMarketInstrument) GetMinPriceIncrement() OptFloat64 {
+func (s *SearchMarketInstrument) GetMinPriceIncrement() OptFloat64 {
 	return s.MinPriceIncrement
 }
 
 // GetLot returns the value of Lot.
-func (s SearchMarketInstrument) GetLot() int32 {
+func (s *SearchMarketInstrument) GetLot() int32 {
 	return s.Lot
 }
 
 // GetCurrency returns the value of Currency.
-func (s SearchMarketInstrument) GetCurrency() OptCurrency {
+func (s *SearchMarketInstrument) GetCurrency() OptCurrency {
 	return s.Currency
 }
 
 // GetName returns the value of Name.
-func (s SearchMarketInstrument) GetName() string {
+func (s *SearchMarketInstrument) GetName() string {
 	return s.Name
 }
 
 // GetType returns the value of Type.
-func (s SearchMarketInstrument) GetType() InstrumentType {
+func (s *SearchMarketInstrument) GetType() InstrumentType {
 	return s.Type
 }
 
@@ -2499,17 +2499,17 @@ type SearchMarketInstrumentResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s SearchMarketInstrumentResponse) GetTrackingId() string {
+func (s *SearchMarketInstrumentResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s SearchMarketInstrumentResponse) GetStatus() string {
+func (s *SearchMarketInstrumentResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s SearchMarketInstrumentResponse) GetPayload() SearchMarketInstrument {
+func (s *SearchMarketInstrumentResponse) GetPayload() SearchMarketInstrument {
 	return s.Payload
 }
 
@@ -2545,12 +2545,12 @@ type UserAccount struct {
 }
 
 // GetBrokerAccountType returns the value of BrokerAccountType.
-func (s UserAccount) GetBrokerAccountType() BrokerAccountType {
+func (s *UserAccount) GetBrokerAccountType() BrokerAccountType {
 	return s.BrokerAccountType
 }
 
 // GetBrokerAccountId returns the value of BrokerAccountId.
-func (s UserAccount) GetBrokerAccountId() string {
+func (s *UserAccount) GetBrokerAccountId() string {
 	return s.BrokerAccountId
 }
 
@@ -2570,7 +2570,7 @@ type UserAccounts struct {
 }
 
 // GetAccounts returns the value of Accounts.
-func (s UserAccounts) GetAccounts() []UserAccount {
+func (s *UserAccounts) GetAccounts() []UserAccount {
 	return s.Accounts
 }
 
@@ -2587,17 +2587,17 @@ type UserAccountsResponse struct {
 }
 
 // GetTrackingId returns the value of TrackingId.
-func (s UserAccountsResponse) GetTrackingId() string {
+func (s *UserAccountsResponse) GetTrackingId() string {
 	return s.TrackingId
 }
 
 // GetStatus returns the value of Status.
-func (s UserAccountsResponse) GetStatus() string {
+func (s *UserAccountsResponse) GetStatus() string {
 	return s.Status
 }
 
 // GetPayload returns the value of Payload.
-func (s UserAccountsResponse) GetPayload() UserAccounts {
+func (s *UserAccountsResponse) GetPayload() UserAccounts {
 	return s.Payload
 }
 

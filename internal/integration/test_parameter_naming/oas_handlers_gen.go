@@ -61,7 +61,7 @@ func (s *Server) handleHealthzGetRequest(args [0]string, w http.ResponseWriter, 
 		return
 	}
 
-	var response HealthzGetOK
+	var response *HealthzGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -96,7 +96,7 @@ func (s *Server) handleHealthzGetRequest(args [0]string, w http.ResponseWriter, 
 		type (
 			Request  = struct{}
 			Params   = HealthzGetParams
-			Response = HealthzGetOK
+			Response = *HealthzGetOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -176,7 +176,7 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 		return
 	}
 
-	var response SameNameOK
+	var response *SameNameOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -199,7 +199,7 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 		type (
 			Request  = struct{}
 			Params   = SameNameParams
-			Response = SameNameOK
+			Response = *SameNameOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

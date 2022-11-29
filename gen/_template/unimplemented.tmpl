@@ -14,10 +14,13 @@ var _ Handler = UnimplementedHandler{}
 {{- end }}
 
 {{- if $.Error }}
-// NewError creates {{ $.ErrorType.Go }} from error returned by handler.
+// NewError creates {{ $.ErrorGoType }} from error returned by handler.
 //
 // Used for common default response.
-func (UnimplementedHandler) NewError(ctx context.Context, err error) (r {{ $.ErrorType.Go }}) {
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r {{ $.ErrorGoType }}) {
+	{{- if $.ErrorType.DoPassByPointer }}
+	r = new({{ $.ErrorType.Go }})
+	{{- end }}
 	return r
 }
 {{- end }}
@@ -36,7 +39,7 @@ var _ WebhookHandler = UnimplementedHandler{}
 // {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
-func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.Type.Go }}, _ error) {
+func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.GoType }}, _ error) {
 	return r, ht.ErrNotImplemented
 }
 {{ end }}

@@ -64,7 +64,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Nullable strings.
 //
 // POST /nullableStrings
-func (c *Client) NullableStrings(ctx context.Context, request NilString) (res NullableStringsOK, err error) {
+func (c *Client) NullableStrings(ctx context.Context, request NilString) (res *NullableStringsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
 	}
@@ -146,7 +146,7 @@ func (c *Client) NullableStrings(ctx context.Context, request NilString) (res Nu
 // Objects with conflicting array property.
 //
 // POST /objectsWithConflictingArrayProperty
-func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, request ObjectsWithConflictingArrayPropertyReq) (res ObjectsWithConflictingArrayPropertyOK, err error) {
+func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, request *ObjectsWithConflictingArrayPropertyReq) (res *ObjectsWithConflictingArrayPropertyOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
 	}
@@ -220,7 +220,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 // Objects with conflicting properties.
 //
 // POST /objectsWithConflictingProperties
-func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request ObjectsWithConflictingPropertiesReq) (res ObjectsWithConflictingPropertiesOK, err error) {
+func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) (res *ObjectsWithConflictingPropertiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
 	}
@@ -294,7 +294,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 // Referenced allOf.
 //
 // POST /referencedAllof
-func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq) (res ReferencedAllofOK, err error) {
+func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq) (res *ReferencedAllofOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
 	}
@@ -382,7 +382,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 // Referenced allOf, but requestBody is not required.
 //
 // POST /referencedAllofOptional
-func (c *Client) ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res ReferencedAllofOptionalOK, err error) {
+func (c *Client) ReferencedAllofOptional(ctx context.Context, request ReferencedAllofOptionalReq) (res *ReferencedAllofOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
 	}
@@ -472,7 +472,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 // Simple integers with validation.
 //
 // POST /simpleInteger
-func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleIntegerOK, err error) {
+func (c *Client) SimpleInteger(ctx context.Context, request int) (res *SimpleIntegerOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
 	}
@@ -555,7 +555,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 // Simple objects.
 //
 // POST /simpleObjects
-func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (res SimpleObjectsOK, err error) {
+func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) (res *SimpleObjectsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
 	}

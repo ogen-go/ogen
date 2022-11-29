@@ -198,7 +198,7 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 // DefaultTest invokes defaultTest operation.
 //
 // POST /defaultTest
-func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params DefaultTestParams) (res int32, err error) {
+func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (res int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
 	}
@@ -293,7 +293,7 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 // Returns error.
 //
 // GET /error
-func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) {
+func (c *Client) ErrorGet(ctx context.Context) (res *ErrorStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("errorGet"),
 	}
@@ -528,7 +528,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 // FoobarPut invokes PUT /foobar operation.
 //
 // PUT /foobar
-func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
+func (c *Client) FoobarPut(ctx context.Context) (res *FoobarPutDef, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -587,7 +587,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 // Test for header param.
 //
 // GET /test/header
-func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Hash, err error) {
+func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res *Hash, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getHeader"),
 	}
@@ -661,7 +661,7 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 // NoAdditionalPropertiesTest invokes noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
-func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAdditionalPropertiesTest, err error) {
+func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res *NoAdditionalPropertiesTest, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("noAdditionalPropertiesTest"),
 	}
@@ -721,7 +721,7 @@ func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAddition
 // NullableDefaultResponse invokes nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
-func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusCode, err error) {
+func (c *Client) NullableDefaultResponse(ctx context.Context) (res *NilIntStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableDefaultResponse"),
 	}
@@ -781,7 +781,7 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 // OneofBug invokes oneofBug operation.
 //
 // POST /oneofBug
-func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugOK, err error) {
+func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) (res *OneofBugOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
 	}
@@ -912,7 +912,7 @@ func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursi
 // Creates pet.
 //
 // POST /pet
-func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err error) {
+func (c *Client) PetCreate(ctx context.Context, request OptPet) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
 	}
@@ -1363,7 +1363,7 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 // Returns pet by name from the system that the user has access to.
 //
 // GET /pet/{name}
-func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetByName"),
 	}
@@ -1513,7 +1513,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 // PetUpdateNameAliasPost invokes POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
-func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDef, err error) {
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res *PetUpdateNameAliasPostDef, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1589,7 +1589,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 // PetUpdateNamePost invokes POST /pet/updateName operation.
 //
 // POST /pet/updateName
-func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDef, err error) {
+func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res *PetUpdateNamePostDef, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1813,7 +1813,7 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 // RecursiveMapGet invokes GET /recursiveMap operation.
 //
 // GET /recursiveMap
-func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err error) {
+func (c *Client) RecursiveMapGet(ctx context.Context) (res *RecursiveMap, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1935,7 +1935,7 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 // StringIntMapGet invokes GET /stringIntMap operation.
 //
 // GET /stringIntMap
-func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err error) {
+func (c *Client) StringIntMapGet(ctx context.Context) (res *StringIntMap, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -2076,7 +2076,7 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 // TestFloatValidation invokes testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValidation) (res TestFloatValidationOK, err error) {
+func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatValidation) (res *TestFloatValidationOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
 	}
@@ -2208,7 +2208,7 @@ func (c *Client) TestNullableOneofs(ctx context.Context) (res TestNullableOneofs
 // TestObjectQueryParameter invokes testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter
-func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (res TestObjectQueryParameterOK, err error) {
+func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (res *TestObjectQueryParameterOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testObjectQueryParameter"),
 	}

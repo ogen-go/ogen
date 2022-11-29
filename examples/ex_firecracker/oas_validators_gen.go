@@ -20,7 +20,7 @@ func (s CpuTemplate) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Drive) Validate() error {
+func (s *Drive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RateLimiter.Set {
@@ -45,7 +45,7 @@ func (s Drive) Validate() error {
 	}
 	return nil
 }
-func (s FullVmConfiguration) Validate() error {
+func (s *FullVmConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -156,7 +156,7 @@ func (s FullVmConfiguration) Validate() error {
 	}
 	return nil
 }
-func (s InstanceActionInfo) Validate() error {
+func (s *InstanceActionInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.ActionType.Validate(); err != nil {
@@ -186,7 +186,7 @@ func (s InstanceActionInfoActionType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s InstanceInfo) Validate() error {
+func (s *InstanceInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -216,7 +216,7 @@ func (s InstanceInfoState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Logger) Validate() error {
+func (s *Logger) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Level.Set {
@@ -255,7 +255,7 @@ func (s LoggerLevel) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MachineConfiguration) Validate() error {
+func (s *MachineConfiguration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CPUTemplate.Set {
@@ -300,7 +300,7 @@ func (s MachineConfiguration) Validate() error {
 	}
 	return nil
 }
-func (s NetworkInterface) Validate() error {
+func (s *NetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RxRateLimiter.Set {
@@ -344,7 +344,7 @@ func (s NetworkInterface) Validate() error {
 	return nil
 }
 
-func (s PartialDrive) Validate() error {
+func (s *PartialDrive) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RateLimiter.Set {
@@ -369,7 +369,7 @@ func (s PartialDrive) Validate() error {
 	}
 	return nil
 }
-func (s PartialNetworkInterface) Validate() error {
+func (s *PartialNetworkInterface) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RxRateLimiter.Set {
@@ -412,7 +412,7 @@ func (s PartialNetworkInterface) Validate() error {
 	}
 	return nil
 }
-func (s RateLimiter) Validate() error {
+func (s *RateLimiter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Bandwidth.Set {
@@ -455,7 +455,7 @@ func (s RateLimiter) Validate() error {
 	}
 	return nil
 }
-func (s SnapshotCreateParams) Validate() error {
+func (s *SnapshotCreateParams) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SnapshotType.Set {
@@ -490,7 +490,7 @@ func (s SnapshotCreateParamsSnapshotType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TokenBucket) Validate() error {
+func (s *TokenBucket) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OneTimeBurst.Set {
@@ -564,7 +564,7 @@ func (s TokenBucket) Validate() error {
 	}
 	return nil
 }
-func (s VM) Validate() error {
+func (s *VM) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -592,7 +592,7 @@ func (s VMState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Vsock) Validate() error {
+func (s *Vsock) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{

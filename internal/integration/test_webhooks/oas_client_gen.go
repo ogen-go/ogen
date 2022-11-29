@@ -19,7 +19,7 @@ import (
 )
 
 type errorHandler interface {
-	NewError(ctx context.Context, err error) ErrorStatusCode
+	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 var _ Handler = struct {
@@ -67,7 +67,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // PublishEvent invokes publishEvent operation.
 //
 // POST /event
-func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (res Event, err error) {
+func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (res *Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
 	}
@@ -144,7 +144,7 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 }
 
 // StatusWebhook invokes statusWebhook operation.
-func (c *WebhookClient) StatusWebhook(ctx context.Context, targetURL string) (res StatusWebhookOK, err error) {
+func (c *WebhookClient) StatusWebhook(ctx context.Context, targetURL string) (res *StatusWebhookOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("statusWebhook"),
 		otelogen.WebhookName("status"),

@@ -25,7 +25,7 @@ func (UnimplementedHandler) DataGetFormat(ctx context.Context, params DataGetFor
 // DefaultTest implements defaultTest operation.
 //
 // POST /defaultTest
-func (UnimplementedHandler) DefaultTest(ctx context.Context, req DefaultTest, params DefaultTestParams) (r int32, _ error) {
+func (UnimplementedHandler) DefaultTest(ctx context.Context, req *DefaultTest, params DefaultTestParams) (r int32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -34,7 +34,7 @@ func (UnimplementedHandler) DefaultTest(ctx context.Context, req DefaultTest, pa
 // Returns error.
 //
 // GET /error
-func (UnimplementedHandler) ErrorGet(ctx context.Context) (r ErrorStatusCode, _ error) {
+func (UnimplementedHandler) ErrorGet(ctx context.Context) (r *ErrorStatusCode, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -59,7 +59,7 @@ func (UnimplementedHandler) FoobarPost(ctx context.Context, req OptPet) (r Fooba
 // FoobarPut implements PUT /foobar operation.
 //
 // PUT /foobar
-func (UnimplementedHandler) FoobarPut(ctx context.Context) (r FoobarPutDef, _ error) {
+func (UnimplementedHandler) FoobarPut(ctx context.Context) (r *FoobarPutDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -68,28 +68,28 @@ func (UnimplementedHandler) FoobarPut(ctx context.Context) (r FoobarPutDef, _ er
 // Test for header param.
 //
 // GET /test/header
-func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParams) (r Hash, _ error) {
+func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParams) (r *Hash, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
-func (UnimplementedHandler) NoAdditionalPropertiesTest(ctx context.Context) (r NoAdditionalPropertiesTest, _ error) {
+func (UnimplementedHandler) NoAdditionalPropertiesTest(ctx context.Context) (r *NoAdditionalPropertiesTest, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // NullableDefaultResponse implements nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
-func (UnimplementedHandler) NullableDefaultResponse(ctx context.Context) (r NilIntStatusCode, _ error) {
+func (UnimplementedHandler) NullableDefaultResponse(ctx context.Context) (r *NilIntStatusCode, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // OneofBug implements oneofBug operation.
 //
 // POST /oneofBug
-func (UnimplementedHandler) OneofBug(ctx context.Context, req OneOfBugs) (r OneofBugOK, _ error) {
+func (UnimplementedHandler) OneofBug(ctx context.Context, req *OneOfBugs) (r *OneofBugOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -105,7 +105,7 @@ func (UnimplementedHandler) PatternRecursiveMapGet(ctx context.Context) (r Patte
 // Creates pet.
 //
 // POST /pet
-func (UnimplementedHandler) PetCreate(ctx context.Context, req OptPet) (r Pet, _ error) {
+func (UnimplementedHandler) PetCreate(ctx context.Context, req OptPet) (r *Pet, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -150,7 +150,7 @@ func (UnimplementedHandler) PetGetAvatarByName(ctx context.Context, params PetGe
 // Returns pet by name from the system that the user has access to.
 //
 // GET /pet/{name}
-func (UnimplementedHandler) PetGetByName(ctx context.Context, params PetGetByNameParams) (r Pet, _ error) {
+func (UnimplementedHandler) PetGetByName(ctx context.Context, params PetGetByNameParams) (r *Pet, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -166,14 +166,14 @@ func (UnimplementedHandler) PetNameByID(ctx context.Context, params PetNameByIDP
 // PetUpdateNameAliasPost implements POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
-func (UnimplementedHandler) PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (r PetUpdateNameAliasPostDef, _ error) {
+func (UnimplementedHandler) PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (r *PetUpdateNameAliasPostDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // PetUpdateNamePost implements POST /pet/updateName operation.
 //
 // POST /pet/updateName
-func (UnimplementedHandler) PetUpdateNamePost(ctx context.Context, req OptString) (r PetUpdateNamePostDef, _ error) {
+func (UnimplementedHandler) PetUpdateNamePost(ctx context.Context, req OptString) (r *PetUpdateNamePostDef, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -196,7 +196,7 @@ func (UnimplementedHandler) RecursiveArrayGet(ctx context.Context) (r RecursiveA
 // RecursiveMapGet implements GET /recursiveMap operation.
 //
 // GET /recursiveMap
-func (UnimplementedHandler) RecursiveMapGet(ctx context.Context) (r RecursiveMap, _ error) {
+func (UnimplementedHandler) RecursiveMapGet(ctx context.Context) (r *RecursiveMap, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -210,7 +210,7 @@ func (UnimplementedHandler) SecurityTest(ctx context.Context) (r string, _ error
 // StringIntMapGet implements GET /stringIntMap operation.
 //
 // GET /stringIntMap
-func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r StringIntMap, _ error) {
+func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r *StringIntMap, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -224,7 +224,7 @@ func (UnimplementedHandler) TestContentParameter(ctx context.Context, params Tes
 // TestFloatValidation implements testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req TestFloatValidation) (r TestFloatValidationOK, _ error) {
+func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req *TestFloatValidation) (r *TestFloatValidationOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -238,6 +238,6 @@ func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNulla
 // TestObjectQueryParameter implements testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter
-func (UnimplementedHandler) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (r TestObjectQueryParameterOK, _ error) {
+func (UnimplementedHandler) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (r *TestObjectQueryParameterOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

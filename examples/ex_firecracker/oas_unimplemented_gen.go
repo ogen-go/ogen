@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
 //
 // PUT /snapshot/create
-func (UnimplementedHandler) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (r CreateSnapshotRes, _ error) {
+func (UnimplementedHandler) CreateSnapshot(ctx context.Context, req *SnapshotCreateParams) (r CreateSnapshotRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -27,7 +27,7 @@ func (UnimplementedHandler) CreateSnapshot(ctx context.Context, req SnapshotCrea
 // Creates a synchronous action.
 //
 // PUT /actions
-func (UnimplementedHandler) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (r CreateSyncActionRes, _ error) {
+func (UnimplementedHandler) CreateSyncAction(ctx context.Context, req *InstanceActionInfo) (r CreateSyncActionRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -84,7 +84,7 @@ func (UnimplementedHandler) GetMachineConfiguration(ctx context.Context) (r GetM
 // configuring any resource other than the Logger and Metrics).
 //
 // PUT /snapshot/load
-func (UnimplementedHandler) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (r LoadSnapshotRes, _ error) {
+func (UnimplementedHandler) LoadSnapshot(ctx context.Context, req *SnapshotLoadParams) (r LoadSnapshotRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -93,7 +93,7 @@ func (UnimplementedHandler) LoadSnapshot(ctx context.Context, req SnapshotLoadPa
 // Creates MMDS configuration to be used by the MMDS network stack.
 //
 // PUT /mmds/config
-func (UnimplementedHandler) MmdsConfigPut(ctx context.Context, req MmdsConfig) (r MmdsConfigPutRes, _ error) {
+func (UnimplementedHandler) MmdsConfigPut(ctx context.Context, req *MmdsConfig) (r MmdsConfigPutRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -130,7 +130,7 @@ func (UnimplementedHandler) MmdsPut(ctx context.Context, req *MmdsPutReq) (r Mmd
 // possible.
 //
 // PATCH /balloon
-func (UnimplementedHandler) PatchBalloon(ctx context.Context, req BalloonUpdate) (r PatchBalloonRes, _ error) {
+func (UnimplementedHandler) PatchBalloon(ctx context.Context, req *BalloonUpdate) (r PatchBalloonRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -140,7 +140,7 @@ func (UnimplementedHandler) PatchBalloon(ctx context.Context, req BalloonUpdate)
 // if update is not possible.
 //
 // PATCH /balloon/statistics
-func (UnimplementedHandler) PatchBalloonStatsInterval(ctx context.Context, req BalloonStatsUpdate) (r PatchBalloonStatsIntervalRes, _ error) {
+func (UnimplementedHandler) PatchBalloonStatsInterval(ctx context.Context, req *BalloonStatsUpdate) (r PatchBalloonStatsIntervalRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -150,7 +150,7 @@ func (UnimplementedHandler) PatchBalloonStatsInterval(ctx context.Context, req B
 // update is not possible.
 //
 // PATCH /drives/{drive_id}
-func (UnimplementedHandler) PatchGuestDriveByID(ctx context.Context, req PartialDrive, params PatchGuestDriveByIDParams) (r PatchGuestDriveByIDRes, _ error) {
+func (UnimplementedHandler) PatchGuestDriveByID(ctx context.Context, req *PartialDrive, params PatchGuestDriveByIDParams) (r PatchGuestDriveByIDRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -159,7 +159,7 @@ func (UnimplementedHandler) PatchGuestDriveByID(ctx context.Context, req Partial
 // Updates the rate limiters applied to a network interface.
 //
 // PATCH /network-interfaces/{iface_id}
-func (UnimplementedHandler) PatchGuestNetworkInterfaceByID(ctx context.Context, req PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (r PatchGuestNetworkInterfaceByIDRes, _ error) {
+func (UnimplementedHandler) PatchGuestNetworkInterfaceByID(ctx context.Context, req *PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (r PatchGuestNetworkInterfaceByIDRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -178,7 +178,7 @@ func (UnimplementedHandler) PatchMachineConfiguration(ctx context.Context, req O
 // Sets the desired state (Paused or Resumed) for the microVM.
 //
 // PATCH /vm
-func (UnimplementedHandler) PatchVm(ctx context.Context, req VM) (r PatchVmRes, _ error) {
+func (UnimplementedHandler) PatchVm(ctx context.Context, req *VM) (r PatchVmRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -188,7 +188,7 @@ func (UnimplementedHandler) PatchVm(ctx context.Context, req VM) (r PatchVmRes, 
 // startup. This will fail after machine startup. Will fail if update is not possible.
 //
 // PUT /balloon
-func (UnimplementedHandler) PutBalloon(ctx context.Context, req Balloon) (r PutBalloonRes, _ error) {
+func (UnimplementedHandler) PutBalloon(ctx context.Context, req *Balloon) (r PutBalloonRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -198,7 +198,7 @@ func (UnimplementedHandler) PutBalloon(ctx context.Context, req Balloon) (r PutB
 // is not possible.
 //
 // PUT /boot-source
-func (UnimplementedHandler) PutGuestBootSource(ctx context.Context, req BootSource) (r PutGuestBootSourceRes, _ error) {
+func (UnimplementedHandler) PutGuestBootSource(ctx context.Context, req *BootSource) (r PutGuestBootSourceRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -208,7 +208,7 @@ func (UnimplementedHandler) PutGuestBootSource(ctx context.Context, req BootSour
 // already exists, updates its state based on new input. Will fail if update is not possible.
 //
 // PUT /drives/{drive_id}
-func (UnimplementedHandler) PutGuestDriveByID(ctx context.Context, req Drive, params PutGuestDriveByIDParams) (r PutGuestDriveByIDRes, _ error) {
+func (UnimplementedHandler) PutGuestDriveByID(ctx context.Context, req *Drive, params PutGuestDriveByIDParams) (r PutGuestDriveByIDRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -217,7 +217,7 @@ func (UnimplementedHandler) PutGuestDriveByID(ctx context.Context, req Drive, pa
 // Creates new network interface with ID specified by iface_id path parameter.
 //
 // PUT /network-interfaces/{iface_id}
-func (UnimplementedHandler) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (r PutGuestNetworkInterfaceByIDRes, _ error) {
+func (UnimplementedHandler) PutGuestNetworkInterfaceByID(ctx context.Context, req *NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (r PutGuestNetworkInterfaceByIDRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -227,7 +227,7 @@ func (UnimplementedHandler) PutGuestNetworkInterfaceByID(ctx context.Context, re
 // update the device configuration. May fail if update is not possible.
 //
 // PUT /vsock
-func (UnimplementedHandler) PutGuestVsock(ctx context.Context, req Vsock) (r PutGuestVsockRes, _ error) {
+func (UnimplementedHandler) PutGuestVsock(ctx context.Context, req *Vsock) (r PutGuestVsockRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -236,7 +236,7 @@ func (UnimplementedHandler) PutGuestVsock(ctx context.Context, req Vsock) (r Put
 // Initializes the logger by specifying a named pipe or a file for the logs output.
 //
 // PUT /logger
-func (UnimplementedHandler) PutLogger(ctx context.Context, req Logger) (r PutLoggerRes, _ error) {
+func (UnimplementedHandler) PutLogger(ctx context.Context, req *Logger) (r PutLoggerRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -257,6 +257,6 @@ func (UnimplementedHandler) PutMachineConfiguration(ctx context.Context, req Opt
 // Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 //
 // PUT /metrics
-func (UnimplementedHandler) PutMetrics(ctx context.Context, req Metrics) (r PutMetricsRes, _ error) {
+func (UnimplementedHandler) PutMetrics(ctx context.Context, req *Metrics) (r PutMetricsRes, _ error) {
 	return r, ht.ErrNotImplemented
 }

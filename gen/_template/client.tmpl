@@ -6,7 +6,7 @@
 {{- if $.ServerEnabled }}
 {{- if $.Error }}
 type errorHandler interface {
-	NewError(ctx context.Context, err error) {{ $.ErrorType.Go }}
+	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
 }
 {{- end }}
 var _ Handler = struct{
@@ -97,8 +97,8 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 {{- template "godoc_op" $op }}
 func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
-	{{- if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}
-	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
+	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
 	{{- $hasOTELAttrs := false }}
 	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}

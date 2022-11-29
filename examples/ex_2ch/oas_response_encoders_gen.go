@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeAPICaptcha2chcaptchaIDGetResponse(response Captcha, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptcha2chcaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -43,7 +43,7 @@ func encodeAPICaptcha2chcaptchaShowGetResponse(response APICaptcha2chcaptchaShow
 	}
 }
 
-func encodeAPICaptchaAppIDPublicKeyGetResponse(response Captcha, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaAppIDPublicKeyGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -56,7 +56,7 @@ func encodeAPICaptchaAppIDPublicKeyGetResponse(response Captcha, w http.Response
 	return nil
 }
 
-func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response Captcha, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -69,14 +69,14 @@ func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response Captcha, w http.Re
 	return nil
 }
 
-func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response APICaptchaInvisibleRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response *APICaptchaInvisibleRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
-func encodeAPICaptchaRecaptchaIDGetResponse(response Captcha, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaRecaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -89,14 +89,14 @@ func encodeAPICaptchaRecaptchaIDGetResponse(response Captcha, w http.ResponseWri
 	return nil
 }
 
-func encodeAPICaptchaRecaptchaMobileGetResponse(response APICaptchaRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
+func encodeAPICaptchaRecaptchaMobileGetResponse(response *APICaptchaRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
-func encodeAPIDislikeGetResponse(response Like, w http.ResponseWriter, span trace.Span) error {
+func encodeAPIDislikeGetResponse(response *Like, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -109,7 +109,7 @@ func encodeAPIDislikeGetResponse(response Like, w http.ResponseWriter, span trac
 	return nil
 }
 
-func encodeAPILikeGetResponse(response Like, w http.ResponseWriter, span trace.Span) error {
+func encodeAPILikeGetResponse(response *Like, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -122,7 +122,7 @@ func encodeAPILikeGetResponse(response Like, w http.ResponseWriter, span trace.S
 	return nil
 }
 
-func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response MobileThreadPostsAfter, w http.ResponseWriter, span trace.Span) error {
+func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response *MobileThreadPostsAfter, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -148,7 +148,7 @@ func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, 
 	return nil
 }
 
-func encodeAPIMobileV2InfoBoardThreadGetResponse(response MobileThreadLastInfo, w http.ResponseWriter, span trace.Span) error {
+func encodeAPIMobileV2InfoBoardThreadGetResponse(response *MobileThreadLastInfo, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -161,7 +161,7 @@ func encodeAPIMobileV2InfoBoardThreadGetResponse(response MobileThreadLastInfo, 
 	return nil
 }
 
-func encodeAPIMobileV2PostBoardNumGetResponse(response MobilePost, w http.ResponseWriter, span trace.Span) error {
+func encodeAPIMobileV2PostBoardNumGetResponse(response *MobilePost, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -174,7 +174,7 @@ func encodeAPIMobileV2PostBoardNumGetResponse(response MobilePost, w http.Respon
 	return nil
 }
 
-func encodeUserPassloginPostResponse(response Passcode, w http.ResponseWriter, span trace.Span) error {
+func encodeUserPassloginPostResponse(response *Passcode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -200,7 +200,7 @@ func encodeUserPostingPostResponse(response UserPostingPostOK, w http.ResponseWr
 	return nil
 }
 
-func encodeUserReportPostResponse(response Report, w http.ResponseWriter, span trace.Span) error {
+func encodeUserReportPostResponse(response *Report, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

@@ -90,7 +90,7 @@ func decodeDefaultTestResponse(resp *http.Response) (res int32, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeErrorGetResponse(resp *http.Response) (res ErrorStatusCode, err error) {
+func decodeErrorGetResponse(resp *http.Response) (res *ErrorStatusCode, err error) {
 	// Default response.
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
@@ -116,7 +116,7 @@ func decodeErrorGetResponse(resp *http.Response) (res ErrorStatusCode, err error
 		if err := d.Skip(); err != io.EOF {
 			return res, errors.New("unexpected trailing data")
 		}
-		return ErrorStatusCode{
+		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
 			Response:   response,
 		}, nil
@@ -234,14 +234,14 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 	}
 }
 
-func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDef, err error) {
+func decodeFoobarPutResponse(resp *http.Response) (res *FoobarPutDef, err error) {
 	// Default response.
-	return FoobarPutDef{
+	return &FoobarPutDef{
 		StatusCode: resp.StatusCode,
 	}, nil
 }
 
-func decodeGetHeaderResponse(resp *http.Response) (res Hash, err error) {
+func decodeGetHeaderResponse(resp *http.Response) (res *Hash, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -269,7 +269,7 @@ func decodeGetHeaderResponse(resp *http.Response) (res Hash, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -277,7 +277,7 @@ func decodeGetHeaderResponse(resp *http.Response) (res Hash, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res NoAdditionalPropertiesTest, err error) {
+func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res *NoAdditionalPropertiesTest, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -305,7 +305,7 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res NoAdditi
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -313,7 +313,7 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res NoAdditi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeNullableDefaultResponseResponse(resp *http.Response) (res NilIntStatusCode, err error) {
+func decodeNullableDefaultResponseResponse(resp *http.Response) (res *NilIntStatusCode, err error) {
 	// Default response.
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
@@ -339,7 +339,7 @@ func decodeNullableDefaultResponseResponse(resp *http.Response) (res NilIntStatu
 		if err := d.Skip(); err != io.EOF {
 			return res, errors.New("unexpected trailing data")
 		}
-		return NilIntStatusCode{
+		return &NilIntStatusCode{
 			StatusCode: resp.StatusCode,
 			Response:   response,
 		}, nil
@@ -348,11 +348,11 @@ func decodeNullableDefaultResponseResponse(resp *http.Response) (res NilIntStatu
 	}
 }
 
-func decodeOneofBugResponse(resp *http.Response) (res OneofBugOK, err error) {
+func decodeOneofBugResponse(resp *http.Response) (res *OneofBugOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return OneofBugOK{}, nil
+		return &OneofBugOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -393,7 +393,7 @@ func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecur
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
+func decodePetCreateResponse(resp *http.Response) (res *Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -421,7 +421,7 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -660,7 +660,7 @@ func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNa
 	}
 }
 
-func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
+func decodePetGetByNameResponse(resp *http.Response) (res *Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -688,7 +688,7 @@ func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -734,16 +734,16 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res PetUpdateNameAliasPostDef, err error) {
+func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res *PetUpdateNameAliasPostDef, err error) {
 	// Default response.
-	return PetUpdateNameAliasPostDef{
+	return &PetUpdateNameAliasPostDef{
 		StatusCode: resp.StatusCode,
 	}, nil
 }
 
-func decodePetUpdateNamePostResponse(resp *http.Response) (res PetUpdateNamePostDef, err error) {
+func decodePetUpdateNamePostResponse(resp *http.Response) (res *PetUpdateNamePostDef, err error) {
 	// Default response.
-	return PetUpdateNamePostDef{
+	return &PetUpdateNamePostDef{
 		StatusCode: resp.StatusCode,
 	}, nil
 }
@@ -827,7 +827,7 @@ func decodeRecursiveArrayGetResponse(resp *http.Response) (res RecursiveArray, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeRecursiveMapGetResponse(resp *http.Response) (res RecursiveMap, err error) {
+func decodeRecursiveMapGetResponse(resp *http.Response) (res *RecursiveMap, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -855,7 +855,7 @@ func decodeRecursiveMapGetResponse(resp *http.Response) (res RecursiveMap, err e
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -901,7 +901,7 @@ func decodeSecurityTestResponse(resp *http.Response) (res string, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeStringIntMapGetResponse(resp *http.Response) (res StringIntMap, err error) {
+func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -929,7 +929,7 @@ func decodeStringIntMapGetResponse(resp *http.Response) (res StringIntMap, err e
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -975,11 +975,11 @@ func decodeTestContentParameterResponse(resp *http.Response) (res string, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestFloatValidationResponse(resp *http.Response) (res TestFloatValidationOK, err error) {
+func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValidationOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return TestFloatValidationOK{}, nil
+		return &TestFloatValidationOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -1080,7 +1080,7 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestObjectQueryParameterResponse(resp *http.Response) (res TestObjectQueryParameterOK, err error) {
+func decodeTestObjectQueryParameterResponse(resp *http.Response) (res *TestObjectQueryParameterOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1108,7 +1108,7 @@ func decodeTestObjectQueryParameterResponse(resp *http.Response) (res TestObject
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

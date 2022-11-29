@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Получение ид для использования 2chcaptcha.
 //
 // GET /api/captcha/2chcaptcha/id
-func (UnimplementedHandler) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (r Captcha, _ error) {
+func (UnimplementedHandler) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (r *Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -40,7 +40,7 @@ func (UnimplementedHandler) APICaptcha2chcaptchaShowGet(ctx context.Context, par
 // Срок жизни id: 180 секунд.
 //
 // GET /api/captcha/app/id/{public_key}
-func (UnimplementedHandler) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (r Captcha, _ error) {
+func (UnimplementedHandler) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (r *Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -49,7 +49,7 @@ func (UnimplementedHandler) APICaptchaAppIDPublicKeyGet(ctx context.Context, par
 // Получение публичного ключа invisible recaptcha.
 //
 // GET /api/captcha/invisible_recaptcha/id
-func (UnimplementedHandler) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (r Captcha, _ error) {
+func (UnimplementedHandler) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (r *Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -58,7 +58,7 @@ func (UnimplementedHandler) APICaptchaInvisibleRecaptchaIDGet(ctx context.Contex
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
-func (UnimplementedHandler) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (r APICaptchaInvisibleRecaptchaMobileGetOK, _ error) {
+func (UnimplementedHandler) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (r *APICaptchaInvisibleRecaptchaMobileGetOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -67,7 +67,7 @@ func (UnimplementedHandler) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Co
 // Получение публичного ключа recaptcha v2.
 //
 // GET /api/captcha/recaptcha/id
-func (UnimplementedHandler) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (r Captcha, _ error) {
+func (UnimplementedHandler) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (r *Captcha, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -76,7 +76,7 @@ func (UnimplementedHandler) APICaptchaRecaptchaIDGet(ctx context.Context, params
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
-func (UnimplementedHandler) APICaptchaRecaptchaMobileGet(ctx context.Context) (r APICaptchaRecaptchaMobileGetOK, _ error) {
+func (UnimplementedHandler) APICaptchaRecaptchaMobileGet(ctx context.Context) (r *APICaptchaRecaptchaMobileGetOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -85,7 +85,7 @@ func (UnimplementedHandler) APICaptchaRecaptchaMobileGet(ctx context.Context) (r
 // Добавление дизлайка на пост.
 //
 // GET /api/dislike
-func (UnimplementedHandler) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (r Like, _ error) {
+func (UnimplementedHandler) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (r *Like, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -94,7 +94,7 @@ func (UnimplementedHandler) APIDislikeGet(ctx context.Context, params APIDislike
 // Добавление лайка на пост.
 //
 // GET /api/like
-func (UnimplementedHandler) APILikeGet(ctx context.Context, params APILikeGetParams) (r Like, _ error) {
+func (UnimplementedHandler) APILikeGet(ctx context.Context, params APILikeGetParams) (r *Like, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -105,7 +105,7 @@ func (UnimplementedHandler) APILikeGet(ctx context.Context, params APILikeGetPar
 // целиком, только для проверки новых постов.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
-func (UnimplementedHandler) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (r MobileThreadPostsAfter, _ error) {
+func (UnimplementedHandler) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (r *MobileThreadPostsAfter, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -123,7 +123,7 @@ func (UnimplementedHandler) APIMobileV2BoardsGet(ctx context.Context) (r Boards,
 // Получение информации о треде.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
-func (UnimplementedHandler) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (r MobileThreadLastInfo, _ error) {
+func (UnimplementedHandler) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (r *MobileThreadLastInfo, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -132,7 +132,7 @@ func (UnimplementedHandler) APIMobileV2InfoBoardThreadGet(ctx context.Context, p
 // Получение информации о посте.
 //
 // GET /api/mobile/v2/post/{board}/{num}
-func (UnimplementedHandler) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (r MobilePost, _ error) {
+func (UnimplementedHandler) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (r *MobilePost, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -141,7 +141,7 @@ func (UnimplementedHandler) APIMobileV2PostBoardNumGet(ctx context.Context, para
 // Авторизация пасскода.
 //
 // POST /user/passlogin
-func (UnimplementedHandler) UserPassloginPost(ctx context.Context, req OptUserPassloginPostReq, params UserPassloginPostParams) (r Passcode, _ error) {
+func (UnimplementedHandler) UserPassloginPost(ctx context.Context, req OptUserPassloginPostReq, params UserPassloginPostParams) (r *Passcode, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -159,6 +159,6 @@ func (UnimplementedHandler) UserPostingPost(ctx context.Context, req OptUserPost
 // Отправка жалобы.
 //
 // POST /user/report
-func (UnimplementedHandler) UserReportPost(ctx context.Context, req OptUserReportPostReq) (r Report, _ error) {
+func (UnimplementedHandler) UserReportPost(ctx context.Context, req OptUserReportPostReq) (r *Report, _ error) {
 	return r, ht.ErrNotImplemented
 }

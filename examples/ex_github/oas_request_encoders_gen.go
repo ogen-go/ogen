@@ -13,7 +13,7 @@ import (
 )
 
 func encodeActionsCreateOrUpdateEnvironmentSecretRequest(
-	req ActionsCreateOrUpdateEnvironmentSecretReq,
+	req *ActionsCreateOrUpdateEnvironmentSecretReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -27,7 +27,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretRequest(
 }
 
 func encodeActionsCreateOrUpdateOrgSecretRequest(
-	req ActionsCreateOrUpdateOrgSecretReq,
+	req *ActionsCreateOrUpdateOrgSecretReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -41,7 +41,7 @@ func encodeActionsCreateOrUpdateOrgSecretRequest(
 }
 
 func encodeActionsCreateOrUpdateRepoSecretRequest(
-	req ActionsCreateOrUpdateRepoSecretReq,
+	req *ActionsCreateOrUpdateRepoSecretReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -55,7 +55,7 @@ func encodeActionsCreateOrUpdateRepoSecretRequest(
 }
 
 func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(
-	req ActionsCreateSelfHostedRunnerGroupForOrgReq,
+	req *ActionsCreateSelfHostedRunnerGroupForOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -69,7 +69,7 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(
 }
 
 func encodeActionsReviewPendingDeploymentsForRunRequest(
-	req ActionsReviewPendingDeploymentsForRunReq,
+	req *ActionsReviewPendingDeploymentsForRunReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -123,7 +123,7 @@ func encodeActionsSetAllowedActionsRepositoryRequest(
 }
 
 func encodeActionsSetGithubActionsPermissionsOrganizationRequest(
-	req ActionsSetGithubActionsPermissionsOrganizationReq,
+	req *ActionsSetGithubActionsPermissionsOrganizationReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -137,7 +137,7 @@ func encodeActionsSetGithubActionsPermissionsOrganizationRequest(
 }
 
 func encodeActionsSetGithubActionsPermissionsRepositoryRequest(
-	req ActionsSetGithubActionsPermissionsRepositoryReq,
+	req *ActionsSetGithubActionsPermissionsRepositoryReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -151,7 +151,7 @@ func encodeActionsSetGithubActionsPermissionsRepositoryRequest(
 }
 
 func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(
-	req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
+	req *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -165,7 +165,7 @@ func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 }
 
 func encodeActionsSetSelectedReposForOrgSecretRequest(
-	req ActionsSetSelectedReposForOrgSecretReq,
+	req *ActionsSetSelectedReposForOrgSecretReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -179,7 +179,7 @@ func encodeActionsSetSelectedReposForOrgSecretRequest(
 }
 
 func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(
-	req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
+	req *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -193,7 +193,7 @@ func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 }
 
 func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(
-	req ActionsSetSelfHostedRunnersInGroupForOrgReq,
+	req *ActionsSetSelfHostedRunnersInGroupForOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -207,7 +207,7 @@ func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(
 }
 
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(
-	req ActionsUpdateSelfHostedRunnerGroupForOrgReq,
+	req *ActionsUpdateSelfHostedRunnerGroupForOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -301,7 +301,7 @@ func encodeActivitySetThreadSubscriptionRequest(
 }
 
 func encodeAppsCheckTokenRequest(
-	req AppsCheckTokenReq,
+	req *AppsCheckTokenReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -315,7 +315,7 @@ func encodeAppsCheckTokenRequest(
 }
 
 func encodeAppsCreateContentAttachmentRequest(
-	req AppsCreateContentAttachmentReq,
+	req *AppsCreateContentAttachmentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -365,7 +365,7 @@ func encodeAppsCreateInstallationAccessTokenRequest(
 }
 
 func encodeAppsDeleteAuthorizationRequest(
-	req AppsDeleteAuthorizationReq,
+	req *AppsDeleteAuthorizationReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -379,7 +379,7 @@ func encodeAppsDeleteAuthorizationRequest(
 }
 
 func encodeAppsDeleteTokenRequest(
-	req AppsDeleteTokenReq,
+	req *AppsDeleteTokenReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -393,7 +393,7 @@ func encodeAppsDeleteTokenRequest(
 }
 
 func encodeAppsResetTokenRequest(
-	req AppsResetTokenReq,
+	req *AppsResetTokenReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -407,7 +407,7 @@ func encodeAppsResetTokenRequest(
 }
 
 func encodeAppsScopeTokenRequest(
-	req AppsScopeTokenReq,
+	req *AppsScopeTokenReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -441,7 +441,7 @@ func encodeAppsUpdateWebhookConfigForAppRequest(
 }
 
 func encodeChecksCreateSuiteRequest(
-	req ChecksCreateSuiteReq,
+	req *ChecksCreateSuiteReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -455,7 +455,7 @@ func encodeChecksCreateSuiteRequest(
 }
 
 func encodeChecksSetSuitesPreferencesRequest(
-	req ChecksSetSuitesPreferencesReq,
+	req *ChecksSetSuitesPreferencesReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -469,7 +469,7 @@ func encodeChecksSetSuitesPreferencesRequest(
 }
 
 func encodeCodeScanningUpdateAlertRequest(
-	req CodeScanningUpdateAlertReq,
+	req *CodeScanningUpdateAlertReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -483,7 +483,7 @@ func encodeCodeScanningUpdateAlertRequest(
 }
 
 func encodeCodeScanningUploadSarifRequest(
-	req CodeScanningUploadSarifReq,
+	req *CodeScanningUploadSarifReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -497,7 +497,7 @@ func encodeCodeScanningUploadSarifRequest(
 }
 
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(
-	req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
+	req *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -511,7 +511,7 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(
 }
 
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(
-	req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
+	req *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -525,7 +525,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(
 }
 
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(
-	req EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
+	req *EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -539,7 +539,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(
 }
 
 func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(
-	req SelectedActions,
+	req *SelectedActions,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -553,7 +553,7 @@ func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(
 }
 
 func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(
-	req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
+	req *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -567,7 +567,7 @@ func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(
 }
 
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(
-	req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
+	req *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -581,7 +581,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(
 }
 
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(
-	req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
+	req *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -595,7 +595,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(
 }
 
 func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(
-	req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
+	req *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -609,7 +609,7 @@ func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 }
 
 func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(
-	req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
+	req *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -623,7 +623,7 @@ func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 }
 
 func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(
-	req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
+	req *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -637,7 +637,7 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(
 }
 
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(
-	req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
+	req *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -651,7 +651,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(
 }
 
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(
-	req EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
+	req *EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -685,7 +685,7 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(
 }
 
 func encodeGistsCreateRequest(
-	req GistsCreateReq,
+	req *GistsCreateReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -699,7 +699,7 @@ func encodeGistsCreateRequest(
 }
 
 func encodeGistsCreateCommentRequest(
-	req GistsCreateCommentReq,
+	req *GistsCreateCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -713,7 +713,7 @@ func encodeGistsCreateCommentRequest(
 }
 
 func encodeGistsUpdateCommentRequest(
-	req GistsUpdateCommentReq,
+	req *GistsUpdateCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -727,7 +727,7 @@ func encodeGistsUpdateCommentRequest(
 }
 
 func encodeGitCreateBlobRequest(
-	req GitCreateBlobReq,
+	req *GitCreateBlobReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -741,7 +741,7 @@ func encodeGitCreateBlobRequest(
 }
 
 func encodeGitCreateCommitRequest(
-	req GitCreateCommitReq,
+	req *GitCreateCommitReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -755,7 +755,7 @@ func encodeGitCreateCommitRequest(
 }
 
 func encodeGitCreateRefRequest(
-	req GitCreateRefReq,
+	req *GitCreateRefReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -769,7 +769,7 @@ func encodeGitCreateRefRequest(
 }
 
 func encodeGitCreateTagRequest(
-	req GitCreateTagReq,
+	req *GitCreateTagReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -783,7 +783,7 @@ func encodeGitCreateTagRequest(
 }
 
 func encodeGitCreateTreeRequest(
-	req GitCreateTreeReq,
+	req *GitCreateTreeReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -797,7 +797,7 @@ func encodeGitCreateTreeRequest(
 }
 
 func encodeGitUpdateRefRequest(
-	req GitUpdateRefReq,
+	req *GitUpdateRefReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -811,7 +811,7 @@ func encodeGitUpdateRefRequest(
 }
 
 func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(
-	req InteractionLimit,
+	req *InteractionLimit,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -825,7 +825,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(
 }
 
 func encodeInteractionsSetRestrictionsForOrgRequest(
-	req InteractionLimit,
+	req *InteractionLimit,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -839,7 +839,7 @@ func encodeInteractionsSetRestrictionsForOrgRequest(
 }
 
 func encodeInteractionsSetRestrictionsForRepoRequest(
-	req InteractionLimit,
+	req *InteractionLimit,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -873,7 +873,7 @@ func encodeIssuesAddAssigneesRequest(
 }
 
 func encodeIssuesCreateRequest(
-	req IssuesCreateReq,
+	req *IssuesCreateReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -887,7 +887,7 @@ func encodeIssuesCreateRequest(
 }
 
 func encodeIssuesCreateCommentRequest(
-	req IssuesCreateCommentReq,
+	req *IssuesCreateCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -901,7 +901,7 @@ func encodeIssuesCreateCommentRequest(
 }
 
 func encodeIssuesCreateLabelRequest(
-	req IssuesCreateLabelReq,
+	req *IssuesCreateLabelReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -915,7 +915,7 @@ func encodeIssuesCreateLabelRequest(
 }
 
 func encodeIssuesCreateMilestoneRequest(
-	req IssuesCreateMilestoneReq,
+	req *IssuesCreateMilestoneReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -989,7 +989,7 @@ func encodeIssuesUpdateRequest(
 }
 
 func encodeIssuesUpdateCommentRequest(
-	req IssuesUpdateCommentReq,
+	req *IssuesUpdateCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1043,7 +1043,7 @@ func encodeIssuesUpdateMilestoneRequest(
 }
 
 func encodeMarkdownRenderRequest(
-	req MarkdownRenderReq,
+	req *MarkdownRenderReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1100,7 +1100,7 @@ func encodeMigrationsMapCommitAuthorRequest(
 }
 
 func encodeMigrationsSetLfsPreferenceRequest(
-	req MigrationsSetLfsPreferenceReq,
+	req *MigrationsSetLfsPreferenceReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1114,7 +1114,7 @@ func encodeMigrationsSetLfsPreferenceRequest(
 }
 
 func encodeMigrationsStartForAuthenticatedUserRequest(
-	req MigrationsStartForAuthenticatedUserReq,
+	req *MigrationsStartForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1128,7 +1128,7 @@ func encodeMigrationsStartForAuthenticatedUserRequest(
 }
 
 func encodeMigrationsStartForOrgRequest(
-	req MigrationsStartForOrgReq,
+	req *MigrationsStartForOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1142,7 +1142,7 @@ func encodeMigrationsStartForOrgRequest(
 }
 
 func encodeMigrationsStartImportRequest(
-	req MigrationsStartImportReq,
+	req *MigrationsStartImportReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1196,7 +1196,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationRequest(
 }
 
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
-	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
+	req *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1210,7 +1210,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 }
 
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(
-	req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
+	req *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1264,7 +1264,7 @@ func encodeOrgsCreateInvitationRequest(
 }
 
 func encodeOrgsCreateWebhookRequest(
-	req OrgsCreateWebhookReq,
+	req *OrgsCreateWebhookReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1298,7 +1298,7 @@ func encodeOrgsSetMembershipForUserRequest(
 }
 
 func encodeOrgsUpdateMembershipForAuthenticatedUserRequest(
-	req OrgsUpdateMembershipForAuthenticatedUserReq,
+	req *OrgsUpdateMembershipForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1372,7 +1372,7 @@ func encodeProjectsAddCollaboratorRequest(
 }
 
 func encodeProjectsCreateColumnRequest(
-	req ProjectsCreateColumnReq,
+	req *ProjectsCreateColumnReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1386,7 +1386,7 @@ func encodeProjectsCreateColumnRequest(
 }
 
 func encodeProjectsCreateForAuthenticatedUserRequest(
-	req ProjectsCreateForAuthenticatedUserReq,
+	req *ProjectsCreateForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1400,7 +1400,7 @@ func encodeProjectsCreateForAuthenticatedUserRequest(
 }
 
 func encodeProjectsCreateForOrgRequest(
-	req ProjectsCreateForOrgReq,
+	req *ProjectsCreateForOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1414,7 +1414,7 @@ func encodeProjectsCreateForOrgRequest(
 }
 
 func encodeProjectsCreateForRepoRequest(
-	req ProjectsCreateForRepoReq,
+	req *ProjectsCreateForRepoReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1428,7 +1428,7 @@ func encodeProjectsCreateForRepoRequest(
 }
 
 func encodeProjectsMoveCardRequest(
-	req ProjectsMoveCardReq,
+	req *ProjectsMoveCardReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1442,7 +1442,7 @@ func encodeProjectsMoveCardRequest(
 }
 
 func encodeProjectsMoveColumnRequest(
-	req ProjectsMoveColumnReq,
+	req *ProjectsMoveColumnReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1496,7 +1496,7 @@ func encodeProjectsUpdateCardRequest(
 }
 
 func encodeProjectsUpdateColumnRequest(
-	req ProjectsUpdateColumnReq,
+	req *ProjectsUpdateColumnReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1510,7 +1510,7 @@ func encodeProjectsUpdateColumnRequest(
 }
 
 func encodePullsCreateRequest(
-	req PullsCreateReq,
+	req *PullsCreateReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1524,7 +1524,7 @@ func encodePullsCreateRequest(
 }
 
 func encodePullsCreateReplyForReviewCommentRequest(
-	req PullsCreateReplyForReviewCommentReq,
+	req *PullsCreateReplyForReviewCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1558,7 +1558,7 @@ func encodePullsCreateReviewRequest(
 }
 
 func encodePullsCreateReviewCommentRequest(
-	req PullsCreateReviewCommentReq,
+	req *PullsCreateReviewCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1572,7 +1572,7 @@ func encodePullsCreateReviewCommentRequest(
 }
 
 func encodePullsDismissReviewRequest(
-	req PullsDismissReviewReq,
+	req *PullsDismissReviewReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1606,7 +1606,7 @@ func encodePullsMergeRequest(
 }
 
 func encodePullsRemoveRequestedReviewersRequest(
-	req PullsRemoveRequestedReviewersReq,
+	req *PullsRemoveRequestedReviewersReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1620,7 +1620,7 @@ func encodePullsRemoveRequestedReviewersRequest(
 }
 
 func encodePullsSubmitReviewRequest(
-	req PullsSubmitReviewReq,
+	req *PullsSubmitReviewReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1674,7 +1674,7 @@ func encodePullsUpdateBranchRequest(
 }
 
 func encodePullsUpdateReviewRequest(
-	req PullsUpdateReviewReq,
+	req *PullsUpdateReviewReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1688,7 +1688,7 @@ func encodePullsUpdateReviewRequest(
 }
 
 func encodePullsUpdateReviewCommentRequest(
-	req PullsUpdateReviewCommentReq,
+	req *PullsUpdateReviewCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1702,7 +1702,7 @@ func encodePullsUpdateReviewCommentRequest(
 }
 
 func encodeReactionsCreateForCommitCommentRequest(
-	req ReactionsCreateForCommitCommentReq,
+	req *ReactionsCreateForCommitCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1716,7 +1716,7 @@ func encodeReactionsCreateForCommitCommentRequest(
 }
 
 func encodeReactionsCreateForIssueRequest(
-	req ReactionsCreateForIssueReq,
+	req *ReactionsCreateForIssueReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1730,7 +1730,7 @@ func encodeReactionsCreateForIssueRequest(
 }
 
 func encodeReactionsCreateForIssueCommentRequest(
-	req ReactionsCreateForIssueCommentReq,
+	req *ReactionsCreateForIssueCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1744,7 +1744,7 @@ func encodeReactionsCreateForIssueCommentRequest(
 }
 
 func encodeReactionsCreateForPullRequestReviewCommentRequest(
-	req ReactionsCreateForPullRequestReviewCommentReq,
+	req *ReactionsCreateForPullRequestReviewCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1758,7 +1758,7 @@ func encodeReactionsCreateForPullRequestReviewCommentRequest(
 }
 
 func encodeReactionsCreateForReleaseRequest(
-	req ReactionsCreateForReleaseReq,
+	req *ReactionsCreateForReleaseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1772,7 +1772,7 @@ func encodeReactionsCreateForReleaseRequest(
 }
 
 func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(
-	req ReactionsCreateForTeamDiscussionCommentInOrgReq,
+	req *ReactionsCreateForTeamDiscussionCommentInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1786,7 +1786,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(
 }
 
 func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(
-	req ReactionsCreateForTeamDiscussionCommentLegacyReq,
+	req *ReactionsCreateForTeamDiscussionCommentLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1800,7 +1800,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(
 }
 
 func encodeReactionsCreateForTeamDiscussionInOrgRequest(
-	req ReactionsCreateForTeamDiscussionInOrgReq,
+	req *ReactionsCreateForTeamDiscussionInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1814,7 +1814,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgRequest(
 }
 
 func encodeReactionsCreateForTeamDiscussionLegacyRequest(
-	req ReactionsCreateForTeamDiscussionLegacyReq,
+	req *ReactionsCreateForTeamDiscussionLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1928,7 +1928,7 @@ func encodeReposAddUserAccessRestrictionsRequest(
 }
 
 func encodeReposCreateAutolinkRequest(
-	req ReposCreateAutolinkReq,
+	req *ReposCreateAutolinkReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1942,7 +1942,7 @@ func encodeReposCreateAutolinkRequest(
 }
 
 func encodeReposCreateCommitCommentRequest(
-	req ReposCreateCommitCommentReq,
+	req *ReposCreateCommitCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1956,7 +1956,7 @@ func encodeReposCreateCommitCommentRequest(
 }
 
 func encodeReposCreateCommitStatusRequest(
-	req ReposCreateCommitStatusReq,
+	req *ReposCreateCommitStatusReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1970,7 +1970,7 @@ func encodeReposCreateCommitStatusRequest(
 }
 
 func encodeReposCreateDeployKeyRequest(
-	req ReposCreateDeployKeyReq,
+	req *ReposCreateDeployKeyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1984,7 +1984,7 @@ func encodeReposCreateDeployKeyRequest(
 }
 
 func encodeReposCreateDeploymentRequest(
-	req ReposCreateDeploymentReq,
+	req *ReposCreateDeploymentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1998,7 +1998,7 @@ func encodeReposCreateDeploymentRequest(
 }
 
 func encodeReposCreateDeploymentStatusRequest(
-	req ReposCreateDeploymentStatusReq,
+	req *ReposCreateDeploymentStatusReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2012,7 +2012,7 @@ func encodeReposCreateDeploymentStatusRequest(
 }
 
 func encodeReposCreateDispatchEventRequest(
-	req ReposCreateDispatchEventReq,
+	req *ReposCreateDispatchEventReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2026,7 +2026,7 @@ func encodeReposCreateDispatchEventRequest(
 }
 
 func encodeReposCreateForAuthenticatedUserRequest(
-	req ReposCreateForAuthenticatedUserReq,
+	req *ReposCreateForAuthenticatedUserReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2060,7 +2060,7 @@ func encodeReposCreateForkRequest(
 }
 
 func encodeReposCreateInOrgRequest(
-	req ReposCreateInOrgReq,
+	req *ReposCreateInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2074,7 +2074,7 @@ func encodeReposCreateInOrgRequest(
 }
 
 func encodeReposCreateOrUpdateFileContentsRequest(
-	req ReposCreateOrUpdateFileContentsReq,
+	req *ReposCreateOrUpdateFileContentsReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2102,7 +2102,7 @@ func encodeReposCreatePagesSiteRequest(
 }
 
 func encodeReposCreateReleaseRequest(
-	req ReposCreateReleaseReq,
+	req *ReposCreateReleaseReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2116,7 +2116,7 @@ func encodeReposCreateReleaseRequest(
 }
 
 func encodeReposCreateUsingTemplateRequest(
-	req ReposCreateUsingTemplateReq,
+	req *ReposCreateUsingTemplateReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2150,7 +2150,7 @@ func encodeReposCreateWebhookRequest(
 }
 
 func encodeReposDeleteFileRequest(
-	req ReposDeleteFileReq,
+	req *ReposDeleteFileReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2164,7 +2164,7 @@ func encodeReposDeleteFileRequest(
 }
 
 func encodeReposMergeRequest(
-	req ReposMergeReq,
+	req *ReposMergeReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2178,7 +2178,7 @@ func encodeReposMergeRequest(
 }
 
 func encodeReposMergeUpstreamRequest(
-	req ReposMergeUpstreamReq,
+	req *ReposMergeUpstreamReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2292,7 +2292,7 @@ func encodeReposRenameBranchRequest(
 }
 
 func encodeReposReplaceAllTopicsRequest(
-	req ReposReplaceAllTopicsReq,
+	req *ReposReplaceAllTopicsReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2386,7 +2386,7 @@ func encodeReposSetUserAccessRestrictionsRequest(
 }
 
 func encodeReposTransferRequest(
-	req ReposTransferReq,
+	req *ReposTransferReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2420,7 +2420,7 @@ func encodeReposUpdateRequest(
 }
 
 func encodeReposUpdateBranchProtectionRequest(
-	req ReposUpdateBranchProtectionReq,
+	req *ReposUpdateBranchProtectionReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2434,7 +2434,7 @@ func encodeReposUpdateBranchProtectionRequest(
 }
 
 func encodeReposUpdateCommitCommentRequest(
-	req ReposUpdateCommitCommentReq,
+	req *ReposUpdateCommitCommentReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2588,7 +2588,7 @@ func encodeReposUpdateWebhookConfigForRepoRequest(
 }
 
 func encodeReposUploadReleaseAssetRequest(
-	req ReposUploadReleaseAssetReqWithContentType,
+	req *ReposUploadReleaseAssetReqWithContentType,
 	r *http.Request,
 ) error {
 	contentType := req.ContentType
@@ -2604,7 +2604,7 @@ func encodeReposUploadReleaseAssetRequest(
 }
 
 func encodeSecretScanningUpdateAlertRequest(
-	req SecretScanningUpdateAlertReq,
+	req *SecretScanningUpdateAlertReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2738,7 +2738,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(
 }
 
 func encodeTeamsCreateRequest(
-	req TeamsCreateReq,
+	req *TeamsCreateReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2752,7 +2752,7 @@ func encodeTeamsCreateRequest(
 }
 
 func encodeTeamsCreateDiscussionCommentInOrgRequest(
-	req TeamsCreateDiscussionCommentInOrgReq,
+	req *TeamsCreateDiscussionCommentInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2766,7 +2766,7 @@ func encodeTeamsCreateDiscussionCommentInOrgRequest(
 }
 
 func encodeTeamsCreateDiscussionCommentLegacyRequest(
-	req TeamsCreateDiscussionCommentLegacyReq,
+	req *TeamsCreateDiscussionCommentLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2780,7 +2780,7 @@ func encodeTeamsCreateDiscussionCommentLegacyRequest(
 }
 
 func encodeTeamsCreateDiscussionInOrgRequest(
-	req TeamsCreateDiscussionInOrgReq,
+	req *TeamsCreateDiscussionInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2794,7 +2794,7 @@ func encodeTeamsCreateDiscussionInOrgRequest(
 }
 
 func encodeTeamsCreateDiscussionLegacyRequest(
-	req TeamsCreateDiscussionLegacyReq,
+	req *TeamsCreateDiscussionLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2808,7 +2808,7 @@ func encodeTeamsCreateDiscussionLegacyRequest(
 }
 
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(
-	req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
+	req *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2822,7 +2822,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(
 }
 
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(
-	req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
+	req *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2836,7 +2836,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(
 }
 
 func encodeTeamsUpdateDiscussionCommentInOrgRequest(
-	req TeamsUpdateDiscussionCommentInOrgReq,
+	req *TeamsUpdateDiscussionCommentInOrgReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2850,7 +2850,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgRequest(
 }
 
 func encodeTeamsUpdateDiscussionCommentLegacyRequest(
-	req TeamsUpdateDiscussionCommentLegacyReq,
+	req *TeamsUpdateDiscussionCommentLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2924,7 +2924,7 @@ func encodeTeamsUpdateInOrgRequest(
 }
 
 func encodeTeamsUpdateLegacyRequest(
-	req TeamsUpdateLegacyReq,
+	req *TeamsUpdateLegacyReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2958,7 +2958,7 @@ func encodeUsersAddEmailForAuthenticatedRequest(
 }
 
 func encodeUsersCreateGpgKeyForAuthenticatedRequest(
-	req UsersCreateGpgKeyForAuthenticatedReq,
+	req *UsersCreateGpgKeyForAuthenticatedReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2972,7 +2972,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedRequest(
 }
 
 func encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(
-	req UsersCreatePublicSSHKeyForAuthenticatedReq,
+	req *UsersCreatePublicSSHKeyForAuthenticatedReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -3006,7 +3006,7 @@ func encodeUsersDeleteEmailForAuthenticatedRequest(
 }
 
 func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(
-	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
+	req *UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

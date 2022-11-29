@@ -64,7 +64,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Creates a new pet in the store. Duplicates are allowed.
 //
 // POST /pets
-func (c *Client) AddPet(ctx context.Context, request NewPet) (res AddPetRes, err error) {
+func (c *Client) AddPet(ctx context.Context, request *NewPet) (res AddPetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addPet"),
 	}

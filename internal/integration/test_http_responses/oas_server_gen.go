@@ -15,7 +15,7 @@ type Handler interface {
 	// AnyContentTypeBinaryStringSchemaDefault implements anyContentTypeBinaryStringSchemaDefault operation.
 	//
 	// GET /anyContentTypeBinaryStringSchemaDefault
-	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error)
+	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error)
 	// Combined implements combined operation.
 	//
 	// GET /combined
@@ -23,7 +23,7 @@ type Handler interface {
 	// Headers200 implements headers200 operation.
 	//
 	// GET /headers200
-	Headers200(ctx context.Context) (Headers200OK, error)
+	Headers200(ctx context.Context) (*Headers200OK, error)
 	// HeadersCombined implements headersCombined operation.
 	//
 	// GET /headersCombined
@@ -31,11 +31,11 @@ type Handler interface {
 	// HeadersDefault implements headersDefault operation.
 	//
 	// GET /headersDefault
-	HeadersDefault(ctx context.Context) (HeadersDefaultDef, error)
+	HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error)
 	// HeadersPattern implements headersPattern operation.
 	//
 	// GET /headersPattern
-	HeadersPattern(ctx context.Context) (HeadersPattern4XX, error)
+	HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error)
 	// IntersectPatternCode implements intersectPatternCode operation.
 	//
 	// If a response is defined using an explicit code, the explicit code definition takes precedence

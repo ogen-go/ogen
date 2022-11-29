@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeIntegerNumberResponse(response IntegerNumber, w http.ResponseWriter, span trace.Span) error {
+func encodeIntegerNumberResponse(response *IntegerNumber, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24,7 +24,7 @@ func encodeIntegerNumberResponse(response IntegerNumber, w http.ResponseWriter, 
 	return nil
 }
 
-func encodeJaegerAnyOfResponse(response JaegerAnyOf, w http.ResponseWriter, span trace.Span) error {
+func encodeJaegerAnyOfResponse(response *JaegerAnyOf, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -37,7 +37,7 @@ func encodeJaegerAnyOfResponse(response JaegerAnyOf, w http.ResponseWriter, span
 	return nil
 }
 
-func encodeOneUUIDResponse(response OneUUID, w http.ResponseWriter, span trace.Span) error {
+func encodeOneUUIDResponse(response *OneUUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

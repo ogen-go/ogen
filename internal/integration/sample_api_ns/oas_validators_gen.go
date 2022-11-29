@@ -10,7 +10,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s ArrayTest) Validate() error {
+func (s *ArrayTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Required == nil {
@@ -46,7 +46,7 @@ func (s ArrayTest) Validate() error {
 	}
 	return nil
 }
-func (s Data) Validate() error {
+func (s *Data) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -128,7 +128,7 @@ func (s Data) Validate() error {
 	}
 	return nil
 }
-func (s DefaultTest) Validate() error {
+func (s *DefaultTest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Enum.Set {
@@ -241,7 +241,7 @@ func (s DefaultTestEnum) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Hash) Validate() error {
+func (s *Hash) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -267,7 +267,7 @@ func (s Hash) Validate() error {
 	}
 	return nil
 }
-func (s MapWithProperties) Validate() error {
+func (s *MapWithProperties) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SubMap.Set {
@@ -311,7 +311,7 @@ func (s MapWithProperties) Validate() error {
 	return nil
 }
 
-func (s NullableEnums) Validate() error {
+func (s *NullableEnums) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.OnlyNullable.Value.Validate(); err != nil {
@@ -395,7 +395,7 @@ func (s OneOfBooleanSumNullables) Validate() error {
 	}
 }
 
-func (s OneOfBugs) Validate() error {
+func (s *OneOfBugs) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
@@ -480,7 +480,7 @@ func (s OneOfWithNullable) Validate() error {
 	}
 }
 
-func (s Pet) Validate() error {
+func (s *Pet) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Primary == nil {
@@ -898,7 +898,7 @@ func (s StringStringMap) Validate() error {
 	}
 	return nil
 }
-func (s TestFloatValidation) Validate() error {
+func (s *TestFloatValidation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{

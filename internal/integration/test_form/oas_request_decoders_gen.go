@@ -20,7 +20,7 @@ import (
 )
 
 func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
-	req TestForm,
+	req *TestForm,
 	close func() error,
 	rerr error,
 ) {
@@ -224,14 +224,14 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				}
 			}
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTestMultipartRequest(r *http.Request) (
-	req TestForm,
+	req *TestForm,
 	close func() error,
 	rerr error,
 ) {
@@ -440,14 +440,14 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				}
 			}
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
-	req TestMultipartUploadReqForm,
+	req *TestMultipartUploadReqForm,
 	close func() error,
 	rerr error,
 ) {
@@ -633,7 +633,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 				return req, close, errors.Wrap(err, "decode \"files\"")
 			}
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Creates a new pet in the store. Duplicates are allowed.
 //
 // POST /pets
-func (UnimplementedHandler) AddPet(ctx context.Context, req NewPet) (r AddPetRes, _ error) {
+func (UnimplementedHandler) AddPet(ctx context.Context, req *NewPet) (r AddPetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

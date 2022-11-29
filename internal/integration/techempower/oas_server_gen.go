@@ -25,7 +25,7 @@ type Handler interface {
 	// random number generator, database driver, and database connection pool.
 	//
 	// GET /db
-	DB(ctx context.Context) (WorldObject, error)
+	DB(ctx context.Context) (*WorldObject, error)
 	// JSON implements json operation.
 	//
 	// Test #1. The JSON Serialization test exercises the framework fundamentals including keep-alive
@@ -33,7 +33,7 @@ type Handler interface {
 	// response header generation, and request count throughput.
 	//
 	// GET /json
-	JSON(ctx context.Context) (HelloWorld, error)
+	JSON(ctx context.Context) (*HelloWorld, error)
 	// Queries implements Queries operation.
 	//
 	// Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World

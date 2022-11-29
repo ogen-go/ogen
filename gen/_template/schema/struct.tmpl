@@ -13,7 +13,7 @@
 
 {{- range $f := $.Fields }}
 // Get{{ $f.Name }} returns the value of {{ $f.Name }}.
-func (s {{ $.Name }}) Get{{ $f.Name }}() {{ $f.Type.Go }} {
+func (s {{ $.ReadOnlyReceiver }}) Get{{ $f.Name }}() {{ $f.Type.Go }} {
 	return s.{{ $f.Name }}
 }
 {{- end }}

@@ -92,7 +92,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 }
 
 func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Request) (
-	req ObjectsWithConflictingArrayPropertyReq,
+	req *ObjectsWithConflictingArrayPropertyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -151,14 +151,14 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) (
-	req ObjectsWithConflictingPropertiesReq,
+	req *ObjectsWithConflictingPropertiesReq,
 	close func() error,
 	rerr error,
 ) {
@@ -217,7 +217,7 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -653,7 +653,7 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 }
 
 func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
-	req SimpleObjectsReq,
+	req *SimpleObjectsReq,
 	close func() error,
 	rerr error,
 ) {
@@ -704,7 +704,7 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

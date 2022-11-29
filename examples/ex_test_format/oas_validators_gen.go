@@ -10,7 +10,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s TestRequestFormatTestReq) Validate() error {
+func (s *TestRequestFormatTestReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredArrayAny == nil {
@@ -3326,7 +3326,7 @@ func (s TestRequestFormatTestReq) Validate() error {
 	}
 	return nil
 }
-func (s TestRequestRequiredFormatTestReq) Validate() error {
+func (s *TestRequestRequiredFormatTestReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredArrayAny == nil {
@@ -6642,7 +6642,7 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 	}
 	return nil
 }
-func (s TestResponseFormatTestOK) Validate() error {
+func (s *TestResponseFormatTestOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredArrayAny == nil {

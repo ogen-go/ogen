@@ -12,7 +12,7 @@ type BearerToken struct {
 }
 
 // GetAPIKey returns the value of APIKey.
-func (s BearerToken) GetAPIKey() string {
+func (s *BearerToken) GetAPIKey() string {
 	return s.APIKey
 }
 
@@ -1299,57 +1299,57 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhook struct {
 }
 
 // GetAdmissionReviewVersions returns the value of AdmissionReviewVersions.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetAdmissionReviewVersions() []string {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetAdmissionReviewVersions() []string {
 	return s.AdmissionReviewVersions
 }
 
 // GetClientConfig returns the value of ClientConfig.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetClientConfig() IoK8sAPIAdmissionregistrationV1WebhookClientConfig {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetClientConfig() IoK8sAPIAdmissionregistrationV1WebhookClientConfig {
 	return s.ClientConfig
 }
 
 // GetFailurePolicy returns the value of FailurePolicy.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetFailurePolicy() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetFailurePolicy() OptString {
 	return s.FailurePolicy
 }
 
 // GetMatchPolicy returns the value of MatchPolicy.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetMatchPolicy() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetMatchPolicy() OptString {
 	return s.MatchPolicy
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetName() string {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetName() string {
 	return s.Name
 }
 
 // GetNamespaceSelector returns the value of NamespaceSelector.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.NamespaceSelector
 }
 
 // GetObjectSelector returns the value of ObjectSelector.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetObjectSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetObjectSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.ObjectSelector
 }
 
 // GetReinvocationPolicy returns the value of ReinvocationPolicy.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetReinvocationPolicy() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetReinvocationPolicy() OptString {
 	return s.ReinvocationPolicy
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetRules() []IoK8sAPIAdmissionregistrationV1RuleWithOperations {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetRules() []IoK8sAPIAdmissionregistrationV1RuleWithOperations {
 	return s.Rules
 }
 
 // GetSideEffects returns the value of SideEffects.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetSideEffects() string {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetSideEffects() string {
 	return s.SideEffects
 }
 
 // GetTimeoutSeconds returns the value of TimeoutSeconds.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetTimeoutSeconds() OptInt32 {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetTimeoutSeconds() OptInt32 {
 	return s.TimeoutSeconds
 }
 
@@ -1426,22 +1426,22 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetApiVersion() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetKind() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetWebhooks returns the value of Webhooks.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetWebhooks() []IoK8sAPIAdmissionregistrationV1MutatingWebhook {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetWebhooks() []IoK8sAPIAdmissionregistrationV1MutatingWebhook {
 	return s.Webhooks
 }
 
@@ -1485,22 +1485,22 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetApiVersion() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetItems() []IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetItems() []IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetKind() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -1557,27 +1557,27 @@ type IoK8sAPIAdmissionregistrationV1RuleWithOperations struct {
 }
 
 // GetApiGroups returns the value of ApiGroups.
-func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetApiGroups() []string {
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetApiGroups() []string {
 	return s.ApiGroups
 }
 
 // GetApiVersions returns the value of ApiVersions.
-func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetApiVersions() []string {
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetApiVersions() []string {
 	return s.ApiVersions
 }
 
 // GetOperations returns the value of Operations.
-func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetOperations() []string {
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetOperations() []string {
 	return s.Operations
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetResources() []string {
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetResources() []string {
 	return s.Resources
 }
 
 // GetScope returns the value of Scope.
-func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetScope() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetScope() OptString {
 	return s.Scope
 }
 
@@ -1621,22 +1621,22 @@ type IoK8sAPIAdmissionregistrationV1ServiceReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetName() string {
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetNamespace() string {
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) GetNamespace() string {
 	return s.Namespace
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetPath() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) GetPath() OptString {
 	return s.Path
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetPort() OptInt32 {
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) GetPort() OptInt32 {
 	return s.Port
 }
 
@@ -1712,52 +1712,52 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhook struct {
 }
 
 // GetAdmissionReviewVersions returns the value of AdmissionReviewVersions.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetAdmissionReviewVersions() []string {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetAdmissionReviewVersions() []string {
 	return s.AdmissionReviewVersions
 }
 
 // GetClientConfig returns the value of ClientConfig.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetClientConfig() IoK8sAPIAdmissionregistrationV1WebhookClientConfig {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetClientConfig() IoK8sAPIAdmissionregistrationV1WebhookClientConfig {
 	return s.ClientConfig
 }
 
 // GetFailurePolicy returns the value of FailurePolicy.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetFailurePolicy() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetFailurePolicy() OptString {
 	return s.FailurePolicy
 }
 
 // GetMatchPolicy returns the value of MatchPolicy.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetMatchPolicy() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetMatchPolicy() OptString {
 	return s.MatchPolicy
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetName() string {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetName() string {
 	return s.Name
 }
 
 // GetNamespaceSelector returns the value of NamespaceSelector.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.NamespaceSelector
 }
 
 // GetObjectSelector returns the value of ObjectSelector.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetObjectSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetObjectSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.ObjectSelector
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetRules() []IoK8sAPIAdmissionregistrationV1RuleWithOperations {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetRules() []IoK8sAPIAdmissionregistrationV1RuleWithOperations {
 	return s.Rules
 }
 
 // GetSideEffects returns the value of SideEffects.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetSideEffects() string {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetSideEffects() string {
 	return s.SideEffects
 }
 
 // GetTimeoutSeconds returns the value of TimeoutSeconds.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetTimeoutSeconds() OptInt32 {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetTimeoutSeconds() OptInt32 {
 	return s.TimeoutSeconds
 }
 
@@ -1829,22 +1829,22 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetApiVersion() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetKind() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetWebhooks returns the value of Webhooks.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetWebhooks() []IoK8sAPIAdmissionregistrationV1ValidatingWebhook {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetWebhooks() []IoK8sAPIAdmissionregistrationV1ValidatingWebhook {
 	return s.Webhooks
 }
 
@@ -1888,22 +1888,22 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetApiVersion() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetItems() []IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetItems() []IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetKind() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -1954,17 +1954,17 @@ type IoK8sAPIAdmissionregistrationV1WebhookClientConfig struct {
 }
 
 // GetCaBundle returns the value of CaBundle.
-func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetCaBundle() []byte {
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetCaBundle() []byte {
 	return s.CaBundle
 }
 
 // GetService returns the value of Service.
-func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetService() OptIoK8sAPIAdmissionregistrationV1ServiceReference {
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetService() OptIoK8sAPIAdmissionregistrationV1ServiceReference {
 	return s.Service
 }
 
 // GetURL returns the value of URL.
-func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetURL() OptString {
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetURL() OptString {
 	return s.URL
 }
 
@@ -1997,17 +1997,17 @@ type IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion struct {
 }
 
 // GetApiServerID returns the value of ApiServerID.
-func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetApiServerID() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetApiServerID() OptString {
 	return s.ApiServerID
 }
 
 // GetDecodableVersions returns the value of DecodableVersions.
-func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetDecodableVersions() []string {
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetDecodableVersions() []string {
 	return s.DecodableVersions
 }
 
 // GetEncodingVersion returns the value of EncodingVersion.
-func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetEncodingVersion() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetEncodingVersion() OptString {
 	return s.EncodingVersion
 }
 
@@ -2043,27 +2043,27 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersion struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetApiVersion() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetKind() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetSpec() IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetSpec() IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetStatus() IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetStatus() IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus {
 	return s.Status
 }
 
@@ -2114,32 +2114,32 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetMessage() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetReason() string {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetReason() string {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetStatus() string {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetType() string {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetType() string {
 	return s.Type
 }
 
@@ -2190,22 +2190,22 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetApiVersion() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetItems() []IoK8sAPIApiserverinternalV1alpha1StorageVersion {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetItems() []IoK8sAPIApiserverinternalV1alpha1StorageVersion {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetKind() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -2252,17 +2252,17 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus struct {
 }
 
 // GetCommonEncodingVersion returns the value of CommonEncodingVersion.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetCommonEncodingVersion() OptString {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetCommonEncodingVersion() OptString {
 	return s.CommonEncodingVersion
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetConditions() []IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetConditions() []IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition {
 	return s.Conditions
 }
 
 // GetStorageVersions returns the value of StorageVersions.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetStorageVersions() []IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetStorageVersions() []IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion {
 	return s.StorageVersions
 }
 
@@ -2308,27 +2308,27 @@ type IoK8sAPIAppsV1ControllerRevision struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1ControllerRevision) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1ControllerRevision) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetData returns the value of Data.
-func (s IoK8sAPIAppsV1ControllerRevision) GetData() *IoK8sApimachineryPkgRuntimeRawExtension {
+func (s *IoK8sAPIAppsV1ControllerRevision) GetData() *IoK8sApimachineryPkgRuntimeRawExtension {
 	return s.Data
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1ControllerRevision) GetKind() OptString {
+func (s *IoK8sAPIAppsV1ControllerRevision) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1ControllerRevision) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAppsV1ControllerRevision) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetRevision returns the value of Revision.
-func (s IoK8sAPIAppsV1ControllerRevision) GetRevision() int64 {
+func (s *IoK8sAPIAppsV1ControllerRevision) GetRevision() int64 {
 	return s.Revision
 }
 
@@ -2376,22 +2376,22 @@ type IoK8sAPIAppsV1ControllerRevisionList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1ControllerRevisionList) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1ControllerRevisionList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAppsV1ControllerRevisionList) GetItems() []IoK8sAPIAppsV1ControllerRevision {
+func (s *IoK8sAPIAppsV1ControllerRevisionList) GetItems() []IoK8sAPIAppsV1ControllerRevision {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1ControllerRevisionList) GetKind() OptString {
+func (s *IoK8sAPIAppsV1ControllerRevisionList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1ControllerRevisionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAppsV1ControllerRevisionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -2435,27 +2435,27 @@ type IoK8sAPIAppsV1DaemonSet struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1DaemonSet) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1DaemonSet) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1DaemonSet) GetKind() OptString {
+func (s *IoK8sAPIAppsV1DaemonSet) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1DaemonSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAppsV1DaemonSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAppsV1DaemonSet) GetSpec() OptIoK8sAPIAppsV1DaemonSetSpec {
+func (s *IoK8sAPIAppsV1DaemonSet) GetSpec() OptIoK8sAPIAppsV1DaemonSetSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1DaemonSet) GetStatus() OptIoK8sAPIAppsV1DaemonSetStatus {
+func (s *IoK8sAPIAppsV1DaemonSet) GetStatus() OptIoK8sAPIAppsV1DaemonSetStatus {
 	return s.Status
 }
 
@@ -2502,27 +2502,27 @@ type IoK8sAPIAppsV1DaemonSetCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIAppsV1DaemonSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAppsV1DaemonSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIAppsV1DaemonSetCondition) GetMessage() OptString {
+func (s *IoK8sAPIAppsV1DaemonSetCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIAppsV1DaemonSetCondition) GetReason() OptString {
+func (s *IoK8sAPIAppsV1DaemonSetCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1DaemonSetCondition) GetStatus() string {
+func (s *IoK8sAPIAppsV1DaemonSetCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1DaemonSetCondition) GetType() string {
+func (s *IoK8sAPIAppsV1DaemonSetCondition) GetType() string {
 	return s.Type
 }
 
@@ -2568,22 +2568,22 @@ type IoK8sAPIAppsV1DaemonSetList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1DaemonSetList) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1DaemonSetList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAppsV1DaemonSetList) GetItems() []IoK8sAPIAppsV1DaemonSet {
+func (s *IoK8sAPIAppsV1DaemonSetList) GetItems() []IoK8sAPIAppsV1DaemonSet {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1DaemonSetList) GetKind() OptString {
+func (s *IoK8sAPIAppsV1DaemonSetList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1DaemonSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAppsV1DaemonSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -2626,27 +2626,27 @@ type IoK8sAPIAppsV1DaemonSetSpec struct {
 }
 
 // GetMinReadySeconds returns the value of MinReadySeconds.
-func (s IoK8sAPIAppsV1DaemonSetSpec) GetMinReadySeconds() OptInt32 {
+func (s *IoK8sAPIAppsV1DaemonSetSpec) GetMinReadySeconds() OptInt32 {
 	return s.MinReadySeconds
 }
 
 // GetRevisionHistoryLimit returns the value of RevisionHistoryLimit.
-func (s IoK8sAPIAppsV1DaemonSetSpec) GetRevisionHistoryLimit() OptInt32 {
+func (s *IoK8sAPIAppsV1DaemonSetSpec) GetRevisionHistoryLimit() OptInt32 {
 	return s.RevisionHistoryLimit
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAppsV1DaemonSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAppsV1DaemonSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPIAppsV1DaemonSetSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPIAppsV1DaemonSetSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
 // GetUpdateStrategy returns the value of UpdateStrategy.
-func (s IoK8sAPIAppsV1DaemonSetSpec) GetUpdateStrategy() OptIoK8sAPIAppsV1DaemonSetUpdateStrategy {
+func (s *IoK8sAPIAppsV1DaemonSetSpec) GetUpdateStrategy() OptIoK8sAPIAppsV1DaemonSetUpdateStrategy {
 	return s.UpdateStrategy
 }
 
@@ -2708,52 +2708,52 @@ type IoK8sAPIAppsV1DaemonSetStatus struct {
 }
 
 // GetCollisionCount returns the value of CollisionCount.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetCollisionCount() OptInt32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetCollisionCount() OptInt32 {
 	return s.CollisionCount
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetConditions() []IoK8sAPIAppsV1DaemonSetCondition {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetConditions() []IoK8sAPIAppsV1DaemonSetCondition {
 	return s.Conditions
 }
 
 // GetCurrentNumberScheduled returns the value of CurrentNumberScheduled.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetCurrentNumberScheduled() int32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetCurrentNumberScheduled() int32 {
 	return s.CurrentNumberScheduled
 }
 
 // GetDesiredNumberScheduled returns the value of DesiredNumberScheduled.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetDesiredNumberScheduled() int32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetDesiredNumberScheduled() int32 {
 	return s.DesiredNumberScheduled
 }
 
 // GetNumberAvailable returns the value of NumberAvailable.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberAvailable() OptInt32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetNumberAvailable() OptInt32 {
 	return s.NumberAvailable
 }
 
 // GetNumberMisscheduled returns the value of NumberMisscheduled.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberMisscheduled() int32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetNumberMisscheduled() int32 {
 	return s.NumberMisscheduled
 }
 
 // GetNumberReady returns the value of NumberReady.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberReady() int32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetNumberReady() int32 {
 	return s.NumberReady
 }
 
 // GetNumberUnavailable returns the value of NumberUnavailable.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberUnavailable() OptInt32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetNumberUnavailable() OptInt32 {
 	return s.NumberUnavailable
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetUpdatedNumberScheduled returns the value of UpdatedNumberScheduled.
-func (s IoK8sAPIAppsV1DaemonSetStatus) GetUpdatedNumberScheduled() OptInt32 {
+func (s *IoK8sAPIAppsV1DaemonSetStatus) GetUpdatedNumberScheduled() OptInt32 {
 	return s.UpdatedNumberScheduled
 }
 
@@ -2816,12 +2816,12 @@ type IoK8sAPIAppsV1DaemonSetUpdateStrategy struct {
 }
 
 // GetRollingUpdate returns the value of RollingUpdate.
-func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateDaemonSet {
+func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateDaemonSet {
 	return s.RollingUpdate
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) GetType() OptString {
+func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) GetType() OptString {
 	return s.Type
 }
 
@@ -2852,27 +2852,27 @@ type IoK8sAPIAppsV1Deployment struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1Deployment) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1Deployment) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1Deployment) GetKind() OptString {
+func (s *IoK8sAPIAppsV1Deployment) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1Deployment) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAppsV1Deployment) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAppsV1Deployment) GetSpec() OptIoK8sAPIAppsV1DeploymentSpec {
+func (s *IoK8sAPIAppsV1Deployment) GetSpec() OptIoK8sAPIAppsV1DeploymentSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1Deployment) GetStatus() OptIoK8sAPIAppsV1DeploymentStatus {
+func (s *IoK8sAPIAppsV1Deployment) GetStatus() OptIoK8sAPIAppsV1DeploymentStatus {
 	return s.Status
 }
 
@@ -2920,32 +2920,32 @@ type IoK8sAPIAppsV1DeploymentCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIAppsV1DeploymentCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAppsV1DeploymentCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetLastUpdateTime returns the value of LastUpdateTime.
-func (s IoK8sAPIAppsV1DeploymentCondition) GetLastUpdateTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAppsV1DeploymentCondition) GetLastUpdateTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastUpdateTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIAppsV1DeploymentCondition) GetMessage() OptString {
+func (s *IoK8sAPIAppsV1DeploymentCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIAppsV1DeploymentCondition) GetReason() OptString {
+func (s *IoK8sAPIAppsV1DeploymentCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1DeploymentCondition) GetStatus() string {
+func (s *IoK8sAPIAppsV1DeploymentCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1DeploymentCondition) GetType() string {
+func (s *IoK8sAPIAppsV1DeploymentCondition) GetType() string {
 	return s.Type
 }
 
@@ -2996,22 +2996,22 @@ type IoK8sAPIAppsV1DeploymentList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1DeploymentList) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1DeploymentList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAppsV1DeploymentList) GetItems() []IoK8sAPIAppsV1Deployment {
+func (s *IoK8sAPIAppsV1DeploymentList) GetItems() []IoK8sAPIAppsV1Deployment {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1DeploymentList) GetKind() OptString {
+func (s *IoK8sAPIAppsV1DeploymentList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1DeploymentList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAppsV1DeploymentList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -3064,42 +3064,42 @@ type IoK8sAPIAppsV1DeploymentSpec struct {
 }
 
 // GetMinReadySeconds returns the value of MinReadySeconds.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetMinReadySeconds() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetMinReadySeconds() OptInt32 {
 	return s.MinReadySeconds
 }
 
 // GetPaused returns the value of Paused.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetPaused() OptBool {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetPaused() OptBool {
 	return s.Paused
 }
 
 // GetProgressDeadlineSeconds returns the value of ProgressDeadlineSeconds.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetProgressDeadlineSeconds() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetProgressDeadlineSeconds() OptInt32 {
 	return s.ProgressDeadlineSeconds
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetReplicas() OptInt32 {
 	return s.Replicas
 }
 
 // GetRevisionHistoryLimit returns the value of RevisionHistoryLimit.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetRevisionHistoryLimit() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetRevisionHistoryLimit() OptInt32 {
 	return s.RevisionHistoryLimit
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetStrategy returns the value of Strategy.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetStrategy() OptIoK8sAPIAppsV1DeploymentStrategy {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetStrategy() OptIoK8sAPIAppsV1DeploymentStrategy {
 	return s.Strategy
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPIAppsV1DeploymentSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPIAppsV1DeploymentSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
@@ -3169,42 +3169,42 @@ type IoK8sAPIAppsV1DeploymentStatus struct {
 }
 
 // GetAvailableReplicas returns the value of AvailableReplicas.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetAvailableReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetAvailableReplicas() OptInt32 {
 	return s.AvailableReplicas
 }
 
 // GetCollisionCount returns the value of CollisionCount.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetCollisionCount() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetCollisionCount() OptInt32 {
 	return s.CollisionCount
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetConditions() []IoK8sAPIAppsV1DeploymentCondition {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetConditions() []IoK8sAPIAppsV1DeploymentCondition {
 	return s.Conditions
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetReadyReplicas returns the value of ReadyReplicas.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetReadyReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetReadyReplicas() OptInt32 {
 	return s.ReadyReplicas
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetReplicas() OptInt32 {
 	return s.Replicas
 }
 
 // GetUnavailableReplicas returns the value of UnavailableReplicas.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetUnavailableReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetUnavailableReplicas() OptInt32 {
 	return s.UnavailableReplicas
 }
 
 // GetUpdatedReplicas returns the value of UpdatedReplicas.
-func (s IoK8sAPIAppsV1DeploymentStatus) GetUpdatedReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1DeploymentStatus) GetUpdatedReplicas() OptInt32 {
 	return s.UpdatedReplicas
 }
 
@@ -3257,12 +3257,12 @@ type IoK8sAPIAppsV1DeploymentStrategy struct {
 }
 
 // GetRollingUpdate returns the value of RollingUpdate.
-func (s IoK8sAPIAppsV1DeploymentStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateDeployment {
+func (s *IoK8sAPIAppsV1DeploymentStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateDeployment {
 	return s.RollingUpdate
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1DeploymentStrategy) GetType() OptString {
+func (s *IoK8sAPIAppsV1DeploymentStrategy) GetType() OptString {
 	return s.Type
 }
 
@@ -3293,27 +3293,27 @@ type IoK8sAPIAppsV1ReplicaSet struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1ReplicaSet) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1ReplicaSet) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1ReplicaSet) GetKind() OptString {
+func (s *IoK8sAPIAppsV1ReplicaSet) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1ReplicaSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAppsV1ReplicaSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAppsV1ReplicaSet) GetSpec() OptIoK8sAPIAppsV1ReplicaSetSpec {
+func (s *IoK8sAPIAppsV1ReplicaSet) GetSpec() OptIoK8sAPIAppsV1ReplicaSetSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1ReplicaSet) GetStatus() OptIoK8sAPIAppsV1ReplicaSetStatus {
+func (s *IoK8sAPIAppsV1ReplicaSet) GetStatus() OptIoK8sAPIAppsV1ReplicaSetStatus {
 	return s.Status
 }
 
@@ -3360,27 +3360,27 @@ type IoK8sAPIAppsV1ReplicaSetCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIAppsV1ReplicaSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIAppsV1ReplicaSetCondition) GetMessage() OptString {
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIAppsV1ReplicaSetCondition) GetReason() OptString {
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1ReplicaSetCondition) GetStatus() string {
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1ReplicaSetCondition) GetType() string {
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) GetType() string {
 	return s.Type
 }
 
@@ -3427,22 +3427,22 @@ type IoK8sAPIAppsV1ReplicaSetList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1ReplicaSetList) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1ReplicaSetList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAppsV1ReplicaSetList) GetItems() []IoK8sAPIAppsV1ReplicaSet {
+func (s *IoK8sAPIAppsV1ReplicaSetList) GetItems() []IoK8sAPIAppsV1ReplicaSet {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1ReplicaSetList) GetKind() OptString {
+func (s *IoK8sAPIAppsV1ReplicaSetList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1ReplicaSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAppsV1ReplicaSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -3485,22 +3485,22 @@ type IoK8sAPIAppsV1ReplicaSetSpec struct {
 }
 
 // GetMinReadySeconds returns the value of MinReadySeconds.
-func (s IoK8sAPIAppsV1ReplicaSetSpec) GetMinReadySeconds() OptInt32 {
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) GetMinReadySeconds() OptInt32 {
 	return s.MinReadySeconds
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAppsV1ReplicaSetSpec) GetReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) GetReplicas() OptInt32 {
 	return s.Replicas
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAppsV1ReplicaSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPIAppsV1ReplicaSetSpec) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
@@ -3543,32 +3543,32 @@ type IoK8sAPIAppsV1ReplicaSetStatus struct {
 }
 
 // GetAvailableReplicas returns the value of AvailableReplicas.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) GetAvailableReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) GetAvailableReplicas() OptInt32 {
 	return s.AvailableReplicas
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) GetConditions() []IoK8sAPIAppsV1ReplicaSetCondition {
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) GetConditions() []IoK8sAPIAppsV1ReplicaSetCondition {
 	return s.Conditions
 }
 
 // GetFullyLabeledReplicas returns the value of FullyLabeledReplicas.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) GetFullyLabeledReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) GetFullyLabeledReplicas() OptInt32 {
 	return s.FullyLabeledReplicas
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetReadyReplicas returns the value of ReadyReplicas.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) GetReadyReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) GetReadyReplicas() OptInt32 {
 	return s.ReadyReplicas
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) GetReplicas() int32 {
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) GetReplicas() int32 {
 	return s.Replicas
 }
 
@@ -3610,12 +3610,12 @@ type IoK8sAPIAppsV1RollingUpdateDaemonSet struct {
 }
 
 // GetMaxSurge returns the value of MaxSurge.
-func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) GetMaxSurge() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) GetMaxSurge() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MaxSurge
 }
 
 // GetMaxUnavailable returns the value of MaxUnavailable.
-func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MaxUnavailable
 }
 
@@ -3637,12 +3637,12 @@ type IoK8sAPIAppsV1RollingUpdateDeployment struct {
 }
 
 // GetMaxSurge returns the value of MaxSurge.
-func (s IoK8sAPIAppsV1RollingUpdateDeployment) GetMaxSurge() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIAppsV1RollingUpdateDeployment) GetMaxSurge() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MaxSurge
 }
 
 // GetMaxUnavailable returns the value of MaxUnavailable.
-func (s IoK8sAPIAppsV1RollingUpdateDeployment) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIAppsV1RollingUpdateDeployment) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MaxUnavailable
 }
 
@@ -3665,7 +3665,7 @@ type IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy struct {
 }
 
 // GetPartition returns the value of Partition.
-func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) GetPartition() OptInt32 {
+func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) GetPartition() OptInt32 {
 	return s.Partition
 }
 
@@ -3695,27 +3695,27 @@ type IoK8sAPIAppsV1StatefulSet struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1StatefulSet) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1StatefulSet) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1StatefulSet) GetKind() OptString {
+func (s *IoK8sAPIAppsV1StatefulSet) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1StatefulSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAppsV1StatefulSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAppsV1StatefulSet) GetSpec() OptIoK8sAPIAppsV1StatefulSetSpec {
+func (s *IoK8sAPIAppsV1StatefulSet) GetSpec() OptIoK8sAPIAppsV1StatefulSetSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1StatefulSet) GetStatus() OptIoK8sAPIAppsV1StatefulSetStatus {
+func (s *IoK8sAPIAppsV1StatefulSet) GetStatus() OptIoK8sAPIAppsV1StatefulSetStatus {
 	return s.Status
 }
 
@@ -3762,27 +3762,27 @@ type IoK8sAPIAppsV1StatefulSetCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIAppsV1StatefulSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAppsV1StatefulSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIAppsV1StatefulSetCondition) GetMessage() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIAppsV1StatefulSetCondition) GetReason() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAppsV1StatefulSetCondition) GetStatus() string {
+func (s *IoK8sAPIAppsV1StatefulSetCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1StatefulSetCondition) GetType() string {
+func (s *IoK8sAPIAppsV1StatefulSetCondition) GetType() string {
 	return s.Type
 }
 
@@ -3828,22 +3828,22 @@ type IoK8sAPIAppsV1StatefulSetList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAppsV1StatefulSetList) GetApiVersion() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAppsV1StatefulSetList) GetItems() []IoK8sAPIAppsV1StatefulSet {
+func (s *IoK8sAPIAppsV1StatefulSetList) GetItems() []IoK8sAPIAppsV1StatefulSet {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAppsV1StatefulSetList) GetKind() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAppsV1StatefulSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAppsV1StatefulSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -3910,47 +3910,47 @@ type IoK8sAPIAppsV1StatefulSetSpec struct {
 }
 
 // GetMinReadySeconds returns the value of MinReadySeconds.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetMinReadySeconds() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetMinReadySeconds() OptInt32 {
 	return s.MinReadySeconds
 }
 
 // GetPodManagementPolicy returns the value of PodManagementPolicy.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetPodManagementPolicy() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetPodManagementPolicy() OptString {
 	return s.PodManagementPolicy
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetReplicas() OptInt32 {
 	return s.Replicas
 }
 
 // GetRevisionHistoryLimit returns the value of RevisionHistoryLimit.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetRevisionHistoryLimit() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetRevisionHistoryLimit() OptInt32 {
 	return s.RevisionHistoryLimit
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetServiceName returns the value of ServiceName.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetServiceName() string {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetServiceName() string {
 	return s.ServiceName
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
 // GetUpdateStrategy returns the value of UpdateStrategy.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetUpdateStrategy() OptIoK8sAPIAppsV1StatefulSetUpdateStrategy {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetUpdateStrategy() OptIoK8sAPIAppsV1StatefulSetUpdateStrategy {
 	return s.UpdateStrategy
 }
 
 // GetVolumeClaimTemplates returns the value of VolumeClaimTemplates.
-func (s IoK8sAPIAppsV1StatefulSetSpec) GetVolumeClaimTemplates() []IoK8sAPICoreV1PersistentVolumeClaim {
+func (s *IoK8sAPIAppsV1StatefulSetSpec) GetVolumeClaimTemplates() []IoK8sAPICoreV1PersistentVolumeClaim {
 	return s.VolumeClaimTemplates
 }
 
@@ -4033,52 +4033,52 @@ type IoK8sAPIAppsV1StatefulSetStatus struct {
 }
 
 // GetAvailableReplicas returns the value of AvailableReplicas.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetAvailableReplicas() int32 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetAvailableReplicas() int32 {
 	return s.AvailableReplicas
 }
 
 // GetCollisionCount returns the value of CollisionCount.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetCollisionCount() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetCollisionCount() OptInt32 {
 	return s.CollisionCount
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetConditions() []IoK8sAPIAppsV1StatefulSetCondition {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetConditions() []IoK8sAPIAppsV1StatefulSetCondition {
 	return s.Conditions
 }
 
 // GetCurrentReplicas returns the value of CurrentReplicas.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetCurrentReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetCurrentReplicas() OptInt32 {
 	return s.CurrentReplicas
 }
 
 // GetCurrentRevision returns the value of CurrentRevision.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetCurrentRevision() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetCurrentRevision() OptString {
 	return s.CurrentRevision
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetReadyReplicas returns the value of ReadyReplicas.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetReadyReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetReadyReplicas() OptInt32 {
 	return s.ReadyReplicas
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetReplicas() int32 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetReplicas() int32 {
 	return s.Replicas
 }
 
 // GetUpdateRevision returns the value of UpdateRevision.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetUpdateRevision() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetUpdateRevision() OptString {
 	return s.UpdateRevision
 }
 
 // GetUpdatedReplicas returns the value of UpdatedReplicas.
-func (s IoK8sAPIAppsV1StatefulSetStatus) GetUpdatedReplicas() OptInt32 {
+func (s *IoK8sAPIAppsV1StatefulSetStatus) GetUpdatedReplicas() OptInt32 {
 	return s.UpdatedReplicas
 }
 
@@ -4143,12 +4143,12 @@ type IoK8sAPIAppsV1StatefulSetUpdateStrategy struct {
 }
 
 // GetRollingUpdate returns the value of RollingUpdate.
-func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy {
+func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy {
 	return s.RollingUpdate
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) GetType() OptString {
+func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) GetType() OptString {
 	return s.Type
 }
 
@@ -4175,17 +4175,17 @@ type IoK8sAPIAutoscalingV1CrossVersionObjectReference struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetKind() string {
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetName() string {
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetName() string {
 	return s.Name
 }
 
@@ -4221,27 +4221,27 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscaler struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
 	return s.Status
 }
 
@@ -4292,22 +4292,22 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV1HorizontalPodAutoscaler {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV1HorizontalPodAutoscaler {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -4354,22 +4354,22 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
 }
 
 // GetMaxReplicas returns the value of MaxReplicas.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
 	return s.MaxReplicas
 }
 
 // GetMinReplicas returns the value of MinReplicas.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
 	return s.MinReplicas
 }
 
 // GetScaleTargetRef returns the value of ScaleTargetRef.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV1CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV1CrossVersionObjectReference {
 	return s.ScaleTargetRef
 }
 
 // GetTargetCPUUtilizationPercentage returns the value of TargetCPUUtilizationPercentage.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetTargetCPUUtilizationPercentage() OptInt32 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetTargetCPUUtilizationPercentage() OptInt32 {
 	return s.TargetCPUUtilizationPercentage
 }
 
@@ -4409,27 +4409,27 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
 }
 
 // GetCurrentCPUUtilizationPercentage returns the value of CurrentCPUUtilizationPercentage.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetCurrentCPUUtilizationPercentage() OptInt32 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetCurrentCPUUtilizationPercentage() OptInt32 {
 	return s.CurrentCPUUtilizationPercentage
 }
 
 // GetCurrentReplicas returns the value of CurrentReplicas.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
 	return s.CurrentReplicas
 }
 
 // GetDesiredReplicas returns the value of DesiredReplicas.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
 	return s.DesiredReplicas
 }
 
 // GetLastScaleTime returns the value of LastScaleTime.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastScaleTime
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
@@ -4475,27 +4475,27 @@ type IoK8sAPIAutoscalingV1Scale struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV1Scale) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV1Scale) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV1Scale) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV1Scale) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV1Scale) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAutoscalingV1Scale) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAutoscalingV1Scale) GetSpec() OptIoK8sAPIAutoscalingV1ScaleSpec {
+func (s *IoK8sAPIAutoscalingV1Scale) GetSpec() OptIoK8sAPIAutoscalingV1ScaleSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAutoscalingV1Scale) GetStatus() OptIoK8sAPIAutoscalingV1ScaleStatus {
+func (s *IoK8sAPIAutoscalingV1Scale) GetStatus() OptIoK8sAPIAutoscalingV1ScaleStatus {
 	return s.Status
 }
 
@@ -4537,7 +4537,7 @@ type IoK8sAPIAutoscalingV1ScaleSpec struct {
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAutoscalingV1ScaleSpec) GetReplicas() OptInt32 {
+func (s *IoK8sAPIAutoscalingV1ScaleSpec) GetReplicas() OptInt32 {
 	return s.Replicas
 }
 
@@ -4559,12 +4559,12 @@ type IoK8sAPIAutoscalingV1ScaleStatus struct {
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPIAutoscalingV1ScaleStatus) GetReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV1ScaleStatus) GetReplicas() int32 {
 	return s.Replicas
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAutoscalingV1ScaleStatus) GetSelector() OptString {
+func (s *IoK8sAPIAutoscalingV1ScaleStatus) GetSelector() OptString {
 	return s.Selector
 }
 
@@ -4596,22 +4596,22 @@ type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
 }
 
 // GetContainer returns the value of Container.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetContainer() string {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetContainer() string {
 	return s.Container
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetName() string {
 	return s.Name
 }
 
 // GetTargetAverageUtilization returns the value of TargetAverageUtilization.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetTargetAverageUtilization() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetTargetAverageUtilization() OptInt32 {
 	return s.TargetAverageUtilization
 }
 
 // GetTargetAverageValue returns the value of TargetAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.TargetAverageValue
 }
 
@@ -4655,22 +4655,22 @@ type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus struct {
 }
 
 // GetContainer returns the value of Container.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetContainer() string {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetContainer() string {
 	return s.Container
 }
 
 // GetCurrentAverageUtilization returns the value of CurrentAverageUtilization.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetCurrentAverageUtilization() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetCurrentAverageUtilization() OptInt32 {
 	return s.CurrentAverageUtilization
 }
 
 // GetCurrentAverageValue returns the value of CurrentAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.CurrentAverageValue
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetName() string {
 	return s.Name
 }
 
@@ -4707,17 +4707,17 @@ type IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetKind() string {
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetName() string {
 	return s.Name
 }
 
@@ -4749,22 +4749,22 @@ type IoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
 }
 
 // GetMetricName returns the value of MetricName.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetMetricName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetMetricName() string {
 	return s.MetricName
 }
 
 // GetMetricSelector returns the value of MetricSelector.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetMetricSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetMetricSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.MetricSelector
 }
 
 // GetTargetAverageValue returns the value of TargetAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.TargetAverageValue
 }
 
 // GetTargetValue returns the value of TargetValue.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetTargetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetTargetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.TargetValue
 }
 
@@ -4800,22 +4800,22 @@ type IoK8sAPIAutoscalingV2beta1ExternalMetricStatus struct {
 }
 
 // GetCurrentAverageValue returns the value of CurrentAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetCurrentAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetCurrentAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.CurrentAverageValue
 }
 
 // GetCurrentValue returns the value of CurrentValue.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetCurrentValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetCurrentValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.CurrentValue
 }
 
 // GetMetricName returns the value of MetricName.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetMetricName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetMetricName() string {
 	return s.MetricName
 }
 
 // GetMetricSelector returns the value of MetricSelector.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetMetricSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetMetricSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.MetricSelector
 }
 
@@ -4858,27 +4858,27 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
 	return s.Status
 }
 
@@ -4928,27 +4928,27 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetMessage() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetReason() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetStatus() string {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetType() string {
 	return s.Type
 }
 
@@ -4994,22 +4994,22 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -5059,22 +5059,22 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec struct {
 }
 
 // GetMaxReplicas returns the value of MaxReplicas.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
 	return s.MaxReplicas
 }
 
 // GetMetrics returns the value of Metrics.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMetrics() []IoK8sAPIAutoscalingV2beta1MetricSpec {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMetrics() []IoK8sAPIAutoscalingV2beta1MetricSpec {
 	return s.Metrics
 }
 
 // GetMinReplicas returns the value of MinReplicas.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
 	return s.MinReplicas
 }
 
 // GetScaleTargetRef returns the value of ScaleTargetRef.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
 	return s.ScaleTargetRef
 }
 
@@ -5118,32 +5118,32 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetConditions() []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetConditions() []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition {
 	return s.Conditions
 }
 
 // GetCurrentMetrics returns the value of CurrentMetrics.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetCurrentMetrics() []IoK8sAPIAutoscalingV2beta1MetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetCurrentMetrics() []IoK8sAPIAutoscalingV2beta1MetricStatus {
 	return s.CurrentMetrics
 }
 
 // GetCurrentReplicas returns the value of CurrentReplicas.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
 	return s.CurrentReplicas
 }
 
 // GetDesiredReplicas returns the value of DesiredReplicas.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
 	return s.DesiredReplicas
 }
 
 // GetLastScaleTime returns the value of LastScaleTime.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastScaleTime
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
@@ -5193,32 +5193,32 @@ type IoK8sAPIAutoscalingV2beta1MetricSpec struct {
 }
 
 // GetContainerResource returns the value of ContainerResource.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetContainerResource() OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) GetContainerResource() OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource {
 	return s.ContainerResource
 }
 
 // GetExternal returns the value of External.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetExternal() OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) GetExternal() OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource {
 	return s.External
 }
 
 // GetObject returns the value of Object.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetObject() OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) GetObject() OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource {
 	return s.Object
 }
 
 // GetPods returns the value of Pods.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetPods() OptIoK8sAPIAutoscalingV2beta1PodsMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) GetPods() OptIoK8sAPIAutoscalingV2beta1PodsMetricSource {
 	return s.Pods
 }
 
 // GetResource returns the value of Resource.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetResource() OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) GetResource() OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource {
 	return s.Resource
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) GetType() string {
 	return s.Type
 }
 
@@ -5267,32 +5267,32 @@ type IoK8sAPIAutoscalingV2beta1MetricStatus struct {
 }
 
 // GetContainerResource returns the value of ContainerResource.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetContainerResource() OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) GetContainerResource() OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
 	return s.ContainerResource
 }
 
 // GetExternal returns the value of External.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetExternal() OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) GetExternal() OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
 	return s.External
 }
 
 // GetObject returns the value of Object.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetObject() OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) GetObject() OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
 	return s.Object
 }
 
 // GetPods returns the value of Pods.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetPods() OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) GetPods() OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus {
 	return s.Pods
 }
 
 // GetResource returns the value of Resource.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetResource() OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) GetResource() OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
 	return s.Resource
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) GetType() string {
 	return s.Type
 }
 
@@ -5339,27 +5339,27 @@ type IoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
 }
 
 // GetAverageValue returns the value of AverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.AverageValue
 }
 
 // GetMetricName returns the value of MetricName.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetMetricName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetMetricName() string {
 	return s.MetricName
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
 	return s.Target
 }
 
 // GetTargetValue returns the value of TargetValue.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetTargetValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetTargetValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.TargetValue
 }
 
@@ -5401,27 +5401,27 @@ type IoK8sAPIAutoscalingV2beta1ObjectMetricStatus struct {
 }
 
 // GetAverageValue returns the value of AverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.AverageValue
 }
 
 // GetCurrentValue returns the value of CurrentValue.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetCurrentValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetCurrentValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.CurrentValue
 }
 
 // GetMetricName returns the value of MetricName.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetMetricName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetMetricName() string {
 	return s.MetricName
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetTarget() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetTarget() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
 	return s.Target
 }
 
@@ -5462,17 +5462,17 @@ type IoK8sAPIAutoscalingV2beta1PodsMetricSource struct {
 }
 
 // GetMetricName returns the value of MetricName.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetMetricName() string {
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetMetricName() string {
 	return s.MetricName
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetTargetAverageValue returns the value of TargetAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetTargetAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetTargetAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.TargetAverageValue
 }
 
@@ -5502,17 +5502,17 @@ type IoK8sAPIAutoscalingV2beta1PodsMetricStatus struct {
 }
 
 // GetCurrentAverageValue returns the value of CurrentAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.CurrentAverageValue
 }
 
 // GetMetricName returns the value of MetricName.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetMetricName() string {
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetMetricName() string {
 	return s.MetricName
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
@@ -5547,17 +5547,17 @@ type IoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetName() string {
 	return s.Name
 }
 
 // GetTargetAverageUtilization returns the value of TargetAverageUtilization.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetTargetAverageUtilization() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetTargetAverageUtilization() OptInt32 {
 	return s.TargetAverageUtilization
 }
 
 // GetTargetAverageValue returns the value of TargetAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.TargetAverageValue
 }
 
@@ -5592,17 +5592,17 @@ type IoK8sAPIAutoscalingV2beta1ResourceMetricStatus struct {
 }
 
 // GetCurrentAverageUtilization returns the value of CurrentAverageUtilization.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetCurrentAverageUtilization() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetCurrentAverageUtilization() OptInt32 {
 	return s.CurrentAverageUtilization
 }
 
 // GetCurrentAverageValue returns the value of CurrentAverageValue.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
 	return s.CurrentAverageValue
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetName() string {
 	return s.Name
 }
 
@@ -5636,17 +5636,17 @@ type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource struct {
 }
 
 // GetContainer returns the value of Container.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetContainer() string {
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetContainer() string {
 	return s.Container
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetName() string {
 	return s.Name
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
 	return s.Target
 }
 
@@ -5681,17 +5681,17 @@ type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus struct {
 }
 
 // GetContainer returns the value of Container.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetContainer() string {
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetContainer() string {
 	return s.Container
 }
 
 // GetCurrent returns the value of Current.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
 	return s.Current
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetName() string {
 	return s.Name
 }
 
@@ -5723,17 +5723,17 @@ type IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetKind() string {
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetName() string {
 	return s.Name
 }
 
@@ -5762,12 +5762,12 @@ type IoK8sAPIAutoscalingV2beta2ExternalMetricSource struct {
 }
 
 // GetMetric returns the value of Metric.
-func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
 	return s.Metric
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
 	return s.Target
 }
 
@@ -5790,12 +5790,12 @@ type IoK8sAPIAutoscalingV2beta2ExternalMetricStatus struct {
 }
 
 // GetCurrent returns the value of Current.
-func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
 	return s.Current
 }
 
 // GetMetric returns the value of Metric.
-func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
 	return s.Metric
 }
 
@@ -5822,17 +5822,17 @@ type IoK8sAPIAutoscalingV2beta2HPAScalingPolicy struct {
 }
 
 // GetPeriodSeconds returns the value of PeriodSeconds.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetPeriodSeconds() int32 {
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetPeriodSeconds() int32 {
 	return s.PeriodSeconds
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetType() string {
 	return s.Type
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetValue() int32 {
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetValue() int32 {
 	return s.Value
 }
 
@@ -5873,17 +5873,17 @@ type IoK8sAPIAutoscalingV2beta2HPAScalingRules struct {
 }
 
 // GetPolicies returns the value of Policies.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetPolicies() []IoK8sAPIAutoscalingV2beta2HPAScalingPolicy {
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetPolicies() []IoK8sAPIAutoscalingV2beta2HPAScalingPolicy {
 	return s.Policies
 }
 
 // GetSelectPolicy returns the value of SelectPolicy.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetSelectPolicy() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetSelectPolicy() OptString {
 	return s.SelectPolicy
 }
 
 // GetStabilizationWindowSeconds returns the value of StabilizationWindowSeconds.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetStabilizationWindowSeconds() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetStabilizationWindowSeconds() OptInt32 {
 	return s.StabilizationWindowSeconds
 }
 
@@ -5921,27 +5921,27 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
 	return s.Status
 }
 
@@ -5984,12 +5984,12 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior struct {
 }
 
 // GetScaleDown returns the value of ScaleDown.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) GetScaleDown() OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) GetScaleDown() OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
 	return s.ScaleDown
 }
 
 // GetScaleUp returns the value of ScaleUp.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) GetScaleUp() OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) GetScaleUp() OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
 	return s.ScaleUp
 }
 
@@ -6019,27 +6019,27 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetMessage() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetReason() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetStatus() string {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetType() string {
 	return s.Type
 }
 
@@ -6085,22 +6085,22 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetApiVersion() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetKind() OptString {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -6152,27 +6152,27 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec struct {
 }
 
 // GetBehavior returns the value of Behavior.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetBehavior() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetBehavior() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
 	return s.Behavior
 }
 
 // GetMaxReplicas returns the value of MaxReplicas.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
 	return s.MaxReplicas
 }
 
 // GetMetrics returns the value of Metrics.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMetrics() []IoK8sAPIAutoscalingV2beta2MetricSpec {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMetrics() []IoK8sAPIAutoscalingV2beta2MetricSpec {
 	return s.Metrics
 }
 
 // GetMinReplicas returns the value of MinReplicas.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
 	return s.MinReplicas
 }
 
 // GetScaleTargetRef returns the value of ScaleTargetRef.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
 	return s.ScaleTargetRef
 }
 
@@ -6221,32 +6221,32 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetConditions() []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetConditions() []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition {
 	return s.Conditions
 }
 
 // GetCurrentMetrics returns the value of CurrentMetrics.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetCurrentMetrics() []IoK8sAPIAutoscalingV2beta2MetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetCurrentMetrics() []IoK8sAPIAutoscalingV2beta2MetricStatus {
 	return s.CurrentMetrics
 }
 
 // GetCurrentReplicas returns the value of CurrentReplicas.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
 	return s.CurrentReplicas
 }
 
 // GetDesiredReplicas returns the value of DesiredReplicas.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
 	return s.DesiredReplicas
 }
 
 // GetLastScaleTime returns the value of LastScaleTime.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastScaleTime
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
@@ -6289,12 +6289,12 @@ type IoK8sAPIAutoscalingV2beta2MetricIdentifier struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) GetName() string {
 	return s.Name
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
@@ -6324,32 +6324,32 @@ type IoK8sAPIAutoscalingV2beta2MetricSpec struct {
 }
 
 // GetContainerResource returns the value of ContainerResource.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetContainerResource() OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) GetContainerResource() OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource {
 	return s.ContainerResource
 }
 
 // GetExternal returns the value of External.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetExternal() OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) GetExternal() OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource {
 	return s.External
 }
 
 // GetObject returns the value of Object.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetObject() OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) GetObject() OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource {
 	return s.Object
 }
 
 // GetPods returns the value of Pods.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetPods() OptIoK8sAPIAutoscalingV2beta2PodsMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) GetPods() OptIoK8sAPIAutoscalingV2beta2PodsMetricSource {
 	return s.Pods
 }
 
 // GetResource returns the value of Resource.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetResource() OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource {
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) GetResource() OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource {
 	return s.Resource
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) GetType() string {
 	return s.Type
 }
 
@@ -6398,32 +6398,32 @@ type IoK8sAPIAutoscalingV2beta2MetricStatus struct {
 }
 
 // GetContainerResource returns the value of ContainerResource.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetContainerResource() OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) GetContainerResource() OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
 	return s.ContainerResource
 }
 
 // GetExternal returns the value of External.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetExternal() OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) GetExternal() OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
 	return s.External
 }
 
 // GetObject returns the value of Object.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetObject() OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) GetObject() OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
 	return s.Object
 }
 
 // GetPods returns the value of Pods.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetPods() OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) GetPods() OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus {
 	return s.Pods
 }
 
 // GetResource returns the value of Resource.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetResource() OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) GetResource() OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
 	return s.Resource
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) GetType() string {
 	return s.Type
 }
 
@@ -6471,22 +6471,22 @@ type IoK8sAPIAutoscalingV2beta2MetricTarget struct {
 }
 
 // GetAverageUtilization returns the value of AverageUtilization.
-func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetAverageUtilization() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) GetAverageUtilization() OptInt32 {
 	return s.AverageUtilization
 }
 
 // GetAverageValue returns the value of AverageValue.
-func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.AverageValue
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetType() string {
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) GetType() string {
 	return s.Type
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) GetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.Value
 }
 
@@ -6521,17 +6521,17 @@ type IoK8sAPIAutoscalingV2beta2MetricValueStatus struct {
 }
 
 // GetAverageUtilization returns the value of AverageUtilization.
-func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetAverageUtilization() OptInt32 {
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetAverageUtilization() OptInt32 {
 	return s.AverageUtilization
 }
 
 // GetAverageValue returns the value of AverageValue.
-func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.AverageValue
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.Value
 }
 
@@ -6560,17 +6560,17 @@ type IoK8sAPIAutoscalingV2beta2ObjectMetricSource struct {
 }
 
 // GetDescribedObject returns the value of DescribedObject.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetDescribedObject() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetDescribedObject() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
 	return s.DescribedObject
 }
 
 // GetMetric returns the value of Metric.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
 	return s.Metric
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
 	return s.Target
 }
 
@@ -6599,17 +6599,17 @@ type IoK8sAPIAutoscalingV2beta2ObjectMetricStatus struct {
 }
 
 // GetCurrent returns the value of Current.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
 	return s.Current
 }
 
 // GetDescribedObject returns the value of DescribedObject.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetDescribedObject() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetDescribedObject() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
 	return s.DescribedObject
 }
 
 // GetMetric returns the value of Metric.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
 	return s.Metric
 }
 
@@ -6638,12 +6638,12 @@ type IoK8sAPIAutoscalingV2beta2PodsMetricSource struct {
 }
 
 // GetMetric returns the value of Metric.
-func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
 	return s.Metric
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
 	return s.Target
 }
 
@@ -6666,12 +6666,12 @@ type IoK8sAPIAutoscalingV2beta2PodsMetricStatus struct {
 }
 
 // GetCurrent returns the value of Current.
-func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
 	return s.Current
 }
 
 // GetMetric returns the value of Metric.
-func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
 	return s.Metric
 }
 
@@ -6698,12 +6698,12 @@ type IoK8sAPIAutoscalingV2beta2ResourceMetricSource struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) GetName() string {
 	return s.Name
 }
 
 // GetTarget returns the value of Target.
-func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
 	return s.Target
 }
 
@@ -6729,12 +6729,12 @@ type IoK8sAPIAutoscalingV2beta2ResourceMetricStatus struct {
 }
 
 // GetCurrent returns the value of Current.
-func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
 	return s.Current
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) GetName() string {
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) GetName() string {
 	return s.Name
 }
 
@@ -6765,27 +6765,27 @@ type IoK8sAPIBatchV1CronJob struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIBatchV1CronJob) GetApiVersion() OptString {
+func (s *IoK8sAPIBatchV1CronJob) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIBatchV1CronJob) GetKind() OptString {
+func (s *IoK8sAPIBatchV1CronJob) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1CronJob) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIBatchV1CronJob) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIBatchV1CronJob) GetSpec() OptIoK8sAPIBatchV1CronJobSpec {
+func (s *IoK8sAPIBatchV1CronJob) GetSpec() OptIoK8sAPIBatchV1CronJobSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIBatchV1CronJob) GetStatus() OptIoK8sAPIBatchV1CronJobStatus {
+func (s *IoK8sAPIBatchV1CronJob) GetStatus() OptIoK8sAPIBatchV1CronJobStatus {
 	return s.Status
 }
 
@@ -6834,22 +6834,22 @@ type IoK8sAPIBatchV1CronJobList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIBatchV1CronJobList) GetApiVersion() OptString {
+func (s *IoK8sAPIBatchV1CronJobList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIBatchV1CronJobList) GetItems() []IoK8sAPIBatchV1CronJob {
+func (s *IoK8sAPIBatchV1CronJobList) GetItems() []IoK8sAPIBatchV1CronJob {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIBatchV1CronJobList) GetKind() OptString {
+func (s *IoK8sAPIBatchV1CronJobList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1CronJobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIBatchV1CronJobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -6901,37 +6901,37 @@ type IoK8sAPIBatchV1CronJobSpec struct {
 }
 
 // GetConcurrencyPolicy returns the value of ConcurrencyPolicy.
-func (s IoK8sAPIBatchV1CronJobSpec) GetConcurrencyPolicy() OptString {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetConcurrencyPolicy() OptString {
 	return s.ConcurrencyPolicy
 }
 
 // GetFailedJobsHistoryLimit returns the value of FailedJobsHistoryLimit.
-func (s IoK8sAPIBatchV1CronJobSpec) GetFailedJobsHistoryLimit() OptInt32 {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetFailedJobsHistoryLimit() OptInt32 {
 	return s.FailedJobsHistoryLimit
 }
 
 // GetJobTemplate returns the value of JobTemplate.
-func (s IoK8sAPIBatchV1CronJobSpec) GetJobTemplate() IoK8sAPIBatchV1JobTemplateSpec {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetJobTemplate() IoK8sAPIBatchV1JobTemplateSpec {
 	return s.JobTemplate
 }
 
 // GetSchedule returns the value of Schedule.
-func (s IoK8sAPIBatchV1CronJobSpec) GetSchedule() string {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetSchedule() string {
 	return s.Schedule
 }
 
 // GetStartingDeadlineSeconds returns the value of StartingDeadlineSeconds.
-func (s IoK8sAPIBatchV1CronJobSpec) GetStartingDeadlineSeconds() OptInt64 {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetStartingDeadlineSeconds() OptInt64 {
 	return s.StartingDeadlineSeconds
 }
 
 // GetSuccessfulJobsHistoryLimit returns the value of SuccessfulJobsHistoryLimit.
-func (s IoK8sAPIBatchV1CronJobSpec) GetSuccessfulJobsHistoryLimit() OptInt32 {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetSuccessfulJobsHistoryLimit() OptInt32 {
 	return s.SuccessfulJobsHistoryLimit
 }
 
 // GetSuspend returns the value of Suspend.
-func (s IoK8sAPIBatchV1CronJobSpec) GetSuspend() OptBool {
+func (s *IoK8sAPIBatchV1CronJobSpec) GetSuspend() OptBool {
 	return s.Suspend
 }
 
@@ -6980,17 +6980,17 @@ type IoK8sAPIBatchV1CronJobStatus struct {
 }
 
 // GetActive returns the value of Active.
-func (s IoK8sAPIBatchV1CronJobStatus) GetActive() []IoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIBatchV1CronJobStatus) GetActive() []IoK8sAPICoreV1ObjectReference {
 	return s.Active
 }
 
 // GetLastScheduleTime returns the value of LastScheduleTime.
-func (s IoK8sAPIBatchV1CronJobStatus) GetLastScheduleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1CronJobStatus) GetLastScheduleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastScheduleTime
 }
 
 // GetLastSuccessfulTime returns the value of LastSuccessfulTime.
-func (s IoK8sAPIBatchV1CronJobStatus) GetLastSuccessfulTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1CronJobStatus) GetLastSuccessfulTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastSuccessfulTime
 }
 
@@ -7026,27 +7026,27 @@ type IoK8sAPIBatchV1Job struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIBatchV1Job) GetApiVersion() OptString {
+func (s *IoK8sAPIBatchV1Job) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIBatchV1Job) GetKind() OptString {
+func (s *IoK8sAPIBatchV1Job) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1Job) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIBatchV1Job) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIBatchV1Job) GetSpec() OptIoK8sAPIBatchV1JobSpec {
+func (s *IoK8sAPIBatchV1Job) GetSpec() OptIoK8sAPIBatchV1JobSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIBatchV1Job) GetStatus() OptIoK8sAPIBatchV1JobStatus {
+func (s *IoK8sAPIBatchV1Job) GetStatus() OptIoK8sAPIBatchV1JobStatus {
 	return s.Status
 }
 
@@ -7094,32 +7094,32 @@ type IoK8sAPIBatchV1JobCondition struct {
 }
 
 // GetLastProbeTime returns the value of LastProbeTime.
-func (s IoK8sAPIBatchV1JobCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1JobCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastProbeTime
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIBatchV1JobCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1JobCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIBatchV1JobCondition) GetMessage() OptString {
+func (s *IoK8sAPIBatchV1JobCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIBatchV1JobCondition) GetReason() OptString {
+func (s *IoK8sAPIBatchV1JobCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIBatchV1JobCondition) GetStatus() string {
+func (s *IoK8sAPIBatchV1JobCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIBatchV1JobCondition) GetType() string {
+func (s *IoK8sAPIBatchV1JobCondition) GetType() string {
 	return s.Type
 }
 
@@ -7170,22 +7170,22 @@ type IoK8sAPIBatchV1JobList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIBatchV1JobList) GetApiVersion() OptString {
+func (s *IoK8sAPIBatchV1JobList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIBatchV1JobList) GetItems() []IoK8sAPIBatchV1Job {
+func (s *IoK8sAPIBatchV1JobList) GetItems() []IoK8sAPIBatchV1Job {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIBatchV1JobList) GetKind() OptString {
+func (s *IoK8sAPIBatchV1JobList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1JobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIBatchV1JobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -7275,52 +7275,52 @@ type IoK8sAPIBatchV1JobSpec struct {
 }
 
 // GetActiveDeadlineSeconds returns the value of ActiveDeadlineSeconds.
-func (s IoK8sAPIBatchV1JobSpec) GetActiveDeadlineSeconds() OptInt64 {
+func (s *IoK8sAPIBatchV1JobSpec) GetActiveDeadlineSeconds() OptInt64 {
 	return s.ActiveDeadlineSeconds
 }
 
 // GetBackoffLimit returns the value of BackoffLimit.
-func (s IoK8sAPIBatchV1JobSpec) GetBackoffLimit() OptInt32 {
+func (s *IoK8sAPIBatchV1JobSpec) GetBackoffLimit() OptInt32 {
 	return s.BackoffLimit
 }
 
 // GetCompletionMode returns the value of CompletionMode.
-func (s IoK8sAPIBatchV1JobSpec) GetCompletionMode() OptString {
+func (s *IoK8sAPIBatchV1JobSpec) GetCompletionMode() OptString {
 	return s.CompletionMode
 }
 
 // GetCompletions returns the value of Completions.
-func (s IoK8sAPIBatchV1JobSpec) GetCompletions() OptInt32 {
+func (s *IoK8sAPIBatchV1JobSpec) GetCompletions() OptInt32 {
 	return s.Completions
 }
 
 // GetManualSelector returns the value of ManualSelector.
-func (s IoK8sAPIBatchV1JobSpec) GetManualSelector() OptBool {
+func (s *IoK8sAPIBatchV1JobSpec) GetManualSelector() OptBool {
 	return s.ManualSelector
 }
 
 // GetParallelism returns the value of Parallelism.
-func (s IoK8sAPIBatchV1JobSpec) GetParallelism() OptInt32 {
+func (s *IoK8sAPIBatchV1JobSpec) GetParallelism() OptInt32 {
 	return s.Parallelism
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIBatchV1JobSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIBatchV1JobSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetSuspend returns the value of Suspend.
-func (s IoK8sAPIBatchV1JobSpec) GetSuspend() OptBool {
+func (s *IoK8sAPIBatchV1JobSpec) GetSuspend() OptBool {
 	return s.Suspend
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPIBatchV1JobSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPIBatchV1JobSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
 // GetTtlSecondsAfterFinished returns the value of TtlSecondsAfterFinished.
-func (s IoK8sAPIBatchV1JobSpec) GetTtlSecondsAfterFinished() OptInt32 {
+func (s *IoK8sAPIBatchV1JobSpec) GetTtlSecondsAfterFinished() OptInt32 {
 	return s.TtlSecondsAfterFinished
 }
 
@@ -7402,42 +7402,42 @@ type IoK8sAPIBatchV1JobStatus struct {
 }
 
 // GetActive returns the value of Active.
-func (s IoK8sAPIBatchV1JobStatus) GetActive() OptInt32 {
+func (s *IoK8sAPIBatchV1JobStatus) GetActive() OptInt32 {
 	return s.Active
 }
 
 // GetCompletedIndexes returns the value of CompletedIndexes.
-func (s IoK8sAPIBatchV1JobStatus) GetCompletedIndexes() OptString {
+func (s *IoK8sAPIBatchV1JobStatus) GetCompletedIndexes() OptString {
 	return s.CompletedIndexes
 }
 
 // GetCompletionTime returns the value of CompletionTime.
-func (s IoK8sAPIBatchV1JobStatus) GetCompletionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1JobStatus) GetCompletionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.CompletionTime
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIBatchV1JobStatus) GetConditions() []IoK8sAPIBatchV1JobCondition {
+func (s *IoK8sAPIBatchV1JobStatus) GetConditions() []IoK8sAPIBatchV1JobCondition {
 	return s.Conditions
 }
 
 // GetFailed returns the value of Failed.
-func (s IoK8sAPIBatchV1JobStatus) GetFailed() OptInt32 {
+func (s *IoK8sAPIBatchV1JobStatus) GetFailed() OptInt32 {
 	return s.Failed
 }
 
 // GetStartTime returns the value of StartTime.
-func (s IoK8sAPIBatchV1JobStatus) GetStartTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1JobStatus) GetStartTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.StartTime
 }
 
 // GetSucceeded returns the value of Succeeded.
-func (s IoK8sAPIBatchV1JobStatus) GetSucceeded() OptInt32 {
+func (s *IoK8sAPIBatchV1JobStatus) GetSucceeded() OptInt32 {
 	return s.Succeeded
 }
 
 // GetUncountedTerminatedPods returns the value of UncountedTerminatedPods.
-func (s IoK8sAPIBatchV1JobStatus) GetUncountedTerminatedPods() OptIoK8sAPIBatchV1UncountedTerminatedPods {
+func (s *IoK8sAPIBatchV1JobStatus) GetUncountedTerminatedPods() OptIoK8sAPIBatchV1UncountedTerminatedPods {
 	return s.UncountedTerminatedPods
 }
 
@@ -7489,12 +7489,12 @@ type IoK8sAPIBatchV1JobTemplateSpec struct {
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1JobTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIBatchV1JobTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIBatchV1JobTemplateSpec) GetSpec() OptIoK8sAPIBatchV1JobSpec {
+func (s *IoK8sAPIBatchV1JobTemplateSpec) GetSpec() OptIoK8sAPIBatchV1JobSpec {
 	return s.Spec
 }
 
@@ -7519,12 +7519,12 @@ type IoK8sAPIBatchV1UncountedTerminatedPods struct {
 }
 
 // GetFailed returns the value of Failed.
-func (s IoK8sAPIBatchV1UncountedTerminatedPods) GetFailed() []string {
+func (s *IoK8sAPIBatchV1UncountedTerminatedPods) GetFailed() []string {
 	return s.Failed
 }
 
 // GetSucceeded returns the value of Succeeded.
-func (s IoK8sAPIBatchV1UncountedTerminatedPods) GetSucceeded() []string {
+func (s *IoK8sAPIBatchV1UncountedTerminatedPods) GetSucceeded() []string {
 	return s.Succeeded
 }
 
@@ -7555,27 +7555,27 @@ type IoK8sAPIBatchV1beta1CronJob struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIBatchV1beta1CronJob) GetApiVersion() OptString {
+func (s *IoK8sAPIBatchV1beta1CronJob) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIBatchV1beta1CronJob) GetKind() OptString {
+func (s *IoK8sAPIBatchV1beta1CronJob) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1beta1CronJob) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIBatchV1beta1CronJob) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIBatchV1beta1CronJob) GetSpec() OptIoK8sAPIBatchV1beta1CronJobSpec {
+func (s *IoK8sAPIBatchV1beta1CronJob) GetSpec() OptIoK8sAPIBatchV1beta1CronJobSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIBatchV1beta1CronJob) GetStatus() OptIoK8sAPIBatchV1beta1CronJobStatus {
+func (s *IoK8sAPIBatchV1beta1CronJob) GetStatus() OptIoK8sAPIBatchV1beta1CronJobStatus {
 	return s.Status
 }
 
@@ -7624,22 +7624,22 @@ type IoK8sAPIBatchV1beta1CronJobList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIBatchV1beta1CronJobList) GetApiVersion() OptString {
+func (s *IoK8sAPIBatchV1beta1CronJobList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIBatchV1beta1CronJobList) GetItems() []IoK8sAPIBatchV1beta1CronJob {
+func (s *IoK8sAPIBatchV1beta1CronJobList) GetItems() []IoK8sAPIBatchV1beta1CronJob {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIBatchV1beta1CronJobList) GetKind() OptString {
+func (s *IoK8sAPIBatchV1beta1CronJobList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1beta1CronJobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIBatchV1beta1CronJobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -7692,37 +7692,37 @@ type IoK8sAPIBatchV1beta1CronJobSpec struct {
 }
 
 // GetConcurrencyPolicy returns the value of ConcurrencyPolicy.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetConcurrencyPolicy() OptString {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetConcurrencyPolicy() OptString {
 	return s.ConcurrencyPolicy
 }
 
 // GetFailedJobsHistoryLimit returns the value of FailedJobsHistoryLimit.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetFailedJobsHistoryLimit() OptInt32 {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetFailedJobsHistoryLimit() OptInt32 {
 	return s.FailedJobsHistoryLimit
 }
 
 // GetJobTemplate returns the value of JobTemplate.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetJobTemplate() IoK8sAPIBatchV1beta1JobTemplateSpec {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetJobTemplate() IoK8sAPIBatchV1beta1JobTemplateSpec {
 	return s.JobTemplate
 }
 
 // GetSchedule returns the value of Schedule.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetSchedule() string {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetSchedule() string {
 	return s.Schedule
 }
 
 // GetStartingDeadlineSeconds returns the value of StartingDeadlineSeconds.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetStartingDeadlineSeconds() OptInt64 {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetStartingDeadlineSeconds() OptInt64 {
 	return s.StartingDeadlineSeconds
 }
 
 // GetSuccessfulJobsHistoryLimit returns the value of SuccessfulJobsHistoryLimit.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetSuccessfulJobsHistoryLimit() OptInt32 {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetSuccessfulJobsHistoryLimit() OptInt32 {
 	return s.SuccessfulJobsHistoryLimit
 }
 
 // GetSuspend returns the value of Suspend.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) GetSuspend() OptBool {
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) GetSuspend() OptBool {
 	return s.Suspend
 }
 
@@ -7771,17 +7771,17 @@ type IoK8sAPIBatchV1beta1CronJobStatus struct {
 }
 
 // GetActive returns the value of Active.
-func (s IoK8sAPIBatchV1beta1CronJobStatus) GetActive() []IoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) GetActive() []IoK8sAPICoreV1ObjectReference {
 	return s.Active
 }
 
 // GetLastScheduleTime returns the value of LastScheduleTime.
-func (s IoK8sAPIBatchV1beta1CronJobStatus) GetLastScheduleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) GetLastScheduleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastScheduleTime
 }
 
 // GetLastSuccessfulTime returns the value of LastSuccessfulTime.
-func (s IoK8sAPIBatchV1beta1CronJobStatus) GetLastSuccessfulTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) GetLastSuccessfulTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastSuccessfulTime
 }
 
@@ -7808,12 +7808,12 @@ type IoK8sAPIBatchV1beta1JobTemplateSpec struct {
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIBatchV1beta1JobTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIBatchV1beta1JobTemplateSpec) GetSpec() OptIoK8sAPIBatchV1JobSpec {
+func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) GetSpec() OptIoK8sAPIBatchV1JobSpec {
 	return s.Spec
 }
 
@@ -7853,27 +7853,27 @@ type IoK8sAPICertificatesV1CertificateSigningRequest struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetApiVersion() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetKind() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetSpec() IoK8sAPICertificatesV1CertificateSigningRequestSpec {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) GetSpec() IoK8sAPICertificatesV1CertificateSigningRequestSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetStatus() OptIoK8sAPICertificatesV1CertificateSigningRequestStatus {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) GetStatus() OptIoK8sAPICertificatesV1CertificateSigningRequestStatus {
 	return s.Status
 }
 
@@ -7935,32 +7935,32 @@ type IoK8sAPICertificatesV1CertificateSigningRequestCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetLastUpdateTime returns the value of LastUpdateTime.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetLastUpdateTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetLastUpdateTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastUpdateTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetMessage() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetReason() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetStatus() string {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetType() string {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetType() string {
 	return s.Type
 }
 
@@ -8011,22 +8011,22 @@ type IoK8sAPICertificatesV1CertificateSigningRequestList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetApiVersion() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetItems() []IoK8sAPICertificatesV1CertificateSigningRequest {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) GetItems() []IoK8sAPICertificatesV1CertificateSigningRequest {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetKind() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -8132,42 +8132,42 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 }
 
 // GetExpirationSeconds returns the value of ExpirationSeconds.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetExpirationSeconds() OptInt32 {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetExpirationSeconds() OptInt32 {
 	return s.ExpirationSeconds
 }
 
 // GetExtra returns the value of Extra.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetExtra() OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetExtra() OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
 	return s.Extra
 }
 
 // GetGroups returns the value of Groups.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetGroups() []string {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetGroups() []string {
 	return s.Groups
 }
 
 // GetRequest returns the value of Request.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetRequest() []byte {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetRequest() []byte {
 	return s.Request
 }
 
 // GetSignerName returns the value of SignerName.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetSignerName() string {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetSignerName() string {
 	return s.SignerName
 }
 
 // GetUID returns the value of UID.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUID() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUID() OptString {
 	return s.UID
 }
 
 // GetUsages returns the value of Usages.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUsages() []string {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUsages() []string {
 	return s.Usages
 }
 
 // GetUsername returns the value of Username.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUsername() OptString {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUsername() OptString {
 	return s.Username
 }
 
@@ -8255,12 +8255,12 @@ type IoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
 }
 
 // GetCertificate returns the value of Certificate.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) GetCertificate() []byte {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) GetCertificate() []byte {
 	return s.Certificate
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) GetConditions() []IoK8sAPICertificatesV1CertificateSigningRequestCondition {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) GetConditions() []IoK8sAPICertificatesV1CertificateSigningRequestCondition {
 	return s.Conditions
 }
 
@@ -8290,22 +8290,22 @@ type IoK8sAPICoordinationV1Lease struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoordinationV1Lease) GetApiVersion() OptString {
+func (s *IoK8sAPICoordinationV1Lease) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoordinationV1Lease) GetKind() OptString {
+func (s *IoK8sAPICoordinationV1Lease) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoordinationV1Lease) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoordinationV1Lease) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoordinationV1Lease) GetSpec() OptIoK8sAPICoordinationV1LeaseSpec {
+func (s *IoK8sAPICoordinationV1Lease) GetSpec() OptIoK8sAPICoordinationV1LeaseSpec {
 	return s.Spec
 }
 
@@ -8348,22 +8348,22 @@ type IoK8sAPICoordinationV1LeaseList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoordinationV1LeaseList) GetApiVersion() OptString {
+func (s *IoK8sAPICoordinationV1LeaseList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoordinationV1LeaseList) GetItems() []IoK8sAPICoordinationV1Lease {
+func (s *IoK8sAPICoordinationV1LeaseList) GetItems() []IoK8sAPICoordinationV1Lease {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoordinationV1LeaseList) GetKind() OptString {
+func (s *IoK8sAPICoordinationV1LeaseList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoordinationV1LeaseList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoordinationV1LeaseList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -8405,27 +8405,27 @@ type IoK8sAPICoordinationV1LeaseSpec struct {
 }
 
 // GetAcquireTime returns the value of AcquireTime.
-func (s IoK8sAPICoordinationV1LeaseSpec) GetAcquireTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPICoordinationV1LeaseSpec) GetAcquireTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.AcquireTime
 }
 
 // GetHolderIdentity returns the value of HolderIdentity.
-func (s IoK8sAPICoordinationV1LeaseSpec) GetHolderIdentity() OptString {
+func (s *IoK8sAPICoordinationV1LeaseSpec) GetHolderIdentity() OptString {
 	return s.HolderIdentity
 }
 
 // GetLeaseDurationSeconds returns the value of LeaseDurationSeconds.
-func (s IoK8sAPICoordinationV1LeaseSpec) GetLeaseDurationSeconds() OptInt32 {
+func (s *IoK8sAPICoordinationV1LeaseSpec) GetLeaseDurationSeconds() OptInt32 {
 	return s.LeaseDurationSeconds
 }
 
 // GetLeaseTransitions returns the value of LeaseTransitions.
-func (s IoK8sAPICoordinationV1LeaseSpec) GetLeaseTransitions() OptInt32 {
+func (s *IoK8sAPICoordinationV1LeaseSpec) GetLeaseTransitions() OptInt32 {
 	return s.LeaseTransitions
 }
 
 // GetRenewTime returns the value of RenewTime.
-func (s IoK8sAPICoordinationV1LeaseSpec) GetRenewTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPICoordinationV1LeaseSpec) GetRenewTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.RenewTime
 }
 
@@ -8479,22 +8479,22 @@ type IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetPartition returns the value of Partition.
-func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetPartition() OptInt32 {
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetPartition() OptInt32 {
 	return s.Partition
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetVolumeID returns the value of VolumeID.
-func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetVolumeID() string {
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetVolumeID() string {
 	return s.VolumeID
 }
 
@@ -8527,17 +8527,17 @@ type IoK8sAPICoreV1Affinity struct {
 }
 
 // GetNodeAffinity returns the value of NodeAffinity.
-func (s IoK8sAPICoreV1Affinity) GetNodeAffinity() OptIoK8sAPICoreV1NodeAffinity {
+func (s *IoK8sAPICoreV1Affinity) GetNodeAffinity() OptIoK8sAPICoreV1NodeAffinity {
 	return s.NodeAffinity
 }
 
 // GetPodAffinity returns the value of PodAffinity.
-func (s IoK8sAPICoreV1Affinity) GetPodAffinity() OptIoK8sAPICoreV1PodAffinity {
+func (s *IoK8sAPICoreV1Affinity) GetPodAffinity() OptIoK8sAPICoreV1PodAffinity {
 	return s.PodAffinity
 }
 
 // GetPodAntiAffinity returns the value of PodAntiAffinity.
-func (s IoK8sAPICoreV1Affinity) GetPodAntiAffinity() OptIoK8sAPICoreV1PodAntiAffinity {
+func (s *IoK8sAPICoreV1Affinity) GetPodAntiAffinity() OptIoK8sAPICoreV1PodAntiAffinity {
 	return s.PodAntiAffinity
 }
 
@@ -8566,12 +8566,12 @@ type IoK8sAPICoreV1AttachedVolume struct {
 }
 
 // GetDevicePath returns the value of DevicePath.
-func (s IoK8sAPICoreV1AttachedVolume) GetDevicePath() string {
+func (s *IoK8sAPICoreV1AttachedVolume) GetDevicePath() string {
 	return s.DevicePath
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1AttachedVolume) GetName() string {
+func (s *IoK8sAPICoreV1AttachedVolume) GetName() string {
 	return s.Name
 }
 
@@ -8606,32 +8606,32 @@ type IoK8sAPICoreV1AzureDiskVolumeSource struct {
 }
 
 // GetCachingMode returns the value of CachingMode.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetCachingMode() OptString {
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) GetCachingMode() OptString {
 	return s.CachingMode
 }
 
 // GetDiskName returns the value of DiskName.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetDiskName() string {
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) GetDiskName() string {
 	return s.DiskName
 }
 
 // GetDiskURI returns the value of DiskURI.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetDiskURI() string {
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) GetDiskURI() string {
 	return s.DiskURI
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetKind() OptString {
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) GetKind() OptString {
 	return s.Kind
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
@@ -8680,22 +8680,22 @@ type IoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretName returns the value of SecretName.
-func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetSecretName() string {
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetSecretName() string {
 	return s.SecretName
 }
 
 // GetSecretNamespace returns the value of SecretNamespace.
-func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetSecretNamespace() OptString {
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetSecretNamespace() OptString {
 	return s.SecretNamespace
 }
 
 // GetShareName returns the value of ShareName.
-func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetShareName() string {
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetShareName() string {
 	return s.ShareName
 }
 
@@ -8731,17 +8731,17 @@ type IoK8sAPICoreV1AzureFileVolumeSource struct {
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1AzureFileVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretName returns the value of SecretName.
-func (s IoK8sAPICoreV1AzureFileVolumeSource) GetSecretName() string {
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) GetSecretName() string {
 	return s.SecretName
 }
 
 // GetShareName returns the value of ShareName.
-func (s IoK8sAPICoreV1AzureFileVolumeSource) GetShareName() string {
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) GetShareName() string {
 	return s.ShareName
 }
 
@@ -8782,47 +8782,47 @@ type IoK8sAPICoreV1CSIPersistentVolumeSource struct {
 }
 
 // GetControllerExpandSecretRef returns the value of ControllerExpandSecretRef.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetControllerExpandSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetControllerExpandSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.ControllerExpandSecretRef
 }
 
 // GetControllerPublishSecretRef returns the value of ControllerPublishSecretRef.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetControllerPublishSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetControllerPublishSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.ControllerPublishSecretRef
 }
 
 // GetDriver returns the value of Driver.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetDriver() string {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetDriver() string {
 	return s.Driver
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetNodePublishSecretRef returns the value of NodePublishSecretRef.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetNodePublishSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetNodePublishSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.NodePublishSecretRef
 }
 
 // GetNodeStageSecretRef returns the value of NodeStageSecretRef.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetNodeStageSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetNodeStageSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.NodeStageSecretRef
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetVolumeAttributes returns the value of VolumeAttributes.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetVolumeAttributes() OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetVolumeAttributes() OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes {
 	return s.VolumeAttributes
 }
 
 // GetVolumeHandle returns the value of VolumeHandle.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetVolumeHandle() string {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) GetVolumeHandle() string {
 	return s.VolumeHandle
 }
 
@@ -8901,27 +8901,27 @@ type IoK8sAPICoreV1CSIVolumeSource struct {
 }
 
 // GetDriver returns the value of Driver.
-func (s IoK8sAPICoreV1CSIVolumeSource) GetDriver() string {
+func (s *IoK8sAPICoreV1CSIVolumeSource) GetDriver() string {
 	return s.Driver
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1CSIVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1CSIVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetNodePublishSecretRef returns the value of NodePublishSecretRef.
-func (s IoK8sAPICoreV1CSIVolumeSource) GetNodePublishSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1CSIVolumeSource) GetNodePublishSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.NodePublishSecretRef
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1CSIVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1CSIVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetVolumeAttributes returns the value of VolumeAttributes.
-func (s IoK8sAPICoreV1CSIVolumeSource) GetVolumeAttributes() OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes {
+func (s *IoK8sAPICoreV1CSIVolumeSource) GetVolumeAttributes() OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes {
 	return s.VolumeAttributes
 }
 
@@ -8973,12 +8973,12 @@ type IoK8sAPICoreV1Capabilities struct {
 }
 
 // GetAdd returns the value of Add.
-func (s IoK8sAPICoreV1Capabilities) GetAdd() []string {
+func (s *IoK8sAPICoreV1Capabilities) GetAdd() []string {
 	return s.Add
 }
 
 // GetDrop returns the value of Drop.
-func (s IoK8sAPICoreV1Capabilities) GetDrop() []string {
+func (s *IoK8sAPICoreV1Capabilities) GetDrop() []string {
 	return s.Drop
 }
 
@@ -9014,32 +9014,32 @@ type IoK8sAPICoreV1CephFSPersistentVolumeSource struct {
 }
 
 // GetMonitors returns the value of Monitors.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetMonitors() []string {
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) GetMonitors() []string {
 	return s.Monitors
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetPath() OptString {
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) GetPath() OptString {
 	return s.Path
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretFile returns the value of SecretFile.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetSecretFile() OptString {
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) GetSecretFile() OptString {
 	return s.SecretFile
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.SecretRef
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetUser() OptString {
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) GetUser() OptString {
 	return s.User
 }
 
@@ -9095,32 +9095,32 @@ type IoK8sAPICoreV1CephFSVolumeSource struct {
 }
 
 // GetMonitors returns the value of Monitors.
-func (s IoK8sAPICoreV1CephFSVolumeSource) GetMonitors() []string {
+func (s *IoK8sAPICoreV1CephFSVolumeSource) GetMonitors() []string {
 	return s.Monitors
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1CephFSVolumeSource) GetPath() OptString {
+func (s *IoK8sAPICoreV1CephFSVolumeSource) GetPath() OptString {
 	return s.Path
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1CephFSVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1CephFSVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretFile returns the value of SecretFile.
-func (s IoK8sAPICoreV1CephFSVolumeSource) GetSecretFile() OptString {
+func (s *IoK8sAPICoreV1CephFSVolumeSource) GetSecretFile() OptString {
 	return s.SecretFile
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1CephFSVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1CephFSVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPICoreV1CephFSVolumeSource) GetUser() OptString {
+func (s *IoK8sAPICoreV1CephFSVolumeSource) GetUser() OptString {
 	return s.User
 }
 
@@ -9173,22 +9173,22 @@ type IoK8sAPICoreV1CinderPersistentVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.SecretRef
 }
 
 // GetVolumeID returns the value of VolumeID.
-func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetVolumeID() string {
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) GetVolumeID() string {
 	return s.VolumeID
 }
 
@@ -9231,22 +9231,22 @@ type IoK8sAPICoreV1CinderVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1CinderVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1CinderVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1CinderVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1CinderVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1CinderVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1CinderVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
 // GetVolumeID returns the value of VolumeID.
-func (s IoK8sAPICoreV1CinderVolumeSource) GetVolumeID() string {
+func (s *IoK8sAPICoreV1CinderVolumeSource) GetVolumeID() string {
 	return s.VolumeID
 }
 
@@ -9279,7 +9279,7 @@ type IoK8sAPICoreV1ClientIPConfig struct {
 }
 
 // GetTimeoutSeconds returns the value of TimeoutSeconds.
-func (s IoK8sAPICoreV1ClientIPConfig) GetTimeoutSeconds() OptInt32 {
+func (s *IoK8sAPICoreV1ClientIPConfig) GetTimeoutSeconds() OptInt32 {
 	return s.TimeoutSeconds
 }
 
@@ -9302,22 +9302,22 @@ type IoK8sAPICoreV1ComponentCondition struct {
 }
 
 // GetError returns the value of Error.
-func (s IoK8sAPICoreV1ComponentCondition) GetError() OptString {
+func (s *IoK8sAPICoreV1ComponentCondition) GetError() OptString {
 	return s.Error
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1ComponentCondition) GetMessage() OptString {
+func (s *IoK8sAPICoreV1ComponentCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1ComponentCondition) GetStatus() string {
+func (s *IoK8sAPICoreV1ComponentCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1ComponentCondition) GetType() string {
+func (s *IoK8sAPICoreV1ComponentCondition) GetType() string {
 	return s.Type
 }
 
@@ -9359,22 +9359,22 @@ type IoK8sAPICoreV1ComponentStatus struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ComponentStatus) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ComponentStatus) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1ComponentStatus) GetConditions() []IoK8sAPICoreV1ComponentCondition {
+func (s *IoK8sAPICoreV1ComponentStatus) GetConditions() []IoK8sAPICoreV1ComponentCondition {
 	return s.Conditions
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ComponentStatus) GetKind() OptString {
+func (s *IoK8sAPICoreV1ComponentStatus) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ComponentStatus) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1ComponentStatus) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
@@ -9418,22 +9418,22 @@ type IoK8sAPICoreV1ComponentStatusList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ComponentStatusList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ComponentStatusList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ComponentStatusList) GetItems() []IoK8sAPICoreV1ComponentStatus {
+func (s *IoK8sAPICoreV1ComponentStatusList) GetItems() []IoK8sAPICoreV1ComponentStatus {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ComponentStatusList) GetKind() OptString {
+func (s *IoK8sAPICoreV1ComponentStatusList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ComponentStatusList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1ComponentStatusList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -9488,32 +9488,32 @@ type IoK8sAPICoreV1ConfigMap struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ConfigMap) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ConfigMap) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetBinaryData returns the value of BinaryData.
-func (s IoK8sAPICoreV1ConfigMap) GetBinaryData() OptIoK8sAPICoreV1ConfigMapBinaryData {
+func (s *IoK8sAPICoreV1ConfigMap) GetBinaryData() OptIoK8sAPICoreV1ConfigMapBinaryData {
 	return s.BinaryData
 }
 
 // GetData returns the value of Data.
-func (s IoK8sAPICoreV1ConfigMap) GetData() OptIoK8sAPICoreV1ConfigMapData {
+func (s *IoK8sAPICoreV1ConfigMap) GetData() OptIoK8sAPICoreV1ConfigMapData {
 	return s.Data
 }
 
 // GetImmutable returns the value of Immutable.
-func (s IoK8sAPICoreV1ConfigMap) GetImmutable() OptBool {
+func (s *IoK8sAPICoreV1ConfigMap) GetImmutable() OptBool {
 	return s.Immutable
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ConfigMap) GetKind() OptString {
+func (s *IoK8sAPICoreV1ConfigMap) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ConfigMap) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1ConfigMap) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
@@ -9592,12 +9592,12 @@ type IoK8sAPICoreV1ConfigMapEnvSource struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ConfigMapEnvSource) GetName() OptString {
+func (s *IoK8sAPICoreV1ConfigMapEnvSource) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1ConfigMapEnvSource) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1ConfigMapEnvSource) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -9624,17 +9624,17 @@ type IoK8sAPICoreV1ConfigMapKeySelector struct {
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1ConfigMapKeySelector) GetKey() string {
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) GetKey() string {
 	return s.Key
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ConfigMapKeySelector) GetName() OptString {
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1ConfigMapKeySelector) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -9670,22 +9670,22 @@ type IoK8sAPICoreV1ConfigMapList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ConfigMapList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ConfigMapList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ConfigMapList) GetItems() []IoK8sAPICoreV1ConfigMap {
+func (s *IoK8sAPICoreV1ConfigMapList) GetItems() []IoK8sAPICoreV1ConfigMap {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ConfigMapList) GetKind() OptString {
+func (s *IoK8sAPICoreV1ConfigMapList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ConfigMapList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1ConfigMapList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -9734,27 +9734,27 @@ type IoK8sAPICoreV1ConfigMapNodeConfigSource struct {
 }
 
 // GetKubeletConfigKey returns the value of KubeletConfigKey.
-func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetKubeletConfigKey() string {
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) GetKubeletConfigKey() string {
 	return s.KubeletConfigKey
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetName() string {
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetNamespace() string {
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) GetNamespace() string {
 	return s.Namespace
 }
 
 // GetResourceVersion returns the value of ResourceVersion.
-func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetResourceVersion() OptString {
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) GetResourceVersion() OptString {
 	return s.ResourceVersion
 }
 
 // GetUID returns the value of UID.
-func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetUID() OptString {
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) GetUID() OptString {
 	return s.UID
 }
 
@@ -9804,17 +9804,17 @@ type IoK8sAPICoreV1ConfigMapProjection struct {
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ConfigMapProjection) GetItems() []IoK8sAPICoreV1KeyToPath {
+func (s *IoK8sAPICoreV1ConfigMapProjection) GetItems() []IoK8sAPICoreV1KeyToPath {
 	return s.Items
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ConfigMapProjection) GetName() OptString {
+func (s *IoK8sAPICoreV1ConfigMapProjection) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1ConfigMapProjection) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1ConfigMapProjection) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -9859,22 +9859,22 @@ type IoK8sAPICoreV1ConfigMapVolumeSource struct {
 }
 
 // GetDefaultMode returns the value of DefaultMode.
-func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetDefaultMode() OptInt32 {
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) GetDefaultMode() OptInt32 {
 	return s.DefaultMode
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetItems() []IoK8sAPICoreV1KeyToPath {
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) GetItems() []IoK8sAPICoreV1KeyToPath {
 	return s.Items
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetName() OptString {
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -9983,112 +9983,112 @@ type IoK8sAPICoreV1Container struct {
 }
 
 // GetArgs returns the value of Args.
-func (s IoK8sAPICoreV1Container) GetArgs() []string {
+func (s *IoK8sAPICoreV1Container) GetArgs() []string {
 	return s.Args
 }
 
 // GetCommand returns the value of Command.
-func (s IoK8sAPICoreV1Container) GetCommand() []string {
+func (s *IoK8sAPICoreV1Container) GetCommand() []string {
 	return s.Command
 }
 
 // GetEnv returns the value of Env.
-func (s IoK8sAPICoreV1Container) GetEnv() []IoK8sAPICoreV1EnvVar {
+func (s *IoK8sAPICoreV1Container) GetEnv() []IoK8sAPICoreV1EnvVar {
 	return s.Env
 }
 
 // GetEnvFrom returns the value of EnvFrom.
-func (s IoK8sAPICoreV1Container) GetEnvFrom() []IoK8sAPICoreV1EnvFromSource {
+func (s *IoK8sAPICoreV1Container) GetEnvFrom() []IoK8sAPICoreV1EnvFromSource {
 	return s.EnvFrom
 }
 
 // GetImage returns the value of Image.
-func (s IoK8sAPICoreV1Container) GetImage() OptString {
+func (s *IoK8sAPICoreV1Container) GetImage() OptString {
 	return s.Image
 }
 
 // GetImagePullPolicy returns the value of ImagePullPolicy.
-func (s IoK8sAPICoreV1Container) GetImagePullPolicy() OptString {
+func (s *IoK8sAPICoreV1Container) GetImagePullPolicy() OptString {
 	return s.ImagePullPolicy
 }
 
 // GetLifecycle returns the value of Lifecycle.
-func (s IoK8sAPICoreV1Container) GetLifecycle() OptIoK8sAPICoreV1Lifecycle {
+func (s *IoK8sAPICoreV1Container) GetLifecycle() OptIoK8sAPICoreV1Lifecycle {
 	return s.Lifecycle
 }
 
 // GetLivenessProbe returns the value of LivenessProbe.
-func (s IoK8sAPICoreV1Container) GetLivenessProbe() OptIoK8sAPICoreV1Probe {
+func (s *IoK8sAPICoreV1Container) GetLivenessProbe() OptIoK8sAPICoreV1Probe {
 	return s.LivenessProbe
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1Container) GetName() string {
+func (s *IoK8sAPICoreV1Container) GetName() string {
 	return s.Name
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPICoreV1Container) GetPorts() []IoK8sAPICoreV1ContainerPort {
+func (s *IoK8sAPICoreV1Container) GetPorts() []IoK8sAPICoreV1ContainerPort {
 	return s.Ports
 }
 
 // GetReadinessProbe returns the value of ReadinessProbe.
-func (s IoK8sAPICoreV1Container) GetReadinessProbe() OptIoK8sAPICoreV1Probe {
+func (s *IoK8sAPICoreV1Container) GetReadinessProbe() OptIoK8sAPICoreV1Probe {
 	return s.ReadinessProbe
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPICoreV1Container) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
+func (s *IoK8sAPICoreV1Container) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
 	return s.Resources
 }
 
 // GetSecurityContext returns the value of SecurityContext.
-func (s IoK8sAPICoreV1Container) GetSecurityContext() OptIoK8sAPICoreV1SecurityContext {
+func (s *IoK8sAPICoreV1Container) GetSecurityContext() OptIoK8sAPICoreV1SecurityContext {
 	return s.SecurityContext
 }
 
 // GetStartupProbe returns the value of StartupProbe.
-func (s IoK8sAPICoreV1Container) GetStartupProbe() OptIoK8sAPICoreV1Probe {
+func (s *IoK8sAPICoreV1Container) GetStartupProbe() OptIoK8sAPICoreV1Probe {
 	return s.StartupProbe
 }
 
 // GetStdin returns the value of Stdin.
-func (s IoK8sAPICoreV1Container) GetStdin() OptBool {
+func (s *IoK8sAPICoreV1Container) GetStdin() OptBool {
 	return s.Stdin
 }
 
 // GetStdinOnce returns the value of StdinOnce.
-func (s IoK8sAPICoreV1Container) GetStdinOnce() OptBool {
+func (s *IoK8sAPICoreV1Container) GetStdinOnce() OptBool {
 	return s.StdinOnce
 }
 
 // GetTerminationMessagePath returns the value of TerminationMessagePath.
-func (s IoK8sAPICoreV1Container) GetTerminationMessagePath() OptString {
+func (s *IoK8sAPICoreV1Container) GetTerminationMessagePath() OptString {
 	return s.TerminationMessagePath
 }
 
 // GetTerminationMessagePolicy returns the value of TerminationMessagePolicy.
-func (s IoK8sAPICoreV1Container) GetTerminationMessagePolicy() OptString {
+func (s *IoK8sAPICoreV1Container) GetTerminationMessagePolicy() OptString {
 	return s.TerminationMessagePolicy
 }
 
 // GetTty returns the value of Tty.
-func (s IoK8sAPICoreV1Container) GetTty() OptBool {
+func (s *IoK8sAPICoreV1Container) GetTty() OptBool {
 	return s.Tty
 }
 
 // GetVolumeDevices returns the value of VolumeDevices.
-func (s IoK8sAPICoreV1Container) GetVolumeDevices() []IoK8sAPICoreV1VolumeDevice {
+func (s *IoK8sAPICoreV1Container) GetVolumeDevices() []IoK8sAPICoreV1VolumeDevice {
 	return s.VolumeDevices
 }
 
 // GetVolumeMounts returns the value of VolumeMounts.
-func (s IoK8sAPICoreV1Container) GetVolumeMounts() []IoK8sAPICoreV1VolumeMount {
+func (s *IoK8sAPICoreV1Container) GetVolumeMounts() []IoK8sAPICoreV1VolumeMount {
 	return s.VolumeMounts
 }
 
 // GetWorkingDir returns the value of WorkingDir.
-func (s IoK8sAPICoreV1Container) GetWorkingDir() OptString {
+func (s *IoK8sAPICoreV1Container) GetWorkingDir() OptString {
 	return s.WorkingDir
 }
 
@@ -10213,12 +10213,12 @@ type IoK8sAPICoreV1ContainerImage struct {
 }
 
 // GetNames returns the value of Names.
-func (s IoK8sAPICoreV1ContainerImage) GetNames() []string {
+func (s *IoK8sAPICoreV1ContainerImage) GetNames() []string {
 	return s.Names
 }
 
 // GetSizeBytes returns the value of SizeBytes.
-func (s IoK8sAPICoreV1ContainerImage) GetSizeBytes() OptInt64 {
+func (s *IoK8sAPICoreV1ContainerImage) GetSizeBytes() OptInt64 {
 	return s.SizeBytes
 }
 
@@ -10251,27 +10251,27 @@ type IoK8sAPICoreV1ContainerPort struct {
 }
 
 // GetContainerPort returns the value of ContainerPort.
-func (s IoK8sAPICoreV1ContainerPort) GetContainerPort() int32 {
+func (s *IoK8sAPICoreV1ContainerPort) GetContainerPort() int32 {
 	return s.ContainerPort
 }
 
 // GetHostIP returns the value of HostIP.
-func (s IoK8sAPICoreV1ContainerPort) GetHostIP() OptString {
+func (s *IoK8sAPICoreV1ContainerPort) GetHostIP() OptString {
 	return s.HostIP
 }
 
 // GetHostPort returns the value of HostPort.
-func (s IoK8sAPICoreV1ContainerPort) GetHostPort() OptInt32 {
+func (s *IoK8sAPICoreV1ContainerPort) GetHostPort() OptInt32 {
 	return s.HostPort
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ContainerPort) GetName() OptString {
+func (s *IoK8sAPICoreV1ContainerPort) GetName() OptString {
 	return s.Name
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPICoreV1ContainerPort) GetProtocol() OptString {
+func (s *IoK8sAPICoreV1ContainerPort) GetProtocol() OptString {
 	return s.Protocol
 }
 
@@ -10310,17 +10310,17 @@ type IoK8sAPICoreV1ContainerState struct {
 }
 
 // GetRunning returns the value of Running.
-func (s IoK8sAPICoreV1ContainerState) GetRunning() OptIoK8sAPICoreV1ContainerStateRunning {
+func (s *IoK8sAPICoreV1ContainerState) GetRunning() OptIoK8sAPICoreV1ContainerStateRunning {
 	return s.Running
 }
 
 // GetTerminated returns the value of Terminated.
-func (s IoK8sAPICoreV1ContainerState) GetTerminated() OptIoK8sAPICoreV1ContainerStateTerminated {
+func (s *IoK8sAPICoreV1ContainerState) GetTerminated() OptIoK8sAPICoreV1ContainerStateTerminated {
 	return s.Terminated
 }
 
 // GetWaiting returns the value of Waiting.
-func (s IoK8sAPICoreV1ContainerState) GetWaiting() OptIoK8sAPICoreV1ContainerStateWaiting {
+func (s *IoK8sAPICoreV1ContainerState) GetWaiting() OptIoK8sAPICoreV1ContainerStateWaiting {
 	return s.Waiting
 }
 
@@ -10346,7 +10346,7 @@ type IoK8sAPICoreV1ContainerStateRunning struct {
 }
 
 // GetStartedAt returns the value of StartedAt.
-func (s IoK8sAPICoreV1ContainerStateRunning) GetStartedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1ContainerStateRunning) GetStartedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.StartedAt
 }
 
@@ -10373,37 +10373,37 @@ type IoK8sAPICoreV1ContainerStateTerminated struct {
 }
 
 // GetContainerID returns the value of ContainerID.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetContainerID() OptString {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetContainerID() OptString {
 	return s.ContainerID
 }
 
 // GetExitCode returns the value of ExitCode.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetExitCode() int32 {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetExitCode() int32 {
 	return s.ExitCode
 }
 
 // GetFinishedAt returns the value of FinishedAt.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetFinishedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetFinishedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.FinishedAt
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetMessage() OptString {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetReason() OptString {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetReason() OptString {
 	return s.Reason
 }
 
 // GetSignal returns the value of Signal.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetSignal() OptInt32 {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetSignal() OptInt32 {
 	return s.Signal
 }
 
 // GetStartedAt returns the value of StartedAt.
-func (s IoK8sAPICoreV1ContainerStateTerminated) GetStartedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1ContainerStateTerminated) GetStartedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.StartedAt
 }
 
@@ -10452,12 +10452,12 @@ type IoK8sAPICoreV1ContainerStateWaiting struct {
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1ContainerStateWaiting) GetMessage() OptString {
+func (s *IoK8sAPICoreV1ContainerStateWaiting) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1ContainerStateWaiting) GetReason() OptString {
+func (s *IoK8sAPICoreV1ContainerStateWaiting) GetReason() OptString {
 	return s.Reason
 }
 
@@ -10496,47 +10496,47 @@ type IoK8sAPICoreV1ContainerStatus struct {
 }
 
 // GetContainerID returns the value of ContainerID.
-func (s IoK8sAPICoreV1ContainerStatus) GetContainerID() OptString {
+func (s *IoK8sAPICoreV1ContainerStatus) GetContainerID() OptString {
 	return s.ContainerID
 }
 
 // GetImage returns the value of Image.
-func (s IoK8sAPICoreV1ContainerStatus) GetImage() string {
+func (s *IoK8sAPICoreV1ContainerStatus) GetImage() string {
 	return s.Image
 }
 
 // GetImageID returns the value of ImageID.
-func (s IoK8sAPICoreV1ContainerStatus) GetImageID() string {
+func (s *IoK8sAPICoreV1ContainerStatus) GetImageID() string {
 	return s.ImageID
 }
 
 // GetLastState returns the value of LastState.
-func (s IoK8sAPICoreV1ContainerStatus) GetLastState() OptIoK8sAPICoreV1ContainerState {
+func (s *IoK8sAPICoreV1ContainerStatus) GetLastState() OptIoK8sAPICoreV1ContainerState {
 	return s.LastState
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ContainerStatus) GetName() string {
+func (s *IoK8sAPICoreV1ContainerStatus) GetName() string {
 	return s.Name
 }
 
 // GetReady returns the value of Ready.
-func (s IoK8sAPICoreV1ContainerStatus) GetReady() bool {
+func (s *IoK8sAPICoreV1ContainerStatus) GetReady() bool {
 	return s.Ready
 }
 
 // GetRestartCount returns the value of RestartCount.
-func (s IoK8sAPICoreV1ContainerStatus) GetRestartCount() int32 {
+func (s *IoK8sAPICoreV1ContainerStatus) GetRestartCount() int32 {
 	return s.RestartCount
 }
 
 // GetStarted returns the value of Started.
-func (s IoK8sAPICoreV1ContainerStatus) GetStarted() OptBool {
+func (s *IoK8sAPICoreV1ContainerStatus) GetStarted() OptBool {
 	return s.Started
 }
 
 // GetState returns the value of State.
-func (s IoK8sAPICoreV1ContainerStatus) GetState() OptIoK8sAPICoreV1ContainerState {
+func (s *IoK8sAPICoreV1ContainerStatus) GetState() OptIoK8sAPICoreV1ContainerState {
 	return s.State
 }
 
@@ -10593,7 +10593,7 @@ type IoK8sAPICoreV1DaemonEndpoint struct {
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPICoreV1DaemonEndpoint) GetPort() int32 {
+func (s *IoK8sAPICoreV1DaemonEndpoint) GetPort() int32 {
 	return s.Port
 }
 
@@ -10611,7 +10611,7 @@ type IoK8sAPICoreV1DownwardAPIProjection struct {
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1DownwardAPIProjection) GetItems() []IoK8sAPICoreV1DownwardAPIVolumeFile {
+func (s *IoK8sAPICoreV1DownwardAPIProjection) GetItems() []IoK8sAPICoreV1DownwardAPIVolumeFile {
 	return s.Items
 }
 
@@ -10638,22 +10638,22 @@ type IoK8sAPICoreV1DownwardAPIVolumeFile struct {
 }
 
 // GetFieldRef returns the value of FieldRef.
-func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetFieldRef() OptIoK8sAPICoreV1ObjectFieldSelector {
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) GetFieldRef() OptIoK8sAPICoreV1ObjectFieldSelector {
 	return s.FieldRef
 }
 
 // GetMode returns the value of Mode.
-func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetMode() OptInt32 {
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) GetMode() OptInt32 {
 	return s.Mode
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetPath() string {
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) GetPath() string {
 	return s.Path
 }
 
 // GetResourceFieldRef returns the value of ResourceFieldRef.
-func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetResourceFieldRef() OptIoK8sAPICoreV1ResourceFieldSelector {
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) GetResourceFieldRef() OptIoK8sAPICoreV1ResourceFieldSelector {
 	return s.ResourceFieldRef
 }
 
@@ -10693,12 +10693,12 @@ type IoK8sAPICoreV1DownwardAPIVolumeSource struct {
 }
 
 // GetDefaultMode returns the value of DefaultMode.
-func (s IoK8sAPICoreV1DownwardAPIVolumeSource) GetDefaultMode() OptInt32 {
+func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) GetDefaultMode() OptInt32 {
 	return s.DefaultMode
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1DownwardAPIVolumeSource) GetItems() []IoK8sAPICoreV1DownwardAPIVolumeFile {
+func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) GetItems() []IoK8sAPICoreV1DownwardAPIVolumeFile {
 	return s.Items
 }
 
@@ -10724,12 +10724,12 @@ type IoK8sAPICoreV1EmptyDirVolumeSource struct {
 }
 
 // GetMedium returns the value of Medium.
-func (s IoK8sAPICoreV1EmptyDirVolumeSource) GetMedium() OptString {
+func (s *IoK8sAPICoreV1EmptyDirVolumeSource) GetMedium() OptString {
 	return s.Medium
 }
 
 // GetSizeLimit returns the value of SizeLimit.
-func (s IoK8sAPICoreV1EmptyDirVolumeSource) GetSizeLimit() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPICoreV1EmptyDirVolumeSource) GetSizeLimit() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.SizeLimit
 }
 
@@ -10758,22 +10758,22 @@ type IoK8sAPICoreV1EndpointAddress struct {
 }
 
 // GetHostname returns the value of Hostname.
-func (s IoK8sAPICoreV1EndpointAddress) GetHostname() OptString {
+func (s *IoK8sAPICoreV1EndpointAddress) GetHostname() OptString {
 	return s.Hostname
 }
 
 // GetIP returns the value of IP.
-func (s IoK8sAPICoreV1EndpointAddress) GetIP() string {
+func (s *IoK8sAPICoreV1EndpointAddress) GetIP() string {
 	return s.IP
 }
 
 // GetNodeName returns the value of NodeName.
-func (s IoK8sAPICoreV1EndpointAddress) GetNodeName() OptString {
+func (s *IoK8sAPICoreV1EndpointAddress) GetNodeName() OptString {
 	return s.NodeName
 }
 
 // GetTargetRef returns the value of TargetRef.
-func (s IoK8sAPICoreV1EndpointAddress) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPICoreV1EndpointAddress) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
 	return s.TargetRef
 }
 
@@ -10815,22 +10815,22 @@ type IoK8sAPICoreV1EndpointPort struct {
 }
 
 // GetAppProtocol returns the value of AppProtocol.
-func (s IoK8sAPICoreV1EndpointPort) GetAppProtocol() OptString {
+func (s *IoK8sAPICoreV1EndpointPort) GetAppProtocol() OptString {
 	return s.AppProtocol
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1EndpointPort) GetName() OptString {
+func (s *IoK8sAPICoreV1EndpointPort) GetName() OptString {
 	return s.Name
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPICoreV1EndpointPort) GetPort() int32 {
+func (s *IoK8sAPICoreV1EndpointPort) GetPort() int32 {
 	return s.Port
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPICoreV1EndpointPort) GetProtocol() OptString {
+func (s *IoK8sAPICoreV1EndpointPort) GetProtocol() OptString {
 	return s.Protocol
 }
 
@@ -10877,17 +10877,17 @@ type IoK8sAPICoreV1EndpointSubset struct {
 }
 
 // GetAddresses returns the value of Addresses.
-func (s IoK8sAPICoreV1EndpointSubset) GetAddresses() []IoK8sAPICoreV1EndpointAddress {
+func (s *IoK8sAPICoreV1EndpointSubset) GetAddresses() []IoK8sAPICoreV1EndpointAddress {
 	return s.Addresses
 }
 
 // GetNotReadyAddresses returns the value of NotReadyAddresses.
-func (s IoK8sAPICoreV1EndpointSubset) GetNotReadyAddresses() []IoK8sAPICoreV1EndpointAddress {
+func (s *IoK8sAPICoreV1EndpointSubset) GetNotReadyAddresses() []IoK8sAPICoreV1EndpointAddress {
 	return s.NotReadyAddresses
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPICoreV1EndpointSubset) GetPorts() []IoK8sAPICoreV1EndpointPort {
+func (s *IoK8sAPICoreV1EndpointSubset) GetPorts() []IoK8sAPICoreV1EndpointPort {
 	return s.Ports
 }
 
@@ -10938,22 +10938,22 @@ type IoK8sAPICoreV1Endpoints struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Endpoints) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Endpoints) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Endpoints) GetKind() OptString {
+func (s *IoK8sAPICoreV1Endpoints) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Endpoints) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Endpoints) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSubsets returns the value of Subsets.
-func (s IoK8sAPICoreV1Endpoints) GetSubsets() []IoK8sAPICoreV1EndpointSubset {
+func (s *IoK8sAPICoreV1Endpoints) GetSubsets() []IoK8sAPICoreV1EndpointSubset {
 	return s.Subsets
 }
 
@@ -10996,22 +10996,22 @@ type IoK8sAPICoreV1EndpointsList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1EndpointsList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1EndpointsList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1EndpointsList) GetItems() []IoK8sAPICoreV1Endpoints {
+func (s *IoK8sAPICoreV1EndpointsList) GetItems() []IoK8sAPICoreV1Endpoints {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1EndpointsList) GetKind() OptString {
+func (s *IoK8sAPICoreV1EndpointsList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1EndpointsList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1EndpointsList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -11048,17 +11048,17 @@ type IoK8sAPICoreV1EnvFromSource struct {
 }
 
 // GetConfigMapRef returns the value of ConfigMapRef.
-func (s IoK8sAPICoreV1EnvFromSource) GetConfigMapRef() OptIoK8sAPICoreV1ConfigMapEnvSource {
+func (s *IoK8sAPICoreV1EnvFromSource) GetConfigMapRef() OptIoK8sAPICoreV1ConfigMapEnvSource {
 	return s.ConfigMapRef
 }
 
 // GetPrefix returns the value of Prefix.
-func (s IoK8sAPICoreV1EnvFromSource) GetPrefix() OptString {
+func (s *IoK8sAPICoreV1EnvFromSource) GetPrefix() OptString {
 	return s.Prefix
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1EnvFromSource) GetSecretRef() OptIoK8sAPICoreV1SecretEnvSource {
+func (s *IoK8sAPICoreV1EnvFromSource) GetSecretRef() OptIoK8sAPICoreV1SecretEnvSource {
 	return s.SecretRef
 }
 
@@ -11093,17 +11093,17 @@ type IoK8sAPICoreV1EnvVar struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1EnvVar) GetName() string {
+func (s *IoK8sAPICoreV1EnvVar) GetName() string {
 	return s.Name
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPICoreV1EnvVar) GetValue() OptString {
+func (s *IoK8sAPICoreV1EnvVar) GetValue() OptString {
 	return s.Value
 }
 
 // GetValueFrom returns the value of ValueFrom.
-func (s IoK8sAPICoreV1EnvVar) GetValueFrom() OptIoK8sAPICoreV1EnvVarSource {
+func (s *IoK8sAPICoreV1EnvVar) GetValueFrom() OptIoK8sAPICoreV1EnvVarSource {
 	return s.ValueFrom
 }
 
@@ -11132,22 +11132,22 @@ type IoK8sAPICoreV1EnvVarSource struct {
 }
 
 // GetConfigMapKeyRef returns the value of ConfigMapKeyRef.
-func (s IoK8sAPICoreV1EnvVarSource) GetConfigMapKeyRef() OptIoK8sAPICoreV1ConfigMapKeySelector {
+func (s *IoK8sAPICoreV1EnvVarSource) GetConfigMapKeyRef() OptIoK8sAPICoreV1ConfigMapKeySelector {
 	return s.ConfigMapKeyRef
 }
 
 // GetFieldRef returns the value of FieldRef.
-func (s IoK8sAPICoreV1EnvVarSource) GetFieldRef() OptIoK8sAPICoreV1ObjectFieldSelector {
+func (s *IoK8sAPICoreV1EnvVarSource) GetFieldRef() OptIoK8sAPICoreV1ObjectFieldSelector {
 	return s.FieldRef
 }
 
 // GetResourceFieldRef returns the value of ResourceFieldRef.
-func (s IoK8sAPICoreV1EnvVarSource) GetResourceFieldRef() OptIoK8sAPICoreV1ResourceFieldSelector {
+func (s *IoK8sAPICoreV1EnvVarSource) GetResourceFieldRef() OptIoK8sAPICoreV1ResourceFieldSelector {
 	return s.ResourceFieldRef
 }
 
 // GetSecretKeyRef returns the value of SecretKeyRef.
-func (s IoK8sAPICoreV1EnvVarSource) GetSecretKeyRef() OptIoK8sAPICoreV1SecretKeySelector {
+func (s *IoK8sAPICoreV1EnvVarSource) GetSecretKeyRef() OptIoK8sAPICoreV1SecretKeySelector {
 	return s.SecretKeyRef
 }
 
@@ -11261,117 +11261,117 @@ type IoK8sAPICoreV1EphemeralContainer struct {
 }
 
 // GetArgs returns the value of Args.
-func (s IoK8sAPICoreV1EphemeralContainer) GetArgs() []string {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetArgs() []string {
 	return s.Args
 }
 
 // GetCommand returns the value of Command.
-func (s IoK8sAPICoreV1EphemeralContainer) GetCommand() []string {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetCommand() []string {
 	return s.Command
 }
 
 // GetEnv returns the value of Env.
-func (s IoK8sAPICoreV1EphemeralContainer) GetEnv() []IoK8sAPICoreV1EnvVar {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetEnv() []IoK8sAPICoreV1EnvVar {
 	return s.Env
 }
 
 // GetEnvFrom returns the value of EnvFrom.
-func (s IoK8sAPICoreV1EphemeralContainer) GetEnvFrom() []IoK8sAPICoreV1EnvFromSource {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetEnvFrom() []IoK8sAPICoreV1EnvFromSource {
 	return s.EnvFrom
 }
 
 // GetImage returns the value of Image.
-func (s IoK8sAPICoreV1EphemeralContainer) GetImage() OptString {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetImage() OptString {
 	return s.Image
 }
 
 // GetImagePullPolicy returns the value of ImagePullPolicy.
-func (s IoK8sAPICoreV1EphemeralContainer) GetImagePullPolicy() OptString {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetImagePullPolicy() OptString {
 	return s.ImagePullPolicy
 }
 
 // GetLifecycle returns the value of Lifecycle.
-func (s IoK8sAPICoreV1EphemeralContainer) GetLifecycle() OptIoK8sAPICoreV1Lifecycle {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetLifecycle() OptIoK8sAPICoreV1Lifecycle {
 	return s.Lifecycle
 }
 
 // GetLivenessProbe returns the value of LivenessProbe.
-func (s IoK8sAPICoreV1EphemeralContainer) GetLivenessProbe() OptIoK8sAPICoreV1Probe {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetLivenessProbe() OptIoK8sAPICoreV1Probe {
 	return s.LivenessProbe
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1EphemeralContainer) GetName() string {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetName() string {
 	return s.Name
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPICoreV1EphemeralContainer) GetPorts() []IoK8sAPICoreV1ContainerPort {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetPorts() []IoK8sAPICoreV1ContainerPort {
 	return s.Ports
 }
 
 // GetReadinessProbe returns the value of ReadinessProbe.
-func (s IoK8sAPICoreV1EphemeralContainer) GetReadinessProbe() OptIoK8sAPICoreV1Probe {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetReadinessProbe() OptIoK8sAPICoreV1Probe {
 	return s.ReadinessProbe
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPICoreV1EphemeralContainer) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
 	return s.Resources
 }
 
 // GetSecurityContext returns the value of SecurityContext.
-func (s IoK8sAPICoreV1EphemeralContainer) GetSecurityContext() OptIoK8sAPICoreV1SecurityContext {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetSecurityContext() OptIoK8sAPICoreV1SecurityContext {
 	return s.SecurityContext
 }
 
 // GetStartupProbe returns the value of StartupProbe.
-func (s IoK8sAPICoreV1EphemeralContainer) GetStartupProbe() OptIoK8sAPICoreV1Probe {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetStartupProbe() OptIoK8sAPICoreV1Probe {
 	return s.StartupProbe
 }
 
 // GetStdin returns the value of Stdin.
-func (s IoK8sAPICoreV1EphemeralContainer) GetStdin() OptBool {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetStdin() OptBool {
 	return s.Stdin
 }
 
 // GetStdinOnce returns the value of StdinOnce.
-func (s IoK8sAPICoreV1EphemeralContainer) GetStdinOnce() OptBool {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetStdinOnce() OptBool {
 	return s.StdinOnce
 }
 
 // GetTargetContainerName returns the value of TargetContainerName.
-func (s IoK8sAPICoreV1EphemeralContainer) GetTargetContainerName() OptString {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetTargetContainerName() OptString {
 	return s.TargetContainerName
 }
 
 // GetTerminationMessagePath returns the value of TerminationMessagePath.
-func (s IoK8sAPICoreV1EphemeralContainer) GetTerminationMessagePath() OptString {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetTerminationMessagePath() OptString {
 	return s.TerminationMessagePath
 }
 
 // GetTerminationMessagePolicy returns the value of TerminationMessagePolicy.
-func (s IoK8sAPICoreV1EphemeralContainer) GetTerminationMessagePolicy() OptString {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetTerminationMessagePolicy() OptString {
 	return s.TerminationMessagePolicy
 }
 
 // GetTty returns the value of Tty.
-func (s IoK8sAPICoreV1EphemeralContainer) GetTty() OptBool {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetTty() OptBool {
 	return s.Tty
 }
 
 // GetVolumeDevices returns the value of VolumeDevices.
-func (s IoK8sAPICoreV1EphemeralContainer) GetVolumeDevices() []IoK8sAPICoreV1VolumeDevice {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetVolumeDevices() []IoK8sAPICoreV1VolumeDevice {
 	return s.VolumeDevices
 }
 
 // GetVolumeMounts returns the value of VolumeMounts.
-func (s IoK8sAPICoreV1EphemeralContainer) GetVolumeMounts() []IoK8sAPICoreV1VolumeMount {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetVolumeMounts() []IoK8sAPICoreV1VolumeMount {
 	return s.VolumeMounts
 }
 
 // GetWorkingDir returns the value of WorkingDir.
-func (s IoK8sAPICoreV1EphemeralContainer) GetWorkingDir() OptString {
+func (s *IoK8sAPICoreV1EphemeralContainer) GetWorkingDir() OptString {
 	return s.WorkingDir
 }
 
@@ -11497,7 +11497,7 @@ type IoK8sAPICoreV1EphemeralVolumeSource struct {
 }
 
 // GetVolumeClaimTemplate returns the value of VolumeClaimTemplate.
-func (s IoK8sAPICoreV1EphemeralVolumeSource) GetVolumeClaimTemplate() OptIoK8sAPICoreV1PersistentVolumeClaimTemplate {
+func (s *IoK8sAPICoreV1EphemeralVolumeSource) GetVolumeClaimTemplate() OptIoK8sAPICoreV1PersistentVolumeClaimTemplate {
 	return s.VolumeClaimTemplate
 }
 
@@ -11547,87 +11547,87 @@ type IoK8sAPICoreV1Event struct {
 }
 
 // GetAction returns the value of Action.
-func (s IoK8sAPICoreV1Event) GetAction() OptString {
+func (s *IoK8sAPICoreV1Event) GetAction() OptString {
 	return s.Action
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Event) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Event) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetCount returns the value of Count.
-func (s IoK8sAPICoreV1Event) GetCount() OptInt32 {
+func (s *IoK8sAPICoreV1Event) GetCount() OptInt32 {
 	return s.Count
 }
 
 // GetEventTime returns the value of EventTime.
-func (s IoK8sAPICoreV1Event) GetEventTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPICoreV1Event) GetEventTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.EventTime
 }
 
 // GetFirstTimestamp returns the value of FirstTimestamp.
-func (s IoK8sAPICoreV1Event) GetFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1Event) GetFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.FirstTimestamp
 }
 
 // GetInvolvedObject returns the value of InvolvedObject.
-func (s IoK8sAPICoreV1Event) GetInvolvedObject() IoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPICoreV1Event) GetInvolvedObject() IoK8sAPICoreV1ObjectReference {
 	return s.InvolvedObject
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Event) GetKind() OptString {
+func (s *IoK8sAPICoreV1Event) GetKind() OptString {
 	return s.Kind
 }
 
 // GetLastTimestamp returns the value of LastTimestamp.
-func (s IoK8sAPICoreV1Event) GetLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1Event) GetLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTimestamp
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1Event) GetMessage() OptString {
+func (s *IoK8sAPICoreV1Event) GetMessage() OptString {
 	return s.Message
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Event) GetMetadata() IoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Event) GetMetadata() IoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1Event) GetReason() OptString {
+func (s *IoK8sAPICoreV1Event) GetReason() OptString {
 	return s.Reason
 }
 
 // GetRelated returns the value of Related.
-func (s IoK8sAPICoreV1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPICoreV1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
 	return s.Related
 }
 
 // GetReportingComponent returns the value of ReportingComponent.
-func (s IoK8sAPICoreV1Event) GetReportingComponent() OptString {
+func (s *IoK8sAPICoreV1Event) GetReportingComponent() OptString {
 	return s.ReportingComponent
 }
 
 // GetReportingInstance returns the value of ReportingInstance.
-func (s IoK8sAPICoreV1Event) GetReportingInstance() OptString {
+func (s *IoK8sAPICoreV1Event) GetReportingInstance() OptString {
 	return s.ReportingInstance
 }
 
 // GetSeries returns the value of Series.
-func (s IoK8sAPICoreV1Event) GetSeries() OptIoK8sAPICoreV1EventSeries {
+func (s *IoK8sAPICoreV1Event) GetSeries() OptIoK8sAPICoreV1EventSeries {
 	return s.Series
 }
 
 // GetSource returns the value of Source.
-func (s IoK8sAPICoreV1Event) GetSource() OptIoK8sAPICoreV1EventSource {
+func (s *IoK8sAPICoreV1Event) GetSource() OptIoK8sAPICoreV1EventSource {
 	return s.Source
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1Event) GetType() OptString {
+func (s *IoK8sAPICoreV1Event) GetType() OptString {
 	return s.Type
 }
 
@@ -11735,22 +11735,22 @@ type IoK8sAPICoreV1EventList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1EventList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1EventList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1EventList) GetItems() []IoK8sAPICoreV1Event {
+func (s *IoK8sAPICoreV1EventList) GetItems() []IoK8sAPICoreV1Event {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1EventList) GetKind() OptString {
+func (s *IoK8sAPICoreV1EventList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -11787,12 +11787,12 @@ type IoK8sAPICoreV1EventSeries struct {
 }
 
 // GetCount returns the value of Count.
-func (s IoK8sAPICoreV1EventSeries) GetCount() OptInt32 {
+func (s *IoK8sAPICoreV1EventSeries) GetCount() OptInt32 {
 	return s.Count
 }
 
 // GetLastObservedTime returns the value of LastObservedTime.
-func (s IoK8sAPICoreV1EventSeries) GetLastObservedTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPICoreV1EventSeries) GetLastObservedTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.LastObservedTime
 }
 
@@ -11816,12 +11816,12 @@ type IoK8sAPICoreV1EventSource struct {
 }
 
 // GetComponent returns the value of Component.
-func (s IoK8sAPICoreV1EventSource) GetComponent() OptString {
+func (s *IoK8sAPICoreV1EventSource) GetComponent() OptString {
 	return s.Component
 }
 
 // GetHost returns the value of Host.
-func (s IoK8sAPICoreV1EventSource) GetHost() OptString {
+func (s *IoK8sAPICoreV1EventSource) GetHost() OptString {
 	return s.Host
 }
 
@@ -11847,7 +11847,7 @@ type IoK8sAPICoreV1ExecAction struct {
 }
 
 // GetCommand returns the value of Command.
-func (s IoK8sAPICoreV1ExecAction) GetCommand() []string {
+func (s *IoK8sAPICoreV1ExecAction) GetCommand() []string {
 	return s.Command
 }
 
@@ -11876,27 +11876,27 @@ type IoK8sAPICoreV1FCVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1FCVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1FCVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetLun returns the value of Lun.
-func (s IoK8sAPICoreV1FCVolumeSource) GetLun() OptInt32 {
+func (s *IoK8sAPICoreV1FCVolumeSource) GetLun() OptInt32 {
 	return s.Lun
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1FCVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1FCVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetTargetWWNs returns the value of TargetWWNs.
-func (s IoK8sAPICoreV1FCVolumeSource) GetTargetWWNs() []string {
+func (s *IoK8sAPICoreV1FCVolumeSource) GetTargetWWNs() []string {
 	return s.TargetWWNs
 }
 
 // GetWwids returns the value of Wwids.
-func (s IoK8sAPICoreV1FCVolumeSource) GetWwids() []string {
+func (s *IoK8sAPICoreV1FCVolumeSource) GetWwids() []string {
 	return s.Wwids
 }
 
@@ -11943,27 +11943,27 @@ type IoK8sAPICoreV1FlexPersistentVolumeSource struct {
 }
 
 // GetDriver returns the value of Driver.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetDriver() string {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) GetDriver() string {
 	return s.Driver
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetOptions returns the value of Options.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetOptions() OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) GetOptions() OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions {
 	return s.Options
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.SecretRef
 }
 
@@ -12022,27 +12022,27 @@ type IoK8sAPICoreV1FlexVolumeSource struct {
 }
 
 // GetDriver returns the value of Driver.
-func (s IoK8sAPICoreV1FlexVolumeSource) GetDriver() string {
+func (s *IoK8sAPICoreV1FlexVolumeSource) GetDriver() string {
 	return s.Driver
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1FlexVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1FlexVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetOptions returns the value of Options.
-func (s IoK8sAPICoreV1FlexVolumeSource) GetOptions() OptIoK8sAPICoreV1FlexVolumeSourceOptions {
+func (s *IoK8sAPICoreV1FlexVolumeSource) GetOptions() OptIoK8sAPICoreV1FlexVolumeSourceOptions {
 	return s.Options
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1FlexVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1FlexVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1FlexVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1FlexVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
@@ -12096,12 +12096,12 @@ type IoK8sAPICoreV1FlockerVolumeSource struct {
 }
 
 // GetDatasetName returns the value of DatasetName.
-func (s IoK8sAPICoreV1FlockerVolumeSource) GetDatasetName() OptString {
+func (s *IoK8sAPICoreV1FlockerVolumeSource) GetDatasetName() OptString {
 	return s.DatasetName
 }
 
 // GetDatasetUUID returns the value of DatasetUUID.
-func (s IoK8sAPICoreV1FlockerVolumeSource) GetDatasetUUID() OptString {
+func (s *IoK8sAPICoreV1FlockerVolumeSource) GetDatasetUUID() OptString {
 	return s.DatasetUUID
 }
 
@@ -12140,22 +12140,22 @@ type IoK8sAPICoreV1GCEPersistentDiskVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetPartition returns the value of Partition.
-func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetPartition() OptInt32 {
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetPartition() OptInt32 {
 	return s.Partition
 }
 
 // GetPdName returns the value of PdName.
-func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetPdName() string {
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetPdName() string {
 	return s.PdName
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
@@ -12197,17 +12197,17 @@ type IoK8sAPICoreV1GitRepoVolumeSource struct {
 }
 
 // GetDirectory returns the value of Directory.
-func (s IoK8sAPICoreV1GitRepoVolumeSource) GetDirectory() OptString {
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) GetDirectory() OptString {
 	return s.Directory
 }
 
 // GetRepository returns the value of Repository.
-func (s IoK8sAPICoreV1GitRepoVolumeSource) GetRepository() string {
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) GetRepository() string {
 	return s.Repository
 }
 
 // GetRevision returns the value of Revision.
-func (s IoK8sAPICoreV1GitRepoVolumeSource) GetRevision() OptString {
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) GetRevision() OptString {
 	return s.Revision
 }
 
@@ -12246,22 +12246,22 @@ type IoK8sAPICoreV1GlusterfsPersistentVolumeSource struct {
 }
 
 // GetEndpoints returns the value of Endpoints.
-func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetEndpoints() string {
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetEndpoints() string {
 	return s.Endpoints
 }
 
 // GetEndpointsNamespace returns the value of EndpointsNamespace.
-func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetEndpointsNamespace() OptString {
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetEndpointsNamespace() OptString {
 	return s.EndpointsNamespace
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetPath() string {
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetPath() string {
 	return s.Path
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
@@ -12301,17 +12301,17 @@ type IoK8sAPICoreV1GlusterfsVolumeSource struct {
 }
 
 // GetEndpoints returns the value of Endpoints.
-func (s IoK8sAPICoreV1GlusterfsVolumeSource) GetEndpoints() string {
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) GetEndpoints() string {
 	return s.Endpoints
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1GlusterfsVolumeSource) GetPath() string {
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) GetPath() string {
 	return s.Path
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1GlusterfsVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
@@ -12346,27 +12346,27 @@ type IoK8sAPICoreV1HTTPGetAction struct {
 }
 
 // GetHost returns the value of Host.
-func (s IoK8sAPICoreV1HTTPGetAction) GetHost() OptString {
+func (s *IoK8sAPICoreV1HTTPGetAction) GetHost() OptString {
 	return s.Host
 }
 
 // GetHttpHeaders returns the value of HttpHeaders.
-func (s IoK8sAPICoreV1HTTPGetAction) GetHttpHeaders() []IoK8sAPICoreV1HTTPHeader {
+func (s *IoK8sAPICoreV1HTTPGetAction) GetHttpHeaders() []IoK8sAPICoreV1HTTPHeader {
 	return s.HttpHeaders
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1HTTPGetAction) GetPath() OptString {
+func (s *IoK8sAPICoreV1HTTPGetAction) GetPath() OptString {
 	return s.Path
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPICoreV1HTTPGetAction) GetPort() IoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPICoreV1HTTPGetAction) GetPort() IoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.Port
 }
 
 // GetScheme returns the value of Scheme.
-func (s IoK8sAPICoreV1HTTPGetAction) GetScheme() OptString {
+func (s *IoK8sAPICoreV1HTTPGetAction) GetScheme() OptString {
 	return s.Scheme
 }
 
@@ -12405,12 +12405,12 @@ type IoK8sAPICoreV1HTTPHeader struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1HTTPHeader) GetName() string {
+func (s *IoK8sAPICoreV1HTTPHeader) GetName() string {
 	return s.Name
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPICoreV1HTTPHeader) GetValue() string {
+func (s *IoK8sAPICoreV1HTTPHeader) GetValue() string {
 	return s.Value
 }
 
@@ -12433,17 +12433,17 @@ type IoK8sAPICoreV1Handler struct {
 }
 
 // GetExec returns the value of Exec.
-func (s IoK8sAPICoreV1Handler) GetExec() OptIoK8sAPICoreV1ExecAction {
+func (s *IoK8sAPICoreV1Handler) GetExec() OptIoK8sAPICoreV1ExecAction {
 	return s.Exec
 }
 
 // GetHttpGet returns the value of HttpGet.
-func (s IoK8sAPICoreV1Handler) GetHttpGet() OptIoK8sAPICoreV1HTTPGetAction {
+func (s *IoK8sAPICoreV1Handler) GetHttpGet() OptIoK8sAPICoreV1HTTPGetAction {
 	return s.HttpGet
 }
 
 // GetTcpSocket returns the value of TcpSocket.
-func (s IoK8sAPICoreV1Handler) GetTcpSocket() OptIoK8sAPICoreV1TCPSocketAction {
+func (s *IoK8sAPICoreV1Handler) GetTcpSocket() OptIoK8sAPICoreV1TCPSocketAction {
 	return s.TcpSocket
 }
 
@@ -12473,12 +12473,12 @@ type IoK8sAPICoreV1HostAlias struct {
 }
 
 // GetHostnames returns the value of Hostnames.
-func (s IoK8sAPICoreV1HostAlias) GetHostnames() []string {
+func (s *IoK8sAPICoreV1HostAlias) GetHostnames() []string {
 	return s.Hostnames
 }
 
 // GetIP returns the value of IP.
-func (s IoK8sAPICoreV1HostAlias) GetIP() OptString {
+func (s *IoK8sAPICoreV1HostAlias) GetIP() OptString {
 	return s.IP
 }
 
@@ -12505,12 +12505,12 @@ type IoK8sAPICoreV1HostPathVolumeSource struct {
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1HostPathVolumeSource) GetPath() string {
+func (s *IoK8sAPICoreV1HostPathVolumeSource) GetPath() string {
 	return s.Path
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1HostPathVolumeSource) GetType() OptString {
+func (s *IoK8sAPICoreV1HostPathVolumeSource) GetType() OptString {
 	return s.Type
 }
 
@@ -12557,57 +12557,57 @@ type IoK8sAPICoreV1ISCSIPersistentVolumeSource struct {
 }
 
 // GetChapAuthDiscovery returns the value of ChapAuthDiscovery.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetChapAuthDiscovery() OptBool {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetChapAuthDiscovery() OptBool {
 	return s.ChapAuthDiscovery
 }
 
 // GetChapAuthSession returns the value of ChapAuthSession.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetChapAuthSession() OptBool {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetChapAuthSession() OptBool {
 	return s.ChapAuthSession
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetInitiatorName returns the value of InitiatorName.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetInitiatorName() OptString {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetInitiatorName() OptString {
 	return s.InitiatorName
 }
 
 // GetIqn returns the value of Iqn.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetIqn() string {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetIqn() string {
 	return s.Iqn
 }
 
 // GetIscsiInterface returns the value of IscsiInterface.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetIscsiInterface() OptString {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetIscsiInterface() OptString {
 	return s.IscsiInterface
 }
 
 // GetLun returns the value of Lun.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetLun() int32 {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetLun() int32 {
 	return s.Lun
 }
 
 // GetPortals returns the value of Portals.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetPortals() []string {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetPortals() []string {
 	return s.Portals
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.SecretRef
 }
 
 // GetTargetPortal returns the value of TargetPortal.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetTargetPortal() string {
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetTargetPortal() string {
 	return s.TargetPortal
 }
 
@@ -12699,57 +12699,57 @@ type IoK8sAPICoreV1ISCSIVolumeSource struct {
 }
 
 // GetChapAuthDiscovery returns the value of ChapAuthDiscovery.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetChapAuthDiscovery() OptBool {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetChapAuthDiscovery() OptBool {
 	return s.ChapAuthDiscovery
 }
 
 // GetChapAuthSession returns the value of ChapAuthSession.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetChapAuthSession() OptBool {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetChapAuthSession() OptBool {
 	return s.ChapAuthSession
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetInitiatorName returns the value of InitiatorName.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetInitiatorName() OptString {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetInitiatorName() OptString {
 	return s.InitiatorName
 }
 
 // GetIqn returns the value of Iqn.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetIqn() string {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetIqn() string {
 	return s.Iqn
 }
 
 // GetIscsiInterface returns the value of IscsiInterface.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetIscsiInterface() OptString {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetIscsiInterface() OptString {
 	return s.IscsiInterface
 }
 
 // GetLun returns the value of Lun.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetLun() int32 {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetLun() int32 {
 	return s.Lun
 }
 
 // GetPortals returns the value of Portals.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetPortals() []string {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetPortals() []string {
 	return s.Portals
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
 // GetTargetPortal returns the value of TargetPortal.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) GetTargetPortal() string {
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) GetTargetPortal() string {
 	return s.TargetPortal
 }
 
@@ -12825,17 +12825,17 @@ type IoK8sAPICoreV1KeyToPath struct {
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1KeyToPath) GetKey() string {
+func (s *IoK8sAPICoreV1KeyToPath) GetKey() string {
 	return s.Key
 }
 
 // GetMode returns the value of Mode.
-func (s IoK8sAPICoreV1KeyToPath) GetMode() OptInt32 {
+func (s *IoK8sAPICoreV1KeyToPath) GetMode() OptInt32 {
 	return s.Mode
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1KeyToPath) GetPath() string {
+func (s *IoK8sAPICoreV1KeyToPath) GetPath() string {
 	return s.Path
 }
 
@@ -12865,12 +12865,12 @@ type IoK8sAPICoreV1Lifecycle struct {
 }
 
 // GetPostStart returns the value of PostStart.
-func (s IoK8sAPICoreV1Lifecycle) GetPostStart() OptIoK8sAPICoreV1Handler {
+func (s *IoK8sAPICoreV1Lifecycle) GetPostStart() OptIoK8sAPICoreV1Handler {
 	return s.PostStart
 }
 
 // GetPreStop returns the value of PreStop.
-func (s IoK8sAPICoreV1Lifecycle) GetPreStop() OptIoK8sAPICoreV1Handler {
+func (s *IoK8sAPICoreV1Lifecycle) GetPreStop() OptIoK8sAPICoreV1Handler {
 	return s.PreStop
 }
 
@@ -12900,22 +12900,22 @@ type IoK8sAPICoreV1LimitRange struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1LimitRange) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1LimitRange) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1LimitRange) GetKind() OptString {
+func (s *IoK8sAPICoreV1LimitRange) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1LimitRange) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1LimitRange) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1LimitRange) GetSpec() OptIoK8sAPICoreV1LimitRangeSpec {
+func (s *IoK8sAPICoreV1LimitRange) GetSpec() OptIoK8sAPICoreV1LimitRangeSpec {
 	return s.Spec
 }
 
@@ -12962,32 +12962,32 @@ type IoK8sAPICoreV1LimitRangeItem struct {
 }
 
 // GetDefault returns the value of Default.
-func (s IoK8sAPICoreV1LimitRangeItem) GetDefault() OptIoK8sAPICoreV1LimitRangeItemDefault {
+func (s *IoK8sAPICoreV1LimitRangeItem) GetDefault() OptIoK8sAPICoreV1LimitRangeItemDefault {
 	return s.Default
 }
 
 // GetDefaultRequest returns the value of DefaultRequest.
-func (s IoK8sAPICoreV1LimitRangeItem) GetDefaultRequest() OptIoK8sAPICoreV1LimitRangeItemDefaultRequest {
+func (s *IoK8sAPICoreV1LimitRangeItem) GetDefaultRequest() OptIoK8sAPICoreV1LimitRangeItemDefaultRequest {
 	return s.DefaultRequest
 }
 
 // GetMax returns the value of Max.
-func (s IoK8sAPICoreV1LimitRangeItem) GetMax() OptIoK8sAPICoreV1LimitRangeItemMax {
+func (s *IoK8sAPICoreV1LimitRangeItem) GetMax() OptIoK8sAPICoreV1LimitRangeItemMax {
 	return s.Max
 }
 
 // GetMaxLimitRequestRatio returns the value of MaxLimitRequestRatio.
-func (s IoK8sAPICoreV1LimitRangeItem) GetMaxLimitRequestRatio() OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio {
+func (s *IoK8sAPICoreV1LimitRangeItem) GetMaxLimitRequestRatio() OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio {
 	return s.MaxLimitRequestRatio
 }
 
 // GetMin returns the value of Min.
-func (s IoK8sAPICoreV1LimitRangeItem) GetMin() OptIoK8sAPICoreV1LimitRangeItemMin {
+func (s *IoK8sAPICoreV1LimitRangeItem) GetMin() OptIoK8sAPICoreV1LimitRangeItemMin {
 	return s.Min
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1LimitRangeItem) GetType() string {
+func (s *IoK8sAPICoreV1LimitRangeItem) GetType() string {
 	return s.Type
 }
 
@@ -13102,22 +13102,22 @@ type IoK8sAPICoreV1LimitRangeList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1LimitRangeList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1LimitRangeList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1LimitRangeList) GetItems() []IoK8sAPICoreV1LimitRange {
+func (s *IoK8sAPICoreV1LimitRangeList) GetItems() []IoK8sAPICoreV1LimitRange {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1LimitRangeList) GetKind() OptString {
+func (s *IoK8sAPICoreV1LimitRangeList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1LimitRangeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1LimitRangeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -13152,7 +13152,7 @@ type IoK8sAPICoreV1LimitRangeSpec struct {
 }
 
 // GetLimits returns the value of Limits.
-func (s IoK8sAPICoreV1LimitRangeSpec) GetLimits() []IoK8sAPICoreV1LimitRangeItem {
+func (s *IoK8sAPICoreV1LimitRangeSpec) GetLimits() []IoK8sAPICoreV1LimitRangeItem {
 	return s.Limits
 }
 
@@ -13176,17 +13176,17 @@ type IoK8sAPICoreV1LoadBalancerIngress struct {
 }
 
 // GetHostname returns the value of Hostname.
-func (s IoK8sAPICoreV1LoadBalancerIngress) GetHostname() OptString {
+func (s *IoK8sAPICoreV1LoadBalancerIngress) GetHostname() OptString {
 	return s.Hostname
 }
 
 // GetIP returns the value of IP.
-func (s IoK8sAPICoreV1LoadBalancerIngress) GetIP() OptString {
+func (s *IoK8sAPICoreV1LoadBalancerIngress) GetIP() OptString {
 	return s.IP
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPICoreV1LoadBalancerIngress) GetPorts() []IoK8sAPICoreV1PortStatus {
+func (s *IoK8sAPICoreV1LoadBalancerIngress) GetPorts() []IoK8sAPICoreV1PortStatus {
 	return s.Ports
 }
 
@@ -13214,7 +13214,7 @@ type IoK8sAPICoreV1LoadBalancerStatus struct {
 }
 
 // GetIngress returns the value of Ingress.
-func (s IoK8sAPICoreV1LoadBalancerStatus) GetIngress() []IoK8sAPICoreV1LoadBalancerIngress {
+func (s *IoK8sAPICoreV1LoadBalancerStatus) GetIngress() []IoK8sAPICoreV1LoadBalancerIngress {
 	return s.Ingress
 }
 
@@ -13233,7 +13233,7 @@ type IoK8sAPICoreV1LocalObjectReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1LocalObjectReference) GetName() OptString {
+func (s *IoK8sAPICoreV1LocalObjectReference) GetName() OptString {
 	return s.Name
 }
 
@@ -13255,12 +13255,12 @@ type IoK8sAPICoreV1LocalVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1LocalVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1LocalVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1LocalVolumeSource) GetPath() string {
+func (s *IoK8sAPICoreV1LocalVolumeSource) GetPath() string {
 	return s.Path
 }
 
@@ -13290,17 +13290,17 @@ type IoK8sAPICoreV1NFSVolumeSource struct {
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1NFSVolumeSource) GetPath() string {
+func (s *IoK8sAPICoreV1NFSVolumeSource) GetPath() string {
 	return s.Path
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1NFSVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1NFSVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetServer returns the value of Server.
-func (s IoK8sAPICoreV1NFSVolumeSource) GetServer() string {
+func (s *IoK8sAPICoreV1NFSVolumeSource) GetServer() string {
 	return s.Server
 }
 
@@ -13336,27 +13336,27 @@ type IoK8sAPICoreV1Namespace struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Namespace) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Namespace) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Namespace) GetKind() OptString {
+func (s *IoK8sAPICoreV1Namespace) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Namespace) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Namespace) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1Namespace) GetSpec() OptIoK8sAPICoreV1NamespaceSpec {
+func (s *IoK8sAPICoreV1Namespace) GetSpec() OptIoK8sAPICoreV1NamespaceSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1Namespace) GetStatus() OptIoK8sAPICoreV1NamespaceStatus {
+func (s *IoK8sAPICoreV1Namespace) GetStatus() OptIoK8sAPICoreV1NamespaceStatus {
 	return s.Status
 }
 
@@ -13401,27 +13401,27 @@ type IoK8sAPICoreV1NamespaceCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPICoreV1NamespaceCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1NamespaceCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1NamespaceCondition) GetMessage() OptString {
+func (s *IoK8sAPICoreV1NamespaceCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1NamespaceCondition) GetReason() OptString {
+func (s *IoK8sAPICoreV1NamespaceCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1NamespaceCondition) GetStatus() string {
+func (s *IoK8sAPICoreV1NamespaceCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1NamespaceCondition) GetType() string {
+func (s *IoK8sAPICoreV1NamespaceCondition) GetType() string {
 	return s.Type
 }
 
@@ -13468,22 +13468,22 @@ type IoK8sAPICoreV1NamespaceList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1NamespaceList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1NamespaceList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1NamespaceList) GetItems() []IoK8sAPICoreV1Namespace {
+func (s *IoK8sAPICoreV1NamespaceList) GetItems() []IoK8sAPICoreV1Namespace {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1NamespaceList) GetKind() OptString {
+func (s *IoK8sAPICoreV1NamespaceList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1NamespaceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1NamespaceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -13518,7 +13518,7 @@ type IoK8sAPICoreV1NamespaceSpec struct {
 }
 
 // GetFinalizers returns the value of Finalizers.
-func (s IoK8sAPICoreV1NamespaceSpec) GetFinalizers() []string {
+func (s *IoK8sAPICoreV1NamespaceSpec) GetFinalizers() []string {
 	return s.Finalizers
 }
 
@@ -13538,12 +13538,12 @@ type IoK8sAPICoreV1NamespaceStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1NamespaceStatus) GetConditions() []IoK8sAPICoreV1NamespaceCondition {
+func (s *IoK8sAPICoreV1NamespaceStatus) GetConditions() []IoK8sAPICoreV1NamespaceCondition {
 	return s.Conditions
 }
 
 // GetPhase returns the value of Phase.
-func (s IoK8sAPICoreV1NamespaceStatus) GetPhase() OptString {
+func (s *IoK8sAPICoreV1NamespaceStatus) GetPhase() OptString {
 	return s.Phase
 }
 
@@ -13575,27 +13575,27 @@ type IoK8sAPICoreV1Node struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Node) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Node) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Node) GetKind() OptString {
+func (s *IoK8sAPICoreV1Node) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Node) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Node) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1Node) GetSpec() OptIoK8sAPICoreV1NodeSpec {
+func (s *IoK8sAPICoreV1Node) GetSpec() OptIoK8sAPICoreV1NodeSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1Node) GetStatus() OptIoK8sAPICoreV1NodeStatus {
+func (s *IoK8sAPICoreV1Node) GetStatus() OptIoK8sAPICoreV1NodeStatus {
 	return s.Status
 }
 
@@ -13637,12 +13637,12 @@ type IoK8sAPICoreV1NodeAddress struct {
 }
 
 // GetAddress returns the value of Address.
-func (s IoK8sAPICoreV1NodeAddress) GetAddress() string {
+func (s *IoK8sAPICoreV1NodeAddress) GetAddress() string {
 	return s.Address
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1NodeAddress) GetType() string {
+func (s *IoK8sAPICoreV1NodeAddress) GetType() string {
 	return s.Type
 }
 
@@ -13671,12 +13671,12 @@ type IoK8sAPICoreV1NodeAffinity struct {
 }
 
 // GetPreferredDuringSchedulingIgnoredDuringExecution returns the value of PreferredDuringSchedulingIgnoredDuringExecution.
-func (s IoK8sAPICoreV1NodeAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PreferredSchedulingTerm {
+func (s *IoK8sAPICoreV1NodeAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PreferredSchedulingTerm {
 	return s.PreferredDuringSchedulingIgnoredDuringExecution
 }
 
 // GetRequiredDuringSchedulingIgnoredDuringExecution returns the value of RequiredDuringSchedulingIgnoredDuringExecution.
-func (s IoK8sAPICoreV1NodeAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() OptIoK8sAPICoreV1NodeSelector {
+func (s *IoK8sAPICoreV1NodeAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() OptIoK8sAPICoreV1NodeSelector {
 	return s.RequiredDuringSchedulingIgnoredDuringExecution
 }
 
@@ -13706,32 +13706,32 @@ type IoK8sAPICoreV1NodeCondition struct {
 }
 
 // GetLastHeartbeatTime returns the value of LastHeartbeatTime.
-func (s IoK8sAPICoreV1NodeCondition) GetLastHeartbeatTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1NodeCondition) GetLastHeartbeatTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastHeartbeatTime
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPICoreV1NodeCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1NodeCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1NodeCondition) GetMessage() OptString {
+func (s *IoK8sAPICoreV1NodeCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1NodeCondition) GetReason() OptString {
+func (s *IoK8sAPICoreV1NodeCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1NodeCondition) GetStatus() string {
+func (s *IoK8sAPICoreV1NodeCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1NodeCondition) GetType() string {
+func (s *IoK8sAPICoreV1NodeCondition) GetType() string {
 	return s.Type
 }
 
@@ -13773,7 +13773,7 @@ type IoK8sAPICoreV1NodeConfigSource struct {
 }
 
 // GetConfigMap returns the value of ConfigMap.
-func (s IoK8sAPICoreV1NodeConfigSource) GetConfigMap() OptIoK8sAPICoreV1ConfigMapNodeConfigSource {
+func (s *IoK8sAPICoreV1NodeConfigSource) GetConfigMap() OptIoK8sAPICoreV1ConfigMapNodeConfigSource {
 	return s.ConfigMap
 }
 
@@ -13803,22 +13803,22 @@ type IoK8sAPICoreV1NodeConfigStatus struct {
 }
 
 // GetActive returns the value of Active.
-func (s IoK8sAPICoreV1NodeConfigStatus) GetActive() OptIoK8sAPICoreV1NodeConfigSource {
+func (s *IoK8sAPICoreV1NodeConfigStatus) GetActive() OptIoK8sAPICoreV1NodeConfigSource {
 	return s.Active
 }
 
 // GetAssigned returns the value of Assigned.
-func (s IoK8sAPICoreV1NodeConfigStatus) GetAssigned() OptIoK8sAPICoreV1NodeConfigSource {
+func (s *IoK8sAPICoreV1NodeConfigStatus) GetAssigned() OptIoK8sAPICoreV1NodeConfigSource {
 	return s.Assigned
 }
 
 // GetError returns the value of Error.
-func (s IoK8sAPICoreV1NodeConfigStatus) GetError() OptString {
+func (s *IoK8sAPICoreV1NodeConfigStatus) GetError() OptString {
 	return s.Error
 }
 
 // GetLastKnownGood returns the value of LastKnownGood.
-func (s IoK8sAPICoreV1NodeConfigStatus) GetLastKnownGood() OptIoK8sAPICoreV1NodeConfigSource {
+func (s *IoK8sAPICoreV1NodeConfigStatus) GetLastKnownGood() OptIoK8sAPICoreV1NodeConfigSource {
 	return s.LastKnownGood
 }
 
@@ -13849,7 +13849,7 @@ type IoK8sAPICoreV1NodeDaemonEndpoints struct {
 }
 
 // GetKubeletEndpoint returns the value of KubeletEndpoint.
-func (s IoK8sAPICoreV1NodeDaemonEndpoints) GetKubeletEndpoint() OptIoK8sAPICoreV1DaemonEndpoint {
+func (s *IoK8sAPICoreV1NodeDaemonEndpoints) GetKubeletEndpoint() OptIoK8sAPICoreV1DaemonEndpoint {
 	return s.KubeletEndpoint
 }
 
@@ -13875,22 +13875,22 @@ type IoK8sAPICoreV1NodeList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1NodeList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1NodeList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1NodeList) GetItems() []IoK8sAPICoreV1Node {
+func (s *IoK8sAPICoreV1NodeList) GetItems() []IoK8sAPICoreV1Node {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1NodeList) GetKind() OptString {
+func (s *IoK8sAPICoreV1NodeList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1NodeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1NodeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -13925,7 +13925,7 @@ type IoK8sAPICoreV1NodeSelector struct {
 }
 
 // GetNodeSelectorTerms returns the value of NodeSelectorTerms.
-func (s IoK8sAPICoreV1NodeSelector) GetNodeSelectorTerms() []IoK8sAPICoreV1NodeSelectorTerm {
+func (s *IoK8sAPICoreV1NodeSelector) GetNodeSelectorTerms() []IoK8sAPICoreV1NodeSelectorTerm {
 	return s.NodeSelectorTerms
 }
 
@@ -13951,17 +13951,17 @@ type IoK8sAPICoreV1NodeSelectorRequirement struct {
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1NodeSelectorRequirement) GetKey() string {
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) GetKey() string {
 	return s.Key
 }
 
 // GetOperator returns the value of Operator.
-func (s IoK8sAPICoreV1NodeSelectorRequirement) GetOperator() string {
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) GetOperator() string {
 	return s.Operator
 }
 
 // GetValues returns the value of Values.
-func (s IoK8sAPICoreV1NodeSelectorRequirement) GetValues() []string {
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) GetValues() []string {
 	return s.Values
 }
 
@@ -13991,12 +13991,12 @@ type IoK8sAPICoreV1NodeSelectorTerm struct {
 }
 
 // GetMatchExpressions returns the value of MatchExpressions.
-func (s IoK8sAPICoreV1NodeSelectorTerm) GetMatchExpressions() []IoK8sAPICoreV1NodeSelectorRequirement {
+func (s *IoK8sAPICoreV1NodeSelectorTerm) GetMatchExpressions() []IoK8sAPICoreV1NodeSelectorRequirement {
 	return s.MatchExpressions
 }
 
 // GetMatchFields returns the value of MatchFields.
-func (s IoK8sAPICoreV1NodeSelectorTerm) GetMatchFields() []IoK8sAPICoreV1NodeSelectorRequirement {
+func (s *IoK8sAPICoreV1NodeSelectorTerm) GetMatchFields() []IoK8sAPICoreV1NodeSelectorRequirement {
 	return s.MatchFields
 }
 
@@ -14034,37 +14034,37 @@ type IoK8sAPICoreV1NodeSpec struct {
 }
 
 // GetConfigSource returns the value of ConfigSource.
-func (s IoK8sAPICoreV1NodeSpec) GetConfigSource() OptIoK8sAPICoreV1NodeConfigSource {
+func (s *IoK8sAPICoreV1NodeSpec) GetConfigSource() OptIoK8sAPICoreV1NodeConfigSource {
 	return s.ConfigSource
 }
 
 // GetExternalID returns the value of ExternalID.
-func (s IoK8sAPICoreV1NodeSpec) GetExternalID() OptString {
+func (s *IoK8sAPICoreV1NodeSpec) GetExternalID() OptString {
 	return s.ExternalID
 }
 
 // GetPodCIDR returns the value of PodCIDR.
-func (s IoK8sAPICoreV1NodeSpec) GetPodCIDR() OptString {
+func (s *IoK8sAPICoreV1NodeSpec) GetPodCIDR() OptString {
 	return s.PodCIDR
 }
 
 // GetPodCIDRs returns the value of PodCIDRs.
-func (s IoK8sAPICoreV1NodeSpec) GetPodCIDRs() []string {
+func (s *IoK8sAPICoreV1NodeSpec) GetPodCIDRs() []string {
 	return s.PodCIDRs
 }
 
 // GetProviderID returns the value of ProviderID.
-func (s IoK8sAPICoreV1NodeSpec) GetProviderID() OptString {
+func (s *IoK8sAPICoreV1NodeSpec) GetProviderID() OptString {
 	return s.ProviderID
 }
 
 // GetTaints returns the value of Taints.
-func (s IoK8sAPICoreV1NodeSpec) GetTaints() []IoK8sAPICoreV1Taint {
+func (s *IoK8sAPICoreV1NodeSpec) GetTaints() []IoK8sAPICoreV1Taint {
 	return s.Taints
 }
 
 // GetUnschedulable returns the value of Unschedulable.
-func (s IoK8sAPICoreV1NodeSpec) GetUnschedulable() OptBool {
+func (s *IoK8sAPICoreV1NodeSpec) GetUnschedulable() OptBool {
 	return s.Unschedulable
 }
 
@@ -14136,57 +14136,57 @@ type IoK8sAPICoreV1NodeStatus struct {
 }
 
 // GetAddresses returns the value of Addresses.
-func (s IoK8sAPICoreV1NodeStatus) GetAddresses() []IoK8sAPICoreV1NodeAddress {
+func (s *IoK8sAPICoreV1NodeStatus) GetAddresses() []IoK8sAPICoreV1NodeAddress {
 	return s.Addresses
 }
 
 // GetAllocatable returns the value of Allocatable.
-func (s IoK8sAPICoreV1NodeStatus) GetAllocatable() OptIoK8sAPICoreV1NodeStatusAllocatable {
+func (s *IoK8sAPICoreV1NodeStatus) GetAllocatable() OptIoK8sAPICoreV1NodeStatusAllocatable {
 	return s.Allocatable
 }
 
 // GetCapacity returns the value of Capacity.
-func (s IoK8sAPICoreV1NodeStatus) GetCapacity() OptIoK8sAPICoreV1NodeStatusCapacity {
+func (s *IoK8sAPICoreV1NodeStatus) GetCapacity() OptIoK8sAPICoreV1NodeStatusCapacity {
 	return s.Capacity
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1NodeStatus) GetConditions() []IoK8sAPICoreV1NodeCondition {
+func (s *IoK8sAPICoreV1NodeStatus) GetConditions() []IoK8sAPICoreV1NodeCondition {
 	return s.Conditions
 }
 
 // GetConfig returns the value of Config.
-func (s IoK8sAPICoreV1NodeStatus) GetConfig() OptIoK8sAPICoreV1NodeConfigStatus {
+func (s *IoK8sAPICoreV1NodeStatus) GetConfig() OptIoK8sAPICoreV1NodeConfigStatus {
 	return s.Config
 }
 
 // GetDaemonEndpoints returns the value of DaemonEndpoints.
-func (s IoK8sAPICoreV1NodeStatus) GetDaemonEndpoints() OptIoK8sAPICoreV1NodeDaemonEndpoints {
+func (s *IoK8sAPICoreV1NodeStatus) GetDaemonEndpoints() OptIoK8sAPICoreV1NodeDaemonEndpoints {
 	return s.DaemonEndpoints
 }
 
 // GetImages returns the value of Images.
-func (s IoK8sAPICoreV1NodeStatus) GetImages() []IoK8sAPICoreV1ContainerImage {
+func (s *IoK8sAPICoreV1NodeStatus) GetImages() []IoK8sAPICoreV1ContainerImage {
 	return s.Images
 }
 
 // GetNodeInfo returns the value of NodeInfo.
-func (s IoK8sAPICoreV1NodeStatus) GetNodeInfo() OptIoK8sAPICoreV1NodeSystemInfo {
+func (s *IoK8sAPICoreV1NodeStatus) GetNodeInfo() OptIoK8sAPICoreV1NodeSystemInfo {
 	return s.NodeInfo
 }
 
 // GetPhase returns the value of Phase.
-func (s IoK8sAPICoreV1NodeStatus) GetPhase() OptString {
+func (s *IoK8sAPICoreV1NodeStatus) GetPhase() OptString {
 	return s.Phase
 }
 
 // GetVolumesAttached returns the value of VolumesAttached.
-func (s IoK8sAPICoreV1NodeStatus) GetVolumesAttached() []IoK8sAPICoreV1AttachedVolume {
+func (s *IoK8sAPICoreV1NodeStatus) GetVolumesAttached() []IoK8sAPICoreV1AttachedVolume {
 	return s.VolumesAttached
 }
 
 // GetVolumesInUse returns the value of VolumesInUse.
-func (s IoK8sAPICoreV1NodeStatus) GetVolumesInUse() []string {
+func (s *IoK8sAPICoreV1NodeStatus) GetVolumesInUse() []string {
 	return s.VolumesInUse
 }
 
@@ -14301,52 +14301,52 @@ type IoK8sAPICoreV1NodeSystemInfo struct {
 }
 
 // GetArchitecture returns the value of Architecture.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetArchitecture() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetArchitecture() string {
 	return s.Architecture
 }
 
 // GetBootID returns the value of BootID.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetBootID() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetBootID() string {
 	return s.BootID
 }
 
 // GetContainerRuntimeVersion returns the value of ContainerRuntimeVersion.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetContainerRuntimeVersion() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetContainerRuntimeVersion() string {
 	return s.ContainerRuntimeVersion
 }
 
 // GetKernelVersion returns the value of KernelVersion.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetKernelVersion() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetKernelVersion() string {
 	return s.KernelVersion
 }
 
 // GetKubeProxyVersion returns the value of KubeProxyVersion.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetKubeProxyVersion() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetKubeProxyVersion() string {
 	return s.KubeProxyVersion
 }
 
 // GetKubeletVersion returns the value of KubeletVersion.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetKubeletVersion() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetKubeletVersion() string {
 	return s.KubeletVersion
 }
 
 // GetMachineID returns the value of MachineID.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetMachineID() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetMachineID() string {
 	return s.MachineID
 }
 
 // GetOperatingSystem returns the value of OperatingSystem.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetOperatingSystem() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetOperatingSystem() string {
 	return s.OperatingSystem
 }
 
 // GetOsImage returns the value of OsImage.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetOsImage() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetOsImage() string {
 	return s.OsImage
 }
 
 // GetSystemUUID returns the value of SystemUUID.
-func (s IoK8sAPICoreV1NodeSystemInfo) GetSystemUUID() string {
+func (s *IoK8sAPICoreV1NodeSystemInfo) GetSystemUUID() string {
 	return s.SystemUUID
 }
 
@@ -14410,12 +14410,12 @@ type IoK8sAPICoreV1ObjectFieldSelector struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ObjectFieldSelector) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ObjectFieldSelector) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetFieldPath returns the value of FieldPath.
-func (s IoK8sAPICoreV1ObjectFieldSelector) GetFieldPath() string {
+func (s *IoK8sAPICoreV1ObjectFieldSelector) GetFieldPath() string {
 	return s.FieldPath
 }
 
@@ -14460,37 +14460,37 @@ type IoK8sAPICoreV1ObjectReference struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ObjectReference) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetFieldPath returns the value of FieldPath.
-func (s IoK8sAPICoreV1ObjectReference) GetFieldPath() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetFieldPath() OptString {
 	return s.FieldPath
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ObjectReference) GetKind() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetKind() OptString {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ObjectReference) GetName() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetName() OptString {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPICoreV1ObjectReference) GetNamespace() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetNamespace() OptString {
 	return s.Namespace
 }
 
 // GetResourceVersion returns the value of ResourceVersion.
-func (s IoK8sAPICoreV1ObjectReference) GetResourceVersion() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetResourceVersion() OptString {
 	return s.ResourceVersion
 }
 
 // GetUID returns the value of UID.
-func (s IoK8sAPICoreV1ObjectReference) GetUID() OptString {
+func (s *IoK8sAPICoreV1ObjectReference) GetUID() OptString {
 	return s.UID
 }
 
@@ -14547,27 +14547,27 @@ type IoK8sAPICoreV1PersistentVolume struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PersistentVolume) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PersistentVolume) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PersistentVolume) GetKind() OptString {
+func (s *IoK8sAPICoreV1PersistentVolume) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PersistentVolume) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1PersistentVolume) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1PersistentVolume) GetSpec() OptIoK8sAPICoreV1PersistentVolumeSpec {
+func (s *IoK8sAPICoreV1PersistentVolume) GetSpec() OptIoK8sAPICoreV1PersistentVolumeSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1PersistentVolume) GetStatus() OptIoK8sAPICoreV1PersistentVolumeStatus {
+func (s *IoK8sAPICoreV1PersistentVolume) GetStatus() OptIoK8sAPICoreV1PersistentVolumeStatus {
 	return s.Status
 }
 
@@ -14616,27 +14616,27 @@ type IoK8sAPICoreV1PersistentVolumeClaim struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PersistentVolumeClaim) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PersistentVolumeClaim) GetKind() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PersistentVolumeClaim) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1PersistentVolumeClaim) GetSpec() OptIoK8sAPICoreV1PersistentVolumeClaimSpec {
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) GetSpec() OptIoK8sAPICoreV1PersistentVolumeClaimSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1PersistentVolumeClaim) GetStatus() OptIoK8sAPICoreV1PersistentVolumeClaimStatus {
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) GetStatus() OptIoK8sAPICoreV1PersistentVolumeClaimStatus {
 	return s.Status
 }
 
@@ -14684,32 +14684,32 @@ type IoK8sAPICoreV1PersistentVolumeClaimCondition struct {
 }
 
 // GetLastProbeTime returns the value of LastProbeTime.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastProbeTime
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetMessage() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetReason() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetStatus() string {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetType() string {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) GetType() string {
 	return s.Type
 }
 
@@ -14761,22 +14761,22 @@ type IoK8sAPICoreV1PersistentVolumeClaimList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetItems() []IoK8sAPICoreV1PersistentVolumeClaim {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) GetItems() []IoK8sAPICoreV1PersistentVolumeClaim {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetKind() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -14826,42 +14826,42 @@ type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 }
 
 // GetAccessModes returns the value of AccessModes.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetAccessModes() []string {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetAccessModes() []string {
 	return s.AccessModes
 }
 
 // GetDataSource returns the value of DataSource.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetDataSource() OptIoK8sAPICoreV1TypedLocalObjectReference {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetDataSource() OptIoK8sAPICoreV1TypedLocalObjectReference {
 	return s.DataSource
 }
 
 // GetDataSourceRef returns the value of DataSourceRef.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetDataSourceRef() OptIoK8sAPICoreV1TypedLocalObjectReference {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetDataSourceRef() OptIoK8sAPICoreV1TypedLocalObjectReference {
 	return s.DataSourceRef
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
 	return s.Resources
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
 // GetStorageClassName returns the value of StorageClassName.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetStorageClassName() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetStorageClassName() OptString {
 	return s.StorageClassName
 }
 
 // GetVolumeMode returns the value of VolumeMode.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetVolumeMode() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetVolumeMode() OptString {
 	return s.VolumeMode
 }
 
 // GetVolumeName returns the value of VolumeName.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetVolumeName() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) GetVolumeName() OptString {
 	return s.VolumeName
 }
 
@@ -14921,22 +14921,22 @@ type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
 }
 
 // GetAccessModes returns the value of AccessModes.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetAccessModes() []string {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) GetAccessModes() []string {
 	return s.AccessModes
 }
 
 // GetCapacity returns the value of Capacity.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetCapacity() OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) GetCapacity() OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity {
 	return s.Capacity
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetConditions() []IoK8sAPICoreV1PersistentVolumeClaimCondition {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) GetConditions() []IoK8sAPICoreV1PersistentVolumeClaimCondition {
 	return s.Conditions
 }
 
 // GetPhase returns the value of Phase.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetPhase() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) GetPhase() OptString {
 	return s.Phase
 }
 
@@ -14981,12 +14981,12 @@ type IoK8sAPICoreV1PersistentVolumeClaimTemplate struct {
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) GetSpec() IoK8sAPICoreV1PersistentVolumeClaimSpec {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) GetSpec() IoK8sAPICoreV1PersistentVolumeClaimSpec {
 	return s.Spec
 }
 
@@ -15014,12 +15014,12 @@ type IoK8sAPICoreV1PersistentVolumeClaimVolumeSource struct {
 }
 
 // GetClaimName returns the value of ClaimName.
-func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) GetClaimName() string {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) GetClaimName() string {
 	return s.ClaimName
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
@@ -15051,22 +15051,22 @@ type IoK8sAPICoreV1PersistentVolumeList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PersistentVolumeList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1PersistentVolumeList) GetItems() []IoK8sAPICoreV1PersistentVolume {
+func (s *IoK8sAPICoreV1PersistentVolumeList) GetItems() []IoK8sAPICoreV1PersistentVolume {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PersistentVolumeList) GetKind() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PersistentVolumeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1PersistentVolumeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -15143,152 +15143,152 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 }
 
 // GetAccessModes returns the value of AccessModes.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAccessModes() []string {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetAccessModes() []string {
 	return s.AccessModes
 }
 
 // GetAwsElasticBlockStore returns the value of AwsElasticBlockStore.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAwsElasticBlockStore() OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetAwsElasticBlockStore() OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
 	return s.AwsElasticBlockStore
 }
 
 // GetAzureDisk returns the value of AzureDisk.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAzureDisk() OptIoK8sAPICoreV1AzureDiskVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetAzureDisk() OptIoK8sAPICoreV1AzureDiskVolumeSource {
 	return s.AzureDisk
 }
 
 // GetAzureFile returns the value of AzureFile.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAzureFile() OptIoK8sAPICoreV1AzureFilePersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetAzureFile() OptIoK8sAPICoreV1AzureFilePersistentVolumeSource {
 	return s.AzureFile
 }
 
 // GetCapacity returns the value of Capacity.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCapacity() OptIoK8sAPICoreV1PersistentVolumeSpecCapacity {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetCapacity() OptIoK8sAPICoreV1PersistentVolumeSpecCapacity {
 	return s.Capacity
 }
 
 // GetCephfs returns the value of Cephfs.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCephfs() OptIoK8sAPICoreV1CephFSPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetCephfs() OptIoK8sAPICoreV1CephFSPersistentVolumeSource {
 	return s.Cephfs
 }
 
 // GetCinder returns the value of Cinder.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCinder() OptIoK8sAPICoreV1CinderPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetCinder() OptIoK8sAPICoreV1CinderPersistentVolumeSource {
 	return s.Cinder
 }
 
 // GetClaimRef returns the value of ClaimRef.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetClaimRef() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetClaimRef() OptIoK8sAPICoreV1ObjectReference {
 	return s.ClaimRef
 }
 
 // GetCsi returns the value of Csi.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCsi() OptIoK8sAPICoreV1CSIPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetCsi() OptIoK8sAPICoreV1CSIPersistentVolumeSource {
 	return s.Csi
 }
 
 // GetFc returns the value of Fc.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetFc() OptIoK8sAPICoreV1FCVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetFc() OptIoK8sAPICoreV1FCVolumeSource {
 	return s.Fc
 }
 
 // GetFlexVolume returns the value of FlexVolume.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetFlexVolume() OptIoK8sAPICoreV1FlexPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetFlexVolume() OptIoK8sAPICoreV1FlexPersistentVolumeSource {
 	return s.FlexVolume
 }
 
 // GetFlocker returns the value of Flocker.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetFlocker() OptIoK8sAPICoreV1FlockerVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetFlocker() OptIoK8sAPICoreV1FlockerVolumeSource {
 	return s.Flocker
 }
 
 // GetGcePersistentDisk returns the value of GcePersistentDisk.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetGcePersistentDisk() OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetGcePersistentDisk() OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
 	return s.GcePersistentDisk
 }
 
 // GetGlusterfs returns the value of Glusterfs.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetGlusterfs() OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetGlusterfs() OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource {
 	return s.Glusterfs
 }
 
 // GetHostPath returns the value of HostPath.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetHostPath() OptIoK8sAPICoreV1HostPathVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetHostPath() OptIoK8sAPICoreV1HostPathVolumeSource {
 	return s.HostPath
 }
 
 // GetIscsi returns the value of Iscsi.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetIscsi() OptIoK8sAPICoreV1ISCSIPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetIscsi() OptIoK8sAPICoreV1ISCSIPersistentVolumeSource {
 	return s.Iscsi
 }
 
 // GetLocal returns the value of Local.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetLocal() OptIoK8sAPICoreV1LocalVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetLocal() OptIoK8sAPICoreV1LocalVolumeSource {
 	return s.Local
 }
 
 // GetMountOptions returns the value of MountOptions.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetMountOptions() []string {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetMountOptions() []string {
 	return s.MountOptions
 }
 
 // GetNfs returns the value of Nfs.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetNfs() OptIoK8sAPICoreV1NFSVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetNfs() OptIoK8sAPICoreV1NFSVolumeSource {
 	return s.Nfs
 }
 
 // GetNodeAffinity returns the value of NodeAffinity.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetNodeAffinity() OptIoK8sAPICoreV1VolumeNodeAffinity {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetNodeAffinity() OptIoK8sAPICoreV1VolumeNodeAffinity {
 	return s.NodeAffinity
 }
 
 // GetPersistentVolumeReclaimPolicy returns the value of PersistentVolumeReclaimPolicy.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetPersistentVolumeReclaimPolicy() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetPersistentVolumeReclaimPolicy() OptString {
 	return s.PersistentVolumeReclaimPolicy
 }
 
 // GetPhotonPersistentDisk returns the value of PhotonPersistentDisk.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetPhotonPersistentDisk() OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetPhotonPersistentDisk() OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
 	return s.PhotonPersistentDisk
 }
 
 // GetPortworxVolume returns the value of PortworxVolume.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetPortworxVolume() OptIoK8sAPICoreV1PortworxVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetPortworxVolume() OptIoK8sAPICoreV1PortworxVolumeSource {
 	return s.PortworxVolume
 }
 
 // GetQuobyte returns the value of Quobyte.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetQuobyte() OptIoK8sAPICoreV1QuobyteVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetQuobyte() OptIoK8sAPICoreV1QuobyteVolumeSource {
 	return s.Quobyte
 }
 
 // GetRbd returns the value of Rbd.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetRbd() OptIoK8sAPICoreV1RBDPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetRbd() OptIoK8sAPICoreV1RBDPersistentVolumeSource {
 	return s.Rbd
 }
 
 // GetScaleIO returns the value of ScaleIO.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetScaleIO() OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetScaleIO() OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource {
 	return s.ScaleIO
 }
 
 // GetStorageClassName returns the value of StorageClassName.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetStorageClassName() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetStorageClassName() OptString {
 	return s.StorageClassName
 }
 
 // GetStorageos returns the value of Storageos.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetStorageos() OptIoK8sAPICoreV1StorageOSPersistentVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetStorageos() OptIoK8sAPICoreV1StorageOSPersistentVolumeSource {
 	return s.Storageos
 }
 
 // GetVolumeMode returns the value of VolumeMode.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetVolumeMode() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetVolumeMode() OptString {
 	return s.VolumeMode
 }
 
 // GetVsphereVolume returns the value of VsphereVolume.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) GetVsphereVolume() OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) GetVsphereVolume() OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
 	return s.VsphereVolume
 }
 
@@ -15469,17 +15469,17 @@ type IoK8sAPICoreV1PersistentVolumeStatus struct {
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1PersistentVolumeStatus) GetMessage() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) GetMessage() OptString {
 	return s.Message
 }
 
 // GetPhase returns the value of Phase.
-func (s IoK8sAPICoreV1PersistentVolumeStatus) GetPhase() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) GetPhase() OptString {
 	return s.Phase
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1PersistentVolumeStatus) GetReason() OptString {
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) GetReason() OptString {
 	return s.Reason
 }
 
@@ -15509,12 +15509,12 @@ type IoK8sAPICoreV1PhotonPersistentDiskVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetPdID returns the value of PdID.
-func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) GetPdID() string {
+func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) GetPdID() string {
 	return s.PdID
 }
 
@@ -15546,27 +15546,27 @@ type IoK8sAPICoreV1Pod struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Pod) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Pod) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Pod) GetKind() OptString {
+func (s *IoK8sAPICoreV1Pod) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Pod) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Pod) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1Pod) GetSpec() OptIoK8sAPICoreV1PodSpec {
+func (s *IoK8sAPICoreV1Pod) GetSpec() OptIoK8sAPICoreV1PodSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1Pod) GetStatus() OptIoK8sAPICoreV1PodStatus {
+func (s *IoK8sAPICoreV1Pod) GetStatus() OptIoK8sAPICoreV1PodStatus {
 	return s.Status
 }
 
@@ -15619,12 +15619,12 @@ type IoK8sAPICoreV1PodAffinity struct {
 }
 
 // GetPreferredDuringSchedulingIgnoredDuringExecution returns the value of PreferredDuringSchedulingIgnoredDuringExecution.
-func (s IoK8sAPICoreV1PodAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1WeightedPodAffinityTerm {
+func (s *IoK8sAPICoreV1PodAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1WeightedPodAffinityTerm {
 	return s.PreferredDuringSchedulingIgnoredDuringExecution
 }
 
 // GetRequiredDuringSchedulingIgnoredDuringExecution returns the value of RequiredDuringSchedulingIgnoredDuringExecution.
-func (s IoK8sAPICoreV1PodAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PodAffinityTerm {
+func (s *IoK8sAPICoreV1PodAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PodAffinityTerm {
 	return s.RequiredDuringSchedulingIgnoredDuringExecution
 }
 
@@ -15659,22 +15659,22 @@ type IoK8sAPICoreV1PodAffinityTerm struct {
 }
 
 // GetLabelSelector returns the value of LabelSelector.
-func (s IoK8sAPICoreV1PodAffinityTerm) GetLabelSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPICoreV1PodAffinityTerm) GetLabelSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.LabelSelector
 }
 
 // GetNamespaceSelector returns the value of NamespaceSelector.
-func (s IoK8sAPICoreV1PodAffinityTerm) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPICoreV1PodAffinityTerm) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.NamespaceSelector
 }
 
 // GetNamespaces returns the value of Namespaces.
-func (s IoK8sAPICoreV1PodAffinityTerm) GetNamespaces() []string {
+func (s *IoK8sAPICoreV1PodAffinityTerm) GetNamespaces() []string {
 	return s.Namespaces
 }
 
 // GetTopologyKey returns the value of TopologyKey.
-func (s IoK8sAPICoreV1PodAffinityTerm) GetTopologyKey() string {
+func (s *IoK8sAPICoreV1PodAffinityTerm) GetTopologyKey() string {
 	return s.TopologyKey
 }
 
@@ -15719,12 +15719,12 @@ type IoK8sAPICoreV1PodAntiAffinity struct {
 }
 
 // GetPreferredDuringSchedulingIgnoredDuringExecution returns the value of PreferredDuringSchedulingIgnoredDuringExecution.
-func (s IoK8sAPICoreV1PodAntiAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1WeightedPodAffinityTerm {
+func (s *IoK8sAPICoreV1PodAntiAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1WeightedPodAffinityTerm {
 	return s.PreferredDuringSchedulingIgnoredDuringExecution
 }
 
 // GetRequiredDuringSchedulingIgnoredDuringExecution returns the value of RequiredDuringSchedulingIgnoredDuringExecution.
-func (s IoK8sAPICoreV1PodAntiAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PodAffinityTerm {
+func (s *IoK8sAPICoreV1PodAntiAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PodAffinityTerm {
 	return s.RequiredDuringSchedulingIgnoredDuringExecution
 }
 
@@ -15756,32 +15756,32 @@ type IoK8sAPICoreV1PodCondition struct {
 }
 
 // GetLastProbeTime returns the value of LastProbeTime.
-func (s IoK8sAPICoreV1PodCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1PodCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastProbeTime
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPICoreV1PodCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1PodCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1PodCondition) GetMessage() OptString {
+func (s *IoK8sAPICoreV1PodCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1PodCondition) GetReason() OptString {
+func (s *IoK8sAPICoreV1PodCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1PodCondition) GetStatus() string {
+func (s *IoK8sAPICoreV1PodCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1PodCondition) GetType() string {
+func (s *IoK8sAPICoreV1PodCondition) GetType() string {
 	return s.Type
 }
 
@@ -15831,17 +15831,17 @@ type IoK8sAPICoreV1PodDNSConfig struct {
 }
 
 // GetNameservers returns the value of Nameservers.
-func (s IoK8sAPICoreV1PodDNSConfig) GetNameservers() []string {
+func (s *IoK8sAPICoreV1PodDNSConfig) GetNameservers() []string {
 	return s.Nameservers
 }
 
 // GetOptions returns the value of Options.
-func (s IoK8sAPICoreV1PodDNSConfig) GetOptions() []IoK8sAPICoreV1PodDNSConfigOption {
+func (s *IoK8sAPICoreV1PodDNSConfig) GetOptions() []IoK8sAPICoreV1PodDNSConfigOption {
 	return s.Options
 }
 
 // GetSearches returns the value of Searches.
-func (s IoK8sAPICoreV1PodDNSConfig) GetSearches() []string {
+func (s *IoK8sAPICoreV1PodDNSConfig) GetSearches() []string {
 	return s.Searches
 }
 
@@ -15869,12 +15869,12 @@ type IoK8sAPICoreV1PodDNSConfigOption struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1PodDNSConfigOption) GetName() OptString {
+func (s *IoK8sAPICoreV1PodDNSConfigOption) GetName() OptString {
 	return s.Name
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPICoreV1PodDNSConfigOption) GetValue() OptString {
+func (s *IoK8sAPICoreV1PodDNSConfigOption) GetValue() OptString {
 	return s.Value
 }
 
@@ -15897,7 +15897,7 @@ type IoK8sAPICoreV1PodIP struct {
 }
 
 // GetIP returns the value of IP.
-func (s IoK8sAPICoreV1PodIP) GetIP() OptString {
+func (s *IoK8sAPICoreV1PodIP) GetIP() OptString {
 	return s.IP
 }
 
@@ -15924,22 +15924,22 @@ type IoK8sAPICoreV1PodList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PodList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PodList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1PodList) GetItems() []IoK8sAPICoreV1Pod {
+func (s *IoK8sAPICoreV1PodList) GetItems() []IoK8sAPICoreV1Pod {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PodList) GetKind() OptString {
+func (s *IoK8sAPICoreV1PodList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PodList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1PodList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -15974,7 +15974,7 @@ type IoK8sAPICoreV1PodReadinessGate struct {
 }
 
 // GetConditionType returns the value of ConditionType.
-func (s IoK8sAPICoreV1PodReadinessGate) GetConditionType() string {
+func (s *IoK8sAPICoreV1PodReadinessGate) GetConditionType() string {
 	return s.ConditionType
 }
 
@@ -16026,52 +16026,52 @@ type IoK8sAPICoreV1PodSecurityContext struct {
 }
 
 // GetFsGroup returns the value of FsGroup.
-func (s IoK8sAPICoreV1PodSecurityContext) GetFsGroup() OptInt64 {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetFsGroup() OptInt64 {
 	return s.FsGroup
 }
 
 // GetFsGroupChangePolicy returns the value of FsGroupChangePolicy.
-func (s IoK8sAPICoreV1PodSecurityContext) GetFsGroupChangePolicy() OptString {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetFsGroupChangePolicy() OptString {
 	return s.FsGroupChangePolicy
 }
 
 // GetRunAsGroup returns the value of RunAsGroup.
-func (s IoK8sAPICoreV1PodSecurityContext) GetRunAsGroup() OptInt64 {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetRunAsGroup() OptInt64 {
 	return s.RunAsGroup
 }
 
 // GetRunAsNonRoot returns the value of RunAsNonRoot.
-func (s IoK8sAPICoreV1PodSecurityContext) GetRunAsNonRoot() OptBool {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetRunAsNonRoot() OptBool {
 	return s.RunAsNonRoot
 }
 
 // GetRunAsUser returns the value of RunAsUser.
-func (s IoK8sAPICoreV1PodSecurityContext) GetRunAsUser() OptInt64 {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetRunAsUser() OptInt64 {
 	return s.RunAsUser
 }
 
 // GetSeLinuxOptions returns the value of SeLinuxOptions.
-func (s IoK8sAPICoreV1PodSecurityContext) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
 	return s.SeLinuxOptions
 }
 
 // GetSeccompProfile returns the value of SeccompProfile.
-func (s IoK8sAPICoreV1PodSecurityContext) GetSeccompProfile() OptIoK8sAPICoreV1SeccompProfile {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetSeccompProfile() OptIoK8sAPICoreV1SeccompProfile {
 	return s.SeccompProfile
 }
 
 // GetSupplementalGroups returns the value of SupplementalGroups.
-func (s IoK8sAPICoreV1PodSecurityContext) GetSupplementalGroups() []int64 {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetSupplementalGroups() []int64 {
 	return s.SupplementalGroups
 }
 
 // GetSysctls returns the value of Sysctls.
-func (s IoK8sAPICoreV1PodSecurityContext) GetSysctls() []IoK8sAPICoreV1Sysctl {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetSysctls() []IoK8sAPICoreV1Sysctl {
 	return s.Sysctls
 }
 
 // GetWindowsOptions returns the value of WindowsOptions.
-func (s IoK8sAPICoreV1PodSecurityContext) GetWindowsOptions() OptIoK8sAPICoreV1WindowsSecurityContextOptions {
+func (s *IoK8sAPICoreV1PodSecurityContext) GetWindowsOptions() OptIoK8sAPICoreV1WindowsSecurityContextOptions {
 	return s.WindowsOptions
 }
 
@@ -16273,177 +16273,177 @@ type IoK8sAPICoreV1PodSpec struct {
 }
 
 // GetActiveDeadlineSeconds returns the value of ActiveDeadlineSeconds.
-func (s IoK8sAPICoreV1PodSpec) GetActiveDeadlineSeconds() OptInt64 {
+func (s *IoK8sAPICoreV1PodSpec) GetActiveDeadlineSeconds() OptInt64 {
 	return s.ActiveDeadlineSeconds
 }
 
 // GetAffinity returns the value of Affinity.
-func (s IoK8sAPICoreV1PodSpec) GetAffinity() OptIoK8sAPICoreV1Affinity {
+func (s *IoK8sAPICoreV1PodSpec) GetAffinity() OptIoK8sAPICoreV1Affinity {
 	return s.Affinity
 }
 
 // GetAutomountServiceAccountToken returns the value of AutomountServiceAccountToken.
-func (s IoK8sAPICoreV1PodSpec) GetAutomountServiceAccountToken() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetAutomountServiceAccountToken() OptBool {
 	return s.AutomountServiceAccountToken
 }
 
 // GetContainers returns the value of Containers.
-func (s IoK8sAPICoreV1PodSpec) GetContainers() []IoK8sAPICoreV1Container {
+func (s *IoK8sAPICoreV1PodSpec) GetContainers() []IoK8sAPICoreV1Container {
 	return s.Containers
 }
 
 // GetDnsConfig returns the value of DnsConfig.
-func (s IoK8sAPICoreV1PodSpec) GetDnsConfig() OptIoK8sAPICoreV1PodDNSConfig {
+func (s *IoK8sAPICoreV1PodSpec) GetDnsConfig() OptIoK8sAPICoreV1PodDNSConfig {
 	return s.DnsConfig
 }
 
 // GetDnsPolicy returns the value of DnsPolicy.
-func (s IoK8sAPICoreV1PodSpec) GetDnsPolicy() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetDnsPolicy() OptString {
 	return s.DnsPolicy
 }
 
 // GetEnableServiceLinks returns the value of EnableServiceLinks.
-func (s IoK8sAPICoreV1PodSpec) GetEnableServiceLinks() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetEnableServiceLinks() OptBool {
 	return s.EnableServiceLinks
 }
 
 // GetEphemeralContainers returns the value of EphemeralContainers.
-func (s IoK8sAPICoreV1PodSpec) GetEphemeralContainers() []IoK8sAPICoreV1EphemeralContainer {
+func (s *IoK8sAPICoreV1PodSpec) GetEphemeralContainers() []IoK8sAPICoreV1EphemeralContainer {
 	return s.EphemeralContainers
 }
 
 // GetHostAliases returns the value of HostAliases.
-func (s IoK8sAPICoreV1PodSpec) GetHostAliases() []IoK8sAPICoreV1HostAlias {
+func (s *IoK8sAPICoreV1PodSpec) GetHostAliases() []IoK8sAPICoreV1HostAlias {
 	return s.HostAliases
 }
 
 // GetHostIPC returns the value of HostIPC.
-func (s IoK8sAPICoreV1PodSpec) GetHostIPC() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetHostIPC() OptBool {
 	return s.HostIPC
 }
 
 // GetHostNetwork returns the value of HostNetwork.
-func (s IoK8sAPICoreV1PodSpec) GetHostNetwork() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetHostNetwork() OptBool {
 	return s.HostNetwork
 }
 
 // GetHostPID returns the value of HostPID.
-func (s IoK8sAPICoreV1PodSpec) GetHostPID() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetHostPID() OptBool {
 	return s.HostPID
 }
 
 // GetHostname returns the value of Hostname.
-func (s IoK8sAPICoreV1PodSpec) GetHostname() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetHostname() OptString {
 	return s.Hostname
 }
 
 // GetImagePullSecrets returns the value of ImagePullSecrets.
-func (s IoK8sAPICoreV1PodSpec) GetImagePullSecrets() []IoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1PodSpec) GetImagePullSecrets() []IoK8sAPICoreV1LocalObjectReference {
 	return s.ImagePullSecrets
 }
 
 // GetInitContainers returns the value of InitContainers.
-func (s IoK8sAPICoreV1PodSpec) GetInitContainers() []IoK8sAPICoreV1Container {
+func (s *IoK8sAPICoreV1PodSpec) GetInitContainers() []IoK8sAPICoreV1Container {
 	return s.InitContainers
 }
 
 // GetNodeName returns the value of NodeName.
-func (s IoK8sAPICoreV1PodSpec) GetNodeName() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetNodeName() OptString {
 	return s.NodeName
 }
 
 // GetNodeSelector returns the value of NodeSelector.
-func (s IoK8sAPICoreV1PodSpec) GetNodeSelector() OptIoK8sAPICoreV1PodSpecNodeSelector {
+func (s *IoK8sAPICoreV1PodSpec) GetNodeSelector() OptIoK8sAPICoreV1PodSpecNodeSelector {
 	return s.NodeSelector
 }
 
 // GetOverhead returns the value of Overhead.
-func (s IoK8sAPICoreV1PodSpec) GetOverhead() OptIoK8sAPICoreV1PodSpecOverhead {
+func (s *IoK8sAPICoreV1PodSpec) GetOverhead() OptIoK8sAPICoreV1PodSpecOverhead {
 	return s.Overhead
 }
 
 // GetPreemptionPolicy returns the value of PreemptionPolicy.
-func (s IoK8sAPICoreV1PodSpec) GetPreemptionPolicy() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetPreemptionPolicy() OptString {
 	return s.PreemptionPolicy
 }
 
 // GetPriority returns the value of Priority.
-func (s IoK8sAPICoreV1PodSpec) GetPriority() OptInt32 {
+func (s *IoK8sAPICoreV1PodSpec) GetPriority() OptInt32 {
 	return s.Priority
 }
 
 // GetPriorityClassName returns the value of PriorityClassName.
-func (s IoK8sAPICoreV1PodSpec) GetPriorityClassName() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetPriorityClassName() OptString {
 	return s.PriorityClassName
 }
 
 // GetReadinessGates returns the value of ReadinessGates.
-func (s IoK8sAPICoreV1PodSpec) GetReadinessGates() []IoK8sAPICoreV1PodReadinessGate {
+func (s *IoK8sAPICoreV1PodSpec) GetReadinessGates() []IoK8sAPICoreV1PodReadinessGate {
 	return s.ReadinessGates
 }
 
 // GetRestartPolicy returns the value of RestartPolicy.
-func (s IoK8sAPICoreV1PodSpec) GetRestartPolicy() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetRestartPolicy() OptString {
 	return s.RestartPolicy
 }
 
 // GetRuntimeClassName returns the value of RuntimeClassName.
-func (s IoK8sAPICoreV1PodSpec) GetRuntimeClassName() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetRuntimeClassName() OptString {
 	return s.RuntimeClassName
 }
 
 // GetSchedulerName returns the value of SchedulerName.
-func (s IoK8sAPICoreV1PodSpec) GetSchedulerName() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetSchedulerName() OptString {
 	return s.SchedulerName
 }
 
 // GetSecurityContext returns the value of SecurityContext.
-func (s IoK8sAPICoreV1PodSpec) GetSecurityContext() OptIoK8sAPICoreV1PodSecurityContext {
+func (s *IoK8sAPICoreV1PodSpec) GetSecurityContext() OptIoK8sAPICoreV1PodSecurityContext {
 	return s.SecurityContext
 }
 
 // GetServiceAccount returns the value of ServiceAccount.
-func (s IoK8sAPICoreV1PodSpec) GetServiceAccount() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetServiceAccount() OptString {
 	return s.ServiceAccount
 }
 
 // GetServiceAccountName returns the value of ServiceAccountName.
-func (s IoK8sAPICoreV1PodSpec) GetServiceAccountName() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetServiceAccountName() OptString {
 	return s.ServiceAccountName
 }
 
 // GetSetHostnameAsFQDN returns the value of SetHostnameAsFQDN.
-func (s IoK8sAPICoreV1PodSpec) GetSetHostnameAsFQDN() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetSetHostnameAsFQDN() OptBool {
 	return s.SetHostnameAsFQDN
 }
 
 // GetShareProcessNamespace returns the value of ShareProcessNamespace.
-func (s IoK8sAPICoreV1PodSpec) GetShareProcessNamespace() OptBool {
+func (s *IoK8sAPICoreV1PodSpec) GetShareProcessNamespace() OptBool {
 	return s.ShareProcessNamespace
 }
 
 // GetSubdomain returns the value of Subdomain.
-func (s IoK8sAPICoreV1PodSpec) GetSubdomain() OptString {
+func (s *IoK8sAPICoreV1PodSpec) GetSubdomain() OptString {
 	return s.Subdomain
 }
 
 // GetTerminationGracePeriodSeconds returns the value of TerminationGracePeriodSeconds.
-func (s IoK8sAPICoreV1PodSpec) GetTerminationGracePeriodSeconds() OptInt64 {
+func (s *IoK8sAPICoreV1PodSpec) GetTerminationGracePeriodSeconds() OptInt64 {
 	return s.TerminationGracePeriodSeconds
 }
 
 // GetTolerations returns the value of Tolerations.
-func (s IoK8sAPICoreV1PodSpec) GetTolerations() []IoK8sAPICoreV1Toleration {
+func (s *IoK8sAPICoreV1PodSpec) GetTolerations() []IoK8sAPICoreV1Toleration {
 	return s.Tolerations
 }
 
 // GetTopologySpreadConstraints returns the value of TopologySpreadConstraints.
-func (s IoK8sAPICoreV1PodSpec) GetTopologySpreadConstraints() []IoK8sAPICoreV1TopologySpreadConstraint {
+func (s *IoK8sAPICoreV1PodSpec) GetTopologySpreadConstraints() []IoK8sAPICoreV1TopologySpreadConstraint {
 	return s.TopologySpreadConstraints
 }
 
 // GetVolumes returns the value of Volumes.
-func (s IoK8sAPICoreV1PodSpec) GetVolumes() []IoK8sAPICoreV1Volume {
+func (s *IoK8sAPICoreV1PodSpec) GetVolumes() []IoK8sAPICoreV1Volume {
 	return s.Volumes
 }
 
@@ -16716,67 +16716,67 @@ type IoK8sAPICoreV1PodStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1PodStatus) GetConditions() []IoK8sAPICoreV1PodCondition {
+func (s *IoK8sAPICoreV1PodStatus) GetConditions() []IoK8sAPICoreV1PodCondition {
 	return s.Conditions
 }
 
 // GetContainerStatuses returns the value of ContainerStatuses.
-func (s IoK8sAPICoreV1PodStatus) GetContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
+func (s *IoK8sAPICoreV1PodStatus) GetContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
 	return s.ContainerStatuses
 }
 
 // GetEphemeralContainerStatuses returns the value of EphemeralContainerStatuses.
-func (s IoK8sAPICoreV1PodStatus) GetEphemeralContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
+func (s *IoK8sAPICoreV1PodStatus) GetEphemeralContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
 	return s.EphemeralContainerStatuses
 }
 
 // GetHostIP returns the value of HostIP.
-func (s IoK8sAPICoreV1PodStatus) GetHostIP() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetHostIP() OptString {
 	return s.HostIP
 }
 
 // GetInitContainerStatuses returns the value of InitContainerStatuses.
-func (s IoK8sAPICoreV1PodStatus) GetInitContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
+func (s *IoK8sAPICoreV1PodStatus) GetInitContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
 	return s.InitContainerStatuses
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1PodStatus) GetMessage() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetMessage() OptString {
 	return s.Message
 }
 
 // GetNominatedNodeName returns the value of NominatedNodeName.
-func (s IoK8sAPICoreV1PodStatus) GetNominatedNodeName() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetNominatedNodeName() OptString {
 	return s.NominatedNodeName
 }
 
 // GetPhase returns the value of Phase.
-func (s IoK8sAPICoreV1PodStatus) GetPhase() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetPhase() OptString {
 	return s.Phase
 }
 
 // GetPodIP returns the value of PodIP.
-func (s IoK8sAPICoreV1PodStatus) GetPodIP() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetPodIP() OptString {
 	return s.PodIP
 }
 
 // GetPodIPs returns the value of PodIPs.
-func (s IoK8sAPICoreV1PodStatus) GetPodIPs() []IoK8sAPICoreV1PodIP {
+func (s *IoK8sAPICoreV1PodStatus) GetPodIPs() []IoK8sAPICoreV1PodIP {
 	return s.PodIPs
 }
 
 // GetQosClass returns the value of QosClass.
-func (s IoK8sAPICoreV1PodStatus) GetQosClass() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetQosClass() OptString {
 	return s.QosClass
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1PodStatus) GetReason() OptString {
+func (s *IoK8sAPICoreV1PodStatus) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStartTime returns the value of StartTime.
-func (s IoK8sAPICoreV1PodStatus) GetStartTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1PodStatus) GetStartTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.StartTime
 }
 
@@ -16861,22 +16861,22 @@ type IoK8sAPICoreV1PodTemplate struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PodTemplate) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PodTemplate) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PodTemplate) GetKind() OptString {
+func (s *IoK8sAPICoreV1PodTemplate) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PodTemplate) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1PodTemplate) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPICoreV1PodTemplate) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPICoreV1PodTemplate) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
@@ -16919,22 +16919,22 @@ type IoK8sAPICoreV1PodTemplateList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1PodTemplateList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1PodTemplateList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1PodTemplateList) GetItems() []IoK8sAPICoreV1PodTemplate {
+func (s *IoK8sAPICoreV1PodTemplateList) GetItems() []IoK8sAPICoreV1PodTemplate {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1PodTemplateList) GetKind() OptString {
+func (s *IoK8sAPICoreV1PodTemplateList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PodTemplateList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1PodTemplateList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -16969,12 +16969,12 @@ type IoK8sAPICoreV1PodTemplateSpec struct {
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1PodTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1PodTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1PodTemplateSpec) GetSpec() OptIoK8sAPICoreV1PodSpec {
+func (s *IoK8sAPICoreV1PodTemplateSpec) GetSpec() OptIoK8sAPICoreV1PodSpec {
 	return s.Spec
 }
 
@@ -17004,17 +17004,17 @@ type IoK8sAPICoreV1PortStatus struct {
 }
 
 // GetError returns the value of Error.
-func (s IoK8sAPICoreV1PortStatus) GetError() OptString {
+func (s *IoK8sAPICoreV1PortStatus) GetError() OptString {
 	return s.Error
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPICoreV1PortStatus) GetPort() int32 {
+func (s *IoK8sAPICoreV1PortStatus) GetPort() int32 {
 	return s.Port
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPICoreV1PortStatus) GetProtocol() string {
+func (s *IoK8sAPICoreV1PortStatus) GetProtocol() string {
 	return s.Protocol
 }
 
@@ -17046,17 +17046,17 @@ type IoK8sAPICoreV1PortworxVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1PortworxVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1PortworxVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1PortworxVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1PortworxVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetVolumeID returns the value of VolumeID.
-func (s IoK8sAPICoreV1PortworxVolumeSource) GetVolumeID() string {
+func (s *IoK8sAPICoreV1PortworxVolumeSource) GetVolumeID() string {
 	return s.VolumeID
 }
 
@@ -17085,12 +17085,12 @@ type IoK8sAPICoreV1PreferredSchedulingTerm struct {
 }
 
 // GetPreference returns the value of Preference.
-func (s IoK8sAPICoreV1PreferredSchedulingTerm) GetPreference() IoK8sAPICoreV1NodeSelectorTerm {
+func (s *IoK8sAPICoreV1PreferredSchedulingTerm) GetPreference() IoK8sAPICoreV1NodeSelectorTerm {
 	return s.Preference
 }
 
 // GetWeight returns the value of Weight.
-func (s IoK8sAPICoreV1PreferredSchedulingTerm) GetWeight() int32 {
+func (s *IoK8sAPICoreV1PreferredSchedulingTerm) GetWeight() int32 {
 	return s.Weight
 }
 
@@ -17138,47 +17138,47 @@ type IoK8sAPICoreV1Probe struct {
 }
 
 // GetExec returns the value of Exec.
-func (s IoK8sAPICoreV1Probe) GetExec() OptIoK8sAPICoreV1ExecAction {
+func (s *IoK8sAPICoreV1Probe) GetExec() OptIoK8sAPICoreV1ExecAction {
 	return s.Exec
 }
 
 // GetFailureThreshold returns the value of FailureThreshold.
-func (s IoK8sAPICoreV1Probe) GetFailureThreshold() OptInt32 {
+func (s *IoK8sAPICoreV1Probe) GetFailureThreshold() OptInt32 {
 	return s.FailureThreshold
 }
 
 // GetHttpGet returns the value of HttpGet.
-func (s IoK8sAPICoreV1Probe) GetHttpGet() OptIoK8sAPICoreV1HTTPGetAction {
+func (s *IoK8sAPICoreV1Probe) GetHttpGet() OptIoK8sAPICoreV1HTTPGetAction {
 	return s.HttpGet
 }
 
 // GetInitialDelaySeconds returns the value of InitialDelaySeconds.
-func (s IoK8sAPICoreV1Probe) GetInitialDelaySeconds() OptInt32 {
+func (s *IoK8sAPICoreV1Probe) GetInitialDelaySeconds() OptInt32 {
 	return s.InitialDelaySeconds
 }
 
 // GetPeriodSeconds returns the value of PeriodSeconds.
-func (s IoK8sAPICoreV1Probe) GetPeriodSeconds() OptInt32 {
+func (s *IoK8sAPICoreV1Probe) GetPeriodSeconds() OptInt32 {
 	return s.PeriodSeconds
 }
 
 // GetSuccessThreshold returns the value of SuccessThreshold.
-func (s IoK8sAPICoreV1Probe) GetSuccessThreshold() OptInt32 {
+func (s *IoK8sAPICoreV1Probe) GetSuccessThreshold() OptInt32 {
 	return s.SuccessThreshold
 }
 
 // GetTcpSocket returns the value of TcpSocket.
-func (s IoK8sAPICoreV1Probe) GetTcpSocket() OptIoK8sAPICoreV1TCPSocketAction {
+func (s *IoK8sAPICoreV1Probe) GetTcpSocket() OptIoK8sAPICoreV1TCPSocketAction {
 	return s.TcpSocket
 }
 
 // GetTerminationGracePeriodSeconds returns the value of TerminationGracePeriodSeconds.
-func (s IoK8sAPICoreV1Probe) GetTerminationGracePeriodSeconds() OptInt64 {
+func (s *IoK8sAPICoreV1Probe) GetTerminationGracePeriodSeconds() OptInt64 {
 	return s.TerminationGracePeriodSeconds
 }
 
 // GetTimeoutSeconds returns the value of TimeoutSeconds.
-func (s IoK8sAPICoreV1Probe) GetTimeoutSeconds() OptInt32 {
+func (s *IoK8sAPICoreV1Probe) GetTimeoutSeconds() OptInt32 {
 	return s.TimeoutSeconds
 }
 
@@ -17241,12 +17241,12 @@ type IoK8sAPICoreV1ProjectedVolumeSource struct {
 }
 
 // GetDefaultMode returns the value of DefaultMode.
-func (s IoK8sAPICoreV1ProjectedVolumeSource) GetDefaultMode() OptInt32 {
+func (s *IoK8sAPICoreV1ProjectedVolumeSource) GetDefaultMode() OptInt32 {
 	return s.DefaultMode
 }
 
 // GetSources returns the value of Sources.
-func (s IoK8sAPICoreV1ProjectedVolumeSource) GetSources() []IoK8sAPICoreV1VolumeProjection {
+func (s *IoK8sAPICoreV1ProjectedVolumeSource) GetSources() []IoK8sAPICoreV1VolumeProjection {
 	return s.Sources
 }
 
@@ -17283,32 +17283,32 @@ type IoK8sAPICoreV1QuobyteVolumeSource struct {
 }
 
 // GetGroup returns the value of Group.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) GetGroup() OptString {
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) GetGroup() OptString {
 	return s.Group
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetRegistry returns the value of Registry.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) GetRegistry() string {
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) GetRegistry() string {
 	return s.Registry
 }
 
 // GetTenant returns the value of Tenant.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) GetTenant() OptString {
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) GetTenant() OptString {
 	return s.Tenant
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) GetUser() OptString {
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) GetUser() OptString {
 	return s.User
 }
 
 // GetVolume returns the value of Volume.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) GetVolume() string {
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) GetVolume() string {
 	return s.Volume
 }
 
@@ -17371,42 +17371,42 @@ type IoK8sAPICoreV1RBDPersistentVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetImage returns the value of Image.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetImage() string {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetImage() string {
 	return s.Image
 }
 
 // GetKeyring returns the value of Keyring.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetKeyring() OptString {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetKeyring() OptString {
 	return s.Keyring
 }
 
 // GetMonitors returns the value of Monitors.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetMonitors() []string {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetMonitors() []string {
 	return s.Monitors
 }
 
 // GetPool returns the value of Pool.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetPool() OptString {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetPool() OptString {
 	return s.Pool
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
 	return s.SecretRef
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetUser() OptString {
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) GetUser() OptString {
 	return s.User
 }
 
@@ -17479,42 +17479,42 @@ type IoK8sAPICoreV1RBDVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetImage returns the value of Image.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetImage() string {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetImage() string {
 	return s.Image
 }
 
 // GetKeyring returns the value of Keyring.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetKeyring() OptString {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetKeyring() OptString {
 	return s.Keyring
 }
 
 // GetMonitors returns the value of Monitors.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetMonitors() []string {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetMonitors() []string {
 	return s.Monitors
 }
 
 // GetPool returns the value of Pool.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetPool() OptString {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetPool() OptString {
 	return s.Pool
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPICoreV1RBDVolumeSource) GetUser() OptString {
+func (s *IoK8sAPICoreV1RBDVolumeSource) GetUser() OptString {
 	return s.User
 }
 
@@ -17575,27 +17575,27 @@ type IoK8sAPICoreV1ReplicationController struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ReplicationController) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ReplicationController) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ReplicationController) GetKind() OptString {
+func (s *IoK8sAPICoreV1ReplicationController) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ReplicationController) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1ReplicationController) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1ReplicationController) GetSpec() OptIoK8sAPICoreV1ReplicationControllerSpec {
+func (s *IoK8sAPICoreV1ReplicationController) GetSpec() OptIoK8sAPICoreV1ReplicationControllerSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1ReplicationController) GetStatus() OptIoK8sAPICoreV1ReplicationControllerStatus {
+func (s *IoK8sAPICoreV1ReplicationController) GetStatus() OptIoK8sAPICoreV1ReplicationControllerStatus {
 	return s.Status
 }
 
@@ -17642,27 +17642,27 @@ type IoK8sAPICoreV1ReplicationControllerCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPICoreV1ReplicationControllerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPICoreV1ReplicationControllerCondition) GetMessage() OptString {
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPICoreV1ReplicationControllerCondition) GetReason() OptString {
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1ReplicationControllerCondition) GetStatus() string {
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1ReplicationControllerCondition) GetType() string {
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) GetType() string {
 	return s.Type
 }
 
@@ -17709,22 +17709,22 @@ type IoK8sAPICoreV1ReplicationControllerList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ReplicationControllerList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ReplicationControllerList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ReplicationControllerList) GetItems() []IoK8sAPICoreV1ReplicationController {
+func (s *IoK8sAPICoreV1ReplicationControllerList) GetItems() []IoK8sAPICoreV1ReplicationController {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ReplicationControllerList) GetKind() OptString {
+func (s *IoK8sAPICoreV1ReplicationControllerList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ReplicationControllerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1ReplicationControllerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -17773,22 +17773,22 @@ type IoK8sAPICoreV1ReplicationControllerSpec struct {
 }
 
 // GetMinReadySeconds returns the value of MinReadySeconds.
-func (s IoK8sAPICoreV1ReplicationControllerSpec) GetMinReadySeconds() OptInt32 {
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) GetMinReadySeconds() OptInt32 {
 	return s.MinReadySeconds
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPICoreV1ReplicationControllerSpec) GetReplicas() OptInt32 {
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) GetReplicas() OptInt32 {
 	return s.Replicas
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPICoreV1ReplicationControllerSpec) GetSelector() OptIoK8sAPICoreV1ReplicationControllerSpecSelector {
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) GetSelector() OptIoK8sAPICoreV1ReplicationControllerSpecSelector {
 	return s.Selector
 }
 
 // GetTemplate returns the value of Template.
-func (s IoK8sAPICoreV1ReplicationControllerSpec) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
 	return s.Template
 }
 
@@ -17849,32 +17849,32 @@ type IoK8sAPICoreV1ReplicationControllerStatus struct {
 }
 
 // GetAvailableReplicas returns the value of AvailableReplicas.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) GetAvailableReplicas() OptInt32 {
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) GetAvailableReplicas() OptInt32 {
 	return s.AvailableReplicas
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) GetConditions() []IoK8sAPICoreV1ReplicationControllerCondition {
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) GetConditions() []IoK8sAPICoreV1ReplicationControllerCondition {
 	return s.Conditions
 }
 
 // GetFullyLabeledReplicas returns the value of FullyLabeledReplicas.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) GetFullyLabeledReplicas() OptInt32 {
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) GetFullyLabeledReplicas() OptInt32 {
 	return s.FullyLabeledReplicas
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetReadyReplicas returns the value of ReadyReplicas.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) GetReadyReplicas() OptInt32 {
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) GetReadyReplicas() OptInt32 {
 	return s.ReadyReplicas
 }
 
 // GetReplicas returns the value of Replicas.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) GetReplicas() int32 {
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) GetReplicas() int32 {
 	return s.Replicas
 }
 
@@ -17919,17 +17919,17 @@ type IoK8sAPICoreV1ResourceFieldSelector struct {
 }
 
 // GetContainerName returns the value of ContainerName.
-func (s IoK8sAPICoreV1ResourceFieldSelector) GetContainerName() OptString {
+func (s *IoK8sAPICoreV1ResourceFieldSelector) GetContainerName() OptString {
 	return s.ContainerName
 }
 
 // GetDivisor returns the value of Divisor.
-func (s IoK8sAPICoreV1ResourceFieldSelector) GetDivisor() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPICoreV1ResourceFieldSelector) GetDivisor() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.Divisor
 }
 
 // GetResource returns the value of Resource.
-func (s IoK8sAPICoreV1ResourceFieldSelector) GetResource() string {
+func (s *IoK8sAPICoreV1ResourceFieldSelector) GetResource() string {
 	return s.Resource
 }
 
@@ -17965,27 +17965,27 @@ type IoK8sAPICoreV1ResourceQuota struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ResourceQuota) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ResourceQuota) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ResourceQuota) GetKind() OptString {
+func (s *IoK8sAPICoreV1ResourceQuota) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ResourceQuota) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1ResourceQuota) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1ResourceQuota) GetSpec() OptIoK8sAPICoreV1ResourceQuotaSpec {
+func (s *IoK8sAPICoreV1ResourceQuota) GetSpec() OptIoK8sAPICoreV1ResourceQuotaSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1ResourceQuota) GetStatus() OptIoK8sAPICoreV1ResourceQuotaStatus {
+func (s *IoK8sAPICoreV1ResourceQuota) GetStatus() OptIoK8sAPICoreV1ResourceQuotaStatus {
 	return s.Status
 }
 
@@ -18035,22 +18035,22 @@ type IoK8sAPICoreV1ResourceQuotaList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ResourceQuotaList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ResourceQuotaList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ResourceQuotaList) GetItems() []IoK8sAPICoreV1ResourceQuota {
+func (s *IoK8sAPICoreV1ResourceQuotaList) GetItems() []IoK8sAPICoreV1ResourceQuota {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ResourceQuotaList) GetKind() OptString {
+func (s *IoK8sAPICoreV1ResourceQuotaList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ResourceQuotaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1ResourceQuotaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -18090,17 +18090,17 @@ type IoK8sAPICoreV1ResourceQuotaSpec struct {
 }
 
 // GetHard returns the value of Hard.
-func (s IoK8sAPICoreV1ResourceQuotaSpec) GetHard() OptIoK8sAPICoreV1ResourceQuotaSpecHard {
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) GetHard() OptIoK8sAPICoreV1ResourceQuotaSpecHard {
 	return s.Hard
 }
 
 // GetScopeSelector returns the value of ScopeSelector.
-func (s IoK8sAPICoreV1ResourceQuotaSpec) GetScopeSelector() OptIoK8sAPICoreV1ScopeSelector {
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) GetScopeSelector() OptIoK8sAPICoreV1ScopeSelector {
 	return s.ScopeSelector
 }
 
 // GetScopes returns the value of Scopes.
-func (s IoK8sAPICoreV1ResourceQuotaSpec) GetScopes() []string {
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) GetScopes() []string {
 	return s.Scopes
 }
 
@@ -18143,12 +18143,12 @@ type IoK8sAPICoreV1ResourceQuotaStatus struct {
 }
 
 // GetHard returns the value of Hard.
-func (s IoK8sAPICoreV1ResourceQuotaStatus) GetHard() OptIoK8sAPICoreV1ResourceQuotaStatusHard {
+func (s *IoK8sAPICoreV1ResourceQuotaStatus) GetHard() OptIoK8sAPICoreV1ResourceQuotaStatusHard {
 	return s.Hard
 }
 
 // GetUsed returns the value of Used.
-func (s IoK8sAPICoreV1ResourceQuotaStatus) GetUsed() OptIoK8sAPICoreV1ResourceQuotaStatusUsed {
+func (s *IoK8sAPICoreV1ResourceQuotaStatus) GetUsed() OptIoK8sAPICoreV1ResourceQuotaStatusUsed {
 	return s.Used
 }
 
@@ -18201,12 +18201,12 @@ type IoK8sAPICoreV1ResourceRequirements struct {
 }
 
 // GetLimits returns the value of Limits.
-func (s IoK8sAPICoreV1ResourceRequirements) GetLimits() OptIoK8sAPICoreV1ResourceRequirementsLimits {
+func (s *IoK8sAPICoreV1ResourceRequirements) GetLimits() OptIoK8sAPICoreV1ResourceRequirementsLimits {
 	return s.Limits
 }
 
 // GetRequests returns the value of Requests.
-func (s IoK8sAPICoreV1ResourceRequirements) GetRequests() OptIoK8sAPICoreV1ResourceRequirementsRequests {
+func (s *IoK8sAPICoreV1ResourceRequirements) GetRequests() OptIoK8sAPICoreV1ResourceRequirementsRequests {
 	return s.Requests
 }
 
@@ -18262,22 +18262,22 @@ type IoK8sAPICoreV1SELinuxOptions struct {
 }
 
 // GetLevel returns the value of Level.
-func (s IoK8sAPICoreV1SELinuxOptions) GetLevel() OptString {
+func (s *IoK8sAPICoreV1SELinuxOptions) GetLevel() OptString {
 	return s.Level
 }
 
 // GetRole returns the value of Role.
-func (s IoK8sAPICoreV1SELinuxOptions) GetRole() OptString {
+func (s *IoK8sAPICoreV1SELinuxOptions) GetRole() OptString {
 	return s.Role
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1SELinuxOptions) GetType() OptString {
+func (s *IoK8sAPICoreV1SELinuxOptions) GetType() OptString {
 	return s.Type
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPICoreV1SELinuxOptions) GetUser() OptString {
+func (s *IoK8sAPICoreV1SELinuxOptions) GetUser() OptString {
 	return s.User
 }
 
@@ -18329,52 +18329,52 @@ type IoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetGateway returns the value of Gateway.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetGateway() string {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetGateway() string {
 	return s.Gateway
 }
 
 // GetProtectionDomain returns the value of ProtectionDomain.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetProtectionDomain() OptString {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetProtectionDomain() OptString {
 	return s.ProtectionDomain
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSecretRef() IoK8sAPICoreV1SecretReference {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSecretRef() IoK8sAPICoreV1SecretReference {
 	return s.SecretRef
 }
 
 // GetSslEnabled returns the value of SslEnabled.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSslEnabled() OptBool {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSslEnabled() OptBool {
 	return s.SslEnabled
 }
 
 // GetStorageMode returns the value of StorageMode.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetStorageMode() OptString {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetStorageMode() OptString {
 	return s.StorageMode
 }
 
 // GetStoragePool returns the value of StoragePool.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetStoragePool() OptString {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetStoragePool() OptString {
 	return s.StoragePool
 }
 
 // GetSystem returns the value of System.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSystem() string {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSystem() string {
 	return s.System
 }
 
 // GetVolumeName returns the value of VolumeName.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetVolumeName() OptString {
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetVolumeName() OptString {
 	return s.VolumeName
 }
 
@@ -18456,52 +18456,52 @@ type IoK8sAPICoreV1ScaleIOVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetGateway returns the value of Gateway.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetGateway() string {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetGateway() string {
 	return s.Gateway
 }
 
 // GetProtectionDomain returns the value of ProtectionDomain.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetProtectionDomain() OptString {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetProtectionDomain() OptString {
 	return s.ProtectionDomain
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetSecretRef() IoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetSecretRef() IoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
 // GetSslEnabled returns the value of SslEnabled.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetSslEnabled() OptBool {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetSslEnabled() OptBool {
 	return s.SslEnabled
 }
 
 // GetStorageMode returns the value of StorageMode.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetStorageMode() OptString {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetStorageMode() OptString {
 	return s.StorageMode
 }
 
 // GetStoragePool returns the value of StoragePool.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetStoragePool() OptString {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetStoragePool() OptString {
 	return s.StoragePool
 }
 
 // GetSystem returns the value of System.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetSystem() string {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetSystem() string {
 	return s.System
 }
 
 // GetVolumeName returns the value of VolumeName.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetVolumeName() OptString {
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) GetVolumeName() OptString {
 	return s.VolumeName
 }
 
@@ -18564,7 +18564,7 @@ type IoK8sAPICoreV1ScopeSelector struct {
 }
 
 // GetMatchExpressions returns the value of MatchExpressions.
-func (s IoK8sAPICoreV1ScopeSelector) GetMatchExpressions() []IoK8sAPICoreV1ScopedResourceSelectorRequirement {
+func (s *IoK8sAPICoreV1ScopeSelector) GetMatchExpressions() []IoK8sAPICoreV1ScopedResourceSelectorRequirement {
 	return s.MatchExpressions
 }
 
@@ -18589,17 +18589,17 @@ type IoK8sAPICoreV1ScopedResourceSelectorRequirement struct {
 }
 
 // GetOperator returns the value of Operator.
-func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetOperator() string {
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetOperator() string {
 	return s.Operator
 }
 
 // GetScopeName returns the value of ScopeName.
-func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetScopeName() string {
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetScopeName() string {
 	return s.ScopeName
 }
 
 // GetValues returns the value of Values.
-func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetValues() []string {
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetValues() []string {
 	return s.Values
 }
 
@@ -18633,12 +18633,12 @@ type IoK8sAPICoreV1SeccompProfile struct {
 }
 
 // GetLocalhostProfile returns the value of LocalhostProfile.
-func (s IoK8sAPICoreV1SeccompProfile) GetLocalhostProfile() OptString {
+func (s *IoK8sAPICoreV1SeccompProfile) GetLocalhostProfile() OptString {
 	return s.LocalhostProfile
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1SeccompProfile) GetType() string {
+func (s *IoK8sAPICoreV1SeccompProfile) GetType() string {
 	return s.Type
 }
 
@@ -18682,37 +18682,37 @@ type IoK8sAPICoreV1Secret struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Secret) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Secret) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetData returns the value of Data.
-func (s IoK8sAPICoreV1Secret) GetData() OptIoK8sAPICoreV1SecretData {
+func (s *IoK8sAPICoreV1Secret) GetData() OptIoK8sAPICoreV1SecretData {
 	return s.Data
 }
 
 // GetImmutable returns the value of Immutable.
-func (s IoK8sAPICoreV1Secret) GetImmutable() OptBool {
+func (s *IoK8sAPICoreV1Secret) GetImmutable() OptBool {
 	return s.Immutable
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Secret) GetKind() OptString {
+func (s *IoK8sAPICoreV1Secret) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Secret) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Secret) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetStringData returns the value of StringData.
-func (s IoK8sAPICoreV1Secret) GetStringData() OptIoK8sAPICoreV1SecretStringData {
+func (s *IoK8sAPICoreV1Secret) GetStringData() OptIoK8sAPICoreV1SecretStringData {
 	return s.StringData
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1Secret) GetType() OptString {
+func (s *IoK8sAPICoreV1Secret) GetType() OptString {
 	return s.Type
 }
 
@@ -18780,12 +18780,12 @@ type IoK8sAPICoreV1SecretEnvSource struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1SecretEnvSource) GetName() OptString {
+func (s *IoK8sAPICoreV1SecretEnvSource) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1SecretEnvSource) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1SecretEnvSource) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -18812,17 +18812,17 @@ type IoK8sAPICoreV1SecretKeySelector struct {
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1SecretKeySelector) GetKey() string {
+func (s *IoK8sAPICoreV1SecretKeySelector) GetKey() string {
 	return s.Key
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1SecretKeySelector) GetName() OptString {
+func (s *IoK8sAPICoreV1SecretKeySelector) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1SecretKeySelector) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1SecretKeySelector) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -18859,22 +18859,22 @@ type IoK8sAPICoreV1SecretList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1SecretList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1SecretList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1SecretList) GetItems() []IoK8sAPICoreV1Secret {
+func (s *IoK8sAPICoreV1SecretList) GetItems() []IoK8sAPICoreV1Secret {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1SecretList) GetKind() OptString {
+func (s *IoK8sAPICoreV1SecretList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1SecretList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1SecretList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -18921,17 +18921,17 @@ type IoK8sAPICoreV1SecretProjection struct {
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1SecretProjection) GetItems() []IoK8sAPICoreV1KeyToPath {
+func (s *IoK8sAPICoreV1SecretProjection) GetItems() []IoK8sAPICoreV1KeyToPath {
 	return s.Items
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1SecretProjection) GetName() OptString {
+func (s *IoK8sAPICoreV1SecretProjection) GetName() OptString {
 	return s.Name
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1SecretProjection) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1SecretProjection) GetOptional() OptBool {
 	return s.Optional
 }
 
@@ -18961,12 +18961,12 @@ type IoK8sAPICoreV1SecretReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1SecretReference) GetName() OptString {
+func (s *IoK8sAPICoreV1SecretReference) GetName() OptString {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPICoreV1SecretReference) GetNamespace() OptString {
+func (s *IoK8sAPICoreV1SecretReference) GetNamespace() OptString {
 	return s.Namespace
 }
 
@@ -19020,22 +19020,22 @@ type IoK8sAPICoreV1SecretVolumeSource struct {
 }
 
 // GetDefaultMode returns the value of DefaultMode.
-func (s IoK8sAPICoreV1SecretVolumeSource) GetDefaultMode() OptInt32 {
+func (s *IoK8sAPICoreV1SecretVolumeSource) GetDefaultMode() OptInt32 {
 	return s.DefaultMode
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1SecretVolumeSource) GetItems() []IoK8sAPICoreV1KeyToPath {
+func (s *IoK8sAPICoreV1SecretVolumeSource) GetItems() []IoK8sAPICoreV1KeyToPath {
 	return s.Items
 }
 
 // GetOptional returns the value of Optional.
-func (s IoK8sAPICoreV1SecretVolumeSource) GetOptional() OptBool {
+func (s *IoK8sAPICoreV1SecretVolumeSource) GetOptional() OptBool {
 	return s.Optional
 }
 
 // GetSecretName returns the value of SecretName.
-func (s IoK8sAPICoreV1SecretVolumeSource) GetSecretName() OptString {
+func (s *IoK8sAPICoreV1SecretVolumeSource) GetSecretName() OptString {
 	return s.SecretName
 }
 
@@ -19099,57 +19099,57 @@ type IoK8sAPICoreV1SecurityContext struct {
 }
 
 // GetAllowPrivilegeEscalation returns the value of AllowPrivilegeEscalation.
-func (s IoK8sAPICoreV1SecurityContext) GetAllowPrivilegeEscalation() OptBool {
+func (s *IoK8sAPICoreV1SecurityContext) GetAllowPrivilegeEscalation() OptBool {
 	return s.AllowPrivilegeEscalation
 }
 
 // GetCapabilities returns the value of Capabilities.
-func (s IoK8sAPICoreV1SecurityContext) GetCapabilities() OptIoK8sAPICoreV1Capabilities {
+func (s *IoK8sAPICoreV1SecurityContext) GetCapabilities() OptIoK8sAPICoreV1Capabilities {
 	return s.Capabilities
 }
 
 // GetPrivileged returns the value of Privileged.
-func (s IoK8sAPICoreV1SecurityContext) GetPrivileged() OptBool {
+func (s *IoK8sAPICoreV1SecurityContext) GetPrivileged() OptBool {
 	return s.Privileged
 }
 
 // GetProcMount returns the value of ProcMount.
-func (s IoK8sAPICoreV1SecurityContext) GetProcMount() OptString {
+func (s *IoK8sAPICoreV1SecurityContext) GetProcMount() OptString {
 	return s.ProcMount
 }
 
 // GetReadOnlyRootFilesystem returns the value of ReadOnlyRootFilesystem.
-func (s IoK8sAPICoreV1SecurityContext) GetReadOnlyRootFilesystem() OptBool {
+func (s *IoK8sAPICoreV1SecurityContext) GetReadOnlyRootFilesystem() OptBool {
 	return s.ReadOnlyRootFilesystem
 }
 
 // GetRunAsGroup returns the value of RunAsGroup.
-func (s IoK8sAPICoreV1SecurityContext) GetRunAsGroup() OptInt64 {
+func (s *IoK8sAPICoreV1SecurityContext) GetRunAsGroup() OptInt64 {
 	return s.RunAsGroup
 }
 
 // GetRunAsNonRoot returns the value of RunAsNonRoot.
-func (s IoK8sAPICoreV1SecurityContext) GetRunAsNonRoot() OptBool {
+func (s *IoK8sAPICoreV1SecurityContext) GetRunAsNonRoot() OptBool {
 	return s.RunAsNonRoot
 }
 
 // GetRunAsUser returns the value of RunAsUser.
-func (s IoK8sAPICoreV1SecurityContext) GetRunAsUser() OptInt64 {
+func (s *IoK8sAPICoreV1SecurityContext) GetRunAsUser() OptInt64 {
 	return s.RunAsUser
 }
 
 // GetSeLinuxOptions returns the value of SeLinuxOptions.
-func (s IoK8sAPICoreV1SecurityContext) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
+func (s *IoK8sAPICoreV1SecurityContext) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
 	return s.SeLinuxOptions
 }
 
 // GetSeccompProfile returns the value of SeccompProfile.
-func (s IoK8sAPICoreV1SecurityContext) GetSeccompProfile() OptIoK8sAPICoreV1SeccompProfile {
+func (s *IoK8sAPICoreV1SecurityContext) GetSeccompProfile() OptIoK8sAPICoreV1SeccompProfile {
 	return s.SeccompProfile
 }
 
 // GetWindowsOptions returns the value of WindowsOptions.
-func (s IoK8sAPICoreV1SecurityContext) GetWindowsOptions() OptIoK8sAPICoreV1WindowsSecurityContextOptions {
+func (s *IoK8sAPICoreV1SecurityContext) GetWindowsOptions() OptIoK8sAPICoreV1WindowsSecurityContextOptions {
 	return s.WindowsOptions
 }
 
@@ -19227,27 +19227,27 @@ type IoK8sAPICoreV1Service struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1Service) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1Service) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1Service) GetKind() OptString {
+func (s *IoK8sAPICoreV1Service) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1Service) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1Service) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPICoreV1Service) GetSpec() OptIoK8sAPICoreV1ServiceSpec {
+func (s *IoK8sAPICoreV1Service) GetSpec() OptIoK8sAPICoreV1ServiceSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPICoreV1Service) GetStatus() OptIoK8sAPICoreV1ServiceStatus {
+func (s *IoK8sAPICoreV1Service) GetStatus() OptIoK8sAPICoreV1ServiceStatus {
 	return s.Status
 }
 
@@ -19307,32 +19307,32 @@ type IoK8sAPICoreV1ServiceAccount struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ServiceAccount) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ServiceAccount) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetAutomountServiceAccountToken returns the value of AutomountServiceAccountToken.
-func (s IoK8sAPICoreV1ServiceAccount) GetAutomountServiceAccountToken() OptBool {
+func (s *IoK8sAPICoreV1ServiceAccount) GetAutomountServiceAccountToken() OptBool {
 	return s.AutomountServiceAccountToken
 }
 
 // GetImagePullSecrets returns the value of ImagePullSecrets.
-func (s IoK8sAPICoreV1ServiceAccount) GetImagePullSecrets() []IoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1ServiceAccount) GetImagePullSecrets() []IoK8sAPICoreV1LocalObjectReference {
 	return s.ImagePullSecrets
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ServiceAccount) GetKind() OptString {
+func (s *IoK8sAPICoreV1ServiceAccount) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ServiceAccount) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPICoreV1ServiceAccount) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSecrets returns the value of Secrets.
-func (s IoK8sAPICoreV1ServiceAccount) GetSecrets() []IoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPICoreV1ServiceAccount) GetSecrets() []IoK8sAPICoreV1ObjectReference {
 	return s.Secrets
 }
 
@@ -19386,22 +19386,22 @@ type IoK8sAPICoreV1ServiceAccountList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ServiceAccountList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ServiceAccountList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ServiceAccountList) GetItems() []IoK8sAPICoreV1ServiceAccount {
+func (s *IoK8sAPICoreV1ServiceAccountList) GetItems() []IoK8sAPICoreV1ServiceAccount {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ServiceAccountList) GetKind() OptString {
+func (s *IoK8sAPICoreV1ServiceAccountList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ServiceAccountList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1ServiceAccountList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -19448,17 +19448,17 @@ type IoK8sAPICoreV1ServiceAccountTokenProjection struct {
 }
 
 // GetAudience returns the value of Audience.
-func (s IoK8sAPICoreV1ServiceAccountTokenProjection) GetAudience() OptString {
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) GetAudience() OptString {
 	return s.Audience
 }
 
 // GetExpirationSeconds returns the value of ExpirationSeconds.
-func (s IoK8sAPICoreV1ServiceAccountTokenProjection) GetExpirationSeconds() OptInt64 {
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) GetExpirationSeconds() OptInt64 {
 	return s.ExpirationSeconds
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPICoreV1ServiceAccountTokenProjection) GetPath() string {
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) GetPath() string {
 	return s.Path
 }
 
@@ -19494,22 +19494,22 @@ type IoK8sAPICoreV1ServiceList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPICoreV1ServiceList) GetApiVersion() OptString {
+func (s *IoK8sAPICoreV1ServiceList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPICoreV1ServiceList) GetItems() []IoK8sAPICoreV1Service {
+func (s *IoK8sAPICoreV1ServiceList) GetItems() []IoK8sAPICoreV1Service {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1ServiceList) GetKind() OptString {
+func (s *IoK8sAPICoreV1ServiceList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPICoreV1ServiceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPICoreV1ServiceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -19564,32 +19564,32 @@ type IoK8sAPICoreV1ServicePort struct {
 }
 
 // GetAppProtocol returns the value of AppProtocol.
-func (s IoK8sAPICoreV1ServicePort) GetAppProtocol() OptString {
+func (s *IoK8sAPICoreV1ServicePort) GetAppProtocol() OptString {
 	return s.AppProtocol
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1ServicePort) GetName() OptString {
+func (s *IoK8sAPICoreV1ServicePort) GetName() OptString {
 	return s.Name
 }
 
 // GetNodePort returns the value of NodePort.
-func (s IoK8sAPICoreV1ServicePort) GetNodePort() OptInt32 {
+func (s *IoK8sAPICoreV1ServicePort) GetNodePort() OptInt32 {
 	return s.NodePort
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPICoreV1ServicePort) GetPort() int32 {
+func (s *IoK8sAPICoreV1ServicePort) GetPort() int32 {
 	return s.Port
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPICoreV1ServicePort) GetProtocol() OptString {
+func (s *IoK8sAPICoreV1ServicePort) GetProtocol() OptString {
 	return s.Protocol
 }
 
 // GetTargetPort returns the value of TargetPort.
-func (s IoK8sAPICoreV1ServicePort) GetTargetPort() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPICoreV1ServicePort) GetTargetPort() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.TargetPort
 }
 
@@ -19770,97 +19770,97 @@ type IoK8sAPICoreV1ServiceSpec struct {
 }
 
 // GetAllocateLoadBalancerNodePorts returns the value of AllocateLoadBalancerNodePorts.
-func (s IoK8sAPICoreV1ServiceSpec) GetAllocateLoadBalancerNodePorts() OptBool {
+func (s *IoK8sAPICoreV1ServiceSpec) GetAllocateLoadBalancerNodePorts() OptBool {
 	return s.AllocateLoadBalancerNodePorts
 }
 
 // GetClusterIP returns the value of ClusterIP.
-func (s IoK8sAPICoreV1ServiceSpec) GetClusterIP() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetClusterIP() OptString {
 	return s.ClusterIP
 }
 
 // GetClusterIPs returns the value of ClusterIPs.
-func (s IoK8sAPICoreV1ServiceSpec) GetClusterIPs() []string {
+func (s *IoK8sAPICoreV1ServiceSpec) GetClusterIPs() []string {
 	return s.ClusterIPs
 }
 
 // GetExternalIPs returns the value of ExternalIPs.
-func (s IoK8sAPICoreV1ServiceSpec) GetExternalIPs() []string {
+func (s *IoK8sAPICoreV1ServiceSpec) GetExternalIPs() []string {
 	return s.ExternalIPs
 }
 
 // GetExternalName returns the value of ExternalName.
-func (s IoK8sAPICoreV1ServiceSpec) GetExternalName() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetExternalName() OptString {
 	return s.ExternalName
 }
 
 // GetExternalTrafficPolicy returns the value of ExternalTrafficPolicy.
-func (s IoK8sAPICoreV1ServiceSpec) GetExternalTrafficPolicy() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetExternalTrafficPolicy() OptString {
 	return s.ExternalTrafficPolicy
 }
 
 // GetHealthCheckNodePort returns the value of HealthCheckNodePort.
-func (s IoK8sAPICoreV1ServiceSpec) GetHealthCheckNodePort() OptInt32 {
+func (s *IoK8sAPICoreV1ServiceSpec) GetHealthCheckNodePort() OptInt32 {
 	return s.HealthCheckNodePort
 }
 
 // GetInternalTrafficPolicy returns the value of InternalTrafficPolicy.
-func (s IoK8sAPICoreV1ServiceSpec) GetInternalTrafficPolicy() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetInternalTrafficPolicy() OptString {
 	return s.InternalTrafficPolicy
 }
 
 // GetIpFamilies returns the value of IpFamilies.
-func (s IoK8sAPICoreV1ServiceSpec) GetIpFamilies() []string {
+func (s *IoK8sAPICoreV1ServiceSpec) GetIpFamilies() []string {
 	return s.IpFamilies
 }
 
 // GetIpFamilyPolicy returns the value of IpFamilyPolicy.
-func (s IoK8sAPICoreV1ServiceSpec) GetIpFamilyPolicy() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetIpFamilyPolicy() OptString {
 	return s.IpFamilyPolicy
 }
 
 // GetLoadBalancerClass returns the value of LoadBalancerClass.
-func (s IoK8sAPICoreV1ServiceSpec) GetLoadBalancerClass() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetLoadBalancerClass() OptString {
 	return s.LoadBalancerClass
 }
 
 // GetLoadBalancerIP returns the value of LoadBalancerIP.
-func (s IoK8sAPICoreV1ServiceSpec) GetLoadBalancerIP() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetLoadBalancerIP() OptString {
 	return s.LoadBalancerIP
 }
 
 // GetLoadBalancerSourceRanges returns the value of LoadBalancerSourceRanges.
-func (s IoK8sAPICoreV1ServiceSpec) GetLoadBalancerSourceRanges() []string {
+func (s *IoK8sAPICoreV1ServiceSpec) GetLoadBalancerSourceRanges() []string {
 	return s.LoadBalancerSourceRanges
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPICoreV1ServiceSpec) GetPorts() []IoK8sAPICoreV1ServicePort {
+func (s *IoK8sAPICoreV1ServiceSpec) GetPorts() []IoK8sAPICoreV1ServicePort {
 	return s.Ports
 }
 
 // GetPublishNotReadyAddresses returns the value of PublishNotReadyAddresses.
-func (s IoK8sAPICoreV1ServiceSpec) GetPublishNotReadyAddresses() OptBool {
+func (s *IoK8sAPICoreV1ServiceSpec) GetPublishNotReadyAddresses() OptBool {
 	return s.PublishNotReadyAddresses
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPICoreV1ServiceSpec) GetSelector() OptIoK8sAPICoreV1ServiceSpecSelector {
+func (s *IoK8sAPICoreV1ServiceSpec) GetSelector() OptIoK8sAPICoreV1ServiceSpecSelector {
 	return s.Selector
 }
 
 // GetSessionAffinity returns the value of SessionAffinity.
-func (s IoK8sAPICoreV1ServiceSpec) GetSessionAffinity() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetSessionAffinity() OptString {
 	return s.SessionAffinity
 }
 
 // GetSessionAffinityConfig returns the value of SessionAffinityConfig.
-func (s IoK8sAPICoreV1ServiceSpec) GetSessionAffinityConfig() OptIoK8sAPICoreV1SessionAffinityConfig {
+func (s *IoK8sAPICoreV1ServiceSpec) GetSessionAffinityConfig() OptIoK8sAPICoreV1SessionAffinityConfig {
 	return s.SessionAffinityConfig
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPICoreV1ServiceSpec) GetType() OptString {
+func (s *IoK8sAPICoreV1ServiceSpec) GetType() OptString {
 	return s.Type
 }
 
@@ -19984,12 +19984,12 @@ type IoK8sAPICoreV1ServiceStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPICoreV1ServiceStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
+func (s *IoK8sAPICoreV1ServiceStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
 	return s.Conditions
 }
 
 // GetLoadBalancer returns the value of LoadBalancer.
-func (s IoK8sAPICoreV1ServiceStatus) GetLoadBalancer() OptIoK8sAPICoreV1LoadBalancerStatus {
+func (s *IoK8sAPICoreV1ServiceStatus) GetLoadBalancer() OptIoK8sAPICoreV1LoadBalancerStatus {
 	return s.LoadBalancer
 }
 
@@ -20010,7 +20010,7 @@ type IoK8sAPICoreV1SessionAffinityConfig struct {
 }
 
 // GetClientIP returns the value of ClientIP.
-func (s IoK8sAPICoreV1SessionAffinityConfig) GetClientIP() OptIoK8sAPICoreV1ClientIPConfig {
+func (s *IoK8sAPICoreV1SessionAffinityConfig) GetClientIP() OptIoK8sAPICoreV1ClientIPConfig {
 	return s.ClientIP
 }
 
@@ -20040,27 +20040,27 @@ type IoK8sAPICoreV1StorageOSPersistentVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1ObjectReference {
 	return s.SecretRef
 }
 
 // GetVolumeName returns the value of VolumeName.
-func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetVolumeName() OptString {
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetVolumeName() OptString {
 	return s.VolumeName
 }
 
 // GetVolumeNamespace returns the value of VolumeNamespace.
-func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetVolumeNamespace() OptString {
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetVolumeNamespace() OptString {
 	return s.VolumeNamespace
 }
 
@@ -20110,27 +20110,27 @@ type IoK8sAPICoreV1StorageOSVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1StorageOSVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1StorageOSVolumeSource) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSecretRef returns the value of SecretRef.
-func (s IoK8sAPICoreV1StorageOSVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
 	return s.SecretRef
 }
 
 // GetVolumeName returns the value of VolumeName.
-func (s IoK8sAPICoreV1StorageOSVolumeSource) GetVolumeName() OptString {
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) GetVolumeName() OptString {
 	return s.VolumeName
 }
 
 // GetVolumeNamespace returns the value of VolumeNamespace.
-func (s IoK8sAPICoreV1StorageOSVolumeSource) GetVolumeNamespace() OptString {
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) GetVolumeNamespace() OptString {
 	return s.VolumeNamespace
 }
 
@@ -20169,12 +20169,12 @@ type IoK8sAPICoreV1Sysctl struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1Sysctl) GetName() string {
+func (s *IoK8sAPICoreV1Sysctl) GetName() string {
 	return s.Name
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPICoreV1Sysctl) GetValue() string {
+func (s *IoK8sAPICoreV1Sysctl) GetValue() string {
 	return s.Value
 }
 
@@ -20197,12 +20197,12 @@ type IoK8sAPICoreV1TCPSocketAction struct {
 }
 
 // GetHost returns the value of Host.
-func (s IoK8sAPICoreV1TCPSocketAction) GetHost() OptString {
+func (s *IoK8sAPICoreV1TCPSocketAction) GetHost() OptString {
 	return s.Host
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPICoreV1TCPSocketAction) GetPort() IoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPICoreV1TCPSocketAction) GetPort() IoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.Port
 }
 
@@ -20230,22 +20230,22 @@ type IoK8sAPICoreV1Taint struct {
 }
 
 // GetEffect returns the value of Effect.
-func (s IoK8sAPICoreV1Taint) GetEffect() string {
+func (s *IoK8sAPICoreV1Taint) GetEffect() string {
 	return s.Effect
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1Taint) GetKey() string {
+func (s *IoK8sAPICoreV1Taint) GetKey() string {
 	return s.Key
 }
 
 // GetTimeAdded returns the value of TimeAdded.
-func (s IoK8sAPICoreV1Taint) GetTimeAdded() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPICoreV1Taint) GetTimeAdded() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.TimeAdded
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPICoreV1Taint) GetValue() OptString {
+func (s *IoK8sAPICoreV1Taint) GetValue() OptString {
 	return s.Value
 }
 
@@ -20294,27 +20294,27 @@ type IoK8sAPICoreV1Toleration struct {
 }
 
 // GetEffect returns the value of Effect.
-func (s IoK8sAPICoreV1Toleration) GetEffect() OptString {
+func (s *IoK8sAPICoreV1Toleration) GetEffect() OptString {
 	return s.Effect
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1Toleration) GetKey() OptString {
+func (s *IoK8sAPICoreV1Toleration) GetKey() OptString {
 	return s.Key
 }
 
 // GetOperator returns the value of Operator.
-func (s IoK8sAPICoreV1Toleration) GetOperator() OptString {
+func (s *IoK8sAPICoreV1Toleration) GetOperator() OptString {
 	return s.Operator
 }
 
 // GetTolerationSeconds returns the value of TolerationSeconds.
-func (s IoK8sAPICoreV1Toleration) GetTolerationSeconds() OptInt64 {
+func (s *IoK8sAPICoreV1Toleration) GetTolerationSeconds() OptInt64 {
 	return s.TolerationSeconds
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPICoreV1Toleration) GetValue() OptString {
+func (s *IoK8sAPICoreV1Toleration) GetValue() OptString {
 	return s.Value
 }
 
@@ -20355,12 +20355,12 @@ type IoK8sAPICoreV1TopologySelectorLabelRequirement struct {
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) GetKey() string {
+func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) GetKey() string {
 	return s.Key
 }
 
 // GetValues returns the value of Values.
-func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) GetValues() []string {
+func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) GetValues() []string {
 	return s.Values
 }
 
@@ -20384,7 +20384,7 @@ type IoK8sAPICoreV1TopologySelectorTerm struct {
 }
 
 // GetMatchLabelExpressions returns the value of MatchLabelExpressions.
-func (s IoK8sAPICoreV1TopologySelectorTerm) GetMatchLabelExpressions() []IoK8sAPICoreV1TopologySelectorLabelRequirement {
+func (s *IoK8sAPICoreV1TopologySelectorTerm) GetMatchLabelExpressions() []IoK8sAPICoreV1TopologySelectorLabelRequirement {
 	return s.MatchLabelExpressions
 }
 
@@ -20427,22 +20427,22 @@ type IoK8sAPICoreV1TopologySpreadConstraint struct {
 }
 
 // GetLabelSelector returns the value of LabelSelector.
-func (s IoK8sAPICoreV1TopologySpreadConstraint) GetLabelSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) GetLabelSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.LabelSelector
 }
 
 // GetMaxSkew returns the value of MaxSkew.
-func (s IoK8sAPICoreV1TopologySpreadConstraint) GetMaxSkew() int32 {
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) GetMaxSkew() int32 {
 	return s.MaxSkew
 }
 
 // GetTopologyKey returns the value of TopologyKey.
-func (s IoK8sAPICoreV1TopologySpreadConstraint) GetTopologyKey() string {
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) GetTopologyKey() string {
 	return s.TopologyKey
 }
 
 // GetWhenUnsatisfiable returns the value of WhenUnsatisfiable.
-func (s IoK8sAPICoreV1TopologySpreadConstraint) GetWhenUnsatisfiable() string {
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) GetWhenUnsatisfiable() string {
 	return s.WhenUnsatisfiable
 }
 
@@ -20481,17 +20481,17 @@ type IoK8sAPICoreV1TypedLocalObjectReference struct {
 }
 
 // GetApiGroup returns the value of ApiGroup.
-func (s IoK8sAPICoreV1TypedLocalObjectReference) GetApiGroup() OptString {
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) GetApiGroup() OptString {
 	return s.ApiGroup
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPICoreV1TypedLocalObjectReference) GetKind() string {
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1TypedLocalObjectReference) GetName() string {
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) GetName() string {
 	return s.Name
 }
 
@@ -20548,152 +20548,152 @@ type IoK8sAPICoreV1Volume struct {
 }
 
 // GetAwsElasticBlockStore returns the value of AwsElasticBlockStore.
-func (s IoK8sAPICoreV1Volume) GetAwsElasticBlockStore() OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetAwsElasticBlockStore() OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
 	return s.AwsElasticBlockStore
 }
 
 // GetAzureDisk returns the value of AzureDisk.
-func (s IoK8sAPICoreV1Volume) GetAzureDisk() OptIoK8sAPICoreV1AzureDiskVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetAzureDisk() OptIoK8sAPICoreV1AzureDiskVolumeSource {
 	return s.AzureDisk
 }
 
 // GetAzureFile returns the value of AzureFile.
-func (s IoK8sAPICoreV1Volume) GetAzureFile() OptIoK8sAPICoreV1AzureFileVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetAzureFile() OptIoK8sAPICoreV1AzureFileVolumeSource {
 	return s.AzureFile
 }
 
 // GetCephfs returns the value of Cephfs.
-func (s IoK8sAPICoreV1Volume) GetCephfs() OptIoK8sAPICoreV1CephFSVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetCephfs() OptIoK8sAPICoreV1CephFSVolumeSource {
 	return s.Cephfs
 }
 
 // GetCinder returns the value of Cinder.
-func (s IoK8sAPICoreV1Volume) GetCinder() OptIoK8sAPICoreV1CinderVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetCinder() OptIoK8sAPICoreV1CinderVolumeSource {
 	return s.Cinder
 }
 
 // GetConfigMap returns the value of ConfigMap.
-func (s IoK8sAPICoreV1Volume) GetConfigMap() OptIoK8sAPICoreV1ConfigMapVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetConfigMap() OptIoK8sAPICoreV1ConfigMapVolumeSource {
 	return s.ConfigMap
 }
 
 // GetCsi returns the value of Csi.
-func (s IoK8sAPICoreV1Volume) GetCsi() OptIoK8sAPICoreV1CSIVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetCsi() OptIoK8sAPICoreV1CSIVolumeSource {
 	return s.Csi
 }
 
 // GetDownwardAPI returns the value of DownwardAPI.
-func (s IoK8sAPICoreV1Volume) GetDownwardAPI() OptIoK8sAPICoreV1DownwardAPIVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetDownwardAPI() OptIoK8sAPICoreV1DownwardAPIVolumeSource {
 	return s.DownwardAPI
 }
 
 // GetEmptyDir returns the value of EmptyDir.
-func (s IoK8sAPICoreV1Volume) GetEmptyDir() OptIoK8sAPICoreV1EmptyDirVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetEmptyDir() OptIoK8sAPICoreV1EmptyDirVolumeSource {
 	return s.EmptyDir
 }
 
 // GetEphemeral returns the value of Ephemeral.
-func (s IoK8sAPICoreV1Volume) GetEphemeral() OptIoK8sAPICoreV1EphemeralVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetEphemeral() OptIoK8sAPICoreV1EphemeralVolumeSource {
 	return s.Ephemeral
 }
 
 // GetFc returns the value of Fc.
-func (s IoK8sAPICoreV1Volume) GetFc() OptIoK8sAPICoreV1FCVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetFc() OptIoK8sAPICoreV1FCVolumeSource {
 	return s.Fc
 }
 
 // GetFlexVolume returns the value of FlexVolume.
-func (s IoK8sAPICoreV1Volume) GetFlexVolume() OptIoK8sAPICoreV1FlexVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetFlexVolume() OptIoK8sAPICoreV1FlexVolumeSource {
 	return s.FlexVolume
 }
 
 // GetFlocker returns the value of Flocker.
-func (s IoK8sAPICoreV1Volume) GetFlocker() OptIoK8sAPICoreV1FlockerVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetFlocker() OptIoK8sAPICoreV1FlockerVolumeSource {
 	return s.Flocker
 }
 
 // GetGcePersistentDisk returns the value of GcePersistentDisk.
-func (s IoK8sAPICoreV1Volume) GetGcePersistentDisk() OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetGcePersistentDisk() OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
 	return s.GcePersistentDisk
 }
 
 // GetGitRepo returns the value of GitRepo.
-func (s IoK8sAPICoreV1Volume) GetGitRepo() OptIoK8sAPICoreV1GitRepoVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetGitRepo() OptIoK8sAPICoreV1GitRepoVolumeSource {
 	return s.GitRepo
 }
 
 // GetGlusterfs returns the value of Glusterfs.
-func (s IoK8sAPICoreV1Volume) GetGlusterfs() OptIoK8sAPICoreV1GlusterfsVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetGlusterfs() OptIoK8sAPICoreV1GlusterfsVolumeSource {
 	return s.Glusterfs
 }
 
 // GetHostPath returns the value of HostPath.
-func (s IoK8sAPICoreV1Volume) GetHostPath() OptIoK8sAPICoreV1HostPathVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetHostPath() OptIoK8sAPICoreV1HostPathVolumeSource {
 	return s.HostPath
 }
 
 // GetIscsi returns the value of Iscsi.
-func (s IoK8sAPICoreV1Volume) GetIscsi() OptIoK8sAPICoreV1ISCSIVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetIscsi() OptIoK8sAPICoreV1ISCSIVolumeSource {
 	return s.Iscsi
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1Volume) GetName() string {
+func (s *IoK8sAPICoreV1Volume) GetName() string {
 	return s.Name
 }
 
 // GetNfs returns the value of Nfs.
-func (s IoK8sAPICoreV1Volume) GetNfs() OptIoK8sAPICoreV1NFSVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetNfs() OptIoK8sAPICoreV1NFSVolumeSource {
 	return s.Nfs
 }
 
 // GetPersistentVolumeClaim returns the value of PersistentVolumeClaim.
-func (s IoK8sAPICoreV1Volume) GetPersistentVolumeClaim() OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetPersistentVolumeClaim() OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource {
 	return s.PersistentVolumeClaim
 }
 
 // GetPhotonPersistentDisk returns the value of PhotonPersistentDisk.
-func (s IoK8sAPICoreV1Volume) GetPhotonPersistentDisk() OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetPhotonPersistentDisk() OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
 	return s.PhotonPersistentDisk
 }
 
 // GetPortworxVolume returns the value of PortworxVolume.
-func (s IoK8sAPICoreV1Volume) GetPortworxVolume() OptIoK8sAPICoreV1PortworxVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetPortworxVolume() OptIoK8sAPICoreV1PortworxVolumeSource {
 	return s.PortworxVolume
 }
 
 // GetProjected returns the value of Projected.
-func (s IoK8sAPICoreV1Volume) GetProjected() OptIoK8sAPICoreV1ProjectedVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetProjected() OptIoK8sAPICoreV1ProjectedVolumeSource {
 	return s.Projected
 }
 
 // GetQuobyte returns the value of Quobyte.
-func (s IoK8sAPICoreV1Volume) GetQuobyte() OptIoK8sAPICoreV1QuobyteVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetQuobyte() OptIoK8sAPICoreV1QuobyteVolumeSource {
 	return s.Quobyte
 }
 
 // GetRbd returns the value of Rbd.
-func (s IoK8sAPICoreV1Volume) GetRbd() OptIoK8sAPICoreV1RBDVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetRbd() OptIoK8sAPICoreV1RBDVolumeSource {
 	return s.Rbd
 }
 
 // GetScaleIO returns the value of ScaleIO.
-func (s IoK8sAPICoreV1Volume) GetScaleIO() OptIoK8sAPICoreV1ScaleIOVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetScaleIO() OptIoK8sAPICoreV1ScaleIOVolumeSource {
 	return s.ScaleIO
 }
 
 // GetSecret returns the value of Secret.
-func (s IoK8sAPICoreV1Volume) GetSecret() OptIoK8sAPICoreV1SecretVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetSecret() OptIoK8sAPICoreV1SecretVolumeSource {
 	return s.Secret
 }
 
 // GetStorageos returns the value of Storageos.
-func (s IoK8sAPICoreV1Volume) GetStorageos() OptIoK8sAPICoreV1StorageOSVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetStorageos() OptIoK8sAPICoreV1StorageOSVolumeSource {
 	return s.Storageos
 }
 
 // GetVsphereVolume returns the value of VsphereVolume.
-func (s IoK8sAPICoreV1Volume) GetVsphereVolume() OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
+func (s *IoK8sAPICoreV1Volume) GetVsphereVolume() OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
 	return s.VsphereVolume
 }
 
@@ -20857,12 +20857,12 @@ type IoK8sAPICoreV1VolumeDevice struct {
 }
 
 // GetDevicePath returns the value of DevicePath.
-func (s IoK8sAPICoreV1VolumeDevice) GetDevicePath() string {
+func (s *IoK8sAPICoreV1VolumeDevice) GetDevicePath() string {
 	return s.DevicePath
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1VolumeDevice) GetName() string {
+func (s *IoK8sAPICoreV1VolumeDevice) GetName() string {
 	return s.Name
 }
 
@@ -20899,32 +20899,32 @@ type IoK8sAPICoreV1VolumeMount struct {
 }
 
 // GetMountPath returns the value of MountPath.
-func (s IoK8sAPICoreV1VolumeMount) GetMountPath() string {
+func (s *IoK8sAPICoreV1VolumeMount) GetMountPath() string {
 	return s.MountPath
 }
 
 // GetMountPropagation returns the value of MountPropagation.
-func (s IoK8sAPICoreV1VolumeMount) GetMountPropagation() OptString {
+func (s *IoK8sAPICoreV1VolumeMount) GetMountPropagation() OptString {
 	return s.MountPropagation
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPICoreV1VolumeMount) GetName() string {
+func (s *IoK8sAPICoreV1VolumeMount) GetName() string {
 	return s.Name
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPICoreV1VolumeMount) GetReadOnly() OptBool {
+func (s *IoK8sAPICoreV1VolumeMount) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
 // GetSubPath returns the value of SubPath.
-func (s IoK8sAPICoreV1VolumeMount) GetSubPath() OptString {
+func (s *IoK8sAPICoreV1VolumeMount) GetSubPath() OptString {
 	return s.SubPath
 }
 
 // GetSubPathExpr returns the value of SubPathExpr.
-func (s IoK8sAPICoreV1VolumeMount) GetSubPathExpr() OptString {
+func (s *IoK8sAPICoreV1VolumeMount) GetSubPathExpr() OptString {
 	return s.SubPathExpr
 }
 
@@ -20965,7 +20965,7 @@ type IoK8sAPICoreV1VolumeNodeAffinity struct {
 }
 
 // GetRequired returns the value of Required.
-func (s IoK8sAPICoreV1VolumeNodeAffinity) GetRequired() OptIoK8sAPICoreV1NodeSelector {
+func (s *IoK8sAPICoreV1VolumeNodeAffinity) GetRequired() OptIoK8sAPICoreV1NodeSelector {
 	return s.Required
 }
 
@@ -20984,22 +20984,22 @@ type IoK8sAPICoreV1VolumeProjection struct {
 }
 
 // GetConfigMap returns the value of ConfigMap.
-func (s IoK8sAPICoreV1VolumeProjection) GetConfigMap() OptIoK8sAPICoreV1ConfigMapProjection {
+func (s *IoK8sAPICoreV1VolumeProjection) GetConfigMap() OptIoK8sAPICoreV1ConfigMapProjection {
 	return s.ConfigMap
 }
 
 // GetDownwardAPI returns the value of DownwardAPI.
-func (s IoK8sAPICoreV1VolumeProjection) GetDownwardAPI() OptIoK8sAPICoreV1DownwardAPIProjection {
+func (s *IoK8sAPICoreV1VolumeProjection) GetDownwardAPI() OptIoK8sAPICoreV1DownwardAPIProjection {
 	return s.DownwardAPI
 }
 
 // GetSecret returns the value of Secret.
-func (s IoK8sAPICoreV1VolumeProjection) GetSecret() OptIoK8sAPICoreV1SecretProjection {
+func (s *IoK8sAPICoreV1VolumeProjection) GetSecret() OptIoK8sAPICoreV1SecretProjection {
 	return s.Secret
 }
 
 // GetServiceAccountToken returns the value of ServiceAccountToken.
-func (s IoK8sAPICoreV1VolumeProjection) GetServiceAccountToken() OptIoK8sAPICoreV1ServiceAccountTokenProjection {
+func (s *IoK8sAPICoreV1VolumeProjection) GetServiceAccountToken() OptIoK8sAPICoreV1ServiceAccountTokenProjection {
 	return s.ServiceAccountToken
 }
 
@@ -21038,22 +21038,22 @@ type IoK8sAPICoreV1VsphereVirtualDiskVolumeSource struct {
 }
 
 // GetFsType returns the value of FsType.
-func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetFsType() OptString {
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetFsType() OptString {
 	return s.FsType
 }
 
 // GetStoragePolicyID returns the value of StoragePolicyID.
-func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetStoragePolicyID() OptString {
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetStoragePolicyID() OptString {
 	return s.StoragePolicyID
 }
 
 // GetStoragePolicyName returns the value of StoragePolicyName.
-func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetStoragePolicyName() OptString {
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetStoragePolicyName() OptString {
 	return s.StoragePolicyName
 }
 
 // GetVolumePath returns the value of VolumePath.
-func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetVolumePath() string {
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetVolumePath() string {
 	return s.VolumePath
 }
 
@@ -21087,12 +21087,12 @@ type IoK8sAPICoreV1WeightedPodAffinityTerm struct {
 }
 
 // GetPodAffinityTerm returns the value of PodAffinityTerm.
-func (s IoK8sAPICoreV1WeightedPodAffinityTerm) GetPodAffinityTerm() IoK8sAPICoreV1PodAffinityTerm {
+func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) GetPodAffinityTerm() IoK8sAPICoreV1PodAffinityTerm {
 	return s.PodAffinityTerm
 }
 
 // GetWeight returns the value of Weight.
-func (s IoK8sAPICoreV1WeightedPodAffinityTerm) GetWeight() int32 {
+func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) GetWeight() int32 {
 	return s.Weight
 }
 
@@ -21129,22 +21129,22 @@ type IoK8sAPICoreV1WindowsSecurityContextOptions struct {
 }
 
 // GetGmsaCredentialSpec returns the value of GmsaCredentialSpec.
-func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetGmsaCredentialSpec() OptString {
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) GetGmsaCredentialSpec() OptString {
 	return s.GmsaCredentialSpec
 }
 
 // GetGmsaCredentialSpecName returns the value of GmsaCredentialSpecName.
-func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetGmsaCredentialSpecName() OptString {
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) GetGmsaCredentialSpecName() OptString {
 	return s.GmsaCredentialSpecName
 }
 
 // GetHostProcess returns the value of HostProcess.
-func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetHostProcess() OptBool {
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) GetHostProcess() OptBool {
 	return s.HostProcess
 }
 
 // GetRunAsUserName returns the value of RunAsUserName.
-func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetRunAsUserName() OptString {
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) GetRunAsUserName() OptString {
 	return s.RunAsUserName
 }
 
@@ -21198,42 +21198,42 @@ type IoK8sAPIDiscoveryV1Endpoint struct {
 }
 
 // GetAddresses returns the value of Addresses.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetAddresses() []string {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetAddresses() []string {
 	return s.Addresses
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetConditions() OptIoK8sAPIDiscoveryV1EndpointConditions {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetConditions() OptIoK8sAPIDiscoveryV1EndpointConditions {
 	return s.Conditions
 }
 
 // GetDeprecatedTopology returns the value of DeprecatedTopology.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetDeprecatedTopology() OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetDeprecatedTopology() OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
 	return s.DeprecatedTopology
 }
 
 // GetHints returns the value of Hints.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetHints() OptIoK8sAPIDiscoveryV1EndpointHints {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetHints() OptIoK8sAPIDiscoveryV1EndpointHints {
 	return s.Hints
 }
 
 // GetHostname returns the value of Hostname.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetHostname() OptString {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetHostname() OptString {
 	return s.Hostname
 }
 
 // GetNodeName returns the value of NodeName.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetNodeName() OptString {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetNodeName() OptString {
 	return s.NodeName
 }
 
 // GetTargetRef returns the value of TargetRef.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
 	return s.TargetRef
 }
 
 // GetZone returns the value of Zone.
-func (s IoK8sAPIDiscoveryV1Endpoint) GetZone() OptString {
+func (s *IoK8sAPIDiscoveryV1Endpoint) GetZone() OptString {
 	return s.Zone
 }
 
@@ -21297,17 +21297,17 @@ type IoK8sAPIDiscoveryV1EndpointConditions struct {
 }
 
 // GetReady returns the value of Ready.
-func (s IoK8sAPIDiscoveryV1EndpointConditions) GetReady() OptBool {
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) GetReady() OptBool {
 	return s.Ready
 }
 
 // GetServing returns the value of Serving.
-func (s IoK8sAPIDiscoveryV1EndpointConditions) GetServing() OptBool {
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) GetServing() OptBool {
 	return s.Serving
 }
 
 // GetTerminating returns the value of Terminating.
-func (s IoK8sAPIDiscoveryV1EndpointConditions) GetTerminating() OptBool {
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) GetTerminating() OptBool {
 	return s.Terminating
 }
 
@@ -21353,7 +21353,7 @@ type IoK8sAPIDiscoveryV1EndpointHints struct {
 }
 
 // GetForZones returns the value of ForZones.
-func (s IoK8sAPIDiscoveryV1EndpointHints) GetForZones() []IoK8sAPIDiscoveryV1ForZone {
+func (s *IoK8sAPIDiscoveryV1EndpointHints) GetForZones() []IoK8sAPIDiscoveryV1ForZone {
 	return s.ForZones
 }
 
@@ -21384,22 +21384,22 @@ type IoK8sAPIDiscoveryV1EndpointPort struct {
 }
 
 // GetAppProtocol returns the value of AppProtocol.
-func (s IoK8sAPIDiscoveryV1EndpointPort) GetAppProtocol() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointPort) GetAppProtocol() OptString {
 	return s.AppProtocol
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIDiscoveryV1EndpointPort) GetName() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointPort) GetName() OptString {
 	return s.Name
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPIDiscoveryV1EndpointPort) GetPort() OptInt32 {
+func (s *IoK8sAPIDiscoveryV1EndpointPort) GetPort() OptInt32 {
 	return s.Port
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPIDiscoveryV1EndpointPort) GetProtocol() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointPort) GetProtocol() OptString {
 	return s.Protocol
 }
 
@@ -21453,32 +21453,32 @@ type IoK8sAPIDiscoveryV1EndpointSlice struct {
 }
 
 // GetAddressType returns the value of AddressType.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) GetAddressType() string {
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) GetAddressType() string {
 	return s.AddressType
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) GetApiVersion() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetEndpoints returns the value of Endpoints.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) GetEndpoints() []IoK8sAPIDiscoveryV1Endpoint {
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) GetEndpoints() []IoK8sAPIDiscoveryV1Endpoint {
 	return s.Endpoints
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) GetKind() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) GetPorts() []IoK8sAPIDiscoveryV1EndpointPort {
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) GetPorts() []IoK8sAPIDiscoveryV1EndpointPort {
 	return s.Ports
 }
 
@@ -21531,22 +21531,22 @@ type IoK8sAPIDiscoveryV1EndpointSliceList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetApiVersion() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetItems() []IoK8sAPIDiscoveryV1EndpointSlice {
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) GetItems() []IoK8sAPIDiscoveryV1EndpointSlice {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetKind() OptString {
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -21581,7 +21581,7 @@ type IoK8sAPIDiscoveryV1ForZone struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIDiscoveryV1ForZone) GetName() string {
+func (s *IoK8sAPIDiscoveryV1ForZone) GetName() string {
 	return s.Name
 }
 
@@ -21625,37 +21625,37 @@ type IoK8sAPIDiscoveryV1beta1Endpoint struct {
 }
 
 // GetAddresses returns the value of Addresses.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetAddresses() []string {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetAddresses() []string {
 	return s.Addresses
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetConditions() OptIoK8sAPIDiscoveryV1beta1EndpointConditions {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetConditions() OptIoK8sAPIDiscoveryV1beta1EndpointConditions {
 	return s.Conditions
 }
 
 // GetHints returns the value of Hints.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetHints() OptIoK8sAPIDiscoveryV1beta1EndpointHints {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetHints() OptIoK8sAPIDiscoveryV1beta1EndpointHints {
 	return s.Hints
 }
 
 // GetHostname returns the value of Hostname.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetHostname() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetHostname() OptString {
 	return s.Hostname
 }
 
 // GetNodeName returns the value of NodeName.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetNodeName() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetNodeName() OptString {
 	return s.NodeName
 }
 
 // GetTargetRef returns the value of TargetRef.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
 	return s.TargetRef
 }
 
 // GetTopology returns the value of Topology.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetTopology() OptIoK8sAPIDiscoveryV1beta1EndpointTopology {
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) GetTopology() OptIoK8sAPIDiscoveryV1beta1EndpointTopology {
 	return s.Topology
 }
 
@@ -21714,17 +21714,17 @@ type IoK8sAPIDiscoveryV1beta1EndpointConditions struct {
 }
 
 // GetReady returns the value of Ready.
-func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) GetReady() OptBool {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) GetReady() OptBool {
 	return s.Ready
 }
 
 // GetServing returns the value of Serving.
-func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) GetServing() OptBool {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) GetServing() OptBool {
 	return s.Serving
 }
 
 // GetTerminating returns the value of Terminating.
-func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) GetTerminating() OptBool {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) GetTerminating() OptBool {
 	return s.Terminating
 }
 
@@ -21752,7 +21752,7 @@ type IoK8sAPIDiscoveryV1beta1EndpointHints struct {
 }
 
 // GetForZones returns the value of ForZones.
-func (s IoK8sAPIDiscoveryV1beta1EndpointHints) GetForZones() []IoK8sAPIDiscoveryV1beta1ForZone {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) GetForZones() []IoK8sAPIDiscoveryV1beta1ForZone {
 	return s.ForZones
 }
 
@@ -21783,22 +21783,22 @@ type IoK8sAPIDiscoveryV1beta1EndpointPort struct {
 }
 
 // GetAppProtocol returns the value of AppProtocol.
-func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetAppProtocol() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) GetAppProtocol() OptString {
 	return s.AppProtocol
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetName() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) GetName() OptString {
 	return s.Name
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetPort() OptInt32 {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) GetPort() OptInt32 {
 	return s.Port
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetProtocol() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) GetProtocol() OptString {
 	return s.Protocol
 }
 
@@ -21852,32 +21852,32 @@ type IoK8sAPIDiscoveryV1beta1EndpointSlice struct {
 }
 
 // GetAddressType returns the value of AddressType.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetAddressType() string {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) GetAddressType() string {
 	return s.AddressType
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetApiVersion() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetEndpoints returns the value of Endpoints.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetEndpoints() []IoK8sAPIDiscoveryV1beta1Endpoint {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) GetEndpoints() []IoK8sAPIDiscoveryV1beta1Endpoint {
 	return s.Endpoints
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetKind() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetPorts() []IoK8sAPIDiscoveryV1beta1EndpointPort {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) GetPorts() []IoK8sAPIDiscoveryV1beta1EndpointPort {
 	return s.Ports
 }
 
@@ -21930,22 +21930,22 @@ type IoK8sAPIDiscoveryV1beta1EndpointSliceList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetApiVersion() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetItems() []IoK8sAPIDiscoveryV1beta1EndpointSlice {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetItems() []IoK8sAPIDiscoveryV1beta1EndpointSlice {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetKind() OptString {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -22004,7 +22004,7 @@ type IoK8sAPIDiscoveryV1beta1ForZone struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIDiscoveryV1beta1ForZone) GetName() string {
+func (s *IoK8sAPIDiscoveryV1beta1ForZone) GetName() string {
 	return s.Name
 }
 
@@ -22059,87 +22059,87 @@ type IoK8sAPIEventsV1Event struct {
 }
 
 // GetAction returns the value of Action.
-func (s IoK8sAPIEventsV1Event) GetAction() OptString {
+func (s *IoK8sAPIEventsV1Event) GetAction() OptString {
 	return s.Action
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIEventsV1Event) GetApiVersion() OptString {
+func (s *IoK8sAPIEventsV1Event) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetDeprecatedCount returns the value of DeprecatedCount.
-func (s IoK8sAPIEventsV1Event) GetDeprecatedCount() OptInt32 {
+func (s *IoK8sAPIEventsV1Event) GetDeprecatedCount() OptInt32 {
 	return s.DeprecatedCount
 }
 
 // GetDeprecatedFirstTimestamp returns the value of DeprecatedFirstTimestamp.
-func (s IoK8sAPIEventsV1Event) GetDeprecatedFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIEventsV1Event) GetDeprecatedFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.DeprecatedFirstTimestamp
 }
 
 // GetDeprecatedLastTimestamp returns the value of DeprecatedLastTimestamp.
-func (s IoK8sAPIEventsV1Event) GetDeprecatedLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIEventsV1Event) GetDeprecatedLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.DeprecatedLastTimestamp
 }
 
 // GetDeprecatedSource returns the value of DeprecatedSource.
-func (s IoK8sAPIEventsV1Event) GetDeprecatedSource() OptIoK8sAPICoreV1EventSource {
+func (s *IoK8sAPIEventsV1Event) GetDeprecatedSource() OptIoK8sAPICoreV1EventSource {
 	return s.DeprecatedSource
 }
 
 // GetEventTime returns the value of EventTime.
-func (s IoK8sAPIEventsV1Event) GetEventTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPIEventsV1Event) GetEventTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.EventTime
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIEventsV1Event) GetKind() OptString {
+func (s *IoK8sAPIEventsV1Event) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIEventsV1Event) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIEventsV1Event) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetNote returns the value of Note.
-func (s IoK8sAPIEventsV1Event) GetNote() OptString {
+func (s *IoK8sAPIEventsV1Event) GetNote() OptString {
 	return s.Note
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIEventsV1Event) GetReason() OptString {
+func (s *IoK8sAPIEventsV1Event) GetReason() OptString {
 	return s.Reason
 }
 
 // GetRegarding returns the value of Regarding.
-func (s IoK8sAPIEventsV1Event) GetRegarding() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIEventsV1Event) GetRegarding() OptIoK8sAPICoreV1ObjectReference {
 	return s.Regarding
 }
 
 // GetRelated returns the value of Related.
-func (s IoK8sAPIEventsV1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIEventsV1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
 	return s.Related
 }
 
 // GetReportingController returns the value of ReportingController.
-func (s IoK8sAPIEventsV1Event) GetReportingController() OptString {
+func (s *IoK8sAPIEventsV1Event) GetReportingController() OptString {
 	return s.ReportingController
 }
 
 // GetReportingInstance returns the value of ReportingInstance.
-func (s IoK8sAPIEventsV1Event) GetReportingInstance() OptString {
+func (s *IoK8sAPIEventsV1Event) GetReportingInstance() OptString {
 	return s.ReportingInstance
 }
 
 // GetSeries returns the value of Series.
-func (s IoK8sAPIEventsV1Event) GetSeries() OptIoK8sAPIEventsV1EventSeries {
+func (s *IoK8sAPIEventsV1Event) GetSeries() OptIoK8sAPIEventsV1EventSeries {
 	return s.Series
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIEventsV1Event) GetType() OptString {
+func (s *IoK8sAPIEventsV1Event) GetType() OptString {
 	return s.Type
 }
 
@@ -22247,22 +22247,22 @@ type IoK8sAPIEventsV1EventList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIEventsV1EventList) GetApiVersion() OptString {
+func (s *IoK8sAPIEventsV1EventList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIEventsV1EventList) GetItems() []IoK8sAPIEventsV1Event {
+func (s *IoK8sAPIEventsV1EventList) GetItems() []IoK8sAPIEventsV1Event {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIEventsV1EventList) GetKind() OptString {
+func (s *IoK8sAPIEventsV1EventList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIEventsV1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIEventsV1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -22301,12 +22301,12 @@ type IoK8sAPIEventsV1EventSeries struct {
 }
 
 // GetCount returns the value of Count.
-func (s IoK8sAPIEventsV1EventSeries) GetCount() int32 {
+func (s *IoK8sAPIEventsV1EventSeries) GetCount() int32 {
 	return s.Count
 }
 
 // GetLastObservedTime returns the value of LastObservedTime.
-func (s IoK8sAPIEventsV1EventSeries) GetLastObservedTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPIEventsV1EventSeries) GetLastObservedTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.LastObservedTime
 }
 
@@ -22366,87 +22366,87 @@ type IoK8sAPIEventsV1beta1Event struct {
 }
 
 // GetAction returns the value of Action.
-func (s IoK8sAPIEventsV1beta1Event) GetAction() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetAction() OptString {
 	return s.Action
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIEventsV1beta1Event) GetApiVersion() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetDeprecatedCount returns the value of DeprecatedCount.
-func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedCount() OptInt32 {
+func (s *IoK8sAPIEventsV1beta1Event) GetDeprecatedCount() OptInt32 {
 	return s.DeprecatedCount
 }
 
 // GetDeprecatedFirstTimestamp returns the value of DeprecatedFirstTimestamp.
-func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIEventsV1beta1Event) GetDeprecatedFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.DeprecatedFirstTimestamp
 }
 
 // GetDeprecatedLastTimestamp returns the value of DeprecatedLastTimestamp.
-func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIEventsV1beta1Event) GetDeprecatedLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.DeprecatedLastTimestamp
 }
 
 // GetDeprecatedSource returns the value of DeprecatedSource.
-func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedSource() OptIoK8sAPICoreV1EventSource {
+func (s *IoK8sAPIEventsV1beta1Event) GetDeprecatedSource() OptIoK8sAPICoreV1EventSource {
 	return s.DeprecatedSource
 }
 
 // GetEventTime returns the value of EventTime.
-func (s IoK8sAPIEventsV1beta1Event) GetEventTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPIEventsV1beta1Event) GetEventTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.EventTime
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIEventsV1beta1Event) GetKind() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIEventsV1beta1Event) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIEventsV1beta1Event) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetNote returns the value of Note.
-func (s IoK8sAPIEventsV1beta1Event) GetNote() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetNote() OptString {
 	return s.Note
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIEventsV1beta1Event) GetReason() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetReason() OptString {
 	return s.Reason
 }
 
 // GetRegarding returns the value of Regarding.
-func (s IoK8sAPIEventsV1beta1Event) GetRegarding() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIEventsV1beta1Event) GetRegarding() OptIoK8sAPICoreV1ObjectReference {
 	return s.Regarding
 }
 
 // GetRelated returns the value of Related.
-func (s IoK8sAPIEventsV1beta1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
+func (s *IoK8sAPIEventsV1beta1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
 	return s.Related
 }
 
 // GetReportingController returns the value of ReportingController.
-func (s IoK8sAPIEventsV1beta1Event) GetReportingController() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetReportingController() OptString {
 	return s.ReportingController
 }
 
 // GetReportingInstance returns the value of ReportingInstance.
-func (s IoK8sAPIEventsV1beta1Event) GetReportingInstance() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetReportingInstance() OptString {
 	return s.ReportingInstance
 }
 
 // GetSeries returns the value of Series.
-func (s IoK8sAPIEventsV1beta1Event) GetSeries() OptIoK8sAPIEventsV1beta1EventSeries {
+func (s *IoK8sAPIEventsV1beta1Event) GetSeries() OptIoK8sAPIEventsV1beta1EventSeries {
 	return s.Series
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIEventsV1beta1Event) GetType() OptString {
+func (s *IoK8sAPIEventsV1beta1Event) GetType() OptString {
 	return s.Type
 }
 
@@ -22554,22 +22554,22 @@ type IoK8sAPIEventsV1beta1EventList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIEventsV1beta1EventList) GetApiVersion() OptString {
+func (s *IoK8sAPIEventsV1beta1EventList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIEventsV1beta1EventList) GetItems() []IoK8sAPIEventsV1beta1Event {
+func (s *IoK8sAPIEventsV1beta1EventList) GetItems() []IoK8sAPIEventsV1beta1Event {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIEventsV1beta1EventList) GetKind() OptString {
+func (s *IoK8sAPIEventsV1beta1EventList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIEventsV1beta1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIEventsV1beta1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -22606,12 +22606,12 @@ type IoK8sAPIEventsV1beta1EventSeries struct {
 }
 
 // GetCount returns the value of Count.
-func (s IoK8sAPIEventsV1beta1EventSeries) GetCount() int32 {
+func (s *IoK8sAPIEventsV1beta1EventSeries) GetCount() int32 {
 	return s.Count
 }
 
 // GetLastObservedTime returns the value of LastObservedTime.
-func (s IoK8sAPIEventsV1beta1EventSeries) GetLastObservedTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+func (s *IoK8sAPIEventsV1beta1EventSeries) GetLastObservedTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
 	return s.LastObservedTime
 }
 
@@ -22634,7 +22634,7 @@ type IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod struct {
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) GetType() string {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) GetType() string {
 	return s.Type
 }
 
@@ -22662,27 +22662,27 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchema struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetSpec() OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) GetSpec() OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetStatus() OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) GetStatus() OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
 	return s.Status
 }
 
@@ -22729,27 +22729,27 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetMessage() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetReason() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetStatus() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetStatus() OptString {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetType() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetType() OptString {
 	return s.Type
 }
 
@@ -22795,22 +22795,22 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetItems() []IoK8sAPIFlowcontrolV1beta1FlowSchema {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetItems() []IoK8sAPIFlowcontrolV1beta1FlowSchema {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -22853,22 +22853,22 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec struct {
 }
 
 // GetDistinguisherMethod returns the value of DistinguisherMethod.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetDistinguisherMethod() OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetDistinguisherMethod() OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
 	return s.DistinguisherMethod
 }
 
 // GetMatchingPrecedence returns the value of MatchingPrecedence.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetMatchingPrecedence() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetMatchingPrecedence() OptInt32 {
 	return s.MatchingPrecedence
 }
 
 // GetPriorityLevelConfiguration returns the value of PriorityLevelConfiguration.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetPriorityLevelConfiguration() IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetPriorityLevelConfiguration() IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference {
 	return s.PriorityLevelConfiguration
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetRules() []IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetRules() []IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects {
 	return s.Rules
 }
 
@@ -22900,7 +22900,7 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition {
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition {
 	return s.Conditions
 }
 
@@ -22919,7 +22919,7 @@ type IoK8sAPIFlowcontrolV1beta1GroupSubject struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) GetName() string {
 	return s.Name
 }
 
@@ -22939,12 +22939,12 @@ type IoK8sAPIFlowcontrolV1beta1LimitResponse struct {
 }
 
 // GetQueuing returns the value of Queuing.
-func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) GetQueuing() OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
+func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) GetQueuing() OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
 	return s.Queuing
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) GetType() string {
+func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) GetType() string {
 	return s.Type
 }
 
@@ -22978,12 +22978,12 @@ type IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration struct {
 }
 
 // GetAssuredConcurrencyShares returns the value of AssuredConcurrencyShares.
-func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) GetAssuredConcurrencyShares() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) GetAssuredConcurrencyShares() OptInt32 {
 	return s.AssuredConcurrencyShares
 }
 
 // GetLimitResponse returns the value of LimitResponse.
-func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) GetLimitResponse() OptIoK8sAPIFlowcontrolV1beta1LimitResponse {
+func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) GetLimitResponse() OptIoK8sAPIFlowcontrolV1beta1LimitResponse {
 	return s.LimitResponse
 }
 
@@ -23018,12 +23018,12 @@ type IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule struct {
 }
 
 // GetNonResourceURLs returns the value of NonResourceURLs.
-func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) GetNonResourceURLs() []string {
+func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) GetNonResourceURLs() []string {
 	return s.NonResourceURLs
 }
 
 // GetVerbs returns the value of Verbs.
-func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) GetVerbs() []string {
+func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) GetVerbs() []string {
 	return s.Verbs
 }
 
@@ -23058,17 +23058,17 @@ type IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects struct {
 }
 
 // GetNonResourceRules returns the value of NonResourceRules.
-func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetNonResourceRules() []IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule {
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetNonResourceRules() []IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule {
 	return s.NonResourceRules
 }
 
 // GetResourceRules returns the value of ResourceRules.
-func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetResourceRules() []IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule {
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetResourceRules() []IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule {
 	return s.ResourceRules
 }
 
 // GetSubjects returns the value of Subjects.
-func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetSubjects() []IoK8sAPIFlowcontrolV1beta1Subject {
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetSubjects() []IoK8sAPIFlowcontrolV1beta1Subject {
 	return s.Subjects
 }
 
@@ -23104,27 +23104,27 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetSpec() OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetSpec() OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetStatus() OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetStatus() OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus {
 	return s.Status
 }
 
@@ -23173,27 +23173,27 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetMessage() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetReason() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetStatus() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetStatus() OptString {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetType() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetType() OptString {
 	return s.Type
 }
 
@@ -23239,22 +23239,22 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetItems() []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetItems() []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -23290,7 +23290,7 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) GetName() string {
 	return s.Name
 }
 
@@ -23313,12 +23313,12 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec struct {
 }
 
 // GetLimited returns the value of Limited.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) GetLimited() OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) GetLimited() OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration {
 	return s.Limited
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) GetType() string {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) GetType() string {
 	return s.Type
 }
 
@@ -23340,7 +23340,7 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition {
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition {
 	return s.Conditions
 }
 
@@ -23372,17 +23372,17 @@ type IoK8sAPIFlowcontrolV1beta1QueuingConfiguration struct {
 }
 
 // GetHandSize returns the value of HandSize.
-func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetHandSize() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetHandSize() OptInt32 {
 	return s.HandSize
 }
 
 // GetQueueLengthLimit returns the value of QueueLengthLimit.
-func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetQueueLengthLimit() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetQueueLengthLimit() OptInt32 {
 	return s.QueueLengthLimit
 }
 
 // GetQueues returns the value of Queues.
-func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetQueues() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetQueues() OptInt32 {
 	return s.Queues
 }
 
@@ -23431,27 +23431,27 @@ type IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule struct {
 }
 
 // GetApiGroups returns the value of ApiGroups.
-func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetApiGroups() []string {
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetApiGroups() []string {
 	return s.ApiGroups
 }
 
 // GetClusterScope returns the value of ClusterScope.
-func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetClusterScope() OptBool {
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetClusterScope() OptBool {
 	return s.ClusterScope
 }
 
 // GetNamespaces returns the value of Namespaces.
-func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetNamespaces() []string {
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetNamespaces() []string {
 	return s.Namespaces
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetResources() []string {
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetResources() []string {
 	return s.Resources
 }
 
 // GetVerbs returns the value of Verbs.
-func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetVerbs() []string {
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetVerbs() []string {
 	return s.Verbs
 }
 
@@ -23491,12 +23491,12 @@ type IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) GetNamespace() string {
+func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) GetNamespace() string {
 	return s.Namespace
 }
 
@@ -23522,22 +23522,22 @@ type IoK8sAPIFlowcontrolV1beta1Subject struct {
 }
 
 // GetGroup returns the value of Group.
-func (s IoK8sAPIFlowcontrolV1beta1Subject) GetGroup() OptIoK8sAPIFlowcontrolV1beta1GroupSubject {
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) GetGroup() OptIoK8sAPIFlowcontrolV1beta1GroupSubject {
 	return s.Group
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta1Subject) GetKind() string {
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) GetKind() string {
 	return s.Kind
 }
 
 // GetServiceAccount returns the value of ServiceAccount.
-func (s IoK8sAPIFlowcontrolV1beta1Subject) GetServiceAccount() OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject {
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) GetServiceAccount() OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject {
 	return s.ServiceAccount
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPIFlowcontrolV1beta1Subject) GetUser() OptIoK8sAPIFlowcontrolV1beta1UserSubject {
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) GetUser() OptIoK8sAPIFlowcontrolV1beta1UserSubject {
 	return s.User
 }
 
@@ -23569,7 +23569,7 @@ type IoK8sAPIFlowcontrolV1beta1UserSubject struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta1UserSubject) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) GetName() string {
 	return s.Name
 }
 
@@ -23587,7 +23587,7 @@ type IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod struct {
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) GetType() string {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) GetType() string {
 	return s.Type
 }
 
@@ -23615,27 +23615,27 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchema struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetSpec() OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) GetSpec() OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetStatus() OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) GetStatus() OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus {
 	return s.Status
 }
 
@@ -23682,27 +23682,27 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetMessage() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetReason() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetStatus() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetStatus() OptString {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetType() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetType() OptString {
 	return s.Type
 }
 
@@ -23748,22 +23748,22 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetItems() []IoK8sAPIFlowcontrolV1beta2FlowSchema {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetItems() []IoK8sAPIFlowcontrolV1beta2FlowSchema {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -23806,22 +23806,22 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec struct {
 }
 
 // GetDistinguisherMethod returns the value of DistinguisherMethod.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetDistinguisherMethod() OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetDistinguisherMethod() OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod {
 	return s.DistinguisherMethod
 }
 
 // GetMatchingPrecedence returns the value of MatchingPrecedence.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetMatchingPrecedence() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetMatchingPrecedence() OptInt32 {
 	return s.MatchingPrecedence
 }
 
 // GetPriorityLevelConfiguration returns the value of PriorityLevelConfiguration.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetPriorityLevelConfiguration() IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetPriorityLevelConfiguration() IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference {
 	return s.PriorityLevelConfiguration
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetRules() []IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetRules() []IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects {
 	return s.Rules
 }
 
@@ -23853,7 +23853,7 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition {
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition {
 	return s.Conditions
 }
 
@@ -23872,7 +23872,7 @@ type IoK8sAPIFlowcontrolV1beta2GroupSubject struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) GetName() string {
 	return s.Name
 }
 
@@ -23892,12 +23892,12 @@ type IoK8sAPIFlowcontrolV1beta2LimitResponse struct {
 }
 
 // GetQueuing returns the value of Queuing.
-func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) GetQueuing() OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration {
+func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) GetQueuing() OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration {
 	return s.Queuing
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) GetType() string {
+func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) GetType() string {
 	return s.Type
 }
 
@@ -23931,12 +23931,12 @@ type IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration struct {
 }
 
 // GetAssuredConcurrencyShares returns the value of AssuredConcurrencyShares.
-func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) GetAssuredConcurrencyShares() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) GetAssuredConcurrencyShares() OptInt32 {
 	return s.AssuredConcurrencyShares
 }
 
 // GetLimitResponse returns the value of LimitResponse.
-func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) GetLimitResponse() OptIoK8sAPIFlowcontrolV1beta2LimitResponse {
+func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) GetLimitResponse() OptIoK8sAPIFlowcontrolV1beta2LimitResponse {
 	return s.LimitResponse
 }
 
@@ -23971,12 +23971,12 @@ type IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule struct {
 }
 
 // GetNonResourceURLs returns the value of NonResourceURLs.
-func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) GetNonResourceURLs() []string {
+func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) GetNonResourceURLs() []string {
 	return s.NonResourceURLs
 }
 
 // GetVerbs returns the value of Verbs.
-func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) GetVerbs() []string {
+func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) GetVerbs() []string {
 	return s.Verbs
 }
 
@@ -24011,17 +24011,17 @@ type IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects struct {
 }
 
 // GetNonResourceRules returns the value of NonResourceRules.
-func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetNonResourceRules() []IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule {
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetNonResourceRules() []IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule {
 	return s.NonResourceRules
 }
 
 // GetResourceRules returns the value of ResourceRules.
-func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetResourceRules() []IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule {
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetResourceRules() []IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule {
 	return s.ResourceRules
 }
 
 // GetSubjects returns the value of Subjects.
-func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetSubjects() []IoK8sAPIFlowcontrolV1beta2Subject {
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetSubjects() []IoK8sAPIFlowcontrolV1beta2Subject {
 	return s.Subjects
 }
 
@@ -24057,27 +24057,27 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetSpec() OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetSpec() OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetStatus() OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetStatus() OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
 	return s.Status
 }
 
@@ -24126,27 +24126,27 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetMessage() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetReason() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetStatus() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetStatus() OptString {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetType() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetType() OptString {
 	return s.Type
 }
 
@@ -24192,22 +24192,22 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetApiVersion() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetItems() []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetItems() []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetKind() OptString {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -24243,7 +24243,7 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) GetName() string {
 	return s.Name
 }
 
@@ -24266,12 +24266,12 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec struct {
 }
 
 // GetLimited returns the value of Limited.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) GetLimited() OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) GetLimited() OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
 	return s.Limited
 }
 
 // GetType returns the value of Type.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) GetType() string {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) GetType() string {
 	return s.Type
 }
 
@@ -24293,7 +24293,7 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition {
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition {
 	return s.Conditions
 }
 
@@ -24325,17 +24325,17 @@ type IoK8sAPIFlowcontrolV1beta2QueuingConfiguration struct {
 }
 
 // GetHandSize returns the value of HandSize.
-func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetHandSize() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetHandSize() OptInt32 {
 	return s.HandSize
 }
 
 // GetQueueLengthLimit returns the value of QueueLengthLimit.
-func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetQueueLengthLimit() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetQueueLengthLimit() OptInt32 {
 	return s.QueueLengthLimit
 }
 
 // GetQueues returns the value of Queues.
-func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetQueues() OptInt32 {
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetQueues() OptInt32 {
 	return s.Queues
 }
 
@@ -24384,27 +24384,27 @@ type IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule struct {
 }
 
 // GetApiGroups returns the value of ApiGroups.
-func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetApiGroups() []string {
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetApiGroups() []string {
 	return s.ApiGroups
 }
 
 // GetClusterScope returns the value of ClusterScope.
-func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetClusterScope() OptBool {
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetClusterScope() OptBool {
 	return s.ClusterScope
 }
 
 // GetNamespaces returns the value of Namespaces.
-func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetNamespaces() []string {
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetNamespaces() []string {
 	return s.Namespaces
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetResources() []string {
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetResources() []string {
 	return s.Resources
 }
 
 // GetVerbs returns the value of Verbs.
-func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetVerbs() []string {
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetVerbs() []string {
 	return s.Verbs
 }
 
@@ -24444,12 +24444,12 @@ type IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) GetNamespace() string {
+func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) GetNamespace() string {
 	return s.Namespace
 }
 
@@ -24475,22 +24475,22 @@ type IoK8sAPIFlowcontrolV1beta2Subject struct {
 }
 
 // GetGroup returns the value of Group.
-func (s IoK8sAPIFlowcontrolV1beta2Subject) GetGroup() OptIoK8sAPIFlowcontrolV1beta2GroupSubject {
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) GetGroup() OptIoK8sAPIFlowcontrolV1beta2GroupSubject {
 	return s.Group
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIFlowcontrolV1beta2Subject) GetKind() string {
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) GetKind() string {
 	return s.Kind
 }
 
 // GetServiceAccount returns the value of ServiceAccount.
-func (s IoK8sAPIFlowcontrolV1beta2Subject) GetServiceAccount() OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) GetServiceAccount() OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
 	return s.ServiceAccount
 }
 
 // GetUser returns the value of User.
-func (s IoK8sAPIFlowcontrolV1beta2Subject) GetUser() OptIoK8sAPIFlowcontrolV1beta2UserSubject {
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) GetUser() OptIoK8sAPIFlowcontrolV1beta2UserSubject {
 	return s.User
 }
 
@@ -24522,7 +24522,7 @@ type IoK8sAPIFlowcontrolV1beta2UserSubject struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIFlowcontrolV1beta2UserSubject) GetName() string {
+func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) GetName() string {
 	return s.Name
 }
 
@@ -24557,17 +24557,17 @@ type IoK8sAPINetworkingV1HTTPIngressPath struct {
 }
 
 // GetBackend returns the value of Backend.
-func (s IoK8sAPINetworkingV1HTTPIngressPath) GetBackend() IoK8sAPINetworkingV1IngressBackend {
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) GetBackend() IoK8sAPINetworkingV1IngressBackend {
 	return s.Backend
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sAPINetworkingV1HTTPIngressPath) GetPath() OptString {
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) GetPath() OptString {
 	return s.Path
 }
 
 // GetPathType returns the value of PathType.
-func (s IoK8sAPINetworkingV1HTTPIngressPath) GetPathType() string {
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) GetPathType() string {
 	return s.PathType
 }
 
@@ -24597,7 +24597,7 @@ type IoK8sAPINetworkingV1HTTPIngressRuleValue struct {
 }
 
 // GetPaths returns the value of Paths.
-func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) GetPaths() []IoK8sAPINetworkingV1HTTPIngressPath {
+func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) GetPaths() []IoK8sAPINetworkingV1HTTPIngressPath {
 	return s.Paths
 }
 
@@ -24619,12 +24619,12 @@ type IoK8sAPINetworkingV1IPBlock struct {
 }
 
 // GetCidr returns the value of Cidr.
-func (s IoK8sAPINetworkingV1IPBlock) GetCidr() string {
+func (s *IoK8sAPINetworkingV1IPBlock) GetCidr() string {
 	return s.Cidr
 }
 
 // GetExcept returns the value of Except.
-func (s IoK8sAPINetworkingV1IPBlock) GetExcept() []string {
+func (s *IoK8sAPINetworkingV1IPBlock) GetExcept() []string {
 	return s.Except
 }
 
@@ -24657,27 +24657,27 @@ type IoK8sAPINetworkingV1Ingress struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINetworkingV1Ingress) GetApiVersion() OptString {
+func (s *IoK8sAPINetworkingV1Ingress) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1Ingress) GetKind() OptString {
+func (s *IoK8sAPINetworkingV1Ingress) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINetworkingV1Ingress) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPINetworkingV1Ingress) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPINetworkingV1Ingress) GetSpec() OptIoK8sAPINetworkingV1IngressSpec {
+func (s *IoK8sAPINetworkingV1Ingress) GetSpec() OptIoK8sAPINetworkingV1IngressSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPINetworkingV1Ingress) GetStatus() OptIoK8sAPINetworkingV1IngressStatus {
+func (s *IoK8sAPINetworkingV1Ingress) GetStatus() OptIoK8sAPINetworkingV1IngressStatus {
 	return s.Status
 }
 
@@ -24717,12 +24717,12 @@ type IoK8sAPINetworkingV1IngressBackend struct {
 }
 
 // GetResource returns the value of Resource.
-func (s IoK8sAPINetworkingV1IngressBackend) GetResource() OptIoK8sAPICoreV1TypedLocalObjectReference {
+func (s *IoK8sAPINetworkingV1IngressBackend) GetResource() OptIoK8sAPICoreV1TypedLocalObjectReference {
 	return s.Resource
 }
 
 // GetService returns the value of Service.
-func (s IoK8sAPINetworkingV1IngressBackend) GetService() OptIoK8sAPINetworkingV1IngressServiceBackend {
+func (s *IoK8sAPINetworkingV1IngressBackend) GetService() OptIoK8sAPINetworkingV1IngressServiceBackend {
 	return s.Service
 }
 
@@ -24755,22 +24755,22 @@ type IoK8sAPINetworkingV1IngressClass struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINetworkingV1IngressClass) GetApiVersion() OptString {
+func (s *IoK8sAPINetworkingV1IngressClass) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1IngressClass) GetKind() OptString {
+func (s *IoK8sAPINetworkingV1IngressClass) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINetworkingV1IngressClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPINetworkingV1IngressClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPINetworkingV1IngressClass) GetSpec() OptIoK8sAPINetworkingV1IngressClassSpec {
+func (s *IoK8sAPINetworkingV1IngressClass) GetSpec() OptIoK8sAPINetworkingV1IngressClassSpec {
 	return s.Spec
 }
 
@@ -24813,22 +24813,22 @@ type IoK8sAPINetworkingV1IngressClassList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINetworkingV1IngressClassList) GetApiVersion() OptString {
+func (s *IoK8sAPINetworkingV1IngressClassList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPINetworkingV1IngressClassList) GetItems() []IoK8sAPINetworkingV1IngressClass {
+func (s *IoK8sAPINetworkingV1IngressClassList) GetItems() []IoK8sAPINetworkingV1IngressClass {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1IngressClassList) GetKind() OptString {
+func (s *IoK8sAPINetworkingV1IngressClassList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINetworkingV1IngressClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPINetworkingV1IngressClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -24876,27 +24876,27 @@ type IoK8sAPINetworkingV1IngressClassParametersReference struct {
 }
 
 // GetApiGroup returns the value of ApiGroup.
-func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetApiGroup() OptString {
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) GetApiGroup() OptString {
 	return s.ApiGroup
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetKind() string {
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetName() string {
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetNamespace() OptString {
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) GetNamespace() OptString {
 	return s.Namespace
 }
 
 // GetScope returns the value of Scope.
-func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetScope() OptString {
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) GetScope() OptString {
 	return s.Scope
 }
 
@@ -24938,12 +24938,12 @@ type IoK8sAPINetworkingV1IngressClassSpec struct {
 }
 
 // GetController returns the value of Controller.
-func (s IoK8sAPINetworkingV1IngressClassSpec) GetController() OptString {
+func (s *IoK8sAPINetworkingV1IngressClassSpec) GetController() OptString {
 	return s.Controller
 }
 
 // GetParameters returns the value of Parameters.
-func (s IoK8sAPINetworkingV1IngressClassSpec) GetParameters() OptIoK8sAPINetworkingV1IngressClassParametersReference {
+func (s *IoK8sAPINetworkingV1IngressClassSpec) GetParameters() OptIoK8sAPINetworkingV1IngressClassParametersReference {
 	return s.Parameters
 }
 
@@ -24974,22 +24974,22 @@ type IoK8sAPINetworkingV1IngressList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINetworkingV1IngressList) GetApiVersion() OptString {
+func (s *IoK8sAPINetworkingV1IngressList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPINetworkingV1IngressList) GetItems() []IoK8sAPINetworkingV1Ingress {
+func (s *IoK8sAPINetworkingV1IngressList) GetItems() []IoK8sAPINetworkingV1Ingress {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1IngressList) GetKind() OptString {
+func (s *IoK8sAPINetworkingV1IngressList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINetworkingV1IngressList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPINetworkingV1IngressList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -25044,12 +25044,12 @@ type IoK8sAPINetworkingV1IngressRule struct {
 }
 
 // GetHost returns the value of Host.
-func (s IoK8sAPINetworkingV1IngressRule) GetHost() OptString {
+func (s *IoK8sAPINetworkingV1IngressRule) GetHost() OptString {
 	return s.Host
 }
 
 // GetHTTP returns the value of HTTP.
-func (s IoK8sAPINetworkingV1IngressRule) GetHTTP() OptIoK8sAPINetworkingV1HTTPIngressRuleValue {
+func (s *IoK8sAPINetworkingV1IngressRule) GetHTTP() OptIoK8sAPINetworkingV1HTTPIngressRuleValue {
 	return s.HTTP
 }
 
@@ -25072,12 +25072,12 @@ type IoK8sAPINetworkingV1IngressServiceBackend struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPINetworkingV1IngressServiceBackend) GetName() string {
+func (s *IoK8sAPINetworkingV1IngressServiceBackend) GetName() string {
 	return s.Name
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPINetworkingV1IngressServiceBackend) GetPort() OptIoK8sAPINetworkingV1ServiceBackendPort {
+func (s *IoK8sAPINetworkingV1IngressServiceBackend) GetPort() OptIoK8sAPINetworkingV1ServiceBackendPort {
 	return s.Port
 }
 
@@ -25114,22 +25114,22 @@ type IoK8sAPINetworkingV1IngressSpec struct {
 }
 
 // GetDefaultBackend returns the value of DefaultBackend.
-func (s IoK8sAPINetworkingV1IngressSpec) GetDefaultBackend() OptIoK8sAPINetworkingV1IngressBackend {
+func (s *IoK8sAPINetworkingV1IngressSpec) GetDefaultBackend() OptIoK8sAPINetworkingV1IngressBackend {
 	return s.DefaultBackend
 }
 
 // GetIngressClassName returns the value of IngressClassName.
-func (s IoK8sAPINetworkingV1IngressSpec) GetIngressClassName() OptString {
+func (s *IoK8sAPINetworkingV1IngressSpec) GetIngressClassName() OptString {
 	return s.IngressClassName
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPINetworkingV1IngressSpec) GetRules() []IoK8sAPINetworkingV1IngressRule {
+func (s *IoK8sAPINetworkingV1IngressSpec) GetRules() []IoK8sAPINetworkingV1IngressRule {
 	return s.Rules
 }
 
 // GetTLS returns the value of TLS.
-func (s IoK8sAPINetworkingV1IngressSpec) GetTLS() []IoK8sAPINetworkingV1IngressTLS {
+func (s *IoK8sAPINetworkingV1IngressSpec) GetTLS() []IoK8sAPINetworkingV1IngressTLS {
 	return s.TLS
 }
 
@@ -25160,7 +25160,7 @@ type IoK8sAPINetworkingV1IngressStatus struct {
 }
 
 // GetLoadBalancer returns the value of LoadBalancer.
-func (s IoK8sAPINetworkingV1IngressStatus) GetLoadBalancer() OptIoK8sAPICoreV1LoadBalancerStatus {
+func (s *IoK8sAPINetworkingV1IngressStatus) GetLoadBalancer() OptIoK8sAPICoreV1LoadBalancerStatus {
 	return s.LoadBalancer
 }
 
@@ -25184,12 +25184,12 @@ type IoK8sAPINetworkingV1IngressTLS struct {
 }
 
 // GetHosts returns the value of Hosts.
-func (s IoK8sAPINetworkingV1IngressTLS) GetHosts() []string {
+func (s *IoK8sAPINetworkingV1IngressTLS) GetHosts() []string {
 	return s.Hosts
 }
 
 // GetSecretName returns the value of SecretName.
-func (s IoK8sAPINetworkingV1IngressTLS) GetSecretName() OptString {
+func (s *IoK8sAPINetworkingV1IngressTLS) GetSecretName() OptString {
 	return s.SecretName
 }
 
@@ -25219,22 +25219,22 @@ type IoK8sAPINetworkingV1NetworkPolicy struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINetworkingV1NetworkPolicy) GetApiVersion() OptString {
+func (s *IoK8sAPINetworkingV1NetworkPolicy) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1NetworkPolicy) GetKind() OptString {
+func (s *IoK8sAPINetworkingV1NetworkPolicy) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINetworkingV1NetworkPolicy) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPINetworkingV1NetworkPolicy) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPINetworkingV1NetworkPolicy) GetSpec() OptIoK8sAPINetworkingV1NetworkPolicySpec {
+func (s *IoK8sAPINetworkingV1NetworkPolicy) GetSpec() OptIoK8sAPINetworkingV1NetworkPolicySpec {
 	return s.Spec
 }
 
@@ -25279,12 +25279,12 @@ type IoK8sAPINetworkingV1NetworkPolicyEgressRule struct {
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) GetPorts() []IoK8sAPINetworkingV1NetworkPolicyPort {
+func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) GetPorts() []IoK8sAPINetworkingV1NetworkPolicyPort {
 	return s.Ports
 }
 
 // GetTo returns the value of To.
-func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) GetTo() []IoK8sAPINetworkingV1NetworkPolicyPeer {
+func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) GetTo() []IoK8sAPINetworkingV1NetworkPolicyPeer {
 	return s.To
 }
 
@@ -25315,12 +25315,12 @@ type IoK8sAPINetworkingV1NetworkPolicyIngressRule struct {
 }
 
 // GetFrom returns the value of From.
-func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) GetFrom() []IoK8sAPINetworkingV1NetworkPolicyPeer {
+func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) GetFrom() []IoK8sAPINetworkingV1NetworkPolicyPeer {
 	return s.From
 }
 
 // GetPorts returns the value of Ports.
-func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) GetPorts() []IoK8sAPINetworkingV1NetworkPolicyPort {
+func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) GetPorts() []IoK8sAPINetworkingV1NetworkPolicyPort {
 	return s.Ports
 }
 
@@ -25351,22 +25351,22 @@ type IoK8sAPINetworkingV1NetworkPolicyList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINetworkingV1NetworkPolicyList) GetApiVersion() OptString {
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPINetworkingV1NetworkPolicyList) GetItems() []IoK8sAPINetworkingV1NetworkPolicy {
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) GetItems() []IoK8sAPINetworkingV1NetworkPolicy {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINetworkingV1NetworkPolicyList) GetKind() OptString {
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINetworkingV1NetworkPolicyList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -25403,17 +25403,17 @@ type IoK8sAPINetworkingV1NetworkPolicyPeer struct {
 }
 
 // GetIpBlock returns the value of IpBlock.
-func (s IoK8sAPINetworkingV1NetworkPolicyPeer) GetIpBlock() OptIoK8sAPINetworkingV1IPBlock {
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) GetIpBlock() OptIoK8sAPINetworkingV1IPBlock {
 	return s.IpBlock
 }
 
 // GetNamespaceSelector returns the value of NamespaceSelector.
-func (s IoK8sAPINetworkingV1NetworkPolicyPeer) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.NamespaceSelector
 }
 
 // GetPodSelector returns the value of PodSelector.
-func (s IoK8sAPINetworkingV1NetworkPolicyPeer) GetPodSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) GetPodSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.PodSelector
 }
 
@@ -25448,17 +25448,17 @@ type IoK8sAPINetworkingV1NetworkPolicyPort struct {
 }
 
 // GetEndPort returns the value of EndPort.
-func (s IoK8sAPINetworkingV1NetworkPolicyPort) GetEndPort() OptInt32 {
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) GetEndPort() OptInt32 {
 	return s.EndPort
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sAPINetworkingV1NetworkPolicyPort) GetPort() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) GetPort() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.Port
 }
 
 // GetProtocol returns the value of Protocol.
-func (s IoK8sAPINetworkingV1NetworkPolicyPort) GetProtocol() OptString {
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) GetProtocol() OptString {
 	return s.Protocol
 }
 
@@ -25507,22 +25507,22 @@ type IoK8sAPINetworkingV1NetworkPolicySpec struct {
 }
 
 // GetEgress returns the value of Egress.
-func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetEgress() []IoK8sAPINetworkingV1NetworkPolicyEgressRule {
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) GetEgress() []IoK8sAPINetworkingV1NetworkPolicyEgressRule {
 	return s.Egress
 }
 
 // GetIngress returns the value of Ingress.
-func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetIngress() []IoK8sAPINetworkingV1NetworkPolicyIngressRule {
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) GetIngress() []IoK8sAPINetworkingV1NetworkPolicyIngressRule {
 	return s.Ingress
 }
 
 // GetPodSelector returns the value of PodSelector.
-func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetPodSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) GetPodSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.PodSelector
 }
 
 // GetPolicyTypes returns the value of PolicyTypes.
-func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetPolicyTypes() []string {
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) GetPolicyTypes() []string {
 	return s.PolicyTypes
 }
 
@@ -25557,12 +25557,12 @@ type IoK8sAPINetworkingV1ServiceBackendPort struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPINetworkingV1ServiceBackendPort) GetName() OptString {
+func (s *IoK8sAPINetworkingV1ServiceBackendPort) GetName() OptString {
 	return s.Name
 }
 
 // GetNumber returns the value of Number.
-func (s IoK8sAPINetworkingV1ServiceBackendPort) GetNumber() OptInt32 {
+func (s *IoK8sAPINetworkingV1ServiceBackendPort) GetNumber() OptInt32 {
 	return s.Number
 }
 
@@ -25584,7 +25584,7 @@ type IoK8sAPINodeV1Overhead struct {
 }
 
 // GetPodFixed returns the value of PodFixed.
-func (s IoK8sAPINodeV1Overhead) GetPodFixed() OptIoK8sAPINodeV1OverheadPodFixed {
+func (s *IoK8sAPINodeV1Overhead) GetPodFixed() OptIoK8sAPINodeV1OverheadPodFixed {
 	return s.PodFixed
 }
 
@@ -25633,32 +25633,32 @@ type IoK8sAPINodeV1RuntimeClass struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINodeV1RuntimeClass) GetApiVersion() OptString {
+func (s *IoK8sAPINodeV1RuntimeClass) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetHandler returns the value of Handler.
-func (s IoK8sAPINodeV1RuntimeClass) GetHandler() string {
+func (s *IoK8sAPINodeV1RuntimeClass) GetHandler() string {
 	return s.Handler
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINodeV1RuntimeClass) GetKind() OptString {
+func (s *IoK8sAPINodeV1RuntimeClass) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINodeV1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPINodeV1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetOverhead returns the value of Overhead.
-func (s IoK8sAPINodeV1RuntimeClass) GetOverhead() OptIoK8sAPINodeV1Overhead {
+func (s *IoK8sAPINodeV1RuntimeClass) GetOverhead() OptIoK8sAPINodeV1Overhead {
 	return s.Overhead
 }
 
 // GetScheduling returns the value of Scheduling.
-func (s IoK8sAPINodeV1RuntimeClass) GetScheduling() OptIoK8sAPINodeV1Scheduling {
+func (s *IoK8sAPINodeV1RuntimeClass) GetScheduling() OptIoK8sAPINodeV1Scheduling {
 	return s.Scheduling
 }
 
@@ -25711,22 +25711,22 @@ type IoK8sAPINodeV1RuntimeClassList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINodeV1RuntimeClassList) GetApiVersion() OptString {
+func (s *IoK8sAPINodeV1RuntimeClassList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPINodeV1RuntimeClassList) GetItems() []IoK8sAPINodeV1RuntimeClass {
+func (s *IoK8sAPINodeV1RuntimeClassList) GetItems() []IoK8sAPINodeV1RuntimeClass {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINodeV1RuntimeClassList) GetKind() OptString {
+func (s *IoK8sAPINodeV1RuntimeClassList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINodeV1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPINodeV1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -25766,12 +25766,12 @@ type IoK8sAPINodeV1Scheduling struct {
 }
 
 // GetNodeSelector returns the value of NodeSelector.
-func (s IoK8sAPINodeV1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1SchedulingNodeSelector {
+func (s *IoK8sAPINodeV1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1SchedulingNodeSelector {
 	return s.NodeSelector
 }
 
 // GetTolerations returns the value of Tolerations.
-func (s IoK8sAPINodeV1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
+func (s *IoK8sAPINodeV1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
 	return s.Tolerations
 }
 
@@ -25808,7 +25808,7 @@ type IoK8sAPINodeV1alpha1Overhead struct {
 }
 
 // GetPodFixed returns the value of PodFixed.
-func (s IoK8sAPINodeV1alpha1Overhead) GetPodFixed() OptIoK8sAPINodeV1alpha1OverheadPodFixed {
+func (s *IoK8sAPINodeV1alpha1Overhead) GetPodFixed() OptIoK8sAPINodeV1alpha1OverheadPodFixed {
 	return s.PodFixed
 }
 
@@ -25849,22 +25849,22 @@ type IoK8sAPINodeV1alpha1RuntimeClass struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINodeV1alpha1RuntimeClass) GetApiVersion() OptString {
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINodeV1alpha1RuntimeClass) GetKind() OptString {
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINodeV1alpha1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPINodeV1alpha1RuntimeClass) GetSpec() IoK8sAPINodeV1alpha1RuntimeClassSpec {
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) GetSpec() IoK8sAPINodeV1alpha1RuntimeClassSpec {
 	return s.Spec
 }
 
@@ -25907,22 +25907,22 @@ type IoK8sAPINodeV1alpha1RuntimeClassList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetApiVersion() OptString {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetItems() []IoK8sAPINodeV1alpha1RuntimeClass {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) GetItems() []IoK8sAPINodeV1alpha1RuntimeClass {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetKind() OptString {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -25967,17 +25967,17 @@ type IoK8sAPINodeV1alpha1RuntimeClassSpec struct {
 }
 
 // GetOverhead returns the value of Overhead.
-func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) GetOverhead() OptIoK8sAPINodeV1alpha1Overhead {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) GetOverhead() OptIoK8sAPINodeV1alpha1Overhead {
 	return s.Overhead
 }
 
 // GetRuntimeHandler returns the value of RuntimeHandler.
-func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) GetRuntimeHandler() string {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) GetRuntimeHandler() string {
 	return s.RuntimeHandler
 }
 
 // GetScheduling returns the value of Scheduling.
-func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) GetScheduling() OptIoK8sAPINodeV1alpha1Scheduling {
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) GetScheduling() OptIoK8sAPINodeV1alpha1Scheduling {
 	return s.Scheduling
 }
 
@@ -26010,12 +26010,12 @@ type IoK8sAPINodeV1alpha1Scheduling struct {
 }
 
 // GetNodeSelector returns the value of NodeSelector.
-func (s IoK8sAPINodeV1alpha1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1alpha1SchedulingNodeSelector {
+func (s *IoK8sAPINodeV1alpha1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1alpha1SchedulingNodeSelector {
 	return s.NodeSelector
 }
 
 // GetTolerations returns the value of Tolerations.
-func (s IoK8sAPINodeV1alpha1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
+func (s *IoK8sAPINodeV1alpha1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
 	return s.Tolerations
 }
 
@@ -26052,7 +26052,7 @@ type IoK8sAPINodeV1beta1Overhead struct {
 }
 
 // GetPodFixed returns the value of PodFixed.
-func (s IoK8sAPINodeV1beta1Overhead) GetPodFixed() OptIoK8sAPINodeV1beta1OverheadPodFixed {
+func (s *IoK8sAPINodeV1beta1Overhead) GetPodFixed() OptIoK8sAPINodeV1beta1OverheadPodFixed {
 	return s.PodFixed
 }
 
@@ -26101,32 +26101,32 @@ type IoK8sAPINodeV1beta1RuntimeClass struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINodeV1beta1RuntimeClass) GetApiVersion() OptString {
+func (s *IoK8sAPINodeV1beta1RuntimeClass) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetHandler returns the value of Handler.
-func (s IoK8sAPINodeV1beta1RuntimeClass) GetHandler() string {
+func (s *IoK8sAPINodeV1beta1RuntimeClass) GetHandler() string {
 	return s.Handler
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINodeV1beta1RuntimeClass) GetKind() OptString {
+func (s *IoK8sAPINodeV1beta1RuntimeClass) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINodeV1beta1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPINodeV1beta1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetOverhead returns the value of Overhead.
-func (s IoK8sAPINodeV1beta1RuntimeClass) GetOverhead() OptIoK8sAPINodeV1beta1Overhead {
+func (s *IoK8sAPINodeV1beta1RuntimeClass) GetOverhead() OptIoK8sAPINodeV1beta1Overhead {
 	return s.Overhead
 }
 
 // GetScheduling returns the value of Scheduling.
-func (s IoK8sAPINodeV1beta1RuntimeClass) GetScheduling() OptIoK8sAPINodeV1beta1Scheduling {
+func (s *IoK8sAPINodeV1beta1RuntimeClass) GetScheduling() OptIoK8sAPINodeV1beta1Scheduling {
 	return s.Scheduling
 }
 
@@ -26179,22 +26179,22 @@ type IoK8sAPINodeV1beta1RuntimeClassList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPINodeV1beta1RuntimeClassList) GetApiVersion() OptString {
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPINodeV1beta1RuntimeClassList) GetItems() []IoK8sAPINodeV1beta1RuntimeClass {
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) GetItems() []IoK8sAPINodeV1beta1RuntimeClass {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPINodeV1beta1RuntimeClassList) GetKind() OptString {
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPINodeV1beta1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -26234,12 +26234,12 @@ type IoK8sAPINodeV1beta1Scheduling struct {
 }
 
 // GetNodeSelector returns the value of NodeSelector.
-func (s IoK8sAPINodeV1beta1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1beta1SchedulingNodeSelector {
+func (s *IoK8sAPINodeV1beta1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1beta1SchedulingNodeSelector {
 	return s.NodeSelector
 }
 
 // GetTolerations returns the value of Tolerations.
-func (s IoK8sAPINodeV1beta1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
+func (s *IoK8sAPINodeV1beta1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
 	return s.Tolerations
 }
 
@@ -26286,27 +26286,27 @@ type IoK8sAPIPolicyV1PodDisruptionBudget struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetApiVersion() OptString {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetKind() OptString {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetSpec() OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) GetSpec() OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetStatus() OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) GetStatus() OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus {
 	return s.Status
 }
 
@@ -26355,22 +26355,22 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetApiVersion() OptString {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetItems() []IoK8sAPIPolicyV1PodDisruptionBudget {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) GetItems() []IoK8sAPIPolicyV1PodDisruptionBudget {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetKind() OptString {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -26407,17 +26407,17 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
 }
 
 // GetMaxUnavailable returns the value of MaxUnavailable.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MaxUnavailable
 }
 
 // GetMinAvailable returns the value of MinAvailable.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetMinAvailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetMinAvailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MinAvailable
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
@@ -26476,37 +26476,37 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
 	return s.Conditions
 }
 
 // GetCurrentHealthy returns the value of CurrentHealthy.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetCurrentHealthy() int32 {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetCurrentHealthy() int32 {
 	return s.CurrentHealthy
 }
 
 // GetDesiredHealthy returns the value of DesiredHealthy.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDesiredHealthy() int32 {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDesiredHealthy() int32 {
 	return s.DesiredHealthy
 }
 
 // GetDisruptedPods returns the value of DisruptedPods.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDisruptedPods() OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDisruptedPods() OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
 	return s.DisruptedPods
 }
 
 // GetDisruptionsAllowed returns the value of DisruptionsAllowed.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDisruptionsAllowed() int32 {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDisruptionsAllowed() int32 {
 	return s.DisruptionsAllowed
 }
 
 // GetExpectedPods returns the value of ExpectedPods.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetExpectedPods() int32 {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetExpectedPods() int32 {
 	return s.ExpectedPods
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
@@ -26573,7 +26573,7 @@ type IoK8sAPIPolicyV1beta1AllowedCSIDriver struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) GetName() string {
+func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) GetName() string {
 	return s.Name
 }
 
@@ -26590,7 +26590,7 @@ type IoK8sAPIPolicyV1beta1AllowedFlexVolume struct {
 }
 
 // GetDriver returns the value of Driver.
-func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) GetDriver() string {
+func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) GetDriver() string {
 	return s.Driver
 }
 
@@ -26614,12 +26614,12 @@ type IoK8sAPIPolicyV1beta1AllowedHostPath struct {
 }
 
 // GetPathPrefix returns the value of PathPrefix.
-func (s IoK8sAPIPolicyV1beta1AllowedHostPath) GetPathPrefix() OptString {
+func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) GetPathPrefix() OptString {
 	return s.PathPrefix
 }
 
 // GetReadOnly returns the value of ReadOnly.
-func (s IoK8sAPIPolicyV1beta1AllowedHostPath) GetReadOnly() OptBool {
+func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) GetReadOnly() OptBool {
 	return s.ReadOnly
 }
 
@@ -26644,12 +26644,12 @@ type IoK8sAPIPolicyV1beta1FSGroupStrategyOptions struct {
 }
 
 // GetRanges returns the value of Ranges.
-func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
 	return s.Ranges
 }
 
 // GetRule returns the value of Rule.
-func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) GetRule() OptString {
+func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) GetRule() OptString {
 	return s.Rule
 }
 
@@ -26674,12 +26674,12 @@ type IoK8sAPIPolicyV1beta1HostPortRange struct {
 }
 
 // GetMax returns the value of Max.
-func (s IoK8sAPIPolicyV1beta1HostPortRange) GetMax() int32 {
+func (s *IoK8sAPIPolicyV1beta1HostPortRange) GetMax() int32 {
 	return s.Max
 }
 
 // GetMin returns the value of Min.
-func (s IoK8sAPIPolicyV1beta1HostPortRange) GetMin() int32 {
+func (s *IoK8sAPIPolicyV1beta1HostPortRange) GetMin() int32 {
 	return s.Min
 }
 
@@ -26703,12 +26703,12 @@ type IoK8sAPIPolicyV1beta1IDRange struct {
 }
 
 // GetMax returns the value of Max.
-func (s IoK8sAPIPolicyV1beta1IDRange) GetMax() int64 {
+func (s *IoK8sAPIPolicyV1beta1IDRange) GetMax() int64 {
 	return s.Max
 }
 
 // GetMin returns the value of Min.
-func (s IoK8sAPIPolicyV1beta1IDRange) GetMin() int64 {
+func (s *IoK8sAPIPolicyV1beta1IDRange) GetMin() int64 {
 	return s.Min
 }
 
@@ -26740,27 +26740,27 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudget struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetApiVersion() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetKind() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetSpec() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetSpec() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetStatus() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetStatus() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
 	return s.Status
 }
 
@@ -26811,22 +26811,22 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetApiVersion() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetItems() []IoK8sAPIPolicyV1beta1PodDisruptionBudget {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetItems() []IoK8sAPIPolicyV1beta1PodDisruptionBudget {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetKind() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -26864,17 +26864,17 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
 }
 
 // GetMaxUnavailable returns the value of MaxUnavailable.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MaxUnavailable
 }
 
 // GetMinAvailable returns the value of MinAvailable.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetMinAvailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetMinAvailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
 	return s.MinAvailable
 }
 
 // GetSelector returns the value of Selector.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.Selector
 }
 
@@ -26933,37 +26933,37 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
 	return s.Conditions
 }
 
 // GetCurrentHealthy returns the value of CurrentHealthy.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetCurrentHealthy() int32 {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetCurrentHealthy() int32 {
 	return s.CurrentHealthy
 }
 
 // GetDesiredHealthy returns the value of DesiredHealthy.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDesiredHealthy() int32 {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDesiredHealthy() int32 {
 	return s.DesiredHealthy
 }
 
 // GetDisruptedPods returns the value of DisruptedPods.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDisruptedPods() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDisruptedPods() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
 	return s.DisruptedPods
 }
 
 // GetDisruptionsAllowed returns the value of DisruptionsAllowed.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDisruptionsAllowed() int32 {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDisruptionsAllowed() int32 {
 	return s.DisruptionsAllowed
 }
 
 // GetExpectedPods returns the value of ExpectedPods.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetExpectedPods() int32 {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetExpectedPods() int32 {
 	return s.ExpectedPods
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetObservedGeneration() OptInt64 {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
@@ -27039,22 +27039,22 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicy struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetApiVersion() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetKind() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetSpec() OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetSpec() OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
 	return s.Spec
 }
 
@@ -27097,22 +27097,22 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicyList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetApiVersion() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetItems() []IoK8sAPIPolicyV1beta1PodSecurityPolicy {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetItems() []IoK8sAPIPolicyV1beta1PodSecurityPolicy {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetKind() OptString {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -27213,122 +27213,122 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 }
 
 // GetAllowPrivilegeEscalation returns the value of AllowPrivilegeEscalation.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowPrivilegeEscalation() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowPrivilegeEscalation() OptBool {
 	return s.AllowPrivilegeEscalation
 }
 
 // GetAllowedCSIDrivers returns the value of AllowedCSIDrivers.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedCSIDrivers() []IoK8sAPIPolicyV1beta1AllowedCSIDriver {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedCSIDrivers() []IoK8sAPIPolicyV1beta1AllowedCSIDriver {
 	return s.AllowedCSIDrivers
 }
 
 // GetAllowedCapabilities returns the value of AllowedCapabilities.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedCapabilities() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedCapabilities() []string {
 	return s.AllowedCapabilities
 }
 
 // GetAllowedFlexVolumes returns the value of AllowedFlexVolumes.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedFlexVolumes() []IoK8sAPIPolicyV1beta1AllowedFlexVolume {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedFlexVolumes() []IoK8sAPIPolicyV1beta1AllowedFlexVolume {
 	return s.AllowedFlexVolumes
 }
 
 // GetAllowedHostPaths returns the value of AllowedHostPaths.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedHostPaths() []IoK8sAPIPolicyV1beta1AllowedHostPath {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedHostPaths() []IoK8sAPIPolicyV1beta1AllowedHostPath {
 	return s.AllowedHostPaths
 }
 
 // GetAllowedProcMountTypes returns the value of AllowedProcMountTypes.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedProcMountTypes() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedProcMountTypes() []string {
 	return s.AllowedProcMountTypes
 }
 
 // GetAllowedUnsafeSysctls returns the value of AllowedUnsafeSysctls.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedUnsafeSysctls() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedUnsafeSysctls() []string {
 	return s.AllowedUnsafeSysctls
 }
 
 // GetDefaultAddCapabilities returns the value of DefaultAddCapabilities.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetDefaultAddCapabilities() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetDefaultAddCapabilities() []string {
 	return s.DefaultAddCapabilities
 }
 
 // GetDefaultAllowPrivilegeEscalation returns the value of DefaultAllowPrivilegeEscalation.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetDefaultAllowPrivilegeEscalation() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetDefaultAllowPrivilegeEscalation() OptBool {
 	return s.DefaultAllowPrivilegeEscalation
 }
 
 // GetForbiddenSysctls returns the value of ForbiddenSysctls.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetForbiddenSysctls() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetForbiddenSysctls() []string {
 	return s.ForbiddenSysctls
 }
 
 // GetFsGroup returns the value of FsGroup.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetFsGroup() IoK8sAPIPolicyV1beta1FSGroupStrategyOptions {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetFsGroup() IoK8sAPIPolicyV1beta1FSGroupStrategyOptions {
 	return s.FsGroup
 }
 
 // GetHostIPC returns the value of HostIPC.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostIPC() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostIPC() OptBool {
 	return s.HostIPC
 }
 
 // GetHostNetwork returns the value of HostNetwork.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostNetwork() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostNetwork() OptBool {
 	return s.HostNetwork
 }
 
 // GetHostPID returns the value of HostPID.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostPID() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostPID() OptBool {
 	return s.HostPID
 }
 
 // GetHostPorts returns the value of HostPorts.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostPorts() []IoK8sAPIPolicyV1beta1HostPortRange {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostPorts() []IoK8sAPIPolicyV1beta1HostPortRange {
 	return s.HostPorts
 }
 
 // GetPrivileged returns the value of Privileged.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetPrivileged() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetPrivileged() OptBool {
 	return s.Privileged
 }
 
 // GetReadOnlyRootFilesystem returns the value of ReadOnlyRootFilesystem.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetReadOnlyRootFilesystem() OptBool {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetReadOnlyRootFilesystem() OptBool {
 	return s.ReadOnlyRootFilesystem
 }
 
 // GetRequiredDropCapabilities returns the value of RequiredDropCapabilities.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRequiredDropCapabilities() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRequiredDropCapabilities() []string {
 	return s.RequiredDropCapabilities
 }
 
 // GetRunAsGroup returns the value of RunAsGroup.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRunAsGroup() OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRunAsGroup() OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions {
 	return s.RunAsGroup
 }
 
 // GetRunAsUser returns the value of RunAsUser.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRunAsUser() IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRunAsUser() IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions {
 	return s.RunAsUser
 }
 
 // GetRuntimeClass returns the value of RuntimeClass.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRuntimeClass() OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRuntimeClass() OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
 	return s.RuntimeClass
 }
 
 // GetSeLinux returns the value of SeLinux.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetSeLinux() IoK8sAPIPolicyV1beta1SELinuxStrategyOptions {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetSeLinux() IoK8sAPIPolicyV1beta1SELinuxStrategyOptions {
 	return s.SeLinux
 }
 
 // GetSupplementalGroups returns the value of SupplementalGroups.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetSupplementalGroups() IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetSupplementalGroups() IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions {
 	return s.SupplementalGroups
 }
 
 // GetVolumes returns the value of Volumes.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetVolumes() []string {
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetVolumes() []string {
 	return s.Volumes
 }
 
@@ -27463,12 +27463,12 @@ type IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions struct {
 }
 
 // GetRanges returns the value of Ranges.
-func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
 	return s.Ranges
 }
 
 // GetRule returns the value of Rule.
-func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) GetRule() string {
+func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) GetRule() string {
 	return s.Rule
 }
 
@@ -27493,12 +27493,12 @@ type IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions struct {
 }
 
 // GetRanges returns the value of Ranges.
-func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
 	return s.Ranges
 }
 
 // GetRule returns the value of Rule.
-func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) GetRule() string {
+func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) GetRule() string {
 	return s.Rule
 }
 
@@ -27526,12 +27526,12 @@ type IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions struct {
 }
 
 // GetAllowedRuntimeClassNames returns the value of AllowedRuntimeClassNames.
-func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) GetAllowedRuntimeClassNames() []string {
+func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) GetAllowedRuntimeClassNames() []string {
 	return s.AllowedRuntimeClassNames
 }
 
 // GetDefaultRuntimeClassName returns the value of DefaultRuntimeClassName.
-func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) GetDefaultRuntimeClassName() OptString {
+func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) GetDefaultRuntimeClassName() OptString {
 	return s.DefaultRuntimeClassName
 }
 
@@ -27554,12 +27554,12 @@ type IoK8sAPIPolicyV1beta1SELinuxStrategyOptions struct {
 }
 
 // GetRule returns the value of Rule.
-func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) GetRule() string {
+func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) GetRule() string {
 	return s.Rule
 }
 
 // GetSeLinuxOptions returns the value of SeLinuxOptions.
-func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
+func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
 	return s.SeLinuxOptions
 }
 
@@ -27585,12 +27585,12 @@ type IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions struct {
 }
 
 // GetRanges returns the value of Ranges.
-func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
 	return s.Ranges
 }
 
 // GetRule returns the value of Rule.
-func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) GetRule() OptString {
+func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) GetRule() OptString {
 	return s.Rule
 }
 
@@ -27613,7 +27613,7 @@ type IoK8sAPIRbacV1AggregationRule struct {
 }
 
 // GetClusterRoleSelectors returns the value of ClusterRoleSelectors.
-func (s IoK8sAPIRbacV1AggregationRule) GetClusterRoleSelectors() []IoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIRbacV1AggregationRule) GetClusterRoleSelectors() []IoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.ClusterRoleSelectors
 }
 
@@ -27641,27 +27641,27 @@ type IoK8sAPIRbacV1ClusterRole struct {
 }
 
 // GetAggregationRule returns the value of AggregationRule.
-func (s IoK8sAPIRbacV1ClusterRole) GetAggregationRule() OptIoK8sAPIRbacV1AggregationRule {
+func (s *IoK8sAPIRbacV1ClusterRole) GetAggregationRule() OptIoK8sAPIRbacV1AggregationRule {
 	return s.AggregationRule
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1ClusterRole) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1ClusterRole) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1ClusterRole) GetKind() OptString {
+func (s *IoK8sAPIRbacV1ClusterRole) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1ClusterRole) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIRbacV1ClusterRole) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPIRbacV1ClusterRole) GetRules() []IoK8sAPIRbacV1PolicyRule {
+func (s *IoK8sAPIRbacV1ClusterRole) GetRules() []IoK8sAPIRbacV1PolicyRule {
 	return s.Rules
 }
 
@@ -27711,27 +27711,27 @@ type IoK8sAPIRbacV1ClusterRoleBinding struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1ClusterRoleBinding) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1ClusterRoleBinding) GetKind() OptString {
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1ClusterRoleBinding) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetRoleRef returns the value of RoleRef.
-func (s IoK8sAPIRbacV1ClusterRoleBinding) GetRoleRef() IoK8sAPIRbacV1RoleRef {
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) GetRoleRef() IoK8sAPIRbacV1RoleRef {
 	return s.RoleRef
 }
 
 // GetSubjects returns the value of Subjects.
-func (s IoK8sAPIRbacV1ClusterRoleBinding) GetSubjects() []IoK8sAPIRbacV1Subject {
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) GetSubjects() []IoK8sAPIRbacV1Subject {
 	return s.Subjects
 }
 
@@ -27779,22 +27779,22 @@ type IoK8sAPIRbacV1ClusterRoleBindingList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetItems() []IoK8sAPIRbacV1ClusterRoleBinding {
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) GetItems() []IoK8sAPIRbacV1ClusterRoleBinding {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetKind() OptString {
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -27837,22 +27837,22 @@ type IoK8sAPIRbacV1ClusterRoleList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1ClusterRoleList) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1ClusterRoleList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIRbacV1ClusterRoleList) GetItems() []IoK8sAPIRbacV1ClusterRole {
+func (s *IoK8sAPIRbacV1ClusterRoleList) GetItems() []IoK8sAPIRbacV1ClusterRole {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1ClusterRoleList) GetKind() OptString {
+func (s *IoK8sAPIRbacV1ClusterRoleList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1ClusterRoleList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIRbacV1ClusterRoleList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -27903,27 +27903,27 @@ type IoK8sAPIRbacV1PolicyRule struct {
 }
 
 // GetApiGroups returns the value of ApiGroups.
-func (s IoK8sAPIRbacV1PolicyRule) GetApiGroups() []string {
+func (s *IoK8sAPIRbacV1PolicyRule) GetApiGroups() []string {
 	return s.ApiGroups
 }
 
 // GetNonResourceURLs returns the value of NonResourceURLs.
-func (s IoK8sAPIRbacV1PolicyRule) GetNonResourceURLs() []string {
+func (s *IoK8sAPIRbacV1PolicyRule) GetNonResourceURLs() []string {
 	return s.NonResourceURLs
 }
 
 // GetResourceNames returns the value of ResourceNames.
-func (s IoK8sAPIRbacV1PolicyRule) GetResourceNames() []string {
+func (s *IoK8sAPIRbacV1PolicyRule) GetResourceNames() []string {
 	return s.ResourceNames
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sAPIRbacV1PolicyRule) GetResources() []string {
+func (s *IoK8sAPIRbacV1PolicyRule) GetResources() []string {
 	return s.Resources
 }
 
 // GetVerbs returns the value of Verbs.
-func (s IoK8sAPIRbacV1PolicyRule) GetVerbs() []string {
+func (s *IoK8sAPIRbacV1PolicyRule) GetVerbs() []string {
 	return s.Verbs
 }
 
@@ -27970,22 +27970,22 @@ type IoK8sAPIRbacV1Role struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1Role) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1Role) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1Role) GetKind() OptString {
+func (s *IoK8sAPIRbacV1Role) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1Role) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIRbacV1Role) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetRules returns the value of Rules.
-func (s IoK8sAPIRbacV1Role) GetRules() []IoK8sAPIRbacV1PolicyRule {
+func (s *IoK8sAPIRbacV1Role) GetRules() []IoK8sAPIRbacV1PolicyRule {
 	return s.Rules
 }
 
@@ -28032,27 +28032,27 @@ type IoK8sAPIRbacV1RoleBinding struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1RoleBinding) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1RoleBinding) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1RoleBinding) GetKind() OptString {
+func (s *IoK8sAPIRbacV1RoleBinding) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1RoleBinding) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIRbacV1RoleBinding) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetRoleRef returns the value of RoleRef.
-func (s IoK8sAPIRbacV1RoleBinding) GetRoleRef() IoK8sAPIRbacV1RoleRef {
+func (s *IoK8sAPIRbacV1RoleBinding) GetRoleRef() IoK8sAPIRbacV1RoleRef {
 	return s.RoleRef
 }
 
 // GetSubjects returns the value of Subjects.
-func (s IoK8sAPIRbacV1RoleBinding) GetSubjects() []IoK8sAPIRbacV1Subject {
+func (s *IoK8sAPIRbacV1RoleBinding) GetSubjects() []IoK8sAPIRbacV1Subject {
 	return s.Subjects
 }
 
@@ -28100,22 +28100,22 @@ type IoK8sAPIRbacV1RoleBindingList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1RoleBindingList) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1RoleBindingList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIRbacV1RoleBindingList) GetItems() []IoK8sAPIRbacV1RoleBinding {
+func (s *IoK8sAPIRbacV1RoleBindingList) GetItems() []IoK8sAPIRbacV1RoleBinding {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1RoleBindingList) GetKind() OptString {
+func (s *IoK8sAPIRbacV1RoleBindingList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1RoleBindingList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIRbacV1RoleBindingList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -28159,22 +28159,22 @@ type IoK8sAPIRbacV1RoleList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIRbacV1RoleList) GetApiVersion() OptString {
+func (s *IoK8sAPIRbacV1RoleList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIRbacV1RoleList) GetItems() []IoK8sAPIRbacV1Role {
+func (s *IoK8sAPIRbacV1RoleList) GetItems() []IoK8sAPIRbacV1Role {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1RoleList) GetKind() OptString {
+func (s *IoK8sAPIRbacV1RoleList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIRbacV1RoleList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIRbacV1RoleList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -28213,17 +28213,17 @@ type IoK8sAPIRbacV1RoleRef struct {
 }
 
 // GetApiGroup returns the value of ApiGroup.
-func (s IoK8sAPIRbacV1RoleRef) GetApiGroup() string {
+func (s *IoK8sAPIRbacV1RoleRef) GetApiGroup() string {
 	return s.ApiGroup
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1RoleRef) GetKind() string {
+func (s *IoK8sAPIRbacV1RoleRef) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIRbacV1RoleRef) GetName() string {
+func (s *IoK8sAPIRbacV1RoleRef) GetName() string {
 	return s.Name
 }
 
@@ -28261,22 +28261,22 @@ type IoK8sAPIRbacV1Subject struct {
 }
 
 // GetApiGroup returns the value of ApiGroup.
-func (s IoK8sAPIRbacV1Subject) GetApiGroup() OptString {
+func (s *IoK8sAPIRbacV1Subject) GetApiGroup() OptString {
 	return s.ApiGroup
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIRbacV1Subject) GetKind() string {
+func (s *IoK8sAPIRbacV1Subject) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIRbacV1Subject) GetName() string {
+func (s *IoK8sAPIRbacV1Subject) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sAPIRbacV1Subject) GetNamespace() OptString {
+func (s *IoK8sAPIRbacV1Subject) GetNamespace() OptString {
 	return s.Namespace
 }
 
@@ -28332,37 +28332,37 @@ type IoK8sAPISchedulingV1PriorityClass struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPISchedulingV1PriorityClass) GetApiVersion() OptString {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetDescription returns the value of Description.
-func (s IoK8sAPISchedulingV1PriorityClass) GetDescription() OptString {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetDescription() OptString {
 	return s.Description
 }
 
 // GetGlobalDefault returns the value of GlobalDefault.
-func (s IoK8sAPISchedulingV1PriorityClass) GetGlobalDefault() OptBool {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetGlobalDefault() OptBool {
 	return s.GlobalDefault
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPISchedulingV1PriorityClass) GetKind() OptString {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPISchedulingV1PriorityClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetPreemptionPolicy returns the value of PreemptionPolicy.
-func (s IoK8sAPISchedulingV1PriorityClass) GetPreemptionPolicy() OptString {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetPreemptionPolicy() OptString {
 	return s.PreemptionPolicy
 }
 
 // GetValue returns the value of Value.
-func (s IoK8sAPISchedulingV1PriorityClass) GetValue() int32 {
+func (s *IoK8sAPISchedulingV1PriorityClass) GetValue() int32 {
 	return s.Value
 }
 
@@ -28420,22 +28420,22 @@ type IoK8sAPISchedulingV1PriorityClassList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPISchedulingV1PriorityClassList) GetApiVersion() OptString {
+func (s *IoK8sAPISchedulingV1PriorityClassList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPISchedulingV1PriorityClassList) GetItems() []IoK8sAPISchedulingV1PriorityClass {
+func (s *IoK8sAPISchedulingV1PriorityClassList) GetItems() []IoK8sAPISchedulingV1PriorityClass {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPISchedulingV1PriorityClassList) GetKind() OptString {
+func (s *IoK8sAPISchedulingV1PriorityClassList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPISchedulingV1PriorityClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPISchedulingV1PriorityClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -28480,22 +28480,22 @@ type IoK8sAPIStorageV1CSIDriver struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1CSIDriver) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1CSIDriver) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1CSIDriver) GetKind() OptString {
+func (s *IoK8sAPIStorageV1CSIDriver) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1CSIDriver) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIStorageV1CSIDriver) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIStorageV1CSIDriver) GetSpec() IoK8sAPIStorageV1CSIDriverSpec {
+func (s *IoK8sAPIStorageV1CSIDriver) GetSpec() IoK8sAPIStorageV1CSIDriverSpec {
 	return s.Spec
 }
 
@@ -28538,22 +28538,22 @@ type IoK8sAPIStorageV1CSIDriverList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1CSIDriverList) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1CSIDriverList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIStorageV1CSIDriverList) GetItems() []IoK8sAPIStorageV1CSIDriver {
+func (s *IoK8sAPIStorageV1CSIDriverList) GetItems() []IoK8sAPIStorageV1CSIDriver {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1CSIDriverList) GetKind() OptString {
+func (s *IoK8sAPIStorageV1CSIDriverList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1CSIDriverList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIStorageV1CSIDriverList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -28662,37 +28662,37 @@ type IoK8sAPIStorageV1CSIDriverSpec struct {
 }
 
 // GetAttachRequired returns the value of AttachRequired.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetAttachRequired() OptBool {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetAttachRequired() OptBool {
 	return s.AttachRequired
 }
 
 // GetFsGroupPolicy returns the value of FsGroupPolicy.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetFsGroupPolicy() OptString {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetFsGroupPolicy() OptString {
 	return s.FsGroupPolicy
 }
 
 // GetPodInfoOnMount returns the value of PodInfoOnMount.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetPodInfoOnMount() OptBool {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetPodInfoOnMount() OptBool {
 	return s.PodInfoOnMount
 }
 
 // GetRequiresRepublish returns the value of RequiresRepublish.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetRequiresRepublish() OptBool {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetRequiresRepublish() OptBool {
 	return s.RequiresRepublish
 }
 
 // GetStorageCapacity returns the value of StorageCapacity.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetStorageCapacity() OptBool {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetStorageCapacity() OptBool {
 	return s.StorageCapacity
 }
 
 // GetTokenRequests returns the value of TokenRequests.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetTokenRequests() []IoK8sAPIStorageV1TokenRequest {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetTokenRequests() []IoK8sAPIStorageV1TokenRequest {
 	return s.TokenRequests
 }
 
 // GetVolumeLifecycleModes returns the value of VolumeLifecycleModes.
-func (s IoK8sAPIStorageV1CSIDriverSpec) GetVolumeLifecycleModes() []string {
+func (s *IoK8sAPIStorageV1CSIDriverSpec) GetVolumeLifecycleModes() []string {
 	return s.VolumeLifecycleModes
 }
 
@@ -28753,22 +28753,22 @@ type IoK8sAPIStorageV1CSINode struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1CSINode) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1CSINode) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1CSINode) GetKind() OptString {
+func (s *IoK8sAPIStorageV1CSINode) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1CSINode) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIStorageV1CSINode) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIStorageV1CSINode) GetSpec() IoK8sAPIStorageV1CSINodeSpec {
+func (s *IoK8sAPIStorageV1CSINode) GetSpec() IoK8sAPIStorageV1CSINodeSpec {
 	return s.Spec
 }
 
@@ -28819,22 +28819,22 @@ type IoK8sAPIStorageV1CSINodeDriver struct {
 }
 
 // GetAllocatable returns the value of Allocatable.
-func (s IoK8sAPIStorageV1CSINodeDriver) GetAllocatable() OptIoK8sAPIStorageV1VolumeNodeResources {
+func (s *IoK8sAPIStorageV1CSINodeDriver) GetAllocatable() OptIoK8sAPIStorageV1VolumeNodeResources {
 	return s.Allocatable
 }
 
 // GetName returns the value of Name.
-func (s IoK8sAPIStorageV1CSINodeDriver) GetName() string {
+func (s *IoK8sAPIStorageV1CSINodeDriver) GetName() string {
 	return s.Name
 }
 
 // GetNodeID returns the value of NodeID.
-func (s IoK8sAPIStorageV1CSINodeDriver) GetNodeID() string {
+func (s *IoK8sAPIStorageV1CSINodeDriver) GetNodeID() string {
 	return s.NodeID
 }
 
 // GetTopologyKeys returns the value of TopologyKeys.
-func (s IoK8sAPIStorageV1CSINodeDriver) GetTopologyKeys() []string {
+func (s *IoK8sAPIStorageV1CSINodeDriver) GetTopologyKeys() []string {
 	return s.TopologyKeys
 }
 
@@ -28875,22 +28875,22 @@ type IoK8sAPIStorageV1CSINodeList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1CSINodeList) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1CSINodeList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIStorageV1CSINodeList) GetItems() []IoK8sAPIStorageV1CSINode {
+func (s *IoK8sAPIStorageV1CSINodeList) GetItems() []IoK8sAPIStorageV1CSINode {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1CSINodeList) GetKind() OptString {
+func (s *IoK8sAPIStorageV1CSINodeList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1CSINodeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIStorageV1CSINodeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -28925,7 +28925,7 @@ type IoK8sAPIStorageV1CSINodeSpec struct {
 }
 
 // GetDrivers returns the value of Drivers.
-func (s IoK8sAPIStorageV1CSINodeSpec) GetDrivers() []IoK8sAPIStorageV1CSINodeDriver {
+func (s *IoK8sAPIStorageV1CSINodeSpec) GetDrivers() []IoK8sAPIStorageV1CSINodeDriver {
 	return s.Drivers
 }
 
@@ -28975,52 +28975,52 @@ type IoK8sAPIStorageV1StorageClass struct {
 }
 
 // GetAllowVolumeExpansion returns the value of AllowVolumeExpansion.
-func (s IoK8sAPIStorageV1StorageClass) GetAllowVolumeExpansion() OptBool {
+func (s *IoK8sAPIStorageV1StorageClass) GetAllowVolumeExpansion() OptBool {
 	return s.AllowVolumeExpansion
 }
 
 // GetAllowedTopologies returns the value of AllowedTopologies.
-func (s IoK8sAPIStorageV1StorageClass) GetAllowedTopologies() []IoK8sAPICoreV1TopologySelectorTerm {
+func (s *IoK8sAPIStorageV1StorageClass) GetAllowedTopologies() []IoK8sAPICoreV1TopologySelectorTerm {
 	return s.AllowedTopologies
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1StorageClass) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1StorageClass) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1StorageClass) GetKind() OptString {
+func (s *IoK8sAPIStorageV1StorageClass) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1StorageClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIStorageV1StorageClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetMountOptions returns the value of MountOptions.
-func (s IoK8sAPIStorageV1StorageClass) GetMountOptions() []string {
+func (s *IoK8sAPIStorageV1StorageClass) GetMountOptions() []string {
 	return s.MountOptions
 }
 
 // GetParameters returns the value of Parameters.
-func (s IoK8sAPIStorageV1StorageClass) GetParameters() OptIoK8sAPIStorageV1StorageClassParameters {
+func (s *IoK8sAPIStorageV1StorageClass) GetParameters() OptIoK8sAPIStorageV1StorageClassParameters {
 	return s.Parameters
 }
 
 // GetProvisioner returns the value of Provisioner.
-func (s IoK8sAPIStorageV1StorageClass) GetProvisioner() string {
+func (s *IoK8sAPIStorageV1StorageClass) GetProvisioner() string {
 	return s.Provisioner
 }
 
 // GetReclaimPolicy returns the value of ReclaimPolicy.
-func (s IoK8sAPIStorageV1StorageClass) GetReclaimPolicy() OptString {
+func (s *IoK8sAPIStorageV1StorageClass) GetReclaimPolicy() OptString {
 	return s.ReclaimPolicy
 }
 
 // GetVolumeBindingMode returns the value of VolumeBindingMode.
-func (s IoK8sAPIStorageV1StorageClass) GetVolumeBindingMode() OptString {
+func (s *IoK8sAPIStorageV1StorageClass) GetVolumeBindingMode() OptString {
 	return s.VolumeBindingMode
 }
 
@@ -29093,22 +29093,22 @@ type IoK8sAPIStorageV1StorageClassList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1StorageClassList) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1StorageClassList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIStorageV1StorageClassList) GetItems() []IoK8sAPIStorageV1StorageClass {
+func (s *IoK8sAPIStorageV1StorageClassList) GetItems() []IoK8sAPIStorageV1StorageClass {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1StorageClassList) GetKind() OptString {
+func (s *IoK8sAPIStorageV1StorageClassList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1StorageClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIStorageV1StorageClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -29159,12 +29159,12 @@ type IoK8sAPIStorageV1TokenRequest struct {
 }
 
 // GetAudience returns the value of Audience.
-func (s IoK8sAPIStorageV1TokenRequest) GetAudience() string {
+func (s *IoK8sAPIStorageV1TokenRequest) GetAudience() string {
 	return s.Audience
 }
 
 // GetExpirationSeconds returns the value of ExpirationSeconds.
-func (s IoK8sAPIStorageV1TokenRequest) GetExpirationSeconds() OptInt64 {
+func (s *IoK8sAPIStorageV1TokenRequest) GetExpirationSeconds() OptInt64 {
 	return s.ExpirationSeconds
 }
 
@@ -29197,27 +29197,27 @@ type IoK8sAPIStorageV1VolumeAttachment struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1VolumeAttachment) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1VolumeAttachment) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1VolumeAttachment) GetKind() OptString {
+func (s *IoK8sAPIStorageV1VolumeAttachment) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1VolumeAttachment) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIStorageV1VolumeAttachment) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sAPIStorageV1VolumeAttachment) GetSpec() IoK8sAPIStorageV1VolumeAttachmentSpec {
+func (s *IoK8sAPIStorageV1VolumeAttachment) GetSpec() IoK8sAPIStorageV1VolumeAttachmentSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sAPIStorageV1VolumeAttachment) GetStatus() OptIoK8sAPIStorageV1VolumeAttachmentStatus {
+func (s *IoK8sAPIStorageV1VolumeAttachment) GetStatus() OptIoK8sAPIStorageV1VolumeAttachmentStatus {
 	return s.Status
 }
 
@@ -29266,22 +29266,22 @@ type IoK8sAPIStorageV1VolumeAttachmentList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1VolumeAttachmentList) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIStorageV1VolumeAttachmentList) GetItems() []IoK8sAPIStorageV1VolumeAttachment {
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) GetItems() []IoK8sAPIStorageV1VolumeAttachment {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1VolumeAttachmentList) GetKind() OptString {
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1VolumeAttachmentList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -29318,12 +29318,12 @@ type IoK8sAPIStorageV1VolumeAttachmentSource struct {
 }
 
 // GetInlineVolumeSpec returns the value of InlineVolumeSpec.
-func (s IoK8sAPIStorageV1VolumeAttachmentSource) GetInlineVolumeSpec() OptIoK8sAPICoreV1PersistentVolumeSpec {
+func (s *IoK8sAPIStorageV1VolumeAttachmentSource) GetInlineVolumeSpec() OptIoK8sAPICoreV1PersistentVolumeSpec {
 	return s.InlineVolumeSpec
 }
 
 // GetPersistentVolumeName returns the value of PersistentVolumeName.
-func (s IoK8sAPIStorageV1VolumeAttachmentSource) GetPersistentVolumeName() OptString {
+func (s *IoK8sAPIStorageV1VolumeAttachmentSource) GetPersistentVolumeName() OptString {
 	return s.PersistentVolumeName
 }
 
@@ -29349,17 +29349,17 @@ type IoK8sAPIStorageV1VolumeAttachmentSpec struct {
 }
 
 // GetAttacher returns the value of Attacher.
-func (s IoK8sAPIStorageV1VolumeAttachmentSpec) GetAttacher() string {
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) GetAttacher() string {
 	return s.Attacher
 }
 
 // GetNodeName returns the value of NodeName.
-func (s IoK8sAPIStorageV1VolumeAttachmentSpec) GetNodeName() string {
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) GetNodeName() string {
 	return s.NodeName
 }
 
 // GetSource returns the value of Source.
-func (s IoK8sAPIStorageV1VolumeAttachmentSpec) GetSource() IoK8sAPIStorageV1VolumeAttachmentSource {
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) GetSource() IoK8sAPIStorageV1VolumeAttachmentSource {
 	return s.Source
 }
 
@@ -29393,22 +29393,22 @@ type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
 }
 
 // GetAttachError returns the value of AttachError.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttachError() OptIoK8sAPIStorageV1VolumeError {
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttachError() OptIoK8sAPIStorageV1VolumeError {
 	return s.AttachError
 }
 
 // GetAttached returns the value of Attached.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttached() bool {
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttached() bool {
 	return s.Attached
 }
 
 // GetAttachmentMetadata returns the value of AttachmentMetadata.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttachmentMetadata() OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttachmentMetadata() OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
 	return s.AttachmentMetadata
 }
 
 // GetDetachError returns the value of DetachError.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetDetachError() OptIoK8sAPIStorageV1VolumeError {
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) GetDetachError() OptIoK8sAPIStorageV1VolumeError {
 	return s.DetachError
 }
 
@@ -29456,12 +29456,12 @@ type IoK8sAPIStorageV1VolumeError struct {
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sAPIStorageV1VolumeError) GetMessage() OptString {
+func (s *IoK8sAPIStorageV1VolumeError) GetMessage() OptString {
 	return s.Message
 }
 
 // GetTime returns the value of Time.
-func (s IoK8sAPIStorageV1VolumeError) GetTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sAPIStorageV1VolumeError) GetTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.Time
 }
 
@@ -29486,7 +29486,7 @@ type IoK8sAPIStorageV1VolumeNodeResources struct {
 }
 
 // GetCount returns the value of Count.
-func (s IoK8sAPIStorageV1VolumeNodeResources) GetCount() OptInt32 {
+func (s *IoK8sAPIStorageV1VolumeNodeResources) GetCount() OptInt32 {
 	return s.Count
 }
 
@@ -29529,37 +29529,37 @@ type IoK8sAPIStorageV1alpha1CSIStorageCapacity struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetCapacity returns the value of Capacity.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetCapacity() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetCapacity() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.Capacity
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetKind() OptString {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMaximumVolumeSize returns the value of MaximumVolumeSize.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetMaximumVolumeSize() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetMaximumVolumeSize() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.MaximumVolumeSize
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetNodeTopology returns the value of NodeTopology.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetNodeTopology() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetNodeTopology() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.NodeTopology
 }
 
 // GetStorageClassName returns the value of StorageClassName.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetStorageClassName() string {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetStorageClassName() string {
 	return s.StorageClassName
 }
 
@@ -29618,22 +29618,22 @@ type IoK8sAPIStorageV1alpha1CSIStorageCapacityList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetItems() []IoK8sAPIStorageV1alpha1CSIStorageCapacity {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetItems() []IoK8sAPIStorageV1alpha1CSIStorageCapacity {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetKind() OptString {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -29696,37 +29696,37 @@ type IoK8sAPIStorageV1beta1CSIStorageCapacity struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetCapacity returns the value of Capacity.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetCapacity() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetCapacity() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.Capacity
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetKind() OptString {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMaximumVolumeSize returns the value of MaximumVolumeSize.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetMaximumVolumeSize() OptIoK8sApimachineryPkgAPIResourceQuantity {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetMaximumVolumeSize() OptIoK8sApimachineryPkgAPIResourceQuantity {
 	return s.MaximumVolumeSize
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetNodeTopology returns the value of NodeTopology.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetNodeTopology() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetNodeTopology() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
 	return s.NodeTopology
 }
 
 // GetStorageClassName returns the value of StorageClassName.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetStorageClassName() string {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) GetStorageClassName() string {
 	return s.StorageClassName
 }
 
@@ -29785,22 +29785,22 @@ type IoK8sAPIStorageV1beta1CSIStorageCapacityList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetApiVersion() OptString {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetItems() []IoK8sAPIStorageV1beta1CSIStorageCapacity {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetItems() []IoK8sAPIStorageV1beta1CSIStorageCapacity {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetKind() OptString {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -29853,32 +29853,32 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefini
 }
 
 // GetDescription returns the value of Description.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetDescription() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetDescription() OptString {
 	return s.Description
 }
 
 // GetFormat returns the value of Format.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetFormat() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetFormat() OptString {
 	return s.Format
 }
 
 // GetJsonPath returns the value of JsonPath.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetJsonPath() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetJsonPath() string {
 	return s.JsonPath
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetName() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetName() string {
 	return s.Name
 }
 
 // GetPriority returns the value of Priority.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetPriority() OptInt32 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetPriority() OptInt32 {
 	return s.Priority
 }
 
 // GetType returns the value of Type.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetType() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetType() string {
 	return s.Type
 }
 
@@ -29926,12 +29926,12 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion s
 }
 
 // GetStrategy returns the value of Strategy.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) GetStrategy() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) GetStrategy() string {
 	return s.Strategy
 }
 
 // GetWebhook returns the value of Webhook.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) GetWebhook() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) GetWebhook() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
 	return s.Webhook
 }
 
@@ -29963,27 +29963,27 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition s
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetApiVersion() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetKind() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetSpec() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetSpec() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetStatus() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetStatus() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
 	return s.Status
 }
 
@@ -30032,27 +30032,27 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCo
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetMessage() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetReason() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetStatus() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetType() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetType() string {
 	return s.Type
 }
 
@@ -30098,22 +30098,22 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionLi
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetApiVersion() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetItems() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetItems() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetKind() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -30165,32 +30165,32 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNa
 }
 
 // GetCategories returns the value of Categories.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetCategories() []string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetCategories() []string {
 	return s.Categories
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetKind() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetKind() string {
 	return s.Kind
 }
 
 // GetListKind returns the value of ListKind.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetListKind() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetListKind() OptString {
 	return s.ListKind
 }
 
 // GetPlural returns the value of Plural.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetPlural() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetPlural() string {
 	return s.Plural
 }
 
 // GetShortNames returns the value of ShortNames.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetShortNames() []string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetShortNames() []string {
 	return s.ShortNames
 }
 
 // GetSingular returns the value of Singular.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetSingular() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetSingular() OptString {
 	return s.Singular
 }
 
@@ -30255,32 +30255,32 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSp
 }
 
 // GetConversion returns the value of Conversion.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetConversion() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetConversion() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
 	return s.Conversion
 }
 
 // GetGroup returns the value of Group.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetGroup() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetGroup() string {
 	return s.Group
 }
 
 // GetNames returns the value of Names.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetNames() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetNames() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
 	return s.Names
 }
 
 // GetPreserveUnknownFields returns the value of PreserveUnknownFields.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetPreserveUnknownFields() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetPreserveUnknownFields() OptBool {
 	return s.PreserveUnknownFields
 }
 
 // GetScope returns the value of Scope.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetScope() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetScope() string {
 	return s.Scope
 }
 
 // GetVersions returns the value of Versions.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetVersions() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetVersions() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion {
 	return s.Versions
 }
 
@@ -30329,17 +30329,17 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSt
 }
 
 // GetAcceptedNames returns the value of AcceptedNames.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetAcceptedNames() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetAcceptedNames() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
 	return s.AcceptedNames
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetConditions() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetConditions() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition {
 	return s.Conditions
 }
 
 // GetStoredVersions returns the value of StoredVersions.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetStoredVersions() []string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetStoredVersions() []string {
 	return s.StoredVersions
 }
 
@@ -30386,42 +30386,42 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVe
 }
 
 // GetAdditionalPrinterColumns returns the value of AdditionalPrinterColumns.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetAdditionalPrinterColumns() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetAdditionalPrinterColumns() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition {
 	return s.AdditionalPrinterColumns
 }
 
 // GetDeprecated returns the value of Deprecated.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetDeprecated() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetDeprecated() OptBool {
 	return s.Deprecated
 }
 
 // GetDeprecationWarning returns the value of DeprecationWarning.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetDeprecationWarning() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetDeprecationWarning() OptString {
 	return s.DeprecationWarning
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetName() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetName() string {
 	return s.Name
 }
 
 // GetSchema returns the value of Schema.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSchema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSchema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
 	return s.Schema
 }
 
 // GetServed returns the value of Served.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetServed() bool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetServed() bool {
 	return s.Served
 }
 
 // GetStorage returns the value of Storage.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetStorage() bool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetStorage() bool {
 	return s.Storage
 }
 
 // GetSubresources returns the value of Subresources.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSubresources() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSubresources() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
 	return s.Subresources
 }
 
@@ -30490,17 +30490,17 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceS
 }
 
 // GetLabelSelectorPath returns the value of LabelSelectorPath.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetLabelSelectorPath() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetLabelSelectorPath() OptString {
 	return s.LabelSelectorPath
 }
 
 // GetSpecReplicasPath returns the value of SpecReplicasPath.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetSpecReplicasPath() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetSpecReplicasPath() string {
 	return s.SpecReplicasPath
 }
 
 // GetStatusReplicasPath returns the value of StatusReplicasPath.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetStatusReplicasPath() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetStatusReplicasPath() string {
 	return s.StatusReplicasPath
 }
 
@@ -30535,12 +30535,12 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources
 }
 
 // GetScale returns the value of Scale.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetScale() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetScale() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
 	return s.Scale
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetStatus() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetStatus() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
 	return s.Status
 }
 
@@ -30561,7 +30561,7 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation s
 }
 
 // GetOpenAPIV3Schema returns the value of OpenAPIV3Schema.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) GetOpenAPIV3Schema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) GetOpenAPIV3Schema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return s.OpenAPIV3Schema
 }
 
@@ -30578,12 +30578,12 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation stru
 }
 
 // GetDescription returns the value of Description.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) GetDescription() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) GetDescription() OptString {
 	return s.Description
 }
 
 // GetURL returns the value of URL.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) GetURL() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) GetURL() OptString {
 	return s.URL
 }
 
@@ -30719,217 +30719,217 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 }
 
 // GetRef returns the value of Ref.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetRef() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetRef() OptString {
 	return s.Ref
 }
 
 // GetSchema returns the value of Schema.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetSchema() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetSchema() OptString {
 	return s.Schema
 }
 
 // GetAdditionalItems returns the value of AdditionalItems.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
 	return s.AdditionalItems
 }
 
 // GetAdditionalProperties returns the value of AdditionalProperties.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalProperties() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalProperties() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
 	return s.AdditionalProperties
 }
 
 // GetAllOf returns the value of AllOf.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAllOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAllOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return s.AllOf
 }
 
 // GetAnyOf returns the value of AnyOf.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAnyOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAnyOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return s.AnyOf
 }
 
 // GetDefault returns the value of Default.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefault() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefault() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
 	return s.Default
 }
 
 // GetDefinitions returns the value of Definitions.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefinitions() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefinitions() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
 	return s.Definitions
 }
 
 // GetDependencies returns the value of Dependencies.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDependencies() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDependencies() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
 	return s.Dependencies
 }
 
 // GetDescription returns the value of Description.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDescription() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDescription() OptString {
 	return s.Description
 }
 
 // GetEnum returns the value of Enum.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetEnum() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetEnum() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
 	return s.Enum
 }
 
 // GetExample returns the value of Example.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExample() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExample() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
 	return s.Example
 }
 
 // GetExclusiveMaximum returns the value of ExclusiveMaximum.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExclusiveMaximum() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExclusiveMaximum() OptBool {
 	return s.ExclusiveMaximum
 }
 
 // GetExclusiveMinimum returns the value of ExclusiveMinimum.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExclusiveMinimum() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExclusiveMinimum() OptBool {
 	return s.ExclusiveMinimum
 }
 
 // GetExternalDocs returns the value of ExternalDocs.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExternalDocs() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExternalDocs() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation {
 	return s.ExternalDocs
 }
 
 // GetFormat returns the value of Format.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetFormat() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetFormat() OptString {
 	return s.Format
 }
 
 // GetID returns the value of ID.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetID() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetID() OptString {
 	return s.ID
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
 	return s.Items
 }
 
 // GetMaxItems returns the value of MaxItems.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxItems() OptInt64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxItems() OptInt64 {
 	return s.MaxItems
 }
 
 // GetMaxLength returns the value of MaxLength.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxLength() OptInt64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxLength() OptInt64 {
 	return s.MaxLength
 }
 
 // GetMaxProperties returns the value of MaxProperties.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxProperties() OptInt64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxProperties() OptInt64 {
 	return s.MaxProperties
 }
 
 // GetMaximum returns the value of Maximum.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaximum() OptFloat64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaximum() OptFloat64 {
 	return s.Maximum
 }
 
 // GetMinItems returns the value of MinItems.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinItems() OptInt64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinItems() OptInt64 {
 	return s.MinItems
 }
 
 // GetMinLength returns the value of MinLength.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinLength() OptInt64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinLength() OptInt64 {
 	return s.MinLength
 }
 
 // GetMinProperties returns the value of MinProperties.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinProperties() OptInt64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinProperties() OptInt64 {
 	return s.MinProperties
 }
 
 // GetMinimum returns the value of Minimum.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinimum() OptFloat64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinimum() OptFloat64 {
 	return s.Minimum
 }
 
 // GetMultipleOf returns the value of MultipleOf.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMultipleOf() OptFloat64 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMultipleOf() OptFloat64 {
 	return s.MultipleOf
 }
 
 // GetNot returns the value of Not.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetNot() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetNot() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return s.Not
 }
 
 // GetNullable returns the value of Nullable.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetNullable() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetNullable() OptBool {
 	return s.Nullable
 }
 
 // GetOneOf returns the value of OneOf.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetOneOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetOneOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return s.OneOf
 }
 
 // GetPattern returns the value of Pattern.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetPattern() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetPattern() OptString {
 	return s.Pattern
 }
 
 // GetPatternProperties returns the value of PatternProperties.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetPatternProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetPatternProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties {
 	return s.PatternProperties
 }
 
 // GetProperties returns the value of Properties.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties {
 	return s.Properties
 }
 
 // GetRequired returns the value of Required.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetRequired() []string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetRequired() []string {
 	return s.Required
 }
 
 // GetTitle returns the value of Title.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetTitle() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetTitle() OptString {
 	return s.Title
 }
 
 // GetType returns the value of Type.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetType() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetType() OptString {
 	return s.Type
 }
 
 // GetUniqueItems returns the value of UniqueItems.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetUniqueItems() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetUniqueItems() OptBool {
 	return s.UniqueItems
 }
 
 // GetXMinusKubernetesMinusEmbeddedMinusResource returns the value of XMinusKubernetesMinusEmbeddedMinusResource.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusEmbeddedMinusResource() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusEmbeddedMinusResource() OptBool {
 	return s.XMinusKubernetesMinusEmbeddedMinusResource
 }
 
 // GetXMinusKubernetesMinusIntMinusOrMinusString returns the value of XMinusKubernetesMinusIntMinusOrMinusString.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusIntMinusOrMinusString() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusIntMinusOrMinusString() OptBool {
 	return s.XMinusKubernetesMinusIntMinusOrMinusString
 }
 
 // GetXMinusKubernetesMinusListMinusMapMinusKeys returns the value of XMinusKubernetesMinusListMinusMapMinusKeys.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusListMinusMapMinusKeys() []string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusListMinusMapMinusKeys() []string {
 	return s.XMinusKubernetesMinusListMinusMapMinusKeys
 }
 
 // GetXMinusKubernetesMinusListMinusType returns the value of XMinusKubernetesMinusListMinusType.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusListMinusType() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusListMinusType() OptString {
 	return s.XMinusKubernetesMinusListMinusType
 }
 
 // GetXMinusKubernetesMinusMapMinusType returns the value of XMinusKubernetesMinusMapMinusType.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusMapMinusType() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusMapMinusType() OptString {
 	return s.XMinusKubernetesMinusMapMinusType
 }
 
 // GetXMinusKubernetesMinusPreserveMinusUnknownMinusFields returns the value of XMinusKubernetesMinusPreserveMinusUnknownMinusFields.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusPreserveMinusUnknownMinusFields() OptBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusPreserveMinusUnknownMinusFields() OptBool {
 	return s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields
 }
 
@@ -31221,22 +31221,22 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetName() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetName() string {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetNamespace() string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetNamespace() string {
 	return s.Namespace
 }
 
 // GetPath returns the value of Path.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetPath() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetPath() OptString {
 	return s.Path
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetPort() OptInt32 {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetPort() OptInt32 {
 	return s.Port
 }
 
@@ -31284,17 +31284,17 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct
 }
 
 // GetCaBundle returns the value of CaBundle.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetCaBundle() []byte {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetCaBundle() []byte {
 	return s.CaBundle
 }
 
 // GetService returns the value of Service.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetService() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetService() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
 	return s.Service
 }
 
 // GetURL returns the value of URL.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetURL() OptString {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetURL() OptString {
 	return s.URL
 }
 
@@ -31326,12 +31326,12 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
 }
 
 // GetClientConfig returns the value of ClientConfig.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) GetClientConfig() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) GetClientConfig() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
 	return s.ClientConfig
 }
 
 // GetConversionReviewVersions returns the value of ConversionReviewVersions.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) GetConversionReviewVersions() []string {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) GetConversionReviewVersions() []string {
 	return s.ConversionReviewVersions
 }
 
@@ -31374,32 +31374,32 @@ type IoK8sApimachineryPkgApisMetaV1APIGroup struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetApiVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetKind() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) GetKind() OptString {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetName() string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) GetName() string {
 	return s.Name
 }
 
 // GetPreferredVersion returns the value of PreferredVersion.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetPreferredVersion() OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) GetPreferredVersion() OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
 	return s.PreferredVersion
 }
 
 // GetServerAddressByClientCIDRs returns the value of ServerAddressByClientCIDRs.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetServerAddressByClientCIDRs() []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) GetServerAddressByClientCIDRs() []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
 	return s.ServerAddressByClientCIDRs
 }
 
 // GetVersions returns the value of Versions.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetVersions() []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) GetVersions() []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
 	return s.Versions
 }
 
@@ -31470,17 +31470,17 @@ type IoK8sApimachineryPkgApisMetaV1APIGroupList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) GetApiVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetGroups returns the value of Groups.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) GetGroups() []IoK8sApimachineryPkgApisMetaV1APIGroup {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) GetGroups() []IoK8sApimachineryPkgApisMetaV1APIGroup {
 	return s.Groups
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) GetKind() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) GetKind() OptString {
 	return s.Kind
 }
 
@@ -31537,52 +31537,52 @@ type IoK8sApimachineryPkgApisMetaV1APIResource struct {
 }
 
 // GetCategories returns the value of Categories.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetCategories() []string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetCategories() []string {
 	return s.Categories
 }
 
 // GetGroup returns the value of Group.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetGroup() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetGroup() OptString {
 	return s.Group
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetKind() string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetName() string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetName() string {
 	return s.Name
 }
 
 // GetNamespaced returns the value of Namespaced.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetNamespaced() bool {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetNamespaced() bool {
 	return s.Namespaced
 }
 
 // GetShortNames returns the value of ShortNames.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetShortNames() []string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetShortNames() []string {
 	return s.ShortNames
 }
 
 // GetSingularName returns the value of SingularName.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetSingularName() string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetSingularName() string {
 	return s.SingularName
 }
 
 // GetStorageVersionHash returns the value of StorageVersionHash.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetStorageVersionHash() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetStorageVersionHash() OptString {
 	return s.StorageVersionHash
 }
 
 // GetVerbs returns the value of Verbs.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetVerbs() []string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetVerbs() []string {
 	return s.Verbs
 }
 
 // GetVersion returns the value of Version.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) GetVersion() OptString {
 	return s.Version
 }
 
@@ -31655,22 +31655,22 @@ type IoK8sApimachineryPkgApisMetaV1APIResourceList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetApiVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetGroupVersion returns the value of GroupVersion.
-func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetGroupVersion() string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) GetGroupVersion() string {
 	return s.GroupVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetKind() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetResources returns the value of Resources.
-func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetResources() []IoK8sApimachineryPkgApisMetaV1APIResource {
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) GetResources() []IoK8sApimachineryPkgApisMetaV1APIResource {
 	return s.Resources
 }
 
@@ -31754,22 +31754,22 @@ type IoK8sApimachineryPkgApisMetaV1APIVersions struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetApiVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetKind() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) GetKind() OptString {
 	return s.Kind
 }
 
 // GetServerAddressByClientCIDRs returns the value of ServerAddressByClientCIDRs.
-func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetServerAddressByClientCIDRs() []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) GetServerAddressByClientCIDRs() []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
 	return s.ServerAddressByClientCIDRs
 }
 
 // GetVersions returns the value of Versions.
-func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetVersions() []string {
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) GetVersions() []string {
 	return s.Versions
 }
 
@@ -31819,32 +31819,32 @@ type IoK8sApimachineryPkgApisMetaV1Condition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) GetLastTransitionTime() IoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) GetLastTransitionTime() IoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) GetMessage() string {
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) GetMessage() string {
 	return s.Message
 }
 
 // GetObservedGeneration returns the value of ObservedGeneration.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) GetObservedGeneration() OptInt64 {
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) GetObservedGeneration() OptInt64 {
 	return s.ObservedGeneration
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) GetReason() string {
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) GetReason() string {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) GetStatus() string {
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) GetType() string {
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) GetType() string {
 	return s.Type
 }
 
@@ -31901,12 +31901,12 @@ type IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
 }
 
 // GetGroupVersion returns the value of GroupVersion.
-func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) GetGroupVersion() string {
+func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) GetGroupVersion() string {
 	return s.GroupVersion
 }
 
 // GetVersion returns the value of Version.
-func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) GetVersion() string {
+func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) GetVersion() string {
 	return s.Version
 }
 
@@ -31934,12 +31934,12 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelector struct {
 }
 
 // GetMatchExpressions returns the value of MatchExpressions.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) GetMatchExpressions() []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) GetMatchExpressions() []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
 	return s.MatchExpressions
 }
 
 // GetMatchLabels returns the value of MatchLabels.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) GetMatchLabels() OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) GetMatchLabels() OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
 	return s.MatchLabels
 }
 
@@ -31983,17 +31983,17 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement struct {
 }
 
 // GetKey returns the value of Key.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetKey() string {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetKey() string {
 	return s.Key
 }
 
 // GetOperator returns the value of Operator.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetOperator() string {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetOperator() string {
 	return s.Operator
 }
 
 // GetValues returns the value of Values.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetValues() []string {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetValues() []string {
 	return s.Values
 }
 
@@ -32046,22 +32046,22 @@ type IoK8sApimachineryPkgApisMetaV1ListMeta struct {
 }
 
 // GetContinue returns the value of Continue.
-func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetContinue() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) GetContinue() OptString {
 	return s.Continue
 }
 
 // GetRemainingItemCount returns the value of RemainingItemCount.
-func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetRemainingItemCount() OptInt64 {
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) GetRemainingItemCount() OptInt64 {
 	return s.RemainingItemCount
 }
 
 // GetResourceVersion returns the value of ResourceVersion.
-func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetResourceVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) GetResourceVersion() OptString {
 	return s.ResourceVersion
 }
 
 // GetSelfLink returns the value of SelfLink.
-func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetSelfLink() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) GetSelfLink() OptString {
 	return s.SelfLink
 }
 
@@ -32112,37 +32112,37 @@ type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetApiVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetFieldsType returns the value of FieldsType.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsType() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsType() OptString {
 	return s.FieldsType
 }
 
 // GetFieldsV1 returns the value of FieldsV1.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsV1() *IoK8sApimachineryPkgApisMetaV1FieldsV1 {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsV1() *IoK8sApimachineryPkgApisMetaV1FieldsV1 {
 	return s.FieldsV1
 }
 
 // GetManager returns the value of Manager.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetManager() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetManager() OptString {
 	return s.Manager
 }
 
 // GetOperation returns the value of Operation.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetOperation() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetOperation() OptString {
 	return s.Operation
 }
 
 // GetSubresource returns the value of Subresource.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetSubresource() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetSubresource() OptString {
 	return s.Subresource
 }
 
 // GetTime returns the value of Time.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.Time
 }
 
@@ -32273,82 +32273,82 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 }
 
 // GetAnnotations returns the value of Annotations.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetAnnotations() OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetAnnotations() OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
 	return s.Annotations
 }
 
 // GetClusterName returns the value of ClusterName.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetClusterName() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetClusterName() OptString {
 	return s.ClusterName
 }
 
 // GetCreationTimestamp returns the value of CreationTimestamp.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetCreationTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetCreationTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.CreationTimestamp
 }
 
 // GetDeletionGracePeriodSeconds returns the value of DeletionGracePeriodSeconds.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetDeletionGracePeriodSeconds() OptInt64 {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetDeletionGracePeriodSeconds() OptInt64 {
 	return s.DeletionGracePeriodSeconds
 }
 
 // GetDeletionTimestamp returns the value of DeletionTimestamp.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetDeletionTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetDeletionTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.DeletionTimestamp
 }
 
 // GetFinalizers returns the value of Finalizers.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetFinalizers() []string {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetFinalizers() []string {
 	return s.Finalizers
 }
 
 // GetGenerateName returns the value of GenerateName.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetGenerateName() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetGenerateName() OptString {
 	return s.GenerateName
 }
 
 // GetGeneration returns the value of Generation.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetGeneration() OptInt64 {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetGeneration() OptInt64 {
 	return s.Generation
 }
 
 // GetLabels returns the value of Labels.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetLabels() OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetLabels() OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
 	return s.Labels
 }
 
 // GetManagedFields returns the value of ManagedFields.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetManagedFields() []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetManagedFields() []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
 	return s.ManagedFields
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetName() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetName() OptString {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetNamespace() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetNamespace() OptString {
 	return s.Namespace
 }
 
 // GetOwnerReferences returns the value of OwnerReferences.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetOwnerReferences() []IoK8sApimachineryPkgApisMetaV1OwnerReference {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetOwnerReferences() []IoK8sApimachineryPkgApisMetaV1OwnerReference {
 	return s.OwnerReferences
 }
 
 // GetResourceVersion returns the value of ResourceVersion.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetResourceVersion() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetResourceVersion() OptString {
 	return s.ResourceVersion
 }
 
 // GetSelfLink returns the value of SelfLink.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetSelfLink() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetSelfLink() OptString {
 	return s.SelfLink
 }
 
 // GetUID returns the value of UID.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetUID() OptString {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetUID() OptString {
 	return s.UID
 }
 
@@ -32483,32 +32483,32 @@ type IoK8sApimachineryPkgApisMetaV1OwnerReference struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetApiVersion() string {
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) GetApiVersion() string {
 	return s.ApiVersion
 }
 
 // GetBlockOwnerDeletion returns the value of BlockOwnerDeletion.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetBlockOwnerDeletion() OptBool {
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) GetBlockOwnerDeletion() OptBool {
 	return s.BlockOwnerDeletion
 }
 
 // GetController returns the value of Controller.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetController() OptBool {
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) GetController() OptBool {
 	return s.Controller
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetKind() string {
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) GetKind() string {
 	return s.Kind
 }
 
 // GetName returns the value of Name.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetName() string {
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) GetName() string {
 	return s.Name
 }
 
 // GetUID returns the value of UID.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetUID() string {
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) GetUID() string {
 	return s.UID
 }
 
@@ -32555,12 +32555,12 @@ type IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR struct {
 }
 
 // GetClientCIDR returns the value of ClientCIDR.
-func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) GetClientCIDR() string {
+func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) GetClientCIDR() string {
 	return s.ClientCIDR
 }
 
 // GetServerAddress returns the value of ServerAddress.
-func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) GetServerAddress() string {
+func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) GetServerAddress() string {
 	return s.ServerAddress
 }
 
@@ -32584,12 +32584,12 @@ type IoK8sApimachineryPkgApisMetaV1WatchEvent struct {
 }
 
 // GetObject returns the value of Object.
-func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) GetObject() IoK8sApimachineryPkgRuntimeRawExtension {
+func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) GetObject() IoK8sApimachineryPkgRuntimeRawExtension {
 	return s.Object
 }
 
 // GetType returns the value of Type.
-func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) GetType() string {
+func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) GetType() string {
 	return s.Type
 }
 
@@ -32857,47 +32857,47 @@ type IoK8sApimachineryPkgVersionInfo struct {
 }
 
 // GetBuildDate returns the value of BuildDate.
-func (s IoK8sApimachineryPkgVersionInfo) GetBuildDate() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetBuildDate() string {
 	return s.BuildDate
 }
 
 // GetCompiler returns the value of Compiler.
-func (s IoK8sApimachineryPkgVersionInfo) GetCompiler() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetCompiler() string {
 	return s.Compiler
 }
 
 // GetGitCommit returns the value of GitCommit.
-func (s IoK8sApimachineryPkgVersionInfo) GetGitCommit() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetGitCommit() string {
 	return s.GitCommit
 }
 
 // GetGitTreeState returns the value of GitTreeState.
-func (s IoK8sApimachineryPkgVersionInfo) GetGitTreeState() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetGitTreeState() string {
 	return s.GitTreeState
 }
 
 // GetGitVersion returns the value of GitVersion.
-func (s IoK8sApimachineryPkgVersionInfo) GetGitVersion() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetGitVersion() string {
 	return s.GitVersion
 }
 
 // GetGoVersion returns the value of GoVersion.
-func (s IoK8sApimachineryPkgVersionInfo) GetGoVersion() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetGoVersion() string {
 	return s.GoVersion
 }
 
 // GetMajor returns the value of Major.
-func (s IoK8sApimachineryPkgVersionInfo) GetMajor() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetMajor() string {
 	return s.Major
 }
 
 // GetMinor returns the value of Minor.
-func (s IoK8sApimachineryPkgVersionInfo) GetMinor() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetMinor() string {
 	return s.Minor
 }
 
 // GetPlatform returns the value of Platform.
-func (s IoK8sApimachineryPkgVersionInfo) GetPlatform() string {
+func (s *IoK8sApimachineryPkgVersionInfo) GetPlatform() string {
 	return s.Platform
 }
 
@@ -32965,27 +32965,27 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIService struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetApiVersion() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetKind() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
 	return s.Metadata
 }
 
 // GetSpec returns the value of Spec.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetSpec() OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetSpec() OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
 	return s.Spec
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetStatus() OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetStatus() OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
 	return s.Status
 }
 
@@ -33033,27 +33033,27 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition struct {
 }
 
 // GetLastTransitionTime returns the value of LastTransitionTime.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
 	return s.LastTransitionTime
 }
 
 // GetMessage returns the value of Message.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetMessage() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetMessage() OptString {
 	return s.Message
 }
 
 // GetReason returns the value of Reason.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetReason() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetReason() OptString {
 	return s.Reason
 }
 
 // GetStatus returns the value of Status.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetStatus() string {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetStatus() string {
 	return s.Status
 }
 
 // GetType returns the value of Type.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetType() string {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetType() string {
 	return s.Type
 }
 
@@ -33099,22 +33099,22 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList struct {
 }
 
 // GetApiVersion returns the value of ApiVersion.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetApiVersion() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetApiVersion() OptString {
 	return s.ApiVersion
 }
 
 // GetItems returns the value of Items.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetItems() []IoK8sKubeAggregatorPkgApisApiregistrationV1APIService {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetItems() []IoK8sKubeAggregatorPkgApisApiregistrationV1APIService {
 	return s.Items
 }
 
 // GetKind returns the value of Kind.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetKind() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetKind() OptString {
 	return s.Kind
 }
 
 // GetMetadata returns the value of Metadata.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return s.Metadata
 }
 
@@ -33178,37 +33178,37 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
 }
 
 // GetCaBundle returns the value of CaBundle.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetCaBundle() []byte {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetCaBundle() []byte {
 	return s.CaBundle
 }
 
 // GetGroup returns the value of Group.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetGroup() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetGroup() OptString {
 	return s.Group
 }
 
 // GetGroupPriorityMinimum returns the value of GroupPriorityMinimum.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetGroupPriorityMinimum() int32 {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetGroupPriorityMinimum() int32 {
 	return s.GroupPriorityMinimum
 }
 
 // GetInsecureSkipTLSVerify returns the value of InsecureSkipTLSVerify.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetInsecureSkipTLSVerify() OptBool {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetInsecureSkipTLSVerify() OptBool {
 	return s.InsecureSkipTLSVerify
 }
 
 // GetService returns the value of Service.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetService() OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetService() OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
 	return s.Service
 }
 
 // GetVersion returns the value of Version.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetVersion() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetVersion() OptString {
 	return s.Version
 }
 
 // GetVersionPriority returns the value of VersionPriority.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetVersionPriority() int32 {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetVersionPriority() int32 {
 	return s.VersionPriority
 }
 
@@ -33255,7 +33255,7 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus struct {
 }
 
 // GetConditions returns the value of Conditions.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) GetConditions() []IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) GetConditions() []IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition {
 	return s.Conditions
 }
 
@@ -33277,17 +33277,17 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference struct {
 }
 
 // GetName returns the value of Name.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetName() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetName() OptString {
 	return s.Name
 }
 
 // GetNamespace returns the value of Namespace.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetNamespace() OptString {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetNamespace() OptString {
 	return s.Namespace
 }
 
 // GetPort returns the value of Port.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetPort() OptInt32 {
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetPort() OptInt32 {
 	return s.Port
 }
 

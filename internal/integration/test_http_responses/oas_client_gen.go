@@ -122,7 +122,7 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 // AnyContentTypeBinaryStringSchemaDefault invokes anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
-func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 	}
@@ -260,7 +260,7 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 // Headers200 invokes headers200 operation.
 //
 // GET /headers200
-func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
+func (c *Client) Headers200(ctx context.Context) (res *Headers200OK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
 	}
@@ -398,7 +398,7 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 // HeadersDefault invokes headersDefault operation.
 //
 // GET /headersDefault
-func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err error) {
+func (c *Client) HeadersDefault(ctx context.Context) (res *HeadersDefaultDef, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
 	}
@@ -458,7 +458,7 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 // HeadersPattern invokes headersPattern operation.
 //
 // GET /headersPattern
-func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err error) {
+func (c *Client) HeadersPattern(ctx context.Context) (res *HeadersPattern4XX, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
 	}

@@ -117,7 +117,7 @@ func (UnimplementedHandler) OrdersGet(ctx context.Context, params OrdersGetParam
 // Создание лимитной заявки.
 //
 // POST /orders/limit-order
-func (UnimplementedHandler) OrdersLimitOrderPost(ctx context.Context, req LimitOrderRequest, params OrdersLimitOrderPostParams) (r OrdersLimitOrderPostRes, _ error) {
+func (UnimplementedHandler) OrdersLimitOrderPost(ctx context.Context, req *LimitOrderRequest, params OrdersLimitOrderPostParams) (r OrdersLimitOrderPostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -126,7 +126,7 @@ func (UnimplementedHandler) OrdersLimitOrderPost(ctx context.Context, req LimitO
 // Создание рыночной заявки.
 //
 // POST /orders/market-order
-func (UnimplementedHandler) OrdersMarketOrderPost(ctx context.Context, req MarketOrderRequest, params OrdersMarketOrderPostParams) (r OrdersMarketOrderPostRes, _ error) {
+func (UnimplementedHandler) OrdersMarketOrderPost(ctx context.Context, req *MarketOrderRequest, params OrdersMarketOrderPostParams) (r OrdersMarketOrderPostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -162,7 +162,7 @@ func (UnimplementedHandler) SandboxClearPost(ctx context.Context, params Sandbox
 // Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
-func (UnimplementedHandler) SandboxCurrenciesBalancePost(ctx context.Context, req SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (r SandboxCurrenciesBalancePostRes, _ error) {
+func (UnimplementedHandler) SandboxCurrenciesBalancePost(ctx context.Context, req *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (r SandboxCurrenciesBalancePostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -171,7 +171,7 @@ func (UnimplementedHandler) SandboxCurrenciesBalancePost(ctx context.Context, re
 // Выставление баланса по инструментным позициям.
 //
 // POST /sandbox/positions/balance
-func (UnimplementedHandler) SandboxPositionsBalancePost(ctx context.Context, req SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (r SandboxPositionsBalancePostRes, _ error) {
+func (UnimplementedHandler) SandboxPositionsBalancePost(ctx context.Context, req *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (r SandboxPositionsBalancePostRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

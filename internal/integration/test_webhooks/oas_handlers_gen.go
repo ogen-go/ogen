@@ -71,7 +71,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	var response Event
+	var response *Event
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -85,7 +85,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 		type (
 			Request  = OptEvent
 			Params   = struct{}
-			Response = Event
+			Response = *Event
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -105,7 +105,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
-			encodeErrorResponse(*errRes, w, span)
+			encodeErrorResponse(errRes, w, span)
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
@@ -156,7 +156,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 		err error
 	)
 
-	var response StatusWebhookOK
+	var response *StatusWebhookOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -170,7 +170,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = StatusWebhookOK
+			Response = *StatusWebhookOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

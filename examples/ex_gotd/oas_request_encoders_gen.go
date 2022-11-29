@@ -12,7 +12,7 @@ import (
 )
 
 func encodeAddStickerToSetRequest(
-	req AddStickerToSet,
+	req *AddStickerToSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -26,7 +26,7 @@ func encodeAddStickerToSetRequest(
 }
 
 func encodeAnswerCallbackQueryRequest(
-	req AnswerCallbackQuery,
+	req *AnswerCallbackQuery,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -40,7 +40,7 @@ func encodeAnswerCallbackQueryRequest(
 }
 
 func encodeAnswerInlineQueryRequest(
-	req AnswerInlineQuery,
+	req *AnswerInlineQuery,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -54,7 +54,7 @@ func encodeAnswerInlineQueryRequest(
 }
 
 func encodeAnswerPreCheckoutQueryRequest(
-	req AnswerPreCheckoutQuery,
+	req *AnswerPreCheckoutQuery,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -68,7 +68,7 @@ func encodeAnswerPreCheckoutQueryRequest(
 }
 
 func encodeAnswerShippingQueryRequest(
-	req AnswerShippingQuery,
+	req *AnswerShippingQuery,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -82,7 +82,7 @@ func encodeAnswerShippingQueryRequest(
 }
 
 func encodeAnswerWebAppQueryRequest(
-	req AnswerWebAppQuery,
+	req *AnswerWebAppQuery,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -96,7 +96,7 @@ func encodeAnswerWebAppQueryRequest(
 }
 
 func encodeApproveChatJoinRequestRequest(
-	req ApproveChatJoinRequest,
+	req *ApproveChatJoinRequest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -110,7 +110,7 @@ func encodeApproveChatJoinRequestRequest(
 }
 
 func encodeBanChatMemberRequest(
-	req BanChatMember,
+	req *BanChatMember,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -124,7 +124,7 @@ func encodeBanChatMemberRequest(
 }
 
 func encodeBanChatSenderChatRequest(
-	req BanChatSenderChat,
+	req *BanChatSenderChat,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -138,7 +138,7 @@ func encodeBanChatSenderChatRequest(
 }
 
 func encodeCopyMessageRequest(
-	req CopyMessage,
+	req *CopyMessage,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -152,7 +152,7 @@ func encodeCopyMessageRequest(
 }
 
 func encodeCreateChatInviteLinkRequest(
-	req CreateChatInviteLink,
+	req *CreateChatInviteLink,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -166,7 +166,7 @@ func encodeCreateChatInviteLinkRequest(
 }
 
 func encodeCreateNewStickerSetRequest(
-	req CreateNewStickerSet,
+	req *CreateNewStickerSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -180,7 +180,7 @@ func encodeCreateNewStickerSetRequest(
 }
 
 func encodeDeclineChatJoinRequestRequest(
-	req DeclineChatJoinRequest,
+	req *DeclineChatJoinRequest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -194,7 +194,7 @@ func encodeDeclineChatJoinRequestRequest(
 }
 
 func encodeDeleteChatPhotoRequest(
-	req DeleteChatPhoto,
+	req *DeleteChatPhoto,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -208,7 +208,7 @@ func encodeDeleteChatPhotoRequest(
 }
 
 func encodeDeleteChatStickerSetRequest(
-	req DeleteChatStickerSet,
+	req *DeleteChatStickerSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -222,7 +222,7 @@ func encodeDeleteChatStickerSetRequest(
 }
 
 func encodeDeleteMessageRequest(
-	req DeleteMessage,
+	req *DeleteMessage,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -256,7 +256,7 @@ func encodeDeleteMyCommandsRequest(
 }
 
 func encodeDeleteStickerFromSetRequest(
-	req DeleteStickerFromSet,
+	req *DeleteStickerFromSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -290,7 +290,7 @@ func encodeDeleteWebhookRequest(
 }
 
 func encodeEditChatInviteLinkRequest(
-	req EditChatInviteLink,
+	req *EditChatInviteLink,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -304,7 +304,7 @@ func encodeEditChatInviteLinkRequest(
 }
 
 func encodeEditMessageCaptionRequest(
-	req EditMessageCaption,
+	req *EditMessageCaption,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -318,7 +318,7 @@ func encodeEditMessageCaptionRequest(
 }
 
 func encodeEditMessageLiveLocationRequest(
-	req EditMessageLiveLocation,
+	req *EditMessageLiveLocation,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -332,7 +332,7 @@ func encodeEditMessageLiveLocationRequest(
 }
 
 func encodeEditMessageMediaRequest(
-	req EditMessageMedia,
+	req *EditMessageMedia,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -346,7 +346,7 @@ func encodeEditMessageMediaRequest(
 }
 
 func encodeEditMessageReplyMarkupRequest(
-	req EditMessageReplyMarkup,
+	req *EditMessageReplyMarkup,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -360,7 +360,7 @@ func encodeEditMessageReplyMarkupRequest(
 }
 
 func encodeEditMessageTextRequest(
-	req EditMessageText,
+	req *EditMessageText,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -374,7 +374,7 @@ func encodeEditMessageTextRequest(
 }
 
 func encodeExportChatInviteLinkRequest(
-	req ExportChatInviteLink,
+	req *ExportChatInviteLink,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -388,7 +388,7 @@ func encodeExportChatInviteLinkRequest(
 }
 
 func encodeForwardMessageRequest(
-	req ForwardMessage,
+	req *ForwardMessage,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -402,7 +402,7 @@ func encodeForwardMessageRequest(
 }
 
 func encodeGetChatRequest(
-	req GetChat,
+	req *GetChat,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -416,7 +416,7 @@ func encodeGetChatRequest(
 }
 
 func encodeGetChatAdministratorsRequest(
-	req GetChatAdministrators,
+	req *GetChatAdministrators,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -430,7 +430,7 @@ func encodeGetChatAdministratorsRequest(
 }
 
 func encodeGetChatMemberRequest(
-	req GetChatMember,
+	req *GetChatMember,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -444,7 +444,7 @@ func encodeGetChatMemberRequest(
 }
 
 func encodeGetChatMemberCountRequest(
-	req GetChatMemberCount,
+	req *GetChatMemberCount,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -478,7 +478,7 @@ func encodeGetChatMenuButtonRequest(
 }
 
 func encodeGetFileRequest(
-	req GetFile,
+	req *GetFile,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -492,7 +492,7 @@ func encodeGetFileRequest(
 }
 
 func encodeGetGameHighScoresRequest(
-	req GetGameHighScores,
+	req *GetGameHighScores,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -546,7 +546,7 @@ func encodeGetMyDefaultAdministratorRightsRequest(
 }
 
 func encodeGetStickerSetRequest(
-	req GetStickerSet,
+	req *GetStickerSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -580,7 +580,7 @@ func encodeGetUpdatesRequest(
 }
 
 func encodeGetUserProfilePhotosRequest(
-	req GetUserProfilePhotos,
+	req *GetUserProfilePhotos,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -594,7 +594,7 @@ func encodeGetUserProfilePhotosRequest(
 }
 
 func encodeLeaveChatRequest(
-	req LeaveChat,
+	req *LeaveChat,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -608,7 +608,7 @@ func encodeLeaveChatRequest(
 }
 
 func encodePinChatMessageRequest(
-	req PinChatMessage,
+	req *PinChatMessage,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -622,7 +622,7 @@ func encodePinChatMessageRequest(
 }
 
 func encodePromoteChatMemberRequest(
-	req PromoteChatMember,
+	req *PromoteChatMember,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -636,7 +636,7 @@ func encodePromoteChatMemberRequest(
 }
 
 func encodeRestrictChatMemberRequest(
-	req RestrictChatMember,
+	req *RestrictChatMember,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -650,7 +650,7 @@ func encodeRestrictChatMemberRequest(
 }
 
 func encodeRevokeChatInviteLinkRequest(
-	req RevokeChatInviteLink,
+	req *RevokeChatInviteLink,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -664,7 +664,7 @@ func encodeRevokeChatInviteLinkRequest(
 }
 
 func encodeSendAnimationRequest(
-	req SendAnimation,
+	req *SendAnimation,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -678,7 +678,7 @@ func encodeSendAnimationRequest(
 }
 
 func encodeSendAudioRequest(
-	req SendAudio,
+	req *SendAudio,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -692,7 +692,7 @@ func encodeSendAudioRequest(
 }
 
 func encodeSendChatActionRequest(
-	req SendChatAction,
+	req *SendChatAction,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -706,7 +706,7 @@ func encodeSendChatActionRequest(
 }
 
 func encodeSendContactRequest(
-	req SendContact,
+	req *SendContact,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -720,7 +720,7 @@ func encodeSendContactRequest(
 }
 
 func encodeSendDiceRequest(
-	req SendDice,
+	req *SendDice,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -734,7 +734,7 @@ func encodeSendDiceRequest(
 }
 
 func encodeSendDocumentRequest(
-	req SendDocument,
+	req *SendDocument,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -748,7 +748,7 @@ func encodeSendDocumentRequest(
 }
 
 func encodeSendGameRequest(
-	req SendGame,
+	req *SendGame,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -762,7 +762,7 @@ func encodeSendGameRequest(
 }
 
 func encodeSendInvoiceRequest(
-	req SendInvoice,
+	req *SendInvoice,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -776,7 +776,7 @@ func encodeSendInvoiceRequest(
 }
 
 func encodeSendLocationRequest(
-	req SendLocation,
+	req *SendLocation,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -790,7 +790,7 @@ func encodeSendLocationRequest(
 }
 
 func encodeSendMediaGroupRequest(
-	req SendMediaGroup,
+	req *SendMediaGroup,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -804,7 +804,7 @@ func encodeSendMediaGroupRequest(
 }
 
 func encodeSendMessageRequest(
-	req SendMessage,
+	req *SendMessage,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -818,7 +818,7 @@ func encodeSendMessageRequest(
 }
 
 func encodeSendPhotoRequest(
-	req SendPhoto,
+	req *SendPhoto,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -832,7 +832,7 @@ func encodeSendPhotoRequest(
 }
 
 func encodeSendPollRequest(
-	req SendPoll,
+	req *SendPoll,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -846,7 +846,7 @@ func encodeSendPollRequest(
 }
 
 func encodeSendStickerRequest(
-	req SendSticker,
+	req *SendSticker,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -860,7 +860,7 @@ func encodeSendStickerRequest(
 }
 
 func encodeSendVenueRequest(
-	req SendVenue,
+	req *SendVenue,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -874,7 +874,7 @@ func encodeSendVenueRequest(
 }
 
 func encodeSendVideoRequest(
-	req SendVideo,
+	req *SendVideo,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -888,7 +888,7 @@ func encodeSendVideoRequest(
 }
 
 func encodeSendVideoNoteRequest(
-	req SendVideoNote,
+	req *SendVideoNote,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -902,7 +902,7 @@ func encodeSendVideoNoteRequest(
 }
 
 func encodeSendVoiceRequest(
-	req SendVoice,
+	req *SendVoice,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -916,7 +916,7 @@ func encodeSendVoiceRequest(
 }
 
 func encodeSetChatAdministratorCustomTitleRequest(
-	req SetChatAdministratorCustomTitle,
+	req *SetChatAdministratorCustomTitle,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -930,7 +930,7 @@ func encodeSetChatAdministratorCustomTitleRequest(
 }
 
 func encodeSetChatDescriptionRequest(
-	req SetChatDescription,
+	req *SetChatDescription,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -964,7 +964,7 @@ func encodeSetChatMenuButtonRequest(
 }
 
 func encodeSetChatPermissionsRequest(
-	req SetChatPermissions,
+	req *SetChatPermissions,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -978,7 +978,7 @@ func encodeSetChatPermissionsRequest(
 }
 
 func encodeSetChatPhotoRequest(
-	req SetChatPhoto,
+	req *SetChatPhoto,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -992,7 +992,7 @@ func encodeSetChatPhotoRequest(
 }
 
 func encodeSetChatStickerSetRequest(
-	req SetChatStickerSet,
+	req *SetChatStickerSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1006,7 +1006,7 @@ func encodeSetChatStickerSetRequest(
 }
 
 func encodeSetChatTitleRequest(
-	req SetChatTitle,
+	req *SetChatTitle,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1020,7 +1020,7 @@ func encodeSetChatTitleRequest(
 }
 
 func encodeSetGameScoreRequest(
-	req SetGameScore,
+	req *SetGameScore,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1034,7 +1034,7 @@ func encodeSetGameScoreRequest(
 }
 
 func encodeSetMyCommandsRequest(
-	req SetMyCommands,
+	req *SetMyCommands,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1068,7 +1068,7 @@ func encodeSetMyDefaultAdministratorRightsRequest(
 }
 
 func encodeSetPassportDataErrorsRequest(
-	req SetPassportDataErrors,
+	req *SetPassportDataErrors,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1082,7 +1082,7 @@ func encodeSetPassportDataErrorsRequest(
 }
 
 func encodeSetStickerPositionInSetRequest(
-	req SetStickerPositionInSet,
+	req *SetStickerPositionInSet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1096,7 +1096,7 @@ func encodeSetStickerPositionInSetRequest(
 }
 
 func encodeSetStickerSetThumbRequest(
-	req SetStickerSetThumb,
+	req *SetStickerSetThumb,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1110,7 +1110,7 @@ func encodeSetStickerSetThumbRequest(
 }
 
 func encodeSetWebhookRequest(
-	req SetWebhook,
+	req *SetWebhook,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1124,7 +1124,7 @@ func encodeSetWebhookRequest(
 }
 
 func encodeStopMessageLiveLocationRequest(
-	req StopMessageLiveLocation,
+	req *StopMessageLiveLocation,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1138,7 +1138,7 @@ func encodeStopMessageLiveLocationRequest(
 }
 
 func encodeStopPollRequest(
-	req StopPoll,
+	req *StopPoll,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1152,7 +1152,7 @@ func encodeStopPollRequest(
 }
 
 func encodeUnbanChatMemberRequest(
-	req UnbanChatMember,
+	req *UnbanChatMember,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1166,7 +1166,7 @@ func encodeUnbanChatMemberRequest(
 }
 
 func encodeUnbanChatSenderChatRequest(
-	req UnbanChatSenderChat,
+	req *UnbanChatSenderChat,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1180,7 +1180,7 @@ func encodeUnbanChatSenderChatRequest(
 }
 
 func encodeUnpinAllChatMessagesRequest(
-	req UnpinAllChatMessages,
+	req *UnpinAllChatMessages,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1194,7 +1194,7 @@ func encodeUnpinAllChatMessagesRequest(
 }
 
 func encodeUnpinChatMessageRequest(
-	req UnpinChatMessage,
+	req *UnpinChatMessage,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -1208,7 +1208,7 @@ func encodeUnpinChatMessageRequest(
 }
 
 func encodeUploadStickerFileRequest(
-	req UploadStickerFile,
+	req *UploadStickerFile,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

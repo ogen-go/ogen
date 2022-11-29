@@ -83,7 +83,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 		}
 
 		type (
-			Request  = SnapshotCreateParams
+			Request  = *SnapshotCreateParams
 			Params   = struct{}
 			Response = CreateSnapshotRes
 		)
@@ -182,7 +182,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 		}
 
 		type (
-			Request  = InstanceActionInfo
+			Request  = *InstanceActionInfo
 			Params   = struct{}
 			Response = CreateSyncActionRes
 		)
@@ -684,7 +684,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 		}
 
 		type (
-			Request  = SnapshotLoadParams
+			Request  = *SnapshotLoadParams
 			Params   = struct{}
 			Response = LoadSnapshotRes
 		)
@@ -780,7 +780,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = MmdsConfig
+			Request  = *MmdsConfig
 			Params   = struct{}
 			Response = MmdsConfigPutRes
 		)
@@ -1149,7 +1149,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 		}
 
 		type (
-			Request  = BalloonUpdate
+			Request  = *BalloonUpdate
 			Params   = struct{}
 			Response = PatchBalloonRes
 		)
@@ -1249,7 +1249,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 		}
 
 		type (
-			Request  = BalloonStatsUpdate
+			Request  = *BalloonStatsUpdate
 			Params   = struct{}
 			Response = PatchBalloonStatsIntervalRes
 		)
@@ -1364,7 +1364,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 		}
 
 		type (
-			Request  = PartialDrive
+			Request  = *PartialDrive
 			Params   = PatchGuestDriveByIDParams
 			Response = PatchGuestDriveByIDRes
 		)
@@ -1478,7 +1478,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 		}
 
 		type (
-			Request  = PartialNetworkInterface
+			Request  = *PartialNetworkInterface
 			Params   = PatchGuestNetworkInterfaceByIDParams
 			Response = PatchGuestNetworkInterfaceByIDRes
 		)
@@ -1677,7 +1677,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 		}
 
 		type (
-			Request  = VM
+			Request  = *VM
 			Params   = struct{}
 			Response = PatchVmRes
 		)
@@ -1777,7 +1777,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 		}
 
 		type (
-			Request  = Balloon
+			Request  = *Balloon
 			Params   = struct{}
 			Response = PutBalloonRes
 		)
@@ -1877,7 +1877,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 		}
 
 		type (
-			Request  = BootSource
+			Request  = *BootSource
 			Params   = struct{}
 			Response = PutGuestBootSourceRes
 		)
@@ -1992,7 +1992,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 		}
 
 		type (
-			Request  = Drive
+			Request  = *Drive
 			Params   = PutGuestDriveByIDParams
 			Response = PutGuestDriveByIDRes
 		)
@@ -2106,7 +2106,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 		}
 
 		type (
-			Request  = NetworkInterface
+			Request  = *NetworkInterface
 			Params   = PutGuestNetworkInterfaceByIDParams
 			Response = PutGuestNetworkInterfaceByIDRes
 		)
@@ -2206,7 +2206,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = Vsock
+			Request  = *Vsock
 			Params   = struct{}
 			Response = PutGuestVsockRes
 		)
@@ -2305,7 +2305,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 		}
 
 		type (
-			Request  = Logger
+			Request  = *Logger
 			Params   = struct{}
 			Response = PutLoggerRes
 		)
@@ -2506,7 +2506,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 		}
 
 		type (
-			Request  = Metrics
+			Request  = *Metrics
 			Params   = struct{}
 			Response = PutMetricsRes
 		)

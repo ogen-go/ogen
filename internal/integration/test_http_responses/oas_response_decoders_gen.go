@@ -42,7 +42,7 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	// Default response.
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
@@ -57,7 +57,7 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) 
 		}
 
 		response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: bytes.NewReader(b)}
-		return AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
+		return &AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
 			StatusCode: resp.StatusCode,
 			Response:   response,
 		}, nil
@@ -215,7 +215,7 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 	}
 }
 
-func decodeHeaders200Response(resp *http.Response) (res Headers200OK, err error) {
+func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -244,7 +244,7 @@ func decodeHeaders200Response(resp *http.Response) (res Headers200OK, err error)
 				return res, errors.Wrap(err, "parse TestHeader header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -341,7 +341,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 	return &wrapper, nil
 }
 
-func decodeHeadersDefaultResponse(resp *http.Response) (res HeadersDefaultDef, err error) {
+func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, err error) {
 	// Default response.
 	var wrapper HeadersDefaultDef
 	wrapper.StatusCode = resp.StatusCode
@@ -369,10 +369,10 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res HeadersDefaultDef, e
 			return res, errors.Wrap(err, "parse TestHeader header")
 		}
 	}
-	return wrapper, nil
+	return &wrapper, nil
 }
 
-func decodeHeadersPatternResponse(resp *http.Response) (res HeadersPattern4XX, err error) {
+func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, err error) {
 	switch resp.StatusCode / 100 {
 	case 4:
 		// Pattern 4XX.
@@ -402,7 +402,7 @@ func decodeHeadersPatternResponse(resp *http.Response) (res HeadersPattern4XX, e
 				return res, errors.Wrap(err, "parse TestHeader header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

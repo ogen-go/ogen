@@ -25910,7 +25910,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	var response LogFileHandlerUnauthorized
+	var response *LogFileHandlerUnauthorized
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -25929,7 +25929,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		type (
 			Request  = struct{}
 			Params   = LogFileHandlerParams
-			Response = LogFileHandlerUnauthorized
+			Response = *LogFileHandlerUnauthorized
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -26009,7 +26009,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		ctx = sctx
 	}
 
-	var response LogFileListHandlerUnauthorized
+	var response *LogFileListHandlerUnauthorized
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -26023,7 +26023,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = LogFileListHandlerUnauthorized
+			Response = *LogFileListHandlerUnauthorized
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

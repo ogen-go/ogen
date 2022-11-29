@@ -12,7 +12,7 @@ import (
 )
 
 func encodeDefaultTestRequest(
-	req DefaultTest,
+	req *DefaultTest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -46,7 +46,7 @@ func encodeFoobarPostRequest(
 }
 
 func encodeOneofBugRequest(
-	req OneOfBugs,
+	req *OneOfBugs,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -130,7 +130,7 @@ func encodePetUploadAvatarByIDRequest(
 }
 
 func encodeTestFloatValidationRequest(
-	req TestFloatValidation,
+	req *TestFloatValidation,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

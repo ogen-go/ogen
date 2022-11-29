@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Nullable strings.
 //
 // POST /nullableStrings
-func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) (r NullableStringsOK, _ error) {
+func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) (r *NullableStringsOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -27,7 +27,7 @@ func (UnimplementedHandler) NullableStrings(ctx context.Context, req NilString) 
 // Objects with conflicting array property.
 //
 // POST /objectsWithConflictingArrayProperty
-func (UnimplementedHandler) ObjectsWithConflictingArrayProperty(ctx context.Context, req ObjectsWithConflictingArrayPropertyReq) (r ObjectsWithConflictingArrayPropertyOK, _ error) {
+func (UnimplementedHandler) ObjectsWithConflictingArrayProperty(ctx context.Context, req *ObjectsWithConflictingArrayPropertyReq) (r *ObjectsWithConflictingArrayPropertyOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -36,7 +36,7 @@ func (UnimplementedHandler) ObjectsWithConflictingArrayProperty(ctx context.Cont
 // Objects with conflicting properties.
 //
 // POST /objectsWithConflictingProperties
-func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context, req ObjectsWithConflictingPropertiesReq) (r ObjectsWithConflictingPropertiesOK, _ error) {
+func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context, req *ObjectsWithConflictingPropertiesReq) (r *ObjectsWithConflictingPropertiesOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -45,7 +45,7 @@ func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context
 // Referenced allOf.
 //
 // POST /referencedAllof
-func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req ReferencedAllofReq) (r ReferencedAllofOK, _ error) {
+func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req ReferencedAllofReq) (r *ReferencedAllofOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -54,7 +54,7 @@ func (UnimplementedHandler) ReferencedAllof(ctx context.Context, req ReferencedA
 // Referenced allOf, but requestBody is not required.
 //
 // POST /referencedAllofOptional
-func (UnimplementedHandler) ReferencedAllofOptional(ctx context.Context, req ReferencedAllofOptionalReq) (r ReferencedAllofOptionalOK, _ error) {
+func (UnimplementedHandler) ReferencedAllofOptional(ctx context.Context, req ReferencedAllofOptionalReq) (r *ReferencedAllofOptionalOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -63,7 +63,7 @@ func (UnimplementedHandler) ReferencedAllofOptional(ctx context.Context, req Ref
 // Simple integers with validation.
 //
 // POST /simpleInteger
-func (UnimplementedHandler) SimpleInteger(ctx context.Context, req int) (r SimpleIntegerOK, _ error) {
+func (UnimplementedHandler) SimpleInteger(ctx context.Context, req int) (r *SimpleIntegerOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -72,6 +72,6 @@ func (UnimplementedHandler) SimpleInteger(ctx context.Context, req int) (r Simpl
 // Simple objects.
 //
 // POST /simpleObjects
-func (UnimplementedHandler) SimpleObjects(ctx context.Context, req SimpleObjectsReq) (r SimpleObjectsOK, _ error) {
+func (UnimplementedHandler) SimpleObjects(ctx context.Context, req *SimpleObjectsReq) (r *SimpleObjectsOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

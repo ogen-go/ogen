@@ -4990,14 +4990,14 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 	}
 }
 
-func encodeLogFileHandlerResponse(response LogFileHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
+func encodeLogFileHandlerResponse(response *LogFileHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	span.SetStatus(codes.Error, http.StatusText(401))
 
 	return nil
 }
 
-func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
+func encodeLogFileListHandlerResponse(response *LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	span.SetStatus(codes.Error, http.StatusText(401))
 

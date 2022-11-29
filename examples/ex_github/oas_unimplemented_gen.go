@@ -26,7 +26,7 @@ var _ Handler = UnimplementedHandler{}
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (UnimplementedHandler) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (r ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -53,7 +53,7 @@ func (UnimplementedHandler) ActionsAddSelectedRepoToOrgSecret(ctx context.Contex
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (r ActionsAddSelfHostedRunnerToGroupForOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (r *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -77,7 +77,7 @@ func (UnimplementedHandler) ActionsApproveWorkflowRun(ctx context.Context, param
 // endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
-func (UnimplementedHandler) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (r ActionsCancelWorkflowRunAccepted, _ error) {
+func (UnimplementedHandler) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (r *ActionsCancelWorkflowRunAccepted, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -139,7 +139,7 @@ func (UnimplementedHandler) ActionsCancelWorkflowRun(ctx context.Context, params
 // ```.
 //
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (UnimplementedHandler) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (r ActionsCreateOrUpdateEnvironmentSecretRes, _ error) {
+func (UnimplementedHandler) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (r ActionsCreateOrUpdateEnvironmentSecretRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -201,7 +201,7 @@ func (UnimplementedHandler) ActionsCreateOrUpdateEnvironmentSecret(ctx context.C
 // ```.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (r ActionsCreateOrUpdateOrgSecretRes, _ error) {
+func (UnimplementedHandler) ActionsCreateOrUpdateOrgSecret(ctx context.Context, req *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (r ActionsCreateOrUpdateOrgSecretRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -263,7 +263,7 @@ func (UnimplementedHandler) ActionsCreateOrUpdateOrgSecret(ctx context.Context, 
 // ```.
 //
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsCreateOrUpdateRepoSecret(ctx context.Context, req ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (r ActionsCreateOrUpdateRepoSecretRes, _ error) {
+func (UnimplementedHandler) ActionsCreateOrUpdateRepoSecret(ctx context.Context, req *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (r ActionsCreateOrUpdateRepoSecretRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -279,7 +279,7 @@ func (UnimplementedHandler) ActionsCreateOrUpdateRepoSecret(ctx context.Context,
 // ```.
 //
 // POST /orgs/{org}/actions/runners/registration-token
-func (UnimplementedHandler) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (r AuthenticationToken, _ error) {
+func (UnimplementedHandler) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (r *AuthenticationToken, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -296,7 +296,7 @@ func (UnimplementedHandler) ActionsCreateRegistrationTokenForOrg(ctx context.Con
 // ```.
 //
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
-func (UnimplementedHandler) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (r AuthenticationToken, _ error) {
+func (UnimplementedHandler) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (r *AuthenticationToken, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -314,7 +314,7 @@ func (UnimplementedHandler) ActionsCreateRegistrationTokenForRepo(ctx context.Co
 // ```.
 //
 // POST /orgs/{org}/actions/runners/remove-token
-func (UnimplementedHandler) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (r AuthenticationToken, _ error) {
+func (UnimplementedHandler) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (r *AuthenticationToken, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -331,7 +331,7 @@ func (UnimplementedHandler) ActionsCreateRemoveTokenForOrg(ctx context.Context, 
 // ```.
 //
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
-func (UnimplementedHandler) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (r AuthenticationToken, _ error) {
+func (UnimplementedHandler) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (r *AuthenticationToken, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -344,7 +344,7 @@ func (UnimplementedHandler) ActionsCreateRemoveTokenForRepo(ctx context.Context,
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // POST /orgs/{org}/actions/runner-groups
-func (UnimplementedHandler) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (r RunnerGroupsOrg, _ error) {
+func (UnimplementedHandler) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, req *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (r *RunnerGroupsOrg, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -355,7 +355,7 @@ func (UnimplementedHandler) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (UnimplementedHandler) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (r ActionsDeleteArtifactNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (r *ActionsDeleteArtifactNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -366,7 +366,7 @@ func (UnimplementedHandler) ActionsDeleteArtifact(ctx context.Context, params Ac
 // permission to use this endpoint.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (UnimplementedHandler) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (r ActionsDeleteEnvironmentSecretNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (r *ActionsDeleteEnvironmentSecretNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -377,7 +377,7 @@ func (UnimplementedHandler) ActionsDeleteEnvironmentSecret(ctx context.Context, 
 // organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (r ActionsDeleteOrgSecretNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (r *ActionsDeleteOrgSecretNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -388,7 +388,7 @@ func (UnimplementedHandler) ActionsDeleteOrgSecret(ctx context.Context, params A
 // permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (r ActionsDeleteRepoSecretNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (r *ActionsDeleteRepoSecretNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -399,7 +399,7 @@ func (UnimplementedHandler) ActionsDeleteRepoSecret(ctx context.Context, params 
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
-func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (r ActionsDeleteSelfHostedRunnerFromOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (r *ActionsDeleteSelfHostedRunnerFromOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -411,7 +411,7 @@ func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Con
 // scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (r ActionsDeleteSelfHostedRunnerFromRepoNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (r *ActionsDeleteSelfHostedRunnerFromRepoNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -424,7 +424,7 @@ func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Co
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (r ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (r *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -437,7 +437,7 @@ func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx contex
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-func (UnimplementedHandler) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (r ActionsDeleteWorkflowRunNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (r *ActionsDeleteWorkflowRunNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -448,7 +448,7 @@ func (UnimplementedHandler) ActionsDeleteWorkflowRun(ctx context.Context, params
 // endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (UnimplementedHandler) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (r ActionsDeleteWorkflowRunLogsNoContent, _ error) {
+func (UnimplementedHandler) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (r *ActionsDeleteWorkflowRunLogsNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -462,7 +462,7 @@ func (UnimplementedHandler) ActionsDeleteWorkflowRunLogs(ctx context.Context, pa
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (r ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
+func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (r *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -477,7 +477,7 @@ func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganiz
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (r ActionsDownloadArtifactFound, _ error) {
+func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (r *ActionsDownloadArtifactFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -494,7 +494,7 @@ func (UnimplementedHandler) ActionsDownloadArtifact(ctx context.Context, params 
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-func (UnimplementedHandler) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (r ActionsDownloadJobLogsForWorkflowRunFound, _ error) {
+func (UnimplementedHandler) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (r *ActionsDownloadJobLogsForWorkflowRunFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -509,7 +509,7 @@ func (UnimplementedHandler) ActionsDownloadJobLogsForWorkflowRun(ctx context.Con
 // the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (r ActionsDownloadWorkflowRunLogsFound, _ error) {
+func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (r *ActionsDownloadWorkflowRunLogsFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -523,7 +523,7 @@ func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, 
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (UnimplementedHandler) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (r ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
+func (UnimplementedHandler) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (r *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -537,7 +537,7 @@ func (UnimplementedHandler) ActionsEnableSelectedRepositoryGithubActionsOrganiza
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions/selected-actions
-func (UnimplementedHandler) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (r SelectedActions, _ error) {
+func (UnimplementedHandler) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (r *SelectedActions, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -551,7 +551,7 @@ func (UnimplementedHandler) ActionsGetAllowedActionsOrganization(ctx context.Con
 // Apps must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (UnimplementedHandler) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (r SelectedActions, _ error) {
+func (UnimplementedHandler) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (r *SelectedActions, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -562,7 +562,7 @@ func (UnimplementedHandler) ActionsGetAllowedActionsRepository(ctx context.Conte
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (UnimplementedHandler) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (r Artifact, _ error) {
+func (UnimplementedHandler) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (r *Artifact, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -574,7 +574,7 @@ func (UnimplementedHandler) ActionsGetArtifact(ctx context.Context, params Actio
 // the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
-func (UnimplementedHandler) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (r ActionsPublicKey, _ error) {
+func (UnimplementedHandler) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (r *ActionsPublicKey, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -585,7 +585,7 @@ func (UnimplementedHandler) ActionsGetEnvironmentPublicKey(ctx context.Context, 
 // `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (UnimplementedHandler) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (r ActionsSecret, _ error) {
+func (UnimplementedHandler) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (r *ActionsSecret, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -596,7 +596,7 @@ func (UnimplementedHandler) ActionsGetEnvironmentSecret(ctx context.Context, par
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions
-func (UnimplementedHandler) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (r ActionsOrganizationPermissions, _ error) {
+func (UnimplementedHandler) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (r *ActionsOrganizationPermissions, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -608,7 +608,7 @@ func (UnimplementedHandler) ActionsGetGithubActionsPermissionsOrganization(ctx c
 // endpoint. GitHub Apps must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions
-func (UnimplementedHandler) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (r ActionsRepositoryPermissions, _ error) {
+func (UnimplementedHandler) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (r *ActionsRepositoryPermissions, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -619,7 +619,7 @@ func (UnimplementedHandler) ActionsGetGithubActionsPermissionsRepository(ctx con
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
-func (UnimplementedHandler) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (r Job, _ error) {
+func (UnimplementedHandler) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (r *Job, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -631,7 +631,7 @@ func (UnimplementedHandler) ActionsGetJobForWorkflowRun(ctx context.Context, par
 // this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/public-key
-func (UnimplementedHandler) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (r ActionsPublicKey, _ error) {
+func (UnimplementedHandler) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (r *ActionsPublicKey, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -642,7 +642,7 @@ func (UnimplementedHandler) ActionsGetOrgPublicKey(ctx context.Context, params A
 // `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (r OrganizationActionsSecret, _ error) {
+func (UnimplementedHandler) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (r *OrganizationActionsSecret, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -654,7 +654,7 @@ func (UnimplementedHandler) ActionsGetOrgSecret(ctx context.Context, params Acti
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
-func (UnimplementedHandler) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (r ActionsPublicKey, _ error) {
+func (UnimplementedHandler) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (r *ActionsPublicKey, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -665,7 +665,7 @@ func (UnimplementedHandler) ActionsGetRepoPublicKey(ctx context.Context, params 
 // repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (r ActionsSecret, _ error) {
+func (UnimplementedHandler) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (r *ActionsSecret, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -686,7 +686,7 @@ func (UnimplementedHandler) ActionsGetReviewsForRun(ctx context.Context, params 
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/{runner_id}
-func (UnimplementedHandler) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (r Runner, _ error) {
+func (UnimplementedHandler) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (r *Runner, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -697,7 +697,7 @@ func (UnimplementedHandler) ActionsGetSelfHostedRunnerForOrg(ctx context.Context
 // endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (UnimplementedHandler) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (r Runner, _ error) {
+func (UnimplementedHandler) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (r *Runner, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -710,7 +710,7 @@ func (UnimplementedHandler) ActionsGetSelfHostedRunnerForRepo(ctx context.Contex
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (r RunnerGroupsOrg, _ error) {
+func (UnimplementedHandler) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (r *RunnerGroupsOrg, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -721,7 +721,7 @@ func (UnimplementedHandler) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Co
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
-func (UnimplementedHandler) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (r WorkflowRun, _ error) {
+func (UnimplementedHandler) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (r *WorkflowRun, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -739,7 +739,7 @@ func (UnimplementedHandler) ActionsGetWorkflowRun(ctx context.Context, params Ac
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
-func (UnimplementedHandler) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (r WorkflowRunUsage, _ error) {
+func (UnimplementedHandler) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (r *WorkflowRunUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -750,7 +750,7 @@ func (UnimplementedHandler) ActionsGetWorkflowRunUsage(ctx context.Context, para
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts
-func (UnimplementedHandler) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (r ActionsListArtifactsForRepoOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (r *ActionsListArtifactsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -761,7 +761,7 @@ func (UnimplementedHandler) ActionsListArtifactsForRepo(ctx context.Context, par
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
-func (UnimplementedHandler) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (r ActionsListEnvironmentSecretsOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (r *ActionsListEnvironmentSecretsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -774,7 +774,7 @@ func (UnimplementedHandler) ActionsListEnvironmentSecrets(ctx context.Context, p
 // com/rest/overview/resources-in-the-rest-api#parameters).
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-func (UnimplementedHandler) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (r ActionsListJobsForWorkflowRunOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (r *ActionsListJobsForWorkflowRunOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -785,7 +785,7 @@ func (UnimplementedHandler) ActionsListJobsForWorkflowRun(ctx context.Context, p
 // must have the `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets
-func (UnimplementedHandler) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (r ActionsListOrgSecretsOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (r *ActionsListOrgSecretsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -798,7 +798,7 @@ func (UnimplementedHandler) ActionsListOrgSecrets(ctx context.Context, params Ac
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (UnimplementedHandler) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (r ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, _ error) {
+func (UnimplementedHandler) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -809,7 +809,7 @@ func (UnimplementedHandler) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ct
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
-func (UnimplementedHandler) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (r ActionsListRepoSecretsOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (r *ActionsListRepoSecretsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -820,7 +820,7 @@ func (UnimplementedHandler) ActionsListRepoSecrets(ctx context.Context, params A
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/workflows
-func (UnimplementedHandler) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (r ActionsListRepoWorkflowsOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (r *ActionsListRepoWorkflowsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -852,7 +852,7 @@ func (UnimplementedHandler) ActionsListRunnerApplicationsForRepo(ctx context.Con
 // this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (UnimplementedHandler) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (r ActionsListSelectedReposForOrgSecretOK, _ error) {
+func (UnimplementedHandler) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (r *ActionsListSelectedReposForOrgSecretOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -866,7 +866,7 @@ func (UnimplementedHandler) ActionsListSelectedReposForOrgSecret(ctx context.Con
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions/repositories
-func (UnimplementedHandler) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (r ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, _ error) {
+func (UnimplementedHandler) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (r *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -879,7 +879,7 @@ func (UnimplementedHandler) ActionsListSelectedRepositoriesEnabledGithubActionsO
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups
-func (UnimplementedHandler) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (r ActionsListSelfHostedRunnerGroupsForOrgOK, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (r *ActionsListSelfHostedRunnerGroupsForOrgOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -889,7 +889,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners
-func (UnimplementedHandler) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (r ActionsListSelfHostedRunnersForOrgOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (r *ActionsListSelfHostedRunnersForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -899,7 +899,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersForOrg(ctx context.Conte
 // token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners
-func (UnimplementedHandler) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (r ActionsListSelfHostedRunnersForRepoOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (r *ActionsListSelfHostedRunnersForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -912,7 +912,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersForRepo(ctx context.Cont
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (r ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (r *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -923,7 +923,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx contex
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (r ActionsListWorkflowRunArtifactsOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (r *ActionsListWorkflowRunArtifactsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -937,7 +937,7 @@ func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context,
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs
-func (UnimplementedHandler) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (r ActionsListWorkflowRunsForRepoOKHeaders, _ error) {
+func (UnimplementedHandler) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (r *ActionsListWorkflowRunsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -953,7 +953,7 @@ func (UnimplementedHandler) ActionsListWorkflowRunsForRepo(ctx context.Context, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
-func (UnimplementedHandler) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (r ActionsReRunWorkflowCreated, _ error) {
+func (UnimplementedHandler) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (r *ActionsReRunWorkflowCreated, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -969,7 +969,7 @@ func (UnimplementedHandler) ActionsReRunWorkflow(ctx context.Context, params Act
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (UnimplementedHandler) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (r ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -996,7 +996,7 @@ func (UnimplementedHandler) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.C
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (r ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (r *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1007,7 +1007,7 @@ func (UnimplementedHandler) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx con
 // this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
-func (UnimplementedHandler) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (r ActionsRetryWorkflowCreated, _ error) {
+func (UnimplementedHandler) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (r *ActionsRetryWorkflowCreated, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1017,7 +1017,7 @@ func (UnimplementedHandler) ActionsRetryWorkflow(ctx context.Context, params Act
 // Anyone with read access to the repository contents and deployments can use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
-func (UnimplementedHandler) ActionsReviewPendingDeploymentsForRun(ctx context.Context, req ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (r []Deployment, _ error) {
+func (UnimplementedHandler) ActionsReviewPendingDeploymentsForRun(ctx context.Context, req *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (r []Deployment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1036,7 +1036,7 @@ func (UnimplementedHandler) ActionsReviewPendingDeploymentsForRun(ctx context.Co
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (UnimplementedHandler) ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (r ActionsSetAllowedActionsOrganizationNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (r *ActionsSetAllowedActionsOrganizationNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1054,7 +1054,7 @@ func (UnimplementedHandler) ActionsSetAllowedActionsOrganization(ctx context.Con
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (UnimplementedHandler) ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (r ActionsSetAllowedActionsRepositoryNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (r *ActionsSetAllowedActionsRepositoryNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1068,7 +1068,7 @@ func (UnimplementedHandler) ActionsSetAllowedActionsRepository(ctx context.Conte
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions
-func (UnimplementedHandler) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (r ActionsSetGithubActionsPermissionsOrganizationNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (r *ActionsSetGithubActionsPermissionsOrganizationNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1083,7 +1083,7 @@ func (UnimplementedHandler) ActionsSetGithubActionsPermissionsOrganization(ctx c
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
-func (UnimplementedHandler) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (r ActionsSetGithubActionsPermissionsRepositoryNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (r *ActionsSetGithubActionsPermissionsRepositoryNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1097,7 +1097,7 @@ func (UnimplementedHandler) ActionsSetGithubActionsPermissionsRepository(ctx con
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (UnimplementedHandler) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (r ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1110,7 +1110,7 @@ func (UnimplementedHandler) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (UnimplementedHandler) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (r ActionsSetSelectedReposForOrgSecretNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (r *ActionsSetSelectedReposForOrgSecretNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1124,7 +1124,7 @@ func (UnimplementedHandler) ActionsSetSelectedReposForOrgSecret(ctx context.Cont
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
-func (UnimplementedHandler) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (r ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (r *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1137,7 +1137,7 @@ func (UnimplementedHandler) ActionsSetSelectedRepositoriesEnabledGithubActionsOr
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (r ActionsSetSelfHostedRunnersInGroupForOrgNoContent, _ error) {
+func (UnimplementedHandler) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (r *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1150,7 +1150,7 @@ func (UnimplementedHandler) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (r RunnerGroupsOrg, _ error) {
+func (UnimplementedHandler) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, req *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (r *RunnerGroupsOrg, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1170,7 +1170,7 @@ func (UnimplementedHandler) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx co
 // manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
 //
 // DELETE /repos/{owner}/{repo}/subscription
-func (UnimplementedHandler) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (r ActivityDeleteRepoSubscriptionNoContent, _ error) {
+func (UnimplementedHandler) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (r *ActivityDeleteRepoSubscriptionNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1206,7 +1206,7 @@ func (UnimplementedHandler) ActivityDeleteThreadSubscription(ctx context.Context
 // the older, non revocable auth tokens.
 //
 // GET /feeds
-func (UnimplementedHandler) ActivityGetFeeds(ctx context.Context) (r Feed, _ error) {
+func (UnimplementedHandler) ActivityGetFeeds(ctx context.Context) (r *Feed, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1339,7 +1339,7 @@ func (UnimplementedHandler) ActivityListRepoEvents(ctx context.Context, params A
 // List all notifications for the current user.
 //
 // GET /repos/{owner}/{repo}/notifications
-func (UnimplementedHandler) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (r ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, _ error) {
+func (UnimplementedHandler) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (r *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1359,7 +1359,7 @@ func (UnimplementedHandler) ActivityListReposStarredByAuthenticatedUser(ctx cont
 // Lists repositories a user is watching.
 //
 // GET /users/{username}/subscriptions
-func (UnimplementedHandler) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (r ActivityListReposWatchedByUserOKHeaders, _ error) {
+func (UnimplementedHandler) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (r *ActivityListReposWatchedByUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1377,7 +1377,7 @@ func (UnimplementedHandler) ActivityListWatchedReposForAuthenticatedUser(ctx con
 // Lists the people watching the specified repository.
 //
 // GET /repos/{owner}/{repo}/subscribers
-func (UnimplementedHandler) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (r ActivityListWatchersForRepoOKHeaders, _ error) {
+func (UnimplementedHandler) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (r *ActivityListWatchersForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1428,7 +1428,7 @@ func (UnimplementedHandler) ActivityMarkThreadAsRead(ctx context.Context, params
 // com/rest/reference/activity#delete-a-repository-subscription) completely.
 //
 // PUT /repos/{owner}/{repo}/subscription
-func (UnimplementedHandler) ActivitySetRepoSubscription(ctx context.Context, req OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (r RepositorySubscription, _ error) {
+func (UnimplementedHandler) ActivitySetRepoSubscription(ctx context.Context, req OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (r *RepositorySubscription, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1492,7 +1492,7 @@ func (UnimplementedHandler) AppsAddRepoToInstallation(ctx context.Context, param
 // tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token
-func (UnimplementedHandler) AppsCheckToken(ctx context.Context, req AppsCheckTokenReq, params AppsCheckTokenParams) (r AppsCheckTokenRes, _ error) {
+func (UnimplementedHandler) AppsCheckToken(ctx context.Context, req *AppsCheckTokenReq, params AppsCheckTokenParams) (r AppsCheckTokenRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1510,7 +1510,7 @@ func (UnimplementedHandler) AppsCheckToken(ctx context.Context, req AppsCheckTok
 // to access this endpoint.
 //
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
-func (UnimplementedHandler) AppsCreateContentAttachment(ctx context.Context, req AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (r AppsCreateContentAttachmentRes, _ error) {
+func (UnimplementedHandler) AppsCreateContentAttachment(ctx context.Context, req *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (r AppsCreateContentAttachmentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1558,7 +1558,7 @@ func (UnimplementedHandler) AppsCreateInstallationAccessToken(ctx context.Contex
 // GitHub](https://github.com/settings/applications#authorized).
 //
 // DELETE /applications/{client_id}/grant
-func (UnimplementedHandler) AppsDeleteAuthorization(ctx context.Context, req AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (r AppsDeleteAuthorizationRes, _ error) {
+func (UnimplementedHandler) AppsDeleteAuthorization(ctx context.Context, req *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (r AppsDeleteAuthorizationRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1584,7 +1584,7 @@ func (UnimplementedHandler) AppsDeleteInstallation(ctx context.Context, params A
 // using the OAuth application's `client_id` and `client_secret` as the username and password.
 //
 // DELETE /applications/{client_id}/token
-func (UnimplementedHandler) AppsDeleteToken(ctx context.Context, req AppsDeleteTokenReq, params AppsDeleteTokenParams) (r AppsDeleteTokenRes, _ error) {
+func (UnimplementedHandler) AppsDeleteToken(ctx context.Context, req *AppsDeleteTokenReq, params AppsDeleteTokenParams) (r AppsDeleteTokenRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1600,7 +1600,7 @@ func (UnimplementedHandler) AppsDeleteToken(ctx context.Context, req AppsDeleteT
 // access this endpoint.
 //
 // GET /app
-func (UnimplementedHandler) AppsGetAuthenticated(ctx context.Context) (r Integration, _ error) {
+func (UnimplementedHandler) AppsGetAuthenticated(ctx context.Context) (r *Integration, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1661,7 +1661,7 @@ func (UnimplementedHandler) AppsGetSubscriptionPlanForAccountStubbed(ctx context
 // access this endpoint.
 //
 // GET /app/hook/config
-func (UnimplementedHandler) AppsGetWebhookConfigForApp(ctx context.Context) (r WebhookConfig, _ error) {
+func (UnimplementedHandler) AppsGetWebhookConfigForApp(ctx context.Context) (r *WebhookConfig, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1836,7 +1836,7 @@ func (UnimplementedHandler) AppsRemoveRepoFromInstallation(ctx context.Context, 
 // Invalid tokens will return `404 NOT FOUND`.
 //
 // PATCH /applications/{client_id}/token
-func (UnimplementedHandler) AppsResetToken(ctx context.Context, req AppsResetTokenReq, params AppsResetTokenParams) (r AppsResetTokenRes, _ error) {
+func (UnimplementedHandler) AppsResetToken(ctx context.Context, req *AppsResetTokenReq, params AppsResetTokenParams) (r AppsResetTokenRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1854,7 +1854,7 @@ func (UnimplementedHandler) AppsResetToken(ctx context.Context, req AppsResetTok
 // to access this endpoint.
 //
 // DELETE /installation/token
-func (UnimplementedHandler) AppsRevokeInstallationAccessToken(ctx context.Context) (r AppsRevokeInstallationAccessTokenNoContent, _ error) {
+func (UnimplementedHandler) AppsRevokeInstallationAccessToken(ctx context.Context) (r *AppsRevokeInstallationAccessTokenNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1868,7 +1868,7 @@ func (UnimplementedHandler) AppsRevokeInstallationAccessToken(ctx context.Contex
 // password. Invalid tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token/scoped
-func (UnimplementedHandler) AppsScopeToken(ctx context.Context, req AppsScopeTokenReq, params AppsScopeTokenParams) (r AppsScopeTokenRes, _ error) {
+func (UnimplementedHandler) AppsScopeToken(ctx context.Context, req *AppsScopeTokenReq, params AppsScopeTokenParams) (r AppsScopeTokenRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1907,7 +1907,7 @@ func (UnimplementedHandler) AppsUnsuspendInstallation(ctx context.Context, param
 // access this endpoint.
 //
 // PATCH /app/hook/config
-func (UnimplementedHandler) AppsUpdateWebhookConfigForApp(ctx context.Context, req OptAppsUpdateWebhookConfigForAppReq) (r WebhookConfig, _ error) {
+func (UnimplementedHandler) AppsUpdateWebhookConfigForApp(ctx context.Context, req OptAppsUpdateWebhookConfigForAppReq) (r *WebhookConfig, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1923,7 +1923,7 @@ func (UnimplementedHandler) AppsUpdateWebhookConfigForApp(ctx context.Context, r
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/actions
-func (UnimplementedHandler) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (r ActionsBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (r *ActionsBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1939,7 +1939,7 @@ func (UnimplementedHandler) BillingGetGithubActionsBillingGhe(ctx context.Contex
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/actions
-func (UnimplementedHandler) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (r ActionsBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (r *ActionsBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1955,7 +1955,7 @@ func (UnimplementedHandler) BillingGetGithubActionsBillingOrg(ctx context.Contex
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/actions
-func (UnimplementedHandler) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (r ActionsBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (r *ActionsBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1968,7 +1968,7 @@ func (UnimplementedHandler) BillingGetGithubActionsBillingUser(ctx context.Conte
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/packages
-func (UnimplementedHandler) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (r PackagesBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (r *PackagesBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1981,7 +1981,7 @@ func (UnimplementedHandler) BillingGetGithubPackagesBillingGhe(ctx context.Conte
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/packages
-func (UnimplementedHandler) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (r PackagesBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (r *PackagesBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1994,7 +1994,7 @@ func (UnimplementedHandler) BillingGetGithubPackagesBillingOrg(ctx context.Conte
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/packages
-func (UnimplementedHandler) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (r PackagesBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (r *PackagesBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2007,7 +2007,7 @@ func (UnimplementedHandler) BillingGetGithubPackagesBillingUser(ctx context.Cont
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
-func (UnimplementedHandler) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (r CombinedBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (r *CombinedBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2020,7 +2020,7 @@ func (UnimplementedHandler) BillingGetSharedStorageBillingGhe(ctx context.Contex
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/shared-storage
-func (UnimplementedHandler) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (r CombinedBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (r *CombinedBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2033,7 +2033,7 @@ func (UnimplementedHandler) BillingGetSharedStorageBillingOrg(ctx context.Contex
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/shared-storage
-func (UnimplementedHandler) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (r CombinedBillingUsage, _ error) {
+func (UnimplementedHandler) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (r *CombinedBillingUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2050,7 +2050,7 @@ func (UnimplementedHandler) BillingGetSharedStorageBillingUser(ctx context.Conte
 // have the `checks:write` permission to create check suites.
 //
 // POST /repos/{owner}/{repo}/check-suites
-func (UnimplementedHandler) ChecksCreateSuite(ctx context.Context, req ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (r ChecksCreateSuiteRes, _ error) {
+func (UnimplementedHandler) ChecksCreateSuite(ctx context.Context, req *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (r ChecksCreateSuiteRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2064,7 +2064,7 @@ func (UnimplementedHandler) ChecksCreateSuite(ctx context.Context, req ChecksCre
 // authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
-func (UnimplementedHandler) ChecksGet(ctx context.Context, params ChecksGetParams) (r CheckRun, _ error) {
+func (UnimplementedHandler) ChecksGet(ctx context.Context, params ChecksGetParams) (r *CheckRun, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2078,7 +2078,7 @@ func (UnimplementedHandler) ChecksGet(ctx context.Context, params ChecksGetParam
 // authenticated users must have the `repo` scope to get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
-func (UnimplementedHandler) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (r CheckSuite, _ error) {
+func (UnimplementedHandler) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (r *CheckSuite, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2090,7 +2090,7 @@ func (UnimplementedHandler) ChecksGetSuite(ctx context.Context, params ChecksGet
 // annotations for a check run in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-func (UnimplementedHandler) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (r ChecksListAnnotationsOKHeaders, _ error) {
+func (UnimplementedHandler) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (r *ChecksListAnnotationsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2105,7 +2105,7 @@ func (UnimplementedHandler) ChecksListAnnotations(ctx context.Context, params Ch
 // check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-func (UnimplementedHandler) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (r ChecksListForRefOKHeaders, _ error) {
+func (UnimplementedHandler) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (r *ChecksListForRefOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2119,7 +2119,7 @@ func (UnimplementedHandler) ChecksListForRef(ctx context.Context, params ChecksL
 // Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-func (UnimplementedHandler) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (r ChecksListForSuiteOKHeaders, _ error) {
+func (UnimplementedHandler) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (r *ChecksListForSuiteOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2134,7 +2134,7 @@ func (UnimplementedHandler) ChecksListForSuite(ctx context.Context, params Check
 // get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-func (UnimplementedHandler) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (r ChecksListSuitesForRefOKHeaders, _ error) {
+func (UnimplementedHandler) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (r *ChecksListSuitesForRefOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2148,7 +2148,7 @@ func (UnimplementedHandler) ChecksListSuitesForRef(ctx context.Context, params C
 // repository or pull access to a public repository.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
-func (UnimplementedHandler) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (r ChecksRerequestSuiteCreated, _ error) {
+func (UnimplementedHandler) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (r *ChecksRerequestSuiteCreated, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2161,7 +2161,7 @@ func (UnimplementedHandler) ChecksRerequestSuite(ctx context.Context, params Che
 // to set preferences for check suites.
 //
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
-func (UnimplementedHandler) ChecksSetSuitesPreferences(ctx context.Context, req ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (r CheckSuitePreference, _ error) {
+func (UnimplementedHandler) ChecksSetSuitesPreferences(ctx context.Context, req *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (r *CheckSuitePreference, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2345,7 +2345,7 @@ func (UnimplementedHandler) CodeScanningListRecentAnalyses(ctx context.Context, 
 // permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (UnimplementedHandler) CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (r CodeScanningUpdateAlertRes, _ error) {
+func (UnimplementedHandler) CodeScanningUpdateAlert(ctx context.Context, req *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (r CodeScanningUpdateAlertRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2380,7 +2380,7 @@ func (UnimplementedHandler) CodeScanningUpdateAlert(ctx context.Context, req Cod
 // upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).".
 //
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
-func (UnimplementedHandler) CodeScanningUploadSarif(ctx context.Context, req CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (r CodeScanningUploadSarifRes, _ error) {
+func (UnimplementedHandler) CodeScanningUploadSarif(ctx context.Context, req *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (r CodeScanningUploadSarifRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2420,7 +2420,7 @@ func (UnimplementedHandler) EmojisGet(ctx context.Context) (r EmojisGetRes, _ er
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2431,7 +2431,7 @@ func (UnimplementedHandler) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupIn
 // scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (r EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (r *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2447,7 +2447,7 @@ func (UnimplementedHandler) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpri
 // ```.
 //
 // POST /enterprises/{enterprise}/actions/runners/registration-token
-func (UnimplementedHandler) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (r AuthenticationToken, _ error) {
+func (UnimplementedHandler) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (r *AuthenticationToken, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2465,7 +2465,7 @@ func (UnimplementedHandler) EnterpriseAdminCreateRegistrationTokenForEnterprise(
 // ```.
 //
 // POST /enterprises/{enterprise}/actions/runners/remove-token
-func (UnimplementedHandler) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (r AuthenticationToken, _ error) {
+func (UnimplementedHandler) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (r *AuthenticationToken, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2475,7 +2475,7 @@ func (UnimplementedHandler) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx co
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // POST /enterprises/{enterprise}/actions/runner-groups
-func (UnimplementedHandler) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (r RunnerGroupsEnterprise, _ error) {
+func (UnimplementedHandler) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (r *RunnerGroupsEnterprise, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2485,7 +2485,7 @@ func (UnimplementedHandler) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpr
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (r EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (r *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2496,7 +2496,7 @@ func (UnimplementedHandler) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx con
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (r EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (r *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2506,7 +2506,7 @@ func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (r EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (r *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2516,7 +2516,7 @@ func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterp
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (r EnterpriseAdminDeleteUserFromEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (r *EnterpriseAdminDeleteUserFromEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2529,7 +2529,7 @@ func (UnimplementedHandler) EnterpriseAdminDeleteUserFromEnterprise(ctx context.
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (r EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (r *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2542,7 +2542,7 @@ func (UnimplementedHandler) EnterpriseAdminDisableSelectedOrganizationGithubActi
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (r EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (r *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2555,7 +2555,7 @@ func (UnimplementedHandler) EnterpriseAdminEnableSelectedOrganizationGithubActio
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
-func (UnimplementedHandler) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (r SelectedActions, _ error) {
+func (UnimplementedHandler) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (r *SelectedActions, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2575,7 +2575,7 @@ func (UnimplementedHandler) EnterpriseAdminGetAuditLog(ctx context.Context, para
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions
-func (UnimplementedHandler) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (r ActionsEnterprisePermissions, _ error) {
+func (UnimplementedHandler) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (r *ActionsEnterprisePermissions, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2585,7 +2585,7 @@ func (UnimplementedHandler) EnterpriseAdminGetGithubActionsPermissionsEnterprise
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (UnimplementedHandler) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (r ScimEnterpriseGroup, _ error) {
+func (UnimplementedHandler) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (r *ScimEnterpriseGroup, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2595,7 +2595,7 @@ func (UnimplementedHandler) EnterpriseAdminGetProvisioningInformationForEnterpri
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (UnimplementedHandler) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (r ScimEnterpriseUser, _ error) {
+func (UnimplementedHandler) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (r *ScimEnterpriseUser, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2605,7 +2605,7 @@ func (UnimplementedHandler) EnterpriseAdminGetProvisioningInformationForEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (r Runner, _ error) {
+func (UnimplementedHandler) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (r *Runner, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2615,7 +2615,7 @@ func (UnimplementedHandler) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx 
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (r RunnerGroupsEnterprise, _ error) {
+func (UnimplementedHandler) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (r *RunnerGroupsEnterprise, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2625,7 +2625,7 @@ func (UnimplementedHandler) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (UnimplementedHandler) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2635,7 +2635,7 @@ func (UnimplementedHandler) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupI
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups
-func (UnimplementedHandler) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (r ScimGroupListEnterprise, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (r *ScimGroupListEnterprise, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2670,7 +2670,7 @@ func (UnimplementedHandler) EnterpriseAdminListProvisionedGroupsEnterprise(ctx c
 // added to the GitHub enterprise, and the external identity `null` entry remains in place.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users
-func (UnimplementedHandler) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (r ScimUserListEnterprise, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (r *ScimUserListEnterprise, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2693,7 +2693,7 @@ func (UnimplementedHandler) EnterpriseAdminListRunnerApplicationsForEnterprise(c
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions/organizations
-func (UnimplementedHandler) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (r EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (r *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2703,7 +2703,7 @@ func (UnimplementedHandler) EnterpriseAdminListSelectedOrganizationsEnabledGithu
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups
-func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (r *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2713,7 +2713,7 @@ func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnerGroupsForEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners
-func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (r *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2723,7 +2723,7 @@ func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersForEnterprise(ct
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (r *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2736,7 +2736,7 @@ func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersInGroupForEnterp
 // to.
 //
 // POST /scim/v2/enterprises/{enterprise}/Groups
-func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (r ScimEnterpriseGroup, _ error) {
+func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, req *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (r *ScimEnterpriseGroup, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2751,7 +2751,7 @@ func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx
 // will be sent.
 //
 // POST /scim/v2/enterprises/{enterprise}/Users
-func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (r ScimEnterpriseUser, _ error) {
+func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, req *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (r *ScimEnterpriseUser, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2764,7 +2764,7 @@ func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx 
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2775,7 +2775,7 @@ func (UnimplementedHandler) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGrou
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (r EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (r *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2788,7 +2788,7 @@ func (UnimplementedHandler) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnt
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-func (UnimplementedHandler) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (r EnterpriseAdminSetAllowedActionsEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (r *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2798,7 +2798,7 @@ func (UnimplementedHandler) EnterpriseAdminSetAllowedActionsEnterprise(ctx conte
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
-func (UnimplementedHandler) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (r EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (r *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2813,7 +2813,7 @@ func (UnimplementedHandler) EnterpriseAdminSetGithubActionsPermissionsEnterprise
 // group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (r ScimEnterpriseGroup, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, req *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (r *ScimEnterpriseGroup, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2831,7 +2831,7 @@ func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpris
 // identity, and deletes the associated `{scim_user_id}`.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (r ScimEnterpriseUser, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, req *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (r *ScimEnterpriseUser, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2842,7 +2842,7 @@ func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpris
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (UnimplementedHandler) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2855,7 +2855,7 @@ func (UnimplementedHandler) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupIn
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
-func (UnimplementedHandler) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (r EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (r *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2865,7 +2865,7 @@ func (UnimplementedHandler) EnterpriseAdminSetSelectedOrganizationsEnabledGithub
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (r EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, _ error) {
+func (UnimplementedHandler) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (r *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2879,7 +2879,7 @@ func (UnimplementedHandler) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpr
 // [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (r ScimEnterpriseGroup, _ error) {
+func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, req *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (r *ScimEnterpriseGroup, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2910,7 +2910,7 @@ func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx
 // ```.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (r ScimEnterpriseUser, _ error) {
+func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (r *ScimEnterpriseUser, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2920,7 +2920,7 @@ func (UnimplementedHandler) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx 
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (r RunnerGroupsEnterprise, _ error) {
+func (UnimplementedHandler) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (r *RunnerGroupsEnterprise, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2940,7 +2940,7 @@ func (UnimplementedHandler) GistsCheckIsStarred(ctx context.Context, params Gist
 // automatic naming scheme that Gist uses internally.
 //
 // POST /gists
-func (UnimplementedHandler) GistsCreate(ctx context.Context, req GistsCreateReq) (r GistsCreateRes, _ error) {
+func (UnimplementedHandler) GistsCreate(ctx context.Context, req *GistsCreateReq) (r GistsCreateRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2949,7 +2949,7 @@ func (UnimplementedHandler) GistsCreate(ctx context.Context, req GistsCreateReq)
 // Create a gist comment.
 //
 // POST /gists/{gist_id}/comments
-func (UnimplementedHandler) GistsCreateComment(ctx context.Context, req GistsCreateCommentReq, params GistsCreateCommentParams) (r GistsCreateCommentRes, _ error) {
+func (UnimplementedHandler) GistsCreateComment(ctx context.Context, req *GistsCreateCommentReq, params GistsCreateCommentParams) (r GistsCreateCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3099,7 +3099,7 @@ func (UnimplementedHandler) GistsUnstar(ctx context.Context, params GistsUnstarP
 // Update a gist comment.
 //
 // PATCH /gists/{gist_id}/comments/{comment_id}
-func (UnimplementedHandler) GistsUpdateComment(ctx context.Context, req GistsUpdateCommentReq, params GistsUpdateCommentParams) (r GistsUpdateCommentRes, _ error) {
+func (UnimplementedHandler) GistsUpdateComment(ctx context.Context, req *GistsUpdateCommentReq, params GistsUpdateCommentParams) (r GistsUpdateCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3108,7 +3108,7 @@ func (UnimplementedHandler) GistsUpdateComment(ctx context.Context, req GistsUpd
 // Create a blob.
 //
 // POST /repos/{owner}/{repo}/git/blobs
-func (UnimplementedHandler) GitCreateBlob(ctx context.Context, req GitCreateBlobReq, params GitCreateBlobParams) (r GitCreateBlobRes, _ error) {
+func (UnimplementedHandler) GitCreateBlob(ctx context.Context, req *GitCreateBlobReq, params GitCreateBlobParams) (r GitCreateBlobRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3150,7 +3150,7 @@ func (UnimplementedHandler) GitCreateBlob(ctx context.Context, req GitCreateBlob
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // POST /repos/{owner}/{repo}/git/commits
-func (UnimplementedHandler) GitCreateCommit(ctx context.Context, req GitCreateCommitReq, params GitCreateCommitParams) (r GitCreateCommitRes, _ error) {
+func (UnimplementedHandler) GitCreateCommit(ctx context.Context, req *GitCreateCommitReq, params GitCreateCommitParams) (r GitCreateCommitRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3161,7 +3161,7 @@ func (UnimplementedHandler) GitCreateCommit(ctx context.Context, req GitCreateCo
 // without branches.
 //
 // POST /repos/{owner}/{repo}/git/refs
-func (UnimplementedHandler) GitCreateRef(ctx context.Context, req GitCreateRefReq, params GitCreateRefParams) (r GitCreateRefRes, _ error) {
+func (UnimplementedHandler) GitCreateRef(ctx context.Context, req *GitCreateRefReq, params GitCreateRefParams) (r GitCreateRefRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3206,7 +3206,7 @@ func (UnimplementedHandler) GitCreateRef(ctx context.Context, req GitCreateRefRe
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // POST /repos/{owner}/{repo}/git/tags
-func (UnimplementedHandler) GitCreateTag(ctx context.Context, req GitCreateTagReq, params GitCreateTagParams) (r GitCreateTagRes, _ error) {
+func (UnimplementedHandler) GitCreateTag(ctx context.Context, req *GitCreateTagReq, params GitCreateTagParams) (r GitCreateTagRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3221,7 +3221,7 @@ func (UnimplementedHandler) GitCreateTag(ctx context.Context, req GitCreateTagRe
 // reference](https://docs.github.com/rest/reference/git#update-a-reference).".
 //
 // POST /repos/{owner}/{repo}/git/trees
-func (UnimplementedHandler) GitCreateTree(ctx context.Context, req GitCreateTreeReq, params GitCreateTreeParams) (r GitCreateTreeRes, _ error) {
+func (UnimplementedHandler) GitCreateTree(ctx context.Context, req *GitCreateTreeReq, params GitCreateTreeParams) (r GitCreateTreeRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3373,7 +3373,7 @@ func (UnimplementedHandler) GitGetTree(ctx context.Context, params GitGetTreePar
 // such as `featureA` and `featureB`.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-func (UnimplementedHandler) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (r GitListMatchingRefsOKHeaders, _ error) {
+func (UnimplementedHandler) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (r *GitListMatchingRefsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3382,7 +3382,7 @@ func (UnimplementedHandler) GitListMatchingRefs(ctx context.Context, params GitL
 // Update a reference.
 //
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
-func (UnimplementedHandler) GitUpdateRef(ctx context.Context, req GitUpdateRefReq, params GitUpdateRefParams) (r GitUpdateRefRes, _ error) {
+func (UnimplementedHandler) GitUpdateRef(ctx context.Context, req *GitUpdateRefReq, params GitUpdateRefParams) (r GitUpdateRefRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3412,7 +3412,7 @@ func (UnimplementedHandler) GitignoreGetTemplate(ctx context.Context, params Git
 // Removes any interaction restrictions from your public repositories.
 //
 // DELETE /user/interaction-limits
-func (UnimplementedHandler) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (r InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, _ error) {
+func (UnimplementedHandler) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (r *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3422,7 +3422,7 @@ func (UnimplementedHandler) InteractionsRemoveRestrictionsForAuthenticatedUser(c
 // be an organization owner to remove restrictions.
 //
 // DELETE /orgs/{org}/interaction-limits
-func (UnimplementedHandler) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (r InteractionsRemoveRestrictionsForOrgNoContent, _ error) {
+func (UnimplementedHandler) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (r *InteractionsRemoveRestrictionsForOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3445,7 +3445,7 @@ func (UnimplementedHandler) InteractionsRemoveRestrictionsForRepo(ctx context.Co
 // for individual repositories owned by the user.
 //
 // PUT /user/interaction-limits
-func (UnimplementedHandler) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, req InteractionLimit) (r InteractionsSetRestrictionsForAuthenticatedUserRes, _ error) {
+func (UnimplementedHandler) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, req *InteractionLimit) (r InteractionsSetRestrictionsForAuthenticatedUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3457,7 +3457,7 @@ func (UnimplementedHandler) InteractionsSetRestrictionsForAuthenticatedUser(ctx 
 // individual repositories owned by the organization.
 //
 // PUT /orgs/{org}/interaction-limits
-func (UnimplementedHandler) InteractionsSetRestrictionsForOrg(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (r InteractionsSetRestrictionsForOrgRes, _ error) {
+func (UnimplementedHandler) InteractionsSetRestrictionsForOrg(ctx context.Context, req *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (r InteractionsSetRestrictionsForOrgRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3469,7 +3469,7 @@ func (UnimplementedHandler) InteractionsSetRestrictionsForOrg(ctx context.Contex
 // will not be able to use this endpoint to change the interaction limit for a single repository.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
-func (UnimplementedHandler) InteractionsSetRestrictionsForRepo(ctx context.Context, req InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (r InteractionsSetRestrictionsForRepoRes, _ error) {
+func (UnimplementedHandler) InteractionsSetRestrictionsForRepo(ctx context.Context, req *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (r InteractionsSetRestrictionsForRepoRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3478,7 +3478,7 @@ func (UnimplementedHandler) InteractionsSetRestrictionsForRepo(ctx context.Conte
 // Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (UnimplementedHandler) IssuesAddAssignees(ctx context.Context, req OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (r IssueSimple, _ error) {
+func (UnimplementedHandler) IssuesAddAssignees(ctx context.Context, req OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (r *IssueSimple, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3508,7 +3508,7 @@ func (UnimplementedHandler) IssuesCheckUserCanBeAssigned(ctx context.Context, pa
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/issues
-func (UnimplementedHandler) IssuesCreate(ctx context.Context, req IssuesCreateReq, params IssuesCreateParams) (r IssuesCreateRes, _ error) {
+func (UnimplementedHandler) IssuesCreate(ctx context.Context, req *IssuesCreateReq, params IssuesCreateParams) (r IssuesCreateRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3523,7 +3523,7 @@ func (UnimplementedHandler) IssuesCreate(ctx context.Context, req IssuesCreateRe
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (UnimplementedHandler) IssuesCreateComment(ctx context.Context, req IssuesCreateCommentReq, params IssuesCreateCommentParams) (r IssuesCreateCommentRes, _ error) {
+func (UnimplementedHandler) IssuesCreateComment(ctx context.Context, req *IssuesCreateCommentReq, params IssuesCreateCommentParams) (r IssuesCreateCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3532,7 +3532,7 @@ func (UnimplementedHandler) IssuesCreateComment(ctx context.Context, req IssuesC
 // Create a label.
 //
 // POST /repos/{owner}/{repo}/labels
-func (UnimplementedHandler) IssuesCreateLabel(ctx context.Context, req IssuesCreateLabelReq, params IssuesCreateLabelParams) (r IssuesCreateLabelRes, _ error) {
+func (UnimplementedHandler) IssuesCreateLabel(ctx context.Context, req *IssuesCreateLabelReq, params IssuesCreateLabelParams) (r IssuesCreateLabelRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3541,7 +3541,7 @@ func (UnimplementedHandler) IssuesCreateLabel(ctx context.Context, req IssuesCre
 // Create a milestone.
 //
 // POST /repos/{owner}/{repo}/milestones
-func (UnimplementedHandler) IssuesCreateMilestone(ctx context.Context, req IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (r IssuesCreateMilestoneRes, _ error) {
+func (UnimplementedHandler) IssuesCreateMilestone(ctx context.Context, req *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (r IssuesCreateMilestoneRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3550,7 +3550,7 @@ func (UnimplementedHandler) IssuesCreateMilestone(ctx context.Context, req Issue
 // Delete an issue comment.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (UnimplementedHandler) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (r IssuesDeleteCommentNoContent, _ error) {
+func (UnimplementedHandler) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (r *IssuesDeleteCommentNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3559,7 +3559,7 @@ func (UnimplementedHandler) IssuesDeleteComment(ctx context.Context, params Issu
 // Delete a label.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
-func (UnimplementedHandler) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (r IssuesDeleteLabelNoContent, _ error) {
+func (UnimplementedHandler) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (r *IssuesDeleteLabelNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3749,7 +3749,7 @@ func (UnimplementedHandler) IssuesListForRepo(ctx context.Context, params Issues
 // List labels for issues in a milestone.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-func (UnimplementedHandler) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (r IssuesListLabelsForMilestoneOKHeaders, _ error) {
+func (UnimplementedHandler) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (r *IssuesListLabelsForMilestoneOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3806,7 +3806,7 @@ func (UnimplementedHandler) IssuesRemoveAllLabels(ctx context.Context, params Is
 // Removes one or more assignees from an issue.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (UnimplementedHandler) IssuesRemoveAssignees(ctx context.Context, req OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (r IssueSimple, _ error) {
+func (UnimplementedHandler) IssuesRemoveAssignees(ctx context.Context, req OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (r *IssueSimple, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3843,7 +3843,7 @@ func (UnimplementedHandler) IssuesUpdate(ctx context.Context, req OptIssuesUpdat
 // Update an issue comment.
 //
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (UnimplementedHandler) IssuesUpdateComment(ctx context.Context, req IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (r IssuesUpdateCommentRes, _ error) {
+func (UnimplementedHandler) IssuesUpdateComment(ctx context.Context, req *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (r IssuesUpdateCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3852,7 +3852,7 @@ func (UnimplementedHandler) IssuesUpdateComment(ctx context.Context, req IssuesU
 // Update a label.
 //
 // PATCH /repos/{owner}/{repo}/labels/{name}
-func (UnimplementedHandler) IssuesUpdateLabel(ctx context.Context, req OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (r Label, _ error) {
+func (UnimplementedHandler) IssuesUpdateLabel(ctx context.Context, req OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (r *Label, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3861,7 +3861,7 @@ func (UnimplementedHandler) IssuesUpdateLabel(ctx context.Context, req OptIssues
 // Update a milestone.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-func (UnimplementedHandler) IssuesUpdateMilestone(ctx context.Context, req OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (r Milestone, _ error) {
+func (UnimplementedHandler) IssuesUpdateMilestone(ctx context.Context, req OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (r *Milestone, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3892,7 +3892,7 @@ func (UnimplementedHandler) LicensesGetAllCommonlyUsed(ctx context.Context, para
 // or rendered license HTML.
 //
 // GET /repos/{owner}/{repo}/license
-func (UnimplementedHandler) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (r LicenseContent, _ error) {
+func (UnimplementedHandler) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (r *LicenseContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3901,7 +3901,7 @@ func (UnimplementedHandler) LicensesGetForRepo(ctx context.Context, params Licen
 // Render a Markdown document.
 //
 // POST /markdown
-func (UnimplementedHandler) MarkdownRender(ctx context.Context, req MarkdownRenderReq) (r MarkdownRenderRes, _ error) {
+func (UnimplementedHandler) MarkdownRender(ctx context.Context, req *MarkdownRenderReq) (r MarkdownRenderRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3953,7 +3953,7 @@ func (UnimplementedHandler) MetaGetZen(ctx context.Context) (r MetaGetZenOK, _ e
 // Get Hypermedia links to resources accessible in GitHub's REST API.
 //
 // GET /
-func (UnimplementedHandler) MetaRoot(ctx context.Context) (r MetaRootOK, _ error) {
+func (UnimplementedHandler) MetaRoot(ctx context.Context) (r *MetaRootOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3962,7 +3962,7 @@ func (UnimplementedHandler) MetaRoot(ctx context.Context) (r MetaRootOK, _ error
 // Stop an import for a repository.
 //
 // DELETE /repos/{owner}/{repo}/import
-func (UnimplementedHandler) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (r MigrationsCancelImportNoContent, _ error) {
+func (UnimplementedHandler) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (r *MigrationsCancelImportNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4157,7 +4157,7 @@ func (UnimplementedHandler) MigrationsListForAuthenticatedUser(ctx context.Conte
 // Lists the most recent migrations.
 //
 // GET /orgs/{org}/migrations
-func (UnimplementedHandler) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (r MigrationsListForOrgOKHeaders, _ error) {
+func (UnimplementedHandler) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (r *MigrationsListForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4197,7 +4197,7 @@ func (UnimplementedHandler) MigrationsMapCommitAuthor(ctx context.Context, req O
 // com/articles/versioning-large-files/).
 //
 // PATCH /repos/{owner}/{repo}/import/lfs
-func (UnimplementedHandler) MigrationsSetLfsPreference(ctx context.Context, req MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (r MigrationsSetLfsPreferenceRes, _ error) {
+func (UnimplementedHandler) MigrationsSetLfsPreference(ctx context.Context, req *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (r MigrationsSetLfsPreferenceRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4206,7 +4206,7 @@ func (UnimplementedHandler) MigrationsSetLfsPreference(ctx context.Context, req 
 // Initiates the generation of a user migration archive.
 //
 // POST /user/migrations
-func (UnimplementedHandler) MigrationsStartForAuthenticatedUser(ctx context.Context, req MigrationsStartForAuthenticatedUserReq) (r MigrationsStartForAuthenticatedUserRes, _ error) {
+func (UnimplementedHandler) MigrationsStartForAuthenticatedUser(ctx context.Context, req *MigrationsStartForAuthenticatedUserReq) (r MigrationsStartForAuthenticatedUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4215,7 +4215,7 @@ func (UnimplementedHandler) MigrationsStartForAuthenticatedUser(ctx context.Cont
 // Initiates the generation of a migration archive.
 //
 // POST /orgs/{org}/migrations
-func (UnimplementedHandler) MigrationsStartForOrg(ctx context.Context, req MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (r MigrationsStartForOrgRes, _ error) {
+func (UnimplementedHandler) MigrationsStartForOrg(ctx context.Context, req *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (r MigrationsStartForOrgRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4224,7 +4224,7 @@ func (UnimplementedHandler) MigrationsStartForOrg(ctx context.Context, req Migra
 // Start a source import to a GitHub repository using GitHub Importer.
 //
 // PUT /repos/{owner}/{repo}/import
-func (UnimplementedHandler) MigrationsStartImport(ctx context.Context, req MigrationsStartImportReq, params MigrationsStartImportParams) (r MigrationsStartImportRes, _ error) {
+func (UnimplementedHandler) MigrationsStartImport(ctx context.Context, req *MigrationsStartImportReq, params MigrationsStartImportParams) (r MigrationsStartImportRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4259,7 +4259,7 @@ func (UnimplementedHandler) MigrationsUnlockRepoForOrg(ctx context.Context, para
 // request. If no parameters are provided, the import will be restarted.
 //
 // PATCH /repos/{owner}/{repo}/import
-func (UnimplementedHandler) MigrationsUpdateImport(ctx context.Context, req OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (r Import, _ error) {
+func (UnimplementedHandler) MigrationsUpdateImport(ctx context.Context, req OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (r *Import, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4409,7 +4409,7 @@ func (UnimplementedHandler) OAuthAuthorizationsGetGrant(ctx context.Context, par
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}
-func (UnimplementedHandler) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (r OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, _ error) {
+func (UnimplementedHandler) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, req *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (r OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4441,7 +4441,7 @@ func (UnimplementedHandler) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ct
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}/{fingerprint}
-func (UnimplementedHandler) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (r OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, _ error) {
+func (UnimplementedHandler) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, req *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (r OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4597,7 +4597,7 @@ func (UnimplementedHandler) OrgsCreateInvitation(ctx context.Context, req OptOrg
 // Here's how you can create a hook that posts payloads in JSON format:.
 //
 // POST /orgs/{org}/hooks
-func (UnimplementedHandler) OrgsCreateWebhook(ctx context.Context, req OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (r OrgsCreateWebhookRes, _ error) {
+func (UnimplementedHandler) OrgsCreateWebhook(ctx context.Context, req *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (r OrgsCreateWebhookRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4681,7 +4681,7 @@ func (UnimplementedHandler) OrgsGetWebhook(ctx context.Context, params OrgsGetWe
 // `organization_hooks:read` permission.
 //
 // GET /orgs/{org}/hooks/{hook_id}/config
-func (UnimplementedHandler) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (r WebhookConfig, _ error) {
+func (UnimplementedHandler) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (r *WebhookConfig, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4749,7 +4749,7 @@ func (UnimplementedHandler) OrgsListForAuthenticatedUser(ctx context.Context, pa
 // com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
 //
 // GET /users/{username}/orgs
-func (UnimplementedHandler) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (r OrgsListForUserOKHeaders, _ error) {
+func (UnimplementedHandler) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (r *OrgsListForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4787,7 +4787,7 @@ func (UnimplementedHandler) OrgsListMembershipsForAuthenticatedUser(ctx context.
 // List all users who are outside collaborators of an organization.
 //
 // GET /orgs/{org}/outside_collaborators
-func (UnimplementedHandler) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (r OrgsListOutsideCollaboratorsOKHeaders, _ error) {
+func (UnimplementedHandler) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (r *OrgsListOutsideCollaboratorsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4808,7 +4808,7 @@ func (UnimplementedHandler) OrgsListPendingInvitations(ctx context.Context, para
 // Members of an organization can choose to have their membership publicized or not.
 //
 // GET /orgs/{org}/public_members
-func (UnimplementedHandler) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (r OrgsListPublicMembersOKHeaders, _ error) {
+func (UnimplementedHandler) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (r *OrgsListPublicMembersOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4902,7 +4902,7 @@ func (UnimplementedHandler) OrgsRemoveOutsideCollaborator(ctx context.Context, p
 // Remove public organization membership for the authenticated user.
 //
 // DELETE /orgs/{org}/public_members/{username}
-func (UnimplementedHandler) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (r OrgsRemovePublicMembershipForAuthenticatedUserNoContent, _ error) {
+func (UnimplementedHandler) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (r *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4961,7 +4961,7 @@ func (UnimplementedHandler) OrgsSetPublicMembershipForAuthenticatedUser(ctx cont
 // Unblock a user from an organization.
 //
 // DELETE /orgs/{org}/blocks/{username}
-func (UnimplementedHandler) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (r OrgsUnblockUserNoContent, _ error) {
+func (UnimplementedHandler) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (r *OrgsUnblockUserNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4970,7 +4970,7 @@ func (UnimplementedHandler) OrgsUnblockUser(ctx context.Context, params OrgsUnbl
 // Update an organization membership for the authenticated user.
 //
 // PATCH /user/memberships/orgs/{org}
-func (UnimplementedHandler) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, req OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (r OrgsUpdateMembershipForAuthenticatedUserRes, _ error) {
+func (UnimplementedHandler) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, req *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (r OrgsUpdateMembershipForAuthenticatedUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4996,7 +4996,7 @@ func (UnimplementedHandler) OrgsUpdateWebhook(ctx context.Context, req OptOrgsUp
 // `organization_hooks:write` permission.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
-func (UnimplementedHandler) OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (r WebhookConfig, _ error) {
+func (UnimplementedHandler) OrgsUpdateWebhookConfigForOrg(ctx context.Context, req OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (r *WebhookConfig, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5132,7 +5132,7 @@ func (UnimplementedHandler) PackagesGetAllPackageVersionsForPackageOwnedByUser(c
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}
-func (UnimplementedHandler) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (r Package, _ error) {
+func (UnimplementedHandler) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (r *Package, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5143,7 +5143,7 @@ func (UnimplementedHandler) PackagesGetPackageForAuthenticatedUser(ctx context.C
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}
-func (UnimplementedHandler) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (r Package, _ error) {
+func (UnimplementedHandler) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (r *Package, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5154,7 +5154,7 @@ func (UnimplementedHandler) PackagesGetPackageForOrganization(ctx context.Contex
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}
-func (UnimplementedHandler) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (r Package, _ error) {
+func (UnimplementedHandler) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (r *Package, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5165,7 +5165,7 @@ func (UnimplementedHandler) PackagesGetPackageForUser(ctx context.Context, param
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (UnimplementedHandler) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (r PackageVersion, _ error) {
+func (UnimplementedHandler) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (r *PackageVersion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5176,7 +5176,7 @@ func (UnimplementedHandler) PackagesGetPackageVersionForAuthenticatedUser(ctx co
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (UnimplementedHandler) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (r PackageVersion, _ error) {
+func (UnimplementedHandler) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (r *PackageVersion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5188,7 +5188,7 @@ func (UnimplementedHandler) PackagesGetPackageVersionForOrganization(ctx context
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (UnimplementedHandler) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (r PackageVersion, _ error) {
+func (UnimplementedHandler) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (r *PackageVersion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5356,7 +5356,7 @@ func (UnimplementedHandler) ProjectsAddCollaborator(ctx context.Context, req Opt
 // Create a project column.
 //
 // POST /projects/{project_id}/columns
-func (UnimplementedHandler) ProjectsCreateColumn(ctx context.Context, req ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (r ProjectsCreateColumnRes, _ error) {
+func (UnimplementedHandler) ProjectsCreateColumn(ctx context.Context, req *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (r ProjectsCreateColumnRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5365,7 +5365,7 @@ func (UnimplementedHandler) ProjectsCreateColumn(ctx context.Context, req Projec
 // Create a user project.
 //
 // POST /user/projects
-func (UnimplementedHandler) ProjectsCreateForAuthenticatedUser(ctx context.Context, req ProjectsCreateForAuthenticatedUserReq) (r ProjectsCreateForAuthenticatedUserRes, _ error) {
+func (UnimplementedHandler) ProjectsCreateForAuthenticatedUser(ctx context.Context, req *ProjectsCreateForAuthenticatedUserReq) (r ProjectsCreateForAuthenticatedUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5376,7 +5376,7 @@ func (UnimplementedHandler) ProjectsCreateForAuthenticatedUser(ctx context.Conte
 // Unauthorized` or `410 Gone` status is returned.
 //
 // POST /orgs/{org}/projects
-func (UnimplementedHandler) ProjectsCreateForOrg(ctx context.Context, req ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (r ProjectsCreateForOrgRes, _ error) {
+func (UnimplementedHandler) ProjectsCreateForOrg(ctx context.Context, req *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (r ProjectsCreateForOrgRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5387,7 +5387,7 @@ func (UnimplementedHandler) ProjectsCreateForOrg(ctx context.Context, req Projec
 // Unauthorized` or `410 Gone` status is returned.
 //
 // POST /repos/{owner}/{repo}/projects
-func (UnimplementedHandler) ProjectsCreateForRepo(ctx context.Context, req ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (r ProjectsCreateForRepoRes, _ error) {
+func (UnimplementedHandler) ProjectsCreateForRepo(ctx context.Context, req *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (r ProjectsCreateForRepoRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5525,7 +5525,7 @@ func (UnimplementedHandler) ProjectsListForUser(ctx context.Context, params Proj
 // Move a project card.
 //
 // POST /projects/columns/cards/{card_id}/moves
-func (UnimplementedHandler) ProjectsMoveCard(ctx context.Context, req ProjectsMoveCardReq, params ProjectsMoveCardParams) (r ProjectsMoveCardRes, _ error) {
+func (UnimplementedHandler) ProjectsMoveCard(ctx context.Context, req *ProjectsMoveCardReq, params ProjectsMoveCardParams) (r ProjectsMoveCardRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5534,7 +5534,7 @@ func (UnimplementedHandler) ProjectsMoveCard(ctx context.Context, req ProjectsMo
 // Move a project column.
 //
 // POST /projects/columns/{column_id}/moves
-func (UnimplementedHandler) ProjectsMoveColumn(ctx context.Context, req ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (r ProjectsMoveColumnRes, _ error) {
+func (UnimplementedHandler) ProjectsMoveColumn(ctx context.Context, req *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (r ProjectsMoveColumnRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5573,7 +5573,7 @@ func (UnimplementedHandler) ProjectsUpdateCard(ctx context.Context, req OptProje
 // Update an existing project column.
 //
 // PATCH /projects/columns/{column_id}
-func (UnimplementedHandler) ProjectsUpdateColumn(ctx context.Context, req ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (r ProjectsUpdateColumnRes, _ error) {
+func (UnimplementedHandler) ProjectsUpdateColumn(ctx context.Context, req *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (r ProjectsUpdateColumnRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5606,7 +5606,7 @@ func (UnimplementedHandler) PullsCheckIfMerged(ctx context.Context, params Pulls
 // com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls
-func (UnimplementedHandler) PullsCreate(ctx context.Context, req PullsCreateReq, params PullsCreateParams) (r PullsCreateRes, _ error) {
+func (UnimplementedHandler) PullsCreate(ctx context.Context, req *PullsCreateReq, params PullsCreateParams) (r PullsCreateRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5624,7 +5624,7 @@ func (UnimplementedHandler) PullsCreate(ctx context.Context, req PullsCreateReq,
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
-func (UnimplementedHandler) PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (r PullsCreateReplyForReviewCommentRes, _ error) {
+func (UnimplementedHandler) PullsCreateReplyForReviewComment(ctx context.Context, req *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (r PullsCreateReplyForReviewCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5679,7 +5679,7 @@ func (UnimplementedHandler) PullsCreateReview(ctx context.Context, req OptPullsC
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (UnimplementedHandler) PullsCreateReviewComment(ctx context.Context, req PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (r PullsCreateReviewCommentRes, _ error) {
+func (UnimplementedHandler) PullsCreateReviewComment(ctx context.Context, req *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (r PullsCreateReviewCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5708,7 +5708,7 @@ func (UnimplementedHandler) PullsDeleteReviewComment(ctx context.Context, params
 // list of people or teams who can dismiss pull request reviews.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
-func (UnimplementedHandler) PullsDismissReview(ctx context.Context, req PullsDismissReviewReq, params PullsDismissReviewParams) (r PullsDismissReviewRes, _ error) {
+func (UnimplementedHandler) PullsDismissReview(ctx context.Context, req *PullsDismissReviewReq, params PullsDismissReviewParams) (r PullsDismissReviewRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5801,7 +5801,7 @@ func (UnimplementedHandler) PullsListCommentsForReview(ctx context.Context, para
 // com/rest/reference/repos#list-commits) endpoint.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-func (UnimplementedHandler) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (r PullsListCommitsOKHeaders, _ error) {
+func (UnimplementedHandler) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (r *PullsListCommitsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5820,7 +5820,7 @@ func (UnimplementedHandler) PullsListFiles(ctx context.Context, params PullsList
 // List requested reviewers for a pull request.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (UnimplementedHandler) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (r PullRequestReviewRequestHeaders, _ error) {
+func (UnimplementedHandler) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (r *PullRequestReviewRequestHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5830,7 +5830,7 @@ func (UnimplementedHandler) PullsListRequestedReviewers(ctx context.Context, par
 // by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (UnimplementedHandler) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (r PullsListReviewCommentsOKHeaders, _ error) {
+func (UnimplementedHandler) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (r *PullsListReviewCommentsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5840,7 +5840,7 @@ func (UnimplementedHandler) PullsListReviewComments(ctx context.Context, params 
 // ascending order by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/comments
-func (UnimplementedHandler) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (r PullsListReviewCommentsForRepoOKHeaders, _ error) {
+func (UnimplementedHandler) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (r *PullsListReviewCommentsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5849,7 +5849,7 @@ func (UnimplementedHandler) PullsListReviewCommentsForRepo(ctx context.Context, 
 // The list of reviews returns in chronological order.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (UnimplementedHandler) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (r PullsListReviewsOKHeaders, _ error) {
+func (UnimplementedHandler) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (r *PullsListReviewsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5873,7 +5873,7 @@ func (UnimplementedHandler) PullsMerge(ctx context.Context, req OptNilPullsMerge
 // Remove requested reviewers from a pull request.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (UnimplementedHandler) PullsRemoveRequestedReviewers(ctx context.Context, req PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (r PullsRemoveRequestedReviewersRes, _ error) {
+func (UnimplementedHandler) PullsRemoveRequestedReviewers(ctx context.Context, req *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (r PullsRemoveRequestedReviewersRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5882,7 +5882,7 @@ func (UnimplementedHandler) PullsRemoveRequestedReviewers(ctx context.Context, r
 // Submit a review for a pull request.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
-func (UnimplementedHandler) PullsSubmitReview(ctx context.Context, req PullsSubmitReviewReq, params PullsSubmitReviewParams) (r PullsSubmitReviewRes, _ error) {
+func (UnimplementedHandler) PullsSubmitReview(ctx context.Context, req *PullsSubmitReviewReq, params PullsSubmitReviewParams) (r PullsSubmitReviewRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5917,7 +5917,7 @@ func (UnimplementedHandler) PullsUpdateBranch(ctx context.Context, req OptNilPul
 // Update the review summary comment with new text.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (UnimplementedHandler) PullsUpdateReview(ctx context.Context, req PullsUpdateReviewReq, params PullsUpdateReviewParams) (r PullsUpdateReviewRes, _ error) {
+func (UnimplementedHandler) PullsUpdateReview(ctx context.Context, req *PullsUpdateReviewReq, params PullsUpdateReviewParams) (r PullsUpdateReviewRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5926,7 +5926,7 @@ func (UnimplementedHandler) PullsUpdateReview(ctx context.Context, req PullsUpda
 // Enables you to edit a review comment.
 //
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (UnimplementedHandler) PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (r PullRequestReviewComment, _ error) {
+func (UnimplementedHandler) PullsUpdateReviewComment(ctx context.Context, req *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (r *PullRequestReviewComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5949,7 +5949,7 @@ func (UnimplementedHandler) RateLimitGet(ctx context.Context) (r RateLimitGetRes
 // comment.
 //
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (UnimplementedHandler) ReactionsCreateForCommitComment(ctx context.Context, req ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (r ReactionsCreateForCommitCommentRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForCommitComment(ctx context.Context, req *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (r ReactionsCreateForCommitCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5959,7 +5959,7 @@ func (UnimplementedHandler) ReactionsCreateForCommitComment(ctx context.Context,
 // an HTTP `200` status means that you already added the reaction type to this issue.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (UnimplementedHandler) ReactionsCreateForIssue(ctx context.Context, req ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (r ReactionsCreateForIssueRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForIssue(ctx context.Context, req *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (r ReactionsCreateForIssueRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5970,7 +5970,7 @@ func (UnimplementedHandler) ReactionsCreateForIssue(ctx context.Context, req Rea
 // comment.
 //
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (UnimplementedHandler) ReactionsCreateForIssueComment(ctx context.Context, req ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (r ReactionsCreateForIssueCommentRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForIssueComment(ctx context.Context, req *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (r ReactionsCreateForIssueCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5981,7 +5981,7 @@ func (UnimplementedHandler) ReactionsCreateForIssueComment(ctx context.Context, 
 // added the reaction type to this pull request review comment.
 //
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (UnimplementedHandler) ReactionsCreateForPullRequestReviewComment(ctx context.Context, req ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (r ReactionsCreateForPullRequestReviewCommentRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForPullRequestReviewComment(ctx context.Context, req *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (r ReactionsCreateForPullRequestReviewCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5991,7 +5991,7 @@ func (UnimplementedHandler) ReactionsCreateForPullRequestReviewComment(ctx conte
 // response with a `Status: 200 OK` means that you already added the reaction type to this release.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
-func (UnimplementedHandler) ReactionsCreateForRelease(ctx context.Context, req ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (r ReactionsCreateForReleaseRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForRelease(ctx context.Context, req *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (r ReactionsCreateForReleaseRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6006,7 +6006,7 @@ func (UnimplementedHandler) ReactionsCreateForRelease(ctx context.Context, req R
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (r ReactionsCreateForTeamDiscussionCommentInOrgRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, req *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (r ReactionsCreateForTeamDiscussionCommentInOrgRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6025,7 +6025,7 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentInOrg(ctx con
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (r Reaction, _ error) {
+func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, req *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (r *Reaction, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6041,7 +6041,7 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionCommentLegacy(ctx co
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (UnimplementedHandler) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (r ReactionsCreateForTeamDiscussionInOrgRes, _ error) {
+func (UnimplementedHandler) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, req *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (r ReactionsCreateForTeamDiscussionInOrgRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6061,7 +6061,7 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionInOrg(ctx context.Co
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
-func (UnimplementedHandler) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (r Reaction, _ error) {
+func (UnimplementedHandler) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (r *Reaction, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6072,7 +6072,7 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionLegacy(ctx context.C
 // Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (r ReactionsDeleteForCommitCommentNoContent, _ error) {
+func (UnimplementedHandler) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (r *ReactionsDeleteForCommitCommentNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6083,7 +6083,7 @@ func (UnimplementedHandler) ReactionsDeleteForCommitComment(ctx context.Context,
 // Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (r ReactionsDeleteForIssueNoContent, _ error) {
+func (UnimplementedHandler) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (r *ReactionsDeleteForIssueNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6094,7 +6094,7 @@ func (UnimplementedHandler) ReactionsDeleteForIssue(ctx context.Context, params 
 // Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (r ReactionsDeleteForIssueCommentNoContent, _ error) {
+func (UnimplementedHandler) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (r *ReactionsDeleteForIssueCommentNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6106,7 +6106,7 @@ func (UnimplementedHandler) ReactionsDeleteForIssueComment(ctx context.Context, 
 // com/rest/reference/pulls#review-comments).
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (r ReactionsDeleteForPullRequestCommentNoContent, _ error) {
+func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (r *ReactionsDeleteForPullRequestCommentNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6122,7 +6122,7 @@ func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Con
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (r ReactionsDeleteForTeamDiscussionNoContent, _ error) {
+func (UnimplementedHandler) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (r *ReactionsDeleteForTeamDiscussionNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6136,7 +6136,7 @@ func (UnimplementedHandler) ReactionsDeleteForTeamDiscussion(ctx context.Context
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (r ReactionsDeleteForTeamDiscussionCommentNoContent, _ error) {
+func (UnimplementedHandler) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (r *ReactionsDeleteForTeamDiscussionCommentNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6204,7 +6204,7 @@ func (UnimplementedHandler) ReactionsListForPullRequestReviewComment(ctx context
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (r ReactionsListForTeamDiscussionCommentInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (r *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6221,7 +6221,7 @@ func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentInOrg(ctx conte
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (r ReactionsListForTeamDiscussionCommentLegacyOKHeaders, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (r *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6234,7 +6234,7 @@ func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentLegacy(ctx cont
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (r ReactionsListForTeamDiscussionInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (r *ReactionsListForTeamDiscussionInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6251,7 +6251,7 @@ func (UnimplementedHandler) ReactionsListForTeamDiscussionInOrg(ctx context.Cont
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (r ReactionsListForTeamDiscussionLegacyOKHeaders, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (r *ReactionsListForTeamDiscussionLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6466,7 +6466,7 @@ func (UnimplementedHandler) ReposCompareCommits(ctx context.Context, params Repo
 // Users with admin access to the repository can create an autolink.
 //
 // POST /repos/{owner}/{repo}/autolinks
-func (UnimplementedHandler) ReposCreateAutolink(ctx context.Context, req ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (r ReposCreateAutolinkRes, _ error) {
+func (UnimplementedHandler) ReposCreateAutolink(ctx context.Context, req *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (r ReposCreateAutolinkRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6482,7 +6482,7 @@ func (UnimplementedHandler) ReposCreateAutolink(ctx context.Context, req ReposCr
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (UnimplementedHandler) ReposCreateCommitComment(ctx context.Context, req ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (r ReposCreateCommitCommentRes, _ error) {
+func (UnimplementedHandler) ReposCreateCommitComment(ctx context.Context, req *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (r ReposCreateCommitCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6508,7 +6508,7 @@ func (UnimplementedHandler) ReposCreateCommitSignatureProtection(ctx context.Con
 // create more than 1000 statuses will result in a validation error.
 //
 // POST /repos/{owner}/{repo}/statuses/{sha}
-func (UnimplementedHandler) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (r StatusHeaders, _ error) {
+func (UnimplementedHandler) ReposCreateCommitStatus(ctx context.Context, req *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (r *StatusHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6517,7 +6517,7 @@ func (UnimplementedHandler) ReposCreateCommitStatus(ctx context.Context, req Rep
 // You can create a read-only deploy key.
 //
 // POST /repos/{owner}/{repo}/keys
-func (UnimplementedHandler) ReposCreateDeployKey(ctx context.Context, req ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (r ReposCreateDeployKeyRes, _ error) {
+func (UnimplementedHandler) ReposCreateDeployKey(ctx context.Context, req *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (r ReposCreateDeployKeyRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6581,7 +6581,7 @@ func (UnimplementedHandler) ReposCreateDeployKey(ctx context.Context, req ReposC
 // of `success`.
 //
 // POST /repos/{owner}/{repo}/deployments
-func (UnimplementedHandler) ReposCreateDeployment(ctx context.Context, req ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (r ReposCreateDeploymentRes, _ error) {
+func (UnimplementedHandler) ReposCreateDeployment(ctx context.Context, req *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (r ReposCreateDeploymentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6592,7 +6592,7 @@ func (UnimplementedHandler) ReposCreateDeployment(ctx context.Context, req Repos
 // contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
 //
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (UnimplementedHandler) ReposCreateDeploymentStatus(ctx context.Context, req ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (r ReposCreateDeploymentStatusRes, _ error) {
+func (UnimplementedHandler) ReposCreateDeploymentStatus(ctx context.Context, req *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (r ReposCreateDeploymentStatusRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6620,7 +6620,7 @@ func (UnimplementedHandler) ReposCreateDeploymentStatus(ctx context.Context, req
 // This input example shows how you can use the `client_payload` as a test to debug your workflow.
 //
 // POST /repos/{owner}/{repo}/dispatches
-func (UnimplementedHandler) ReposCreateDispatchEvent(ctx context.Context, req ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (r ReposCreateDispatchEventRes, _ error) {
+func (UnimplementedHandler) ReposCreateDispatchEvent(ctx context.Context, req *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (r ReposCreateDispatchEventRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6635,7 +6635,7 @@ func (UnimplementedHandler) ReposCreateDispatchEvent(ctx context.Context, req Re
 // *   `repo` scope to create a private repository.
 //
 // POST /user/repos
-func (UnimplementedHandler) ReposCreateForAuthenticatedUser(ctx context.Context, req ReposCreateForAuthenticatedUserReq) (r ReposCreateForAuthenticatedUserRes, _ error) {
+func (UnimplementedHandler) ReposCreateForAuthenticatedUser(ctx context.Context, req *ReposCreateForAuthenticatedUserReq) (r ReposCreateForAuthenticatedUserRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6663,7 +6663,7 @@ func (UnimplementedHandler) ReposCreateFork(ctx context.Context, req OptNilRepos
 // *   `repo` scope to create a private repository.
 //
 // POST /orgs/{org}/repos
-func (UnimplementedHandler) ReposCreateInOrg(ctx context.Context, req ReposCreateInOrgReq, params ReposCreateInOrgParams) (r ReposCreateInOrgRes, _ error) {
+func (UnimplementedHandler) ReposCreateInOrg(ctx context.Context, req *ReposCreateInOrgReq, params ReposCreateInOrgParams) (r ReposCreateInOrgRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6672,7 +6672,7 @@ func (UnimplementedHandler) ReposCreateInOrg(ctx context.Context, req ReposCreat
 // Creates a new file or replaces an existing file in a repository.
 //
 // PUT /repos/{owner}/{repo}/contents/{path}
-func (UnimplementedHandler) ReposCreateOrUpdateFileContents(ctx context.Context, req ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (r ReposCreateOrUpdateFileContentsRes, _ error) {
+func (UnimplementedHandler) ReposCreateOrUpdateFileContents(ctx context.Context, req *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (r ReposCreateOrUpdateFileContentsRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6698,7 +6698,7 @@ func (UnimplementedHandler) ReposCreatePagesSite(ctx context.Context, req NilRep
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/releases
-func (UnimplementedHandler) ReposCreateRelease(ctx context.Context, req ReposCreateReleaseReq, params ReposCreateReleaseParams) (r ReposCreateReleaseRes, _ error) {
+func (UnimplementedHandler) ReposCreateRelease(ctx context.Context, req *ReposCreateReleaseReq, params ReposCreateReleaseParams) (r ReposCreateReleaseRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6718,7 +6718,7 @@ func (UnimplementedHandler) ReposCreateRelease(ctx context.Context, req ReposCre
 // *   `repo` scope to create a private repository.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
-func (UnimplementedHandler) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (r RepositoryHeaders, _ error) {
+func (UnimplementedHandler) ReposCreateUsingTemplate(ctx context.Context, req *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (r *RepositoryHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6764,7 +6764,7 @@ func (UnimplementedHandler) ReposDelete(ctx context.Context, params ReposDeleteP
 // Disables the ability to restrict who can push to this branch.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (UnimplementedHandler) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (r ReposDeleteAccessRestrictionsNoContent, _ error) {
+func (UnimplementedHandler) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (r *ReposDeleteAccessRestrictionsNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6788,7 +6788,7 @@ func (UnimplementedHandler) ReposDeleteAdminBranchProtection(ctx context.Context
 // You must authenticate using an access token with the repo scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
-func (UnimplementedHandler) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (r ReposDeleteAnEnvironmentNoContent, _ error) {
+func (UnimplementedHandler) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (r *ReposDeleteAnEnvironmentNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6846,7 +6846,7 @@ func (UnimplementedHandler) ReposDeleteCommitSignatureProtection(ctx context.Con
 // instead.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
-func (UnimplementedHandler) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (r ReposDeleteDeployKeyNoContent, _ error) {
+func (UnimplementedHandler) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (r *ReposDeleteDeployKeyNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6879,7 +6879,7 @@ func (UnimplementedHandler) ReposDeleteDeployment(ctx context.Context, params Re
 // `committer`. Otherwise, you'll receive a `422` status code.
 //
 // DELETE /repos/{owner}/{repo}/contents/{path}
-func (UnimplementedHandler) ReposDeleteFile(ctx context.Context, req ReposDeleteFileReq, params ReposDeleteFileParams) (r ReposDeleteFileRes, _ error) {
+func (UnimplementedHandler) ReposDeleteFile(ctx context.Context, req *ReposDeleteFileReq, params ReposDeleteFileParams) (r ReposDeleteFileRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6888,7 +6888,7 @@ func (UnimplementedHandler) ReposDeleteFile(ctx context.Context, req ReposDelete
 // Delete a repository invitation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-func (UnimplementedHandler) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (r ReposDeleteInvitationNoContent, _ error) {
+func (UnimplementedHandler) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (r *ReposDeleteInvitationNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6919,7 +6919,7 @@ func (UnimplementedHandler) ReposDeletePullRequestReviewProtection(ctx context.C
 // Users with push access to the repository can delete a release.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
-func (UnimplementedHandler) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (r ReposDeleteReleaseNoContent, _ error) {
+func (UnimplementedHandler) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (r *ReposDeleteReleaseNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6928,7 +6928,7 @@ func (UnimplementedHandler) ReposDeleteRelease(ctx context.Context, params Repos
 // Delete a release asset.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (UnimplementedHandler) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (r ReposDeleteReleaseAssetNoContent, _ error) {
+func (UnimplementedHandler) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (r *ReposDeleteReleaseAssetNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6948,7 +6948,7 @@ func (UnimplementedHandler) ReposDeleteWebhook(ctx context.Context, params Repos
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
-func (UnimplementedHandler) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (r ReposDisableAutomatedSecurityFixesNoContent, _ error) {
+func (UnimplementedHandler) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (r *ReposDisableAutomatedSecurityFixesNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6957,7 +6957,7 @@ func (UnimplementedHandler) ReposDisableAutomatedSecurityFixes(ctx context.Conte
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // DELETE /repos/{owner}/{repo}/lfs
-func (UnimplementedHandler) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (r ReposDisableLfsForRepoNoContent, _ error) {
+func (UnimplementedHandler) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (r *ReposDisableLfsForRepoNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6969,7 +6969,7 @@ func (UnimplementedHandler) ReposDisableLfsForRepo(ctx context.Context, params R
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
-func (UnimplementedHandler) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (r ReposDisableVulnerabilityAlertsNoContent, _ error) {
+func (UnimplementedHandler) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (r *ReposDisableVulnerabilityAlertsNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6983,7 +6983,7 @@ func (UnimplementedHandler) ReposDisableVulnerabilityAlerts(ctx context.Context,
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
-func (UnimplementedHandler) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (r ReposDownloadTarballArchiveFound, _ error) {
+func (UnimplementedHandler) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (r *ReposDownloadTarballArchiveFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6997,7 +6997,7 @@ func (UnimplementedHandler) ReposDownloadTarballArchive(ctx context.Context, par
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
-func (UnimplementedHandler) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (r ReposDownloadZipballArchiveFound, _ error) {
+func (UnimplementedHandler) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (r *ReposDownloadZipballArchiveFound, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7008,7 +7008,7 @@ func (UnimplementedHandler) ReposDownloadZipballArchive(ctx context.Context, par
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
-func (UnimplementedHandler) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (r ReposEnableAutomatedSecurityFixesNoContent, _ error) {
+func (UnimplementedHandler) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (r *ReposEnableAutomatedSecurityFixesNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7029,7 +7029,7 @@ func (UnimplementedHandler) ReposEnableLfsForRepo(ctx context.Context, params Re
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
-func (UnimplementedHandler) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (r ReposEnableVulnerabilityAlertsNoContent, _ error) {
+func (UnimplementedHandler) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (r *ReposEnableVulnerabilityAlertsNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7068,7 +7068,7 @@ func (UnimplementedHandler) ReposGetAccessRestrictions(ctx context.Context, para
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (UnimplementedHandler) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (r ProtectedBranchAdminEnforced, _ error) {
+func (UnimplementedHandler) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (r *ProtectedBranchAdminEnforced, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7294,7 +7294,7 @@ func (UnimplementedHandler) ReposGetCommitSignatureProtection(ctx context.Contex
 // `content_reports_enabled` is only returned for organization-owned repositories.
 //
 // GET /repos/{owner}/{repo}/community/profile
-func (UnimplementedHandler) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (r CommunityProfile, _ error) {
+func (UnimplementedHandler) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (r *CommunityProfile, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7344,7 +7344,7 @@ func (UnimplementedHandler) ReposGetDeploymentStatus(ctx context.Context, params
 // Get latest Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/latest
-func (UnimplementedHandler) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (r PageBuild, _ error) {
+func (UnimplementedHandler) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (r *PageBuild, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7356,7 +7356,7 @@ func (UnimplementedHandler) ReposGetLatestPagesBuild(ctx context.Context, params
 // and not the date when the release was drafted or published.
 //
 // GET /repos/{owner}/{repo}/releases/latest
-func (UnimplementedHandler) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (r Release, _ error) {
+func (UnimplementedHandler) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (r *Release, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7374,7 +7374,7 @@ func (UnimplementedHandler) ReposGetPages(ctx context.Context, params ReposGetPa
 // Get GitHub Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
-func (UnimplementedHandler) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (r PageBuild, _ error) {
+func (UnimplementedHandler) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (r *PageBuild, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7414,7 +7414,7 @@ func (UnimplementedHandler) ReposGetParticipationStats(ctx context.Context, para
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (UnimplementedHandler) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (r ProtectedBranchPullRequestReview, _ error) {
+func (UnimplementedHandler) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (r *ProtectedBranchPullRequestReview, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7575,7 +7575,7 @@ func (UnimplementedHandler) ReposGetWebhook(ctx context.Context, params ReposGet
 // `repository_hooks:read` permission.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (UnimplementedHandler) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (r WebhookConfig, _ error) {
+func (UnimplementedHandler) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (r *WebhookConfig, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7639,7 +7639,7 @@ func (UnimplementedHandler) ReposListCollaborators(ctx context.Context, params R
 // Use the `:commit_sha` to specify the commit that will have its comments listed.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (UnimplementedHandler) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (r ReposListCommentsForCommitOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (r *ReposListCommentsForCommitOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7651,7 +7651,7 @@ func (UnimplementedHandler) ReposListCommentsForCommit(ctx context.Context, para
 // Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/comments
-func (UnimplementedHandler) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (r ReposListCommitCommentsForRepoOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (r *ReposListCommitCommentsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7727,7 +7727,7 @@ func (UnimplementedHandler) ReposListContributors(ctx context.Context, params Re
 // List deploy keys.
 //
 // GET /repos/{owner}/{repo}/keys
-func (UnimplementedHandler) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (r ReposListDeployKeysOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (r *ReposListDeployKeysOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7745,7 +7745,7 @@ func (UnimplementedHandler) ReposListDeploymentStatuses(ctx context.Context, par
 // Simple filtering of deployments is available via query parameters:.
 //
 // GET /repos/{owner}/{repo}/deployments
-func (UnimplementedHandler) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (r ReposListDeploymentsOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (r *ReposListDeploymentsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7766,7 +7766,7 @@ func (UnimplementedHandler) ReposListForAuthenticatedUser(ctx context.Context, p
 // Lists repositories for the specified organization.
 //
 // GET /orgs/{org}/repos
-func (UnimplementedHandler) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (r ReposListForOrgOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (r *ReposListForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7776,7 +7776,7 @@ func (UnimplementedHandler) ReposListForOrg(ctx context.Context, params ReposLis
 // internal repositories for the specified user.
 //
 // GET /users/{username}/repos
-func (UnimplementedHandler) ReposListForUser(ctx context.Context, params ReposListForUserParams) (r ReposListForUserOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListForUser(ctx context.Context, params ReposListForUserParams) (r *ReposListForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7795,7 +7795,7 @@ func (UnimplementedHandler) ReposListForks(ctx context.Context, params ReposList
 // currently open repository invitations.
 //
 // GET /repos/{owner}/{repo}/invitations
-func (UnimplementedHandler) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (r ReposListInvitationsOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (r *ReposListInvitationsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7824,7 +7824,7 @@ func (UnimplementedHandler) ReposListLanguages(ctx context.Context, params Repos
 // List GitHub Pages builds.
 //
 // GET /repos/{owner}/{repo}/pages/builds
-func (UnimplementedHandler) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (r ReposListPagesBuildsOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (r *ReposListPagesBuildsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7853,7 +7853,7 @@ func (UnimplementedHandler) ReposListPublic(ctx context.Context, params ReposLis
 // requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-func (UnimplementedHandler) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (r ReposListPullRequestsAssociatedWithCommitOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (r *ReposListPullRequestsAssociatedWithCommitOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7862,7 +7862,7 @@ func (UnimplementedHandler) ReposListPullRequestsAssociatedWithCommit(ctx contex
 // List release assets.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
-func (UnimplementedHandler) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (r ReposListReleaseAssetsOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (r *ReposListReleaseAssetsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7884,7 +7884,7 @@ func (UnimplementedHandler) ReposListReleases(ctx context.Context, params ReposL
 // List repository tags.
 //
 // GET /repos/{owner}/{repo}/tags
-func (UnimplementedHandler) ReposListTags(ctx context.Context, params ReposListTagsParams) (r ReposListTagsOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListTags(ctx context.Context, params ReposListTagsParams) (r *ReposListTagsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7893,7 +7893,7 @@ func (UnimplementedHandler) ReposListTags(ctx context.Context, params ReposListT
 // List repository teams.
 //
 // GET /repos/{owner}/{repo}/teams
-func (UnimplementedHandler) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (r ReposListTeamsOKHeaders, _ error) {
+func (UnimplementedHandler) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (r *ReposListTeamsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7920,7 +7920,7 @@ func (UnimplementedHandler) ReposListWebhooks(ctx context.Context, params ReposL
 // Merge a branch.
 //
 // POST /repos/{owner}/{repo}/merges
-func (UnimplementedHandler) ReposMerge(ctx context.Context, req ReposMergeReq, params ReposMergeParams) (r ReposMergeRes, _ error) {
+func (UnimplementedHandler) ReposMerge(ctx context.Context, req *ReposMergeReq, params ReposMergeParams) (r ReposMergeRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7930,7 +7930,7 @@ func (UnimplementedHandler) ReposMerge(ctx context.Context, req ReposMergeReq, p
 // Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
 //
 // POST /repos/{owner}/{repo}/merge-upstream
-func (UnimplementedHandler) ReposMergeUpstream(ctx context.Context, req ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (r ReposMergeUpstreamRes, _ error) {
+func (UnimplementedHandler) ReposMergeUpstream(ctx context.Context, req *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (r ReposMergeUpstreamRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7981,7 +7981,7 @@ func (UnimplementedHandler) ReposRemoveAppAccessRestrictions(ctx context.Context
 // Remove a repository collaborator.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
-func (UnimplementedHandler) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (r ReposRemoveCollaboratorNoContent, _ error) {
+func (UnimplementedHandler) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (r *ReposRemoveCollaboratorNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8007,7 +8007,7 @@ func (UnimplementedHandler) ReposRemoveStatusCheckContexts(ctx context.Context, 
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (UnimplementedHandler) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (r ReposRemoveStatusCheckProtectionNoContent, _ error) {
+func (UnimplementedHandler) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (r *ReposRemoveStatusCheckProtectionNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8082,7 +8082,7 @@ func (UnimplementedHandler) ReposRenameBranch(ctx context.Context, req OptReposR
 // Replace all repository topics.
 //
 // PUT /repos/{owner}/{repo}/topics
-func (UnimplementedHandler) ReposReplaceAllTopics(ctx context.Context, req ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (r ReposReplaceAllTopicsRes, _ error) {
+func (UnimplementedHandler) ReposReplaceAllTopics(ctx context.Context, req *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (r ReposReplaceAllTopicsRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8096,7 +8096,7 @@ func (UnimplementedHandler) ReposReplaceAllTopics(ctx context.Context, req Repos
 // queued until the first completes.
 //
 // POST /repos/{owner}/{repo}/pages/builds
-func (UnimplementedHandler) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (r PageBuildStatus, _ error) {
+func (UnimplementedHandler) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (r *PageBuildStatus, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8111,7 +8111,7 @@ func (UnimplementedHandler) ReposRequestPagesBuild(ctx context.Context, params R
 // protection to be enabled.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (UnimplementedHandler) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (r ProtectedBranchAdminEnforced, _ error) {
+func (UnimplementedHandler) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (r *ProtectedBranchAdminEnforced, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8221,7 +8221,7 @@ func (UnimplementedHandler) ReposTestPushWebhook(ctx context.Context, params Rep
 // com/articles/about-repository-transfers/).
 //
 // POST /repos/{owner}/{repo}/transfer
-func (UnimplementedHandler) ReposTransfer(ctx context.Context, req ReposTransferReq, params ReposTransferParams) (r MinimalRepository, _ error) {
+func (UnimplementedHandler) ReposTransfer(ctx context.Context, req *ReposTransferReq, params ReposTransferParams) (r *MinimalRepository, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8247,7 +8247,7 @@ func (UnimplementedHandler) ReposUpdate(ctx context.Context, req OptReposUpdateR
 // **Note**: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
-func (UnimplementedHandler) ReposUpdateBranchProtection(ctx context.Context, req ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (r ReposUpdateBranchProtectionRes, _ error) {
+func (UnimplementedHandler) ReposUpdateBranchProtection(ctx context.Context, req *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (r ReposUpdateBranchProtectionRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8256,7 +8256,7 @@ func (UnimplementedHandler) ReposUpdateBranchProtection(ctx context.Context, req
 // Update a commit comment.
 //
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
-func (UnimplementedHandler) ReposUpdateCommitComment(ctx context.Context, req ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (r ReposUpdateCommitCommentRes, _ error) {
+func (UnimplementedHandler) ReposUpdateCommitComment(ctx context.Context, req *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (r ReposUpdateCommitCommentRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8265,7 +8265,7 @@ func (UnimplementedHandler) ReposUpdateCommitComment(ctx context.Context, req Re
 // Update a repository invitation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-func (UnimplementedHandler) ReposUpdateInvitation(ctx context.Context, req OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (r RepositoryInvitation, _ error) {
+func (UnimplementedHandler) ReposUpdateInvitation(ctx context.Context, req OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (r *RepositoryInvitation, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8299,7 +8299,7 @@ func (UnimplementedHandler) ReposUpdateRelease(ctx context.Context, req OptRepos
 // Users with push access to the repository can edit a release asset.
 //
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (UnimplementedHandler) ReposUpdateReleaseAsset(ctx context.Context, req OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (r ReleaseAsset, _ error) {
+func (UnimplementedHandler) ReposUpdateReleaseAsset(ctx context.Context, req OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (r *ReleaseAsset, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8339,7 +8339,7 @@ func (UnimplementedHandler) ReposUpdateWebhook(ctx context.Context, req OptRepos
 // `repository_hooks:write` permission.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (UnimplementedHandler) ReposUpdateWebhookConfigForRepo(ctx context.Context, req OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (r WebhookConfig, _ error) {
+func (UnimplementedHandler) ReposUpdateWebhookConfigForRepo(ctx context.Context, req OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (r *WebhookConfig, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8373,7 +8373,7 @@ func (UnimplementedHandler) ReposUpdateWebhookConfigForRepo(ctx context.Context,
 // error and must delete the old file before you can re-upload the new asset.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/assets
-func (UnimplementedHandler) ReposUploadReleaseAsset(ctx context.Context, req ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (r ReleaseAsset, _ error) {
+func (UnimplementedHandler) ReposUploadReleaseAsset(ctx context.Context, req *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (r *ReleaseAsset, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8593,7 +8593,7 @@ func (UnimplementedHandler) SecretScanningListAlertsForRepo(ctx context.Context,
 // GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (UnimplementedHandler) SecretScanningUpdateAlert(ctx context.Context, req SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (r SecretScanningUpdateAlertRes, _ error) {
+func (UnimplementedHandler) SecretScanningUpdateAlert(ctx context.Context, req *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (r SecretScanningUpdateAlertRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8738,7 +8738,7 @@ func (UnimplementedHandler) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context
 // com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (UnimplementedHandler) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (r TeamsAddOrUpdateRepoPermissionsInOrgNoContent, _ error) {
+func (UnimplementedHandler) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (r *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8839,7 +8839,7 @@ func (UnimplementedHandler) TeamsCheckPermissionsForRepoLegacy(ctx context.Conte
 // com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
 //
 // POST /orgs/{org}/teams
-func (UnimplementedHandler) TeamsCreate(ctx context.Context, req TeamsCreateReq, params TeamsCreateParams) (r TeamsCreateRes, _ error) {
+func (UnimplementedHandler) TeamsCreate(ctx context.Context, req *TeamsCreateReq, params TeamsCreateParams) (r TeamsCreateRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8858,7 +8858,7 @@ func (UnimplementedHandler) TeamsCreate(ctx context.Context, req TeamsCreateReq,
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (UnimplementedHandler) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (r TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsCreateDiscussionCommentInOrg(ctx context.Context, req *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (r *TeamDiscussionComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8880,7 +8880,7 @@ func (UnimplementedHandler) TeamsCreateDiscussionCommentInOrg(ctx context.Contex
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
-func (UnimplementedHandler) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (r TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsCreateDiscussionCommentLegacy(ctx context.Context, req *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (r *TeamDiscussionComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8899,7 +8899,7 @@ func (UnimplementedHandler) TeamsCreateDiscussionCommentLegacy(ctx context.Conte
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions
-func (UnimplementedHandler) TeamsCreateDiscussionInOrg(ctx context.Context, req TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (r TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsCreateDiscussionInOrg(ctx context.Context, req *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (r *TeamDiscussion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8921,7 +8921,7 @@ func (UnimplementedHandler) TeamsCreateDiscussionInOrg(ctx context.Context, req 
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions
-func (UnimplementedHandler) TeamsCreateDiscussionLegacy(ctx context.Context, req TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (r TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsCreateDiscussionLegacy(ctx context.Context, req *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (r *TeamDiscussion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8937,7 +8937,7 @@ func (UnimplementedHandler) TeamsCreateDiscussionLegacy(ctx context.Context, req
 // /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (r GroupMapping, _ error) {
+func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, req *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (r *GroupMapping, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8957,7 +8957,7 @@ func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx cont
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
-func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (r TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, _ error) {
+func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, req *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (r TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8969,7 +8969,7 @@ func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx con
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (r TeamsDeleteDiscussionCommentInOrgNoContent, _ error) {
+func (UnimplementedHandler) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (r *TeamsDeleteDiscussionCommentInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8984,7 +8984,7 @@ func (UnimplementedHandler) TeamsDeleteDiscussionCommentInOrg(ctx context.Contex
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (r TeamsDeleteDiscussionCommentLegacyNoContent, _ error) {
+func (UnimplementedHandler) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (r *TeamsDeleteDiscussionCommentLegacyNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8996,7 +8996,7 @@ func (UnimplementedHandler) TeamsDeleteDiscussionCommentLegacy(ctx context.Conte
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (r TeamsDeleteDiscussionInOrgNoContent, _ error) {
+func (UnimplementedHandler) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (r *TeamsDeleteDiscussionInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9011,7 +9011,7 @@ func (UnimplementedHandler) TeamsDeleteDiscussionInOrg(ctx context.Context, para
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (r TeamsDeleteDiscussionLegacyNoContent, _ error) {
+func (UnimplementedHandler) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (r *TeamsDeleteDiscussionLegacyNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9024,7 +9024,7 @@ func (UnimplementedHandler) TeamsDeleteDiscussionLegacy(ctx context.Context, par
 // /organizations/{org_id}/team/{team_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
-func (UnimplementedHandler) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (r TeamsDeleteInOrgNoContent, _ error) {
+func (UnimplementedHandler) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (r *TeamsDeleteInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9063,7 +9063,7 @@ func (UnimplementedHandler) TeamsGetByName(ctx context.Context, params TeamsGetB
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (r TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (r *TeamDiscussionComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9078,7 +9078,7 @@ func (UnimplementedHandler) TeamsGetDiscussionCommentInOrg(ctx context.Context, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (r TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (r *TeamDiscussionComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9090,7 +9090,7 @@ func (UnimplementedHandler) TeamsGetDiscussionCommentLegacy(ctx context.Context,
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (r TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (r *TeamDiscussion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9105,7 +9105,7 @@ func (UnimplementedHandler) TeamsGetDiscussionInOrg(ctx context.Context, params 
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (r TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (r *TeamDiscussion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9188,7 +9188,7 @@ func (UnimplementedHandler) TeamsList(ctx context.Context, params TeamsListParam
 // /organizations/{org_id}/team/{team_id}/teams`.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
-func (UnimplementedHandler) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (r TeamsListChildInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (r *TeamsListChildInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9213,7 +9213,7 @@ func (UnimplementedHandler) TeamsListChildLegacy(ctx context.Context, params Tea
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (UnimplementedHandler) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (r TeamsListDiscussionCommentsInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (r *TeamsListDiscussionCommentsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9228,7 +9228,7 @@ func (UnimplementedHandler) TeamsListDiscussionCommentsInOrg(ctx context.Context
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
-func (UnimplementedHandler) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (r TeamsListDiscussionCommentsLegacyOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (r *TeamsListDiscussionCommentsLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9240,7 +9240,7 @@ func (UnimplementedHandler) TeamsListDiscussionCommentsLegacy(ctx context.Contex
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
-func (UnimplementedHandler) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (r TeamsListDiscussionsInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (r *TeamsListDiscussionsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9255,7 +9255,7 @@ func (UnimplementedHandler) TeamsListDiscussionsInOrg(ctx context.Context, param
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions
-func (UnimplementedHandler) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (r TeamsListDiscussionsLegacyOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (r *TeamsListDiscussionsLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9299,7 +9299,7 @@ func (UnimplementedHandler) TeamsListIdpGroupsForLegacy(ctx context.Context, par
 // explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
 //
 // GET /orgs/{org}/team-sync/groups
-func (UnimplementedHandler) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (r GroupMappingHeaders, _ error) {
+func (UnimplementedHandler) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (r *GroupMappingHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9313,7 +9313,7 @@ func (UnimplementedHandler) TeamsListIdpGroupsForOrg(ctx context.Context, params
 // /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (UnimplementedHandler) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (r GroupMapping, _ error) {
+func (UnimplementedHandler) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (r *GroupMapping, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9323,7 +9323,7 @@ func (UnimplementedHandler) TeamsListIdpGroupsInOrg(ctx context.Context, params 
 // To list members in a team, the team must be visible to the authenticated user.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
-func (UnimplementedHandler) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (r TeamsListMembersInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (r *TeamsListMembersInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9351,7 +9351,7 @@ func (UnimplementedHandler) TeamsListMembersLegacy(ctx context.Context, params T
 // /organizations/{org_id}/team/{team_id}/invitations`.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
-func (UnimplementedHandler) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (r TeamsListPendingInvitationsInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (r *TeamsListPendingInvitationsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9368,7 +9368,7 @@ func (UnimplementedHandler) TeamsListPendingInvitationsInOrg(ctx context.Context
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/invitations
-func (UnimplementedHandler) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (r TeamsListPendingInvitationsLegacyOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (r *TeamsListPendingInvitationsLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9379,7 +9379,7 @@ func (UnimplementedHandler) TeamsListPendingInvitationsLegacy(ctx context.Contex
 // /organizations/{org_id}/team/{team_id}/projects`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
-func (UnimplementedHandler) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (r TeamsListProjectsInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (r *TeamsListProjectsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9404,7 +9404,7 @@ func (UnimplementedHandler) TeamsListProjectsLegacy(ctx context.Context, params 
 // /organizations/{org_id}/team/{team_id}/repos`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
-func (UnimplementedHandler) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (r TeamsListReposInOrgOKHeaders, _ error) {
+func (UnimplementedHandler) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (r *TeamsListReposInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9509,7 +9509,7 @@ func (UnimplementedHandler) TeamsRemoveMembershipForUserLegacy(ctx context.Conte
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (UnimplementedHandler) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (r TeamsRemoveProjectInOrgNoContent, _ error) {
+func (UnimplementedHandler) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (r *TeamsRemoveProjectInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9540,7 +9540,7 @@ func (UnimplementedHandler) TeamsRemoveProjectLegacy(ctx context.Context, params
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (UnimplementedHandler) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (r TeamsRemoveRepoInOrgNoContent, _ error) {
+func (UnimplementedHandler) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (r *TeamsRemoveRepoInOrgNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9557,7 +9557,7 @@ func (UnimplementedHandler) TeamsRemoveRepoInOrg(ctx context.Context, params Tea
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
-func (UnimplementedHandler) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (r TeamsRemoveRepoLegacyNoContent, _ error) {
+func (UnimplementedHandler) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (r *TeamsRemoveRepoLegacyNoContent, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9569,7 +9569,7 @@ func (UnimplementedHandler) TeamsRemoveRepoLegacy(ctx context.Context, params Te
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (r TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, req *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (r *TeamDiscussionComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9584,7 +9584,7 @@ func (UnimplementedHandler) TeamsUpdateDiscussionCommentInOrg(ctx context.Contex
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (r TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, req *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (r *TeamDiscussionComment, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9597,7 +9597,7 @@ func (UnimplementedHandler) TeamsUpdateDiscussionCommentLegacy(ctx context.Conte
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsUpdateDiscussionInOrg(ctx context.Context, req OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (r TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsUpdateDiscussionInOrg(ctx context.Context, req OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (r *TeamDiscussion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9613,7 +9613,7 @@ func (UnimplementedHandler) TeamsUpdateDiscussionInOrg(ctx context.Context, req 
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsUpdateDiscussionLegacy(ctx context.Context, req OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (r TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsUpdateDiscussionLegacy(ctx context.Context, req OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (r *TeamDiscussion, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9624,7 +9624,7 @@ func (UnimplementedHandler) TeamsUpdateDiscussionLegacy(ctx context.Context, req
 // /organizations/{org_id}/team/{team_id}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
-func (UnimplementedHandler) TeamsUpdateInOrg(ctx context.Context, req OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (r TeamFull, _ error) {
+func (UnimplementedHandler) TeamsUpdateInOrg(ctx context.Context, req OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (r *TeamFull, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9639,7 +9639,7 @@ func (UnimplementedHandler) TeamsUpdateInOrg(ctx context.Context, req OptTeamsUp
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}
-func (UnimplementedHandler) TeamsUpdateLegacy(ctx context.Context, req TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (r TeamsUpdateLegacyRes, _ error) {
+func (UnimplementedHandler) TeamsUpdateLegacy(ctx context.Context, req *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (r TeamsUpdateLegacyRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9695,7 +9695,7 @@ func (UnimplementedHandler) UsersCheckPersonIsFollowedByAuthenticated(ctx contex
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // POST /user/gpg_keys
-func (UnimplementedHandler) UsersCreateGpgKeyForAuthenticated(ctx context.Context, req UsersCreateGpgKeyForAuthenticatedReq) (r UsersCreateGpgKeyForAuthenticatedRes, _ error) {
+func (UnimplementedHandler) UsersCreateGpgKeyForAuthenticated(ctx context.Context, req *UsersCreateGpgKeyForAuthenticatedReq) (r UsersCreateGpgKeyForAuthenticatedRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9706,7 +9706,7 @@ func (UnimplementedHandler) UsersCreateGpgKeyForAuthenticated(ctx context.Contex
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // POST /user/keys
-func (UnimplementedHandler) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, req UsersCreatePublicSSHKeyForAuthenticatedReq) (r UsersCreatePublicSSHKeyForAuthenticatedRes, _ error) {
+func (UnimplementedHandler) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, req *UsersCreatePublicSSHKeyForAuthenticatedReq) (r UsersCreatePublicSSHKeyForAuthenticatedRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9884,7 +9884,7 @@ func (UnimplementedHandler) UsersListFollowersForAuthenticatedUser(ctx context.C
 // Lists the people following the specified user.
 //
 // GET /users/{username}/followers
-func (UnimplementedHandler) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (r UsersListFollowersForUserOKHeaders, _ error) {
+func (UnimplementedHandler) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (r *UsersListFollowersForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9893,7 +9893,7 @@ func (UnimplementedHandler) UsersListFollowersForUser(ctx context.Context, param
 // Lists the people who the specified user follows.
 //
 // GET /users/{username}/following
-func (UnimplementedHandler) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (r UsersListFollowingForUserOKHeaders, _ error) {
+func (UnimplementedHandler) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (r *UsersListFollowingForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9913,7 +9913,7 @@ func (UnimplementedHandler) UsersListGpgKeysForAuthenticated(ctx context.Context
 // Lists the GPG keys for a user. This information is accessible by anyone.
 //
 // GET /users/{username}/gpg_keys
-func (UnimplementedHandler) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (r UsersListGpgKeysForUserOKHeaders, _ error) {
+func (UnimplementedHandler) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (r *UsersListGpgKeysForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9934,7 +9934,7 @@ func (UnimplementedHandler) UsersListPublicEmailsForAuthenticated(ctx context.Co
 // Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 //
 // GET /users/{username}/keys
-func (UnimplementedHandler) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (r UsersListPublicKeysForUserOKHeaders, _ error) {
+func (UnimplementedHandler) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (r *UsersListPublicKeysForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9954,7 +9954,7 @@ func (UnimplementedHandler) UsersListPublicSSHKeysForAuthenticated(ctx context.C
 // Sets the visibility for your primary email addresses.
 //
 // PATCH /user/email/visibility
-func (UnimplementedHandler) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, req UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (r UsersSetPrimaryEmailVisibilityForAuthenticatedRes, _ error) {
+func (UnimplementedHandler) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, req *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (r UsersSetPrimaryEmailVisibilityForAuthenticatedRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
