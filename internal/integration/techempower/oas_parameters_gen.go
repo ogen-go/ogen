@@ -5,11 +5,11 @@ package techempower
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // CachingParams is parameters of Caching operation.
@@ -31,7 +31,7 @@ func unpackCachingParams(packed middleware.Parameters) (params CachingParams) {
 func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: count.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "count",
 			Style:   uri.QueryStyleForm,
@@ -53,10 +53,17 @@ func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams,
 				params.Count = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: count: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "count",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -81,7 +88,7 @@ func unpackQueriesParams(packed middleware.Parameters) (params QueriesParams) {
 func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "queries",
 			Style:   uri.QueryStyleForm,
@@ -103,10 +110,17 @@ func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams,
 				params.Queries = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: queries: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "queries",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -131,7 +145,7 @@ func unpackUpdatesParams(packed middleware.Parameters) (params UpdatesParams) {
 func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "queries",
 			Style:   uri.QueryStyleForm,
@@ -153,10 +167,17 @@ func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams,
 				params.Queries = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: queries: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "queries",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

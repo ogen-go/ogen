@@ -5,11 +5,11 @@ package api
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // HealthzGetParams is parameters of GET /healthz operation.
@@ -63,7 +63,7 @@ func unpackHealthzGetParams(packed middleware.Parameters) (params HealthzGetPara
 func decodeHealthzGetParams(args [0]string, r *http.Request) (params HealthzGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: =.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "=",
 			Style:   uri.QueryStyleForm,
@@ -85,14 +85,21 @@ func decodeHealthzGetParams(args [0]string, r *http.Request) (params HealthzGetP
 				params.Eq = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: =: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "=",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: +.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "+",
 			Style:   uri.QueryStyleForm,
@@ -114,14 +121,21 @@ func decodeHealthzGetParams(args [0]string, r *http.Request) (params HealthzGetP
 				params.Plus = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: +: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "+",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: question?.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "question?",
 			Style:   uri.QueryStyleForm,
@@ -143,14 +157,21 @@ func decodeHealthzGetParams(args [0]string, r *http.Request) (params HealthzGetP
 				params.Question = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: question?: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "question?",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: and&.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "and&",
 			Style:   uri.QueryStyleForm,
@@ -172,14 +193,21 @@ func decodeHealthzGetParams(args [0]string, r *http.Request) (params HealthzGetP
 				params.And = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: and&: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "and&",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: percent%.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "percent%",
 			Style:   uri.QueryStyleForm,
@@ -201,10 +229,17 @@ func decodeHealthzGetParams(args [0]string, r *http.Request) (params HealthzGetP
 				params.Percent = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: percent%: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "percent%",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -237,7 +272,7 @@ func unpackSameNameParams(packed middleware.Parameters) (params SameNameParams) 
 func decodeSameNameParams(args [1]string, r *http.Request) (params SameNameParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: path.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -261,14 +296,21 @@ func decodeSameNameParams(args [1]string, r *http.Request) (params SameNameParam
 				params.pathPath = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: path: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: path: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "path",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode query: path.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "path",
 			Style:   uri.QueryStyleForm,
@@ -290,10 +332,17 @@ func decodeSameNameParams(args [1]string, r *http.Request) (params SameNameParam
 				params.queryPath = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: path: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "path",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

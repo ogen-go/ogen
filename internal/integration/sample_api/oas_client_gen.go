@@ -642,7 +642,7 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res *Ha
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.XAuthToken))
 		}); err != nil {
-			return res, errors.Wrap(err, "encode header param x-auth-token")
+			return res, errors.Wrap(err, "encode header")
 		}
 	}
 
@@ -1165,7 +1165,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 				return nil
 			})
 		}); err != nil {
-			return res, errors.Wrap(err, "encode header param x-tags")
+			return res, errors.Wrap(err, "encode header")
 		}
 	}
 	{
@@ -1185,7 +1185,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 				return nil
 			})
 		}); err != nil {
-			return res, errors.Wrap(err, "encode header param x-scope")
+			return res, errors.Wrap(err, "encode header")
 		}
 	}
 

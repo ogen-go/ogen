@@ -5,11 +5,11 @@ package api
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // UpdateWebhookParams is parameters of updateWebhook operation.
@@ -42,7 +42,7 @@ func decodeUpdateWebhookParams(args [0]string, r *http.Request) (params UpdateWe
 	q := uri.NewQueryDecoder(r.URL.Query())
 	h := uri.NewHeaderDecoder(r.Header)
 	// Decode query: event_type.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "event_type",
 			Style:   uri.QueryStyleForm,
@@ -64,14 +64,21 @@ func decodeUpdateWebhookParams(args [0]string, r *http.Request) (params UpdateWe
 				params.EventType = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: event_type: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "event_type",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode header: X-Webhook-Token.
-	{
+	if err := func() error {
 		cfg := uri.HeaderParameterDecodingConfig{
 			Name:    "X-Webhook-Token",
 			Explode: false,
@@ -98,8 +105,15 @@ func decodeUpdateWebhookParams(args [0]string, r *http.Request) (params UpdateWe
 				params.XWebhookToken.SetTo(paramsDotXWebhookTokenVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "header: X-Webhook-Token: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "X-Webhook-Token",
+			In:   "header",
+			Err:  err,
 		}
 	}
 	return params, nil

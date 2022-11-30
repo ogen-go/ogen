@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // MarketCandlesGetParams is parameters of GET /market/candles operation.
@@ -60,7 +60,7 @@ func unpackMarketCandlesGetParams(packed middleware.Parameters) (params MarketCa
 func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params MarketCandlesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "figi",
 			Style:   uri.QueryStyleForm,
@@ -82,14 +82,21 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 				params.Figi = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: figi: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "figi",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: from.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "from",
 			Style:   uri.QueryStyleForm,
@@ -111,14 +118,21 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 				params.From = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: from: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "from",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: to.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "to",
 			Style:   uri.QueryStyleForm,
@@ -140,14 +154,21 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 				params.To = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: to: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "to",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: interval.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "interval",
 			Style:   uri.QueryStyleForm,
@@ -169,7 +190,7 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 				params.Interval = CandleResolution(c)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: interval: parse")
+				return err
 			}
 			if err := func() error {
 				if err := params.Interval.Validate(); err != nil {
@@ -177,10 +198,17 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: interval: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "interval",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -215,7 +243,7 @@ func unpackMarketOrderbookGetParams(packed middleware.Parameters) (params Market
 func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params MarketOrderbookGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "figi",
 			Style:   uri.QueryStyleForm,
@@ -237,14 +265,21 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params Mar
 				params.Figi = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: figi: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "figi",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: depth.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "depth",
 			Style:   uri.QueryStyleForm,
@@ -266,10 +301,17 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params Mar
 				params.Depth = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: depth: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "depth",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -295,7 +337,7 @@ func unpackMarketSearchByFigiGetParams(packed middleware.Parameters) (params Mar
 func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params MarketSearchByFigiGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "figi",
 			Style:   uri.QueryStyleForm,
@@ -317,10 +359,17 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params 
 				params.Figi = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: figi: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "figi",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -346,7 +395,7 @@ func unpackMarketSearchByTickerGetParams(packed middleware.Parameters) (params M
 func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (params MarketSearchByTickerGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: ticker.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "ticker",
 			Style:   uri.QueryStyleForm,
@@ -368,10 +417,17 @@ func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (param
 				params.Ticker = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: ticker: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "ticker",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -428,7 +484,7 @@ func unpackOperationsGetParams(packed middleware.Parameters) (params OperationsG
 func decodeOperationsGetParams(args [0]string, r *http.Request) (params OperationsGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: from.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "from",
 			Style:   uri.QueryStyleForm,
@@ -450,14 +506,21 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 				params.From = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: from: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "from",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: to.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "to",
 			Style:   uri.QueryStyleForm,
@@ -479,14 +542,21 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 				params.To = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: to: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "to",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: figi.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "figi",
 			Style:   uri.QueryStyleForm,
@@ -515,12 +585,19 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 				params.Figi.SetTo(paramsDotFigiVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: figi: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "figi",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -549,8 +626,15 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -587,7 +671,7 @@ func unpackOrdersCancelPostParams(packed middleware.Parameters) (params OrdersCa
 func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params OrdersCancelPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: orderId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "orderId",
 			Style:   uri.QueryStyleForm,
@@ -609,14 +693,21 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 				params.OrderId = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: orderId: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "orderId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -645,8 +736,15 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -674,7 +772,7 @@ func unpackOrdersGetParams(packed middleware.Parameters) (params OrdersGetParams
 func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -703,8 +801,15 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetPar
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -741,7 +846,7 @@ func unpackOrdersLimitOrderPostParams(packed middleware.Parameters) (params Orde
 func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params OrdersLimitOrderPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "figi",
 			Style:   uri.QueryStyleForm,
@@ -763,14 +868,21 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params O
 				params.Figi = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: figi: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "figi",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -799,8 +911,15 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params O
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -838,7 +957,7 @@ func unpackOrdersMarketOrderPostParams(packed middleware.Parameters) (params Ord
 func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params OrdersMarketOrderPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "figi",
 			Style:   uri.QueryStyleForm,
@@ -860,14 +979,21 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 				params.Figi = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: figi: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "figi",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -896,8 +1022,15 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -925,7 +1058,7 @@ func unpackPortfolioCurrenciesGetParams(packed middleware.Parameters) (params Po
 func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params PortfolioCurrenciesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -954,8 +1087,15 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -983,7 +1123,7 @@ func unpackPortfolioGetParams(packed middleware.Parameters) (params PortfolioGet
 func decodePortfolioGetParams(args [0]string, r *http.Request) (params PortfolioGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -1012,8 +1152,15 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (params Portfolio
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1041,7 +1188,7 @@ func unpackSandboxClearPostParams(packed middleware.Parameters) (params SandboxC
 func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params SandboxClearPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -1070,8 +1217,15 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params Sandb
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1099,7 +1253,7 @@ func unpackSandboxCurrenciesBalancePostParams(packed middleware.Parameters) (par
 func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (params SandboxCurrenciesBalancePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -1128,8 +1282,15 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1157,7 +1318,7 @@ func unpackSandboxPositionsBalancePostParams(packed middleware.Parameters) (para
 func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (params SandboxPositionsBalancePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -1186,8 +1347,15 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (p
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1215,7 +1383,7 @@ func unpackSandboxRemovePostParams(packed middleware.Parameters) (params Sandbox
 func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (params SandboxRemovePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
@@ -1244,8 +1412,15 @@ func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (params Sand
 				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: brokerAccountId: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "brokerAccountId",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
