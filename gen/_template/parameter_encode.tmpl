@@ -75,7 +75,7 @@ h := uri.NewHeaderEncoder(r.Header)
 		    {{- template "uri/encode" $el }}
 		{{- end }}
 	}); err != nil {
-		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
+		return res, errors.Wrap(err, "encode header")
 	}
 }
 {{- end }}
