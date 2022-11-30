@@ -5,11 +5,11 @@ package api
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // CombinedParams is parameters of combined operation.
@@ -31,7 +31,7 @@ func unpackCombinedParams(packed middleware.Parameters) (params CombinedParams) 
 func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: type.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "type",
 			Style:   uri.QueryStyleForm,
@@ -53,7 +53,7 @@ func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParam
 				params.Type = CombinedType(c)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: type: parse")
+				return err
 			}
 			if err := func() error {
 				if err := params.Type.Validate(); err != nil {
@@ -61,10 +61,17 @@ func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParam
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: type: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "type",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -89,7 +96,7 @@ func unpackHeadersCombinedParams(packed middleware.Parameters) (params HeadersCo
 func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params HeadersCombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: type.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "type",
 			Style:   uri.QueryStyleForm,
@@ -111,7 +118,7 @@ func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params Header
 				params.Type = HeadersCombinedType(c)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: type: parse")
+				return err
 			}
 			if err := func() error {
 				if err := params.Type.Validate(); err != nil {
@@ -119,10 +126,17 @@ func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params Header
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: type: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "type",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -147,7 +161,7 @@ func unpackIntersectPatternCodeParams(packed middleware.Parameters) (params Inte
 func decodeIntersectPatternCodeParams(args [0]string, r *http.Request) (params IntersectPatternCodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: code.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "code",
 			Style:   uri.QueryStyleForm,
@@ -169,10 +183,17 @@ func decodeIntersectPatternCodeParams(args [0]string, r *http.Request) (params I
 				params.Code = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: code: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "code",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

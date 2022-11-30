@@ -5,11 +5,11 @@ package api
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // DeletePetParams is parameters of deletePet operation.
@@ -31,7 +31,7 @@ func unpackDeletePetParams(packed middleware.Parameters) (params DeletePetParams
 
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -55,10 +55,17 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: id: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -83,7 +90,7 @@ func unpackFindPetByIDParams(packed middleware.Parameters) (params FindPetByIDPa
 
 func decodeFindPetByIDParams(args [1]string, r *http.Request) (params FindPetByIDParams, _ error) {
 	// Decode path: id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -107,10 +114,17 @@ func decodeFindPetByIDParams(args [1]string, r *http.Request) (params FindPetByI
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: id: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -149,7 +163,7 @@ func unpackFindPetsParams(packed middleware.Parameters) (params FindPetsParams) 
 func decodeFindPetsParams(args [0]string, r *http.Request) (params FindPetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: tags.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "tags",
 			Style:   uri.QueryStyleForm,
@@ -180,12 +194,19 @@ func decodeFindPetsParams(args [0]string, r *http.Request) (params FindPetsParam
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: tags: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "tags",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: limit.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "limit",
 			Style:   uri.QueryStyleForm,
@@ -214,8 +235,15 @@ func decodeFindPetsParams(args [0]string, r *http.Request) (params FindPetsParam
 				params.Limit.SetTo(paramsDotLimitVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: limit: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "limit",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

@@ -343,7 +343,7 @@ func (c *WebhookClient) UpdateWebhook(ctx context.Context, targetURL string, req
 			}
 			return nil
 		}); err != nil {
-			return res, errors.Wrap(err, "encode header param X-Webhook-Token")
+			return res, errors.Wrap(err, "encode header")
 		}
 	}
 

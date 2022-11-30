@@ -5,11 +5,11 @@ package api
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // ListPetsParams is parameters of listPets operation.
@@ -34,7 +34,7 @@ func unpackListPetsParams(packed middleware.Parameters) (params ListPetsParams) 
 func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: limit.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "limit",
 			Style:   uri.QueryStyleForm,
@@ -63,8 +63,15 @@ func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParam
 				params.Limit.SetTo(paramsDotLimitVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: limit: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "limit",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -89,7 +96,7 @@ func unpackShowPetByIdParams(packed middleware.Parameters) (params ShowPetByIdPa
 
 func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByIdParams, _ error) {
 	// Decode path: petId.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -113,10 +120,17 @@ func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByI
 				params.PetId = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: petId: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: petId: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "petId",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil

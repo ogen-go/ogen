@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -46,7 +47,7 @@ func unpackAPICaptcha2chcaptchaIDGetParams(packed middleware.Parameters) (params
 func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "board",
 			Style:   uri.QueryStyleForm,
@@ -75,12 +76,19 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (par
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: board: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: thread.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "thread",
 			Style:   uri.QueryStyleForm,
@@ -109,7 +117,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (par
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: thread: parse")
+				return err
 			}
 			if err := func() error {
 				if params.Thread.Set {
@@ -133,8 +141,15 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (par
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: thread: invalid")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "thread",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -160,7 +175,7 @@ func unpackAPICaptcha2chcaptchaShowGetParams(packed middleware.Parameters) (para
 func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaShowGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: id.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "id",
 			Style:   uri.QueryStyleForm,
@@ -182,10 +197,17 @@ func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (p
 				params.ID = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: id: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "id",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -235,7 +257,7 @@ func unpackAPICaptchaAppIDPublicKeyGetParams(packed middleware.Parameters) (para
 func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (params APICaptchaAppIDPublicKeyGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: public_key.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -259,14 +281,21 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 				params.PublicKey = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: public_key: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: public_key: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "public_key",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode query: board.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "board",
 			Style:   uri.QueryStyleForm,
@@ -295,12 +324,19 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: board: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: thread.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "thread",
 			Style:   uri.QueryStyleForm,
@@ -329,7 +365,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: thread: parse")
+				return err
 			}
 			if err := func() error {
 				if params.Thread.Set {
@@ -353,8 +389,15 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: thread: invalid")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "thread",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -393,7 +436,7 @@ func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed middleware.Parameters)
 func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaInvisibleRecaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "board",
 			Style:   uri.QueryStyleForm,
@@ -422,12 +465,19 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: board: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: thread.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "thread",
 			Style:   uri.QueryStyleForm,
@@ -456,7 +506,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: thread: parse")
+				return err
 			}
 			if err := func() error {
 				if params.Thread.Set {
@@ -480,8 +530,15 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: thread: invalid")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "thread",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -520,7 +577,7 @@ func unpackAPICaptchaRecaptchaIDGetParams(packed middleware.Parameters) (params 
 func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaRecaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "board",
 			Style:   uri.QueryStyleForm,
@@ -549,12 +606,19 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (para
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: board: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: thread.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "thread",
 			Style:   uri.QueryStyleForm,
@@ -583,7 +647,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (para
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: thread: parse")
+				return err
 			}
 			if err := func() error {
 				if params.Thread.Set {
@@ -607,8 +671,15 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (para
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: thread: invalid")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "thread",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -643,7 +714,7 @@ func unpackAPIDislikeGetParams(packed middleware.Parameters) (params APIDislikeG
 func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDislikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "board",
 			Style:   uri.QueryStyleForm,
@@ -665,14 +736,21 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDisli
 				params.Board = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: board: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: num.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "num",
 			Style:   uri.QueryStyleForm,
@@ -694,7 +772,7 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDisli
 				params.Num = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: num: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -711,10 +789,17 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDisli
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: num: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "num",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -749,7 +834,7 @@ func unpackAPILikeGetParams(packed middleware.Parameters) (params APILikeGetPara
 func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "board",
 			Style:   uri.QueryStyleForm,
@@ -771,14 +856,21 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetP
 				params.Board = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: board: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: num.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "num",
 			Style:   uri.QueryStyleForm,
@@ -800,7 +892,7 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetP
 				params.Num = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: num: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -817,10 +909,17 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetP
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: num: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "num",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -863,7 +962,7 @@ func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed middleware.Parameters)
 
 func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
 	// Decode path: board.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -887,14 +986,21 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				params.Board = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: board: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: board: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: thread.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -918,7 +1024,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				params.Thread = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: thread: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -935,14 +1041,21 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: thread: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: thread: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "thread",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: num.
-	{
+	if err := func() error {
 		param := args[2]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -966,7 +1079,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				params.Num = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: num: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -983,10 +1096,17 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: num: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: num: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "num",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1020,7 +1140,7 @@ func unpackAPIMobileV2InfoBoardThreadGetParams(packed middleware.Parameters) (pa
 
 func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
 	// Decode path: board.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1044,14 +1164,21 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 				params.Board = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: board: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: board: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: thread.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1075,7 +1202,7 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 				params.Thread = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: thread: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -1092,10 +1219,17 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: thread: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: thread: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "thread",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1129,7 +1263,7 @@ func unpackAPIMobileV2PostBoardNumGetParams(packed middleware.Parameters) (param
 
 func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {
 	// Decode path: board.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1153,14 +1287,21 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 				params.Board = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: board: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: board: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "board",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: num.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -1184,7 +1325,7 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 				params.Num = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: num: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -1201,10 +1342,17 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: num: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: num: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "num",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -1236,7 +1384,7 @@ func decodeUserPassloginPostParams(args [0]string, r *http.Request) (params User
 		params.JSON = val
 	}
 	// Decode query: json.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "json",
 			Style:   uri.QueryStyleForm,
@@ -1258,10 +1406,17 @@ func decodeUserPassloginPostParams(args [0]string, r *http.Request) (params User
 				params.JSON = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: json: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "json",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

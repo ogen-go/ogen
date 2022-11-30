@@ -14,6 +14,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -669,7 +670,7 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params TestQueryParameterParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: boolean.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "boolean",
 			Style:   uri.QueryStyleForm,
@@ -691,14 +692,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.Boolean = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: boolean: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "boolean",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: boolean_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "boolean_array",
 			Style:   uri.QueryStyleForm,
@@ -729,7 +737,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: boolean_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.BooleanArray == nil {
@@ -737,14 +745,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: boolean_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "boolean_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer",
 			Style:   uri.QueryStyleForm,
@@ -766,14 +781,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.Integer = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_array",
 			Style:   uri.QueryStyleForm,
@@ -804,7 +826,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerArray == nil {
@@ -812,14 +834,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_int32.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_int32",
 			Style:   uri.QueryStyleForm,
@@ -841,14 +870,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerInt32 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_int32: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int32",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_int32_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_int32_array",
 			Style:   uri.QueryStyleForm,
@@ -879,7 +915,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_int32_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerInt32Array == nil {
@@ -887,14 +923,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_int32_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int32_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_int64.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_int64",
 			Style:   uri.QueryStyleForm,
@@ -916,14 +959,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerInt64 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_int64: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int64",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_int64_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_int64_array",
 			Style:   uri.QueryStyleForm,
@@ -954,7 +1004,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_int64_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerInt64Array == nil {
@@ -962,14 +1012,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_int64_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_int64_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_uint.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_uint",
 			Style:   uri.QueryStyleForm,
@@ -991,14 +1048,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUint = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_uint32.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_uint32",
 			Style:   uri.QueryStyleForm,
@@ -1020,14 +1084,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUint32 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint32: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint32",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_uint32_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_uint32_array",
 			Style:   uri.QueryStyleForm,
@@ -1058,7 +1129,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint32_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUint32Array == nil {
@@ -1066,14 +1137,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint32_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint32_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_uint64.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_uint64",
 			Style:   uri.QueryStyleForm,
@@ -1095,14 +1173,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUint64 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint64: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint64",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_uint64_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_uint64_array",
 			Style:   uri.QueryStyleForm,
@@ -1133,7 +1218,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint64_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUint64Array == nil {
@@ -1141,14 +1226,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint64_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint64_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_uint_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_uint_array",
 			Style:   uri.QueryStyleForm,
@@ -1179,7 +1271,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUintArray == nil {
@@ -1187,14 +1279,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_uint_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_uint_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix",
 			Style:   uri.QueryStyleForm,
@@ -1216,14 +1315,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUnix = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-micro.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-micro",
 			Style:   uri.QueryStyleForm,
@@ -1245,14 +1351,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUnixMicro = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-micro: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-micro",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-micro_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-micro_array",
 			Style:   uri.QueryStyleForm,
@@ -1283,7 +1396,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-micro_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUnixMicroArray == nil {
@@ -1291,14 +1404,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-micro_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-micro_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-milli.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-milli",
 			Style:   uri.QueryStyleForm,
@@ -1320,14 +1440,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUnixMilli = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-milli: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-milli",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-milli_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-milli_array",
 			Style:   uri.QueryStyleForm,
@@ -1358,7 +1485,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-milli_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUnixMilliArray == nil {
@@ -1366,14 +1493,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-milli_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-milli_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-nano.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-nano",
 			Style:   uri.QueryStyleForm,
@@ -1395,14 +1529,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUnixNano = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-nano: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-nano",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-nano_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-nano_array",
 			Style:   uri.QueryStyleForm,
@@ -1433,7 +1574,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-nano_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUnixNanoArray == nil {
@@ -1441,14 +1582,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-nano_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-nano_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-seconds.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-seconds",
 			Style:   uri.QueryStyleForm,
@@ -1470,14 +1618,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.IntegerUnixSeconds = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-seconds: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-seconds",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix-seconds_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix-seconds_array",
 			Style:   uri.QueryStyleForm,
@@ -1508,7 +1663,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-seconds_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUnixSecondsArray == nil {
@@ -1516,14 +1671,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix-seconds_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix-seconds_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: integer_unix_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "integer_unix_array",
 			Style:   uri.QueryStyleForm,
@@ -1554,7 +1716,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.IntegerUnixArray == nil {
@@ -1562,14 +1724,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: integer_unix_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unix_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number",
 			Style:   uri.QueryStyleForm,
@@ -1591,7 +1760,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.Number = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Float{}).Validate(float64(params.Number)); err != nil {
@@ -1599,14 +1768,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_array",
 			Style:   uri.QueryStyleForm,
@@ -1637,7 +1813,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.NumberArray == nil {
@@ -1662,14 +1838,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_double.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_double",
 			Style:   uri.QueryStyleForm,
@@ -1691,7 +1874,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.NumberDouble = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_double: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Float{}).Validate(float64(params.NumberDouble)); err != nil {
@@ -1699,14 +1882,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_double: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_double",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_double_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_double_array",
 			Style:   uri.QueryStyleForm,
@@ -1737,7 +1927,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_double_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.NumberDoubleArray == nil {
@@ -1762,14 +1952,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_double_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_double_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_float.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_float",
 			Style:   uri.QueryStyleForm,
@@ -1791,7 +1988,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.NumberFloat = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_float: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Float{}).Validate(float64(params.NumberFloat)); err != nil {
@@ -1799,14 +1996,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_float: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_float",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_float_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_float_array",
 			Style:   uri.QueryStyleForm,
@@ -1837,7 +2041,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_float_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.NumberFloatArray == nil {
@@ -1862,14 +2066,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_float_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_float_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_int32.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_int32",
 			Style:   uri.QueryStyleForm,
@@ -1891,14 +2102,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.NumberInt32 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_int32: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_int32",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_int32_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_int32_array",
 			Style:   uri.QueryStyleForm,
@@ -1929,7 +2147,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_int32_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.NumberInt32Array == nil {
@@ -1937,14 +2155,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_int32_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_int32_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_int64.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_int64",
 			Style:   uri.QueryStyleForm,
@@ -1966,14 +2191,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.NumberInt64 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_int64: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_int64",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: number_int64_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "number_int64_array",
 			Style:   uri.QueryStyleForm,
@@ -2004,7 +2236,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: number_int64_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.NumberInt64Array == nil {
@@ -2012,14 +2244,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: number_int64_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_int64_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string",
 			Style:   uri.QueryStyleForm,
@@ -2041,14 +2280,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.String = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_array",
 			Style:   uri.QueryStyleForm,
@@ -2079,7 +2325,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringArray == nil {
@@ -2087,14 +2333,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_base64.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_base64",
 			Style:   uri.QueryStyleForm,
@@ -2116,14 +2369,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringBase64 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_base64: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_base64",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_base64_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_base64_array",
 			Style:   uri.QueryStyleForm,
@@ -2154,7 +2414,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_base64_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringBase64Array == nil {
@@ -2162,14 +2422,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_base64_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_base64_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_binary.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_binary",
 			Style:   uri.QueryStyleForm,
@@ -2191,14 +2458,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringBinary = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_binary: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_binary",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_binary_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_binary_array",
 			Style:   uri.QueryStyleForm,
@@ -2229,7 +2503,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_binary_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringBinaryArray == nil {
@@ -2237,14 +2511,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_binary_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_binary_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_byte.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_byte",
 			Style:   uri.QueryStyleForm,
@@ -2266,14 +2547,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringByte = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_byte: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_byte",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_byte_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_byte_array",
 			Style:   uri.QueryStyleForm,
@@ -2304,7 +2592,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_byte_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringByteArray == nil {
@@ -2312,14 +2600,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_byte_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_byte_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_date.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_date",
 			Style:   uri.QueryStyleForm,
@@ -2341,14 +2636,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringDate = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_date: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_date",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_date-time.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_date-time",
 			Style:   uri.QueryStyleForm,
@@ -2370,14 +2672,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringDateTime = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_date-time: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_date-time",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_date-time_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_date-time_array",
 			Style:   uri.QueryStyleForm,
@@ -2408,7 +2717,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_date-time_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringDateTimeArray == nil {
@@ -2416,14 +2725,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_date-time_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_date-time_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_date_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_date_array",
 			Style:   uri.QueryStyleForm,
@@ -2454,7 +2770,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_date_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringDateArray == nil {
@@ -2462,14 +2778,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_date_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_date_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_duration.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_duration",
 			Style:   uri.QueryStyleForm,
@@ -2491,14 +2814,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringDuration = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_duration: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_duration",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_duration_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_duration_array",
 			Style:   uri.QueryStyleForm,
@@ -2529,7 +2859,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_duration_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringDurationArray == nil {
@@ -2537,14 +2867,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_duration_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_duration_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_email.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_email",
 			Style:   uri.QueryStyleForm,
@@ -2566,7 +2903,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringEmail = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_email: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.String{
@@ -2582,14 +2919,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_email: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_email",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_email_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_email_array",
 			Style:   uri.QueryStyleForm,
@@ -2620,7 +2964,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_email_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringEmailArray == nil {
@@ -2653,14 +2997,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_email_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_email_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_hostname.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_hostname",
 			Style:   uri.QueryStyleForm,
@@ -2682,7 +3033,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringHostname = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_hostname: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.String{
@@ -2698,14 +3049,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_hostname: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_hostname",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_hostname_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_hostname_array",
 			Style:   uri.QueryStyleForm,
@@ -2736,7 +3094,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_hostname_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringHostnameArray == nil {
@@ -2769,14 +3127,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_hostname_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_hostname_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_int32.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_int32",
 			Style:   uri.QueryStyleForm,
@@ -2798,14 +3163,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringInt32 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_int32: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int32",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_int32_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_int32_array",
 			Style:   uri.QueryStyleForm,
@@ -2836,7 +3208,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_int32_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringInt32Array == nil {
@@ -2844,14 +3216,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_int32_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int32_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_int64.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_int64",
 			Style:   uri.QueryStyleForm,
@@ -2873,14 +3252,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringInt64 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_int64: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int64",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_int64_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_int64_array",
 			Style:   uri.QueryStyleForm,
@@ -2911,7 +3297,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_int64_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringInt64Array == nil {
@@ -2919,14 +3305,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_int64_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_int64_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_ip.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_ip",
 			Style:   uri.QueryStyleForm,
@@ -2948,14 +3341,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringIP = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_ip: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_ip",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_ip_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_ip_array",
 			Style:   uri.QueryStyleForm,
@@ -2986,7 +3386,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_ip_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringIPArray == nil {
@@ -2994,14 +3394,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_ip_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_ip_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_ipv4.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_ipv4",
 			Style:   uri.QueryStyleForm,
@@ -3023,14 +3430,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringIpv4 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_ipv4: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_ipv4",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_ipv4_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_ipv4_array",
 			Style:   uri.QueryStyleForm,
@@ -3061,7 +3475,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_ipv4_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringIpv4Array == nil {
@@ -3069,14 +3483,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_ipv4_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_ipv4_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_ipv6.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_ipv6",
 			Style:   uri.QueryStyleForm,
@@ -3098,14 +3519,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringIpv6 = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_ipv6: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_ipv6",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_ipv6_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_ipv6_array",
 			Style:   uri.QueryStyleForm,
@@ -3136,7 +3564,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_ipv6_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringIpv6Array == nil {
@@ -3144,14 +3572,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_ipv6_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_ipv6_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_password.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_password",
 			Style:   uri.QueryStyleForm,
@@ -3173,14 +3608,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringPassword = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_password: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_password",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_password_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_password_array",
 			Style:   uri.QueryStyleForm,
@@ -3211,7 +3653,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_password_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringPasswordArray == nil {
@@ -3219,14 +3661,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_password_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_password_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_time.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_time",
 			Style:   uri.QueryStyleForm,
@@ -3248,14 +3697,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringTime = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_time: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_time",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_time_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_time_array",
 			Style:   uri.QueryStyleForm,
@@ -3286,7 +3742,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_time_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringTimeArray == nil {
@@ -3294,14 +3750,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_time_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_time_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix",
 			Style:   uri.QueryStyleForm,
@@ -3323,14 +3786,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringUnix = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-micro.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-micro",
 			Style:   uri.QueryStyleForm,
@@ -3352,14 +3822,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringUnixMicro = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-micro: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-micro",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-micro_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-micro_array",
 			Style:   uri.QueryStyleForm,
@@ -3390,7 +3867,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-micro_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringUnixMicroArray == nil {
@@ -3398,14 +3875,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-micro_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-micro_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-milli.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-milli",
 			Style:   uri.QueryStyleForm,
@@ -3427,14 +3911,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringUnixMilli = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-milli: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-milli",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-milli_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-milli_array",
 			Style:   uri.QueryStyleForm,
@@ -3465,7 +3956,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-milli_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringUnixMilliArray == nil {
@@ -3473,14 +3964,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-milli_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-milli_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-nano.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-nano",
 			Style:   uri.QueryStyleForm,
@@ -3502,14 +4000,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringUnixNano = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-nano: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-nano",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-nano_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-nano_array",
 			Style:   uri.QueryStyleForm,
@@ -3540,7 +4045,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-nano_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringUnixNanoArray == nil {
@@ -3548,14 +4053,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-nano_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-nano_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-seconds.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-seconds",
 			Style:   uri.QueryStyleForm,
@@ -3577,14 +4089,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringUnixSeconds = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-seconds: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-seconds",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix-seconds_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix-seconds_array",
 			Style:   uri.QueryStyleForm,
@@ -3615,7 +4134,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-seconds_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringUnixSecondsArray == nil {
@@ -3623,14 +4142,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_unix-seconds_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix-seconds_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_unix_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_unix_array",
 			Style:   uri.QueryStyleForm,
@@ -3661,7 +4187,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_unix_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringUnixArray == nil {
@@ -3669,14 +4195,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_unix_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unix_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_uri.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_uri",
 			Style:   uri.QueryStyleForm,
@@ -3698,14 +4231,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringURI = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_uri: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uri",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_uri_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_uri_array",
 			Style:   uri.QueryStyleForm,
@@ -3736,7 +4276,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_uri_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringURIArray == nil {
@@ -3744,14 +4284,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_uri_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uri_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_uuid.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_uuid",
 			Style:   uri.QueryStyleForm,
@@ -3773,14 +4320,21 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				params.StringUUID = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_uuid: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uuid",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: string_uuid_array.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "string_uuid_array",
 			Style:   uri.QueryStyleForm,
@@ -3811,7 +4365,7 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 					return nil
 				})
 			}); err != nil {
-				return params, errors.Wrap(err, "query: string_uuid_array: parse")
+				return err
 			}
 			if err := func() error {
 				if params.StringUUIDArray == nil {
@@ -3819,10 +4373,17 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "query: string_uuid_array: invalid")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_uuid_array",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

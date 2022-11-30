@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -32,7 +33,7 @@ func unpackGetBookParams(packed middleware.Parameters) (params GetBookParams) {
 
 func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams, _ error) {
 	// Decode path: book_id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -56,7 +57,7 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 				params.BookID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: book_id: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -73,10 +74,17 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: book_id: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: book_id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "book_id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -110,7 +118,7 @@ func unpackGetPageCoverImageParams(packed middleware.Parameters) (params GetPage
 
 func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetPageCoverImageParams, _ error) {
 	// Decode path: media_id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -134,7 +142,7 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 				params.MediaID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: media_id: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -151,10 +159,17 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: media_id: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: media_id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "media_id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Set default value for path: format.
@@ -163,7 +178,7 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 		params.Format = val
 	}
 	// Decode path: format.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -187,10 +202,17 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 				params.Format = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: format: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: format: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "format",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -233,7 +255,7 @@ func unpackGetPageImageParams(packed middleware.Parameters) (params GetPageImage
 
 func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageImageParams, _ error) {
 	// Decode path: media_id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -257,7 +279,7 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				params.MediaID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: media_id: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -274,14 +296,21 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: media_id: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: media_id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "media_id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: page.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -305,7 +334,7 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				params.Page = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: page: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -322,10 +351,17 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: page: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: page: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "page",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Set default value for path: format.
@@ -334,7 +370,7 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 		params.Format = val
 	}
 	// Decode path: format.
-	{
+	if err := func() error {
 		param := args[2]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -358,10 +394,17 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				params.Format = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: format: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: format: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "format",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -404,7 +447,7 @@ func unpackGetPageThumbnailImageParams(packed middleware.Parameters) (params Get
 
 func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params GetPageThumbnailImageParams, _ error) {
 	// Decode path: media_id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -428,7 +471,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				params.MediaID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: media_id: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -445,14 +488,21 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: media_id: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: media_id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "media_id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: page.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -476,7 +526,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				params.Page = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: page: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -493,10 +543,17 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: page: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: page: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "page",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Set default value for path: format.
@@ -505,7 +562,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 		params.Format = val
 	}
 	// Decode path: format.
-	{
+	if err := func() error {
 		param := args[2]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -529,10 +586,17 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				params.Format = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: format: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: format: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "format",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -577,7 +641,7 @@ func unpackSearchParams(packed middleware.Parameters) (params SearchParams) {
 func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: query.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "query",
 			Style:   uri.QueryStyleForm,
@@ -599,14 +663,21 @@ func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _
 				params.Query = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: query: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "query",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: page.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "page",
 			Style:   uri.QueryStyleForm,
@@ -635,8 +706,15 @@ func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: page: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "page",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -673,7 +751,7 @@ func unpackSearchByTagIDParams(packed middleware.Parameters) (params SearchByTag
 func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchByTagIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: tag_id.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "tag_id",
 			Style:   uri.QueryStyleForm,
@@ -695,14 +773,21 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchBy
 				params.TagID = c
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: tag_id: parse")
+				return err
 			}
 		} else {
-			return params, errors.Wrap(err, "query")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "tag_id",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	// Decode query: page.
-	{
+	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
 			Name:    "page",
 			Style:   uri.QueryStyleForm,
@@ -731,8 +816,15 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchBy
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}); err != nil {
-				return params, errors.Wrap(err, "query: page: parse")
+				return err
 			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "page",
+			In:   "query",
+			Err:  err,
 		}
 	}
 	return params, nil

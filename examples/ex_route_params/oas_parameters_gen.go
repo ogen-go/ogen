@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -39,7 +40,7 @@ func unpackDataGetParams(packed middleware.Parameters) (params DataGetParams) {
 
 func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams, _ error) {
 	// Decode path: id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -63,7 +64,7 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: id: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -80,14 +81,21 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: id: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	// Decode path: key.
-	{
+	if err := func() error {
 		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -111,10 +119,17 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 				params.Key = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: key: parse")
+				return err
 			}
 		} else {
-			return params, errors.New("path: key: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "key",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
@@ -138,7 +153,7 @@ func unpackDataGetIDParams(packed middleware.Parameters) (params DataGetIDParams
 
 func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDParams, _ error) {
 	// Decode path: id.
-	{
+	if err := func() error {
 		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
@@ -162,7 +177,7 @@ func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDPar
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: id: parse")
+				return err
 			}
 			if err := func() error {
 				if err := (validate.Int{
@@ -179,10 +194,17 @@ func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDPar
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, "path: id: invalid")
+				return err
 			}
 		} else {
-			return params, errors.New("path: id: not specified")
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "id",
+			In:   "path",
+			Err:  err,
 		}
 	}
 	return params, nil
