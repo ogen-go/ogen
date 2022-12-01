@@ -3,21 +3,110 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-var operations = map[string]ogenreflect.Operation{
-{{- range $op := $.Operations }}
-	{{- template "ogenreflect/operation" $op }}
-{{ end }}
-
-{{- range $op := $.Webhooks }}
-    {{- template "ogenreflect/operation" $op }}
-{{ end }}
+// API is generated API metadata.
+var API = api{
+{{- with $ops := $.Operations }}
+	Paths: paths{
+	{{- range $op := $ops }}
+		{{ $op.Name }}: {{ template "ogenreflect/operation" $op -}},
+	{{- end }}
+	},
+{{- end }}
+{{- with $ops := $.Webhooks }}
+	Webhooks: webhooks{
+	{{- range $op := $ops }}
+		{{ $op.Name }}: {{ template "ogenreflect/operation" $op -}},
+	{{- end }}
+	},
+{{- end }}
 }
 
+type api struct {
+	{{- if $.Operations }}
+	Paths paths
+	{{- end }}
+	{{- if $.Webhooks }}
+	Webhooks webhooks
+	{{- end }}
+}
+
+{{ with $ops := $.Operations }}
+type paths struct {
+{{- range $op := $ops }}
+	{{ $op.Name }} ogenreflect.Operation
+{{- end }}
+}
+
+func getPaths() paths {
+	return API.Paths
+}
+
+// FindByName finds operation by ogen name.
+func (p paths) FindByName(name string) (op ogenreflect.Operation, _ bool) {
+	switch name {
+	{{- range $op := $ops }}
+	case {{ quote $op.Name }}:
+		return p.{{ $op.Name }}, true
+	{{- end }}
+	default:
+		return op, false
+	}
+}
+
+// FindByOperationID finds operation by operationId.
+func (p paths) FindByOperationID(operationID string) (op ogenreflect.Operation, _ bool) {
+	switch operationID {
+	{{- range $op := $ops }}{{- with $id := $op.Spec.OperationID }}
+	case {{ quote $id }}:
+		return p.{{ $op.Name }}, true
+	{{- end }}{{- end }}
+	default:
+		return op, false
+	}
+}
+{{- end }}
+
+{{ with $ops := $.Webhooks }}
+type webhooks struct {
+{{- range $op := $ops }}
+	{{ $op.Name }} ogenreflect.Operation
+{{- end }}
+}
+
+func getWebhooks() webhooks {
+	return API.Webhooks
+}
+
+// FindByName finds operation by ogen name.
+func (w webhooks) FindByName(name string) (op ogenreflect.Operation, _ bool) {
+	switch name {
+	{{- range $op := $ops }}
+	case {{ quote $op.Name }}:
+		return w.{{ $op.Name }}, true
+	{{- end }}
+	default:
+		return op, false
+	}
+}
+
+// FindByOperationID finds operation by operationId.
+func (w webhooks) FindByOperationID(operationID string) (op ogenreflect.Operation, _ bool) {
+	switch operationID {
+	{{- range $op := $ops }}{{- with $id := $op.Spec.OperationID }}
+	case {{ quote $id }}:
+		return w.{{ $op.Name }}, true
+	{{- end }}{{- end }}
+	default:
+		return op, false
+	}
+}
+{{- end }}
+
 {{ end }}
 
-{{ define "ogenreflect/operation" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
-{{ quote $op.Name }}: ogenreflect.Operation{
+{{ define "ogenreflect/operation" -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ -}}
+ogenreflect.Operation{
 	Name: {{ quote $op.Name }},
 	ID: {{ quote $op.Spec.OperationID }},
 	Types: ogenreflect.OperationTypes{
@@ -79,8 +168,8 @@ var operations = map[string]ogenreflect.Operation{
 		},
         {{- end }}
 	},
-},
-{{ end }}
+}
+{{- end }}
 
 {{ define "ogenreflect/contents" -}}
 ogenreflect.Contents{
