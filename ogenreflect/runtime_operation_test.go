@@ -60,7 +60,7 @@ func TestOperationTypes(t *testing.T) {
 				a := require.New(t)
 
 				ot := OperationTypes{
-					Response: ResponseType{
+					Responses: ResponsesType{
 						Type:            tt.typ,
 						Implementations: tt.impl,
 					},
@@ -75,12 +75,14 @@ func TestOperationTypes(t *testing.T) {
 	})
 	t.Run("IsParam", func(t *testing.T) {
 		ot := OperationTypes{
-			Params: ParameterMap[ParameterType]{
-				{"cache", "query"}: {
-					Type: typBool,
-				},
-				{"id", "path"}: {
-					Type: typInt64,
+			Params: ParametersType{
+				Map: ParameterMap[ParameterType]{
+					{"cache", "query"}: {
+						Type: typBool,
+					},
+					{"id", "path"}: {
+						Type: typInt64,
+					},
 				},
 			},
 		}
@@ -93,43 +95,52 @@ func TestOperationTypes(t *testing.T) {
 	})
 }
 
-func TestResponseType_FindContents(t *testing.T) {
-	a := Contents{"application/json": nil}
-	b := Contents{"text/html": nil}
-	c := Contents{}
+func TestResponseType_FindResponse(t *testing.T) {
+	a := ResponseType{
+		Contents: Contents{
+			"application/json": nil,
+		},
+	}
+	b := ResponseType{
+		Contents: Contents{
+			"text/html": nil,
+		},
+	}
+	c := ResponseType{}
 
 	tests := []struct {
-		patterns map[string]Contents
+		patterns map[string]ResponseType
 		code     int
-		want     Contents
+		want     ResponseType
 		wantOk   bool
 	}{
 		// Exact match.
-		{map[string]Contents{"200": a}, 200, a, true},
-		{map[string]Contents{"200": a, "201": b}, 200, a, true},
+		{map[string]ResponseType{"200": a}, 200, a, true},
+		{map[string]ResponseType{"200": a, "201": b}, 200, a, true},
 
 		// Pattern.
-		{map[string]Contents{"2XX": a}, 200, a, true},
-		{map[string]Contents{"2XX": a}, 201, a, true},
+		{map[string]ResponseType{"2XX": a}, 200, a, true},
+		{map[string]ResponseType{"2XX": a}, 201, a, true},
 
 		// Combined.
-		{map[string]Contents{"200": a, "2XX": b, "default": c}, 200, a, true},
-		{map[string]Contents{"200": a, "2XX": b, "default": c}, 201, b, true},
-		{map[string]Contents{"200": a, "2XX": b, "default": c}, 500, c, true},
+		{map[string]ResponseType{"200": a, "2XX": b, "default": c}, 200, a, true},
+		{map[string]ResponseType{"200": a, "2XX": b, "default": c}, 201, b, true},
+		{map[string]ResponseType{"200": a, "2XX": b, "default": c}, 500, c, true},
 
 		// No match.
-		{nil, 0, nil, false},
-		{map[string]Contents{"200": a}, 201, nil, false},
+		{nil, 0, ResponseType{}, false},
+		{nil, 200, ResponseType{}, false},
+		{map[string]ResponseType{"200": a}, 201, ResponseType{}, false},
 	}
 	for i, tt := range tests {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 
-			rtyp := ResponseType{
+			rtyp := ResponsesType{
 				PatternMap: tt.patterns,
 			}
-			got, gotOk := rtyp.FindContents(tt.code)
+			got, gotOk := rtyp.FindResponse(tt.code)
 			if !tt.wantOk {
 				a.False(gotOk)
 				return

@@ -21,7 +21,7 @@ type Error interface {
 	// Deprecated: use Op instead.
 	OperationID() string
 	// Op returns operation info.
-	Op() ogenreflect.Operation
+	Op() ogenreflect.RuntimeOperation
 	// Code returns HTTP code to respond.
 	Code() int
 
@@ -48,11 +48,11 @@ type OperationContext struct {
 	// Deprecated: use Operation instead.
 	ID string
 	// Operation defines operation info.
-	Operation ogenreflect.Operation
+	Operation ogenreflect.RuntimeOperation
 }
 
 // Op returns operation info.
-func (d OperationContext) Op() ogenreflect.Operation {
+func (d OperationContext) Op() ogenreflect.RuntimeOperation {
 	return d.Operation
 }
 

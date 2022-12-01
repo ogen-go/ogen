@@ -5,8 +5,8 @@ import (
 	"strconv"
 )
 
-// Operation stores the operation information.
-type Operation struct {
+// RuntimeOperation stores the operation information.
+type RuntimeOperation struct {
 	// Name is the ogen operation name. It is guaranteed to be unique and not empty.
 	Name string
 	// ID is the spec operation ID, if any.
@@ -19,10 +19,10 @@ type Operation struct {
 type OperationTypes struct {
 	// Request is the operation request type.
 	Request RequestType
-	// Params stores the operation parameters types by name.
-	Params ParameterMap[ParameterType]
-	// Response is the operation response type.
-	Response ResponseType
+	// Params stores the operation parameters types.
+	Params ParametersType
+	// Responses stores the operation responses types.
+	Responses ResponsesType
 }
 
 // IsRequest checks if the type is the operation request type.
@@ -45,7 +45,7 @@ func (t OperationTypes) IsRequest(v any) bool {
 
 // IsParam checks if the type is the operation param type.
 func (t OperationTypes) IsParam(v any) bool {
-	for _, impl := range t.Params {
+	for _, impl := range t.Params.Map {
 		if reflect.TypeOf(v) == impl.Type {
 			return true
 		}
@@ -55,7 +55,7 @@ func (t OperationTypes) IsParam(v any) bool {
 
 // IsResponse checks if the type is the operation response type.
 func (t OperationTypes) IsResponse(v any) bool {
-	r := t.Response
+	r := t.Responses
 	if len(r.Implementations) == 0 {
 		return reflect.TypeOf(v) == r.Type
 	}
@@ -100,8 +100,18 @@ type ParameterType struct {
 	Required bool
 }
 
-// ResponseType holds the response type information.
-type ResponseType struct {
+// ParametersType holds the parameters type information.
+type ParametersType struct {
+	// StructType is the parameters struct type.
+	//
+	// StructType is nil if the operation has no parameters.
+	StructType reflect.Type
+	// Map stores the operation parameters types.
+	Map ParameterMap[ParameterType]
+}
+
+// ResponsesType holds the response type information.
+type ResponsesType struct {
 	// Type is the response type.
 	//
 	// If operation defines multiple content types, Type is the interface type, implemented
@@ -114,32 +124,43 @@ type ResponseType struct {
 	// PatternMap stores the response contents by pattern.
 	//
 	// If element is empty, the response has no content for the pattern.
-	PatternMap map[string]Contents
+	PatternMap map[string]ResponseType
 }
 
-// FindContents returns the matching contents for the given status code.
-func (r ResponseType) FindContents(code int) (Contents, bool) {
-	c, ok := r.PatternMap[strconv.Itoa(code)]
+// FindResponse returns the matching contents for the given status code.
+func (r ResponsesType) FindResponse(code int) (rt ResponseType, ok bool) {
+	if code < 100 || code > 599 {
+		return rt, false
+	}
+	rt, ok = r.PatternMap[strconv.Itoa(code)]
 	if ok {
-		return c, true
+		return rt, true
 	}
 	switch code / 100 {
 	case 1:
-		c, ok = r.PatternMap["1XX"]
+		rt, ok = r.PatternMap["1XX"]
 	case 2:
-		c, ok = r.PatternMap["2XX"]
+		rt, ok = r.PatternMap["2XX"]
 	case 3:
-		c, ok = r.PatternMap["3XX"]
+		rt, ok = r.PatternMap["3XX"]
 	case 4:
-		c, ok = r.PatternMap["4XX"]
+		rt, ok = r.PatternMap["4XX"]
 	case 5:
-		c, ok = r.PatternMap["5XX"]
+		rt, ok = r.PatternMap["5XX"]
 	}
 	if ok {
-		return c, true
+		return rt, true
 	}
-	c, ok = r.PatternMap["default"]
-	return c, ok
+	rt, ok = r.PatternMap["default"]
+	return rt, ok
+}
+
+// ResponseType is the response type.
+type ResponseType struct {
+	// Headers stores the response headers.
+	Headers map[string]ParameterType
+	// Contents stores the response contents.
+	Contents Contents
 }
 
 // Contents is the request or response contents.

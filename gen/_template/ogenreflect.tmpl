@@ -33,7 +33,7 @@ type api struct {
 {{ with $ops := $.Operations }}
 type paths struct {
 {{- range $op := $ops }}
-	{{ $op.Name }} ogenreflect.Operation
+	{{ $op.Name }} ogenreflect.RuntimeOperation
 {{- end }}
 }
 
@@ -42,7 +42,7 @@ func getPaths() paths {
 }
 
 // FindByName finds operation by ogen name.
-func (p paths) FindByName(name string) (op ogenreflect.Operation, _ bool) {
+func (p paths) FindByName(name string) (op ogenreflect.RuntimeOperation, _ bool) {
 	switch name {
 	{{- range $op := $ops }}
 	case {{ quote $op.Name }}:
@@ -54,7 +54,7 @@ func (p paths) FindByName(name string) (op ogenreflect.Operation, _ bool) {
 }
 
 // FindByOperationID finds operation by operationId.
-func (p paths) FindByOperationID(operationID string) (op ogenreflect.Operation, _ bool) {
+func (p paths) FindByOperationID(operationID string) (op ogenreflect.RuntimeOperation, _ bool) {
 	switch operationID {
 	{{- range $op := $ops }}{{- with $id := $op.Spec.OperationID }}
 	case {{ quote $id }}:
@@ -69,7 +69,7 @@ func (p paths) FindByOperationID(operationID string) (op ogenreflect.Operation, 
 {{ with $ops := $.Webhooks }}
 type webhooks struct {
 {{- range $op := $ops }}
-	{{ $op.Name }} ogenreflect.Operation
+	{{ $op.Name }} ogenreflect.RuntimeOperation
 {{- end }}
 }
 
@@ -78,7 +78,7 @@ func getWebhooks() webhooks {
 }
 
 // FindByName finds operation by ogen name.
-func (w webhooks) FindByName(name string) (op ogenreflect.Operation, _ bool) {
+func (w webhooks) FindByName(name string) (op ogenreflect.RuntimeOperation, _ bool) {
 	switch name {
 	{{- range $op := $ops }}
 	case {{ quote $op.Name }}:
@@ -90,7 +90,7 @@ func (w webhooks) FindByName(name string) (op ogenreflect.Operation, _ bool) {
 }
 
 // FindByOperationID finds operation by operationId.
-func (w webhooks) FindByOperationID(operationID string) (op ogenreflect.Operation, _ bool) {
+func (w webhooks) FindByOperationID(operationID string) (op ogenreflect.RuntimeOperation, _ bool) {
 	switch operationID {
 	{{- range $op := $ops }}{{- with $id := $op.Spec.OperationID }}
 	case {{ quote $id }}:
@@ -106,7 +106,7 @@ func (w webhooks) FindByOperationID(operationID string) (op ogenreflect.Operatio
 
 {{ define "ogenreflect/operation" -}}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ -}}
-ogenreflect.Operation{
+ogenreflect.RuntimeOperation{
 	Name: {{ quote $op.Name }},
 	ID: {{ quote $op.Spec.OperationID }},
 	Types: ogenreflect.OperationTypes{
@@ -129,21 +129,20 @@ ogenreflect.Operation{
 		},
         {{- end }}
 		{{- with $p := $op.Params }}
-		Params: ogenreflect.ParameterMap[ogenreflect.ParameterType]{
+		Params: ogenreflect.ParametersType{
+			StructType: reflect.TypeOf(new({{ $op.Name }}Params)).Elem(),
+			Map: ogenreflect.ParameterMap[ogenreflect.ParameterType]{
 			{{- range $param := $p }}
-			{Name: {{ quote $param.Spec.Name }}, In: {{ quote $param.Spec.In }}}: {
-				Type: reflect.TypeOf(new({{ $param.Type.Go }})).Elem(),
-				Name: {{ quote $param.Spec.Name }},
-				In: {{ quote $param.Spec.In }},
-				Style: {{ quote $param.Spec.Style }},
-				Explode: {{ $param.Spec.Explode }},
-				Required: {{ $param.Spec.Required }},
-			},
+				{
+					Name: {{ quote $param.Spec.Name }},
+					In: {{ quote $param.Spec.In }},
+				}: {{ template "ogenreflect/parameter" $param -}},
 			{{- end }}
+			},
 		},
         {{- end }}
 		{{- with $resp := $op.Responses }}
-		Response: ogenreflect.ResponseType{
+		Responses: ogenreflect.ResponsesType{
 			Type: reflect.TypeOf(new({{ $resp.Type.Go }})).Elem(),
 			{{- if not $resp.Type.IsInterface }}
 			Implementations: nil,
@@ -154,20 +153,44 @@ ogenreflect.Operation{
 				{{- end }}
 			},
 			{{- end }}
-			PatternMap: map[string]ogenreflect.Contents{
+			PatternMap: map[string]ogenreflect.ResponseType{
 			{{- range $code, $resp := $resp.StatusCode }}
-				{{ print $code | quote }}: {{ template "ogenreflect/contents" $resp.Contents -}},
+				{{ print $code | quote }}: {{ template "ogenreflect/response" $resp -}},
 			{{- end }}
 			{{- range $idx, $resp := $resp.Pattern }}{{- if $resp }}
-				{{ printf "%dXX" (add $idx 1) | quote }}: {{ template "ogenreflect/contents" $resp.Contents -}},
+				{{ printf "%dXX" (add $idx 1) | quote }}: {{ template "ogenreflect/response" $resp -}},
 			{{- end }}{{- end }}
 			{{- with $resp := $resp.Default }}
-				"default": {{ template "ogenreflect/contents" $resp.Contents -}},
+				"default": {{ template "ogenreflect/response" $resp -}},
 			{{- end }}
 			},
 		},
         {{- end }}
 	},
+}
+{{- end }}
+
+{{ define "ogenreflect/response" -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Response*/ -}}{{ $resp := $ -}}
+ogenreflect.ResponseType{
+	Headers: map[string]ogenreflect.ParameterType{
+	{{- range $header := $resp.Headers }}
+		{{ quote $header.Spec.Name }}: {{ template "ogenreflect/parameter" $header -}},
+	{{- end }}
+	},
+	Contents: {{ template "ogenreflect/contents" $resp.Contents -}},
+}
+{{- end }}
+
+{{ define "ogenreflect/parameter" -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}{{ $param := $ -}}
+ogenreflect.ParameterType{
+	Type: reflect.TypeOf(new({{ $param.Type.Go }})).Elem(),
+	Name: {{ quote $param.Spec.Name }},
+	In: {{ quote $param.Spec.In }},
+	Style: {{ quote $param.Spec.Style }},
+	Explode: {{ $param.Spec.Explode }},
+	Required: {{ $param.Spec.Required }},
 }
 {{- end }}
 

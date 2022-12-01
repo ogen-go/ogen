@@ -27,7 +27,7 @@ type Request struct {
 	// Deprecated: use Op instead.
 	OperationID string
 	// Op contains the operation information.
-	Op ogenreflect.Operation
+	Op ogenreflect.RuntimeOperation
 	// Body is the operation request body. May be nil, if the operation has not body.
 	Body any
 	// Params is the operation parameters.
