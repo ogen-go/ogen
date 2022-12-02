@@ -4,6 +4,8 @@ package api
 
 import (
 	"time"
+
+	"github.com/go-faster/errors"
 )
 
 // Ref: #/components/schemas/BrokerAccountType
@@ -13,6 +15,32 @@ const (
 	BrokerAccountTypeTinkoff    BrokerAccountType = "Tinkoff"
 	BrokerAccountTypeTinkoffIis BrokerAccountType = "TinkoffIis"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s BrokerAccountType) MarshalText() ([]byte, error) {
+	switch s {
+	case BrokerAccountTypeTinkoff:
+		return []byte(s), nil
+	case BrokerAccountTypeTinkoffIis:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *BrokerAccountType) UnmarshalText(data []byte) error {
+	switch BrokerAccountType(data) {
+	case BrokerAccountTypeTinkoff:
+		*s = BrokerAccountTypeTinkoff
+		return nil
+	case BrokerAccountTypeTinkoffIis:
+		*s = BrokerAccountTypeTinkoffIis
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/Candle
 type Candle struct {
@@ -136,6 +164,77 @@ const (
 	CandleResolutionMonth CandleResolution = "month"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CandleResolution) MarshalText() ([]byte, error) {
+	switch s {
+	case CandleResolution1min:
+		return []byte(s), nil
+	case CandleResolution2min:
+		return []byte(s), nil
+	case CandleResolution3min:
+		return []byte(s), nil
+	case CandleResolution5min:
+		return []byte(s), nil
+	case CandleResolution10min:
+		return []byte(s), nil
+	case CandleResolution15min:
+		return []byte(s), nil
+	case CandleResolution30min:
+		return []byte(s), nil
+	case CandleResolutionHour:
+		return []byte(s), nil
+	case CandleResolutionDay:
+		return []byte(s), nil
+	case CandleResolutionWeek:
+		return []byte(s), nil
+	case CandleResolutionMonth:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CandleResolution) UnmarshalText(data []byte) error {
+	switch CandleResolution(data) {
+	case CandleResolution1min:
+		*s = CandleResolution1min
+		return nil
+	case CandleResolution2min:
+		*s = CandleResolution2min
+		return nil
+	case CandleResolution3min:
+		*s = CandleResolution3min
+		return nil
+	case CandleResolution5min:
+		*s = CandleResolution5min
+		return nil
+	case CandleResolution10min:
+		*s = CandleResolution10min
+		return nil
+	case CandleResolution15min:
+		*s = CandleResolution15min
+		return nil
+	case CandleResolution30min:
+		*s = CandleResolution30min
+		return nil
+	case CandleResolutionHour:
+		*s = CandleResolutionHour
+		return nil
+	case CandleResolutionDay:
+		*s = CandleResolutionDay
+		return nil
+	case CandleResolutionWeek:
+		*s = CandleResolutionWeek
+		return nil
+	case CandleResolutionMonth:
+		*s = CandleResolutionMonth
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/Candles
 type Candles struct {
 	Figi     string           `json:"figi"`
@@ -241,6 +340,67 @@ const (
 	CurrencyCNY Currency = "CNY"
 	CurrencyTRY Currency = "TRY"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s Currency) MarshalText() ([]byte, error) {
+	switch s {
+	case CurrencyRUB:
+		return []byte(s), nil
+	case CurrencyUSD:
+		return []byte(s), nil
+	case CurrencyEUR:
+		return []byte(s), nil
+	case CurrencyGBP:
+		return []byte(s), nil
+	case CurrencyHKD:
+		return []byte(s), nil
+	case CurrencyCHF:
+		return []byte(s), nil
+	case CurrencyJPY:
+		return []byte(s), nil
+	case CurrencyCNY:
+		return []byte(s), nil
+	case CurrencyTRY:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *Currency) UnmarshalText(data []byte) error {
+	switch Currency(data) {
+	case CurrencyRUB:
+		*s = CurrencyRUB
+		return nil
+	case CurrencyUSD:
+		*s = CurrencyUSD
+		return nil
+	case CurrencyEUR:
+		*s = CurrencyEUR
+		return nil
+	case CurrencyGBP:
+		*s = CurrencyGBP
+		return nil
+	case CurrencyHKD:
+		*s = CurrencyHKD
+		return nil
+	case CurrencyCHF:
+		*s = CurrencyCHF
+		return nil
+	case CurrencyJPY:
+		*s = CurrencyJPY
+		return nil
+	case CurrencyCNY:
+		*s = CurrencyCNY
+		return nil
+	case CurrencyTRY:
+		*s = CurrencyTRY
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/CurrencyPosition
 type CurrencyPosition struct {
@@ -417,6 +577,42 @@ const (
 	InstrumentTypeBond     InstrumentType = "Bond"
 	InstrumentTypeEtf      InstrumentType = "Etf"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s InstrumentType) MarshalText() ([]byte, error) {
+	switch s {
+	case InstrumentTypeStock:
+		return []byte(s), nil
+	case InstrumentTypeCurrency:
+		return []byte(s), nil
+	case InstrumentTypeBond:
+		return []byte(s), nil
+	case InstrumentTypeEtf:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InstrumentType) UnmarshalText(data []byte) error {
+	switch InstrumentType(data) {
+	case InstrumentTypeStock:
+		*s = InstrumentTypeStock
+		return nil
+	case InstrumentTypeCurrency:
+		*s = InstrumentTypeCurrency
+		return nil
+	case InstrumentTypeBond:
+		*s = InstrumentTypeBond
+		return nil
+	case InstrumentTypeEtf:
+		*s = InstrumentTypeEtf
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/LimitOrderRequest
 type LimitOrderRequest struct {
@@ -931,6 +1127,37 @@ const (
 	OperationStatusProgress OperationStatus = "Progress"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OperationStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case OperationStatusDone:
+		return []byte(s), nil
+	case OperationStatusDecline:
+		return []byte(s), nil
+	case OperationStatusProgress:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OperationStatus) UnmarshalText(data []byte) error {
+	switch OperationStatus(data) {
+	case OperationStatusDone:
+		*s = OperationStatusDone
+		return nil
+	case OperationStatusDecline:
+		*s = OperationStatusDecline
+		return nil
+	case OperationStatusProgress:
+		*s = OperationStatusProgress
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/OperationTrade
 type OperationTrade struct {
 	TradeId string `json:"tradeId"`
@@ -988,6 +1215,32 @@ const (
 	OperationTypeSell OperationType = "Sell"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OperationType) MarshalText() ([]byte, error) {
+	switch s {
+	case OperationTypeBuy:
+		return []byte(s), nil
+	case OperationTypeSell:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OperationType) UnmarshalText(data []byte) error {
+	switch OperationType(data) {
+	case OperationTypeBuy:
+		*s = OperationTypeBuy
+		return nil
+	case OperationTypeSell:
+		*s = OperationTypeSell
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/OperationTypeWithCommission
 type OperationTypeWithCommission string
 
@@ -1014,6 +1267,127 @@ const (
 	OperationTypeWithCommissionSecurityIn         OperationTypeWithCommission = "SecurityIn"
 	OperationTypeWithCommissionSecurityOut        OperationTypeWithCommission = "SecurityOut"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OperationTypeWithCommission) MarshalText() ([]byte, error) {
+	switch s {
+	case OperationTypeWithCommissionBuy:
+		return []byte(s), nil
+	case OperationTypeWithCommissionBuyCard:
+		return []byte(s), nil
+	case OperationTypeWithCommissionSell:
+		return []byte(s), nil
+	case OperationTypeWithCommissionBrokerCommission:
+		return []byte(s), nil
+	case OperationTypeWithCommissionExchangeCommission:
+		return []byte(s), nil
+	case OperationTypeWithCommissionServiceCommission:
+		return []byte(s), nil
+	case OperationTypeWithCommissionMarginCommission:
+		return []byte(s), nil
+	case OperationTypeWithCommissionOtherCommission:
+		return []byte(s), nil
+	case OperationTypeWithCommissionPayIn:
+		return []byte(s), nil
+	case OperationTypeWithCommissionPayOut:
+		return []byte(s), nil
+	case OperationTypeWithCommissionTax:
+		return []byte(s), nil
+	case OperationTypeWithCommissionTaxLucre:
+		return []byte(s), nil
+	case OperationTypeWithCommissionTaxDividend:
+		return []byte(s), nil
+	case OperationTypeWithCommissionTaxCoupon:
+		return []byte(s), nil
+	case OperationTypeWithCommissionTaxBack:
+		return []byte(s), nil
+	case OperationTypeWithCommissionRepayment:
+		return []byte(s), nil
+	case OperationTypeWithCommissionPartRepayment:
+		return []byte(s), nil
+	case OperationTypeWithCommissionCoupon:
+		return []byte(s), nil
+	case OperationTypeWithCommissionDividend:
+		return []byte(s), nil
+	case OperationTypeWithCommissionSecurityIn:
+		return []byte(s), nil
+	case OperationTypeWithCommissionSecurityOut:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OperationTypeWithCommission) UnmarshalText(data []byte) error {
+	switch OperationTypeWithCommission(data) {
+	case OperationTypeWithCommissionBuy:
+		*s = OperationTypeWithCommissionBuy
+		return nil
+	case OperationTypeWithCommissionBuyCard:
+		*s = OperationTypeWithCommissionBuyCard
+		return nil
+	case OperationTypeWithCommissionSell:
+		*s = OperationTypeWithCommissionSell
+		return nil
+	case OperationTypeWithCommissionBrokerCommission:
+		*s = OperationTypeWithCommissionBrokerCommission
+		return nil
+	case OperationTypeWithCommissionExchangeCommission:
+		*s = OperationTypeWithCommissionExchangeCommission
+		return nil
+	case OperationTypeWithCommissionServiceCommission:
+		*s = OperationTypeWithCommissionServiceCommission
+		return nil
+	case OperationTypeWithCommissionMarginCommission:
+		*s = OperationTypeWithCommissionMarginCommission
+		return nil
+	case OperationTypeWithCommissionOtherCommission:
+		*s = OperationTypeWithCommissionOtherCommission
+		return nil
+	case OperationTypeWithCommissionPayIn:
+		*s = OperationTypeWithCommissionPayIn
+		return nil
+	case OperationTypeWithCommissionPayOut:
+		*s = OperationTypeWithCommissionPayOut
+		return nil
+	case OperationTypeWithCommissionTax:
+		*s = OperationTypeWithCommissionTax
+		return nil
+	case OperationTypeWithCommissionTaxLucre:
+		*s = OperationTypeWithCommissionTaxLucre
+		return nil
+	case OperationTypeWithCommissionTaxDividend:
+		*s = OperationTypeWithCommissionTaxDividend
+		return nil
+	case OperationTypeWithCommissionTaxCoupon:
+		*s = OperationTypeWithCommissionTaxCoupon
+		return nil
+	case OperationTypeWithCommissionTaxBack:
+		*s = OperationTypeWithCommissionTaxBack
+		return nil
+	case OperationTypeWithCommissionRepayment:
+		*s = OperationTypeWithCommissionRepayment
+		return nil
+	case OperationTypeWithCommissionPartRepayment:
+		*s = OperationTypeWithCommissionPartRepayment
+		return nil
+	case OperationTypeWithCommissionCoupon:
+		*s = OperationTypeWithCommissionCoupon
+		return nil
+	case OperationTypeWithCommissionDividend:
+		*s = OperationTypeWithCommissionDividend
+		return nil
+	case OperationTypeWithCommissionSecurityIn:
+		*s = OperationTypeWithCommissionSecurityIn
+		return nil
+	case OperationTypeWithCommissionSecurityOut:
+		*s = OperationTypeWithCommissionSecurityOut
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/Operations
 type Operations struct {
@@ -1617,6 +1991,67 @@ const (
 	OrderStatusPendingNew     OrderStatus = "PendingNew"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrderStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case OrderStatusNew:
+		return []byte(s), nil
+	case OrderStatusPartiallyFill:
+		return []byte(s), nil
+	case OrderStatusFill:
+		return []byte(s), nil
+	case OrderStatusCancelled:
+		return []byte(s), nil
+	case OrderStatusReplaced:
+		return []byte(s), nil
+	case OrderStatusPendingCancel:
+		return []byte(s), nil
+	case OrderStatusRejected:
+		return []byte(s), nil
+	case OrderStatusPendingReplace:
+		return []byte(s), nil
+	case OrderStatusPendingNew:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrderStatus) UnmarshalText(data []byte) error {
+	switch OrderStatus(data) {
+	case OrderStatusNew:
+		*s = OrderStatusNew
+		return nil
+	case OrderStatusPartiallyFill:
+		*s = OrderStatusPartiallyFill
+		return nil
+	case OrderStatusFill:
+		*s = OrderStatusFill
+		return nil
+	case OrderStatusCancelled:
+		*s = OrderStatusCancelled
+		return nil
+	case OrderStatusReplaced:
+		*s = OrderStatusReplaced
+		return nil
+	case OrderStatusPendingCancel:
+		*s = OrderStatusPendingCancel
+		return nil
+	case OrderStatusRejected:
+		*s = OrderStatusRejected
+		return nil
+	case OrderStatusPendingReplace:
+		*s = OrderStatusPendingReplace
+		return nil
+	case OrderStatusPendingNew:
+		*s = OrderStatusPendingNew
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Тип заявки.
 // Ref: #/components/schemas/OrderType
 type OrderType string
@@ -1625,6 +2060,32 @@ const (
 	OrderTypeLimit  OrderType = "Limit"
 	OrderTypeMarket OrderType = "Market"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OrderType) MarshalText() ([]byte, error) {
+	switch s {
+	case OrderTypeLimit:
+		return []byte(s), nil
+	case OrderTypeMarket:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrderType) UnmarshalText(data []byte) error {
+	switch OrderType(data) {
+	case OrderTypeLimit:
+		*s = OrderTypeLimit
+		return nil
+	case OrderTypeMarket:
+		*s = OrderTypeMarket
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/Orderbook
 type Orderbook struct {
@@ -2292,6 +2753,67 @@ const (
 	SandboxCurrencyTRY SandboxCurrency = "TRY"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SandboxCurrency) MarshalText() ([]byte, error) {
+	switch s {
+	case SandboxCurrencyRUB:
+		return []byte(s), nil
+	case SandboxCurrencyUSD:
+		return []byte(s), nil
+	case SandboxCurrencyEUR:
+		return []byte(s), nil
+	case SandboxCurrencyGBP:
+		return []byte(s), nil
+	case SandboxCurrencyHKD:
+		return []byte(s), nil
+	case SandboxCurrencyCHF:
+		return []byte(s), nil
+	case SandboxCurrencyJPY:
+		return []byte(s), nil
+	case SandboxCurrencyCNY:
+		return []byte(s), nil
+	case SandboxCurrencyTRY:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SandboxCurrency) UnmarshalText(data []byte) error {
+	switch SandboxCurrency(data) {
+	case SandboxCurrencyRUB:
+		*s = SandboxCurrencyRUB
+		return nil
+	case SandboxCurrencyUSD:
+		*s = SandboxCurrencyUSD
+		return nil
+	case SandboxCurrencyEUR:
+		*s = SandboxCurrencyEUR
+		return nil
+	case SandboxCurrencyGBP:
+		*s = SandboxCurrencyGBP
+		return nil
+	case SandboxCurrencyHKD:
+		*s = SandboxCurrencyHKD
+		return nil
+	case SandboxCurrencyCHF:
+		*s = SandboxCurrencyCHF
+		return nil
+	case SandboxCurrencyJPY:
+		*s = SandboxCurrencyJPY
+		return nil
+	case SandboxCurrencyCNY:
+		*s = SandboxCurrencyCNY
+		return nil
+	case SandboxCurrencyTRY:
+		*s = SandboxCurrencyTRY
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/SandboxRegisterRequest
 type SandboxRegisterRequest struct {
 	BrokerAccountType OptBrokerAccountType `json:"brokerAccountType"`
@@ -2537,6 +3059,32 @@ const (
 	TradeStatusNormalTrading          TradeStatus = "NormalTrading"
 	TradeStatusNotAvailableForTrading TradeStatus = "NotAvailableForTrading"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TradeStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case TradeStatusNormalTrading:
+		return []byte(s), nil
+	case TradeStatusNotAvailableForTrading:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TradeStatus) UnmarshalText(data []byte) error {
+	switch TradeStatus(data) {
+	case TradeStatusNormalTrading:
+		*s = TradeStatusNormalTrading
+		return nil
+	case TradeStatusNotAvailableForTrading:
+		*s = TradeStatusNotAvailableForTrading
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/UserAccount
 type UserAccount struct {

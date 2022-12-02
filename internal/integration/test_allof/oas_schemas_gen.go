@@ -3,6 +3,7 @@
 package api
 
 import (
+	"github.com/go-faster/errors"
 	"github.com/google/uuid"
 )
 
@@ -341,6 +342,32 @@ const (
 	RobotStateOn  RobotState = "on"
 	RobotStateOff RobotState = "off"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s RobotState) MarshalText() ([]byte, error) {
+	switch s {
+	case RobotStateOn:
+		return []byte(s), nil
+	case RobotStateOff:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *RobotState) UnmarshalText(data []byte) error {
+	switch RobotState(data) {
+	case RobotStateOn:
+		*s = RobotStateOn
+		return nil
+	case RobotStateOff:
+		*s = RobotStateOff
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // SimpleIntegerOK is response for SimpleInteger operation.
 type SimpleIntegerOK struct{}

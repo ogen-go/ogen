@@ -7,6 +7,7 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 )
 
@@ -427,6 +428,37 @@ const (
 	ActionsCreateOrUpdateOrgSecretReqVisibilitySelected ActionsCreateOrUpdateOrgSecretReqVisibility = "selected"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ActionsCreateOrUpdateOrgSecretReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case ActionsCreateOrUpdateOrgSecretReqVisibilityAll:
+		return []byte(s), nil
+	case ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate:
+		return []byte(s), nil
+	case ActionsCreateOrUpdateOrgSecretReqVisibilitySelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) UnmarshalText(data []byte) error {
+	switch ActionsCreateOrUpdateOrgSecretReqVisibility(data) {
+	case ActionsCreateOrUpdateOrgSecretReqVisibilityAll:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibilityAll
+		return nil
+	case ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate
+		return nil
+	case ActionsCreateOrUpdateOrgSecretReqVisibilitySelected:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibilitySelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ActionsCreateOrUpdateRepoSecretCreated struct{}
 
 func (*ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
@@ -526,6 +558,37 @@ const (
 	ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll      ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility = "all"
 	ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate  ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility = "private"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected:
+		return []byte(s), nil
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll:
+		return []byte(s), nil
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalText(data []byte) error {
+	switch ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(data) {
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected
+		return nil
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll
+		return nil
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ActionsDeleteArtifactNoContent is response for ActionsDeleteArtifact operation.
 type ActionsDeleteArtifactNoContent struct{}
@@ -765,6 +828,32 @@ const (
 	ActionsListJobsForWorkflowRunFilterLatest ActionsListJobsForWorkflowRunFilter = "latest"
 	ActionsListJobsForWorkflowRunFilterAll    ActionsListJobsForWorkflowRunFilter = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ActionsListJobsForWorkflowRunFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case ActionsListJobsForWorkflowRunFilterLatest:
+		return []byte(s), nil
+	case ActionsListJobsForWorkflowRunFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActionsListJobsForWorkflowRunFilter) UnmarshalText(data []byte) error {
+	switch ActionsListJobsForWorkflowRunFilter(data) {
+	case ActionsListJobsForWorkflowRunFilterLatest:
+		*s = ActionsListJobsForWorkflowRunFilterLatest
+		return nil
+	case ActionsListJobsForWorkflowRunFilterAll:
+		*s = ActionsListJobsForWorkflowRunFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ActionsListJobsForWorkflowRunOK struct {
 	TotalCount int   `json:"total_count"`
@@ -1343,6 +1432,87 @@ const (
 	ActionsListWorkflowRunsForRepoStatusWaiting        ActionsListWorkflowRunsForRepoStatus = "waiting"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ActionsListWorkflowRunsForRepoStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case ActionsListWorkflowRunsForRepoStatusCompleted:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusActionRequired:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusCancelled:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusFailure:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusNeutral:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusSkipped:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusStale:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusSuccess:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusTimedOut:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusInProgress:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusQueued:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusRequested:
+		return []byte(s), nil
+	case ActionsListWorkflowRunsForRepoStatusWaiting:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActionsListWorkflowRunsForRepoStatus) UnmarshalText(data []byte) error {
+	switch ActionsListWorkflowRunsForRepoStatus(data) {
+	case ActionsListWorkflowRunsForRepoStatusCompleted:
+		*s = ActionsListWorkflowRunsForRepoStatusCompleted
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusActionRequired:
+		*s = ActionsListWorkflowRunsForRepoStatusActionRequired
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusCancelled:
+		*s = ActionsListWorkflowRunsForRepoStatusCancelled
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusFailure:
+		*s = ActionsListWorkflowRunsForRepoStatusFailure
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusNeutral:
+		*s = ActionsListWorkflowRunsForRepoStatusNeutral
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusSkipped:
+		*s = ActionsListWorkflowRunsForRepoStatusSkipped
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusStale:
+		*s = ActionsListWorkflowRunsForRepoStatusStale
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusSuccess:
+		*s = ActionsListWorkflowRunsForRepoStatusSuccess
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusTimedOut:
+		*s = ActionsListWorkflowRunsForRepoStatusTimedOut
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusInProgress:
+		*s = ActionsListWorkflowRunsForRepoStatusInProgress
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusQueued:
+		*s = ActionsListWorkflowRunsForRepoStatusQueued
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusRequested:
+		*s = ActionsListWorkflowRunsForRepoStatusRequested
+		return nil
+	case ActionsListWorkflowRunsForRepoStatusWaiting:
+		*s = ActionsListWorkflowRunsForRepoStatusWaiting
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/actions-organization-permissions
 type ActionsOrganizationPermissions struct {
 	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
@@ -1572,6 +1742,32 @@ const (
 	ActionsReviewPendingDeploymentsForRunReqStateRejected ActionsReviewPendingDeploymentsForRunReqState = "rejected"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ActionsReviewPendingDeploymentsForRunReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case ActionsReviewPendingDeploymentsForRunReqStateApproved:
+		return []byte(s), nil
+	case ActionsReviewPendingDeploymentsForRunReqStateRejected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActionsReviewPendingDeploymentsForRunReqState) UnmarshalText(data []byte) error {
+	switch ActionsReviewPendingDeploymentsForRunReqState(data) {
+	case ActionsReviewPendingDeploymentsForRunReqStateApproved:
+		*s = ActionsReviewPendingDeploymentsForRunReqStateApproved
+		return nil
+	case ActionsReviewPendingDeploymentsForRunReqStateRejected:
+		*s = ActionsReviewPendingDeploymentsForRunReqStateRejected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Set secrets for GitHub Actions.
 // Ref: #/components/schemas/actions-secret
 type ActionsSecret struct {
@@ -1788,6 +1984,37 @@ const (
 	ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate  ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility = "private"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilitySelected:
+		return []byte(s), nil
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityAll:
+		return []byte(s), nil
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalText(data []byte) error {
+	switch ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(data) {
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilitySelected:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilitySelected
+		return nil
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityAll:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityAll
+		return nil
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) activityCheckRepoIsStarredByAuthenticatedUserRes() {
@@ -1956,6 +2183,32 @@ const (
 	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ActivityListReposStarredByAuthenticatedUserDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case ActivityListReposStarredByAuthenticatedUserDirectionAsc:
+		return []byte(s), nil
+	case ActivityListReposStarredByAuthenticatedUserDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActivityListReposStarredByAuthenticatedUserDirection) UnmarshalText(data []byte) error {
+	switch ActivityListReposStarredByAuthenticatedUserDirection(data) {
+	case ActivityListReposStarredByAuthenticatedUserDirectionAsc:
+		*s = ActivityListReposStarredByAuthenticatedUserDirectionAsc
+		return nil
+	case ActivityListReposStarredByAuthenticatedUserDirectionDesc:
+		*s = ActivityListReposStarredByAuthenticatedUserDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ActivityListReposStarredByAuthenticatedUserOKHeaders wraps []Repository with response headers.
 type ActivityListReposStarredByAuthenticatedUserOKHeaders struct {
 	Link     OptString
@@ -1991,6 +2244,32 @@ const (
 	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
 	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ActivityListReposStarredByAuthenticatedUserSort) MarshalText() ([]byte, error) {
+	switch s {
+	case ActivityListReposStarredByAuthenticatedUserSortCreated:
+		return []byte(s), nil
+	case ActivityListReposStarredByAuthenticatedUserSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ActivityListReposStarredByAuthenticatedUserSort) UnmarshalText(data []byte) error {
+	switch ActivityListReposStarredByAuthenticatedUserSort(data) {
+	case ActivityListReposStarredByAuthenticatedUserSortCreated:
+		*s = ActivityListReposStarredByAuthenticatedUserSortCreated
+		return nil
+	case ActivityListReposStarredByAuthenticatedUserSortUpdated:
+		*s = ActivityListReposStarredByAuthenticatedUserSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ActivityListReposWatchedByUserOKHeaders wraps []MinimalRepository with response headers.
 type ActivityListReposWatchedByUserOKHeaders struct {
@@ -2377,6 +2656,37 @@ const (
 	AllowedActionsLocalOnly AllowedActions = "local_only"
 	AllowedActionsSelected  AllowedActions = "selected"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AllowedActions) MarshalText() ([]byte, error) {
+	switch s {
+	case AllowedActionsAll:
+		return []byte(s), nil
+	case AllowedActionsLocalOnly:
+		return []byte(s), nil
+	case AllowedActionsSelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AllowedActions) UnmarshalText(data []byte) error {
+	switch AllowedActions(data) {
+	case AllowedActionsAll:
+		*s = AllowedActionsAll
+		return nil
+	case AllowedActionsLocalOnly:
+		*s = AllowedActionsLocalOnly
+		return nil
+	case AllowedActionsSelected:
+		*s = AllowedActionsSelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The permissions granted to the user-to-server access token.
 // Ref: #/components/schemas/app-permissions
@@ -2795,6 +3105,32 @@ const (
 	AppPermissionsActionsWrite AppPermissionsActions = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsActions) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsActionsRead:
+		return []byte(s), nil
+	case AppPermissionsActionsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsActions) UnmarshalText(data []byte) error {
+	switch AppPermissionsActions(data) {
+	case AppPermissionsActionsRead:
+		*s = AppPermissionsActionsRead
+		return nil
+	case AppPermissionsActionsWrite:
+		*s = AppPermissionsActionsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token for repository creation, deletion, settings,
 // teams, and collaborators creation. Can be one of: `read` or `write`.
 type AppPermissionsAdministration string
@@ -2803,6 +3139,32 @@ const (
 	AppPermissionsAdministrationRead  AppPermissionsAdministration = "read"
 	AppPermissionsAdministrationWrite AppPermissionsAdministration = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsAdministration) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsAdministrationRead:
+		return []byte(s), nil
+	case AppPermissionsAdministrationWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsAdministration) UnmarshalText(data []byte) error {
+	switch AppPermissionsAdministration(data) {
+	case AppPermissionsAdministrationRead:
+		*s = AppPermissionsAdministrationRead
+		return nil
+	case AppPermissionsAdministrationWrite:
+		*s = AppPermissionsAdministrationWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for checks on code. Can be one of: `read` or
 // `write`.
@@ -2813,6 +3175,32 @@ const (
 	AppPermissionsChecksWrite AppPermissionsChecks = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsChecks) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsChecksRead:
+		return []byte(s), nil
+	case AppPermissionsChecksWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsChecks) UnmarshalText(data []byte) error {
+	switch AppPermissionsChecks(data) {
+	case AppPermissionsChecksRead:
+		*s = AppPermissionsChecksRead
+		return nil
+	case AppPermissionsChecksWrite:
+		*s = AppPermissionsChecksWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token for notification of content references and
 // creation content attachments. Can be one of: `read` or `write`.
 type AppPermissionsContentReferences string
@@ -2821,6 +3209,32 @@ const (
 	AppPermissionsContentReferencesRead  AppPermissionsContentReferences = "read"
 	AppPermissionsContentReferencesWrite AppPermissionsContentReferences = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsContentReferences) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsContentReferencesRead:
+		return []byte(s), nil
+	case AppPermissionsContentReferencesWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsContentReferences) UnmarshalText(data []byte) error {
+	switch AppPermissionsContentReferences(data) {
+	case AppPermissionsContentReferencesRead:
+		*s = AppPermissionsContentReferencesRead
+		return nil
+	case AppPermissionsContentReferencesWrite:
+		*s = AppPermissionsContentReferencesWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for repository contents, commits, branches,
 // downloads, releases, and merges. Can be one of: `read` or `write`.
@@ -2831,6 +3245,32 @@ const (
 	AppPermissionsContentsWrite AppPermissionsContents = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsContents) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsContentsRead:
+		return []byte(s), nil
+	case AppPermissionsContentsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsContents) UnmarshalText(data []byte) error {
+	switch AppPermissionsContents(data) {
+	case AppPermissionsContentsRead:
+		*s = AppPermissionsContentsRead
+		return nil
+	case AppPermissionsContentsWrite:
+		*s = AppPermissionsContentsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token for deployments and deployment statuses. Can be
 // one of: `read` or `write`.
 type AppPermissionsDeployments string
@@ -2839,6 +3279,32 @@ const (
 	AppPermissionsDeploymentsRead  AppPermissionsDeployments = "read"
 	AppPermissionsDeploymentsWrite AppPermissionsDeployments = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsDeployments) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsDeploymentsRead:
+		return []byte(s), nil
+	case AppPermissionsDeploymentsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsDeployments) UnmarshalText(data []byte) error {
+	switch AppPermissionsDeployments(data) {
+	case AppPermissionsDeploymentsRead:
+		*s = AppPermissionsDeploymentsRead
+		return nil
+	case AppPermissionsDeploymentsWrite:
+		*s = AppPermissionsDeploymentsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for managing repository environments. Can be one
 // of: `read` or `write`.
@@ -2849,6 +3315,32 @@ const (
 	AppPermissionsEnvironmentsWrite AppPermissionsEnvironments = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsEnvironments) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsEnvironmentsRead:
+		return []byte(s), nil
+	case AppPermissionsEnvironmentsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsEnvironments) UnmarshalText(data []byte) error {
+	switch AppPermissionsEnvironments(data) {
+	case AppPermissionsEnvironmentsRead:
+		*s = AppPermissionsEnvironmentsRead
+		return nil
+	case AppPermissionsEnvironmentsWrite:
+		*s = AppPermissionsEnvironmentsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token for issues and related comments, assignees,
 // labels, and milestones. Can be one of: `read` or `write`.
 type AppPermissionsIssues string
@@ -2857,6 +3349,32 @@ const (
 	AppPermissionsIssuesRead  AppPermissionsIssues = "read"
 	AppPermissionsIssuesWrite AppPermissionsIssues = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsIssues) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsIssuesRead:
+		return []byte(s), nil
+	case AppPermissionsIssuesWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsIssues) UnmarshalText(data []byte) error {
+	switch AppPermissionsIssues(data) {
+	case AppPermissionsIssuesRead:
+		*s = AppPermissionsIssuesRead
+		return nil
+	case AppPermissionsIssuesWrite:
+		*s = AppPermissionsIssuesWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for organization teams and members. Can be one
 // of: `read` or `write`.
@@ -2867,6 +3385,32 @@ const (
 	AppPermissionsMembersWrite AppPermissionsMembers = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsMembers) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsMembersRead:
+		return []byte(s), nil
+	case AppPermissionsMembersWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsMembers) UnmarshalText(data []byte) error {
+	switch AppPermissionsMembers(data) {
+	case AppPermissionsMembersRead:
+		*s = AppPermissionsMembersRead
+		return nil
+	case AppPermissionsMembersWrite:
+		*s = AppPermissionsMembersWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to search repositories, list collaborators, and
 // access repository metadata. Can be one of: `read` or `write`.
 type AppPermissionsMetadata string
@@ -2875,6 +3419,32 @@ const (
 	AppPermissionsMetadataRead  AppPermissionsMetadata = "read"
 	AppPermissionsMetadataWrite AppPermissionsMetadata = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsMetadata) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsMetadataRead:
+		return []byte(s), nil
+	case AppPermissionsMetadataWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsMetadata) UnmarshalText(data []byte) error {
+	switch AppPermissionsMetadata(data) {
+	case AppPermissionsMetadataRead:
+		*s = AppPermissionsMetadataRead
+		return nil
+	case AppPermissionsMetadataWrite:
+		*s = AppPermissionsMetadataWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to manage access to an organization. Can be one
 // of: `read` or `write`.
@@ -2885,6 +3455,32 @@ const (
 	AppPermissionsOrganizationAdministrationWrite AppPermissionsOrganizationAdministration = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationAdministration) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationAdministrationRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationAdministrationWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationAdministration) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationAdministration(data) {
+	case AppPermissionsOrganizationAdministrationRead:
+		*s = AppPermissionsOrganizationAdministrationRead
+		return nil
+	case AppPermissionsOrganizationAdministrationWrite:
+		*s = AppPermissionsOrganizationAdministrationWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to manage the post-receive hooks for an
 // organization. Can be one of: `read` or `write`.
 type AppPermissionsOrganizationHooks string
@@ -2893,6 +3489,32 @@ const (
 	AppPermissionsOrganizationHooksRead  AppPermissionsOrganizationHooks = "read"
 	AppPermissionsOrganizationHooksWrite AppPermissionsOrganizationHooks = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationHooks) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationHooksRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationHooksWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationHooks) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationHooks(data) {
+	case AppPermissionsOrganizationHooksRead:
+		*s = AppPermissionsOrganizationHooksRead
+		return nil
+	case AppPermissionsOrganizationHooksWrite:
+		*s = AppPermissionsOrganizationHooksWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for organization packages published to GitHub
 // Packages. Can be one of: `read` or `write`.
@@ -2903,6 +3525,32 @@ const (
 	AppPermissionsOrganizationPackagesWrite AppPermissionsOrganizationPackages = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationPackages) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationPackagesRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationPackagesWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationPackages) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationPackages(data) {
+	case AppPermissionsOrganizationPackagesRead:
+		*s = AppPermissionsOrganizationPackagesRead
+		return nil
+	case AppPermissionsOrganizationPackagesWrite:
+		*s = AppPermissionsOrganizationPackagesWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token for viewing an organization's plan. Can be one
 // of: `read`.
 type AppPermissionsOrganizationPlan string
@@ -2910,6 +3558,27 @@ type AppPermissionsOrganizationPlan string
 const (
 	AppPermissionsOrganizationPlanRead AppPermissionsOrganizationPlan = "read"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationPlan) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationPlanRead:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationPlan) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationPlan(data) {
+	case AppPermissionsOrganizationPlanRead:
+		*s = AppPermissionsOrganizationPlanRead
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to manage organization projects, columns, and
 // cards. Can be one of: `read`, `write`, or `admin`.
@@ -2921,6 +3590,37 @@ const (
 	AppPermissionsOrganizationProjectsAdmin AppPermissionsOrganizationProjects = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationProjects) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationProjectsRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationProjectsWrite:
+		return []byte(s), nil
+	case AppPermissionsOrganizationProjectsAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationProjects) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationProjects(data) {
+	case AppPermissionsOrganizationProjectsRead:
+		*s = AppPermissionsOrganizationProjectsRead
+		return nil
+	case AppPermissionsOrganizationProjectsWrite:
+		*s = AppPermissionsOrganizationProjectsWrite
+		return nil
+	case AppPermissionsOrganizationProjectsAdmin:
+		*s = AppPermissionsOrganizationProjectsAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to manage organization secrets. Can be one of:
 // `read` or `write`.
 type AppPermissionsOrganizationSecrets string
@@ -2929,6 +3629,32 @@ const (
 	AppPermissionsOrganizationSecretsRead  AppPermissionsOrganizationSecrets = "read"
 	AppPermissionsOrganizationSecretsWrite AppPermissionsOrganizationSecrets = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationSecrets) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationSecretsRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationSecretsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationSecrets) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationSecrets(data) {
+	case AppPermissionsOrganizationSecretsRead:
+		*s = AppPermissionsOrganizationSecretsRead
+		return nil
+	case AppPermissionsOrganizationSecretsWrite:
+		*s = AppPermissionsOrganizationSecretsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to view and manage GitHub Actions self-hosted
 // runners available to an organization. Can be one of: `read` or `write`.
@@ -2939,6 +3665,32 @@ const (
 	AppPermissionsOrganizationSelfHostedRunnersWrite AppPermissionsOrganizationSelfHostedRunners = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationSelfHostedRunners) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationSelfHostedRunnersRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationSelfHostedRunnersWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationSelfHostedRunners) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationSelfHostedRunners(data) {
+	case AppPermissionsOrganizationSelfHostedRunnersRead:
+		*s = AppPermissionsOrganizationSelfHostedRunnersRead
+		return nil
+	case AppPermissionsOrganizationSelfHostedRunnersWrite:
+		*s = AppPermissionsOrganizationSelfHostedRunnersWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to view and manage users blocked by the
 // organization. Can be one of: `read` or `write`.
 type AppPermissionsOrganizationUserBlocking string
@@ -2947,6 +3699,32 @@ const (
 	AppPermissionsOrganizationUserBlockingRead  AppPermissionsOrganizationUserBlocking = "read"
 	AppPermissionsOrganizationUserBlockingWrite AppPermissionsOrganizationUserBlocking = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsOrganizationUserBlocking) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsOrganizationUserBlockingRead:
+		return []byte(s), nil
+	case AppPermissionsOrganizationUserBlockingWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsOrganizationUserBlocking) UnmarshalText(data []byte) error {
+	switch AppPermissionsOrganizationUserBlocking(data) {
+	case AppPermissionsOrganizationUserBlockingRead:
+		*s = AppPermissionsOrganizationUserBlockingRead
+		return nil
+	case AppPermissionsOrganizationUserBlockingWrite:
+		*s = AppPermissionsOrganizationUserBlockingWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for packages published to GitHub Packages. Can
 // be one of: `read` or `write`.
@@ -2957,6 +3735,32 @@ const (
 	AppPermissionsPackagesWrite AppPermissionsPackages = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsPackages) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsPackagesRead:
+		return []byte(s), nil
+	case AppPermissionsPackagesWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsPackages) UnmarshalText(data []byte) error {
+	switch AppPermissionsPackages(data) {
+	case AppPermissionsPackagesRead:
+		*s = AppPermissionsPackagesRead
+		return nil
+	case AppPermissionsPackagesWrite:
+		*s = AppPermissionsPackagesWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to retrieve Pages statuses, configuration, and
 // builds, as well as create new builds. Can be one of: `read` or `write`.
 type AppPermissionsPages string
@@ -2965,6 +3769,32 @@ const (
 	AppPermissionsPagesRead  AppPermissionsPages = "read"
 	AppPermissionsPagesWrite AppPermissionsPages = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsPages) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsPagesRead:
+		return []byte(s), nil
+	case AppPermissionsPagesWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsPages) UnmarshalText(data []byte) error {
+	switch AppPermissionsPages(data) {
+	case AppPermissionsPagesRead:
+		*s = AppPermissionsPagesRead
+		return nil
+	case AppPermissionsPagesWrite:
+		*s = AppPermissionsPagesWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token for pull requests and related comments,
 // assignees, labels, milestones, and merges. Can be one of: `read` or `write`.
@@ -2975,6 +3805,32 @@ const (
 	AppPermissionsPullRequestsWrite AppPermissionsPullRequests = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsPullRequests) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsPullRequestsRead:
+		return []byte(s), nil
+	case AppPermissionsPullRequestsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsPullRequests) UnmarshalText(data []byte) error {
+	switch AppPermissionsPullRequests(data) {
+	case AppPermissionsPullRequestsRead:
+		*s = AppPermissionsPullRequestsRead
+		return nil
+	case AppPermissionsPullRequestsWrite:
+		*s = AppPermissionsPullRequestsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to manage the post-receive hooks for a
 // repository. Can be one of: `read` or `write`.
 type AppPermissionsRepositoryHooks string
@@ -2983,6 +3839,32 @@ const (
 	AppPermissionsRepositoryHooksRead  AppPermissionsRepositoryHooks = "read"
 	AppPermissionsRepositoryHooksWrite AppPermissionsRepositoryHooks = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsRepositoryHooks) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsRepositoryHooksRead:
+		return []byte(s), nil
+	case AppPermissionsRepositoryHooksWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsRepositoryHooks) UnmarshalText(data []byte) error {
+	switch AppPermissionsRepositoryHooks(data) {
+	case AppPermissionsRepositoryHooksRead:
+		*s = AppPermissionsRepositoryHooksRead
+		return nil
+	case AppPermissionsRepositoryHooksWrite:
+		*s = AppPermissionsRepositoryHooksWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to manage repository projects, columns, and
 // cards. Can be one of: `read`, `write`, or `admin`.
@@ -2994,6 +3876,37 @@ const (
 	AppPermissionsRepositoryProjectsAdmin AppPermissionsRepositoryProjects = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsRepositoryProjects) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsRepositoryProjectsRead:
+		return []byte(s), nil
+	case AppPermissionsRepositoryProjectsWrite:
+		return []byte(s), nil
+	case AppPermissionsRepositoryProjectsAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsRepositoryProjects) UnmarshalText(data []byte) error {
+	switch AppPermissionsRepositoryProjects(data) {
+	case AppPermissionsRepositoryProjectsRead:
+		*s = AppPermissionsRepositoryProjectsRead
+		return nil
+	case AppPermissionsRepositoryProjectsWrite:
+		*s = AppPermissionsRepositoryProjectsWrite
+		return nil
+	case AppPermissionsRepositoryProjectsAdmin:
+		*s = AppPermissionsRepositoryProjectsAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to view and manage secret scanning alerts. Can
 // be one of: `read` or `write`.
 type AppPermissionsSecretScanningAlerts string
@@ -3002,6 +3915,32 @@ const (
 	AppPermissionsSecretScanningAlertsRead  AppPermissionsSecretScanningAlerts = "read"
 	AppPermissionsSecretScanningAlertsWrite AppPermissionsSecretScanningAlerts = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsSecretScanningAlerts) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsSecretScanningAlertsRead:
+		return []byte(s), nil
+	case AppPermissionsSecretScanningAlertsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsSecretScanningAlerts) UnmarshalText(data []byte) error {
+	switch AppPermissionsSecretScanningAlerts(data) {
+	case AppPermissionsSecretScanningAlertsRead:
+		*s = AppPermissionsSecretScanningAlertsRead
+		return nil
+	case AppPermissionsSecretScanningAlertsWrite:
+		*s = AppPermissionsSecretScanningAlertsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to manage repository secrets. Can be one of:
 // `read` or `write`.
@@ -3012,6 +3951,32 @@ const (
 	AppPermissionsSecretsWrite AppPermissionsSecrets = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsSecrets) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsSecretsRead:
+		return []byte(s), nil
+	case AppPermissionsSecretsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsSecrets) UnmarshalText(data []byte) error {
+	switch AppPermissionsSecrets(data) {
+	case AppPermissionsSecretsRead:
+		*s = AppPermissionsSecretsRead
+		return nil
+	case AppPermissionsSecretsWrite:
+		*s = AppPermissionsSecretsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to view and manage security events like code
 // scanning alerts. Can be one of: `read` or `write`.
 type AppPermissionsSecurityEvents string
@@ -3020,6 +3985,32 @@ const (
 	AppPermissionsSecurityEventsRead  AppPermissionsSecurityEvents = "read"
 	AppPermissionsSecurityEventsWrite AppPermissionsSecurityEvents = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsSecurityEvents) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsSecurityEventsRead:
+		return []byte(s), nil
+	case AppPermissionsSecurityEventsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsSecurityEvents) UnmarshalText(data []byte) error {
+	switch AppPermissionsSecurityEvents(data) {
+	case AppPermissionsSecurityEventsRead:
+		*s = AppPermissionsSecurityEventsRead
+		return nil
+	case AppPermissionsSecurityEventsWrite:
+		*s = AppPermissionsSecurityEventsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to manage just a single file. Can be one of:
 // `read` or `write`.
@@ -3030,6 +4021,32 @@ const (
 	AppPermissionsSingleFileWrite AppPermissionsSingleFile = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsSingleFile) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsSingleFileRead:
+		return []byte(s), nil
+	case AppPermissionsSingleFileWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsSingleFile) UnmarshalText(data []byte) error {
+	switch AppPermissionsSingleFile(data) {
+	case AppPermissionsSingleFileRead:
+		*s = AppPermissionsSingleFileRead
+		return nil
+	case AppPermissionsSingleFileWrite:
+		*s = AppPermissionsSingleFileWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token for commit statuses. Can be one of: `read` or
 // `write`.
 type AppPermissionsStatuses string
@@ -3038,6 +4055,32 @@ const (
 	AppPermissionsStatusesRead  AppPermissionsStatuses = "read"
 	AppPermissionsStatusesWrite AppPermissionsStatuses = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsStatuses) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsStatusesRead:
+		return []byte(s), nil
+	case AppPermissionsStatusesWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsStatuses) UnmarshalText(data []byte) error {
+	switch AppPermissionsStatuses(data) {
+	case AppPermissionsStatusesRead:
+		*s = AppPermissionsStatusesRead
+		return nil
+	case AppPermissionsStatusesWrite:
+		*s = AppPermissionsStatusesWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The level of permission to grant the access token to manage team discussions and related comments.
 // Can be one of: `read` or `write`.
@@ -3048,6 +4091,32 @@ const (
 	AppPermissionsTeamDiscussionsWrite AppPermissionsTeamDiscussions = "write"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsTeamDiscussions) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsTeamDiscussionsRead:
+		return []byte(s), nil
+	case AppPermissionsTeamDiscussionsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsTeamDiscussions) UnmarshalText(data []byte) error {
+	switch AppPermissionsTeamDiscussions(data) {
+	case AppPermissionsTeamDiscussionsRead:
+		*s = AppPermissionsTeamDiscussionsRead
+		return nil
+	case AppPermissionsTeamDiscussionsWrite:
+		*s = AppPermissionsTeamDiscussionsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to retrieve Dependabot alerts. Can be one of:
 // `read`.
 type AppPermissionsVulnerabilityAlerts string
@@ -3056,6 +4125,27 @@ const (
 	AppPermissionsVulnerabilityAlertsRead AppPermissionsVulnerabilityAlerts = "read"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsVulnerabilityAlerts) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsVulnerabilityAlertsRead:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsVulnerabilityAlerts) UnmarshalText(data []byte) error {
+	switch AppPermissionsVulnerabilityAlerts(data) {
+	case AppPermissionsVulnerabilityAlertsRead:
+		*s = AppPermissionsVulnerabilityAlertsRead
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of permission to grant the access token to update GitHub Actions workflow files. Can be
 // one of: `write`.
 type AppPermissionsWorkflows string
@@ -3063,6 +4153,27 @@ type AppPermissionsWorkflows string
 const (
 	AppPermissionsWorkflowsWrite AppPermissionsWorkflows = "write"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppPermissionsWorkflows) MarshalText() ([]byte, error) {
+	switch s {
+	case AppPermissionsWorkflowsWrite:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppPermissionsWorkflows) UnmarshalText(data []byte) error {
+	switch AppPermissionsWorkflows(data) {
+	case AppPermissionsWorkflowsWrite:
+		*s = AppPermissionsWorkflowsWrite
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The authorization associated with an OAuth Access.
 // Ref: #/components/schemas/application-grant
@@ -3696,6 +4807,32 @@ const (
 	AppsListAccountsForPlanDirectionDesc AppsListAccountsForPlanDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppsListAccountsForPlanDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case AppsListAccountsForPlanDirectionAsc:
+		return []byte(s), nil
+	case AppsListAccountsForPlanDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppsListAccountsForPlanDirection) UnmarshalText(data []byte) error {
+	switch AppsListAccountsForPlanDirection(data) {
+	case AppsListAccountsForPlanDirectionAsc:
+		*s = AppsListAccountsForPlanDirectionAsc
+		return nil
+	case AppsListAccountsForPlanDirectionDesc:
+		*s = AppsListAccountsForPlanDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // AppsListAccountsForPlanOKHeaders wraps []MarketplacePurchase with response headers.
 type AppsListAccountsForPlanOKHeaders struct {
 	Link     OptString
@@ -3731,12 +4868,64 @@ const (
 	AppsListAccountsForPlanSortUpdated AppsListAccountsForPlanSort = "updated"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AppsListAccountsForPlanSort) MarshalText() ([]byte, error) {
+	switch s {
+	case AppsListAccountsForPlanSortCreated:
+		return []byte(s), nil
+	case AppsListAccountsForPlanSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppsListAccountsForPlanSort) UnmarshalText(data []byte) error {
+	switch AppsListAccountsForPlanSort(data) {
+	case AppsListAccountsForPlanSortCreated:
+		*s = AppsListAccountsForPlanSortCreated
+		return nil
+	case AppsListAccountsForPlanSortUpdated:
+		*s = AppsListAccountsForPlanSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type AppsListAccountsForPlanStubbedDirection string
 
 const (
 	AppsListAccountsForPlanStubbedDirectionAsc  AppsListAccountsForPlanStubbedDirection = "asc"
 	AppsListAccountsForPlanStubbedDirectionDesc AppsListAccountsForPlanStubbedDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppsListAccountsForPlanStubbedDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case AppsListAccountsForPlanStubbedDirectionAsc:
+		return []byte(s), nil
+	case AppsListAccountsForPlanStubbedDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppsListAccountsForPlanStubbedDirection) UnmarshalText(data []byte) error {
+	switch AppsListAccountsForPlanStubbedDirection(data) {
+	case AppsListAccountsForPlanStubbedDirectionAsc:
+		*s = AppsListAccountsForPlanStubbedDirectionAsc
+		return nil
+	case AppsListAccountsForPlanStubbedDirectionDesc:
+		*s = AppsListAccountsForPlanStubbedDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // AppsListAccountsForPlanStubbedOKHeaders wraps []MarketplacePurchase with response headers.
 type AppsListAccountsForPlanStubbedOKHeaders struct {
@@ -3772,6 +4961,32 @@ const (
 	AppsListAccountsForPlanStubbedSortCreated AppsListAccountsForPlanStubbedSort = "created"
 	AppsListAccountsForPlanStubbedSortUpdated AppsListAccountsForPlanStubbedSort = "updated"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AppsListAccountsForPlanStubbedSort) MarshalText() ([]byte, error) {
+	switch s {
+	case AppsListAccountsForPlanStubbedSortCreated:
+		return []byte(s), nil
+	case AppsListAccountsForPlanStubbedSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AppsListAccountsForPlanStubbedSort) UnmarshalText(data []byte) error {
+	switch AppsListAccountsForPlanStubbedSort(data) {
+	case AppsListAccountsForPlanStubbedSortCreated:
+		*s = AppsListAccountsForPlanStubbedSortCreated
+		return nil
+	case AppsListAccountsForPlanStubbedSortUpdated:
+		*s = AppsListAccountsForPlanStubbedSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -4923,6 +6138,32 @@ const (
 	AuthenticationTokenRepositorySelectionSelected AuthenticationTokenRepositorySelection = "selected"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s AuthenticationTokenRepositorySelection) MarshalText() ([]byte, error) {
+	switch s {
+	case AuthenticationTokenRepositorySelectionAll:
+		return []byte(s), nil
+	case AuthenticationTokenRepositorySelectionSelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AuthenticationTokenRepositorySelection) UnmarshalText(data []byte) error {
+	switch AuthenticationTokenRepositorySelection(data) {
+	case AuthenticationTokenRepositorySelectionAll:
+		*s = AuthenticationTokenRepositorySelectionAll
+		return nil
+	case AuthenticationTokenRepositorySelectionSelected:
+		*s = AuthenticationTokenRepositorySelectionSelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // How the author is associated with the repository.
 // Ref: #/components/schemas/author_association
 type AuthorAssociation string
@@ -4937,6 +6178,62 @@ const (
 	AuthorAssociationNONE                 AuthorAssociation = "NONE"
 	AuthorAssociationOWNER                AuthorAssociation = "OWNER"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AuthorAssociation) MarshalText() ([]byte, error) {
+	switch s {
+	case AuthorAssociationCOLLABORATOR:
+		return []byte(s), nil
+	case AuthorAssociationCONTRIBUTOR:
+		return []byte(s), nil
+	case AuthorAssociationFIRSTTIMER:
+		return []byte(s), nil
+	case AuthorAssociationFIRSTTIMECONTRIBUTOR:
+		return []byte(s), nil
+	case AuthorAssociationMANNEQUIN:
+		return []byte(s), nil
+	case AuthorAssociationMEMBER:
+		return []byte(s), nil
+	case AuthorAssociationNONE:
+		return []byte(s), nil
+	case AuthorAssociationOWNER:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AuthorAssociation) UnmarshalText(data []byte) error {
+	switch AuthorAssociation(data) {
+	case AuthorAssociationCOLLABORATOR:
+		*s = AuthorAssociationCOLLABORATOR
+		return nil
+	case AuthorAssociationCONTRIBUTOR:
+		*s = AuthorAssociationCONTRIBUTOR
+		return nil
+	case AuthorAssociationFIRSTTIMER:
+		*s = AuthorAssociationFIRSTTIMER
+		return nil
+	case AuthorAssociationFIRSTTIMECONTRIBUTOR:
+		*s = AuthorAssociationFIRSTTIMECONTRIBUTOR
+		return nil
+	case AuthorAssociationMANNEQUIN:
+		*s = AuthorAssociationMANNEQUIN
+		return nil
+	case AuthorAssociationMEMBER:
+		*s = AuthorAssociationMEMBER
+		return nil
+	case AuthorAssociationNONE:
+		*s = AuthorAssociationNONE
+		return nil
+	case AuthorAssociationOWNER:
+		*s = AuthorAssociationOWNER
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The authorization for an OAuth app, GitHub App, or a Personal Access Token.
 // Ref: #/components/schemas/authorization
@@ -5239,6 +6536,37 @@ const (
 	AutoMergeMergeMethodSquash AutoMergeMergeMethod = "squash"
 	AutoMergeMergeMethodRebase AutoMergeMergeMethod = "rebase"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AutoMergeMergeMethod) MarshalText() ([]byte, error) {
+	switch s {
+	case AutoMergeMergeMethodMerge:
+		return []byte(s), nil
+	case AutoMergeMergeMethodSquash:
+		return []byte(s), nil
+	case AutoMergeMergeMethodRebase:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AutoMergeMergeMethod) UnmarshalText(data []byte) error {
+	switch AutoMergeMergeMethod(data) {
+	case AutoMergeMergeMethodMerge:
+		*s = AutoMergeMergeMethodMerge
+		return nil
+	case AutoMergeMergeMethodSquash:
+		*s = AutoMergeMergeMethodSquash
+		return nil
+	case AutoMergeMergeMethodRebase:
+		*s = AutoMergeMergeMethodRebase
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // An autolink reference.
 // Ref: #/components/schemas/autolink
@@ -7612,6 +8940,57 @@ const (
 	CheckRunConclusionActionRequired CheckRunConclusion = "action_required"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CheckRunConclusion) MarshalText() ([]byte, error) {
+	switch s {
+	case CheckRunConclusionSuccess:
+		return []byte(s), nil
+	case CheckRunConclusionFailure:
+		return []byte(s), nil
+	case CheckRunConclusionNeutral:
+		return []byte(s), nil
+	case CheckRunConclusionCancelled:
+		return []byte(s), nil
+	case CheckRunConclusionSkipped:
+		return []byte(s), nil
+	case CheckRunConclusionTimedOut:
+		return []byte(s), nil
+	case CheckRunConclusionActionRequired:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CheckRunConclusion) UnmarshalText(data []byte) error {
+	switch CheckRunConclusion(data) {
+	case CheckRunConclusionSuccess:
+		*s = CheckRunConclusionSuccess
+		return nil
+	case CheckRunConclusionFailure:
+		*s = CheckRunConclusionFailure
+		return nil
+	case CheckRunConclusionNeutral:
+		*s = CheckRunConclusionNeutral
+		return nil
+	case CheckRunConclusionCancelled:
+		*s = CheckRunConclusionCancelled
+		return nil
+	case CheckRunConclusionSkipped:
+		*s = CheckRunConclusionSkipped
+		return nil
+	case CheckRunConclusionTimedOut:
+		*s = CheckRunConclusionTimedOut
+		return nil
+	case CheckRunConclusionActionRequired:
+		*s = CheckRunConclusionActionRequired
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type CheckRunOutput struct {
 	Title            NilString `json:"title"`
 	Summary          NilString `json:"summary"`
@@ -7678,6 +9057,37 @@ const (
 	CheckRunStatusInProgress CheckRunStatus = "in_progress"
 	CheckRunStatusCompleted  CheckRunStatus = "completed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CheckRunStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case CheckRunStatusQueued:
+		return []byte(s), nil
+	case CheckRunStatusInProgress:
+		return []byte(s), nil
+	case CheckRunStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CheckRunStatus) UnmarshalText(data []byte) error {
+	switch CheckRunStatus(data) {
+	case CheckRunStatusQueued:
+		*s = CheckRunStatusQueued
+		return nil
+	case CheckRunStatusInProgress:
+		*s = CheckRunStatusInProgress
+		return nil
+	case CheckRunStatusCompleted:
+		*s = CheckRunStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // A suite of checks performed on the code of a given code change.
 // Ref: #/components/schemas/check-suite
@@ -7884,6 +9294,57 @@ const (
 	CheckSuiteConclusionActionRequired CheckSuiteConclusion = "action_required"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CheckSuiteConclusion) MarshalText() ([]byte, error) {
+	switch s {
+	case CheckSuiteConclusionSuccess:
+		return []byte(s), nil
+	case CheckSuiteConclusionFailure:
+		return []byte(s), nil
+	case CheckSuiteConclusionNeutral:
+		return []byte(s), nil
+	case CheckSuiteConclusionCancelled:
+		return []byte(s), nil
+	case CheckSuiteConclusionSkipped:
+		return []byte(s), nil
+	case CheckSuiteConclusionTimedOut:
+		return []byte(s), nil
+	case CheckSuiteConclusionActionRequired:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CheckSuiteConclusion) UnmarshalText(data []byte) error {
+	switch CheckSuiteConclusion(data) {
+	case CheckSuiteConclusionSuccess:
+		*s = CheckSuiteConclusionSuccess
+		return nil
+	case CheckSuiteConclusionFailure:
+		*s = CheckSuiteConclusionFailure
+		return nil
+	case CheckSuiteConclusionNeutral:
+		*s = CheckSuiteConclusionNeutral
+		return nil
+	case CheckSuiteConclusionCancelled:
+		*s = CheckSuiteConclusionCancelled
+		return nil
+	case CheckSuiteConclusionSkipped:
+		*s = CheckSuiteConclusionSkipped
+		return nil
+	case CheckSuiteConclusionTimedOut:
+		*s = CheckSuiteConclusionTimedOut
+		return nil
+	case CheckSuiteConclusionActionRequired:
+		*s = CheckSuiteConclusionActionRequired
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Check suite configuration preferences for a repository.
 // Ref: #/components/schemas/check-suite-preference
 type CheckSuitePreference struct {
@@ -7958,6 +9419,37 @@ const (
 	CheckSuiteStatusCompleted  CheckSuiteStatus = "completed"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CheckSuiteStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case CheckSuiteStatusQueued:
+		return []byte(s), nil
+	case CheckSuiteStatusInProgress:
+		return []byte(s), nil
+	case CheckSuiteStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CheckSuiteStatus) UnmarshalText(data []byte) error {
+	switch CheckSuiteStatus(data) {
+	case CheckSuiteStatusQueued:
+		*s = CheckSuiteStatusQueued
+		return nil
+	case CheckSuiteStatusInProgress:
+		*s = CheckSuiteStatusInProgress
+		return nil
+	case CheckSuiteStatusCompleted:
+		*s = CheckSuiteStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ChecksCreateSuiteApplicationJSONCreated CheckSuite
 
 func (*ChecksCreateSuiteApplicationJSONCreated) checksCreateSuiteRes() {}
@@ -8013,6 +9505,32 @@ const (
 	ChecksListForRefFilterLatest ChecksListForRefFilter = "latest"
 	ChecksListForRefFilterAll    ChecksListForRefFilter = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksListForRefFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksListForRefFilterLatest:
+		return []byte(s), nil
+	case ChecksListForRefFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksListForRefFilter) UnmarshalText(data []byte) error {
+	switch ChecksListForRefFilter(data) {
+	case ChecksListForRefFilterLatest:
+		*s = ChecksListForRefFilterLatest
+		return nil
+	case ChecksListForRefFilterAll:
+		*s = ChecksListForRefFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ChecksListForRefOK struct {
 	TotalCount int        `json:"total_count"`
@@ -8073,12 +9591,69 @@ const (
 	ChecksListForRefStatusCompleted  ChecksListForRefStatus = "completed"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksListForRefStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksListForRefStatusQueued:
+		return []byte(s), nil
+	case ChecksListForRefStatusInProgress:
+		return []byte(s), nil
+	case ChecksListForRefStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksListForRefStatus) UnmarshalText(data []byte) error {
+	switch ChecksListForRefStatus(data) {
+	case ChecksListForRefStatusQueued:
+		*s = ChecksListForRefStatusQueued
+		return nil
+	case ChecksListForRefStatusInProgress:
+		*s = ChecksListForRefStatusInProgress
+		return nil
+	case ChecksListForRefStatusCompleted:
+		*s = ChecksListForRefStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ChecksListForSuiteFilter string
 
 const (
 	ChecksListForSuiteFilterLatest ChecksListForSuiteFilter = "latest"
 	ChecksListForSuiteFilterAll    ChecksListForSuiteFilter = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksListForSuiteFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksListForSuiteFilterLatest:
+		return []byte(s), nil
+	case ChecksListForSuiteFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksListForSuiteFilter) UnmarshalText(data []byte) error {
+	switch ChecksListForSuiteFilter(data) {
+	case ChecksListForSuiteFilterLatest:
+		*s = ChecksListForSuiteFilterLatest
+		return nil
+	case ChecksListForSuiteFilterAll:
+		*s = ChecksListForSuiteFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ChecksListForSuiteOK struct {
 	TotalCount int        `json:"total_count"`
@@ -8138,6 +9713,37 @@ const (
 	ChecksListForSuiteStatusInProgress ChecksListForSuiteStatus = "in_progress"
 	ChecksListForSuiteStatusCompleted  ChecksListForSuiteStatus = "completed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksListForSuiteStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksListForSuiteStatusQueued:
+		return []byte(s), nil
+	case ChecksListForSuiteStatusInProgress:
+		return []byte(s), nil
+	case ChecksListForSuiteStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksListForSuiteStatus) UnmarshalText(data []byte) error {
+	switch ChecksListForSuiteStatus(data) {
+	case ChecksListForSuiteStatusQueued:
+		*s = ChecksListForSuiteStatusQueued
+		return nil
+	case ChecksListForSuiteStatusInProgress:
+		*s = ChecksListForSuiteStatusInProgress
+		return nil
+	case ChecksListForSuiteStatusCompleted:
+		*s = ChecksListForSuiteStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ChecksListSuitesForRefOK struct {
 	TotalCount  int          `json:"total_count"`
@@ -8552,6 +10158,42 @@ const (
 	CodeScanningAlertClassificationLibrary   CodeScanningAlertClassification = "library"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertClassification) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertClassificationSource:
+		return []byte(s), nil
+	case CodeScanningAlertClassificationGenerated:
+		return []byte(s), nil
+	case CodeScanningAlertClassificationTest:
+		return []byte(s), nil
+	case CodeScanningAlertClassificationLibrary:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertClassification) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertClassification(data) {
+	case CodeScanningAlertClassificationSource:
+		*s = CodeScanningAlertClassificationSource
+		return nil
+	case CodeScanningAlertClassificationGenerated:
+		*s = CodeScanningAlertClassificationGenerated
+		return nil
+	case CodeScanningAlertClassificationTest:
+		*s = CodeScanningAlertClassificationTest
+		return nil
+	case CodeScanningAlertClassificationLibrary:
+		*s = CodeScanningAlertClassificationLibrary
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type CodeScanningAlertDismissedAt time.Time
 
 // **Required when the state is dismissed.** The reason for dismissing or closing the alert. Can be
@@ -8564,6 +10206,37 @@ const (
 	CodeScanningAlertDismissedReasonWonTFix       CodeScanningAlertDismissedReason = "won't fix"
 	CodeScanningAlertDismissedReasonUsedInTests   CodeScanningAlertDismissedReason = "used in tests"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertDismissedReason) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertDismissedReasonFalsePositive:
+		return []byte(s), nil
+	case CodeScanningAlertDismissedReasonWonTFix:
+		return []byte(s), nil
+	case CodeScanningAlertDismissedReasonUsedInTests:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertDismissedReason) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertDismissedReason(data) {
+	case CodeScanningAlertDismissedReasonFalsePositive:
+		*s = CodeScanningAlertDismissedReasonFalsePositive
+		return nil
+	case CodeScanningAlertDismissedReasonWonTFix:
+		*s = CodeScanningAlertDismissedReasonWonTFix
+		return nil
+	case CodeScanningAlertDismissedReasonUsedInTests:
+		*s = CodeScanningAlertDismissedReasonUsedInTests
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type CodeScanningAlertEnvironment string
 
@@ -9003,6 +10676,42 @@ const (
 	CodeScanningAlertRuleSecuritySeverityLevelCritical CodeScanningAlertRuleSecuritySeverityLevel = "critical"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertRuleSecuritySeverityLevel) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertRuleSecuritySeverityLevelLow:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSecuritySeverityLevelMedium:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSecuritySeverityLevelHigh:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSecuritySeverityLevelCritical:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertRuleSecuritySeverityLevel) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertRuleSecuritySeverityLevel(data) {
+	case CodeScanningAlertRuleSecuritySeverityLevelLow:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelLow
+		return nil
+	case CodeScanningAlertRuleSecuritySeverityLevelMedium:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelMedium
+		return nil
+	case CodeScanningAlertRuleSecuritySeverityLevelHigh:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelHigh
+		return nil
+	case CodeScanningAlertRuleSecuritySeverityLevelCritical:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelCritical
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The severity of the alert.
 type CodeScanningAlertRuleSeverity string
 
@@ -9012,6 +10721,42 @@ const (
 	CodeScanningAlertRuleSeverityWarning CodeScanningAlertRuleSeverity = "warning"
 	CodeScanningAlertRuleSeverityError   CodeScanningAlertRuleSeverity = "error"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertRuleSeverity) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertRuleSeverityNone:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSeverityNote:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSeverityWarning:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSeverityError:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertRuleSeverity) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertRuleSeverity(data) {
+	case CodeScanningAlertRuleSeverityNone:
+		*s = CodeScanningAlertRuleSeverityNone
+		return nil
+	case CodeScanningAlertRuleSeverityNote:
+		*s = CodeScanningAlertRuleSeverityNote
+		return nil
+	case CodeScanningAlertRuleSeverityWarning:
+		*s = CodeScanningAlertRuleSeverityWarning
+		return nil
+	case CodeScanningAlertRuleSeverityError:
+		*s = CodeScanningAlertRuleSeverityError
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/code-scanning-alert-rule-summary
 type CodeScanningAlertRuleSummary struct {
@@ -9075,6 +10820,42 @@ const (
 	CodeScanningAlertRuleSummarySeverityError   CodeScanningAlertRuleSummarySeverity = "error"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertRuleSummarySeverity) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertRuleSummarySeverityNone:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSummarySeverityNote:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSummarySeverityWarning:
+		return []byte(s), nil
+	case CodeScanningAlertRuleSummarySeverityError:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertRuleSummarySeverity) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertRuleSummarySeverity(data) {
+	case CodeScanningAlertRuleSummarySeverityNone:
+		*s = CodeScanningAlertRuleSummarySeverityNone
+		return nil
+	case CodeScanningAlertRuleSummarySeverityNote:
+		*s = CodeScanningAlertRuleSummarySeverityNote
+		return nil
+	case CodeScanningAlertRuleSummarySeverityWarning:
+		*s = CodeScanningAlertRuleSummarySeverityWarning
+		return nil
+	case CodeScanningAlertRuleSummarySeverityError:
+		*s = CodeScanningAlertRuleSummarySeverityError
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Sets the state of the code scanning alert. Can be one of `open` or `dismissed`. You must provide
 // `dismissed_reason` when you set the state to `dismissed`.
 // Ref: #/components/schemas/code-scanning-alert-set-state
@@ -9084,6 +10865,32 @@ const (
 	CodeScanningAlertSetStateOpen      CodeScanningAlertSetState = "open"
 	CodeScanningAlertSetStateDismissed CodeScanningAlertSetState = "dismissed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertSetState) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertSetStateOpen:
+		return []byte(s), nil
+	case CodeScanningAlertSetStateDismissed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertSetState) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertSetState(data) {
+	case CodeScanningAlertSetStateOpen:
+		*s = CodeScanningAlertSetStateOpen
+		return nil
+	case CodeScanningAlertSetStateDismissed:
+		*s = CodeScanningAlertSetStateDismissed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // State of a code scanning alert.
 // Ref: #/components/schemas/code-scanning-alert-state
@@ -9095,6 +10902,42 @@ const (
 	CodeScanningAlertStateDismissed CodeScanningAlertState = "dismissed"
 	CodeScanningAlertStateFixed     CodeScanningAlertState = "fixed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningAlertState) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningAlertStateOpen:
+		return []byte(s), nil
+	case CodeScanningAlertStateClosed:
+		return []byte(s), nil
+	case CodeScanningAlertStateDismissed:
+		return []byte(s), nil
+	case CodeScanningAlertStateFixed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningAlertState) UnmarshalText(data []byte) error {
+	switch CodeScanningAlertState(data) {
+	case CodeScanningAlertStateOpen:
+		*s = CodeScanningAlertStateOpen
+		return nil
+	case CodeScanningAlertStateClosed:
+		*s = CodeScanningAlertStateClosed
+		return nil
+	case CodeScanningAlertStateDismissed:
+		*s = CodeScanningAlertStateDismissed
+		return nil
+	case CodeScanningAlertStateFixed:
+		*s = CodeScanningAlertStateFixed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/code-scanning-analysis
 type CodeScanningAnalysis struct {
@@ -9524,6 +11367,32 @@ const (
 	CodeScanningSarifsStatusProcessingStatusPending  CodeScanningSarifsStatusProcessingStatus = "pending"
 	CodeScanningSarifsStatusProcessingStatusComplete CodeScanningSarifsStatusProcessingStatus = "complete"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CodeScanningSarifsStatusProcessingStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case CodeScanningSarifsStatusProcessingStatusPending:
+		return []byte(s), nil
+	case CodeScanningSarifsStatusProcessingStatusComplete:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CodeScanningSarifsStatusProcessingStatus) UnmarshalText(data []byte) error {
+	switch CodeScanningSarifsStatusProcessingStatus(data) {
+	case CodeScanningSarifsStatusProcessingStatusPending:
+		*s = CodeScanningSarifsStatusProcessingStatusPending
+		return nil
+	case CodeScanningSarifsStatusProcessingStatusComplete:
+		*s = CodeScanningSarifsStatusProcessingStatusComplete
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type CodeScanningUpdateAlertApplicationJSONForbidden BasicError
 
@@ -10844,6 +12713,42 @@ const (
 	CommitComparisonStatusBehind    CommitComparisonStatus = "behind"
 	CommitComparisonStatusIdentical CommitComparisonStatus = "identical"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CommitComparisonStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case CommitComparisonStatusDiverged:
+		return []byte(s), nil
+	case CommitComparisonStatusAhead:
+		return []byte(s), nil
+	case CommitComparisonStatusBehind:
+		return []byte(s), nil
+	case CommitComparisonStatusIdentical:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CommitComparisonStatus) UnmarshalText(data []byte) error {
+	switch CommitComparisonStatus(data) {
+	case CommitComparisonStatusDiverged:
+		*s = CommitComparisonStatusDiverged
+		return nil
+	case CommitComparisonStatusAhead:
+		*s = CommitComparisonStatusAhead
+		return nil
+	case CommitComparisonStatusBehind:
+		*s = CommitComparisonStatusBehind
+		return nil
+	case CommitComparisonStatusIdentical:
+		*s = CommitComparisonStatusIdentical
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type CommitFilesItem struct {
 	Filename         OptString `json:"filename"`
@@ -13054,6 +14959,57 @@ const (
 	DeploymentStatusStateInProgress DeploymentStatusState = "in_progress"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s DeploymentStatusState) MarshalText() ([]byte, error) {
+	switch s {
+	case DeploymentStatusStateError:
+		return []byte(s), nil
+	case DeploymentStatusStateFailure:
+		return []byte(s), nil
+	case DeploymentStatusStateInactive:
+		return []byte(s), nil
+	case DeploymentStatusStatePending:
+		return []byte(s), nil
+	case DeploymentStatusStateSuccess:
+		return []byte(s), nil
+	case DeploymentStatusStateQueued:
+		return []byte(s), nil
+	case DeploymentStatusStateInProgress:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *DeploymentStatusState) UnmarshalText(data []byte) error {
+	switch DeploymentStatusState(data) {
+	case DeploymentStatusStateError:
+		*s = DeploymentStatusStateError
+		return nil
+	case DeploymentStatusStateFailure:
+		*s = DeploymentStatusStateFailure
+		return nil
+	case DeploymentStatusStateInactive:
+		*s = DeploymentStatusStateInactive
+		return nil
+	case DeploymentStatusStatePending:
+		*s = DeploymentStatusStatePending
+		return nil
+	case DeploymentStatusStateSuccess:
+		*s = DeploymentStatusStateSuccess
+		return nil
+	case DeploymentStatusStateQueued:
+		*s = DeploymentStatusStateQueued
+		return nil
+	case DeploymentStatusStateInProgress:
+		*s = DeploymentStatusStateInProgress
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Diff Entry.
 // Ref: #/components/schemas/diff-entry
 type DiffEntry struct {
@@ -13192,6 +15148,57 @@ const (
 	DiffEntryStatusUnchanged DiffEntryStatus = "unchanged"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s DiffEntryStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case DiffEntryStatusAdded:
+		return []byte(s), nil
+	case DiffEntryStatusRemoved:
+		return []byte(s), nil
+	case DiffEntryStatusModified:
+		return []byte(s), nil
+	case DiffEntryStatusRenamed:
+		return []byte(s), nil
+	case DiffEntryStatusCopied:
+		return []byte(s), nil
+	case DiffEntryStatusChanged:
+		return []byte(s), nil
+	case DiffEntryStatusUnchanged:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *DiffEntryStatus) UnmarshalText(data []byte) error {
+	switch DiffEntryStatus(data) {
+	case DiffEntryStatusAdded:
+		*s = DiffEntryStatusAdded
+		return nil
+	case DiffEntryStatusRemoved:
+		*s = DiffEntryStatusRemoved
+		return nil
+	case DiffEntryStatusModified:
+		*s = DiffEntryStatusModified
+		return nil
+	case DiffEntryStatusRenamed:
+		*s = DiffEntryStatusRenamed
+		return nil
+	case DiffEntryStatusCopied:
+		*s = DiffEntryStatusCopied
+		return nil
+	case DiffEntryStatusChanged:
+		*s = DiffEntryStatusChanged
+		return nil
+	case DiffEntryStatusUnchanged:
+		*s = DiffEntryStatusUnchanged
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Email.
 // Ref: #/components/schemas/email
 type Email struct {
@@ -13274,6 +15281,37 @@ const (
 	EnabledOrganizationsSelected EnabledOrganizations = "selected"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s EnabledOrganizations) MarshalText() ([]byte, error) {
+	switch s {
+	case EnabledOrganizationsAll:
+		return []byte(s), nil
+	case EnabledOrganizationsNone:
+		return []byte(s), nil
+	case EnabledOrganizationsSelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnabledOrganizations) UnmarshalText(data []byte) error {
+	switch EnabledOrganizations(data) {
+	case EnabledOrganizationsAll:
+		*s = EnabledOrganizationsAll
+		return nil
+	case EnabledOrganizationsNone:
+		*s = EnabledOrganizationsNone
+		return nil
+	case EnabledOrganizationsSelected:
+		*s = EnabledOrganizationsSelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The policy that controls the repositories in the organization that are allowed to run GitHub
 // Actions. Can be one of: `all`, `none`, or `selected`.
 // Ref: #/components/schemas/enabled-repositories
@@ -13284,6 +15322,37 @@ const (
 	EnabledRepositoriesNone     EnabledRepositories = "none"
 	EnabledRepositoriesSelected EnabledRepositories = "selected"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s EnabledRepositories) MarshalText() ([]byte, error) {
+	switch s {
+	case EnabledRepositoriesAll:
+		return []byte(s), nil
+	case EnabledRepositoriesNone:
+		return []byte(s), nil
+	case EnabledRepositoriesSelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnabledRepositories) UnmarshalText(data []byte) error {
+	switch EnabledRepositories(data) {
+	case EnabledRepositoriesAll:
+		*s = EnabledRepositoriesAll
+		return nil
+	case EnabledRepositoriesNone:
+		*s = EnabledRepositoriesNone
+		return nil
+	case EnabledRepositoriesSelected:
+		*s = EnabledRepositoriesSelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent is response for EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise operation.
 type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent struct{}
@@ -13352,6 +15421,32 @@ const (
 	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll      EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected:
+		return []byte(s), nil
+	case EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) UnmarshalText(data []byte) error {
+	switch EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(data) {
+	case EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected:
+		*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected
+		return nil
+	case EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll:
+		*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent is response for EnterpriseAdminDeleteScimGroupFromEnterprise operation.
 type EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent struct{}
 
@@ -13378,12 +15473,69 @@ const (
 	EnterpriseAdminGetAuditLogIncludeAll EnterpriseAdminGetAuditLogInclude = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s EnterpriseAdminGetAuditLogInclude) MarshalText() ([]byte, error) {
+	switch s {
+	case EnterpriseAdminGetAuditLogIncludeWeb:
+		return []byte(s), nil
+	case EnterpriseAdminGetAuditLogIncludeGit:
+		return []byte(s), nil
+	case EnterpriseAdminGetAuditLogIncludeAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnterpriseAdminGetAuditLogInclude) UnmarshalText(data []byte) error {
+	switch EnterpriseAdminGetAuditLogInclude(data) {
+	case EnterpriseAdminGetAuditLogIncludeWeb:
+		*s = EnterpriseAdminGetAuditLogIncludeWeb
+		return nil
+	case EnterpriseAdminGetAuditLogIncludeGit:
+		*s = EnterpriseAdminGetAuditLogIncludeGit
+		return nil
+	case EnterpriseAdminGetAuditLogIncludeAll:
+		*s = EnterpriseAdminGetAuditLogIncludeAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type EnterpriseAdminGetAuditLogOrder string
 
 const (
 	EnterpriseAdminGetAuditLogOrderDesc EnterpriseAdminGetAuditLogOrder = "desc"
 	EnterpriseAdminGetAuditLogOrderAsc  EnterpriseAdminGetAuditLogOrder = "asc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s EnterpriseAdminGetAuditLogOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case EnterpriseAdminGetAuditLogOrderDesc:
+		return []byte(s), nil
+	case EnterpriseAdminGetAuditLogOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnterpriseAdminGetAuditLogOrder) UnmarshalText(data []byte) error {
+	switch EnterpriseAdminGetAuditLogOrder(data) {
+	case EnterpriseAdminGetAuditLogOrderDesc:
+		*s = EnterpriseAdminGetAuditLogOrderDesc
+		return nil
+	case EnterpriseAdminGetAuditLogOrderAsc:
+		*s = EnterpriseAdminGetAuditLogOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK struct {
 	TotalCount    float64              `json:"total_count"`
@@ -14117,6 +16269,52 @@ const (
 	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Replace"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) MarshalText() ([]byte, error) {
+	switch s {
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add:
+		return []byte(s), nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add:
+		return []byte(s), nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove:
+		return []byte(s), nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove:
+		return []byte(s), nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace:
+		return []byte(s), nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) UnmarshalText(data []byte) error {
+	switch EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp(data) {
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue represents sum type.
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue struct {
 	Type                                                                    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType // switch on this field
@@ -14281,6 +16479,32 @@ const (
 	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll      EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected:
+		return []byte(s), nil
+	case EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) UnmarshalText(data []byte) error {
+	switch EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(data) {
+	case EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected:
+		*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected
+		return nil
+	case EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll:
+		*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // An entry in the reviews log for environment deployments.
 // Ref: #/components/schemas/environment-approvals
 type EnvironmentApprovals struct {
@@ -14424,6 +16648,32 @@ const (
 	EnvironmentApprovalsStateApproved EnvironmentApprovalsState = "approved"
 	EnvironmentApprovalsStateRejected EnvironmentApprovalsState = "rejected"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s EnvironmentApprovalsState) MarshalText() ([]byte, error) {
+	switch s {
+	case EnvironmentApprovalsStateApproved:
+		return []byte(s), nil
+	case EnvironmentApprovalsStateRejected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EnvironmentApprovalsState) UnmarshalText(data []byte) error {
+	switch EnvironmentApprovalsState(data) {
+	case EnvironmentApprovalsStateApproved:
+		*s = EnvironmentApprovalsStateApproved
+		return nil
+	case EnvironmentApprovalsStateRejected:
+		*s = EnvironmentApprovalsStateRejected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Event.
 // Ref: #/components/schemas/event
@@ -16566,6 +18816,32 @@ const (
 	FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled FullRepositorySecurityAndAnalysisAdvancedSecurityStatus = "disabled"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled:
+		return []byte(s), nil
+	case FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) UnmarshalText(data []byte) error {
+	switch FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(data) {
+	case FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled:
+		*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled
+		return nil
+	case FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled:
+		*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type FullRepositorySecurityAndAnalysisSecretScanning struct {
 	Status OptFullRepositorySecurityAndAnalysisSecretScanningStatus `json:"status"`
 }
@@ -16586,6 +18862,32 @@ const (
 	FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled  FullRepositorySecurityAndAnalysisSecretScanningStatus = "enabled"
 	FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled FullRepositorySecurityAndAnalysisSecretScanningStatus = "disabled"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s FullRepositorySecurityAndAnalysisSecretScanningStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled:
+		return []byte(s), nil
+	case FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) UnmarshalText(data []byte) error {
+	switch FullRepositorySecurityAndAnalysisSecretScanningStatus(data) {
+	case FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled:
+		*s = FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled
+		return nil
+	case FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled:
+		*s = FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // A comment made to a gist.
 // Ref: #/components/schemas/gist-comment
@@ -17794,6 +20096,32 @@ const (
 	GistsCreateReqPublic1False GistsCreateReqPublic1 = "false"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s GistsCreateReqPublic1) MarshalText() ([]byte, error) {
+	switch s {
+	case GistsCreateReqPublic1True:
+		return []byte(s), nil
+	case GistsCreateReqPublic1False:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *GistsCreateReqPublic1) UnmarshalText(data []byte) error {
+	switch GistsCreateReqPublic1(data) {
+	case GistsCreateReqPublic1True:
+		*s = GistsCreateReqPublic1True
+		return nil
+	case GistsCreateReqPublic1False:
+		*s = GistsCreateReqPublic1False
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type GistsDeleteApplicationJSONForbidden BasicError
 
 func (*GistsDeleteApplicationJSONForbidden) gistsDeleteRes() {}
@@ -18806,6 +21134,37 @@ const (
 	GitCreateTagReqTypeBlob   GitCreateTagReqType = "blob"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s GitCreateTagReqType) MarshalText() ([]byte, error) {
+	switch s {
+	case GitCreateTagReqTypeCommit:
+		return []byte(s), nil
+	case GitCreateTagReqTypeTree:
+		return []byte(s), nil
+	case GitCreateTagReqTypeBlob:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *GitCreateTagReqType) UnmarshalText(data []byte) error {
+	switch GitCreateTagReqType(data) {
+	case GitCreateTagReqTypeCommit:
+		*s = GitCreateTagReqTypeCommit
+		return nil
+	case GitCreateTagReqTypeTree:
+		*s = GitCreateTagReqTypeTree
+		return nil
+	case GitCreateTagReqTypeBlob:
+		*s = GitCreateTagReqTypeBlob
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type GitCreateTreeApplicationJSONForbidden BasicError
 
 func (*GitCreateTreeApplicationJSONForbidden) gitCreateTreeRes() {}
@@ -18934,6 +21293,47 @@ const (
 	GitCreateTreeReqTreeItemMode120000 GitCreateTreeReqTreeItemMode = "120000"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s GitCreateTreeReqTreeItemMode) MarshalText() ([]byte, error) {
+	switch s {
+	case GitCreateTreeReqTreeItemMode100644:
+		return []byte(s), nil
+	case GitCreateTreeReqTreeItemMode100755:
+		return []byte(s), nil
+	case GitCreateTreeReqTreeItemMode040000:
+		return []byte(s), nil
+	case GitCreateTreeReqTreeItemMode160000:
+		return []byte(s), nil
+	case GitCreateTreeReqTreeItemMode120000:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *GitCreateTreeReqTreeItemMode) UnmarshalText(data []byte) error {
+	switch GitCreateTreeReqTreeItemMode(data) {
+	case GitCreateTreeReqTreeItemMode100644:
+		*s = GitCreateTreeReqTreeItemMode100644
+		return nil
+	case GitCreateTreeReqTreeItemMode100755:
+		*s = GitCreateTreeReqTreeItemMode100755
+		return nil
+	case GitCreateTreeReqTreeItemMode040000:
+		*s = GitCreateTreeReqTreeItemMode040000
+		return nil
+	case GitCreateTreeReqTreeItemMode160000:
+		*s = GitCreateTreeReqTreeItemMode160000
+		return nil
+	case GitCreateTreeReqTreeItemMode120000:
+		*s = GitCreateTreeReqTreeItemMode120000
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Either `blob`, `tree`, or `commit`.
 type GitCreateTreeReqTreeItemType string
 
@@ -18942,6 +21342,37 @@ const (
 	GitCreateTreeReqTreeItemTypeTree   GitCreateTreeReqTreeItemType = "tree"
 	GitCreateTreeReqTreeItemTypeCommit GitCreateTreeReqTreeItemType = "commit"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s GitCreateTreeReqTreeItemType) MarshalText() ([]byte, error) {
+	switch s {
+	case GitCreateTreeReqTreeItemTypeBlob:
+		return []byte(s), nil
+	case GitCreateTreeReqTreeItemTypeTree:
+		return []byte(s), nil
+	case GitCreateTreeReqTreeItemTypeCommit:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *GitCreateTreeReqTreeItemType) UnmarshalText(data []byte) error {
+	switch GitCreateTreeReqTreeItemType(data) {
+	case GitCreateTreeReqTreeItemTypeBlob:
+		*s = GitCreateTreeReqTreeItemTypeBlob
+		return nil
+	case GitCreateTreeReqTreeItemTypeTree:
+		*s = GitCreateTreeReqTreeItemTypeTree
+		return nil
+	case GitCreateTreeReqTreeItemTypeCommit:
+		*s = GitCreateTreeReqTreeItemTypeCommit
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // GitDeleteRefNoContent is response for GitDeleteRef operation.
 type GitDeleteRefNoContent struct{}
@@ -21065,6 +23496,102 @@ const (
 	ImportStatusDetectionNeedsAuth     ImportStatus = "detection_needs_auth"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ImportStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case ImportStatusAuth:
+		return []byte(s), nil
+	case ImportStatusError:
+		return []byte(s), nil
+	case ImportStatusNone:
+		return []byte(s), nil
+	case ImportStatusDetecting:
+		return []byte(s), nil
+	case ImportStatusChoose:
+		return []byte(s), nil
+	case ImportStatusAuthFailed:
+		return []byte(s), nil
+	case ImportStatusImporting:
+		return []byte(s), nil
+	case ImportStatusMapping:
+		return []byte(s), nil
+	case ImportStatusWaitingToPush:
+		return []byte(s), nil
+	case ImportStatusPushing:
+		return []byte(s), nil
+	case ImportStatusComplete:
+		return []byte(s), nil
+	case ImportStatusSetup:
+		return []byte(s), nil
+	case ImportStatusUnknown:
+		return []byte(s), nil
+	case ImportStatusDetectionFoundMultiple:
+		return []byte(s), nil
+	case ImportStatusDetectionFoundNothing:
+		return []byte(s), nil
+	case ImportStatusDetectionNeedsAuth:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ImportStatus) UnmarshalText(data []byte) error {
+	switch ImportStatus(data) {
+	case ImportStatusAuth:
+		*s = ImportStatusAuth
+		return nil
+	case ImportStatusError:
+		*s = ImportStatusError
+		return nil
+	case ImportStatusNone:
+		*s = ImportStatusNone
+		return nil
+	case ImportStatusDetecting:
+		*s = ImportStatusDetecting
+		return nil
+	case ImportStatusChoose:
+		*s = ImportStatusChoose
+		return nil
+	case ImportStatusAuthFailed:
+		*s = ImportStatusAuthFailed
+		return nil
+	case ImportStatusImporting:
+		*s = ImportStatusImporting
+		return nil
+	case ImportStatusMapping:
+		*s = ImportStatusMapping
+		return nil
+	case ImportStatusWaitingToPush:
+		*s = ImportStatusWaitingToPush
+		return nil
+	case ImportStatusPushing:
+		*s = ImportStatusPushing
+		return nil
+	case ImportStatusComplete:
+		*s = ImportStatusComplete
+		return nil
+	case ImportStatusSetup:
+		*s = ImportStatusSetup
+		return nil
+	case ImportStatusUnknown:
+		*s = ImportStatusUnknown
+		return nil
+	case ImportStatusDetectionFoundMultiple:
+		*s = ImportStatusDetectionFoundMultiple
+		return nil
+	case ImportStatusDetectionFoundNothing:
+		*s = ImportStatusDetectionFoundNothing
+		return nil
+	case ImportStatusDetectionNeedsAuth:
+		*s = ImportStatusDetectionNeedsAuth
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Authentication token for a GitHub App installed on a user or org.
 // Ref: #/components/schemas/installation-token
 type InstallationToken struct {
@@ -21166,6 +23693,32 @@ const (
 	InstallationTokenRepositorySelectionAll      InstallationTokenRepositorySelection = "all"
 	InstallationTokenRepositorySelectionSelected InstallationTokenRepositorySelection = "selected"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s InstallationTokenRepositorySelection) MarshalText() ([]byte, error) {
+	switch s {
+	case InstallationTokenRepositorySelectionAll:
+		return []byte(s), nil
+	case InstallationTokenRepositorySelectionSelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InstallationTokenRepositorySelection) UnmarshalText(data []byte) error {
+	switch InstallationTokenRepositorySelection(data) {
+	case InstallationTokenRepositorySelectionAll:
+		*s = InstallationTokenRepositorySelectionAll
+		return nil
+	case InstallationTokenRepositorySelectionSelected:
+		*s = InstallationTokenRepositorySelectionSelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and
 // user accounts and granted access to specific repositories. They come with granular permissions and
@@ -21463,6 +24016,47 @@ const (
 	InteractionExpirySixMonths InteractionExpiry = "six_months"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s InteractionExpiry) MarshalText() ([]byte, error) {
+	switch s {
+	case InteractionExpiryOneDay:
+		return []byte(s), nil
+	case InteractionExpiryThreeDays:
+		return []byte(s), nil
+	case InteractionExpiryOneWeek:
+		return []byte(s), nil
+	case InteractionExpiryOneMonth:
+		return []byte(s), nil
+	case InteractionExpirySixMonths:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InteractionExpiry) UnmarshalText(data []byte) error {
+	switch InteractionExpiry(data) {
+	case InteractionExpiryOneDay:
+		*s = InteractionExpiryOneDay
+		return nil
+	case InteractionExpiryThreeDays:
+		*s = InteractionExpiryThreeDays
+		return nil
+	case InteractionExpiryOneWeek:
+		*s = InteractionExpiryOneWeek
+		return nil
+	case InteractionExpiryOneMonth:
+		*s = InteractionExpiryOneMonth
+		return nil
+	case InteractionExpirySixMonths:
+		*s = InteractionExpirySixMonths
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The type of GitHub user that can comment, open issues, or create pull requests while the
 // interaction limit is in effect. Can be one of: `existing_users`, `contributors_only`,
 // `collaborators_only`.
@@ -21474,6 +24068,37 @@ const (
 	InteractionGroupContributorsOnly  InteractionGroup = "contributors_only"
 	InteractionGroupCollaboratorsOnly InteractionGroup = "collaborators_only"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s InteractionGroup) MarshalText() ([]byte, error) {
+	switch s {
+	case InteractionGroupExistingUsers:
+		return []byte(s), nil
+	case InteractionGroupContributorsOnly:
+		return []byte(s), nil
+	case InteractionGroupCollaboratorsOnly:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InteractionGroup) UnmarshalText(data []byte) error {
+	switch InteractionGroup(data) {
+	case InteractionGroupExistingUsers:
+		*s = InteractionGroupExistingUsers
+		return nil
+	case InteractionGroupContributorsOnly:
+		*s = InteractionGroupContributorsOnly
+		return nil
+	case InteractionGroupCollaboratorsOnly:
+		*s = InteractionGroupCollaboratorsOnly
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Limit interactions to a specific type of user for a specified duration.
 // Ref: #/components/schemas/interaction-limit
@@ -23856,6 +26481,32 @@ const (
 	IssuesCreateMilestoneReqStateClosed IssuesCreateMilestoneReqState = "closed"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesCreateMilestoneReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesCreateMilestoneReqStateOpen:
+		return []byte(s), nil
+	case IssuesCreateMilestoneReqStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesCreateMilestoneReqState) UnmarshalText(data []byte) error {
+	switch IssuesCreateMilestoneReqState(data) {
+	case IssuesCreateMilestoneReqStateOpen:
+		*s = IssuesCreateMilestoneReqStateOpen
+		return nil
+	case IssuesCreateMilestoneReqStateClosed:
+		*s = IssuesCreateMilestoneReqStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesCreateReq struct {
 	// The title of the issue.
 	Title IssuesCreateReqTitle `json:"title"`
@@ -24254,6 +26905,32 @@ const (
 	IssuesListCommentsForRepoDirectionDesc IssuesListCommentsForRepoDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListCommentsForRepoDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListCommentsForRepoDirectionAsc:
+		return []byte(s), nil
+	case IssuesListCommentsForRepoDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListCommentsForRepoDirection) UnmarshalText(data []byte) error {
+	switch IssuesListCommentsForRepoDirection(data) {
+	case IssuesListCommentsForRepoDirectionAsc:
+		*s = IssuesListCommentsForRepoDirectionAsc
+		return nil
+	case IssuesListCommentsForRepoDirectionDesc:
+		*s = IssuesListCommentsForRepoDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // IssuesListCommentsForRepoOKHeaders wraps []IssueComment with response headers.
 type IssuesListCommentsForRepoOKHeaders struct {
 	Link     OptString
@@ -24289,6 +26966,32 @@ const (
 	IssuesListCommentsForRepoSortUpdated IssuesListCommentsForRepoSort = "updated"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListCommentsForRepoSort) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListCommentsForRepoSortCreated:
+		return []byte(s), nil
+	case IssuesListCommentsForRepoSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListCommentsForRepoSort) UnmarshalText(data []byte) error {
+	switch IssuesListCommentsForRepoSort(data) {
+	case IssuesListCommentsForRepoSortCreated:
+		*s = IssuesListCommentsForRepoSortCreated
+		return nil
+	case IssuesListCommentsForRepoSortUpdated:
+		*s = IssuesListCommentsForRepoSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // IssuesListCommentsOKHeaders wraps []IssueComment with response headers.
 type IssuesListCommentsOKHeaders struct {
 	Link     OptString
@@ -24323,6 +27026,32 @@ const (
 	IssuesListDirectionAsc  IssuesListDirection = "asc"
 	IssuesListDirectionDesc IssuesListDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListDirectionAsc:
+		return []byte(s), nil
+	case IssuesListDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListDirection) UnmarshalText(data []byte) error {
+	switch IssuesListDirection(data) {
+	case IssuesListDirectionAsc:
+		*s = IssuesListDirectionAsc
+		return nil
+	case IssuesListDirectionDesc:
+		*s = IssuesListDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesListEventsForRepoOKHeaders wraps []IssueEvent with response headers.
 type IssuesListEventsForRepoOKHeaders struct {
@@ -24363,12 +27092,84 @@ const (
 	IssuesListFilterAll        IssuesListFilter = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListFilterAssigned:
+		return []byte(s), nil
+	case IssuesListFilterCreated:
+		return []byte(s), nil
+	case IssuesListFilterMentioned:
+		return []byte(s), nil
+	case IssuesListFilterSubscribed:
+		return []byte(s), nil
+	case IssuesListFilterRepos:
+		return []byte(s), nil
+	case IssuesListFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListFilter) UnmarshalText(data []byte) error {
+	switch IssuesListFilter(data) {
+	case IssuesListFilterAssigned:
+		*s = IssuesListFilterAssigned
+		return nil
+	case IssuesListFilterCreated:
+		*s = IssuesListFilterCreated
+		return nil
+	case IssuesListFilterMentioned:
+		*s = IssuesListFilterMentioned
+		return nil
+	case IssuesListFilterSubscribed:
+		*s = IssuesListFilterSubscribed
+		return nil
+	case IssuesListFilterRepos:
+		*s = IssuesListFilterRepos
+		return nil
+	case IssuesListFilterAll:
+		*s = IssuesListFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListForAuthenticatedUserDirection string
 
 const (
 	IssuesListForAuthenticatedUserDirectionAsc  IssuesListForAuthenticatedUserDirection = "asc"
 	IssuesListForAuthenticatedUserDirectionDesc IssuesListForAuthenticatedUserDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForAuthenticatedUserDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForAuthenticatedUserDirectionAsc:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForAuthenticatedUserDirection) UnmarshalText(data []byte) error {
+	switch IssuesListForAuthenticatedUserDirection(data) {
+	case IssuesListForAuthenticatedUserDirectionAsc:
+		*s = IssuesListForAuthenticatedUserDirectionAsc
+		return nil
+	case IssuesListForAuthenticatedUserDirectionDesc:
+		*s = IssuesListForAuthenticatedUserDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type IssuesListForAuthenticatedUserFilter string
 
@@ -24380,6 +27181,52 @@ const (
 	IssuesListForAuthenticatedUserFilterRepos      IssuesListForAuthenticatedUserFilter = "repos"
 	IssuesListForAuthenticatedUserFilterAll        IssuesListForAuthenticatedUserFilter = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForAuthenticatedUserFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForAuthenticatedUserFilterAssigned:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserFilterCreated:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserFilterMentioned:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserFilterSubscribed:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserFilterRepos:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForAuthenticatedUserFilter) UnmarshalText(data []byte) error {
+	switch IssuesListForAuthenticatedUserFilter(data) {
+	case IssuesListForAuthenticatedUserFilterAssigned:
+		*s = IssuesListForAuthenticatedUserFilterAssigned
+		return nil
+	case IssuesListForAuthenticatedUserFilterCreated:
+		*s = IssuesListForAuthenticatedUserFilterCreated
+		return nil
+	case IssuesListForAuthenticatedUserFilterMentioned:
+		*s = IssuesListForAuthenticatedUserFilterMentioned
+		return nil
+	case IssuesListForAuthenticatedUserFilterSubscribed:
+		*s = IssuesListForAuthenticatedUserFilterSubscribed
+		return nil
+	case IssuesListForAuthenticatedUserFilterRepos:
+		*s = IssuesListForAuthenticatedUserFilterRepos
+		return nil
+	case IssuesListForAuthenticatedUserFilterAll:
+		*s = IssuesListForAuthenticatedUserFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesListForAuthenticatedUserOKHeaders wraps []Issue with response headers.
 type IssuesListForAuthenticatedUserOKHeaders struct {
@@ -24417,6 +27264,37 @@ const (
 	IssuesListForAuthenticatedUserSortComments IssuesListForAuthenticatedUserSort = "comments"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForAuthenticatedUserSort) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForAuthenticatedUserSortCreated:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserSortUpdated:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserSortComments:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForAuthenticatedUserSort) UnmarshalText(data []byte) error {
+	switch IssuesListForAuthenticatedUserSort(data) {
+	case IssuesListForAuthenticatedUserSortCreated:
+		*s = IssuesListForAuthenticatedUserSortCreated
+		return nil
+	case IssuesListForAuthenticatedUserSortUpdated:
+		*s = IssuesListForAuthenticatedUserSortUpdated
+		return nil
+	case IssuesListForAuthenticatedUserSortComments:
+		*s = IssuesListForAuthenticatedUserSortComments
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListForAuthenticatedUserState string
 
 const (
@@ -24425,12 +27303,69 @@ const (
 	IssuesListForAuthenticatedUserStateAll    IssuesListForAuthenticatedUserState = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForAuthenticatedUserState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForAuthenticatedUserStateOpen:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserStateClosed:
+		return []byte(s), nil
+	case IssuesListForAuthenticatedUserStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForAuthenticatedUserState) UnmarshalText(data []byte) error {
+	switch IssuesListForAuthenticatedUserState(data) {
+	case IssuesListForAuthenticatedUserStateOpen:
+		*s = IssuesListForAuthenticatedUserStateOpen
+		return nil
+	case IssuesListForAuthenticatedUserStateClosed:
+		*s = IssuesListForAuthenticatedUserStateClosed
+		return nil
+	case IssuesListForAuthenticatedUserStateAll:
+		*s = IssuesListForAuthenticatedUserStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListForOrgDirection string
 
 const (
 	IssuesListForOrgDirectionAsc  IssuesListForOrgDirection = "asc"
 	IssuesListForOrgDirectionDesc IssuesListForOrgDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForOrgDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForOrgDirectionAsc:
+		return []byte(s), nil
+	case IssuesListForOrgDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForOrgDirection) UnmarshalText(data []byte) error {
+	switch IssuesListForOrgDirection(data) {
+	case IssuesListForOrgDirectionAsc:
+		*s = IssuesListForOrgDirectionAsc
+		return nil
+	case IssuesListForOrgDirectionDesc:
+		*s = IssuesListForOrgDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type IssuesListForOrgFilter string
 
@@ -24442,6 +27377,52 @@ const (
 	IssuesListForOrgFilterRepos      IssuesListForOrgFilter = "repos"
 	IssuesListForOrgFilterAll        IssuesListForOrgFilter = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForOrgFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForOrgFilterAssigned:
+		return []byte(s), nil
+	case IssuesListForOrgFilterCreated:
+		return []byte(s), nil
+	case IssuesListForOrgFilterMentioned:
+		return []byte(s), nil
+	case IssuesListForOrgFilterSubscribed:
+		return []byte(s), nil
+	case IssuesListForOrgFilterRepos:
+		return []byte(s), nil
+	case IssuesListForOrgFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForOrgFilter) UnmarshalText(data []byte) error {
+	switch IssuesListForOrgFilter(data) {
+	case IssuesListForOrgFilterAssigned:
+		*s = IssuesListForOrgFilterAssigned
+		return nil
+	case IssuesListForOrgFilterCreated:
+		*s = IssuesListForOrgFilterCreated
+		return nil
+	case IssuesListForOrgFilterMentioned:
+		*s = IssuesListForOrgFilterMentioned
+		return nil
+	case IssuesListForOrgFilterSubscribed:
+		*s = IssuesListForOrgFilterSubscribed
+		return nil
+	case IssuesListForOrgFilterRepos:
+		*s = IssuesListForOrgFilterRepos
+		return nil
+	case IssuesListForOrgFilterAll:
+		*s = IssuesListForOrgFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesListForOrgOKHeaders wraps []Issue with response headers.
 type IssuesListForOrgOKHeaders struct {
@@ -24479,6 +27460,37 @@ const (
 	IssuesListForOrgSortComments IssuesListForOrgSort = "comments"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForOrgSort) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForOrgSortCreated:
+		return []byte(s), nil
+	case IssuesListForOrgSortUpdated:
+		return []byte(s), nil
+	case IssuesListForOrgSortComments:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForOrgSort) UnmarshalText(data []byte) error {
+	switch IssuesListForOrgSort(data) {
+	case IssuesListForOrgSortCreated:
+		*s = IssuesListForOrgSortCreated
+		return nil
+	case IssuesListForOrgSortUpdated:
+		*s = IssuesListForOrgSortUpdated
+		return nil
+	case IssuesListForOrgSortComments:
+		*s = IssuesListForOrgSortComments
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListForOrgState string
 
 const (
@@ -24486,6 +27498,37 @@ const (
 	IssuesListForOrgStateClosed IssuesListForOrgState = "closed"
 	IssuesListForOrgStateAll    IssuesListForOrgState = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForOrgState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForOrgStateOpen:
+		return []byte(s), nil
+	case IssuesListForOrgStateClosed:
+		return []byte(s), nil
+	case IssuesListForOrgStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForOrgState) UnmarshalText(data []byte) error {
+	switch IssuesListForOrgState(data) {
+	case IssuesListForOrgStateOpen:
+		*s = IssuesListForOrgStateOpen
+		return nil
+	case IssuesListForOrgStateClosed:
+		*s = IssuesListForOrgStateClosed
+		return nil
+	case IssuesListForOrgStateAll:
+		*s = IssuesListForOrgStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type IssuesListForRepoApplicationJSONMovedPermanently BasicError
 
@@ -24501,6 +27544,32 @@ const (
 	IssuesListForRepoDirectionAsc  IssuesListForRepoDirection = "asc"
 	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForRepoDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForRepoDirectionAsc:
+		return []byte(s), nil
+	case IssuesListForRepoDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForRepoDirection) UnmarshalText(data []byte) error {
+	switch IssuesListForRepoDirection(data) {
+	case IssuesListForRepoDirectionAsc:
+		*s = IssuesListForRepoDirectionAsc
+		return nil
+	case IssuesListForRepoDirectionDesc:
+		*s = IssuesListForRepoDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesListForRepoOKHeaders wraps []IssueSimple with response headers.
 type IssuesListForRepoOKHeaders struct {
@@ -24538,6 +27607,37 @@ const (
 	IssuesListForRepoSortComments IssuesListForRepoSort = "comments"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForRepoSort) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForRepoSortCreated:
+		return []byte(s), nil
+	case IssuesListForRepoSortUpdated:
+		return []byte(s), nil
+	case IssuesListForRepoSortComments:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForRepoSort) UnmarshalText(data []byte) error {
+	switch IssuesListForRepoSort(data) {
+	case IssuesListForRepoSortCreated:
+		*s = IssuesListForRepoSortCreated
+		return nil
+	case IssuesListForRepoSortUpdated:
+		*s = IssuesListForRepoSortUpdated
+		return nil
+	case IssuesListForRepoSortComments:
+		*s = IssuesListForRepoSortComments
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListForRepoState string
 
 const (
@@ -24545,6 +27645,37 @@ const (
 	IssuesListForRepoStateClosed IssuesListForRepoState = "closed"
 	IssuesListForRepoStateAll    IssuesListForRepoState = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListForRepoState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListForRepoStateOpen:
+		return []byte(s), nil
+	case IssuesListForRepoStateClosed:
+		return []byte(s), nil
+	case IssuesListForRepoStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListForRepoState) UnmarshalText(data []byte) error {
+	switch IssuesListForRepoState(data) {
+	case IssuesListForRepoStateOpen:
+		*s = IssuesListForRepoStateOpen
+		return nil
+	case IssuesListForRepoStateClosed:
+		*s = IssuesListForRepoStateClosed
+		return nil
+	case IssuesListForRepoStateAll:
+		*s = IssuesListForRepoStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesListLabelsForMilestoneOKHeaders wraps []Label with response headers.
 type IssuesListLabelsForMilestoneOKHeaders struct {
@@ -24635,6 +27766,32 @@ const (
 	IssuesListMilestonesDirectionDesc IssuesListMilestonesDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListMilestonesDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListMilestonesDirectionAsc:
+		return []byte(s), nil
+	case IssuesListMilestonesDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListMilestonesDirection) UnmarshalText(data []byte) error {
+	switch IssuesListMilestonesDirection(data) {
+	case IssuesListMilestonesDirectionAsc:
+		*s = IssuesListMilestonesDirectionAsc
+		return nil
+	case IssuesListMilestonesDirectionDesc:
+		*s = IssuesListMilestonesDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // IssuesListMilestonesOKHeaders wraps []Milestone with response headers.
 type IssuesListMilestonesOKHeaders struct {
 	Link     OptString
@@ -24670,6 +27827,32 @@ const (
 	IssuesListMilestonesSortCompleteness IssuesListMilestonesSort = "completeness"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListMilestonesSort) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListMilestonesSortDueOn:
+		return []byte(s), nil
+	case IssuesListMilestonesSortCompleteness:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListMilestonesSort) UnmarshalText(data []byte) error {
+	switch IssuesListMilestonesSort(data) {
+	case IssuesListMilestonesSortDueOn:
+		*s = IssuesListMilestonesSortDueOn
+		return nil
+	case IssuesListMilestonesSortCompleteness:
+		*s = IssuesListMilestonesSortCompleteness
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListMilestonesState string
 
 const (
@@ -24677,6 +27860,37 @@ const (
 	IssuesListMilestonesStateClosed IssuesListMilestonesState = "closed"
 	IssuesListMilestonesStateAll    IssuesListMilestonesState = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListMilestonesState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListMilestonesStateOpen:
+		return []byte(s), nil
+	case IssuesListMilestonesStateClosed:
+		return []byte(s), nil
+	case IssuesListMilestonesStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListMilestonesState) UnmarshalText(data []byte) error {
+	switch IssuesListMilestonesState(data) {
+	case IssuesListMilestonesStateOpen:
+		*s = IssuesListMilestonesStateOpen
+		return nil
+	case IssuesListMilestonesStateClosed:
+		*s = IssuesListMilestonesStateClosed
+		return nil
+	case IssuesListMilestonesStateAll:
+		*s = IssuesListMilestonesStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesListOKHeaders wraps []Issue with response headers.
 type IssuesListOKHeaders struct {
@@ -24714,6 +27928,37 @@ const (
 	IssuesListSortComments IssuesListSort = "comments"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListSort) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListSortCreated:
+		return []byte(s), nil
+	case IssuesListSortUpdated:
+		return []byte(s), nil
+	case IssuesListSortComments:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListSort) UnmarshalText(data []byte) error {
+	switch IssuesListSort(data) {
+	case IssuesListSortCreated:
+		*s = IssuesListSortCreated
+		return nil
+	case IssuesListSortUpdated:
+		*s = IssuesListSortUpdated
+		return nil
+	case IssuesListSortComments:
+		*s = IssuesListSortComments
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type IssuesListState string
 
 const (
@@ -24721,6 +27966,37 @@ const (
 	IssuesListStateClosed IssuesListState = "closed"
 	IssuesListStateAll    IssuesListState = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesListState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesListStateOpen:
+		return []byte(s), nil
+	case IssuesListStateClosed:
+		return []byte(s), nil
+	case IssuesListStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesListState) UnmarshalText(data []byte) error {
+	switch IssuesListState(data) {
+	case IssuesListStateOpen:
+		*s = IssuesListStateOpen
+		return nil
+	case IssuesListStateClosed:
+		*s = IssuesListStateClosed
+		return nil
+	case IssuesListStateAll:
+		*s = IssuesListStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type IssuesLockApplicationJSONForbidden BasicError
 
@@ -24773,6 +28049,42 @@ const (
 	IssuesLockReqLockReasonResolved  IssuesLockReqLockReason = "resolved"
 	IssuesLockReqLockReasonSpam      IssuesLockReqLockReason = "spam"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesLockReqLockReason) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesLockReqLockReasonOffTopic:
+		return []byte(s), nil
+	case IssuesLockReqLockReasonTooHeated:
+		return []byte(s), nil
+	case IssuesLockReqLockReasonResolved:
+		return []byte(s), nil
+	case IssuesLockReqLockReasonSpam:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesLockReqLockReason) UnmarshalText(data []byte) error {
+	switch IssuesLockReqLockReason(data) {
+	case IssuesLockReqLockReasonOffTopic:
+		*s = IssuesLockReqLockReasonOffTopic
+		return nil
+	case IssuesLockReqLockReasonTooHeated:
+		*s = IssuesLockReqLockReasonTooHeated
+		return nil
+	case IssuesLockReqLockReasonResolved:
+		*s = IssuesLockReqLockReasonResolved
+		return nil
+	case IssuesLockReqLockReasonSpam:
+		*s = IssuesLockReqLockReasonSpam
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // IssuesRemoveAllLabelsNoContent is response for IssuesRemoveAllLabels operation.
 type IssuesRemoveAllLabelsNoContent struct{}
@@ -24953,6 +28265,32 @@ const (
 	IssuesUpdateMilestoneReqStateOpen   IssuesUpdateMilestoneReqState = "open"
 	IssuesUpdateMilestoneReqStateClosed IssuesUpdateMilestoneReqState = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesUpdateMilestoneReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesUpdateMilestoneReqStateOpen:
+		return []byte(s), nil
+	case IssuesUpdateMilestoneReqStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesUpdateMilestoneReqState) UnmarshalText(data []byte) error {
+	switch IssuesUpdateMilestoneReqState(data) {
+	case IssuesUpdateMilestoneReqStateOpen:
+		*s = IssuesUpdateMilestoneReqStateOpen
+		return nil
+	case IssuesUpdateMilestoneReqStateClosed:
+		*s = IssuesUpdateMilestoneReqStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type IssuesUpdateReq struct {
 	// The title of the issue.
@@ -25230,6 +28568,32 @@ const (
 	IssuesUpdateReqStateClosed IssuesUpdateReqState = "closed"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s IssuesUpdateReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case IssuesUpdateReqStateOpen:
+		return []byte(s), nil
+	case IssuesUpdateReqStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *IssuesUpdateReqState) UnmarshalText(data []byte) error {
+	switch IssuesUpdateReqState(data) {
+	case IssuesUpdateReqStateOpen:
+		*s = IssuesUpdateReqStateOpen
+		return nil
+	case IssuesUpdateReqStateClosed:
+		*s = IssuesUpdateReqStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The title of the issue.
 // IssuesUpdateReqTitle represents sum type.
 type IssuesUpdateReqTitle struct {
@@ -25472,6 +28836,37 @@ const (
 	JobStatusCompleted  JobStatus = "completed"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s JobStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case JobStatusQueued:
+		return []byte(s), nil
+	case JobStatusInProgress:
+		return []byte(s), nil
+	case JobStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *JobStatus) UnmarshalText(data []byte) error {
+	switch JobStatus(data) {
+	case JobStatusQueued:
+		*s = JobStatusQueued
+		return nil
+	case JobStatusInProgress:
+		*s = JobStatusInProgress
+		return nil
+	case JobStatusCompleted:
+		*s = JobStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type JobStepsItem struct {
 	// The phase of the lifecycle that the job is currently in.
 	Status JobStepsItemStatus `json:"status"`
@@ -25554,6 +28949,37 @@ const (
 	JobStepsItemStatusInProgress JobStepsItemStatus = "in_progress"
 	JobStepsItemStatusCompleted  JobStepsItemStatus = "completed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s JobStepsItemStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case JobStepsItemStatusQueued:
+		return []byte(s), nil
+	case JobStepsItemStatusInProgress:
+		return []byte(s), nil
+	case JobStepsItemStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *JobStepsItemStatus) UnmarshalText(data []byte) error {
+	switch JobStepsItemStatus(data) {
+	case JobStepsItemStatusQueued:
+		*s = JobStepsItemStatusQueued
+		return nil
+	case JobStepsItemStatusInProgress:
+		*s = JobStepsItemStatusInProgress
+		return nil
+	case JobStepsItemStatusCompleted:
+		*s = JobStepsItemStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Key.
 // Ref: #/components/schemas/key
@@ -26525,6 +29951,32 @@ const (
 	MarkdownRenderReqModeGfm      MarkdownRenderReqMode = "gfm"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s MarkdownRenderReqMode) MarshalText() ([]byte, error) {
+	switch s {
+	case MarkdownRenderReqModeMarkdown:
+		return []byte(s), nil
+	case MarkdownRenderReqModeGfm:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MarkdownRenderReqMode) UnmarshalText(data []byte) error {
+	switch MarkdownRenderReqMode(data) {
+	case MarkdownRenderReqModeMarkdown:
+		*s = MarkdownRenderReqModeMarkdown
+		return nil
+	case MarkdownRenderReqModeGfm:
+		*s = MarkdownRenderReqModeGfm
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/marketplace-account
 type MarketplaceAccount struct {
 	URL                      url.URL      `json:"url"`
@@ -27046,6 +30498,37 @@ const (
 	MergedUpstreamMergeTypeFastForward MergedUpstreamMergeType = "fast-forward"
 	MergedUpstreamMergeTypeNone        MergedUpstreamMergeType = "none"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s MergedUpstreamMergeType) MarshalText() ([]byte, error) {
+	switch s {
+	case MergedUpstreamMergeTypeMerge:
+		return []byte(s), nil
+	case MergedUpstreamMergeTypeFastForward:
+		return []byte(s), nil
+	case MergedUpstreamMergeTypeNone:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MergedUpstreamMergeType) UnmarshalText(data []byte) error {
+	switch MergedUpstreamMergeType(data) {
+	case MergedUpstreamMergeTypeMerge:
+		*s = MergedUpstreamMergeTypeMerge
+		return nil
+	case MergedUpstreamMergeTypeFastForward:
+		*s = MergedUpstreamMergeTypeFastForward
+		return nil
+	case MergedUpstreamMergeTypeNone:
+		*s = MergedUpstreamMergeTypeNone
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type MetaGetOctocatOK struct {
 	Data io.Reader
@@ -27707,6 +31190,27 @@ const (
 	MigrationsGetStatusForOrgExcludeItemRepositories MigrationsGetStatusForOrgExcludeItem = "repositories"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s MigrationsGetStatusForOrgExcludeItem) MarshalText() ([]byte, error) {
+	switch s {
+	case MigrationsGetStatusForOrgExcludeItemRepositories:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MigrationsGetStatusForOrgExcludeItem) UnmarshalText(data []byte) error {
+	switch MigrationsGetStatusForOrgExcludeItem(data) {
+	case MigrationsGetStatusForOrgExcludeItemRepositories:
+		*s = MigrationsGetStatusForOrgExcludeItemRepositories
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserRes() {
@@ -27751,6 +31255,27 @@ type MigrationsListForOrgExcludeItem string
 const (
 	MigrationsListForOrgExcludeItemRepositories MigrationsListForOrgExcludeItem = "repositories"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s MigrationsListForOrgExcludeItem) MarshalText() ([]byte, error) {
+	switch s {
+	case MigrationsListForOrgExcludeItemRepositories:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MigrationsListForOrgExcludeItem) UnmarshalText(data []byte) error {
+	switch MigrationsListForOrgExcludeItem(data) {
+	case MigrationsListForOrgExcludeItemRepositories:
+		*s = MigrationsListForOrgExcludeItemRepositories
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // MigrationsListForOrgOKHeaders wraps []Migration with response headers.
 type MigrationsListForOrgOKHeaders struct {
@@ -27886,6 +31411,32 @@ const (
 	MigrationsSetLfsPreferenceReqUseLfsOptOut MigrationsSetLfsPreferenceReqUseLfs = "opt_out"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s MigrationsSetLfsPreferenceReqUseLfs) MarshalText() ([]byte, error) {
+	switch s {
+	case MigrationsSetLfsPreferenceReqUseLfsOptIn:
+		return []byte(s), nil
+	case MigrationsSetLfsPreferenceReqUseLfsOptOut:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MigrationsSetLfsPreferenceReqUseLfs) UnmarshalText(data []byte) error {
+	switch MigrationsSetLfsPreferenceReqUseLfs(data) {
+	case MigrationsSetLfsPreferenceReqUseLfsOptIn:
+		*s = MigrationsSetLfsPreferenceReqUseLfsOptIn
+		return nil
+	case MigrationsSetLfsPreferenceReqUseLfsOptOut:
+		*s = MigrationsSetLfsPreferenceReqUseLfsOptOut
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type MigrationsStartForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*MigrationsStartForAuthenticatedUserApplicationJSONForbidden) migrationsStartForAuthenticatedUserRes() {
@@ -27977,6 +31528,27 @@ const (
 	MigrationsStartForAuthenticatedUserReqExcludeItemRepositories MigrationsStartForAuthenticatedUserReqExcludeItem = "repositories"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s MigrationsStartForAuthenticatedUserReqExcludeItem) MarshalText() ([]byte, error) {
+	switch s {
+	case MigrationsStartForAuthenticatedUserReqExcludeItemRepositories:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) UnmarshalText(data []byte) error {
+	switch MigrationsStartForAuthenticatedUserReqExcludeItem(data) {
+	case MigrationsStartForAuthenticatedUserReqExcludeItemRepositories:
+		*s = MigrationsStartForAuthenticatedUserReqExcludeItemRepositories
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type MigrationsStartForOrgReq struct {
 	// A list of arrays indicating which repositories should be migrated.
 	Repositories []string `json:"repositories"`
@@ -28060,6 +31632,27 @@ const (
 	MigrationsStartForOrgReqExcludeItemRepositories MigrationsStartForOrgReqExcludeItem = "repositories"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s MigrationsStartForOrgReqExcludeItem) MarshalText() ([]byte, error) {
+	switch s {
+	case MigrationsStartForOrgReqExcludeItemRepositories:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MigrationsStartForOrgReqExcludeItem) UnmarshalText(data []byte) error {
+	switch MigrationsStartForOrgReqExcludeItem(data) {
+	case MigrationsStartForOrgReqExcludeItemRepositories:
+		*s = MigrationsStartForOrgReqExcludeItemRepositories
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type MigrationsStartImportReq struct {
 	// The URL of the originating repository.
 	VcsURL string `json:"vcs_url"`
@@ -28136,6 +31729,42 @@ const (
 	MigrationsStartImportReqVcsMercurial  MigrationsStartImportReqVcs = "mercurial"
 	MigrationsStartImportReqVcsTfvc       MigrationsStartImportReqVcs = "tfvc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s MigrationsStartImportReqVcs) MarshalText() ([]byte, error) {
+	switch s {
+	case MigrationsStartImportReqVcsSubversion:
+		return []byte(s), nil
+	case MigrationsStartImportReqVcsGit:
+		return []byte(s), nil
+	case MigrationsStartImportReqVcsMercurial:
+		return []byte(s), nil
+	case MigrationsStartImportReqVcsTfvc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MigrationsStartImportReqVcs) UnmarshalText(data []byte) error {
+	switch MigrationsStartImportReqVcs(data) {
+	case MigrationsStartImportReqVcsSubversion:
+		*s = MigrationsStartImportReqVcsSubversion
+		return nil
+	case MigrationsStartImportReqVcsGit:
+		*s = MigrationsStartImportReqVcsGit
+		return nil
+	case MigrationsStartImportReqVcsMercurial:
+		*s = MigrationsStartImportReqVcsMercurial
+		return nil
+	case MigrationsStartImportReqVcsTfvc:
+		*s = MigrationsStartImportReqVcsTfvc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -28433,6 +32062,32 @@ const (
 	MilestoneStateOpen   MilestoneState = "open"
 	MilestoneStateClosed MilestoneState = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s MilestoneState) MarshalText() ([]byte, error) {
+	switch s {
+	case MilestoneStateOpen:
+		return []byte(s), nil
+	case MilestoneStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MilestoneState) UnmarshalText(data []byte) error {
+	switch MilestoneState(data) {
+	case MilestoneStateOpen:
+		*s = MilestoneStateOpen
+		return nil
+	case MilestoneStateClosed:
+		*s = MilestoneStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Minimal Repository.
 // Ref: #/components/schemas/minimal-repository
@@ -31721,6 +35376,32 @@ const (
 	NullableMilestoneStateOpen   NullableMilestoneState = "open"
 	NullableMilestoneStateClosed NullableMilestoneState = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s NullableMilestoneState) MarshalText() ([]byte, error) {
+	switch s {
+	case NullableMilestoneStateOpen:
+		return []byte(s), nil
+	case NullableMilestoneStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *NullableMilestoneState) UnmarshalText(data []byte) error {
+	switch NullableMilestoneState(data) {
+	case NullableMilestoneStateOpen:
+		*s = NullableMilestoneStateOpen
+		return nil
+	case NullableMilestoneStateClosed:
+		*s = NullableMilestoneStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Minimal Repository.
 // Ref: #/components/schemas/nullable-minimal-repository
@@ -35080,6 +38761,32 @@ const (
 	NullableScopedInstallationRepositorySelectionAll      NullableScopedInstallationRepositorySelection = "all"
 	NullableScopedInstallationRepositorySelectionSelected NullableScopedInstallationRepositorySelection = "selected"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s NullableScopedInstallationRepositorySelection) MarshalText() ([]byte, error) {
+	switch s {
+	case NullableScopedInstallationRepositorySelectionAll:
+		return []byte(s), nil
+	case NullableScopedInstallationRepositorySelectionSelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *NullableScopedInstallationRepositorySelection) UnmarshalText(data []byte) error {
+	switch NullableScopedInstallationRepositorySelection(data) {
+	case NullableScopedInstallationRepositorySelectionAll:
+		*s = NullableScopedInstallationRepositorySelectionAll
+		return nil
+	case NullableScopedInstallationRepositorySelectionSelected:
+		*s = NullableScopedInstallationRepositorySelectionSelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Simple Commit.
 // Ref: #/components/schemas/nullable-simple-commit
@@ -56710,6 +60417,37 @@ const (
 	OrgMembershipRoleBillingManager OrgMembershipRole = "billing_manager"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgMembershipRole) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgMembershipRoleAdmin:
+		return []byte(s), nil
+	case OrgMembershipRoleMember:
+		return []byte(s), nil
+	case OrgMembershipRoleBillingManager:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgMembershipRole) UnmarshalText(data []byte) error {
+	switch OrgMembershipRole(data) {
+	case OrgMembershipRoleAdmin:
+		*s = OrgMembershipRoleAdmin
+		return nil
+	case OrgMembershipRoleMember:
+		*s = OrgMembershipRoleMember
+		return nil
+	case OrgMembershipRoleBillingManager:
+		*s = OrgMembershipRoleBillingManager
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The state of the member in the organization. The `pending` state indicates the user has not yet
 // accepted an invitation.
 type OrgMembershipState string
@@ -56718,6 +60456,32 @@ const (
 	OrgMembershipStateActive  OrgMembershipState = "active"
 	OrgMembershipStatePending OrgMembershipState = "pending"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgMembershipState) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgMembershipStateActive:
+		return []byte(s), nil
+	case OrgMembershipStatePending:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgMembershipState) UnmarshalText(data []byte) error {
+	switch OrgMembershipState(data) {
+	case OrgMembershipStateActive:
+		*s = OrgMembershipStateActive
+		return nil
+	case OrgMembershipStatePending:
+		*s = OrgMembershipStatePending
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Secrets for GitHub Actions for an organization.
 // Ref: #/components/schemas/organization-actions-secret
@@ -56789,6 +60553,37 @@ const (
 	OrganizationActionsSecretVisibilityPrivate  OrganizationActionsSecretVisibility = "private"
 	OrganizationActionsSecretVisibilitySelected OrganizationActionsSecretVisibility = "selected"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OrganizationActionsSecretVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case OrganizationActionsSecretVisibilityAll:
+		return []byte(s), nil
+	case OrganizationActionsSecretVisibilityPrivate:
+		return []byte(s), nil
+	case OrganizationActionsSecretVisibilitySelected:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrganizationActionsSecretVisibility) UnmarshalText(data []byte) error {
+	switch OrganizationActionsSecretVisibility(data) {
+	case OrganizationActionsSecretVisibilityAll:
+		*s = OrganizationActionsSecretVisibilityAll
+		return nil
+	case OrganizationActionsSecretVisibilityPrivate:
+		*s = OrganizationActionsSecretVisibilityPrivate
+		return nil
+	case OrganizationActionsSecretVisibilitySelected:
+		*s = OrganizationActionsSecretVisibilitySelected
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Organization Full.
 // Ref: #/components/schemas/organization-full
@@ -57905,6 +61700,37 @@ const (
 	OrgsCreateInvitationReqRoleBillingManager OrgsCreateInvitationReqRole = "billing_manager"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsCreateInvitationReqRole) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsCreateInvitationReqRoleAdmin:
+		return []byte(s), nil
+	case OrgsCreateInvitationReqRoleDirectMember:
+		return []byte(s), nil
+	case OrgsCreateInvitationReqRoleBillingManager:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsCreateInvitationReqRole) UnmarshalText(data []byte) error {
+	switch OrgsCreateInvitationReqRole(data) {
+	case OrgsCreateInvitationReqRoleAdmin:
+		*s = OrgsCreateInvitationReqRoleAdmin
+		return nil
+	case OrgsCreateInvitationReqRoleDirectMember:
+		*s = OrgsCreateInvitationReqRoleDirectMember
+		return nil
+	case OrgsCreateInvitationReqRoleBillingManager:
+		*s = OrgsCreateInvitationReqRoleBillingManager
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type OrgsCreateWebhookReq struct {
 	// Must be passed as "web".
 	Name string `json:"name"`
@@ -58043,12 +61869,69 @@ const (
 	OrgsGetAuditLogIncludeAll OrgsGetAuditLogInclude = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsGetAuditLogInclude) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsGetAuditLogIncludeWeb:
+		return []byte(s), nil
+	case OrgsGetAuditLogIncludeGit:
+		return []byte(s), nil
+	case OrgsGetAuditLogIncludeAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsGetAuditLogInclude) UnmarshalText(data []byte) error {
+	switch OrgsGetAuditLogInclude(data) {
+	case OrgsGetAuditLogIncludeWeb:
+		*s = OrgsGetAuditLogIncludeWeb
+		return nil
+	case OrgsGetAuditLogIncludeGit:
+		*s = OrgsGetAuditLogIncludeGit
+		return nil
+	case OrgsGetAuditLogIncludeAll:
+		*s = OrgsGetAuditLogIncludeAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type OrgsGetAuditLogOrder string
 
 const (
 	OrgsGetAuditLogOrderDesc OrgsGetAuditLogOrder = "desc"
 	OrgsGetAuditLogOrderAsc  OrgsGetAuditLogOrder = "asc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsGetAuditLogOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsGetAuditLogOrderDesc:
+		return []byte(s), nil
+	case OrgsGetAuditLogOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsGetAuditLogOrder) UnmarshalText(data []byte) error {
+	switch OrgsGetAuditLogOrder(data) {
+	case OrgsGetAuditLogOrderDesc:
+		*s = OrgsGetAuditLogOrderDesc
+		return nil
+	case OrgsGetAuditLogOrderAsc:
+		*s = OrgsGetAuditLogOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -58197,6 +62080,32 @@ const (
 	OrgsListMembersFilterAll         OrgsListMembersFilter = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsListMembersFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsListMembersFilter2FADisabled:
+		return []byte(s), nil
+	case OrgsListMembersFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsListMembersFilter) UnmarshalText(data []byte) error {
+	switch OrgsListMembersFilter(data) {
+	case OrgsListMembersFilter2FADisabled:
+		*s = OrgsListMembersFilter2FADisabled
+		return nil
+	case OrgsListMembersFilterAll:
+		*s = OrgsListMembersFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // OrgsListMembersFound is response for OrgsListMembers operation.
 type OrgsListMembersFound struct {
 	Location OptString
@@ -58250,6 +62159,37 @@ const (
 	OrgsListMembersRoleMember OrgsListMembersRole = "member"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsListMembersRole) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsListMembersRoleAll:
+		return []byte(s), nil
+	case OrgsListMembersRoleAdmin:
+		return []byte(s), nil
+	case OrgsListMembersRoleMember:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsListMembersRole) UnmarshalText(data []byte) error {
+	switch OrgsListMembersRole(data) {
+	case OrgsListMembersRoleAll:
+		*s = OrgsListMembersRoleAll
+		return nil
+	case OrgsListMembersRoleAdmin:
+		*s = OrgsListMembersRoleAdmin
+		return nil
+	case OrgsListMembersRoleMember:
+		*s = OrgsListMembersRoleMember
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) orgsListMembershipsForAuthenticatedUserRes() {
@@ -58296,6 +62236,32 @@ const (
 	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsListMembershipsForAuthenticatedUserState) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsListMembershipsForAuthenticatedUserStateActive:
+		return []byte(s), nil
+	case OrgsListMembershipsForAuthenticatedUserStatePending:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsListMembershipsForAuthenticatedUserState) UnmarshalText(data []byte) error {
+	switch OrgsListMembershipsForAuthenticatedUserState(data) {
+	case OrgsListMembershipsForAuthenticatedUserStateActive:
+		*s = OrgsListMembershipsForAuthenticatedUserStateActive
+		return nil
+	case OrgsListMembershipsForAuthenticatedUserStatePending:
+		*s = OrgsListMembershipsForAuthenticatedUserStatePending
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // OrgsListOKHeaders wraps []OrganizationSimple with response headers.
 type OrgsListOKHeaders struct {
 	Link     OptString
@@ -58330,6 +62296,32 @@ const (
 	OrgsListOutsideCollaboratorsFilter2FADisabled OrgsListOutsideCollaboratorsFilter = "2fa_disabled"
 	OrgsListOutsideCollaboratorsFilterAll         OrgsListOutsideCollaboratorsFilter = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsListOutsideCollaboratorsFilter) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsListOutsideCollaboratorsFilter2FADisabled:
+		return []byte(s), nil
+	case OrgsListOutsideCollaboratorsFilterAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsListOutsideCollaboratorsFilter) UnmarshalText(data []byte) error {
+	switch OrgsListOutsideCollaboratorsFilter(data) {
+	case OrgsListOutsideCollaboratorsFilter2FADisabled:
+		*s = OrgsListOutsideCollaboratorsFilter2FADisabled
+		return nil
+	case OrgsListOutsideCollaboratorsFilterAll:
+		*s = OrgsListOutsideCollaboratorsFilterAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // OrgsListOutsideCollaboratorsOKHeaders wraps []SimpleUser with response headers.
 type OrgsListOutsideCollaboratorsOKHeaders struct {
@@ -58533,6 +62525,32 @@ const (
 	OrgsSetMembershipForUserReqRoleMember OrgsSetMembershipForUserReqRole = "member"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsSetMembershipForUserReqRole) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsSetMembershipForUserReqRoleAdmin:
+		return []byte(s), nil
+	case OrgsSetMembershipForUserReqRoleMember:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsSetMembershipForUserReqRole) UnmarshalText(data []byte) error {
+	switch OrgsSetMembershipForUserReqRole(data) {
+	case OrgsSetMembershipForUserReqRoleAdmin:
+		*s = OrgsSetMembershipForUserReqRoleAdmin
+		return nil
+	case OrgsSetMembershipForUserReqRoleMember:
+		*s = OrgsSetMembershipForUserReqRoleMember
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // OrgsSetPublicMembershipForAuthenticatedUserNoContent is response for OrgsSetPublicMembershipForAuthenticatedUser operation.
 type OrgsSetPublicMembershipForAuthenticatedUserNoContent struct{}
 
@@ -58573,6 +62591,27 @@ type OrgsUpdateMembershipForAuthenticatedUserReqState string
 const (
 	OrgsUpdateMembershipForAuthenticatedUserReqStateActive OrgsUpdateMembershipForAuthenticatedUserReqState = "active"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s OrgsUpdateMembershipForAuthenticatedUserReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case OrgsUpdateMembershipForAuthenticatedUserReqStateActive:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *OrgsUpdateMembershipForAuthenticatedUserReqState) UnmarshalText(data []byte) error {
+	switch OrgsUpdateMembershipForAuthenticatedUserReqState(data) {
+	case OrgsUpdateMembershipForAuthenticatedUserReqStateActive:
+		*s = OrgsUpdateMembershipForAuthenticatedUserReqStateActive
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
 	URL         OptWebhookConfigURL         `json:"url"`
@@ -58863,6 +62902,52 @@ const (
 	PackagePackageTypeContainer PackagePackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagePackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagePackageTypeNpm:
+		return []byte(s), nil
+	case PackagePackageTypeMaven:
+		return []byte(s), nil
+	case PackagePackageTypeRubygems:
+		return []byte(s), nil
+	case PackagePackageTypeDocker:
+		return []byte(s), nil
+	case PackagePackageTypeNuget:
+		return []byte(s), nil
+	case PackagePackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagePackageType) UnmarshalText(data []byte) error {
+	switch PackagePackageType(data) {
+	case PackagePackageTypeNpm:
+		*s = PackagePackageTypeNpm
+		return nil
+	case PackagePackageTypeMaven:
+		*s = PackagePackageTypeMaven
+		return nil
+	case PackagePackageTypeRubygems:
+		*s = PackagePackageTypeRubygems
+		return nil
+	case PackagePackageTypeDocker:
+		*s = PackagePackageTypeDocker
+		return nil
+	case PackagePackageTypeNuget:
+		*s = PackagePackageTypeNuget
+		return nil
+	case PackagePackageTypeContainer:
+		*s = PackagePackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // A version of a software package.
 // Ref: #/components/schemas/package-version
 type PackageVersion struct {
@@ -59066,12 +63151,84 @@ const (
 	PackageVersionMetadataPackageTypeContainer PackageVersionMetadataPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackageVersionMetadataPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackageVersionMetadataPackageTypeNpm:
+		return []byte(s), nil
+	case PackageVersionMetadataPackageTypeMaven:
+		return []byte(s), nil
+	case PackageVersionMetadataPackageTypeRubygems:
+		return []byte(s), nil
+	case PackageVersionMetadataPackageTypeDocker:
+		return []byte(s), nil
+	case PackageVersionMetadataPackageTypeNuget:
+		return []byte(s), nil
+	case PackageVersionMetadataPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackageVersionMetadataPackageType) UnmarshalText(data []byte) error {
+	switch PackageVersionMetadataPackageType(data) {
+	case PackageVersionMetadataPackageTypeNpm:
+		*s = PackageVersionMetadataPackageTypeNpm
+		return nil
+	case PackageVersionMetadataPackageTypeMaven:
+		*s = PackageVersionMetadataPackageTypeMaven
+		return nil
+	case PackageVersionMetadataPackageTypeRubygems:
+		*s = PackageVersionMetadataPackageTypeRubygems
+		return nil
+	case PackageVersionMetadataPackageTypeDocker:
+		*s = PackageVersionMetadataPackageTypeDocker
+		return nil
+	case PackageVersionMetadataPackageTypeNuget:
+		*s = PackageVersionMetadataPackageTypeNuget
+		return nil
+	case PackageVersionMetadataPackageTypeContainer:
+		*s = PackageVersionMetadataPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackageVisibility string
 
 const (
 	PackageVisibilityPrivate PackageVisibility = "private"
 	PackageVisibilityPublic  PackageVisibility = "public"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackageVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case PackageVisibilityPrivate:
+		return []byte(s), nil
+	case PackageVisibilityPublic:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackageVisibility) UnmarshalText(data []byte) error {
+	switch PackageVisibility(data) {
+	case PackageVisibilityPrivate:
+		*s = PackageVisibilityPrivate
+		return nil
+	case PackageVisibilityPublic:
+		*s = PackageVisibilityPublic
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/packages-billing-usage
 type PackagesBillingUsage struct {
@@ -59145,6 +63302,52 @@ const (
 	PackagesDeletePackageForAuthenticatedUserPackageTypeContainer PackagesDeletePackageForAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesDeletePackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesDeletePackageForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesDeletePackageForAuthenticatedUserPackageType(data) {
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesDeletePackageForOrgApplicationJSONForbidden BasicError
 
 func (*PackagesDeletePackageForOrgApplicationJSONForbidden) packagesDeletePackageForOrgRes() {}
@@ -59173,6 +63376,52 @@ const (
 	PackagesDeletePackageForOrgPackageTypeContainer PackagesDeletePackageForOrgPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesDeletePackageForOrgPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesDeletePackageForOrgPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesDeletePackageForOrgPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesDeletePackageForOrgPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesDeletePackageForOrgPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesDeletePackageForOrgPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesDeletePackageForOrgPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesDeletePackageForOrgPackageType) UnmarshalText(data []byte) error {
+	switch PackagesDeletePackageForOrgPackageType(data) {
+	case PackagesDeletePackageForOrgPackageTypeNpm:
+		*s = PackagesDeletePackageForOrgPackageTypeNpm
+		return nil
+	case PackagesDeletePackageForOrgPackageTypeMaven:
+		*s = PackagesDeletePackageForOrgPackageTypeMaven
+		return nil
+	case PackagesDeletePackageForOrgPackageTypeRubygems:
+		*s = PackagesDeletePackageForOrgPackageTypeRubygems
+		return nil
+	case PackagesDeletePackageForOrgPackageTypeDocker:
+		*s = PackagesDeletePackageForOrgPackageTypeDocker
+		return nil
+	case PackagesDeletePackageForOrgPackageTypeNuget:
+		*s = PackagesDeletePackageForOrgPackageTypeNuget
+		return nil
+	case PackagesDeletePackageForOrgPackageTypeContainer:
+		*s = PackagesDeletePackageForOrgPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesDeletePackageForUserApplicationJSONForbidden BasicError
 
 func (*PackagesDeletePackageForUserApplicationJSONForbidden) packagesDeletePackageForUserRes() {}
@@ -59200,6 +63449,52 @@ const (
 	PackagesDeletePackageForUserPackageTypeNuget     PackagesDeletePackageForUserPackageType = "nuget"
 	PackagesDeletePackageForUserPackageTypeContainer PackagesDeletePackageForUserPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesDeletePackageForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesDeletePackageForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesDeletePackageForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesDeletePackageForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesDeletePackageForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesDeletePackageForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesDeletePackageForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesDeletePackageForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesDeletePackageForUserPackageType(data) {
+	case PackagesDeletePackageForUserPackageTypeNpm:
+		*s = PackagesDeletePackageForUserPackageTypeNpm
+		return nil
+	case PackagesDeletePackageForUserPackageTypeMaven:
+		*s = PackagesDeletePackageForUserPackageTypeMaven
+		return nil
+	case PackagesDeletePackageForUserPackageTypeRubygems:
+		*s = PackagesDeletePackageForUserPackageTypeRubygems
+		return nil
+	case PackagesDeletePackageForUserPackageTypeDocker:
+		*s = PackagesDeletePackageForUserPackageTypeDocker
+		return nil
+	case PackagesDeletePackageForUserPackageTypeNuget:
+		*s = PackagesDeletePackageForUserPackageTypeNuget
+		return nil
+	case PackagesDeletePackageForUserPackageTypeContainer:
+		*s = PackagesDeletePackageForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -59233,6 +63528,52 @@ const (
 	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer PackagesDeletePackageVersionForAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesDeletePackageVersionForAuthenticatedUserPackageType(data) {
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesDeletePackageVersionForOrgApplicationJSONForbidden BasicError
 
 func (*PackagesDeletePackageVersionForOrgApplicationJSONForbidden) packagesDeletePackageVersionForOrgRes() {
@@ -59263,6 +63604,52 @@ const (
 	PackagesDeletePackageVersionForOrgPackageTypeNuget     PackagesDeletePackageVersionForOrgPackageType = "nuget"
 	PackagesDeletePackageVersionForOrgPackageTypeContainer PackagesDeletePackageVersionForOrgPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesDeletePackageVersionForOrgPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesDeletePackageVersionForOrgPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForOrgPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForOrgPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForOrgPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForOrgPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForOrgPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesDeletePackageVersionForOrgPackageType) UnmarshalText(data []byte) error {
+	switch PackagesDeletePackageVersionForOrgPackageType(data) {
+	case PackagesDeletePackageVersionForOrgPackageTypeNpm:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeNpm
+		return nil
+	case PackagesDeletePackageVersionForOrgPackageTypeMaven:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeMaven
+		return nil
+	case PackagesDeletePackageVersionForOrgPackageTypeRubygems:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeRubygems
+		return nil
+	case PackagesDeletePackageVersionForOrgPackageTypeDocker:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeDocker
+		return nil
+	case PackagesDeletePackageVersionForOrgPackageTypeNuget:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeNuget
+		return nil
+	case PackagesDeletePackageVersionForOrgPackageTypeContainer:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesDeletePackageVersionForUserApplicationJSONForbidden BasicError
 
@@ -59295,6 +63682,52 @@ const (
 	PackagesDeletePackageVersionForUserPackageTypeContainer PackagesDeletePackageVersionForUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesDeletePackageVersionForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesDeletePackageVersionForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesDeletePackageVersionForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesDeletePackageVersionForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesDeletePackageVersionForUserPackageType(data) {
+	case PackagesDeletePackageVersionForUserPackageTypeNpm:
+		*s = PackagesDeletePackageVersionForUserPackageTypeNpm
+		return nil
+	case PackagesDeletePackageVersionForUserPackageTypeMaven:
+		*s = PackagesDeletePackageVersionForUserPackageTypeMaven
+		return nil
+	case PackagesDeletePackageVersionForUserPackageTypeRubygems:
+		*s = PackagesDeletePackageVersionForUserPackageTypeRubygems
+		return nil
+	case PackagesDeletePackageVersionForUserPackageTypeDocker:
+		*s = PackagesDeletePackageVersionForUserPackageTypeDocker
+		return nil
+	case PackagesDeletePackageVersionForUserPackageTypeNuget:
+		*s = PackagesDeletePackageVersionForUserPackageTypeNuget
+		return nil
+	case PackagesDeletePackageVersionForUserPackageTypeContainer:
+		*s = PackagesDeletePackageVersionForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
@@ -59326,12 +63759,84 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(data) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState string
 
 const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "active"
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "deleted"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) UnmarshalText(data []byte) error {
+	switch PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(data) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden BasicError
 
@@ -59364,12 +63869,84 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(data) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgState string
 
 const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive  PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "active"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "deleted"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgState) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) UnmarshalText(data []byte) error {
+	switch PackagesGetAllPackageVersionsForPackageOwnedByOrgState(data) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden BasicError
 
@@ -59402,6 +63979,52 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(data) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget
+		return nil
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesGetPackageForAuthenticatedUserPackageType string
 
 const (
@@ -59412,6 +64035,52 @@ const (
 	PackagesGetPackageForAuthenticatedUserPackageTypeNuget     PackagesGetPackageForAuthenticatedUserPackageType = "nuget"
 	PackagesGetPackageForAuthenticatedUserPackageTypeContainer PackagesGetPackageForAuthenticatedUserPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetPackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetPackageForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetPackageForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetPackageForAuthenticatedUserPackageType(data) {
+	case PackagesGetPackageForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesGetPackageForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesGetPackageForOrganizationPackageType string
 
@@ -59424,6 +64093,52 @@ const (
 	PackagesGetPackageForOrganizationPackageTypeContainer PackagesGetPackageForOrganizationPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetPackageForOrganizationPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetPackageForOrganizationPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetPackageForOrganizationPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetPackageForOrganizationPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetPackageForOrganizationPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetPackageForOrganizationPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetPackageForOrganizationPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetPackageForOrganizationPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetPackageForOrganizationPackageType(data) {
+	case PackagesGetPackageForOrganizationPackageTypeNpm:
+		*s = PackagesGetPackageForOrganizationPackageTypeNpm
+		return nil
+	case PackagesGetPackageForOrganizationPackageTypeMaven:
+		*s = PackagesGetPackageForOrganizationPackageTypeMaven
+		return nil
+	case PackagesGetPackageForOrganizationPackageTypeRubygems:
+		*s = PackagesGetPackageForOrganizationPackageTypeRubygems
+		return nil
+	case PackagesGetPackageForOrganizationPackageTypeDocker:
+		*s = PackagesGetPackageForOrganizationPackageTypeDocker
+		return nil
+	case PackagesGetPackageForOrganizationPackageTypeNuget:
+		*s = PackagesGetPackageForOrganizationPackageTypeNuget
+		return nil
+	case PackagesGetPackageForOrganizationPackageTypeContainer:
+		*s = PackagesGetPackageForOrganizationPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesGetPackageForUserPackageType string
 
 const (
@@ -59434,6 +64149,52 @@ const (
 	PackagesGetPackageForUserPackageTypeNuget     PackagesGetPackageForUserPackageType = "nuget"
 	PackagesGetPackageForUserPackageTypeContainer PackagesGetPackageForUserPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetPackageForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetPackageForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetPackageForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetPackageForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetPackageForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetPackageForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetPackageForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetPackageForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetPackageForUserPackageType(data) {
+	case PackagesGetPackageForUserPackageTypeNpm:
+		*s = PackagesGetPackageForUserPackageTypeNpm
+		return nil
+	case PackagesGetPackageForUserPackageTypeMaven:
+		*s = PackagesGetPackageForUserPackageTypeMaven
+		return nil
+	case PackagesGetPackageForUserPackageTypeRubygems:
+		*s = PackagesGetPackageForUserPackageTypeRubygems
+		return nil
+	case PackagesGetPackageForUserPackageTypeDocker:
+		*s = PackagesGetPackageForUserPackageTypeDocker
+		return nil
+	case PackagesGetPackageForUserPackageTypeNuget:
+		*s = PackagesGetPackageForUserPackageTypeNuget
+		return nil
+	case PackagesGetPackageForUserPackageTypeContainer:
+		*s = PackagesGetPackageForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesGetPackageVersionForAuthenticatedUserPackageType string
 
@@ -59446,6 +64207,52 @@ const (
 	PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer PackagesGetPackageVersionForAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetPackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetPackageVersionForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetPackageVersionForAuthenticatedUserPackageType(data) {
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesGetPackageVersionForOrganizationPackageType string
 
 const (
@@ -59456,6 +64263,52 @@ const (
 	PackagesGetPackageVersionForOrganizationPackageTypeNuget     PackagesGetPackageVersionForOrganizationPackageType = "nuget"
 	PackagesGetPackageVersionForOrganizationPackageTypeContainer PackagesGetPackageVersionForOrganizationPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetPackageVersionForOrganizationPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetPackageVersionForOrganizationPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetPackageVersionForOrganizationPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetPackageVersionForOrganizationPackageType(data) {
+	case PackagesGetPackageVersionForOrganizationPackageTypeNpm:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeNpm
+		return nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeMaven:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeMaven
+		return nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeRubygems:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeRubygems
+		return nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeDocker:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeDocker
+		return nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeNuget:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeNuget
+		return nil
+	case PackagesGetPackageVersionForOrganizationPackageTypeContainer:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesGetPackageVersionForUserPackageType string
 
@@ -59468,6 +64321,52 @@ const (
 	PackagesGetPackageVersionForUserPackageTypeContainer PackagesGetPackageVersionForUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesGetPackageVersionForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesGetPackageVersionForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesGetPackageVersionForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesGetPackageVersionForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesGetPackageVersionForUserPackageType(data) {
+	case PackagesGetPackageVersionForUserPackageTypeNpm:
+		*s = PackagesGetPackageVersionForUserPackageTypeNpm
+		return nil
+	case PackagesGetPackageVersionForUserPackageTypeMaven:
+		*s = PackagesGetPackageVersionForUserPackageTypeMaven
+		return nil
+	case PackagesGetPackageVersionForUserPackageTypeRubygems:
+		*s = PackagesGetPackageVersionForUserPackageTypeRubygems
+		return nil
+	case PackagesGetPackageVersionForUserPackageTypeDocker:
+		*s = PackagesGetPackageVersionForUserPackageTypeDocker
+		return nil
+	case PackagesGetPackageVersionForUserPackageTypeNuget:
+		*s = PackagesGetPackageVersionForUserPackageTypeNuget
+		return nil
+	case PackagesGetPackageVersionForUserPackageTypeContainer:
+		*s = PackagesGetPackageVersionForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesListPackagesForAuthenticatedUserPackageType string
 
 const (
@@ -59479,6 +64378,52 @@ const (
 	PackagesListPackagesForAuthenticatedUserPackageTypeContainer PackagesListPackagesForAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesListPackagesForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesListPackagesForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesListPackagesForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesListPackagesForAuthenticatedUserPackageType(data) {
+	case PackagesListPackagesForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesListPackagesForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesListPackagesForAuthenticatedUserVisibility string
 
 const (
@@ -59486,6 +64431,37 @@ const (
 	PackagesListPackagesForAuthenticatedUserVisibilityPrivate  PackagesListPackagesForAuthenticatedUserVisibility = "private"
 	PackagesListPackagesForAuthenticatedUserVisibilityInternal PackagesListPackagesForAuthenticatedUserVisibility = "internal"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesListPackagesForAuthenticatedUserVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesListPackagesForAuthenticatedUserVisibilityPublic:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserVisibilityPrivate:
+		return []byte(s), nil
+	case PackagesListPackagesForAuthenticatedUserVisibilityInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesListPackagesForAuthenticatedUserVisibility) UnmarshalText(data []byte) error {
+	switch PackagesListPackagesForAuthenticatedUserVisibility(data) {
+	case PackagesListPackagesForAuthenticatedUserVisibilityPublic:
+		*s = PackagesListPackagesForAuthenticatedUserVisibilityPublic
+		return nil
+	case PackagesListPackagesForAuthenticatedUserVisibilityPrivate:
+		*s = PackagesListPackagesForAuthenticatedUserVisibilityPrivate
+		return nil
+	case PackagesListPackagesForAuthenticatedUserVisibilityInternal:
+		*s = PackagesListPackagesForAuthenticatedUserVisibilityInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesListPackagesForOrganizationApplicationJSONForbidden BasicError
 
@@ -59513,6 +64489,52 @@ const (
 	PackagesListPackagesForOrganizationPackageTypeContainer PackagesListPackagesForOrganizationPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesListPackagesForOrganizationPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesListPackagesForOrganizationPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesListPackagesForOrganizationPackageType) UnmarshalText(data []byte) error {
+	switch PackagesListPackagesForOrganizationPackageType(data) {
+	case PackagesListPackagesForOrganizationPackageTypeNpm:
+		*s = PackagesListPackagesForOrganizationPackageTypeNpm
+		return nil
+	case PackagesListPackagesForOrganizationPackageTypeMaven:
+		*s = PackagesListPackagesForOrganizationPackageTypeMaven
+		return nil
+	case PackagesListPackagesForOrganizationPackageTypeRubygems:
+		*s = PackagesListPackagesForOrganizationPackageTypeRubygems
+		return nil
+	case PackagesListPackagesForOrganizationPackageTypeDocker:
+		*s = PackagesListPackagesForOrganizationPackageTypeDocker
+		return nil
+	case PackagesListPackagesForOrganizationPackageTypeNuget:
+		*s = PackagesListPackagesForOrganizationPackageTypeNuget
+		return nil
+	case PackagesListPackagesForOrganizationPackageTypeContainer:
+		*s = PackagesListPackagesForOrganizationPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesListPackagesForOrganizationVisibility string
 
 const (
@@ -59520,6 +64542,37 @@ const (
 	PackagesListPackagesForOrganizationVisibilityPrivate  PackagesListPackagesForOrganizationVisibility = "private"
 	PackagesListPackagesForOrganizationVisibilityInternal PackagesListPackagesForOrganizationVisibility = "internal"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesListPackagesForOrganizationVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesListPackagesForOrganizationVisibilityPublic:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationVisibilityPrivate:
+		return []byte(s), nil
+	case PackagesListPackagesForOrganizationVisibilityInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesListPackagesForOrganizationVisibility) UnmarshalText(data []byte) error {
+	switch PackagesListPackagesForOrganizationVisibility(data) {
+	case PackagesListPackagesForOrganizationVisibilityPublic:
+		*s = PackagesListPackagesForOrganizationVisibilityPublic
+		return nil
+	case PackagesListPackagesForOrganizationVisibilityPrivate:
+		*s = PackagesListPackagesForOrganizationVisibilityPrivate
+		return nil
+	case PackagesListPackagesForOrganizationVisibilityInternal:
+		*s = PackagesListPackagesForOrganizationVisibilityInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesListPackagesForUserApplicationJSONForbidden BasicError
 
@@ -59544,6 +64597,52 @@ const (
 	PackagesListPackagesForUserPackageTypeContainer PackagesListPackagesForUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesListPackagesForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesListPackagesForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesListPackagesForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesListPackagesForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesListPackagesForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesListPackagesForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesListPackagesForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesListPackagesForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesListPackagesForUserPackageType(data) {
+	case PackagesListPackagesForUserPackageTypeNpm:
+		*s = PackagesListPackagesForUserPackageTypeNpm
+		return nil
+	case PackagesListPackagesForUserPackageTypeMaven:
+		*s = PackagesListPackagesForUserPackageTypeMaven
+		return nil
+	case PackagesListPackagesForUserPackageTypeRubygems:
+		*s = PackagesListPackagesForUserPackageTypeRubygems
+		return nil
+	case PackagesListPackagesForUserPackageTypeDocker:
+		*s = PackagesListPackagesForUserPackageTypeDocker
+		return nil
+	case PackagesListPackagesForUserPackageTypeNuget:
+		*s = PackagesListPackagesForUserPackageTypeNuget
+		return nil
+	case PackagesListPackagesForUserPackageTypeContainer:
+		*s = PackagesListPackagesForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesListPackagesForUserVisibility string
 
 const (
@@ -59551,6 +64650,37 @@ const (
 	PackagesListPackagesForUserVisibilityPrivate  PackagesListPackagesForUserVisibility = "private"
 	PackagesListPackagesForUserVisibilityInternal PackagesListPackagesForUserVisibility = "internal"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesListPackagesForUserVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesListPackagesForUserVisibilityPublic:
+		return []byte(s), nil
+	case PackagesListPackagesForUserVisibilityPrivate:
+		return []byte(s), nil
+	case PackagesListPackagesForUserVisibilityInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesListPackagesForUserVisibility) UnmarshalText(data []byte) error {
+	switch PackagesListPackagesForUserVisibility(data) {
+	case PackagesListPackagesForUserVisibilityPublic:
+		*s = PackagesListPackagesForUserVisibilityPublic
+		return nil
+	case PackagesListPackagesForUserVisibilityPrivate:
+		*s = PackagesListPackagesForUserVisibilityPrivate
+		return nil
+	case PackagesListPackagesForUserVisibilityInternal:
+		*s = PackagesListPackagesForUserVisibilityInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -59584,6 +64714,52 @@ const (
 	PackagesRestorePackageForAuthenticatedUserPackageTypeContainer PackagesRestorePackageForAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesRestorePackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesRestorePackageForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesRestorePackageForAuthenticatedUserPackageType(data) {
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesRestorePackageForOrgApplicationJSONForbidden BasicError
 
 func (*PackagesRestorePackageForOrgApplicationJSONForbidden) packagesRestorePackageForOrgRes() {}
@@ -59612,6 +64788,52 @@ const (
 	PackagesRestorePackageForOrgPackageTypeContainer PackagesRestorePackageForOrgPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesRestorePackageForOrgPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesRestorePackageForOrgPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesRestorePackageForOrgPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesRestorePackageForOrgPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesRestorePackageForOrgPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesRestorePackageForOrgPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesRestorePackageForOrgPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesRestorePackageForOrgPackageType) UnmarshalText(data []byte) error {
+	switch PackagesRestorePackageForOrgPackageType(data) {
+	case PackagesRestorePackageForOrgPackageTypeNpm:
+		*s = PackagesRestorePackageForOrgPackageTypeNpm
+		return nil
+	case PackagesRestorePackageForOrgPackageTypeMaven:
+		*s = PackagesRestorePackageForOrgPackageTypeMaven
+		return nil
+	case PackagesRestorePackageForOrgPackageTypeRubygems:
+		*s = PackagesRestorePackageForOrgPackageTypeRubygems
+		return nil
+	case PackagesRestorePackageForOrgPackageTypeDocker:
+		*s = PackagesRestorePackageForOrgPackageTypeDocker
+		return nil
+	case PackagesRestorePackageForOrgPackageTypeNuget:
+		*s = PackagesRestorePackageForOrgPackageTypeNuget
+		return nil
+	case PackagesRestorePackageForOrgPackageTypeContainer:
+		*s = PackagesRestorePackageForOrgPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesRestorePackageForUserApplicationJSONForbidden BasicError
 
 func (*PackagesRestorePackageForUserApplicationJSONForbidden) packagesRestorePackageForUserRes() {}
@@ -59639,6 +64861,52 @@ const (
 	PackagesRestorePackageForUserPackageTypeNuget     PackagesRestorePackageForUserPackageType = "nuget"
 	PackagesRestorePackageForUserPackageTypeContainer PackagesRestorePackageForUserPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesRestorePackageForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesRestorePackageForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesRestorePackageForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesRestorePackageForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesRestorePackageForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesRestorePackageForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesRestorePackageForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesRestorePackageForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesRestorePackageForUserPackageType(data) {
+	case PackagesRestorePackageForUserPackageTypeNpm:
+		*s = PackagesRestorePackageForUserPackageTypeNpm
+		return nil
+	case PackagesRestorePackageForUserPackageTypeMaven:
+		*s = PackagesRestorePackageForUserPackageTypeMaven
+		return nil
+	case PackagesRestorePackageForUserPackageTypeRubygems:
+		*s = PackagesRestorePackageForUserPackageTypeRubygems
+		return nil
+	case PackagesRestorePackageForUserPackageTypeDocker:
+		*s = PackagesRestorePackageForUserPackageTypeDocker
+		return nil
+	case PackagesRestorePackageForUserPackageTypeNuget:
+		*s = PackagesRestorePackageForUserPackageTypeNuget
+		return nil
+	case PackagesRestorePackageForUserPackageTypeContainer:
+		*s = PackagesRestorePackageForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -59672,6 +64940,52 @@ const (
 	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer PackagesRestorePackageVersionForAuthenticatedUserPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesRestorePackageVersionForAuthenticatedUserPackageType(data) {
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm
+		return nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven
+		return nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems
+		return nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker
+		return nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget
+		return nil
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesRestorePackageVersionForOrgApplicationJSONForbidden BasicError
 
 func (*PackagesRestorePackageVersionForOrgApplicationJSONForbidden) packagesRestorePackageVersionForOrgRes() {
@@ -59703,6 +65017,52 @@ const (
 	PackagesRestorePackageVersionForOrgPackageTypeContainer PackagesRestorePackageVersionForOrgPackageType = "container"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesRestorePackageVersionForOrgPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesRestorePackageVersionForOrgPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForOrgPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForOrgPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForOrgPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForOrgPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForOrgPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesRestorePackageVersionForOrgPackageType) UnmarshalText(data []byte) error {
+	switch PackagesRestorePackageVersionForOrgPackageType(data) {
+	case PackagesRestorePackageVersionForOrgPackageTypeNpm:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeNpm
+		return nil
+	case PackagesRestorePackageVersionForOrgPackageTypeMaven:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeMaven
+		return nil
+	case PackagesRestorePackageVersionForOrgPackageTypeRubygems:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeRubygems
+		return nil
+	case PackagesRestorePackageVersionForOrgPackageTypeDocker:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeDocker
+		return nil
+	case PackagesRestorePackageVersionForOrgPackageTypeNuget:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeNuget
+		return nil
+	case PackagesRestorePackageVersionForOrgPackageTypeContainer:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PackagesRestorePackageVersionForUserApplicationJSONForbidden BasicError
 
 func (*PackagesRestorePackageVersionForUserApplicationJSONForbidden) packagesRestorePackageVersionForUserRes() {
@@ -59733,6 +65093,52 @@ const (
 	PackagesRestorePackageVersionForUserPackageTypeNuget     PackagesRestorePackageVersionForUserPackageType = "nuget"
 	PackagesRestorePackageVersionForUserPackageTypeContainer PackagesRestorePackageVersionForUserPackageType = "container"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackagesRestorePackageVersionForUserPackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackagesRestorePackageVersionForUserPackageTypeNpm:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForUserPackageTypeMaven:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForUserPackageTypeRubygems:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForUserPackageTypeDocker:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForUserPackageTypeNuget:
+		return []byte(s), nil
+	case PackagesRestorePackageVersionForUserPackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackagesRestorePackageVersionForUserPackageType) UnmarshalText(data []byte) error {
+	switch PackagesRestorePackageVersionForUserPackageType(data) {
+	case PackagesRestorePackageVersionForUserPackageTypeNpm:
+		*s = PackagesRestorePackageVersionForUserPackageTypeNpm
+		return nil
+	case PackagesRestorePackageVersionForUserPackageTypeMaven:
+		*s = PackagesRestorePackageVersionForUserPackageTypeMaven
+		return nil
+	case PackagesRestorePackageVersionForUserPackageTypeRubygems:
+		*s = PackagesRestorePackageVersionForUserPackageTypeRubygems
+		return nil
+	case PackagesRestorePackageVersionForUserPackageTypeDocker:
+		*s = PackagesRestorePackageVersionForUserPackageTypeDocker
+		return nil
+	case PackagesRestorePackageVersionForUserPackageTypeNuget:
+		*s = PackagesRestorePackageVersionForUserPackageTypeNuget
+		return nil
+	case PackagesRestorePackageVersionForUserPackageTypeContainer:
+		*s = PackagesRestorePackageVersionForUserPackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // The configuration for GitHub Pages for a repository.
 // Ref: #/components/schemas/page
@@ -60017,6 +65423,37 @@ const (
 	PageProtectedDomainStateUnverified PageProtectedDomainState = "unverified"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PageProtectedDomainState) MarshalText() ([]byte, error) {
+	switch s {
+	case PageProtectedDomainStatePending:
+		return []byte(s), nil
+	case PageProtectedDomainStateVerified:
+		return []byte(s), nil
+	case PageProtectedDomainStateUnverified:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PageProtectedDomainState) UnmarshalText(data []byte) error {
+	switch PageProtectedDomainState(data) {
+	case PageProtectedDomainStatePending:
+		*s = PageProtectedDomainStatePending
+		return nil
+	case PageProtectedDomainStateVerified:
+		*s = PageProtectedDomainStateVerified
+		return nil
+	case PageProtectedDomainStateUnverified:
+		*s = PageProtectedDomainStateUnverified
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The status of the most recent build of the Page.
 type PageStatus string
 
@@ -60025,6 +65462,37 @@ const (
 	PageStatusBuilding PageStatus = "building"
 	PageStatusErrored  PageStatus = "errored"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PageStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case PageStatusBuilt:
+		return []byte(s), nil
+	case PageStatusBuilding:
+		return []byte(s), nil
+	case PageStatusErrored:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PageStatus) UnmarshalText(data []byte) error {
+	switch PageStatus(data) {
+	case PageStatusBuilt:
+		*s = PageStatusBuilt
+		return nil
+	case PageStatusBuilding:
+		*s = PageStatusBuilding
+		return nil
+	case PageStatusErrored:
+		*s = PageStatusErrored
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/pages-https-certificate
 type PagesHTTPSCertificate struct {
@@ -60091,6 +65559,82 @@ const (
 	PagesHTTPSCertificateStateDestroyPending       PagesHTTPSCertificateState = "destroy_pending"
 	PagesHTTPSCertificateStateDNSChanged           PagesHTTPSCertificateState = "dns_changed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PagesHTTPSCertificateState) MarshalText() ([]byte, error) {
+	switch s {
+	case PagesHTTPSCertificateStateNew:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateAuthorizationCreated:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateAuthorizationPending:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateAuthorized:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateAuthorizationRevoked:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateIssued:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateUploaded:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateApproved:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateErrored:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateBadAuthz:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateDestroyPending:
+		return []byte(s), nil
+	case PagesHTTPSCertificateStateDNSChanged:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PagesHTTPSCertificateState) UnmarshalText(data []byte) error {
+	switch PagesHTTPSCertificateState(data) {
+	case PagesHTTPSCertificateStateNew:
+		*s = PagesHTTPSCertificateStateNew
+		return nil
+	case PagesHTTPSCertificateStateAuthorizationCreated:
+		*s = PagesHTTPSCertificateStateAuthorizationCreated
+		return nil
+	case PagesHTTPSCertificateStateAuthorizationPending:
+		*s = PagesHTTPSCertificateStateAuthorizationPending
+		return nil
+	case PagesHTTPSCertificateStateAuthorized:
+		*s = PagesHTTPSCertificateStateAuthorized
+		return nil
+	case PagesHTTPSCertificateStateAuthorizationRevoked:
+		*s = PagesHTTPSCertificateStateAuthorizationRevoked
+		return nil
+	case PagesHTTPSCertificateStateIssued:
+		*s = PagesHTTPSCertificateStateIssued
+		return nil
+	case PagesHTTPSCertificateStateUploaded:
+		*s = PagesHTTPSCertificateStateUploaded
+		return nil
+	case PagesHTTPSCertificateStateApproved:
+		*s = PagesHTTPSCertificateStateApproved
+		return nil
+	case PagesHTTPSCertificateStateErrored:
+		*s = PagesHTTPSCertificateStateErrored
+		return nil
+	case PagesHTTPSCertificateStateBadAuthz:
+		*s = PagesHTTPSCertificateStateBadAuthz
+		return nil
+	case PagesHTTPSCertificateStateDestroyPending:
+		*s = PagesHTTPSCertificateStateDestroyPending
+		return nil
+	case PagesHTTPSCertificateStateDNSChanged:
+		*s = PagesHTTPSCertificateStateDNSChanged
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Pages Health Check Status.
 // Ref: #/components/schemas/pages-health-check
@@ -61943,6 +67487,42 @@ const (
 	ProjectOrganizationPermissionNone  ProjectOrganizationPermission = "none"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectOrganizationPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectOrganizationPermissionRead:
+		return []byte(s), nil
+	case ProjectOrganizationPermissionWrite:
+		return []byte(s), nil
+	case ProjectOrganizationPermissionAdmin:
+		return []byte(s), nil
+	case ProjectOrganizationPermissionNone:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectOrganizationPermission) UnmarshalText(data []byte) error {
+	switch ProjectOrganizationPermission(data) {
+	case ProjectOrganizationPermissionRead:
+		*s = ProjectOrganizationPermissionRead
+		return nil
+	case ProjectOrganizationPermissionWrite:
+		*s = ProjectOrganizationPermissionWrite
+		return nil
+	case ProjectOrganizationPermissionAdmin:
+		*s = ProjectOrganizationPermissionAdmin
+		return nil
+	case ProjectOrganizationPermissionNone:
+		*s = ProjectOrganizationPermissionNone
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ProjectsAddCollaboratorApplicationJSONForbidden BasicError
 
 func (*ProjectsAddCollaboratorApplicationJSONForbidden) projectsAddCollaboratorRes() {}
@@ -61983,6 +67563,37 @@ const (
 	ProjectsAddCollaboratorReqPermissionWrite ProjectsAddCollaboratorReqPermission = "write"
 	ProjectsAddCollaboratorReqPermissionAdmin ProjectsAddCollaboratorReqPermission = "admin"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsAddCollaboratorReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsAddCollaboratorReqPermissionRead:
+		return []byte(s), nil
+	case ProjectsAddCollaboratorReqPermissionWrite:
+		return []byte(s), nil
+	case ProjectsAddCollaboratorReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsAddCollaboratorReqPermission) UnmarshalText(data []byte) error {
+	switch ProjectsAddCollaboratorReqPermission(data) {
+	case ProjectsAddCollaboratorReqPermissionRead:
+		*s = ProjectsAddCollaboratorReqPermissionRead
+		return nil
+	case ProjectsAddCollaboratorReqPermissionWrite:
+		*s = ProjectsAddCollaboratorReqPermissionWrite
+		return nil
+	case ProjectsAddCollaboratorReqPermissionAdmin:
+		*s = ProjectsAddCollaboratorReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
@@ -62309,6 +67920,37 @@ const (
 	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsListCardsArchivedState) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsListCardsArchivedStateAll:
+		return []byte(s), nil
+	case ProjectsListCardsArchivedStateArchived:
+		return []byte(s), nil
+	case ProjectsListCardsArchivedStateNotArchived:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsListCardsArchivedState) UnmarshalText(data []byte) error {
+	switch ProjectsListCardsArchivedState(data) {
+	case ProjectsListCardsArchivedStateAll:
+		*s = ProjectsListCardsArchivedStateAll
+		return nil
+	case ProjectsListCardsArchivedStateArchived:
+		*s = ProjectsListCardsArchivedStateArchived
+		return nil
+	case ProjectsListCardsArchivedStateNotArchived:
+		*s = ProjectsListCardsArchivedStateNotArchived
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ProjectsListCardsOKHeaders wraps []ProjectCard with response headers.
 type ProjectsListCardsOKHeaders struct {
 	Link     OptString
@@ -62344,6 +67986,37 @@ const (
 	ProjectsListCollaboratorsAffiliationDirect  ProjectsListCollaboratorsAffiliation = "direct"
 	ProjectsListCollaboratorsAffiliationAll     ProjectsListCollaboratorsAffiliation = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsListCollaboratorsAffiliation) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsListCollaboratorsAffiliationOutside:
+		return []byte(s), nil
+	case ProjectsListCollaboratorsAffiliationDirect:
+		return []byte(s), nil
+	case ProjectsListCollaboratorsAffiliationAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsListCollaboratorsAffiliation) UnmarshalText(data []byte) error {
+	switch ProjectsListCollaboratorsAffiliation(data) {
+	case ProjectsListCollaboratorsAffiliationOutside:
+		*s = ProjectsListCollaboratorsAffiliationOutside
+		return nil
+	case ProjectsListCollaboratorsAffiliationDirect:
+		*s = ProjectsListCollaboratorsAffiliationDirect
+		return nil
+	case ProjectsListCollaboratorsAffiliationAll:
+		*s = ProjectsListCollaboratorsAffiliationAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ProjectsListCollaboratorsApplicationJSONForbidden BasicError
 
@@ -62457,6 +68130,37 @@ const (
 	ProjectsListForOrgStateAll    ProjectsListForOrgState = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsListForOrgState) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsListForOrgStateOpen:
+		return []byte(s), nil
+	case ProjectsListForOrgStateClosed:
+		return []byte(s), nil
+	case ProjectsListForOrgStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsListForOrgState) UnmarshalText(data []byte) error {
+	switch ProjectsListForOrgState(data) {
+	case ProjectsListForOrgStateOpen:
+		*s = ProjectsListForOrgStateOpen
+		return nil
+	case ProjectsListForOrgStateClosed:
+		*s = ProjectsListForOrgStateClosed
+		return nil
+	case ProjectsListForOrgStateAll:
+		*s = ProjectsListForOrgStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ProjectsListForRepoApplicationJSONForbidden BasicError
 
 func (*ProjectsListForRepoApplicationJSONForbidden) projectsListForRepoRes() {}
@@ -62509,6 +68213,37 @@ const (
 	ProjectsListForRepoStateAll    ProjectsListForRepoState = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsListForRepoState) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsListForRepoStateOpen:
+		return []byte(s), nil
+	case ProjectsListForRepoStateClosed:
+		return []byte(s), nil
+	case ProjectsListForRepoStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsListForRepoState) UnmarshalText(data []byte) error {
+	switch ProjectsListForRepoState(data) {
+	case ProjectsListForRepoStateOpen:
+		*s = ProjectsListForRepoStateOpen
+		return nil
+	case ProjectsListForRepoStateClosed:
+		*s = ProjectsListForRepoStateClosed
+		return nil
+	case ProjectsListForRepoStateAll:
+		*s = ProjectsListForRepoStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ProjectsListForUserOKHeaders wraps []Project with response headers.
 type ProjectsListForUserOKHeaders struct {
 	Link     OptString
@@ -62544,6 +68279,37 @@ const (
 	ProjectsListForUserStateClosed ProjectsListForUserState = "closed"
 	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsListForUserState) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsListForUserStateOpen:
+		return []byte(s), nil
+	case ProjectsListForUserStateClosed:
+		return []byte(s), nil
+	case ProjectsListForUserStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsListForUserState) UnmarshalText(data []byte) error {
+	switch ProjectsListForUserState(data) {
+	case ProjectsListForUserStateOpen:
+		*s = ProjectsListForUserStateOpen
+		return nil
+	case ProjectsListForUserStateClosed:
+		*s = ProjectsListForUserStateClosed
+		return nil
+	case ProjectsListForUserStateAll:
+		*s = ProjectsListForUserStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ProjectsMoveCardCreated struct{}
 
@@ -62966,6 +68732,42 @@ const (
 	ProjectsUpdateReqOrganizationPermissionAdmin ProjectsUpdateReqOrganizationPermission = "admin"
 	ProjectsUpdateReqOrganizationPermissionNone  ProjectsUpdateReqOrganizationPermission = "none"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ProjectsUpdateReqOrganizationPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case ProjectsUpdateReqOrganizationPermissionRead:
+		return []byte(s), nil
+	case ProjectsUpdateReqOrganizationPermissionWrite:
+		return []byte(s), nil
+	case ProjectsUpdateReqOrganizationPermissionAdmin:
+		return []byte(s), nil
+	case ProjectsUpdateReqOrganizationPermissionNone:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ProjectsUpdateReqOrganizationPermission) UnmarshalText(data []byte) error {
+	switch ProjectsUpdateReqOrganizationPermission(data) {
+	case ProjectsUpdateReqOrganizationPermissionRead:
+		*s = ProjectsUpdateReqOrganizationPermissionRead
+		return nil
+	case ProjectsUpdateReqOrganizationPermissionWrite:
+		*s = ProjectsUpdateReqOrganizationPermissionWrite
+		return nil
+	case ProjectsUpdateReqOrganizationPermissionAdmin:
+		*s = ProjectsUpdateReqOrganizationPermissionAdmin
+		return nil
+	case ProjectsUpdateReqOrganizationPermissionNone:
+		*s = ProjectsUpdateReqOrganizationPermissionNone
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Branch protections protect branches.
 // Ref: #/components/schemas/protected-branch
@@ -68418,6 +74220,32 @@ const (
 	PullRequestReviewCommentSideRIGHT PullRequestReviewCommentSide = "RIGHT"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullRequestReviewCommentSide) MarshalText() ([]byte, error) {
+	switch s {
+	case PullRequestReviewCommentSideLEFT:
+		return []byte(s), nil
+	case PullRequestReviewCommentSideRIGHT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullRequestReviewCommentSide) UnmarshalText(data []byte) error {
+	switch PullRequestReviewCommentSide(data) {
+	case PullRequestReviewCommentSideLEFT:
+		*s = PullRequestReviewCommentSideLEFT
+		return nil
+	case PullRequestReviewCommentSideRIGHT:
+		*s = PullRequestReviewCommentSideRIGHT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The side of the first line of the range for a multi-line comment.
 type PullRequestReviewCommentStartSide string
 
@@ -68425,6 +74253,32 @@ const (
 	PullRequestReviewCommentStartSideLEFT  PullRequestReviewCommentStartSide = "LEFT"
 	PullRequestReviewCommentStartSideRIGHT PullRequestReviewCommentStartSide = "RIGHT"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullRequestReviewCommentStartSide) MarshalText() ([]byte, error) {
+	switch s {
+	case PullRequestReviewCommentStartSideLEFT:
+		return []byte(s), nil
+	case PullRequestReviewCommentStartSideRIGHT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullRequestReviewCommentStartSide) UnmarshalText(data []byte) error {
+	switch PullRequestReviewCommentStartSide(data) {
+	case PullRequestReviewCommentStartSideLEFT:
+		*s = PullRequestReviewCommentStartSideLEFT
+		return nil
+	case PullRequestReviewCommentStartSideRIGHT:
+		*s = PullRequestReviewCommentStartSideRIGHT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PullRequestReviewLinks struct {
 	HTML        PullRequestReviewLinksHTML        `json:"html"`
@@ -69231,6 +75085,32 @@ const (
 	PullRequestStateClosed PullRequestState = "closed"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullRequestState) MarshalText() ([]byte, error) {
+	switch s {
+	case PullRequestStateOpen:
+		return []byte(s), nil
+	case PullRequestStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullRequestState) UnmarshalText(data []byte) error {
+	switch PullRequestState(data) {
+	case PullRequestStateOpen:
+		*s = PullRequestStateOpen
+		return nil
+	case PullRequestStateClosed:
+		*s = PullRequestStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // PullsCheckIfMergedNoContent is response for PullsCheckIfMerged operation.
 type PullsCheckIfMergedNoContent struct{}
 
@@ -69495,6 +75375,32 @@ const (
 	PullsCreateReviewCommentReqSideRIGHT PullsCreateReviewCommentReqSide = "RIGHT"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsCreateReviewCommentReqSide) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsCreateReviewCommentReqSideLEFT:
+		return []byte(s), nil
+	case PullsCreateReviewCommentReqSideRIGHT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsCreateReviewCommentReqSide) UnmarshalText(data []byte) error {
+	switch PullsCreateReviewCommentReqSide(data) {
+	case PullsCreateReviewCommentReqSideLEFT:
+		*s = PullsCreateReviewCommentReqSideLEFT
+		return nil
+	case PullsCreateReviewCommentReqSideRIGHT:
+		*s = PullsCreateReviewCommentReqSideRIGHT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // **Required when using multi-line comments**. To create multi-line comments, you must use the
 // `comfort-fade` preview header. The `start_side` is the starting side of the diff that the comment
 // applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on
@@ -69508,6 +75414,37 @@ const (
 	PullsCreateReviewCommentReqStartSideRIGHT PullsCreateReviewCommentReqStartSide = "RIGHT"
 	PullsCreateReviewCommentReqStartSideSide  PullsCreateReviewCommentReqStartSide = "side"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsCreateReviewCommentReqStartSide) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsCreateReviewCommentReqStartSideLEFT:
+		return []byte(s), nil
+	case PullsCreateReviewCommentReqStartSideRIGHT:
+		return []byte(s), nil
+	case PullsCreateReviewCommentReqStartSideSide:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsCreateReviewCommentReqStartSide) UnmarshalText(data []byte) error {
+	switch PullsCreateReviewCommentReqStartSide(data) {
+	case PullsCreateReviewCommentReqStartSideLEFT:
+		*s = PullsCreateReviewCommentReqStartSideLEFT
+		return nil
+	case PullsCreateReviewCommentReqStartSideRIGHT:
+		*s = PullsCreateReviewCommentReqStartSideRIGHT
+		return nil
+	case PullsCreateReviewCommentReqStartSideSide:
+		*s = PullsCreateReviewCommentReqStartSideSide
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PullsCreateReviewReq struct {
 	// The SHA of the commit that needs a review. Not using the latest commit SHA may render your review
@@ -69663,6 +75600,37 @@ const (
 	PullsCreateReviewReqEventCOMMENT        PullsCreateReviewReqEvent = "COMMENT"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsCreateReviewReqEvent) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsCreateReviewReqEventAPPROVE:
+		return []byte(s), nil
+	case PullsCreateReviewReqEventREQUESTCHANGES:
+		return []byte(s), nil
+	case PullsCreateReviewReqEventCOMMENT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsCreateReviewReqEvent) UnmarshalText(data []byte) error {
+	switch PullsCreateReviewReqEvent(data) {
+	case PullsCreateReviewReqEventAPPROVE:
+		*s = PullsCreateReviewReqEventAPPROVE
+		return nil
+	case PullsCreateReviewReqEventREQUESTCHANGES:
+		*s = PullsCreateReviewReqEventREQUESTCHANGES
+		return nil
+	case PullsCreateReviewReqEventCOMMENT:
+		*s = PullsCreateReviewReqEventCOMMENT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // PullsDeleteReviewCommentNoContent is response for PullsDeleteReviewComment operation.
 type PullsDeleteReviewCommentNoContent struct{}
 
@@ -69763,6 +75731,32 @@ const (
 	PullsListDirectionDesc PullsListDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListDirectionAsc:
+		return []byte(s), nil
+	case PullsListDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListDirection) UnmarshalText(data []byte) error {
+	switch PullsListDirection(data) {
+	case PullsListDirectionAsc:
+		*s = PullsListDirectionAsc
+		return nil
+	case PullsListDirectionDesc:
+		*s = PullsListDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // PullsListFilesOKHeaders wraps []DiffEntry with response headers.
 type PullsListFilesOKHeaders struct {
 	Link     OptString
@@ -69826,12 +75820,64 @@ const (
 	PullsListReviewCommentsDirectionDesc PullsListReviewCommentsDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListReviewCommentsDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListReviewCommentsDirectionAsc:
+		return []byte(s), nil
+	case PullsListReviewCommentsDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListReviewCommentsDirection) UnmarshalText(data []byte) error {
+	switch PullsListReviewCommentsDirection(data) {
+	case PullsListReviewCommentsDirectionAsc:
+		*s = PullsListReviewCommentsDirectionAsc
+		return nil
+	case PullsListReviewCommentsDirectionDesc:
+		*s = PullsListReviewCommentsDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PullsListReviewCommentsForRepoDirection string
 
 const (
 	PullsListReviewCommentsForRepoDirectionAsc  PullsListReviewCommentsForRepoDirection = "asc"
 	PullsListReviewCommentsForRepoDirectionDesc PullsListReviewCommentsForRepoDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListReviewCommentsForRepoDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListReviewCommentsForRepoDirectionAsc:
+		return []byte(s), nil
+	case PullsListReviewCommentsForRepoDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListReviewCommentsForRepoDirection) UnmarshalText(data []byte) error {
+	switch PullsListReviewCommentsForRepoDirection(data) {
+	case PullsListReviewCommentsForRepoDirectionAsc:
+		*s = PullsListReviewCommentsForRepoDirectionAsc
+		return nil
+	case PullsListReviewCommentsForRepoDirectionDesc:
+		*s = PullsListReviewCommentsForRepoDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // PullsListReviewCommentsForRepoOKHeaders wraps []PullRequestReviewComment with response headers.
 type PullsListReviewCommentsForRepoOKHeaders struct {
@@ -69867,6 +75913,37 @@ const (
 	PullsListReviewCommentsForRepoSortCreatedAt PullsListReviewCommentsForRepoSort = "created_at"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListReviewCommentsForRepoSort) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListReviewCommentsForRepoSortCreated:
+		return []byte(s), nil
+	case PullsListReviewCommentsForRepoSortUpdated:
+		return []byte(s), nil
+	case PullsListReviewCommentsForRepoSortCreatedAt:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListReviewCommentsForRepoSort) UnmarshalText(data []byte) error {
+	switch PullsListReviewCommentsForRepoSort(data) {
+	case PullsListReviewCommentsForRepoSortCreated:
+		*s = PullsListReviewCommentsForRepoSortCreated
+		return nil
+	case PullsListReviewCommentsForRepoSortUpdated:
+		*s = PullsListReviewCommentsForRepoSortUpdated
+		return nil
+	case PullsListReviewCommentsForRepoSortCreatedAt:
+		*s = PullsListReviewCommentsForRepoSortCreatedAt
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // PullsListReviewCommentsOKHeaders wraps []PullRequestReviewComment with response headers.
 type PullsListReviewCommentsOKHeaders struct {
 	Link     OptString
@@ -69899,6 +75976,32 @@ const (
 	PullsListReviewCommentsSortCreated PullsListReviewCommentsSort = "created"
 	PullsListReviewCommentsSortUpdated PullsListReviewCommentsSort = "updated"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListReviewCommentsSort) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListReviewCommentsSortCreated:
+		return []byte(s), nil
+	case PullsListReviewCommentsSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListReviewCommentsSort) UnmarshalText(data []byte) error {
+	switch PullsListReviewCommentsSort(data) {
+	case PullsListReviewCommentsSortCreated:
+		*s = PullsListReviewCommentsSortCreated
+		return nil
+	case PullsListReviewCommentsSortUpdated:
+		*s = PullsListReviewCommentsSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // PullsListReviewsOKHeaders wraps []PullRequestReview with response headers.
 type PullsListReviewsOKHeaders struct {
@@ -69935,6 +76038,42 @@ const (
 	PullsListSortLongRunning PullsListSort = "long-running"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListSort) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListSortCreated:
+		return []byte(s), nil
+	case PullsListSortUpdated:
+		return []byte(s), nil
+	case PullsListSortPopularity:
+		return []byte(s), nil
+	case PullsListSortLongRunning:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListSort) UnmarshalText(data []byte) error {
+	switch PullsListSort(data) {
+	case PullsListSortCreated:
+		*s = PullsListSortCreated
+		return nil
+	case PullsListSortUpdated:
+		*s = PullsListSortUpdated
+		return nil
+	case PullsListSortPopularity:
+		*s = PullsListSortPopularity
+		return nil
+	case PullsListSortLongRunning:
+		*s = PullsListSortLongRunning
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PullsListState string
 
 const (
@@ -69942,6 +76081,37 @@ const (
 	PullsListStateClosed PullsListState = "closed"
 	PullsListStateAll    PullsListState = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsListState) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsListStateOpen:
+		return []byte(s), nil
+	case PullsListStateClosed:
+		return []byte(s), nil
+	case PullsListStateAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsListState) UnmarshalText(data []byte) error {
+	switch PullsListState(data) {
+	case PullsListStateOpen:
+		*s = PullsListStateOpen
+		return nil
+	case PullsListStateClosed:
+		*s = PullsListStateClosed
+		return nil
+	case PullsListStateAll:
+		*s = PullsListStateAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PullsMergeApplicationJSONForbidden BasicError
 
@@ -70065,6 +76235,37 @@ const (
 	PullsMergeReqMergeMethodRebase PullsMergeReqMergeMethod = "rebase"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsMergeReqMergeMethod) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsMergeReqMergeMethodMerge:
+		return []byte(s), nil
+	case PullsMergeReqMergeMethodSquash:
+		return []byte(s), nil
+	case PullsMergeReqMergeMethodRebase:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsMergeReqMergeMethod) UnmarshalText(data []byte) error {
+	switch PullsMergeReqMergeMethod(data) {
+	case PullsMergeReqMergeMethodMerge:
+		*s = PullsMergeReqMergeMethodMerge
+		return nil
+	case PullsMergeReqMergeMethodSquash:
+		*s = PullsMergeReqMergeMethodSquash
+		return nil
+	case PullsMergeReqMergeMethodRebase:
+		*s = PullsMergeReqMergeMethodRebase
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PullsRemoveRequestedReviewersReq struct {
 	// An array of user `login`s that will be removed.
 	Reviewers []string `json:"reviewers"`
@@ -70141,6 +76342,37 @@ const (
 	PullsSubmitReviewReqEventREQUESTCHANGES PullsSubmitReviewReqEvent = "REQUEST_CHANGES"
 	PullsSubmitReviewReqEventCOMMENT        PullsSubmitReviewReqEvent = "COMMENT"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsSubmitReviewReqEvent) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsSubmitReviewReqEventAPPROVE:
+		return []byte(s), nil
+	case PullsSubmitReviewReqEventREQUESTCHANGES:
+		return []byte(s), nil
+	case PullsSubmitReviewReqEventCOMMENT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsSubmitReviewReqEvent) UnmarshalText(data []byte) error {
+	switch PullsSubmitReviewReqEvent(data) {
+	case PullsSubmitReviewReqEventAPPROVE:
+		*s = PullsSubmitReviewReqEventAPPROVE
+		return nil
+	case PullsSubmitReviewReqEventREQUESTCHANGES:
+		*s = PullsSubmitReviewReqEventREQUESTCHANGES
+		return nil
+	case PullsSubmitReviewReqEventCOMMENT:
+		*s = PullsSubmitReviewReqEventCOMMENT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PullsUpdateBranchAccepted struct {
 	Message OptString `json:"message"`
@@ -70261,6 +76493,32 @@ const (
 	PullsUpdateReqStateOpen   PullsUpdateReqState = "open"
 	PullsUpdateReqStateClosed PullsUpdateReqState = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PullsUpdateReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case PullsUpdateReqStateOpen:
+		return []byte(s), nil
+	case PullsUpdateReqStateClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PullsUpdateReqState) UnmarshalText(data []byte) error {
+	switch PullsUpdateReqState(data) {
+	case PullsUpdateReqStateOpen:
+		*s = PullsUpdateReqStateOpen
+		return nil
+	case PullsUpdateReqStateClosed:
+		*s = PullsUpdateReqStateClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type PullsUpdateReviewCommentReq struct {
 	// The text of the reply to the review comment.
@@ -70573,6 +76831,62 @@ const (
 	ReactionContentEyes     ReactionContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionContentPlus1:
+		return []byte(s), nil
+	case ReactionContentMinus1:
+		return []byte(s), nil
+	case ReactionContentLaugh:
+		return []byte(s), nil
+	case ReactionContentConfused:
+		return []byte(s), nil
+	case ReactionContentHeart:
+		return []byte(s), nil
+	case ReactionContentHooray:
+		return []byte(s), nil
+	case ReactionContentRocket:
+		return []byte(s), nil
+	case ReactionContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionContent) UnmarshalText(data []byte) error {
+	switch ReactionContent(data) {
+	case ReactionContentPlus1:
+		*s = ReactionContentPlus1
+		return nil
+	case ReactionContentMinus1:
+		*s = ReactionContentMinus1
+		return nil
+	case ReactionContentLaugh:
+		*s = ReactionContentLaugh
+		return nil
+	case ReactionContentConfused:
+		*s = ReactionContentConfused
+		return nil
+	case ReactionContentHeart:
+		*s = ReactionContentHeart
+		return nil
+	case ReactionContentHooray:
+		*s = ReactionContentHooray
+		return nil
+	case ReactionContentRocket:
+		*s = ReactionContentRocket
+		return nil
+	case ReactionContentEyes:
+		*s = ReactionContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/reaction-rollup
 type ReactionRollup struct {
 	URL        url.URL `json:"url"`
@@ -70726,6 +77040,62 @@ const (
 	ReactionsCreateForCommitCommentReqContentEyes     ReactionsCreateForCommitCommentReqContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForCommitCommentReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForCommitCommentReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForCommitCommentReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForCommitCommentReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForCommitCommentReqContent(data) {
+	case ReactionsCreateForCommitCommentReqContentPlus1:
+		*s = ReactionsCreateForCommitCommentReqContentPlus1
+		return nil
+	case ReactionsCreateForCommitCommentReqContentMinus1:
+		*s = ReactionsCreateForCommitCommentReqContentMinus1
+		return nil
+	case ReactionsCreateForCommitCommentReqContentLaugh:
+		*s = ReactionsCreateForCommitCommentReqContentLaugh
+		return nil
+	case ReactionsCreateForCommitCommentReqContentConfused:
+		*s = ReactionsCreateForCommitCommentReqContentConfused
+		return nil
+	case ReactionsCreateForCommitCommentReqContentHeart:
+		*s = ReactionsCreateForCommitCommentReqContentHeart
+		return nil
+	case ReactionsCreateForCommitCommentReqContentHooray:
+		*s = ReactionsCreateForCommitCommentReqContentHooray
+		return nil
+	case ReactionsCreateForCommitCommentReqContentRocket:
+		*s = ReactionsCreateForCommitCommentReqContentRocket
+		return nil
+	case ReactionsCreateForCommitCommentReqContentEyes:
+		*s = ReactionsCreateForCommitCommentReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReactionsCreateForIssueApplicationJSONCreated Reaction
 
 func (*ReactionsCreateForIssueApplicationJSONCreated) reactionsCreateForIssueRes() {}
@@ -70773,6 +77143,62 @@ const (
 	ReactionsCreateForIssueCommentReqContentEyes     ReactionsCreateForIssueCommentReqContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForIssueCommentReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForIssueCommentReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForIssueCommentReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForIssueCommentReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForIssueCommentReqContent(data) {
+	case ReactionsCreateForIssueCommentReqContentPlus1:
+		*s = ReactionsCreateForIssueCommentReqContentPlus1
+		return nil
+	case ReactionsCreateForIssueCommentReqContentMinus1:
+		*s = ReactionsCreateForIssueCommentReqContentMinus1
+		return nil
+	case ReactionsCreateForIssueCommentReqContentLaugh:
+		*s = ReactionsCreateForIssueCommentReqContentLaugh
+		return nil
+	case ReactionsCreateForIssueCommentReqContentConfused:
+		*s = ReactionsCreateForIssueCommentReqContentConfused
+		return nil
+	case ReactionsCreateForIssueCommentReqContentHeart:
+		*s = ReactionsCreateForIssueCommentReqContentHeart
+		return nil
+	case ReactionsCreateForIssueCommentReqContentHooray:
+		*s = ReactionsCreateForIssueCommentReqContentHooray
+		return nil
+	case ReactionsCreateForIssueCommentReqContentRocket:
+		*s = ReactionsCreateForIssueCommentReqContentRocket
+		return nil
+	case ReactionsCreateForIssueCommentReqContentEyes:
+		*s = ReactionsCreateForIssueCommentReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReactionsCreateForIssueReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
 	// issue.
@@ -70803,6 +77229,62 @@ const (
 	ReactionsCreateForIssueReqContentRocket   ReactionsCreateForIssueReqContent = "rocket"
 	ReactionsCreateForIssueReqContentEyes     ReactionsCreateForIssueReqContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForIssueReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForIssueReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForIssueReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForIssueReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForIssueReqContent(data) {
+	case ReactionsCreateForIssueReqContentPlus1:
+		*s = ReactionsCreateForIssueReqContentPlus1
+		return nil
+	case ReactionsCreateForIssueReqContentMinus1:
+		*s = ReactionsCreateForIssueReqContentMinus1
+		return nil
+	case ReactionsCreateForIssueReqContentLaugh:
+		*s = ReactionsCreateForIssueReqContentLaugh
+		return nil
+	case ReactionsCreateForIssueReqContentConfused:
+		*s = ReactionsCreateForIssueReqContentConfused
+		return nil
+	case ReactionsCreateForIssueReqContentHeart:
+		*s = ReactionsCreateForIssueReqContentHeart
+		return nil
+	case ReactionsCreateForIssueReqContentHooray:
+		*s = ReactionsCreateForIssueReqContentHooray
+		return nil
+	case ReactionsCreateForIssueReqContentRocket:
+		*s = ReactionsCreateForIssueReqContentRocket
+		return nil
+	case ReactionsCreateForIssueReqContentEyes:
+		*s = ReactionsCreateForIssueReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated Reaction
 
@@ -70845,6 +77327,62 @@ const (
 	ReactionsCreateForPullRequestReviewCommentReqContentEyes     ReactionsCreateForPullRequestReviewCommentReqContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForPullRequestReviewCommentReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForPullRequestReviewCommentReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForPullRequestReviewCommentReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForPullRequestReviewCommentReqContent(data) {
+	case ReactionsCreateForPullRequestReviewCommentReqContentPlus1:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentPlus1
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentMinus1:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentMinus1
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentLaugh:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentLaugh
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentConfused:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentConfused
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentHeart:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentHeart
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentHooray:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentHooray
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentRocket:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentRocket
+		return nil
+	case ReactionsCreateForPullRequestReviewCommentReqContentEyes:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReactionsCreateForReleaseApplicationJSONCreated Reaction
 
 func (*ReactionsCreateForReleaseApplicationJSONCreated) reactionsCreateForReleaseRes() {}
@@ -70881,6 +77419,52 @@ const (
 	ReactionsCreateForReleaseReqContentRocket ReactionsCreateForReleaseReqContent = "rocket"
 	ReactionsCreateForReleaseReqContentEyes   ReactionsCreateForReleaseReqContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForReleaseReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForReleaseReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForReleaseReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForReleaseReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForReleaseReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForReleaseReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForReleaseReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForReleaseReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForReleaseReqContent(data) {
+	case ReactionsCreateForReleaseReqContentPlus1:
+		*s = ReactionsCreateForReleaseReqContentPlus1
+		return nil
+	case ReactionsCreateForReleaseReqContentLaugh:
+		*s = ReactionsCreateForReleaseReqContentLaugh
+		return nil
+	case ReactionsCreateForReleaseReqContentHeart:
+		*s = ReactionsCreateForReleaseReqContentHeart
+		return nil
+	case ReactionsCreateForReleaseReqContentHooray:
+		*s = ReactionsCreateForReleaseReqContentHooray
+		return nil
+	case ReactionsCreateForReleaseReqContentRocket:
+		*s = ReactionsCreateForReleaseReqContentRocket
+		return nil
+	case ReactionsCreateForReleaseReqContentEyes:
+		*s = ReactionsCreateForReleaseReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated Reaction
 
@@ -70923,6 +77507,62 @@ const (
 	ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes     ReactionsCreateForTeamDiscussionCommentInOrgReqContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForTeamDiscussionCommentInOrgReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForTeamDiscussionCommentInOrgReqContent(data) {
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentPlus1
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentMinus1
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentLaugh
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentConfused
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentHeart
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentHooray
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentRocket
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReactionsCreateForTeamDiscussionCommentLegacyReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
 	// team discussion comment.
@@ -70953,6 +77593,62 @@ const (
 	ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket   ReactionsCreateForTeamDiscussionCommentLegacyReqContent = "rocket"
 	ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes     ReactionsCreateForTeamDiscussionCommentLegacyReqContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForTeamDiscussionCommentLegacyReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForTeamDiscussionCommentLegacyReqContent(data) {
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentPlus1
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentMinus1
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentLaugh
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentConfused
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentHeart
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentHooray
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket
+		return nil
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated Reaction
 
@@ -70995,6 +77691,62 @@ const (
 	ReactionsCreateForTeamDiscussionInOrgReqContentEyes     ReactionsCreateForTeamDiscussionInOrgReqContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForTeamDiscussionInOrgReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForTeamDiscussionInOrgReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForTeamDiscussionInOrgReqContent(data) {
+	case ReactionsCreateForTeamDiscussionInOrgReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentPlus1
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentMinus1
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentLaugh
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentConfused
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentHeart
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentHooray
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentRocket
+		return nil
+	case ReactionsCreateForTeamDiscussionInOrgReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReactionsCreateForTeamDiscussionLegacyReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
 	// team discussion.
@@ -71025,6 +77777,62 @@ const (
 	ReactionsCreateForTeamDiscussionLegacyReqContentRocket   ReactionsCreateForTeamDiscussionLegacyReqContent = "rocket"
 	ReactionsCreateForTeamDiscussionLegacyReqContentEyes     ReactionsCreateForTeamDiscussionLegacyReqContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsCreateForTeamDiscussionLegacyReqContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsCreateForTeamDiscussionLegacyReqContentPlus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentMinus1:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentLaugh:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentConfused:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentHeart:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentHooray:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentRocket:
+		return []byte(s), nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) UnmarshalText(data []byte) error {
+	switch ReactionsCreateForTeamDiscussionLegacyReqContent(data) {
+	case ReactionsCreateForTeamDiscussionLegacyReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentPlus1
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentMinus1
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentLaugh
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentConfused
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentHeart
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentHooray
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentRocket
+		return nil
+	case ReactionsCreateForTeamDiscussionLegacyReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReactionsDeleteForCommitCommentNoContent is response for ReactionsDeleteForCommitComment operation.
 type ReactionsDeleteForCommitCommentNoContent struct{}
@@ -71073,6 +77881,62 @@ const (
 	ReactionsListForCommitCommentContentRocket   ReactionsListForCommitCommentContent = "rocket"
 	ReactionsListForCommitCommentContentEyes     ReactionsListForCommitCommentContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForCommitCommentContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForCommitCommentContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentConfused:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentHeart:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentHooray:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentRocket:
+		return []byte(s), nil
+	case ReactionsListForCommitCommentContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForCommitCommentContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForCommitCommentContent(data) {
+	case ReactionsListForCommitCommentContentPlus1:
+		*s = ReactionsListForCommitCommentContentPlus1
+		return nil
+	case ReactionsListForCommitCommentContentMinus1:
+		*s = ReactionsListForCommitCommentContentMinus1
+		return nil
+	case ReactionsListForCommitCommentContentLaugh:
+		*s = ReactionsListForCommitCommentContentLaugh
+		return nil
+	case ReactionsListForCommitCommentContentConfused:
+		*s = ReactionsListForCommitCommentContentConfused
+		return nil
+	case ReactionsListForCommitCommentContentHeart:
+		*s = ReactionsListForCommitCommentContentHeart
+		return nil
+	case ReactionsListForCommitCommentContentHooray:
+		*s = ReactionsListForCommitCommentContentHooray
+		return nil
+	case ReactionsListForCommitCommentContentRocket:
+		*s = ReactionsListForCommitCommentContentRocket
+		return nil
+	case ReactionsListForCommitCommentContentEyes:
+		*s = ReactionsListForCommitCommentContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReactionsListForCommitCommentOKHeaders wraps []Reaction with response headers.
 type ReactionsListForCommitCommentOKHeaders struct {
@@ -71123,6 +77987,62 @@ const (
 	ReactionsListForIssueCommentContentEyes     ReactionsListForIssueCommentContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForIssueCommentContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForIssueCommentContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentConfused:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentHeart:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentHooray:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentRocket:
+		return []byte(s), nil
+	case ReactionsListForIssueCommentContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForIssueCommentContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForIssueCommentContent(data) {
+	case ReactionsListForIssueCommentContentPlus1:
+		*s = ReactionsListForIssueCommentContentPlus1
+		return nil
+	case ReactionsListForIssueCommentContentMinus1:
+		*s = ReactionsListForIssueCommentContentMinus1
+		return nil
+	case ReactionsListForIssueCommentContentLaugh:
+		*s = ReactionsListForIssueCommentContentLaugh
+		return nil
+	case ReactionsListForIssueCommentContentConfused:
+		*s = ReactionsListForIssueCommentContentConfused
+		return nil
+	case ReactionsListForIssueCommentContentHeart:
+		*s = ReactionsListForIssueCommentContentHeart
+		return nil
+	case ReactionsListForIssueCommentContentHooray:
+		*s = ReactionsListForIssueCommentContentHooray
+		return nil
+	case ReactionsListForIssueCommentContentRocket:
+		*s = ReactionsListForIssueCommentContentRocket
+		return nil
+	case ReactionsListForIssueCommentContentEyes:
+		*s = ReactionsListForIssueCommentContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ReactionsListForIssueCommentOKHeaders wraps []Reaction with response headers.
 type ReactionsListForIssueCommentOKHeaders struct {
 	Link     OptString
@@ -71164,6 +78084,62 @@ const (
 	ReactionsListForIssueContentEyes     ReactionsListForIssueContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForIssueContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForIssueContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForIssueContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForIssueContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForIssueContentConfused:
+		return []byte(s), nil
+	case ReactionsListForIssueContentHeart:
+		return []byte(s), nil
+	case ReactionsListForIssueContentHooray:
+		return []byte(s), nil
+	case ReactionsListForIssueContentRocket:
+		return []byte(s), nil
+	case ReactionsListForIssueContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForIssueContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForIssueContent(data) {
+	case ReactionsListForIssueContentPlus1:
+		*s = ReactionsListForIssueContentPlus1
+		return nil
+	case ReactionsListForIssueContentMinus1:
+		*s = ReactionsListForIssueContentMinus1
+		return nil
+	case ReactionsListForIssueContentLaugh:
+		*s = ReactionsListForIssueContentLaugh
+		return nil
+	case ReactionsListForIssueContentConfused:
+		*s = ReactionsListForIssueContentConfused
+		return nil
+	case ReactionsListForIssueContentHeart:
+		*s = ReactionsListForIssueContentHeart
+		return nil
+	case ReactionsListForIssueContentHooray:
+		*s = ReactionsListForIssueContentHooray
+		return nil
+	case ReactionsListForIssueContentRocket:
+		*s = ReactionsListForIssueContentRocket
+		return nil
+	case ReactionsListForIssueContentEyes:
+		*s = ReactionsListForIssueContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ReactionsListForIssueOKHeaders wraps []Reaction with response headers.
 type ReactionsListForIssueOKHeaders struct {
 	Link     OptString
@@ -71204,6 +78180,62 @@ const (
 	ReactionsListForPullRequestReviewCommentContentRocket   ReactionsListForPullRequestReviewCommentContent = "rocket"
 	ReactionsListForPullRequestReviewCommentContentEyes     ReactionsListForPullRequestReviewCommentContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForPullRequestReviewCommentContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForPullRequestReviewCommentContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentConfused:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentHeart:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentHooray:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentRocket:
+		return []byte(s), nil
+	case ReactionsListForPullRequestReviewCommentContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForPullRequestReviewCommentContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForPullRequestReviewCommentContent(data) {
+	case ReactionsListForPullRequestReviewCommentContentPlus1:
+		*s = ReactionsListForPullRequestReviewCommentContentPlus1
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentMinus1:
+		*s = ReactionsListForPullRequestReviewCommentContentMinus1
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentLaugh:
+		*s = ReactionsListForPullRequestReviewCommentContentLaugh
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentConfused:
+		*s = ReactionsListForPullRequestReviewCommentContentConfused
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentHeart:
+		*s = ReactionsListForPullRequestReviewCommentContentHeart
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentHooray:
+		*s = ReactionsListForPullRequestReviewCommentContentHooray
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentRocket:
+		*s = ReactionsListForPullRequestReviewCommentContentRocket
+		return nil
+	case ReactionsListForPullRequestReviewCommentContentEyes:
+		*s = ReactionsListForPullRequestReviewCommentContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReactionsListForPullRequestReviewCommentOKHeaders wraps []Reaction with response headers.
 type ReactionsListForPullRequestReviewCommentOKHeaders struct {
@@ -71247,6 +78279,62 @@ const (
 	ReactionsListForTeamDiscussionCommentInOrgContentEyes     ReactionsListForTeamDiscussionCommentInOrgContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForTeamDiscussionCommentInOrgContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForTeamDiscussionCommentInOrgContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentConfused:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentHeart:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentHooray:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentRocket:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForTeamDiscussionCommentInOrgContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForTeamDiscussionCommentInOrgContent(data) {
+	case ReactionsListForTeamDiscussionCommentInOrgContentPlus1:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentPlus1
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentMinus1:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentMinus1
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentLaugh:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentLaugh
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentConfused:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentConfused
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentHeart:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentHeart
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentHooray:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentHooray
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentRocket:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentRocket
+		return nil
+	case ReactionsListForTeamDiscussionCommentInOrgContentEyes:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ReactionsListForTeamDiscussionCommentInOrgOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionCommentInOrgOKHeaders struct {
 	Link     OptString
@@ -71285,6 +78373,62 @@ const (
 	ReactionsListForTeamDiscussionCommentLegacyContentRocket   ReactionsListForTeamDiscussionCommentLegacyContent = "rocket"
 	ReactionsListForTeamDiscussionCommentLegacyContentEyes     ReactionsListForTeamDiscussionCommentLegacyContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForTeamDiscussionCommentLegacyContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForTeamDiscussionCommentLegacyContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentConfused:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentHeart:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentHooray:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentRocket:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForTeamDiscussionCommentLegacyContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForTeamDiscussionCommentLegacyContent(data) {
+	case ReactionsListForTeamDiscussionCommentLegacyContentPlus1:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentPlus1
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentMinus1:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentMinus1
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentLaugh:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentLaugh
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentConfused:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentConfused
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentHeart:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentHeart
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentHooray:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentHooray
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentRocket:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentRocket
+		return nil
+	case ReactionsListForTeamDiscussionCommentLegacyContentEyes:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReactionsListForTeamDiscussionCommentLegacyOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionCommentLegacyOKHeaders struct {
@@ -71325,6 +78469,62 @@ const (
 	ReactionsListForTeamDiscussionInOrgContentEyes     ReactionsListForTeamDiscussionInOrgContent = "eyes"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForTeamDiscussionInOrgContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForTeamDiscussionInOrgContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentConfused:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentHeart:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentHooray:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentRocket:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionInOrgContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForTeamDiscussionInOrgContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForTeamDiscussionInOrgContent(data) {
+	case ReactionsListForTeamDiscussionInOrgContentPlus1:
+		*s = ReactionsListForTeamDiscussionInOrgContentPlus1
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentMinus1:
+		*s = ReactionsListForTeamDiscussionInOrgContentMinus1
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentLaugh:
+		*s = ReactionsListForTeamDiscussionInOrgContentLaugh
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentConfused:
+		*s = ReactionsListForTeamDiscussionInOrgContentConfused
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentHeart:
+		*s = ReactionsListForTeamDiscussionInOrgContentHeart
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentHooray:
+		*s = ReactionsListForTeamDiscussionInOrgContentHooray
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentRocket:
+		*s = ReactionsListForTeamDiscussionInOrgContentRocket
+		return nil
+	case ReactionsListForTeamDiscussionInOrgContentEyes:
+		*s = ReactionsListForTeamDiscussionInOrgContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // ReactionsListForTeamDiscussionInOrgOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionInOrgOKHeaders struct {
 	Link     OptString
@@ -71363,6 +78563,62 @@ const (
 	ReactionsListForTeamDiscussionLegacyContentRocket   ReactionsListForTeamDiscussionLegacyContent = "rocket"
 	ReactionsListForTeamDiscussionLegacyContentEyes     ReactionsListForTeamDiscussionLegacyContent = "eyes"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReactionsListForTeamDiscussionLegacyContent) MarshalText() ([]byte, error) {
+	switch s {
+	case ReactionsListForTeamDiscussionLegacyContentPlus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentMinus1:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentLaugh:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentConfused:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentHeart:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentHooray:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentRocket:
+		return []byte(s), nil
+	case ReactionsListForTeamDiscussionLegacyContentEyes:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReactionsListForTeamDiscussionLegacyContent) UnmarshalText(data []byte) error {
+	switch ReactionsListForTeamDiscussionLegacyContent(data) {
+	case ReactionsListForTeamDiscussionLegacyContentPlus1:
+		*s = ReactionsListForTeamDiscussionLegacyContentPlus1
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentMinus1:
+		*s = ReactionsListForTeamDiscussionLegacyContentMinus1
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentLaugh:
+		*s = ReactionsListForTeamDiscussionLegacyContentLaugh
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentConfused:
+		*s = ReactionsListForTeamDiscussionLegacyContentConfused
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentHeart:
+		*s = ReactionsListForTeamDiscussionLegacyContentHeart
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentHooray:
+		*s = ReactionsListForTeamDiscussionLegacyContentHooray
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentRocket:
+		*s = ReactionsListForTeamDiscussionLegacyContentRocket
+		return nil
+	case ReactionsListForTeamDiscussionLegacyContentEyes:
+		*s = ReactionsListForTeamDiscussionLegacyContentEyes
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReactionsListForTeamDiscussionLegacyOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionLegacyOKHeaders struct {
@@ -71854,6 +79110,32 @@ const (
 	ReleaseAssetStateUploaded ReleaseAssetState = "uploaded"
 	ReleaseAssetStateOpen     ReleaseAssetState = "open"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReleaseAssetState) MarshalText() ([]byte, error) {
+	switch s {
+	case ReleaseAssetStateUploaded:
+		return []byte(s), nil
+	case ReleaseAssetStateOpen:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReleaseAssetState) UnmarshalText(data []byte) error {
+	switch ReleaseAssetState(data) {
+	case ReleaseAssetStateUploaded:
+		*s = ReleaseAssetStateUploaded
+		return nil
+	case ReleaseAssetStateOpen:
+		*s = ReleaseAssetStateOpen
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReleaseHeaders wraps Release with response headers.
 type ReleaseHeaders struct {
@@ -73048,6 +80330,47 @@ const (
 	ReposAddCollaboratorReqPermissionTriage   ReposAddCollaboratorReqPermission = "triage"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposAddCollaboratorReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposAddCollaboratorReqPermissionPull:
+		return []byte(s), nil
+	case ReposAddCollaboratorReqPermissionPush:
+		return []byte(s), nil
+	case ReposAddCollaboratorReqPermissionAdmin:
+		return []byte(s), nil
+	case ReposAddCollaboratorReqPermissionMaintain:
+		return []byte(s), nil
+	case ReposAddCollaboratorReqPermissionTriage:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposAddCollaboratorReqPermission) UnmarshalText(data []byte) error {
+	switch ReposAddCollaboratorReqPermission(data) {
+	case ReposAddCollaboratorReqPermissionPull:
+		*s = ReposAddCollaboratorReqPermissionPull
+		return nil
+	case ReposAddCollaboratorReqPermissionPush:
+		*s = ReposAddCollaboratorReqPermissionPush
+		return nil
+	case ReposAddCollaboratorReqPermissionAdmin:
+		*s = ReposAddCollaboratorReqPermissionAdmin
+		return nil
+	case ReposAddCollaboratorReqPermissionMaintain:
+		*s = ReposAddCollaboratorReqPermissionMaintain
+		return nil
+	case ReposAddCollaboratorReqPermissionTriage:
+		*s = ReposAddCollaboratorReqPermissionTriage
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposAddStatusCheckContextsApplicationJSONForbidden BasicError
 
 func (*ReposAddStatusCheckContextsApplicationJSONForbidden) reposAddStatusCheckContextsRes() {}
@@ -73490,6 +80813,42 @@ const (
 	ReposCreateCommitStatusReqStateSuccess ReposCreateCommitStatusReqState = "success"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposCreateCommitStatusReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposCreateCommitStatusReqStateError:
+		return []byte(s), nil
+	case ReposCreateCommitStatusReqStateFailure:
+		return []byte(s), nil
+	case ReposCreateCommitStatusReqStatePending:
+		return []byte(s), nil
+	case ReposCreateCommitStatusReqStateSuccess:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposCreateCommitStatusReqState) UnmarshalText(data []byte) error {
+	switch ReposCreateCommitStatusReqState(data) {
+	case ReposCreateCommitStatusReqStateError:
+		*s = ReposCreateCommitStatusReqStateError
+		return nil
+	case ReposCreateCommitStatusReqStateFailure:
+		*s = ReposCreateCommitStatusReqStateFailure
+		return nil
+	case ReposCreateCommitStatusReqStatePending:
+		*s = ReposCreateCommitStatusReqStatePending
+		return nil
+	case ReposCreateCommitStatusReqStateSuccess:
+		*s = ReposCreateCommitStatusReqStateSuccess
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposCreateDeployKeyReq struct {
 	// A name for the key.
 	Title OptString `json:"title"`
@@ -73885,6 +81244,37 @@ const (
 	ReposCreateDeploymentStatusReqEnvironmentQa         ReposCreateDeploymentStatusReqEnvironment = "qa"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposCreateDeploymentStatusReqEnvironment) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposCreateDeploymentStatusReqEnvironmentProduction:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqEnvironmentStaging:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqEnvironmentQa:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposCreateDeploymentStatusReqEnvironment) UnmarshalText(data []byte) error {
+	switch ReposCreateDeploymentStatusReqEnvironment(data) {
+	case ReposCreateDeploymentStatusReqEnvironmentProduction:
+		*s = ReposCreateDeploymentStatusReqEnvironmentProduction
+		return nil
+	case ReposCreateDeploymentStatusReqEnvironmentStaging:
+		*s = ReposCreateDeploymentStatusReqEnvironmentStaging
+		return nil
+	case ReposCreateDeploymentStatusReqEnvironmentQa:
+		*s = ReposCreateDeploymentStatusReqEnvironmentQa
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The state of the status. Can be one of `error`, `failure`, `inactive`, `in_progress`, `queued`
 // `pending`, or `success`. **Note:** To use the `inactive` state, you must provide the
 // [`application/vnd.github.ant-man-preview+json`](https://docs.github.
@@ -73904,6 +81294,57 @@ const (
 	ReposCreateDeploymentStatusReqStatePending    ReposCreateDeploymentStatusReqState = "pending"
 	ReposCreateDeploymentStatusReqStateSuccess    ReposCreateDeploymentStatusReqState = "success"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposCreateDeploymentStatusReqState) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposCreateDeploymentStatusReqStateError:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqStateFailure:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqStateInactive:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqStateInProgress:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqStateQueued:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqStatePending:
+		return []byte(s), nil
+	case ReposCreateDeploymentStatusReqStateSuccess:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposCreateDeploymentStatusReqState) UnmarshalText(data []byte) error {
+	switch ReposCreateDeploymentStatusReqState(data) {
+	case ReposCreateDeploymentStatusReqStateError:
+		*s = ReposCreateDeploymentStatusReqStateError
+		return nil
+	case ReposCreateDeploymentStatusReqStateFailure:
+		*s = ReposCreateDeploymentStatusReqStateFailure
+		return nil
+	case ReposCreateDeploymentStatusReqStateInactive:
+		*s = ReposCreateDeploymentStatusReqStateInactive
+		return nil
+	case ReposCreateDeploymentStatusReqStateInProgress:
+		*s = ReposCreateDeploymentStatusReqStateInProgress
+		return nil
+	case ReposCreateDeploymentStatusReqStateQueued:
+		*s = ReposCreateDeploymentStatusReqStateQueued
+		return nil
+	case ReposCreateDeploymentStatusReqStatePending:
+		*s = ReposCreateDeploymentStatusReqStatePending
+		return nil
+	case ReposCreateDeploymentStatusReqStateSuccess:
+		*s = ReposCreateDeploymentStatusReqStateSuccess
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReposCreateDispatchEventNoContent is response for ReposCreateDispatchEvent operation.
 type ReposCreateDispatchEventNoContent struct{}
@@ -74467,6 +81908,42 @@ const (
 	ReposCreateInOrgReqVisibilityInternal   ReposCreateInOrgReqVisibility = "internal"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposCreateInOrgReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposCreateInOrgReqVisibilityPublic:
+		return []byte(s), nil
+	case ReposCreateInOrgReqVisibilityPrivate:
+		return []byte(s), nil
+	case ReposCreateInOrgReqVisibilityVisibility:
+		return []byte(s), nil
+	case ReposCreateInOrgReqVisibilityInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposCreateInOrgReqVisibility) UnmarshalText(data []byte) error {
+	switch ReposCreateInOrgReqVisibility(data) {
+	case ReposCreateInOrgReqVisibilityPublic:
+		*s = ReposCreateInOrgReqVisibilityPublic
+		return nil
+	case ReposCreateInOrgReqVisibilityPrivate:
+		*s = ReposCreateInOrgReqVisibilityPrivate
+		return nil
+	case ReposCreateInOrgReqVisibilityVisibility:
+		*s = ReposCreateInOrgReqVisibilityVisibility
+		return nil
+	case ReposCreateInOrgReqVisibilityInternal:
+		*s = ReposCreateInOrgReqVisibilityInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposCreateOrUpdateFileContentsApplicationJSONConflict BasicError
 
 func (*ReposCreateOrUpdateFileContentsApplicationJSONConflict) reposCreateOrUpdateFileContentsRes() {}
@@ -74693,6 +82170,32 @@ const (
 	ReposCreatePagesSiteReqSourcePathSlash     ReposCreatePagesSiteReqSourcePath = "/"
 	ReposCreatePagesSiteReqSourcePathSlashDocs ReposCreatePagesSiteReqSourcePath = "/docs"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposCreatePagesSiteReqSourcePath) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposCreatePagesSiteReqSourcePathSlash:
+		return []byte(s), nil
+	case ReposCreatePagesSiteReqSourcePathSlashDocs:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposCreatePagesSiteReqSourcePath) UnmarshalText(data []byte) error {
+	switch ReposCreatePagesSiteReqSourcePath(data) {
+	case ReposCreatePagesSiteReqSourcePathSlash:
+		*s = ReposCreatePagesSiteReqSourcePathSlash
+		return nil
+	case ReposCreatePagesSiteReqSourcePathSlashDocs:
+		*s = ReposCreatePagesSiteReqSourcePathSlashDocs
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ReposCreateReleaseReq struct {
 	// The name of the tag.
@@ -75318,6 +82821,37 @@ const (
 	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposGetClonesPer) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposGetClonesPerEmpty:
+		return []byte(s), nil
+	case ReposGetClonesPerDay:
+		return []byte(s), nil
+	case ReposGetClonesPerWeek:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposGetClonesPer) UnmarshalText(data []byte) error {
+	switch ReposGetClonesPer(data) {
+	case ReposGetClonesPerEmpty:
+		*s = ReposGetClonesPerEmpty
+		return nil
+	case ReposGetClonesPerDay:
+		*s = ReposGetClonesPerDay
+		return nil
+	case ReposGetClonesPerWeek:
+		*s = ReposGetClonesPerWeek
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
 func (ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
@@ -75378,6 +82912,37 @@ const (
 	ReposGetViewsPerWeek  ReposGetViewsPer = "week"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposGetViewsPer) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposGetViewsPerEmpty:
+		return []byte(s), nil
+	case ReposGetViewsPerDay:
+		return []byte(s), nil
+	case ReposGetViewsPerWeek:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposGetViewsPer) UnmarshalText(data []byte) error {
+	switch ReposGetViewsPer(data) {
+	case ReposGetViewsPerEmpty:
+		*s = ReposGetViewsPerEmpty
+		return nil
+	case ReposGetViewsPerDay:
+		*s = ReposGetViewsPerDay
+		return nil
+	case ReposGetViewsPerWeek:
+		*s = ReposGetViewsPerWeek
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListBranchesForHeadCommitOKApplicationJSON []BranchShort
 
 func (ReposListBranchesForHeadCommitOKApplicationJSON) reposListBranchesForHeadCommitRes() {}
@@ -75417,6 +82982,37 @@ const (
 	ReposListCollaboratorsAffiliationDirect  ReposListCollaboratorsAffiliation = "direct"
 	ReposListCollaboratorsAffiliationAll     ReposListCollaboratorsAffiliation = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListCollaboratorsAffiliation) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListCollaboratorsAffiliationOutside:
+		return []byte(s), nil
+	case ReposListCollaboratorsAffiliationDirect:
+		return []byte(s), nil
+	case ReposListCollaboratorsAffiliationAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListCollaboratorsAffiliation) UnmarshalText(data []byte) error {
+	switch ReposListCollaboratorsAffiliation(data) {
+	case ReposListCollaboratorsAffiliationOutside:
+		*s = ReposListCollaboratorsAffiliationOutside
+		return nil
+	case ReposListCollaboratorsAffiliationDirect:
+		*s = ReposListCollaboratorsAffiliationDirect
+		return nil
+	case ReposListCollaboratorsAffiliationAll:
+		*s = ReposListCollaboratorsAffiliationAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReposListCollaboratorsOKHeaders wraps []Collaborator with response headers.
 type ReposListCollaboratorsOKHeaders struct {
@@ -75706,6 +83302,32 @@ const (
 	ReposListForAuthenticatedUserDirectionDesc ReposListForAuthenticatedUserDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForAuthenticatedUserDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForAuthenticatedUserDirectionAsc:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForAuthenticatedUserDirection) UnmarshalText(data []byte) error {
+	switch ReposListForAuthenticatedUserDirection(data) {
+	case ReposListForAuthenticatedUserDirectionAsc:
+		*s = ReposListForAuthenticatedUserDirectionAsc
+		return nil
+	case ReposListForAuthenticatedUserDirectionDesc:
+		*s = ReposListForAuthenticatedUserDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForAuthenticatedUserOKApplicationJSON []Repository
 
 func (ReposListForAuthenticatedUserOKApplicationJSON) reposListForAuthenticatedUserRes() {}
@@ -75719,6 +83341,42 @@ const (
 	ReposListForAuthenticatedUserSortFullName ReposListForAuthenticatedUserSort = "full_name"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForAuthenticatedUserSort) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForAuthenticatedUserSortCreated:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserSortUpdated:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserSortPushed:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserSortFullName:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForAuthenticatedUserSort) UnmarshalText(data []byte) error {
+	switch ReposListForAuthenticatedUserSort(data) {
+	case ReposListForAuthenticatedUserSortCreated:
+		*s = ReposListForAuthenticatedUserSortCreated
+		return nil
+	case ReposListForAuthenticatedUserSortUpdated:
+		*s = ReposListForAuthenticatedUserSortUpdated
+		return nil
+	case ReposListForAuthenticatedUserSortPushed:
+		*s = ReposListForAuthenticatedUserSortPushed
+		return nil
+	case ReposListForAuthenticatedUserSortFullName:
+		*s = ReposListForAuthenticatedUserSortFullName
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForAuthenticatedUserType string
 
 const (
@@ -75729,6 +83387,47 @@ const (
 	ReposListForAuthenticatedUserTypeMember  ReposListForAuthenticatedUserType = "member"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForAuthenticatedUserType) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForAuthenticatedUserTypeAll:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserTypeOwner:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserTypePublic:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserTypePrivate:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserTypeMember:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForAuthenticatedUserType) UnmarshalText(data []byte) error {
+	switch ReposListForAuthenticatedUserType(data) {
+	case ReposListForAuthenticatedUserTypeAll:
+		*s = ReposListForAuthenticatedUserTypeAll
+		return nil
+	case ReposListForAuthenticatedUserTypeOwner:
+		*s = ReposListForAuthenticatedUserTypeOwner
+		return nil
+	case ReposListForAuthenticatedUserTypePublic:
+		*s = ReposListForAuthenticatedUserTypePublic
+		return nil
+	case ReposListForAuthenticatedUserTypePrivate:
+		*s = ReposListForAuthenticatedUserTypePrivate
+		return nil
+	case ReposListForAuthenticatedUserTypeMember:
+		*s = ReposListForAuthenticatedUserTypeMember
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForAuthenticatedUserVisibility string
 
 const (
@@ -75737,12 +83436,69 @@ const (
 	ReposListForAuthenticatedUserVisibilityPrivate ReposListForAuthenticatedUserVisibility = "private"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForAuthenticatedUserVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForAuthenticatedUserVisibilityAll:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserVisibilityPublic:
+		return []byte(s), nil
+	case ReposListForAuthenticatedUserVisibilityPrivate:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForAuthenticatedUserVisibility) UnmarshalText(data []byte) error {
+	switch ReposListForAuthenticatedUserVisibility(data) {
+	case ReposListForAuthenticatedUserVisibilityAll:
+		*s = ReposListForAuthenticatedUserVisibilityAll
+		return nil
+	case ReposListForAuthenticatedUserVisibilityPublic:
+		*s = ReposListForAuthenticatedUserVisibilityPublic
+		return nil
+	case ReposListForAuthenticatedUserVisibilityPrivate:
+		*s = ReposListForAuthenticatedUserVisibilityPrivate
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForOrgDirection string
 
 const (
 	ReposListForOrgDirectionAsc  ReposListForOrgDirection = "asc"
 	ReposListForOrgDirectionDesc ReposListForOrgDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForOrgDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForOrgDirectionAsc:
+		return []byte(s), nil
+	case ReposListForOrgDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForOrgDirection) UnmarshalText(data []byte) error {
+	switch ReposListForOrgDirection(data) {
+	case ReposListForOrgDirectionAsc:
+		*s = ReposListForOrgDirectionAsc
+		return nil
+	case ReposListForOrgDirectionDesc:
+		*s = ReposListForOrgDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReposListForOrgOKHeaders wraps []MinimalRepository with response headers.
 type ReposListForOrgOKHeaders struct {
@@ -75779,6 +83535,42 @@ const (
 	ReposListForOrgSortFullName ReposListForOrgSort = "full_name"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForOrgSort) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForOrgSortCreated:
+		return []byte(s), nil
+	case ReposListForOrgSortUpdated:
+		return []byte(s), nil
+	case ReposListForOrgSortPushed:
+		return []byte(s), nil
+	case ReposListForOrgSortFullName:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForOrgSort) UnmarshalText(data []byte) error {
+	switch ReposListForOrgSort(data) {
+	case ReposListForOrgSortCreated:
+		*s = ReposListForOrgSortCreated
+		return nil
+	case ReposListForOrgSortUpdated:
+		*s = ReposListForOrgSortUpdated
+		return nil
+	case ReposListForOrgSortPushed:
+		*s = ReposListForOrgSortPushed
+		return nil
+	case ReposListForOrgSortFullName:
+		*s = ReposListForOrgSortFullName
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForOrgType string
 
 const (
@@ -75791,12 +83583,89 @@ const (
 	ReposListForOrgTypeInternal ReposListForOrgType = "internal"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForOrgType) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForOrgTypeAll:
+		return []byte(s), nil
+	case ReposListForOrgTypePublic:
+		return []byte(s), nil
+	case ReposListForOrgTypePrivate:
+		return []byte(s), nil
+	case ReposListForOrgTypeForks:
+		return []byte(s), nil
+	case ReposListForOrgTypeSources:
+		return []byte(s), nil
+	case ReposListForOrgTypeMember:
+		return []byte(s), nil
+	case ReposListForOrgTypeInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForOrgType) UnmarshalText(data []byte) error {
+	switch ReposListForOrgType(data) {
+	case ReposListForOrgTypeAll:
+		*s = ReposListForOrgTypeAll
+		return nil
+	case ReposListForOrgTypePublic:
+		*s = ReposListForOrgTypePublic
+		return nil
+	case ReposListForOrgTypePrivate:
+		*s = ReposListForOrgTypePrivate
+		return nil
+	case ReposListForOrgTypeForks:
+		*s = ReposListForOrgTypeForks
+		return nil
+	case ReposListForOrgTypeSources:
+		*s = ReposListForOrgTypeSources
+		return nil
+	case ReposListForOrgTypeMember:
+		*s = ReposListForOrgTypeMember
+		return nil
+	case ReposListForOrgTypeInternal:
+		*s = ReposListForOrgTypeInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForUserDirection string
 
 const (
 	ReposListForUserDirectionAsc  ReposListForUserDirection = "asc"
 	ReposListForUserDirectionDesc ReposListForUserDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForUserDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForUserDirectionAsc:
+		return []byte(s), nil
+	case ReposListForUserDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForUserDirection) UnmarshalText(data []byte) error {
+	switch ReposListForUserDirection(data) {
+	case ReposListForUserDirectionAsc:
+		*s = ReposListForUserDirectionAsc
+		return nil
+	case ReposListForUserDirectionDesc:
+		*s = ReposListForUserDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReposListForUserOKHeaders wraps []MinimalRepository with response headers.
 type ReposListForUserOKHeaders struct {
@@ -75833,6 +83702,42 @@ const (
 	ReposListForUserSortFullName ReposListForUserSort = "full_name"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForUserSort) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForUserSortCreated:
+		return []byte(s), nil
+	case ReposListForUserSortUpdated:
+		return []byte(s), nil
+	case ReposListForUserSortPushed:
+		return []byte(s), nil
+	case ReposListForUserSortFullName:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForUserSort) UnmarshalText(data []byte) error {
+	switch ReposListForUserSort(data) {
+	case ReposListForUserSortCreated:
+		*s = ReposListForUserSortCreated
+		return nil
+	case ReposListForUserSortUpdated:
+		*s = ReposListForUserSortUpdated
+		return nil
+	case ReposListForUserSortPushed:
+		*s = ReposListForUserSortPushed
+		return nil
+	case ReposListForUserSortFullName:
+		*s = ReposListForUserSortFullName
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposListForUserType string
 
 const (
@@ -75840,6 +83745,37 @@ const (
 	ReposListForUserTypeOwner  ReposListForUserType = "owner"
 	ReposListForUserTypeMember ReposListForUserType = "member"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForUserType) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForUserTypeAll:
+		return []byte(s), nil
+	case ReposListForUserTypeOwner:
+		return []byte(s), nil
+	case ReposListForUserTypeMember:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForUserType) UnmarshalText(data []byte) error {
+	switch ReposListForUserType(data) {
+	case ReposListForUserTypeAll:
+		*s = ReposListForUserTypeAll
+		return nil
+	case ReposListForUserTypeOwner:
+		*s = ReposListForUserTypeOwner
+		return nil
+	case ReposListForUserTypeMember:
+		*s = ReposListForUserTypeMember
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // ReposListForksOKHeaders wraps []MinimalRepository with response headers.
 type ReposListForksOKHeaders struct {
@@ -75877,6 +83813,42 @@ const (
 	ReposListForksSortStargazers ReposListForksSort = "stargazers"
 	ReposListForksSortWatchers   ReposListForksSort = "watchers"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposListForksSort) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposListForksSortNewest:
+		return []byte(s), nil
+	case ReposListForksSortOldest:
+		return []byte(s), nil
+	case ReposListForksSortStargazers:
+		return []byte(s), nil
+	case ReposListForksSortWatchers:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposListForksSort) UnmarshalText(data []byte) error {
+	switch ReposListForksSort(data) {
+	case ReposListForksSortNewest:
+		*s = ReposListForksSortNewest
+		return nil
+	case ReposListForksSortOldest:
+		*s = ReposListForksSortOldest
+		return nil
+	case ReposListForksSortStargazers:
+		*s = ReposListForksSortStargazers
+		return nil
+	case ReposListForksSortWatchers:
+		*s = ReposListForksSortWatchers
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -77359,6 +85331,47 @@ const (
 	ReposUpdateInvitationReqPermissionsAdmin    ReposUpdateInvitationReqPermissions = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposUpdateInvitationReqPermissions) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposUpdateInvitationReqPermissionsRead:
+		return []byte(s), nil
+	case ReposUpdateInvitationReqPermissionsWrite:
+		return []byte(s), nil
+	case ReposUpdateInvitationReqPermissionsMaintain:
+		return []byte(s), nil
+	case ReposUpdateInvitationReqPermissionsTriage:
+		return []byte(s), nil
+	case ReposUpdateInvitationReqPermissionsAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposUpdateInvitationReqPermissions) UnmarshalText(data []byte) error {
+	switch ReposUpdateInvitationReqPermissions(data) {
+	case ReposUpdateInvitationReqPermissionsRead:
+		*s = ReposUpdateInvitationReqPermissionsRead
+		return nil
+	case ReposUpdateInvitationReqPermissionsWrite:
+		*s = ReposUpdateInvitationReqPermissionsWrite
+		return nil
+	case ReposUpdateInvitationReqPermissionsMaintain:
+		*s = ReposUpdateInvitationReqPermissionsMaintain
+		return nil
+	case ReposUpdateInvitationReqPermissionsTriage:
+		*s = ReposUpdateInvitationReqPermissionsTriage
+		return nil
+	case ReposUpdateInvitationReqPermissionsAdmin:
+		*s = ReposUpdateInvitationReqPermissionsAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ReposUpdatePullRequestReviewProtectionReq struct {
 	// Specify which users and teams can dismiss pull request reviews. Pass an empty
 	// `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only
@@ -77890,6 +85903,42 @@ const (
 	ReposUpdateReqVisibilityVisibility ReposUpdateReqVisibility = "visibility"
 	ReposUpdateReqVisibilityInternal   ReposUpdateReqVisibility = "internal"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReposUpdateReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case ReposUpdateReqVisibilityPublic:
+		return []byte(s), nil
+	case ReposUpdateReqVisibilityPrivate:
+		return []byte(s), nil
+	case ReposUpdateReqVisibilityVisibility:
+		return []byte(s), nil
+	case ReposUpdateReqVisibilityInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReposUpdateReqVisibility) UnmarshalText(data []byte) error {
+	switch ReposUpdateReqVisibility(data) {
+	case ReposUpdateReqVisibilityPublic:
+		*s = ReposUpdateReqVisibilityPublic
+		return nil
+	case ReposUpdateReqVisibilityPrivate:
+		*s = ReposUpdateReqVisibilityPrivate
+		return nil
+	case ReposUpdateReqVisibilityVisibility:
+		*s = ReposUpdateReqVisibilityVisibility
+		return nil
+	case ReposUpdateReqVisibilityInternal:
+		*s = ReposUpdateReqVisibilityInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ReposUpdateStatusCheckProtectionReq struct {
 	// Require branches to be up to date before merging.
@@ -79343,6 +87392,47 @@ const (
 	RepositoryInvitationPermissionsTriage   RepositoryInvitationPermissions = "triage"
 	RepositoryInvitationPermissionsMaintain RepositoryInvitationPermissions = "maintain"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s RepositoryInvitationPermissions) MarshalText() ([]byte, error) {
+	switch s {
+	case RepositoryInvitationPermissionsRead:
+		return []byte(s), nil
+	case RepositoryInvitationPermissionsWrite:
+		return []byte(s), nil
+	case RepositoryInvitationPermissionsAdmin:
+		return []byte(s), nil
+	case RepositoryInvitationPermissionsTriage:
+		return []byte(s), nil
+	case RepositoryInvitationPermissionsMaintain:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *RepositoryInvitationPermissions) UnmarshalText(data []byte) error {
+	switch RepositoryInvitationPermissions(data) {
+	case RepositoryInvitationPermissionsRead:
+		*s = RepositoryInvitationPermissionsRead
+		return nil
+	case RepositoryInvitationPermissionsWrite:
+		*s = RepositoryInvitationPermissionsWrite
+		return nil
+	case RepositoryInvitationPermissionsAdmin:
+		*s = RepositoryInvitationPermissionsAdmin
+		return nil
+	case RepositoryInvitationPermissionsTriage:
+		*s = RepositoryInvitationPermissionsTriage
+		return nil
+	case RepositoryInvitationPermissionsMaintain:
+		*s = RepositoryInvitationPermissionsMaintain
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type RepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
@@ -80995,6 +89085,32 @@ const (
 	ReviewCommentSideRIGHT ReviewCommentSide = "RIGHT"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ReviewCommentSide) MarshalText() ([]byte, error) {
+	switch s {
+	case ReviewCommentSideLEFT:
+		return []byte(s), nil
+	case ReviewCommentSideRIGHT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReviewCommentSide) UnmarshalText(data []byte) error {
+	switch ReviewCommentSide(data) {
+	case ReviewCommentSideLEFT:
+		*s = ReviewCommentSideLEFT
+		return nil
+	case ReviewCommentSideRIGHT:
+		*s = ReviewCommentSideRIGHT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The side of the first line of the range for a multi-line comment.
 type ReviewCommentStartSide string
 
@@ -81002,6 +89118,32 @@ const (
 	ReviewCommentStartSideLEFT  ReviewCommentStartSide = "LEFT"
 	ReviewCommentStartSideRIGHT ReviewCommentStartSide = "RIGHT"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ReviewCommentStartSide) MarshalText() ([]byte, error) {
+	switch s {
+	case ReviewCommentStartSideLEFT:
+		return []byte(s), nil
+	case ReviewCommentStartSideRIGHT:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ReviewCommentStartSide) UnmarshalText(data []byte) error {
+	switch ReviewCommentStartSide(data) {
+	case ReviewCommentStartSideLEFT:
+		*s = ReviewCommentStartSideLEFT
+		return nil
+	case ReviewCommentStartSideRIGHT:
+		*s = ReviewCommentStartSideRIGHT
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // A self hosted runner.
 // Ref: #/components/schemas/runner
@@ -81382,6 +89524,32 @@ const (
 	RunnerLabelsItemTypeReadOnly RunnerLabelsItemType = "read-only"
 	RunnerLabelsItemTypeCustom   RunnerLabelsItemType = "custom"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s RunnerLabelsItemType) MarshalText() ([]byte, error) {
+	switch s {
+	case RunnerLabelsItemTypeReadOnly:
+		return []byte(s), nil
+	case RunnerLabelsItemTypeCustom:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *RunnerLabelsItemType) UnmarshalText(data []byte) error {
+	switch RunnerLabelsItemType(data) {
+	case RunnerLabelsItemTypeReadOnly:
+		*s = RunnerLabelsItemTypeReadOnly
+		return nil
+	case RunnerLabelsItemTypeCustom:
+		*s = RunnerLabelsItemTypeCustom
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
 
@@ -82384,11 +90552,58 @@ const (
 	SearchCodeOrderAsc  SearchCodeOrder = "asc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchCodeOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchCodeOrderDesc:
+		return []byte(s), nil
+	case SearchCodeOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchCodeOrder) UnmarshalText(data []byte) error {
+	switch SearchCodeOrder(data) {
+	case SearchCodeOrderDesc:
+		*s = SearchCodeOrderDesc
+		return nil
+	case SearchCodeOrderAsc:
+		*s = SearchCodeOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type SearchCodeSort string
 
 const (
 	SearchCodeSortIndexed SearchCodeSort = "indexed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchCodeSort) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchCodeSortIndexed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchCodeSort) UnmarshalText(data []byte) error {
+	switch SearchCodeSort(data) {
+	case SearchCodeSortIndexed:
+		*s = SearchCodeSortIndexed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type SearchCommitsOK struct {
 	TotalCount        int                      `json:"total_count"`
@@ -82435,12 +90650,64 @@ const (
 	SearchCommitsOrderAsc  SearchCommitsOrder = "asc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchCommitsOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchCommitsOrderDesc:
+		return []byte(s), nil
+	case SearchCommitsOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchCommitsOrder) UnmarshalText(data []byte) error {
+	switch SearchCommitsOrder(data) {
+	case SearchCommitsOrderDesc:
+		*s = SearchCommitsOrderDesc
+		return nil
+	case SearchCommitsOrderAsc:
+		*s = SearchCommitsOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type SearchCommitsSort string
 
 const (
 	SearchCommitsSortAuthorDate    SearchCommitsSort = "author-date"
 	SearchCommitsSortCommitterDate SearchCommitsSort = "committer-date"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchCommitsSort) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchCommitsSortAuthorDate:
+		return []byte(s), nil
+	case SearchCommitsSortCommitterDate:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchCommitsSort) UnmarshalText(data []byte) error {
+	switch SearchCommitsSort(data) {
+	case SearchCommitsSortAuthorDate:
+		*s = SearchCommitsSortAuthorDate
+		return nil
+	case SearchCommitsSortCommitterDate:
+		*s = SearchCommitsSortCommitterDate
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type SearchIssuesAndPullRequestsOK struct {
 	TotalCount        int                     `json:"total_count"`
@@ -82487,6 +90754,32 @@ const (
 	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchIssuesAndPullRequestsOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchIssuesAndPullRequestsOrderDesc:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchIssuesAndPullRequestsOrder) UnmarshalText(data []byte) error {
+	switch SearchIssuesAndPullRequestsOrder(data) {
+	case SearchIssuesAndPullRequestsOrderDesc:
+		*s = SearchIssuesAndPullRequestsOrderDesc
+		return nil
+	case SearchIssuesAndPullRequestsOrderAsc:
+		*s = SearchIssuesAndPullRequestsOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type SearchIssuesAndPullRequestsSort string
 
 const (
@@ -82502,6 +90795,77 @@ const (
 	SearchIssuesAndPullRequestsSortCreated                    SearchIssuesAndPullRequestsSort = "created"
 	SearchIssuesAndPullRequestsSortUpdated                    SearchIssuesAndPullRequestsSort = "updated"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchIssuesAndPullRequestsSort) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchIssuesAndPullRequestsSortComments:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactions:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusPlus1:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusMinus1:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusSmile:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusHeart:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusTada:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortInteractions:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortCreated:
+		return []byte(s), nil
+	case SearchIssuesAndPullRequestsSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchIssuesAndPullRequestsSort) UnmarshalText(data []byte) error {
+	switch SearchIssuesAndPullRequestsSort(data) {
+	case SearchIssuesAndPullRequestsSortComments:
+		*s = SearchIssuesAndPullRequestsSortComments
+		return nil
+	case SearchIssuesAndPullRequestsSortReactions:
+		*s = SearchIssuesAndPullRequestsSortReactions
+		return nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusPlus1:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusPlus1
+		return nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusMinus1:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusMinus1
+		return nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusSmile:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusSmile
+		return nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace
+		return nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusHeart:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusHeart
+		return nil
+	case SearchIssuesAndPullRequestsSortReactionsMinusTada:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusTada
+		return nil
+	case SearchIssuesAndPullRequestsSortInteractions:
+		*s = SearchIssuesAndPullRequestsSortInteractions
+		return nil
+	case SearchIssuesAndPullRequestsSortCreated:
+		*s = SearchIssuesAndPullRequestsSortCreated
+		return nil
+	case SearchIssuesAndPullRequestsSortUpdated:
+		*s = SearchIssuesAndPullRequestsSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type SearchLabelsApplicationJSONForbidden BasicError
 
@@ -82556,12 +90920,64 @@ const (
 	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchLabelsOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchLabelsOrderDesc:
+		return []byte(s), nil
+	case SearchLabelsOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchLabelsOrder) UnmarshalText(data []byte) error {
+	switch SearchLabelsOrder(data) {
+	case SearchLabelsOrderDesc:
+		*s = SearchLabelsOrderDesc
+		return nil
+	case SearchLabelsOrderAsc:
+		*s = SearchLabelsOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type SearchLabelsSort string
 
 const (
 	SearchLabelsSortCreated SearchLabelsSort = "created"
 	SearchLabelsSortUpdated SearchLabelsSort = "updated"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchLabelsSort) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchLabelsSortCreated:
+		return []byte(s), nil
+	case SearchLabelsSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchLabelsSort) UnmarshalText(data []byte) error {
+	switch SearchLabelsSort(data) {
+	case SearchLabelsSortCreated:
+		*s = SearchLabelsSortCreated
+		return nil
+	case SearchLabelsSortUpdated:
+		*s = SearchLabelsSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type SearchReposOK struct {
 	TotalCount        int                    `json:"total_count"`
@@ -82608,6 +91024,32 @@ const (
 	SearchReposOrderAsc  SearchReposOrder = "asc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchReposOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchReposOrderDesc:
+		return []byte(s), nil
+	case SearchReposOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchReposOrder) UnmarshalText(data []byte) error {
+	switch SearchReposOrder(data) {
+	case SearchReposOrderDesc:
+		*s = SearchReposOrderDesc
+		return nil
+	case SearchReposOrderAsc:
+		*s = SearchReposOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type SearchReposSort string
 
 const (
@@ -82616,6 +91058,42 @@ const (
 	SearchReposSortHelpWantedIssues SearchReposSort = "help-wanted-issues"
 	SearchReposSortUpdated          SearchReposSort = "updated"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchReposSort) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchReposSortStars:
+		return []byte(s), nil
+	case SearchReposSortForks:
+		return []byte(s), nil
+	case SearchReposSortHelpWantedIssues:
+		return []byte(s), nil
+	case SearchReposSortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchReposSort) UnmarshalText(data []byte) error {
+	switch SearchReposSort(data) {
+	case SearchReposSortStars:
+		*s = SearchReposSortStars
+		return nil
+	case SearchReposSortForks:
+		*s = SearchReposSortForks
+		return nil
+	case SearchReposSortHelpWantedIssues:
+		*s = SearchReposSortHelpWantedIssues
+		return nil
+	case SearchReposSortUpdated:
+		*s = SearchReposSortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type SearchResultTextMatches []SearchResultTextMatchesItem
 
@@ -82785,6 +91263,32 @@ const (
 	SearchUsersOrderAsc  SearchUsersOrder = "asc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchUsersOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchUsersOrderDesc:
+		return []byte(s), nil
+	case SearchUsersOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchUsersOrder) UnmarshalText(data []byte) error {
+	switch SearchUsersOrder(data) {
+	case SearchUsersOrderDesc:
+		*s = SearchUsersOrderDesc
+		return nil
+	case SearchUsersOrderAsc:
+		*s = SearchUsersOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type SearchUsersSort string
 
 const (
@@ -82792,6 +91296,37 @@ const (
 	SearchUsersSortRepositories SearchUsersSort = "repositories"
 	SearchUsersSortJoined       SearchUsersSort = "joined"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SearchUsersSort) MarshalText() ([]byte, error) {
+	switch s {
+	case SearchUsersSortFollowers:
+		return []byte(s), nil
+	case SearchUsersSortRepositories:
+		return []byte(s), nil
+	case SearchUsersSortJoined:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SearchUsersSort) UnmarshalText(data []byte) error {
+	switch SearchUsersSort(data) {
+	case SearchUsersSortFollowers:
+		*s = SearchUsersSortFollowers
+		return nil
+	case SearchUsersSortRepositories:
+		*s = SearchUsersSortRepositories
+		return nil
+	case SearchUsersSortJoined:
+		*s = SearchUsersSortJoined
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/secret-scanning-alert
 type SecretScanningAlert struct {
@@ -82937,6 +91472,42 @@ const (
 	SecretScanningAlertResolutionUsedInTests   SecretScanningAlertResolution = "used_in_tests"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SecretScanningAlertResolution) MarshalText() ([]byte, error) {
+	switch s {
+	case SecretScanningAlertResolutionFalsePositive:
+		return []byte(s), nil
+	case SecretScanningAlertResolutionWontFix:
+		return []byte(s), nil
+	case SecretScanningAlertResolutionRevoked:
+		return []byte(s), nil
+	case SecretScanningAlertResolutionUsedInTests:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SecretScanningAlertResolution) UnmarshalText(data []byte) error {
+	switch SecretScanningAlertResolution(data) {
+	case SecretScanningAlertResolutionFalsePositive:
+		*s = SecretScanningAlertResolutionFalsePositive
+		return nil
+	case SecretScanningAlertResolutionWontFix:
+		*s = SecretScanningAlertResolutionWontFix
+		return nil
+	case SecretScanningAlertResolutionRevoked:
+		*s = SecretScanningAlertResolutionRevoked
+		return nil
+	case SecretScanningAlertResolutionUsedInTests:
+		*s = SecretScanningAlertResolutionUsedInTests
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Sets the state of the secret scanning alert. Can be either `open` or `resolved`. You must provide
 // `resolution` when you set the state to `resolved`.
 // Ref: #/components/schemas/secret-scanning-alert-state
@@ -82946,6 +91517,32 @@ const (
 	SecretScanningAlertStateOpen     SecretScanningAlertState = "open"
 	SecretScanningAlertStateResolved SecretScanningAlertState = "resolved"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SecretScanningAlertState) MarshalText() ([]byte, error) {
+	switch s {
+	case SecretScanningAlertStateOpen:
+		return []byte(s), nil
+	case SecretScanningAlertStateResolved:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SecretScanningAlertState) UnmarshalText(data []byte) error {
+	switch SecretScanningAlertState(data) {
+	case SecretScanningAlertStateOpen:
+		*s = SecretScanningAlertStateOpen
+		return nil
+	case SecretScanningAlertStateResolved:
+		*s = SecretScanningAlertStateResolved
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // SecretScanningGetAlertNotFound is response for SecretScanningGetAlert operation.
 type SecretScanningGetAlertNotFound struct{}
@@ -82987,6 +91584,32 @@ const (
 	SecretScanningListAlertsForOrgStateResolved SecretScanningListAlertsForOrgState = "resolved"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SecretScanningListAlertsForOrgState) MarshalText() ([]byte, error) {
+	switch s {
+	case SecretScanningListAlertsForOrgStateOpen:
+		return []byte(s), nil
+	case SecretScanningListAlertsForOrgStateResolved:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SecretScanningListAlertsForOrgState) UnmarshalText(data []byte) error {
+	switch SecretScanningListAlertsForOrgState(data) {
+	case SecretScanningListAlertsForOrgStateOpen:
+		*s = SecretScanningListAlertsForOrgStateOpen
+		return nil
+	case SecretScanningListAlertsForOrgStateResolved:
+		*s = SecretScanningListAlertsForOrgStateResolved
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // SecretScanningListAlertsForRepoNotFound is response for SecretScanningListAlertsForRepo operation.
 type SecretScanningListAlertsForRepoNotFound struct{}
 
@@ -83002,6 +91625,32 @@ const (
 	SecretScanningListAlertsForRepoStateOpen     SecretScanningListAlertsForRepoState = "open"
 	SecretScanningListAlertsForRepoStateResolved SecretScanningListAlertsForRepoState = "resolved"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SecretScanningListAlertsForRepoState) MarshalText() ([]byte, error) {
+	switch s {
+	case SecretScanningListAlertsForRepoStateOpen:
+		return []byte(s), nil
+	case SecretScanningListAlertsForRepoStateResolved:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SecretScanningListAlertsForRepoState) UnmarshalText(data []byte) error {
+	switch SecretScanningListAlertsForRepoState(data) {
+	case SecretScanningListAlertsForRepoStateOpen:
+		*s = SecretScanningListAlertsForRepoStateOpen
+		return nil
+	case SecretScanningListAlertsForRepoStateResolved:
+		*s = SecretScanningListAlertsForRepoStateResolved
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // SecretScanningUpdateAlertNotFound is response for SecretScanningUpdateAlert operation.
 type SecretScanningUpdateAlertNotFound struct{}
@@ -84784,6 +93433,32 @@ const (
 	TeamFullPrivacySecret TeamFullPrivacy = "secret"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamFullPrivacy) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamFullPrivacyClosed:
+		return []byte(s), nil
+	case TeamFullPrivacySecret:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamFullPrivacy) UnmarshalText(data []byte) error {
+	switch TeamFullPrivacy(data) {
+	case TeamFullPrivacyClosed:
+		*s = TeamFullPrivacyClosed
+		return nil
+	case TeamFullPrivacySecret:
+		*s = TeamFullPrivacySecret
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Team Membership.
 // Ref: #/components/schemas/team-membership
 type TeamMembership struct {
@@ -84837,6 +93512,32 @@ const (
 	TeamMembershipRoleMaintainer TeamMembershipRole = "maintainer"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamMembershipRole) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamMembershipRoleMember:
+		return []byte(s), nil
+	case TeamMembershipRoleMaintainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamMembershipRole) UnmarshalText(data []byte) error {
+	switch TeamMembershipRole(data) {
+	case TeamMembershipRoleMember:
+		*s = TeamMembershipRoleMember
+		return nil
+	case TeamMembershipRoleMaintainer:
+		*s = TeamMembershipRoleMaintainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The state of the user's membership in the team.
 type TeamMembershipState string
 
@@ -84844,6 +93545,32 @@ const (
 	TeamMembershipStateActive  TeamMembershipState = "active"
 	TeamMembershipStatePending TeamMembershipState = "pending"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamMembershipState) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamMembershipStateActive:
+		return []byte(s), nil
+	case TeamMembershipStatePending:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamMembershipState) UnmarshalText(data []byte) error {
+	switch TeamMembershipState(data) {
+	case TeamMembershipStateActive:
+		*s = TeamMembershipStateActive
+		return nil
+	case TeamMembershipStatePending:
+		*s = TeamMembershipStatePending
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type TeamPermissions struct {
 	Pull     bool `json:"pull"`
@@ -86370,6 +95097,32 @@ const (
 	TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer TeamsAddOrUpdateMembershipForUserInOrgReqRole = "maintainer"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsAddOrUpdateMembershipForUserInOrgReqRole) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsAddOrUpdateMembershipForUserInOrgReqRoleMember:
+		return []byte(s), nil
+	case TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) UnmarshalText(data []byte) error {
+	switch TeamsAddOrUpdateMembershipForUserInOrgReqRole(data) {
+	case TeamsAddOrUpdateMembershipForUserInOrgReqRoleMember:
+		*s = TeamsAddOrUpdateMembershipForUserInOrgReqRoleMember
+		return nil
+	case TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer:
+		*s = TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity is response for TeamsAddOrUpdateMembershipForUserInOrg operation.
 type TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity struct{}
 
@@ -86410,6 +95163,32 @@ const (
 	TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember     TeamsAddOrUpdateMembershipForUserLegacyReqRole = "member"
 	TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer TeamsAddOrUpdateMembershipForUserLegacyReqRole = "maintainer"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsAddOrUpdateMembershipForUserLegacyReqRole) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember:
+		return []byte(s), nil
+	case TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) UnmarshalText(data []byte) error {
+	switch TeamsAddOrUpdateMembershipForUserLegacyReqRole(data) {
+	case TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember:
+		*s = TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember
+		return nil
+	case TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer:
+		*s = TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity is response for TeamsAddOrUpdateMembershipForUserLegacy operation.
 type TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity struct{}
@@ -86489,6 +95268,37 @@ const (
 	TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsInOrgReqPermission = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionRead:
+		return []byte(s), nil
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionWrite:
+		return []byte(s), nil
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsAddOrUpdateProjectPermissionsInOrgReqPermission(data) {
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionRead:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionRead
+		return nil
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionWrite:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionWrite
+		return nil
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type TeamsAddOrUpdateProjectPermissionsLegacyForbidden struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
@@ -86561,6 +95371,37 @@ const (
 	TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyReqPermission = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead:
+		return []byte(s), nil
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionWrite:
+		return []byte(s), nil
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsAddOrUpdateProjectPermissionsLegacyReqPermission(data) {
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead
+		return nil
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionWrite:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionWrite
+		return nil
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // TeamsAddOrUpdateRepoPermissionsInOrgNoContent is response for TeamsAddOrUpdateRepoPermissionsInOrg operation.
 type TeamsAddOrUpdateRepoPermissionsInOrgNoContent struct{}
 
@@ -86610,6 +95451,47 @@ const (
 	TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage   TeamsAddOrUpdateRepoPermissionsInOrgReqPermission = "triage"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPull:
+		return []byte(s), nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPush:
+		return []byte(s), nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionAdmin:
+		return []byte(s), nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionMaintain:
+		return []byte(s), nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsAddOrUpdateRepoPermissionsInOrgReqPermission(data) {
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPull:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPull
+		return nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPush:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPush
+		return nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionAdmin:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionAdmin
+		return nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionMaintain:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionMaintain
+		return nil
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // TeamsAddOrUpdateRepoPermissionsLegacyNoContent is response for TeamsAddOrUpdateRepoPermissionsLegacy operation.
 type TeamsAddOrUpdateRepoPermissionsLegacyNoContent struct{}
 
@@ -86648,6 +95530,37 @@ const (
 	TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush  TeamsAddOrUpdateRepoPermissionsLegacyReqPermission = "push"
 	TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin TeamsAddOrUpdateRepoPermissionsLegacyReqPermission = "admin"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPull:
+		return []byte(s), nil
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush:
+		return []byte(s), nil
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsAddOrUpdateRepoPermissionsLegacyReqPermission(data) {
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPull:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPull
+		return nil
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush
+		return nil
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // TeamsCheckPermissionsForProjectInOrgNotFound is response for TeamsCheckPermissionsForProjectInOrg operation.
 type TeamsCheckPermissionsForProjectInOrgNotFound struct{}
@@ -87054,6 +95967,37 @@ const (
 	TeamsCreateReqPermissionAdmin TeamsCreateReqPermission = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsCreateReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsCreateReqPermissionPull:
+		return []byte(s), nil
+	case TeamsCreateReqPermissionPush:
+		return []byte(s), nil
+	case TeamsCreateReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsCreateReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsCreateReqPermission(data) {
+	case TeamsCreateReqPermissionPull:
+		*s = TeamsCreateReqPermissionPull
+		return nil
+	case TeamsCreateReqPermissionPush:
+		*s = TeamsCreateReqPermissionPush
+		return nil
+	case TeamsCreateReqPermissionAdmin:
+		*s = TeamsCreateReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of privacy this team should have. The options are:
 // **For a non-nested team:**
 // \* `secret` - only visible to organization owners and members of this team.
@@ -87068,6 +96012,32 @@ const (
 	TeamsCreateReqPrivacySecret TeamsCreateReqPrivacy = "secret"
 	TeamsCreateReqPrivacyClosed TeamsCreateReqPrivacy = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsCreateReqPrivacy) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsCreateReqPrivacySecret:
+		return []byte(s), nil
+	case TeamsCreateReqPrivacyClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsCreateReqPrivacy) UnmarshalText(data []byte) error {
+	switch TeamsCreateReqPrivacy(data) {
+	case TeamsCreateReqPrivacySecret:
+		*s = TeamsCreateReqPrivacySecret
+		return nil
+	case TeamsCreateReqPrivacyClosed:
+		*s = TeamsCreateReqPrivacyClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // TeamsDeleteDiscussionCommentInOrgNoContent is response for TeamsDeleteDiscussionCommentInOrg operation.
 type TeamsDeleteDiscussionCommentInOrgNoContent struct{}
@@ -87173,6 +96143,32 @@ const (
 	TeamsListDiscussionCommentsInOrgDirectionDesc TeamsListDiscussionCommentsInOrgDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsListDiscussionCommentsInOrgDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsListDiscussionCommentsInOrgDirectionAsc:
+		return []byte(s), nil
+	case TeamsListDiscussionCommentsInOrgDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsListDiscussionCommentsInOrgDirection) UnmarshalText(data []byte) error {
+	switch TeamsListDiscussionCommentsInOrgDirection(data) {
+	case TeamsListDiscussionCommentsInOrgDirectionAsc:
+		*s = TeamsListDiscussionCommentsInOrgDirectionAsc
+		return nil
+	case TeamsListDiscussionCommentsInOrgDirectionDesc:
+		*s = TeamsListDiscussionCommentsInOrgDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // TeamsListDiscussionCommentsInOrgOKHeaders wraps []TeamDiscussionComment with response headers.
 type TeamsListDiscussionCommentsInOrgOKHeaders struct {
 	Link     OptString
@@ -87205,6 +96201,32 @@ const (
 	TeamsListDiscussionCommentsLegacyDirectionAsc  TeamsListDiscussionCommentsLegacyDirection = "asc"
 	TeamsListDiscussionCommentsLegacyDirectionDesc TeamsListDiscussionCommentsLegacyDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsListDiscussionCommentsLegacyDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsListDiscussionCommentsLegacyDirectionAsc:
+		return []byte(s), nil
+	case TeamsListDiscussionCommentsLegacyDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsListDiscussionCommentsLegacyDirection) UnmarshalText(data []byte) error {
+	switch TeamsListDiscussionCommentsLegacyDirection(data) {
+	case TeamsListDiscussionCommentsLegacyDirectionAsc:
+		*s = TeamsListDiscussionCommentsLegacyDirectionAsc
+		return nil
+	case TeamsListDiscussionCommentsLegacyDirectionDesc:
+		*s = TeamsListDiscussionCommentsLegacyDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // TeamsListDiscussionCommentsLegacyOKHeaders wraps []TeamDiscussionComment with response headers.
 type TeamsListDiscussionCommentsLegacyOKHeaders struct {
@@ -87239,6 +96261,32 @@ const (
 	TeamsListDiscussionsInOrgDirectionDesc TeamsListDiscussionsInOrgDirection = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsListDiscussionsInOrgDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsListDiscussionsInOrgDirectionAsc:
+		return []byte(s), nil
+	case TeamsListDiscussionsInOrgDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsListDiscussionsInOrgDirection) UnmarshalText(data []byte) error {
+	switch TeamsListDiscussionsInOrgDirection(data) {
+	case TeamsListDiscussionsInOrgDirectionAsc:
+		*s = TeamsListDiscussionsInOrgDirectionAsc
+		return nil
+	case TeamsListDiscussionsInOrgDirectionDesc:
+		*s = TeamsListDiscussionsInOrgDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // TeamsListDiscussionsInOrgOKHeaders wraps []TeamDiscussion with response headers.
 type TeamsListDiscussionsInOrgOKHeaders struct {
 	Link     OptString
@@ -87271,6 +96319,32 @@ const (
 	TeamsListDiscussionsLegacyDirectionAsc  TeamsListDiscussionsLegacyDirection = "asc"
 	TeamsListDiscussionsLegacyDirectionDesc TeamsListDiscussionsLegacyDirection = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsListDiscussionsLegacyDirection) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsListDiscussionsLegacyDirectionAsc:
+		return []byte(s), nil
+	case TeamsListDiscussionsLegacyDirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsListDiscussionsLegacyDirection) UnmarshalText(data []byte) error {
+	switch TeamsListDiscussionsLegacyDirection(data) {
+	case TeamsListDiscussionsLegacyDirectionAsc:
+		*s = TeamsListDiscussionsLegacyDirectionAsc
+		return nil
+	case TeamsListDiscussionsLegacyDirectionDesc:
+		*s = TeamsListDiscussionsLegacyDirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // TeamsListDiscussionsLegacyOKHeaders wraps []TeamDiscussion with response headers.
 type TeamsListDiscussionsLegacyOKHeaders struct {
@@ -87376,6 +96450,37 @@ const (
 	TeamsListMembersInOrgRoleAll        TeamsListMembersInOrgRole = "all"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsListMembersInOrgRole) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsListMembersInOrgRoleMember:
+		return []byte(s), nil
+	case TeamsListMembersInOrgRoleMaintainer:
+		return []byte(s), nil
+	case TeamsListMembersInOrgRoleAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsListMembersInOrgRole) UnmarshalText(data []byte) error {
+	switch TeamsListMembersInOrgRole(data) {
+	case TeamsListMembersInOrgRoleMember:
+		*s = TeamsListMembersInOrgRoleMember
+		return nil
+	case TeamsListMembersInOrgRoleMaintainer:
+		*s = TeamsListMembersInOrgRoleMaintainer
+		return nil
+	case TeamsListMembersInOrgRoleAll:
+		*s = TeamsListMembersInOrgRoleAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // TeamsListMembersLegacyOKHeaders wraps []SimpleUser with response headers.
 type TeamsListMembersLegacyOKHeaders struct {
 	Link     OptString
@@ -87411,6 +96516,37 @@ const (
 	TeamsListMembersLegacyRoleMaintainer TeamsListMembersLegacyRole = "maintainer"
 	TeamsListMembersLegacyRoleAll        TeamsListMembersLegacyRole = "all"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsListMembersLegacyRole) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsListMembersLegacyRoleMember:
+		return []byte(s), nil
+	case TeamsListMembersLegacyRoleMaintainer:
+		return []byte(s), nil
+	case TeamsListMembersLegacyRoleAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsListMembersLegacyRole) UnmarshalText(data []byte) error {
+	switch TeamsListMembersLegacyRole(data) {
+	case TeamsListMembersLegacyRoleMember:
+		*s = TeamsListMembersLegacyRoleMember
+		return nil
+	case TeamsListMembersLegacyRoleMaintainer:
+		*s = TeamsListMembersLegacyRoleMaintainer
+		return nil
+	case TeamsListMembersLegacyRoleAll:
+		*s = TeamsListMembersLegacyRoleAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // TeamsListOKHeaders wraps []Team with response headers.
 type TeamsListOKHeaders struct {
@@ -87815,6 +96951,37 @@ const (
 	TeamsUpdateInOrgReqPermissionAdmin TeamsUpdateInOrgReqPermission = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsUpdateInOrgReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsUpdateInOrgReqPermissionPull:
+		return []byte(s), nil
+	case TeamsUpdateInOrgReqPermissionPush:
+		return []byte(s), nil
+	case TeamsUpdateInOrgReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsUpdateInOrgReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsUpdateInOrgReqPermission(data) {
+	case TeamsUpdateInOrgReqPermissionPull:
+		*s = TeamsUpdateInOrgReqPermissionPull
+		return nil
+	case TeamsUpdateInOrgReqPermissionPush:
+		*s = TeamsUpdateInOrgReqPermissionPush
+		return nil
+	case TeamsUpdateInOrgReqPermissionAdmin:
+		*s = TeamsUpdateInOrgReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of privacy this team should have. Editing teams without specifying this parameter leaves
 // `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The
 // options are:
@@ -87829,6 +96996,32 @@ const (
 	TeamsUpdateInOrgReqPrivacySecret TeamsUpdateInOrgReqPrivacy = "secret"
 	TeamsUpdateInOrgReqPrivacyClosed TeamsUpdateInOrgReqPrivacy = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsUpdateInOrgReqPrivacy) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsUpdateInOrgReqPrivacySecret:
+		return []byte(s), nil
+	case TeamsUpdateInOrgReqPrivacyClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsUpdateInOrgReqPrivacy) UnmarshalText(data []byte) error {
+	switch TeamsUpdateInOrgReqPrivacy(data) {
+	case TeamsUpdateInOrgReqPrivacySecret:
+		*s = TeamsUpdateInOrgReqPrivacySecret
+		return nil
+	case TeamsUpdateInOrgReqPrivacyClosed:
+		*s = TeamsUpdateInOrgReqPrivacyClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type TeamsUpdateLegacyApplicationJSONCreated TeamFull
 
@@ -87932,6 +97125,37 @@ const (
 	TeamsUpdateLegacyReqPermissionAdmin TeamsUpdateLegacyReqPermission = "admin"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsUpdateLegacyReqPermission) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsUpdateLegacyReqPermissionPull:
+		return []byte(s), nil
+	case TeamsUpdateLegacyReqPermissionPush:
+		return []byte(s), nil
+	case TeamsUpdateLegacyReqPermissionAdmin:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsUpdateLegacyReqPermission) UnmarshalText(data []byte) error {
+	switch TeamsUpdateLegacyReqPermission(data) {
+	case TeamsUpdateLegacyReqPermissionPull:
+		*s = TeamsUpdateLegacyReqPermissionPull
+		return nil
+	case TeamsUpdateLegacyReqPermissionPush:
+		*s = TeamsUpdateLegacyReqPermissionPush
+		return nil
+	case TeamsUpdateLegacyReqPermissionAdmin:
+		*s = TeamsUpdateLegacyReqPermissionAdmin
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The level of privacy this team should have. Editing teams without specifying this parameter leaves
 // `privacy` intact. The options are:
 // **For a non-nested team:**
@@ -87945,6 +97169,32 @@ const (
 	TeamsUpdateLegacyReqPrivacySecret TeamsUpdateLegacyReqPrivacy = "secret"
 	TeamsUpdateLegacyReqPrivacyClosed TeamsUpdateLegacyReqPrivacy = "closed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TeamsUpdateLegacyReqPrivacy) MarshalText() ([]byte, error) {
+	switch s {
+	case TeamsUpdateLegacyReqPrivacySecret:
+		return []byte(s), nil
+	case TeamsUpdateLegacyReqPrivacyClosed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TeamsUpdateLegacyReqPrivacy) UnmarshalText(data []byte) error {
+	switch TeamsUpdateLegacyReqPrivacy(data) {
+	case TeamsUpdateLegacyReqPrivacySecret:
+		*s = TeamsUpdateLegacyReqPrivacySecret
+		return nil
+	case TeamsUpdateLegacyReqPrivacyClosed:
+		*s = TeamsUpdateLegacyReqPrivacyClosed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Thread.
 // Ref: #/components/schemas/thread
@@ -89626,6 +98876,42 @@ const (
 	UsersGetContextForUserSubjectTypePullRequest  UsersGetContextForUserSubjectType = "pull_request"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s UsersGetContextForUserSubjectType) MarshalText() ([]byte, error) {
+	switch s {
+	case UsersGetContextForUserSubjectTypeOrganization:
+		return []byte(s), nil
+	case UsersGetContextForUserSubjectTypeRepository:
+		return []byte(s), nil
+	case UsersGetContextForUserSubjectTypeIssue:
+		return []byte(s), nil
+	case UsersGetContextForUserSubjectTypePullRequest:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *UsersGetContextForUserSubjectType) UnmarshalText(data []byte) error {
+	switch UsersGetContextForUserSubjectType(data) {
+	case UsersGetContextForUserSubjectTypeOrganization:
+		*s = UsersGetContextForUserSubjectTypeOrganization
+		return nil
+	case UsersGetContextForUserSubjectTypeRepository:
+		*s = UsersGetContextForUserSubjectTypeRepository
+		return nil
+	case UsersGetContextForUserSubjectTypeIssue:
+		*s = UsersGetContextForUserSubjectTypeIssue
+		return nil
+	case UsersGetContextForUserSubjectTypePullRequest:
+		*s = UsersGetContextForUserSubjectTypePullRequest
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
 
 func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedRes() {}
@@ -90093,6 +99379,32 @@ const (
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic  UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "public"
 	UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility = "private"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) MarshalText() ([]byte, error) {
+	switch s {
+	case UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic:
+		return []byte(s), nil
+	case UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) UnmarshalText(data []byte) error {
+	switch UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility(data) {
+	case UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic:
+		*s = UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic
+		return nil
+	case UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate:
+		*s = UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type UsersUnblockApplicationJSONForbidden BasicError
 
@@ -91505,3 +100817,44 @@ const (
 	WorkflowStateDisabledInactivity WorkflowState = "disabled_inactivity"
 	WorkflowStateDisabledManually   WorkflowState = "disabled_manually"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s WorkflowState) MarshalText() ([]byte, error) {
+	switch s {
+	case WorkflowStateActive:
+		return []byte(s), nil
+	case WorkflowStateDeleted:
+		return []byte(s), nil
+	case WorkflowStateDisabledFork:
+		return []byte(s), nil
+	case WorkflowStateDisabledInactivity:
+		return []byte(s), nil
+	case WorkflowStateDisabledManually:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *WorkflowState) UnmarshalText(data []byte) error {
+	switch WorkflowState(data) {
+	case WorkflowStateActive:
+		*s = WorkflowStateActive
+		return nil
+	case WorkflowStateDeleted:
+		*s = WorkflowStateDeleted
+		return nil
+	case WorkflowStateDisabledFork:
+		*s = WorkflowStateDisabledFork
+		return nil
+	case WorkflowStateDisabledInactivity:
+		*s = WorkflowStateDisabledInactivity
+		return nil
+	case WorkflowStateDisabledManually:
+		*s = WorkflowStateDisabledManually
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}

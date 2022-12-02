@@ -2,6 +2,10 @@
 
 package api
 
+import (
+	"github.com/go-faster/errors"
+)
+
 // Ref: #/components/schemas/PascalExceptionStrat
 type PascalExceptionStrat string
 
@@ -9,6 +13,32 @@ const (
 	PascalExceptionStrat1      PascalExceptionStrat = "1"
 	PascalExceptionStratMinus2 PascalExceptionStrat = "-2"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PascalExceptionStrat) MarshalText() ([]byte, error) {
+	switch s {
+	case PascalExceptionStrat1:
+		return []byte(s), nil
+	case PascalExceptionStratMinus2:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PascalExceptionStrat) UnmarshalText(data []byte) error {
+	switch PascalExceptionStrat(data) {
+	case PascalExceptionStrat1:
+		*s = PascalExceptionStrat1
+		return nil
+	case PascalExceptionStratMinus2:
+		*s = PascalExceptionStratMinus2
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/PascalSpecialStrat
 type PascalSpecialStrat string
@@ -18,6 +48,32 @@ const (
 	PascalSpecialStrat2Minus2 PascalSpecialStrat = "2-2"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PascalSpecialStrat) MarshalText() ([]byte, error) {
+	switch s {
+	case PascalSpecialStrat2Plus2:
+		return []byte(s), nil
+	case PascalSpecialStrat2Minus2:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PascalSpecialStrat) UnmarshalText(data []byte) error {
+	switch PascalSpecialStrat(data) {
+	case PascalSpecialStrat2Plus2:
+		*s = PascalSpecialStrat2Plus2
+		return nil
+	case PascalSpecialStrat2Minus2:
+		*s = PascalSpecialStrat2Minus2
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/PascalStrat
 type PascalStrat string
 
@@ -25,6 +81,32 @@ const (
 	PascalStratInSync    PascalStrat = "in-sync"
 	PascalStratOutOfSync PascalStrat = "out-of-sync"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PascalStrat) MarshalText() ([]byte, error) {
+	switch s {
+	case PascalStratInSync:
+		return []byte(s), nil
+	case PascalStratOutOfSync:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PascalStrat) UnmarshalText(data []byte) error {
+	switch PascalStrat(data) {
+	case PascalStratInSync:
+		*s = PascalStratInSync
+		return nil
+	case PascalStratOutOfSync:
+		*s = PascalStratOutOfSync
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 type ProbeLivenessOK struct {
 	VeryBadEnum          VeryBadEnum          `json:"VeryBadEnum"`
@@ -184,3 +266,549 @@ const (
 	VeryBadEnum_104 VeryBadEnum = "multiValueExtendedProperties"
 	VeryBadEnum_105 VeryBadEnum = "singleValueExtendedProperties"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s VeryBadEnum) MarshalText() ([]byte, error) {
+	switch s {
+	case VeryBadEnum_0:
+		return []byte(s), nil
+	case VeryBadEnum_1:
+		return []byte(s), nil
+	case VeryBadEnum_2:
+		return []byte(s), nil
+	case VeryBadEnum_3:
+		return []byte(s), nil
+	case VeryBadEnum_4:
+		return []byte(s), nil
+	case VeryBadEnum_5:
+		return []byte(s), nil
+	case VeryBadEnum_6:
+		return []byte(s), nil
+	case VeryBadEnum_7:
+		return []byte(s), nil
+	case VeryBadEnum_8:
+		return []byte(s), nil
+	case VeryBadEnum_9:
+		return []byte(s), nil
+	case VeryBadEnum_10:
+		return []byte(s), nil
+	case VeryBadEnum_11:
+		return []byte(s), nil
+	case VeryBadEnum_12:
+		return []byte(s), nil
+	case VeryBadEnum_13:
+		return []byte(s), nil
+	case VeryBadEnum_14:
+		return []byte(s), nil
+	case VeryBadEnum_15:
+		return []byte(s), nil
+	case VeryBadEnum_16:
+		return []byte(s), nil
+	case VeryBadEnum_17:
+		return []byte(s), nil
+	case VeryBadEnum_18:
+		return []byte(s), nil
+	case VeryBadEnum_19:
+		return []byte(s), nil
+	case VeryBadEnum_20:
+		return []byte(s), nil
+	case VeryBadEnum_21:
+		return []byte(s), nil
+	case VeryBadEnum_22:
+		return []byte(s), nil
+	case VeryBadEnum_23:
+		return []byte(s), nil
+	case VeryBadEnum_24:
+		return []byte(s), nil
+	case VeryBadEnum_25:
+		return []byte(s), nil
+	case VeryBadEnum_26:
+		return []byte(s), nil
+	case VeryBadEnum_27:
+		return []byte(s), nil
+	case VeryBadEnum_28:
+		return []byte(s), nil
+	case VeryBadEnum_29:
+		return []byte(s), nil
+	case VeryBadEnum_30:
+		return []byte(s), nil
+	case VeryBadEnum_31:
+		return []byte(s), nil
+	case VeryBadEnum_32:
+		return []byte(s), nil
+	case VeryBadEnum_33:
+		return []byte(s), nil
+	case VeryBadEnum_34:
+		return []byte(s), nil
+	case VeryBadEnum_35:
+		return []byte(s), nil
+	case VeryBadEnum_36:
+		return []byte(s), nil
+	case VeryBadEnum_37:
+		return []byte(s), nil
+	case VeryBadEnum_38:
+		return []byte(s), nil
+	case VeryBadEnum_39:
+		return []byte(s), nil
+	case VeryBadEnum_40:
+		return []byte(s), nil
+	case VeryBadEnum_41:
+		return []byte(s), nil
+	case VeryBadEnum_42:
+		return []byte(s), nil
+	case VeryBadEnum_43:
+		return []byte(s), nil
+	case VeryBadEnum_44:
+		return []byte(s), nil
+	case VeryBadEnum_45:
+		return []byte(s), nil
+	case VeryBadEnum_46:
+		return []byte(s), nil
+	case VeryBadEnum_47:
+		return []byte(s), nil
+	case VeryBadEnum_48:
+		return []byte(s), nil
+	case VeryBadEnum_49:
+		return []byte(s), nil
+	case VeryBadEnum_50:
+		return []byte(s), nil
+	case VeryBadEnum_51:
+		return []byte(s), nil
+	case VeryBadEnum_52:
+		return []byte(s), nil
+	case VeryBadEnum_53:
+		return []byte(s), nil
+	case VeryBadEnum_54:
+		return []byte(s), nil
+	case VeryBadEnum_55:
+		return []byte(s), nil
+	case VeryBadEnum_56:
+		return []byte(s), nil
+	case VeryBadEnum_57:
+		return []byte(s), nil
+	case VeryBadEnum_58:
+		return []byte(s), nil
+	case VeryBadEnum_59:
+		return []byte(s), nil
+	case VeryBadEnum_60:
+		return []byte(s), nil
+	case VeryBadEnum_61:
+		return []byte(s), nil
+	case VeryBadEnum_62:
+		return []byte(s), nil
+	case VeryBadEnum_63:
+		return []byte(s), nil
+	case VeryBadEnum_64:
+		return []byte(s), nil
+	case VeryBadEnum_65:
+		return []byte(s), nil
+	case VeryBadEnum_66:
+		return []byte(s), nil
+	case VeryBadEnum_67:
+		return []byte(s), nil
+	case VeryBadEnum_68:
+		return []byte(s), nil
+	case VeryBadEnum_69:
+		return []byte(s), nil
+	case VeryBadEnum_70:
+		return []byte(s), nil
+	case VeryBadEnum_71:
+		return []byte(s), nil
+	case VeryBadEnum_72:
+		return []byte(s), nil
+	case VeryBadEnum_73:
+		return []byte(s), nil
+	case VeryBadEnum_74:
+		return []byte(s), nil
+	case VeryBadEnum_75:
+		return []byte(s), nil
+	case VeryBadEnum_76:
+		return []byte(s), nil
+	case VeryBadEnum_77:
+		return []byte(s), nil
+	case VeryBadEnum_78:
+		return []byte(s), nil
+	case VeryBadEnum_79:
+		return []byte(s), nil
+	case VeryBadEnum_80:
+		return []byte(s), nil
+	case VeryBadEnum_81:
+		return []byte(s), nil
+	case VeryBadEnum_82:
+		return []byte(s), nil
+	case VeryBadEnum_83:
+		return []byte(s), nil
+	case VeryBadEnum_84:
+		return []byte(s), nil
+	case VeryBadEnum_85:
+		return []byte(s), nil
+	case VeryBadEnum_86:
+		return []byte(s), nil
+	case VeryBadEnum_87:
+		return []byte(s), nil
+	case VeryBadEnum_88:
+		return []byte(s), nil
+	case VeryBadEnum_89:
+		return []byte(s), nil
+	case VeryBadEnum_90:
+		return []byte(s), nil
+	case VeryBadEnum_91:
+		return []byte(s), nil
+	case VeryBadEnum_92:
+		return []byte(s), nil
+	case VeryBadEnum_93:
+		return []byte(s), nil
+	case VeryBadEnum_94:
+		return []byte(s), nil
+	case VeryBadEnum_95:
+		return []byte(s), nil
+	case VeryBadEnum_96:
+		return []byte(s), nil
+	case VeryBadEnum_97:
+		return []byte(s), nil
+	case VeryBadEnum_98:
+		return []byte(s), nil
+	case VeryBadEnum_99:
+		return []byte(s), nil
+	case VeryBadEnum_100:
+		return []byte(s), nil
+	case VeryBadEnum_101:
+		return []byte(s), nil
+	case VeryBadEnum_102:
+		return []byte(s), nil
+	case VeryBadEnum_103:
+		return []byte(s), nil
+	case VeryBadEnum_104:
+		return []byte(s), nil
+	case VeryBadEnum_105:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *VeryBadEnum) UnmarshalText(data []byte) error {
+	switch VeryBadEnum(data) {
+	case VeryBadEnum_0:
+		*s = VeryBadEnum_0
+		return nil
+	case VeryBadEnum_1:
+		*s = VeryBadEnum_1
+		return nil
+	case VeryBadEnum_2:
+		*s = VeryBadEnum_2
+		return nil
+	case VeryBadEnum_3:
+		*s = VeryBadEnum_3
+		return nil
+	case VeryBadEnum_4:
+		*s = VeryBadEnum_4
+		return nil
+	case VeryBadEnum_5:
+		*s = VeryBadEnum_5
+		return nil
+	case VeryBadEnum_6:
+		*s = VeryBadEnum_6
+		return nil
+	case VeryBadEnum_7:
+		*s = VeryBadEnum_7
+		return nil
+	case VeryBadEnum_8:
+		*s = VeryBadEnum_8
+		return nil
+	case VeryBadEnum_9:
+		*s = VeryBadEnum_9
+		return nil
+	case VeryBadEnum_10:
+		*s = VeryBadEnum_10
+		return nil
+	case VeryBadEnum_11:
+		*s = VeryBadEnum_11
+		return nil
+	case VeryBadEnum_12:
+		*s = VeryBadEnum_12
+		return nil
+	case VeryBadEnum_13:
+		*s = VeryBadEnum_13
+		return nil
+	case VeryBadEnum_14:
+		*s = VeryBadEnum_14
+		return nil
+	case VeryBadEnum_15:
+		*s = VeryBadEnum_15
+		return nil
+	case VeryBadEnum_16:
+		*s = VeryBadEnum_16
+		return nil
+	case VeryBadEnum_17:
+		*s = VeryBadEnum_17
+		return nil
+	case VeryBadEnum_18:
+		*s = VeryBadEnum_18
+		return nil
+	case VeryBadEnum_19:
+		*s = VeryBadEnum_19
+		return nil
+	case VeryBadEnum_20:
+		*s = VeryBadEnum_20
+		return nil
+	case VeryBadEnum_21:
+		*s = VeryBadEnum_21
+		return nil
+	case VeryBadEnum_22:
+		*s = VeryBadEnum_22
+		return nil
+	case VeryBadEnum_23:
+		*s = VeryBadEnum_23
+		return nil
+	case VeryBadEnum_24:
+		*s = VeryBadEnum_24
+		return nil
+	case VeryBadEnum_25:
+		*s = VeryBadEnum_25
+		return nil
+	case VeryBadEnum_26:
+		*s = VeryBadEnum_26
+		return nil
+	case VeryBadEnum_27:
+		*s = VeryBadEnum_27
+		return nil
+	case VeryBadEnum_28:
+		*s = VeryBadEnum_28
+		return nil
+	case VeryBadEnum_29:
+		*s = VeryBadEnum_29
+		return nil
+	case VeryBadEnum_30:
+		*s = VeryBadEnum_30
+		return nil
+	case VeryBadEnum_31:
+		*s = VeryBadEnum_31
+		return nil
+	case VeryBadEnum_32:
+		*s = VeryBadEnum_32
+		return nil
+	case VeryBadEnum_33:
+		*s = VeryBadEnum_33
+		return nil
+	case VeryBadEnum_34:
+		*s = VeryBadEnum_34
+		return nil
+	case VeryBadEnum_35:
+		*s = VeryBadEnum_35
+		return nil
+	case VeryBadEnum_36:
+		*s = VeryBadEnum_36
+		return nil
+	case VeryBadEnum_37:
+		*s = VeryBadEnum_37
+		return nil
+	case VeryBadEnum_38:
+		*s = VeryBadEnum_38
+		return nil
+	case VeryBadEnum_39:
+		*s = VeryBadEnum_39
+		return nil
+	case VeryBadEnum_40:
+		*s = VeryBadEnum_40
+		return nil
+	case VeryBadEnum_41:
+		*s = VeryBadEnum_41
+		return nil
+	case VeryBadEnum_42:
+		*s = VeryBadEnum_42
+		return nil
+	case VeryBadEnum_43:
+		*s = VeryBadEnum_43
+		return nil
+	case VeryBadEnum_44:
+		*s = VeryBadEnum_44
+		return nil
+	case VeryBadEnum_45:
+		*s = VeryBadEnum_45
+		return nil
+	case VeryBadEnum_46:
+		*s = VeryBadEnum_46
+		return nil
+	case VeryBadEnum_47:
+		*s = VeryBadEnum_47
+		return nil
+	case VeryBadEnum_48:
+		*s = VeryBadEnum_48
+		return nil
+	case VeryBadEnum_49:
+		*s = VeryBadEnum_49
+		return nil
+	case VeryBadEnum_50:
+		*s = VeryBadEnum_50
+		return nil
+	case VeryBadEnum_51:
+		*s = VeryBadEnum_51
+		return nil
+	case VeryBadEnum_52:
+		*s = VeryBadEnum_52
+		return nil
+	case VeryBadEnum_53:
+		*s = VeryBadEnum_53
+		return nil
+	case VeryBadEnum_54:
+		*s = VeryBadEnum_54
+		return nil
+	case VeryBadEnum_55:
+		*s = VeryBadEnum_55
+		return nil
+	case VeryBadEnum_56:
+		*s = VeryBadEnum_56
+		return nil
+	case VeryBadEnum_57:
+		*s = VeryBadEnum_57
+		return nil
+	case VeryBadEnum_58:
+		*s = VeryBadEnum_58
+		return nil
+	case VeryBadEnum_59:
+		*s = VeryBadEnum_59
+		return nil
+	case VeryBadEnum_60:
+		*s = VeryBadEnum_60
+		return nil
+	case VeryBadEnum_61:
+		*s = VeryBadEnum_61
+		return nil
+	case VeryBadEnum_62:
+		*s = VeryBadEnum_62
+		return nil
+	case VeryBadEnum_63:
+		*s = VeryBadEnum_63
+		return nil
+	case VeryBadEnum_64:
+		*s = VeryBadEnum_64
+		return nil
+	case VeryBadEnum_65:
+		*s = VeryBadEnum_65
+		return nil
+	case VeryBadEnum_66:
+		*s = VeryBadEnum_66
+		return nil
+	case VeryBadEnum_67:
+		*s = VeryBadEnum_67
+		return nil
+	case VeryBadEnum_68:
+		*s = VeryBadEnum_68
+		return nil
+	case VeryBadEnum_69:
+		*s = VeryBadEnum_69
+		return nil
+	case VeryBadEnum_70:
+		*s = VeryBadEnum_70
+		return nil
+	case VeryBadEnum_71:
+		*s = VeryBadEnum_71
+		return nil
+	case VeryBadEnum_72:
+		*s = VeryBadEnum_72
+		return nil
+	case VeryBadEnum_73:
+		*s = VeryBadEnum_73
+		return nil
+	case VeryBadEnum_74:
+		*s = VeryBadEnum_74
+		return nil
+	case VeryBadEnum_75:
+		*s = VeryBadEnum_75
+		return nil
+	case VeryBadEnum_76:
+		*s = VeryBadEnum_76
+		return nil
+	case VeryBadEnum_77:
+		*s = VeryBadEnum_77
+		return nil
+	case VeryBadEnum_78:
+		*s = VeryBadEnum_78
+		return nil
+	case VeryBadEnum_79:
+		*s = VeryBadEnum_79
+		return nil
+	case VeryBadEnum_80:
+		*s = VeryBadEnum_80
+		return nil
+	case VeryBadEnum_81:
+		*s = VeryBadEnum_81
+		return nil
+	case VeryBadEnum_82:
+		*s = VeryBadEnum_82
+		return nil
+	case VeryBadEnum_83:
+		*s = VeryBadEnum_83
+		return nil
+	case VeryBadEnum_84:
+		*s = VeryBadEnum_84
+		return nil
+	case VeryBadEnum_85:
+		*s = VeryBadEnum_85
+		return nil
+	case VeryBadEnum_86:
+		*s = VeryBadEnum_86
+		return nil
+	case VeryBadEnum_87:
+		*s = VeryBadEnum_87
+		return nil
+	case VeryBadEnum_88:
+		*s = VeryBadEnum_88
+		return nil
+	case VeryBadEnum_89:
+		*s = VeryBadEnum_89
+		return nil
+	case VeryBadEnum_90:
+		*s = VeryBadEnum_90
+		return nil
+	case VeryBadEnum_91:
+		*s = VeryBadEnum_91
+		return nil
+	case VeryBadEnum_92:
+		*s = VeryBadEnum_92
+		return nil
+	case VeryBadEnum_93:
+		*s = VeryBadEnum_93
+		return nil
+	case VeryBadEnum_94:
+		*s = VeryBadEnum_94
+		return nil
+	case VeryBadEnum_95:
+		*s = VeryBadEnum_95
+		return nil
+	case VeryBadEnum_96:
+		*s = VeryBadEnum_96
+		return nil
+	case VeryBadEnum_97:
+		*s = VeryBadEnum_97
+		return nil
+	case VeryBadEnum_98:
+		*s = VeryBadEnum_98
+		return nil
+	case VeryBadEnum_99:
+		*s = VeryBadEnum_99
+		return nil
+	case VeryBadEnum_100:
+		*s = VeryBadEnum_100
+		return nil
+	case VeryBadEnum_101:
+		*s = VeryBadEnum_101
+		return nil
+	case VeryBadEnum_102:
+		*s = VeryBadEnum_102
+		return nil
+	case VeryBadEnum_103:
+		*s = VeryBadEnum_103
+		return nil
+	case VeryBadEnum_104:
+		*s = VeryBadEnum_104
+		return nil
+	case VeryBadEnum_105:
+		*s = VeryBadEnum_105
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}

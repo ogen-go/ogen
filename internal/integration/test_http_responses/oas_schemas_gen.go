@@ -4,6 +4,8 @@ package api
 
 import (
 	"io"
+
+	"github.com/go-faster/errors"
 )
 
 type AnyContentTypeBinaryStringSchemaDefaultDef struct {
@@ -163,6 +165,42 @@ const (
 	CombinedTypeDefault CombinedType = "default"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s CombinedType) MarshalText() ([]byte, error) {
+	switch s {
+	case CombinedType200:
+		return []byte(s), nil
+	case CombinedType2XX:
+		return []byte(s), nil
+	case CombinedType5XX:
+		return []byte(s), nil
+	case CombinedTypeDefault:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CombinedType) UnmarshalText(data []byte) error {
+	switch CombinedType(data) {
+	case CombinedType200:
+		*s = CombinedType200
+		return nil
+	case CombinedType2XX:
+		*s = CombinedType2XX
+		return nil
+	case CombinedType5XX:
+		*s = CombinedType5XX
+		return nil
+	case CombinedTypeDefault:
+		*s = CombinedTypeDefault
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Headers200OK is response for Headers200 operation.
 type Headers200OK struct {
 	TestHeader string
@@ -258,6 +296,37 @@ const (
 	HeadersCombinedTypeDefault HeadersCombinedType = "default"
 	HeadersCombinedType4XX     HeadersCombinedType = "4XX"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s HeadersCombinedType) MarshalText() ([]byte, error) {
+	switch s {
+	case HeadersCombinedType200:
+		return []byte(s), nil
+	case HeadersCombinedTypeDefault:
+		return []byte(s), nil
+	case HeadersCombinedType4XX:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *HeadersCombinedType) UnmarshalText(data []byte) error {
+	switch HeadersCombinedType(data) {
+	case HeadersCombinedType200:
+		*s = HeadersCombinedType200
+		return nil
+	case HeadersCombinedTypeDefault:
+		*s = HeadersCombinedTypeDefault
+		return nil
+	case HeadersCombinedType4XX:
+		*s = HeadersCombinedType4XX
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // HeadersDefaultDef is default response for HeadersDefault operation.
 type HeadersDefaultDef struct {

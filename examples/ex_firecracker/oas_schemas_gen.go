@@ -2,6 +2,10 @@
 
 package api
 
+import (
+	"github.com/go-faster/errors"
+)
+
 // Balloon device descriptor.
 // Ref: #/components/schemas/Balloon
 type Balloon struct {
@@ -308,6 +312,32 @@ const (
 	CpuTemplateC3 CpuTemplate = "C3"
 	CpuTemplateT2 CpuTemplate = "T2"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CpuTemplate) MarshalText() ([]byte, error) {
+	switch s {
+	case CpuTemplateC3:
+		return []byte(s), nil
+	case CpuTemplateT2:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CpuTemplate) UnmarshalText(data []byte) error {
+	switch CpuTemplate(data) {
+	case CpuTemplateC3:
+		*s = CpuTemplateC3
+		return nil
+	case CpuTemplateT2:
+		*s = CpuTemplateT2
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // CreateSnapshotNoContent is response for CreateSnapshot operation.
 type CreateSnapshotNoContent struct{}
@@ -630,6 +660,37 @@ const (
 	InstanceActionInfoActionTypeSendCtrlAltDel InstanceActionInfoActionType = "SendCtrlAltDel"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s InstanceActionInfoActionType) MarshalText() ([]byte, error) {
+	switch s {
+	case InstanceActionInfoActionTypeFlushMetrics:
+		return []byte(s), nil
+	case InstanceActionInfoActionTypeInstanceStart:
+		return []byte(s), nil
+	case InstanceActionInfoActionTypeSendCtrlAltDel:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InstanceActionInfoActionType) UnmarshalText(data []byte) error {
+	switch InstanceActionInfoActionType(data) {
+	case InstanceActionInfoActionTypeFlushMetrics:
+		*s = InstanceActionInfoActionTypeFlushMetrics
+		return nil
+	case InstanceActionInfoActionTypeInstanceStart:
+		*s = InstanceActionInfoActionTypeInstanceStart
+		return nil
+	case InstanceActionInfoActionTypeSendCtrlAltDel:
+		*s = InstanceActionInfoActionTypeSendCtrlAltDel
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Describes MicroVM instance information.
 // Ref: #/components/schemas/InstanceInfo
 type InstanceInfo struct {
@@ -695,6 +756,37 @@ const (
 	InstanceInfoStateRunning    InstanceInfoState = "Running"
 	InstanceInfoStatePaused     InstanceInfoState = "Paused"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s InstanceInfoState) MarshalText() ([]byte, error) {
+	switch s {
+	case InstanceInfoStateNotStarted:
+		return []byte(s), nil
+	case InstanceInfoStateRunning:
+		return []byte(s), nil
+	case InstanceInfoStatePaused:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InstanceInfoState) UnmarshalText(data []byte) error {
+	switch InstanceInfoState(data) {
+	case InstanceInfoStateNotStarted:
+		*s = InstanceInfoStateNotStarted
+		return nil
+	case InstanceInfoStateRunning:
+		*s = InstanceInfoStateRunning
+		return nil
+	case InstanceInfoStatePaused:
+		*s = InstanceInfoStatePaused
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // LoadSnapshotNoContent is response for LoadSnapshot operation.
 type LoadSnapshotNoContent struct{}
@@ -763,6 +855,42 @@ const (
 	LoggerLevelInfo    LoggerLevel = "Info"
 	LoggerLevelDebug   LoggerLevel = "Debug"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s LoggerLevel) MarshalText() ([]byte, error) {
+	switch s {
+	case LoggerLevelError:
+		return []byte(s), nil
+	case LoggerLevelWarning:
+		return []byte(s), nil
+	case LoggerLevelInfo:
+		return []byte(s), nil
+	case LoggerLevelDebug:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *LoggerLevel) UnmarshalText(data []byte) error {
+	switch LoggerLevel(data) {
+	case LoggerLevelError:
+		*s = LoggerLevelError
+		return nil
+	case LoggerLevelWarning:
+		*s = LoggerLevelWarning
+		return nil
+	case LoggerLevelInfo:
+		*s = LoggerLevelInfo
+		return nil
+	case LoggerLevelDebug:
+		*s = LoggerLevelDebug
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Describes the number of vCPUs, memory size, Hyperthreading capabilities and the CPU template.
 // Ref: #/components/schemas/MachineConfiguration
@@ -1939,6 +2067,32 @@ const (
 	SnapshotCreateParamsSnapshotTypeDiff SnapshotCreateParamsSnapshotType = "Diff"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s SnapshotCreateParamsSnapshotType) MarshalText() ([]byte, error) {
+	switch s {
+	case SnapshotCreateParamsSnapshotTypeFull:
+		return []byte(s), nil
+	case SnapshotCreateParamsSnapshotTypeDiff:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SnapshotCreateParamsSnapshotType) UnmarshalText(data []byte) error {
+	switch SnapshotCreateParamsSnapshotType(data) {
+	case SnapshotCreateParamsSnapshotTypeFull:
+		*s = SnapshotCreateParamsSnapshotTypeFull
+		return nil
+	case SnapshotCreateParamsSnapshotTypeDiff:
+		*s = SnapshotCreateParamsSnapshotTypeDiff
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/SnapshotLoadParams
 type SnapshotLoadParams struct {
 	// Enable support for incremental (diff) snapshots by tracking dirty guest pages.
@@ -2059,6 +2213,32 @@ const (
 	VMStatePaused  VMState = "Paused"
 	VMStateResumed VMState = "Resumed"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s VMState) MarshalText() ([]byte, error) {
+	switch s {
+	case VMStatePaused:
+		return []byte(s), nil
+	case VMStateResumed:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *VMState) UnmarshalText(data []byte) error {
+	switch VMState(data) {
+	case VMStatePaused:
+		*s = VMStatePaused
+		return nil
+	case VMStateResumed:
+		*s = VMStateResumed
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Defines a vsock device, backed by a set of Unix Domain Sockets, on the host side. For
 // host-initiated connections, Firecracker will be listening on the Unix socket identified by the

@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 )
@@ -447,6 +448,32 @@ const (
 	DefaultTestEnumBig  DefaultTestEnum = "big"
 	DefaultTestEnumSmol DefaultTestEnum = "smol"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s DefaultTestEnum) MarshalText() ([]byte, error) {
+	switch s {
+	case DefaultTestEnumBig:
+		return []byte(s), nil
+	case DefaultTestEnumSmol:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *DefaultTestEnum) UnmarshalText(data []byte) error {
+	switch DefaultTestEnum(data) {
+	case DefaultTestEnumBig:
+		*s = DefaultTestEnumBig
+		return nil
+	case DefaultTestEnumSmol:
+		*s = DefaultTestEnumSmol
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/DescriptionDetailed
 type DescriptionDetailed struct {
@@ -1375,6 +1402,32 @@ const (
 	NullableEnumsBothDesc NullableEnumsBoth = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s NullableEnumsBoth) MarshalText() ([]byte, error) {
+	switch s {
+	case NullableEnumsBothAsc:
+		return []byte(s), nil
+	case NullableEnumsBothDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *NullableEnumsBoth) UnmarshalText(data []byte) error {
+	switch NullableEnumsBoth(data) {
+	case NullableEnumsBothAsc:
+		*s = NullableEnumsBothAsc
+		return nil
+	case NullableEnumsBothDesc:
+		*s = NullableEnumsBothDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Must be nullable.
 type NullableEnumsOnlyNullValue string
 
@@ -1383,6 +1436,32 @@ const (
 	NullableEnumsOnlyNullValueDesc NullableEnumsOnlyNullValue = "desc"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s NullableEnumsOnlyNullValue) MarshalText() ([]byte, error) {
+	switch s {
+	case NullableEnumsOnlyNullValueAsc:
+		return []byte(s), nil
+	case NullableEnumsOnlyNullValueDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *NullableEnumsOnlyNullValue) UnmarshalText(data []byte) error {
+	switch NullableEnumsOnlyNullValue(data) {
+	case NullableEnumsOnlyNullValueAsc:
+		*s = NullableEnumsOnlyNullValueAsc
+		return nil
+	case NullableEnumsOnlyNullValueDesc:
+		*s = NullableEnumsOnlyNullValueDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Must not be nullable.
 type NullableEnumsOnlyNullable string
 
@@ -1390,6 +1469,32 @@ const (
 	NullableEnumsOnlyNullableAsc  NullableEnumsOnlyNullable = "asc"
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s NullableEnumsOnlyNullable) MarshalText() ([]byte, error) {
+	switch s {
+	case NullableEnumsOnlyNullableAsc:
+		return []byte(s), nil
+	case NullableEnumsOnlyNullableDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *NullableEnumsOnlyNullable) UnmarshalText(data []byte) error {
+	switch NullableEnumsOnlyNullable(data) {
+	case NullableEnumsOnlyNullableAsc:
+		*s = NullableEnumsOnlyNullableAsc
+		return nil
+	case NullableEnumsOnlyNullableDesc:
+		*s = NullableEnumsOnlyNullableDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/OneOfBooleanSumNullables
 // OneOfBooleanSumNullables represents sum type.
@@ -4362,6 +4467,32 @@ const (
 	PetKindSmol PetKind = "smol"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PetKind) MarshalText() ([]byte, error) {
+	switch s {
+	case PetKindBig:
+		return []byte(s), nil
+	case PetKindSmol:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PetKind) UnmarshalText(data []byte) error {
+	switch PetKind(data) {
+	case PetKindBig:
+		*s = PetKindBig
+		return nil
+	case PetKindSmol:
+		*s = PetKindSmol
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type PetName string
 
 type PetType string
@@ -4370,6 +4501,32 @@ const (
 	PetTypeFifa PetType = "fifa"
 	PetTypeFofa PetType = "fofa"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PetType) MarshalText() ([]byte, error) {
+	switch s {
+	case PetTypeFifa:
+		return []byte(s), nil
+	case PetTypeFofa:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PetType) UnmarshalText(data []byte) error {
+	switch PetType(data) {
+	case PetTypeFifa:
+		*s = PetTypeFifa
+		return nil
+	case PetTypeFofa:
+		*s = PetTypeFofa
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // PetUpdateNameAliasPostDef is default response for PetUpdateNameAliasPost operation.
 type PetUpdateNameAliasPostDef struct {
