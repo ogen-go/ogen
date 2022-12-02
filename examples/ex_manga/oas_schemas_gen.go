@@ -4,6 +4,8 @@ package api
 
 import (
 	"io"
+
+	"github.com/go-faster/errors"
 )
 
 // Ref: #/components/schemas/Book
@@ -649,6 +651,57 @@ const (
 	TagTypeCategory  TagType = "category"
 	TagTypeLanguage  TagType = "language"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s TagType) MarshalText() ([]byte, error) {
+	switch s {
+	case TagTypeParody:
+		return []byte(s), nil
+	case TagTypeCharacter:
+		return []byte(s), nil
+	case TagTypeTag:
+		return []byte(s), nil
+	case TagTypeArtist:
+		return []byte(s), nil
+	case TagTypeGroup:
+		return []byte(s), nil
+	case TagTypeCategory:
+		return []byte(s), nil
+	case TagTypeLanguage:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *TagType) UnmarshalText(data []byte) error {
+	switch TagType(data) {
+	case TagTypeParody:
+		*s = TagTypeParody
+		return nil
+	case TagTypeCharacter:
+		*s = TagTypeCharacter
+		return nil
+	case TagTypeTag:
+		*s = TagTypeTag
+		return nil
+	case TagTypeArtist:
+		*s = TagTypeArtist
+		return nil
+	case TagTypeGroup:
+		*s = TagTypeGroup
+		return nil
+	case TagTypeCategory:
+		*s = TagTypeCategory
+		return nil
+	case TagTypeLanguage:
+		*s = TagTypeLanguage
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/components/schemas/Title
 type Title struct {

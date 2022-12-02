@@ -5,6 +5,8 @@ package api
 import (
 	"fmt"
 	"net/url"
+
+	"github.com/go-faster/errors"
 )
 
 func (s *ErrorStatusCode) Error() string {
@@ -2475,6 +2477,42 @@ const (
 	ChatTypeChannel    ChatType = "channel"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ChatType) MarshalText() ([]byte, error) {
+	switch s {
+	case ChatTypePrivate:
+		return []byte(s), nil
+	case ChatTypeGroup:
+		return []byte(s), nil
+	case ChatTypeSupergroup:
+		return []byte(s), nil
+	case ChatTypeChannel:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChatType) UnmarshalText(data []byte) error {
+	switch ChatType(data) {
+	case ChatTypePrivate:
+		*s = ChatTypePrivate
+		return nil
+	case ChatTypeGroup:
+		*s = ChatTypeGroup
+		return nil
+	case ChatTypeSupergroup:
+		*s = ChatTypeSupergroup
+		return nil
+	case ChatTypeChannel:
+		*s = ChatTypeChannel
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Represents a result of an inline query that was chosen by the user and sent to their chat partner.
 // Ref: #/components/schemas/ChosenInlineResult
 type ChosenInlineResult struct {
@@ -3983,6 +4021,87 @@ const (
 	EncryptedPassportElementTypeEmail                 EncryptedPassportElementType = "email"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s EncryptedPassportElementType) MarshalText() ([]byte, error) {
+	switch s {
+	case EncryptedPassportElementTypePersonalDetails:
+		return []byte(s), nil
+	case EncryptedPassportElementTypePassport:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeDriverLicense:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeIdentityCard:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeInternalPassport:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeAddress:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeUtilityBill:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeBankStatement:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeRentalAgreement:
+		return []byte(s), nil
+	case EncryptedPassportElementTypePassportRegistration:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeTemporaryRegistration:
+		return []byte(s), nil
+	case EncryptedPassportElementTypePhoneNumber:
+		return []byte(s), nil
+	case EncryptedPassportElementTypeEmail:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *EncryptedPassportElementType) UnmarshalText(data []byte) error {
+	switch EncryptedPassportElementType(data) {
+	case EncryptedPassportElementTypePersonalDetails:
+		*s = EncryptedPassportElementTypePersonalDetails
+		return nil
+	case EncryptedPassportElementTypePassport:
+		*s = EncryptedPassportElementTypePassport
+		return nil
+	case EncryptedPassportElementTypeDriverLicense:
+		*s = EncryptedPassportElementTypeDriverLicense
+		return nil
+	case EncryptedPassportElementTypeIdentityCard:
+		*s = EncryptedPassportElementTypeIdentityCard
+		return nil
+	case EncryptedPassportElementTypeInternalPassport:
+		*s = EncryptedPassportElementTypeInternalPassport
+		return nil
+	case EncryptedPassportElementTypeAddress:
+		*s = EncryptedPassportElementTypeAddress
+		return nil
+	case EncryptedPassportElementTypeUtilityBill:
+		*s = EncryptedPassportElementTypeUtilityBill
+		return nil
+	case EncryptedPassportElementTypeBankStatement:
+		*s = EncryptedPassportElementTypeBankStatement
+		return nil
+	case EncryptedPassportElementTypeRentalAgreement:
+		*s = EncryptedPassportElementTypeRentalAgreement
+		return nil
+	case EncryptedPassportElementTypePassportRegistration:
+		*s = EncryptedPassportElementTypePassportRegistration
+		return nil
+	case EncryptedPassportElementTypeTemporaryRegistration:
+		*s = EncryptedPassportElementTypeTemporaryRegistration
+		return nil
+	case EncryptedPassportElementTypePhoneNumber:
+		*s = EncryptedPassportElementTypePhoneNumber
+		return nil
+	case EncryptedPassportElementTypeEmail:
+		*s = EncryptedPassportElementTypeEmail
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/Error
 type Error struct {
 	Ok          bool        `json:"ok"`
@@ -4926,6 +5045,47 @@ const (
 	InlineQueryChatTypeSupergroup InlineQueryChatType = "supergroup"
 	InlineQueryChatTypeChannel    InlineQueryChatType = "channel"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s InlineQueryChatType) MarshalText() ([]byte, error) {
+	switch s {
+	case InlineQueryChatTypeSender:
+		return []byte(s), nil
+	case InlineQueryChatTypePrivate:
+		return []byte(s), nil
+	case InlineQueryChatTypeGroup:
+		return []byte(s), nil
+	case InlineQueryChatTypeSupergroup:
+		return []byte(s), nil
+	case InlineQueryChatTypeChannel:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *InlineQueryChatType) UnmarshalText(data []byte) error {
+	switch InlineQueryChatType(data) {
+	case InlineQueryChatTypeSender:
+		*s = InlineQueryChatTypeSender
+		return nil
+	case InlineQueryChatTypePrivate:
+		*s = InlineQueryChatTypePrivate
+		return nil
+	case InlineQueryChatTypeGroup:
+		*s = InlineQueryChatTypeGroup
+		return nil
+	case InlineQueryChatTypeSupergroup:
+		*s = InlineQueryChatTypeSupergroup
+		return nil
+	case InlineQueryChatTypeChannel:
+		*s = InlineQueryChatTypeChannel
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // An inline query. Telegram clients currently support results of the following 20 types:.
 // Ref: #/components/schemas/InlineQueryResult
@@ -10627,6 +10787,97 @@ const (
 	MessageEntityTypeTextMention   MessageEntityType = "text_mention"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s MessageEntityType) MarshalText() ([]byte, error) {
+	switch s {
+	case MessageEntityTypeMention:
+		return []byte(s), nil
+	case MessageEntityTypeHashtag:
+		return []byte(s), nil
+	case MessageEntityTypeCashtag:
+		return []byte(s), nil
+	case MessageEntityTypeBotCommand:
+		return []byte(s), nil
+	case MessageEntityTypeURL:
+		return []byte(s), nil
+	case MessageEntityTypeEmail:
+		return []byte(s), nil
+	case MessageEntityTypePhoneNumber:
+		return []byte(s), nil
+	case MessageEntityTypeBold:
+		return []byte(s), nil
+	case MessageEntityTypeItalic:
+		return []byte(s), nil
+	case MessageEntityTypeUnderline:
+		return []byte(s), nil
+	case MessageEntityTypeStrikethrough:
+		return []byte(s), nil
+	case MessageEntityTypeCode:
+		return []byte(s), nil
+	case MessageEntityTypePre:
+		return []byte(s), nil
+	case MessageEntityTypeTextLink:
+		return []byte(s), nil
+	case MessageEntityTypeTextMention:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *MessageEntityType) UnmarshalText(data []byte) error {
+	switch MessageEntityType(data) {
+	case MessageEntityTypeMention:
+		*s = MessageEntityTypeMention
+		return nil
+	case MessageEntityTypeHashtag:
+		*s = MessageEntityTypeHashtag
+		return nil
+	case MessageEntityTypeCashtag:
+		*s = MessageEntityTypeCashtag
+		return nil
+	case MessageEntityTypeBotCommand:
+		*s = MessageEntityTypeBotCommand
+		return nil
+	case MessageEntityTypeURL:
+		*s = MessageEntityTypeURL
+		return nil
+	case MessageEntityTypeEmail:
+		*s = MessageEntityTypeEmail
+		return nil
+	case MessageEntityTypePhoneNumber:
+		*s = MessageEntityTypePhoneNumber
+		return nil
+	case MessageEntityTypeBold:
+		*s = MessageEntityTypeBold
+		return nil
+	case MessageEntityTypeItalic:
+		*s = MessageEntityTypeItalic
+		return nil
+	case MessageEntityTypeUnderline:
+		*s = MessageEntityTypeUnderline
+		return nil
+	case MessageEntityTypeStrikethrough:
+		*s = MessageEntityTypeStrikethrough
+		return nil
+	case MessageEntityTypeCode:
+		*s = MessageEntityTypeCode
+		return nil
+	case MessageEntityTypePre:
+		*s = MessageEntityTypePre
+		return nil
+	case MessageEntityTypeTextLink:
+		*s = MessageEntityTypeTextLink
+		return nil
+	case MessageEntityTypeTextMention:
+		*s = MessageEntityTypeTextMention
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // This object represents a unique message identifier.
 // Ref: #/components/schemas/MessageId
 type MessageId struct {
@@ -14693,6 +14944,52 @@ const (
 	PassportElementErrorDataFieldTypeAddress          PassportElementErrorDataFieldType = "address"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorDataFieldType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorDataFieldTypePersonalDetails:
+		return []byte(s), nil
+	case PassportElementErrorDataFieldTypePassport:
+		return []byte(s), nil
+	case PassportElementErrorDataFieldTypeDriverLicense:
+		return []byte(s), nil
+	case PassportElementErrorDataFieldTypeIdentityCard:
+		return []byte(s), nil
+	case PassportElementErrorDataFieldTypeInternalPassport:
+		return []byte(s), nil
+	case PassportElementErrorDataFieldTypeAddress:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorDataFieldType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorDataFieldType(data) {
+	case PassportElementErrorDataFieldTypePersonalDetails:
+		*s = PassportElementErrorDataFieldTypePersonalDetails
+		return nil
+	case PassportElementErrorDataFieldTypePassport:
+		*s = PassportElementErrorDataFieldTypePassport
+		return nil
+	case PassportElementErrorDataFieldTypeDriverLicense:
+		*s = PassportElementErrorDataFieldTypeDriverLicense
+		return nil
+	case PassportElementErrorDataFieldTypeIdentityCard:
+		*s = PassportElementErrorDataFieldTypeIdentityCard
+		return nil
+	case PassportElementErrorDataFieldTypeInternalPassport:
+		*s = PassportElementErrorDataFieldTypeInternalPassport
+		return nil
+	case PassportElementErrorDataFieldTypeAddress:
+		*s = PassportElementErrorDataFieldTypeAddress
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Represents an issue with a document scan. The error is considered resolved when the file with the
 // document scan changes.
 // Ref: #/components/schemas/PassportElementErrorFile
@@ -14747,6 +15044,47 @@ const (
 	PassportElementErrorFileTypePassportRegistration  PassportElementErrorFileType = "passport_registration"
 	PassportElementErrorFileTypeTemporaryRegistration PassportElementErrorFileType = "temporary_registration"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorFileType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorFileTypeUtilityBill:
+		return []byte(s), nil
+	case PassportElementErrorFileTypeBankStatement:
+		return []byte(s), nil
+	case PassportElementErrorFileTypeRentalAgreement:
+		return []byte(s), nil
+	case PassportElementErrorFileTypePassportRegistration:
+		return []byte(s), nil
+	case PassportElementErrorFileTypeTemporaryRegistration:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorFileType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorFileType(data) {
+	case PassportElementErrorFileTypeUtilityBill:
+		*s = PassportElementErrorFileTypeUtilityBill
+		return nil
+	case PassportElementErrorFileTypeBankStatement:
+		*s = PassportElementErrorFileTypeBankStatement
+		return nil
+	case PassportElementErrorFileTypeRentalAgreement:
+		*s = PassportElementErrorFileTypeRentalAgreement
+		return nil
+	case PassportElementErrorFileTypePassportRegistration:
+		*s = PassportElementErrorFileTypePassportRegistration
+		return nil
+	case PassportElementErrorFileTypeTemporaryRegistration:
+		*s = PassportElementErrorFileTypeTemporaryRegistration
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Represents an issue with a list of scans. The error is considered resolved when the list of files
 // containing the scans changes.
@@ -14803,6 +15141,47 @@ const (
 	PassportElementErrorFilesTypeTemporaryRegistration PassportElementErrorFilesType = "temporary_registration"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorFilesType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorFilesTypeUtilityBill:
+		return []byte(s), nil
+	case PassportElementErrorFilesTypeBankStatement:
+		return []byte(s), nil
+	case PassportElementErrorFilesTypeRentalAgreement:
+		return []byte(s), nil
+	case PassportElementErrorFilesTypePassportRegistration:
+		return []byte(s), nil
+	case PassportElementErrorFilesTypeTemporaryRegistration:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorFilesType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorFilesType(data) {
+	case PassportElementErrorFilesTypeUtilityBill:
+		*s = PassportElementErrorFilesTypeUtilityBill
+		return nil
+	case PassportElementErrorFilesTypeBankStatement:
+		*s = PassportElementErrorFilesTypeBankStatement
+		return nil
+	case PassportElementErrorFilesTypeRentalAgreement:
+		*s = PassportElementErrorFilesTypeRentalAgreement
+		return nil
+	case PassportElementErrorFilesTypePassportRegistration:
+		*s = PassportElementErrorFilesTypePassportRegistration
+		return nil
+	case PassportElementErrorFilesTypeTemporaryRegistration:
+		*s = PassportElementErrorFilesTypeTemporaryRegistration
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Represents an issue with the front side of a document. The error is considered resolved when the
 // file with the front side of the document changes.
 // Ref: #/components/schemas/PassportElementErrorFrontSide
@@ -14856,6 +15235,42 @@ const (
 	PassportElementErrorFrontSideTypeInternalPassport PassportElementErrorFrontSideType = "internal_passport"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorFrontSideType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorFrontSideTypePassport:
+		return []byte(s), nil
+	case PassportElementErrorFrontSideTypeDriverLicense:
+		return []byte(s), nil
+	case PassportElementErrorFrontSideTypeIdentityCard:
+		return []byte(s), nil
+	case PassportElementErrorFrontSideTypeInternalPassport:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorFrontSideType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorFrontSideType(data) {
+	case PassportElementErrorFrontSideTypePassport:
+		*s = PassportElementErrorFrontSideTypePassport
+		return nil
+	case PassportElementErrorFrontSideTypeDriverLicense:
+		*s = PassportElementErrorFrontSideTypeDriverLicense
+		return nil
+	case PassportElementErrorFrontSideTypeIdentityCard:
+		*s = PassportElementErrorFrontSideTypeIdentityCard
+		return nil
+	case PassportElementErrorFrontSideTypeInternalPassport:
+		*s = PassportElementErrorFrontSideTypeInternalPassport
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Represents an issue with the reverse side of a document. The error is considered resolved when the
 // file with reverse side of the document changes.
 // Ref: #/components/schemas/PassportElementErrorReverseSide
@@ -14906,6 +15321,32 @@ const (
 	PassportElementErrorReverseSideTypeDriverLicense PassportElementErrorReverseSideType = "driver_license"
 	PassportElementErrorReverseSideTypeIdentityCard  PassportElementErrorReverseSideType = "identity_card"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorReverseSideType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorReverseSideTypeDriverLicense:
+		return []byte(s), nil
+	case PassportElementErrorReverseSideTypeIdentityCard:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorReverseSideType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorReverseSideType(data) {
+	case PassportElementErrorReverseSideTypeDriverLicense:
+		*s = PassportElementErrorReverseSideTypeDriverLicense
+		return nil
+	case PassportElementErrorReverseSideTypeIdentityCard:
+		*s = PassportElementErrorReverseSideTypeIdentityCard
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Represents an issue with the selfie with a document. The error is considered resolved when the
 // file with the selfie changes.
@@ -14959,6 +15400,42 @@ const (
 	PassportElementErrorSelfieTypeIdentityCard     PassportElementErrorSelfieType = "identity_card"
 	PassportElementErrorSelfieTypeInternalPassport PassportElementErrorSelfieType = "internal_passport"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorSelfieType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorSelfieTypePassport:
+		return []byte(s), nil
+	case PassportElementErrorSelfieTypeDriverLicense:
+		return []byte(s), nil
+	case PassportElementErrorSelfieTypeIdentityCard:
+		return []byte(s), nil
+	case PassportElementErrorSelfieTypeInternalPassport:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorSelfieType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorSelfieType(data) {
+	case PassportElementErrorSelfieTypePassport:
+		*s = PassportElementErrorSelfieTypePassport
+		return nil
+	case PassportElementErrorSelfieTypeDriverLicense:
+		*s = PassportElementErrorSelfieTypeDriverLicense
+		return nil
+	case PassportElementErrorSelfieTypeIdentityCard:
+		*s = PassportElementErrorSelfieTypeIdentityCard
+		return nil
+	case PassportElementErrorSelfieTypeInternalPassport:
+		*s = PassportElementErrorSelfieTypeInternalPassport
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Represents an issue with one of the files that constitute the translation of a document. The error
 // is considered resolved when the file changes.
@@ -15020,6 +15497,67 @@ const (
 	PassportElementErrorTranslationFileTypeTemporaryRegistration PassportElementErrorTranslationFileType = "temporary_registration"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorTranslationFileType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorTranslationFileTypePassport:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeDriverLicense:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeIdentityCard:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeInternalPassport:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeUtilityBill:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeBankStatement:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeRentalAgreement:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypePassportRegistration:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFileTypeTemporaryRegistration:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorTranslationFileType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorTranslationFileType(data) {
+	case PassportElementErrorTranslationFileTypePassport:
+		*s = PassportElementErrorTranslationFileTypePassport
+		return nil
+	case PassportElementErrorTranslationFileTypeDriverLicense:
+		*s = PassportElementErrorTranslationFileTypeDriverLicense
+		return nil
+	case PassportElementErrorTranslationFileTypeIdentityCard:
+		*s = PassportElementErrorTranslationFileTypeIdentityCard
+		return nil
+	case PassportElementErrorTranslationFileTypeInternalPassport:
+		*s = PassportElementErrorTranslationFileTypeInternalPassport
+		return nil
+	case PassportElementErrorTranslationFileTypeUtilityBill:
+		*s = PassportElementErrorTranslationFileTypeUtilityBill
+		return nil
+	case PassportElementErrorTranslationFileTypeBankStatement:
+		*s = PassportElementErrorTranslationFileTypeBankStatement
+		return nil
+	case PassportElementErrorTranslationFileTypeRentalAgreement:
+		*s = PassportElementErrorTranslationFileTypeRentalAgreement
+		return nil
+	case PassportElementErrorTranslationFileTypePassportRegistration:
+		*s = PassportElementErrorTranslationFileTypePassportRegistration
+		return nil
+	case PassportElementErrorTranslationFileTypeTemporaryRegistration:
+		*s = PassportElementErrorTranslationFileTypeTemporaryRegistration
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Represents an issue with the translated version of a document. The error is considered resolved
 // when a file with the document translation change.
 // Ref: #/components/schemas/PassportElementErrorTranslationFiles
@@ -15079,6 +15617,67 @@ const (
 	PassportElementErrorTranslationFilesTypePassportRegistration  PassportElementErrorTranslationFilesType = "passport_registration"
 	PassportElementErrorTranslationFilesTypeTemporaryRegistration PassportElementErrorTranslationFilesType = "temporary_registration"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PassportElementErrorTranslationFilesType) MarshalText() ([]byte, error) {
+	switch s {
+	case PassportElementErrorTranslationFilesTypePassport:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeDriverLicense:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeIdentityCard:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeInternalPassport:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeUtilityBill:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeBankStatement:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeRentalAgreement:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypePassportRegistration:
+		return []byte(s), nil
+	case PassportElementErrorTranslationFilesTypeTemporaryRegistration:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PassportElementErrorTranslationFilesType) UnmarshalText(data []byte) error {
+	switch PassportElementErrorTranslationFilesType(data) {
+	case PassportElementErrorTranslationFilesTypePassport:
+		*s = PassportElementErrorTranslationFilesTypePassport
+		return nil
+	case PassportElementErrorTranslationFilesTypeDriverLicense:
+		*s = PassportElementErrorTranslationFilesTypeDriverLicense
+		return nil
+	case PassportElementErrorTranslationFilesTypeIdentityCard:
+		*s = PassportElementErrorTranslationFilesTypeIdentityCard
+		return nil
+	case PassportElementErrorTranslationFilesTypeInternalPassport:
+		*s = PassportElementErrorTranslationFilesTypeInternalPassport
+		return nil
+	case PassportElementErrorTranslationFilesTypeUtilityBill:
+		*s = PassportElementErrorTranslationFilesTypeUtilityBill
+		return nil
+	case PassportElementErrorTranslationFilesTypeBankStatement:
+		*s = PassportElementErrorTranslationFilesTypeBankStatement
+		return nil
+	case PassportElementErrorTranslationFilesTypeRentalAgreement:
+		*s = PassportElementErrorTranslationFilesTypeRentalAgreement
+		return nil
+	case PassportElementErrorTranslationFilesTypePassportRegistration:
+		*s = PassportElementErrorTranslationFilesTypePassportRegistration
+		return nil
+	case PassportElementErrorTranslationFilesTypeTemporaryRegistration:
+		*s = PassportElementErrorTranslationFilesTypeTemporaryRegistration
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Represents an issue in an unspecified place. The error is considered resolved when new data is
 // added.
@@ -15524,6 +16123,32 @@ const (
 	PollTypeRegular PollType = "regular"
 	PollTypeQuiz    PollType = "quiz"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PollType) MarshalText() ([]byte, error) {
+	switch s {
+	case PollTypeRegular:
+		return []byte(s), nil
+	case PollTypeQuiz:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PollType) UnmarshalText(data []byte) error {
+	switch PollType(data) {
+	case PollTypeRegular:
+		*s = PollTypeRegular
+		return nil
+	case PollTypeQuiz:
+		*s = PollTypeQuiz
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // This object contains information about an incoming pre-checkout query.
 // Ref: #/components/schemas/PreCheckoutQuery

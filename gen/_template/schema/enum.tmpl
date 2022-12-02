@@ -8,4 +8,31 @@ const (
 	{{- end }}
 )
 
+{{ if $.Primitive.IsString -}}
+// MarshalText implements encoding.TextMarshaler.
+func (s {{ $.ReadOnlyReceiver }}) MarshalText() ([]byte, error) {
+	switch s {
+    {{- range $variant := $.EnumVariants }}
+	case {{ $variant.Name }}:
+		return []byte(s), nil
+	{{- end }}
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *{{ $.Name }}) UnmarshalText(data []byte) error {
+	switch {{ $.Name }}(data) {
+    {{- range $variant := $.EnumVariants }}
+	case {{ $variant.Name }}:
+		*s = {{ $variant.Name }}
+		return nil
+	{{- end }}
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+{{- end }}
+
 {{ end }}

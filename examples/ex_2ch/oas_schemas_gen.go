@@ -2,6 +2,10 @@
 
 package api
 
+import (
+	"github.com/go-faster/errors"
+)
+
 // APICaptcha2chcaptchaShowGetNotFound is response for APICaptcha2chcaptchaShowGet operation.
 type APICaptcha2chcaptchaShowGetNotFound struct{}
 
@@ -461,6 +465,57 @@ const (
 	CaptchaTypePasscode           CaptchaType = "passcode"
 	CaptchaTypeNocaptcha          CaptchaType = "nocaptcha"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s CaptchaType) MarshalText() ([]byte, error) {
+	switch s {
+	case CaptchaTypeRecaptcha:
+		return []byte(s), nil
+	case CaptchaTypeInvisibleRecaptcha:
+		return []byte(s), nil
+	case CaptchaTypeRecaptcha3:
+		return []byte(s), nil
+	case CaptchaType2chcaptcha:
+		return []byte(s), nil
+	case CaptchaTypeAppid:
+		return []byte(s), nil
+	case CaptchaTypePasscode:
+		return []byte(s), nil
+	case CaptchaTypeNocaptcha:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *CaptchaType) UnmarshalText(data []byte) error {
+	switch CaptchaType(data) {
+	case CaptchaTypeRecaptcha:
+		*s = CaptchaTypeRecaptcha
+		return nil
+	case CaptchaTypeInvisibleRecaptcha:
+		*s = CaptchaTypeInvisibleRecaptcha
+		return nil
+	case CaptchaTypeRecaptcha3:
+		*s = CaptchaTypeRecaptcha3
+		return nil
+	case CaptchaType2chcaptcha:
+		*s = CaptchaType2chcaptcha
+		return nil
+	case CaptchaTypeAppid:
+		*s = CaptchaTypeAppid
+		return nil
+	case CaptchaTypePasscode:
+		*s = CaptchaTypePasscode
+		return nil
+	case CaptchaTypeNocaptcha:
+		*s = CaptchaTypeNocaptcha
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ошибка запроса.
 // Ref: #/components/schemas/Error

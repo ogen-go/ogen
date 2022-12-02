@@ -3782,6 +3782,42 @@ const (
 	ParameterInHeader ParameterIn = "header"
 )
 
+// MarshalText implements encoding.TextMarshaler.
+func (s ParameterIn) MarshalText() ([]byte, error) {
+	switch s {
+	case ParameterInPath:
+		return []byte(s), nil
+	case ParameterInQuery:
+		return []byte(s), nil
+	case ParameterInCookie:
+		return []byte(s), nil
+	case ParameterInHeader:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ParameterIn) UnmarshalText(data []byte) error {
+	switch ParameterIn(data) {
+	case ParameterInPath:
+		*s = ParameterInPath
+		return nil
+	case ParameterInQuery:
+		*s = ParameterInQuery
+		return nil
+	case ParameterInCookie:
+		*s = ParameterInCookie
+		return nil
+	case ParameterInHeader:
+		*s = ParameterInHeader
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/definitions/parameterOrReference
 // ParameterOrReference represents sum type.
 type ParameterOrReference struct {
@@ -3869,6 +3905,57 @@ const (
 	ParameterStylePipeDelimited  ParameterStyle = "pipeDelimited"
 	ParameterStyleDeepObject     ParameterStyle = "deepObject"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ParameterStyle) MarshalText() ([]byte, error) {
+	switch s {
+	case ParameterStyleMatrix:
+		return []byte(s), nil
+	case ParameterStyleLabel:
+		return []byte(s), nil
+	case ParameterStyleForm:
+		return []byte(s), nil
+	case ParameterStyleSimple:
+		return []byte(s), nil
+	case ParameterStyleSpaceDelimited:
+		return []byte(s), nil
+	case ParameterStylePipeDelimited:
+		return []byte(s), nil
+	case ParameterStyleDeepObject:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ParameterStyle) UnmarshalText(data []byte) error {
+	switch ParameterStyle(data) {
+	case ParameterStyleMatrix:
+		*s = ParameterStyleMatrix
+		return nil
+	case ParameterStyleLabel:
+		*s = ParameterStyleLabel
+		return nil
+	case ParameterStyleForm:
+		*s = ParameterStyleForm
+		return nil
+	case ParameterStyleSimple:
+		*s = ParameterStyleSimple
+		return nil
+	case ParameterStyleSpaceDelimited:
+		*s = ParameterStyleSpaceDelimited
+		return nil
+	case ParameterStylePipeDelimited:
+		*s = ParameterStylePipeDelimited
+		return nil
+	case ParameterStyleDeepObject:
+		*s = ParameterStyleDeepObject
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/definitions/parametersOrReferences
 type ParametersOrReferences map[string]ParameterOrReference
@@ -5063,6 +5150,57 @@ const (
 	SchemaTypeObject  SchemaType = "object"
 	SchemaTypeString  SchemaType = "string"
 )
+
+// MarshalText implements encoding.TextMarshaler.
+func (s SchemaType) MarshalText() ([]byte, error) {
+	switch s {
+	case SchemaTypeArray:
+		return []byte(s), nil
+	case SchemaTypeBoolean:
+		return []byte(s), nil
+	case SchemaTypeInteger:
+		return []byte(s), nil
+	case SchemaTypeNull:
+		return []byte(s), nil
+	case SchemaTypeNumber:
+		return []byte(s), nil
+	case SchemaTypeObject:
+		return []byte(s), nil
+	case SchemaTypeString:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *SchemaType) UnmarshalText(data []byte) error {
+	switch SchemaType(data) {
+	case SchemaTypeArray:
+		*s = SchemaTypeArray
+		return nil
+	case SchemaTypeBoolean:
+		*s = SchemaTypeBoolean
+		return nil
+	case SchemaTypeInteger:
+		*s = SchemaTypeInteger
+		return nil
+	case SchemaTypeNull:
+		*s = SchemaTypeNull
+		return nil
+	case SchemaTypeNumber:
+		*s = SchemaTypeNumber
+		return nil
+	case SchemaTypeObject:
+		*s = SchemaTypeObject
+		return nil
+	case SchemaTypeString:
+		*s = SchemaTypeString
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Ref: #/definitions/schemasOrReferences
 type SchemasOrReferences map[string]SchemaOrReference
