@@ -7,6 +7,11 @@
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	if rawPath := r.URL.RawPath; rawPath != "" {
+		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
+			elem = normalized
+		}
+	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
 		if strings.HasPrefix(elem, prefix) {
 			// Cut prefix from the path.
