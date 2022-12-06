@@ -4,6 +4,7 @@ package api
 
 import (
 	"net/http"
+	"net/url"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -67,7 +68,10 @@ func unpackDataGetFormatParams(packed middleware.Parameters) (params DataGetForm
 func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetFormatParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -122,7 +126,10 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: foo.
 	if err := func() error {
-		param := args[1]
+		param, err := url.PathUnescape(args[1])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "foo",
@@ -160,7 +167,10 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: bar.
 	if err := func() error {
-		param := args[2]
+		param, err := url.PathUnescape(args[2])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "bar",
@@ -198,7 +208,10 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: baz.
 	if err := func() error {
-		param := args[3]
+		param, err := url.PathUnescape(args[3])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "baz",
@@ -236,7 +249,10 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	}
 	// Decode path: kek.
 	if err := func() error {
-		param := args[4]
+		param, err := url.PathUnescape(args[4])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "kek",
@@ -522,7 +538,10 @@ func unpackPetFriendsNamesByIDParams(packed middleware.Parameters) (params PetFr
 func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params PetFriendsNamesByIDParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -880,7 +899,10 @@ func unpackPetGetAvatarByNameParams(packed middleware.Parameters) (params PetGet
 func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params PetGetAvatarByNameParams, _ error) {
 	// Decode path: name.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -939,7 +961,10 @@ func unpackPetGetByNameParams(packed middleware.Parameters) (params PetGetByName
 func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByNameParams, _ error) {
 	// Decode path: name.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -998,7 +1023,10 @@ func unpackPetNameByIDParams(packed middleware.Parameters) (params PetNameByIDPa
 func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByIDParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",

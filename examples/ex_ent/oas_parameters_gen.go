@@ -4,6 +4,9 @@ package api
 
 import (
 	"net/http"
+	"net/url"
+
+	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
@@ -32,7 +35,10 @@ func unpackCreatePetCategoriesParams(packed middleware.Parameters) (params Creat
 func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params CreatePetCategoriesParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -91,7 +97,10 @@ func unpackCreatePetFriendsParams(packed middleware.Parameters) (params CreatePe
 func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params CreatePetFriendsParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -150,7 +159,10 @@ func unpackCreatePetOwnerParams(packed middleware.Parameters) (params CreatePetO
 func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreatePetOwnerParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -209,7 +221,10 @@ func unpackDeletePetParams(packed middleware.Parameters) (params DeletePetParams
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -268,7 +283,10 @@ func unpackDeletePetOwnerParams(packed middleware.Parameters) (params DeletePetO
 func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeletePetOwnerParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -467,7 +485,10 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params List
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -631,7 +652,10 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPet
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -772,7 +796,10 @@ func unpackReadPetParams(packed middleware.Parameters) (params ReadPetParams) {
 func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -831,7 +858,10 @@ func unpackReadPetOwnerParams(packed middleware.Parameters) (params ReadPetOwner
 func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOwnerParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -890,7 +920,10 @@ func unpackUpdatePetParams(packed middleware.Parameters) (params UpdatePetParams
 func decodeUpdatePetParams(args [1]string, r *http.Request) (params UpdatePetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
