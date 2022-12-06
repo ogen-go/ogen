@@ -60,7 +60,31 @@ func TestPathParser(t *testing.T) {
 		{
 			Path: "/foo%20bar",
 			Expect: openapi.Path{
-				{Raw: "/foo bar"},
+				{Raw: "/foo%20bar"},
+			},
+		},
+		{
+			Path: "/foo%3fbar",
+			Expect: openapi.Path{
+				{Raw: "/foo%3Fbar"},
+			},
+		},
+		{
+			Path: "/foo%3Fbar",
+			Expect: openapi.Path{
+				{Raw: "/foo%3Fbar"},
+			},
+		},
+		{
+			Path: "/user/ern%41do",
+			Expect: openapi.Path{
+				{Raw: "/user/ernAdo"},
+			},
+		},
+		{
+			Path: "/user/ern%61do",
+			Expect: openapi.Path{
+				{Raw: "/user/ernado"},
 			},
 		},
 		{

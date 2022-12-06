@@ -13,6 +13,7 @@ import (
 	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
+	"github.com/ogen-go/ogen/uri"
 )
 
 type refKey = jsonpointer.RefKey
@@ -163,12 +164,20 @@ func (p *parser) parsePathItems() error {
 	for _, path := range xmaps.SortedKeys(p.spec.Paths) {
 		item := p.spec.Paths[path]
 		if err := func() error {
-			id, err := pathID(path)
+			normalized, ok := uri.NormalizeEscapedPath(path)
+			if !ok {
+				normalized = path
+			}
+
+			id, err := pathID(normalized)
 			if err != nil {
 				return err
 			}
 
 			if _, ok := paths[id]; ok {
+				if normalized != path {
+					return errors.Errorf("duplicate path: %q (normalized: %q)", path, normalized)
+				}
 				return errors.Errorf("duplicate path: %q", path)
 			}
 			paths[id] = struct{}{}
