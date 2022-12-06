@@ -118,7 +118,9 @@ func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.OptPet) (pet *a
 }
 
 func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (*api.Pet, error) {
-	return &s.pet, nil
+	p := s.pet
+	p.Name = params.Name
+	return &p, nil
 }
 
 func (s *sampleAPIServer) PetGetAvatarByName(ctx context.Context, params api.PetGetAvatarByNameParams) (api.PetGetAvatarByNameRes, error) {
@@ -377,6 +379,17 @@ func TestIntegration(t *testing.T) {
 				require.NoError(t, err)
 				assertPet(t, pet, got)
 			})
+			t.Run("PetGetEscaped", func(t *testing.T) {
+				name := "my l@vl/ p?+ & ="
+				got, err := client.PetGetByName(ctx, api.PetGetByNameParams{Name: name})
+				require.NoError(t, err)
+				// Ensure that the name is equal to requested name.
+				require.Equal(t, name, got.Name)
+
+				// Replace the name with the original one.
+				got.Name = pet.Name
+				assertPet(t, pet, got)
+			})
 			t.Run("PetGet", func(t *testing.T) {
 				got, err := client.PetFriendsNamesByID(ctx, api.PetFriendsNamesByIDParams{ID: int(pet.ID)})
 				require.NoError(t, err)
@@ -473,30 +486,6 @@ func TestIntegration(t *testing.T) {
 			assert.NotEmpty(t, h.Raw)
 			assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
 			assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
-		})
-		t.Run("DataGetFormat", func(t *testing.T) {
-			a := require.New(t)
-			// Path: /name/{id}/{foo}1234{bar}-{baz}!{kek}
-			req, err := http.NewRequestWithContext(ctx,
-				http.MethodGet, s.URL+"/name/1/foo-1234bar+-baz/!kek*", http.NoBody)
-			a.NoError(err)
-
-			resp, err := httpClient.Do(req)
-			a.NoError(err)
-
-			data, err := io.ReadAll(resp.Body)
-			a.NoError(err)
-			a.Equal(`"1 foo- bar+ baz/ kek*"`, string(data))
-
-			h, err := client.DataGetFormat(ctx, api.DataGetFormatParams{
-				ID:  1,
-				Foo: "foo-",
-				Bar: "bar+",
-				Baz: "baz/",
-				Kek: "kek*",
-			})
-			a.NoError(err)
-			assert.Equal(t, "1 foo- bar+ baz/ kek*", h)
 		})
 		t.Run("TestObjectQueryParameter", func(t *testing.T) {
 			const (
