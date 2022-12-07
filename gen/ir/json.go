@@ -54,7 +54,7 @@ func (j JSONFields) FirstRequiredIndex() int {
 
 // HasRequired whether object has required fields
 func (j JSONFields) HasRequired() bool {
-	return xslices.ContainsFunc(j, func(f *Field) bool {
+	return slices.ContainsFunc(j, func(f *Field) bool {
 		return f.Spec != nil && f.Spec.Required
 	})
 }

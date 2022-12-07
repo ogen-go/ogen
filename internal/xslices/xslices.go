@@ -18,11 +18,6 @@ func Filter[S ~[]E, E any](sptr *S, keep func(E) bool) {
 	*sptr = s[:n]
 }
 
-// ContainsFunc returns true if the slice contains an element satisfying the predicate.
-func ContainsFunc[S ~[]E, E any](s S, equal func(E) bool) bool {
-	return slices.IndexFunc(s, equal) >= 0
-}
-
 // FindFunc returns the first element satisfying the predicate.
 func FindFunc[S ~[]E, E any](s S, equal func(E) bool) (r E, _ bool) {
 	idx := slices.IndexFunc(s, equal)
