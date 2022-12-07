@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/ogen-go/ogen/internal/xslices"
+	"golang.org/x/exp/slices"
+
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -99,7 +100,7 @@ func (t Type) DefaultFields() (r []*Field) {
 
 // HasDefaultFields whether type has fields with default values.
 func (t Type) HasDefaultFields() bool {
-	return xslices.ContainsFunc(t.Fields, func(f *Field) bool {
+	return slices.ContainsFunc(t.Fields, func(f *Field) bool {
 		return f.Default().Set
 	})
 }

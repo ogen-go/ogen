@@ -8,7 +8,6 @@ import (
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -39,7 +38,7 @@ func (n Routes) Swap(i, j int) {
 
 // AddRoute adds new route. If the route is already added, it returns error.
 func (n *Routes) AddRoute(nr Route) error {
-	if xslices.ContainsFunc(*n, func(r Route) bool { return strings.EqualFold(r.Method, nr.Method) }) {
+	if slices.ContainsFunc(*n, func(r Route) bool { return strings.EqualFold(r.Method, nr.Method) }) {
 		return errors.Errorf("duplicate method %q", nr.Method)
 	}
 	*n = append(*n, nr)
@@ -73,7 +72,7 @@ type WebhookRoutes struct {
 
 // Add adds new operation to the route.
 func (r *WebhookRoutes) Add(nr WebhookRoute) error {
-	if xslices.ContainsFunc(r.Routes, func(r WebhookRoute) bool {
+	if slices.ContainsFunc(r.Routes, func(r WebhookRoute) bool {
 		return strings.EqualFold(r.Method, nr.Method)
 	}) {
 		return errors.Errorf("duplicate method %q", nr.Method)

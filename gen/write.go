@@ -12,12 +12,12 @@ import (
 	"text/template"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/slices"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/tools/imports"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
-	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/ogenregex"
 )
 
@@ -335,8 +335,8 @@ func (g *Generator) hasParams() bool {
 	hasParams := func(op *ir.Operation) bool {
 		return len(op.Params) > 0
 	}
-	return xslices.ContainsFunc(g.operations, hasParams) ||
-		xslices.ContainsFunc(g.webhooks, hasParams)
+	return slices.ContainsFunc(g.operations, hasParams) ||
+		slices.ContainsFunc(g.webhooks, hasParams)
 }
 
 func (g *Generator) hasURIObjectParams() bool {

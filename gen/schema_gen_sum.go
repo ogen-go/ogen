@@ -824,7 +824,7 @@ func mergeEnums(s1, s2 *jsonschema.Schema) ([]any, error) {
 	var result []any
 	for _, v := range small {
 		// FIXME(tdakkota): quadratic complexity.
-		if xslices.ContainsFunc(big, func(x any) bool {
+		if slices.ContainsFunc(big, func(x any) bool {
 			return reflect.DeepEqual(x, v)
 		}) {
 			result = append(result, v)

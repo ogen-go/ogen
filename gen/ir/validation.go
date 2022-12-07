@@ -6,8 +6,8 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 
-	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/validate"
@@ -152,7 +152,7 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 	case KindEnum:
 		return true
 	case KindSum:
-		return xslices.ContainsFunc(t.SumOf, func(s *Type) bool {
+		return slices.ContainsFunc(t.SumOf, func(s *Type) bool {
 			return s.needValidation(path)
 		})
 	case KindAlias:
@@ -173,7 +173,7 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 		}
 		return t.Item.needValidation(path)
 	case KindStruct:
-		return xslices.ContainsFunc(t.Fields, func(f *Field) bool {
+		return slices.ContainsFunc(t.Fields, func(f *Field) bool {
 			return f.Type.needValidation(path)
 		})
 	case KindMap:

@@ -7,10 +7,10 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/location"
-	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -114,7 +114,7 @@ func (f Filters) accept(op *openapi.Operation) bool {
 	}
 
 	if len(f.Methods) > 0 {
-		return xslices.ContainsFunc(f.Methods, func(m string) bool { return strings.EqualFold(m, op.HTTPMethod) })
+		return slices.ContainsFunc(f.Methods, func(m string) bool { return strings.EqualFold(m, op.HTTPMethod) })
 	}
 
 	return true

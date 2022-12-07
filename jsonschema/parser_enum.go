@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/xslices"
 )
@@ -112,7 +113,7 @@ func handleNullableEnum(s *Schema) {
 	// Notice that nullable enum requires `null` in value list.
 	//
 	// Check that enum contains `null` value.
-	s.Nullable = s.Nullable || xslices.ContainsFunc(s.Enum, func(v any) bool {
+	s.Nullable = s.Nullable || slices.ContainsFunc(s.Enum, func(v any) bool {
 		return v == nil
 	})
 	// Filter all `null`s.
