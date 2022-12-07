@@ -2,6 +2,7 @@ package uri
 
 import (
 	"fmt"
+	"net/url"
 	"strings"
 )
 
@@ -37,15 +38,25 @@ func NewPathEncoder(cfg PathEncoderConfig) *PathEncoder {
 	}
 }
 
-func (e *PathEncoder) Result() string {
+func (e *PathEncoder) Result() (r string) {
 	switch e.typ {
 	case typeNotSet:
 		panic("encoder was not called, no value")
 	case typeValue:
+		e.val = url.PathEscape(e.val)
 		return e.value()
 	case typeArray:
+		for i := range e.items {
+			e.items[i] = url.PathEscape(e.items[i])
+		}
 		return e.array()
 	case typeObject:
+		for i, f := range e.fields {
+			e.fields[i] = Field{
+				Name:  url.PathEscape(f.Name),
+				Value: url.PathEscape(f.Value),
+			}
+		}
 		return e.object()
 	default:
 		panic(fmt.Sprintf("unexpected value type: %T", e.typ))
