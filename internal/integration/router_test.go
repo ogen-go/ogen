@@ -1,8 +1,12 @@
 package integration
 
 import (
+	"context"
 	"fmt"
+	"io"
 	"net/http"
+	"net/http/httptest"
+	"strconv"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -94,6 +98,9 @@ func routerTestCases() []routerTestCase {
 		get("/pet/avatar", "PetGetAvatarByID"),
 		post("/pet/avatar", "PetUploadAvatarByID"),
 		get("/pet/aboba", "PetGetByName", "aboba"),
+		get("/pet/abob%41", "PetGetByName", "abobA"),
+		get("/pet/abob%61", "PetGetByName", "aboba"),
+		get("/pet/aboba%2Favatar", "PetGetByName", "aboba/avatar"),
 		get("/pet/aboba/avatar", "PetGetAvatarByName", "aboba"),
 		get("/foobar", "FoobarGet"),
 		post("/foobar", "FoobarPost"),
@@ -148,4 +155,57 @@ func TestRouter(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestComplicatedRoute(t *testing.T) {
+	ctx := context.Background()
+
+	handler := &sampleAPIServer{}
+	h, err := api.NewServer(handler, handler)
+	require.NoError(t, err)
+	s := httptest.NewServer(h)
+	defer t.Cleanup(s.Close)
+
+	httpClient := s.Client()
+	client, err := api.NewClient(s.URL, handler,
+		api.WithClient(httpClient),
+	)
+	require.NoError(t, err)
+
+	// Path: /name/{id}/{foo}1234{bar}-{baz}!{kek}
+	expectedResult := "1 foo- bar+ baz/ kek*"
+	t.Run("Custom", func(t *testing.T) {
+		for i, u := range []string{
+			"/name/1/foo-1234bar+-baz/!kek*",
+			"/name/1/fo%6F-1234bar+-ba%7a/!kek*",
+			"/name/1/fo%6f-1234bar+-ba%7A/!kek*",
+		} {
+			u := u
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				a := require.New(t)
+				req, err := http.NewRequestWithContext(ctx,
+					http.MethodGet, s.URL+u, http.NoBody)
+				a.NoError(err)
+
+				resp, err := httpClient.Do(req)
+				a.NoError(err)
+
+				data, err := io.ReadAll(resp.Body)
+				a.NoError(err)
+				a.Equal(strconv.Quote(expectedResult), string(data))
+			})
+		}
+	})
+	t.Run("Client", func(t *testing.T) {
+		a := require.New(t)
+		h, err := client.DataGetFormat(ctx, api.DataGetFormatParams{
+			ID:  1,
+			Foo: "foo-",
+			Bar: "bar+",
+			Baz: "baz/",
+			Kek: "kek*",
+		})
+		a.NoError(err)
+		a.Equal(expectedResult, h)
+	})
 }

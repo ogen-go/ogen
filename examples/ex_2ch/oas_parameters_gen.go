@@ -4,6 +4,7 @@ package api
 
 import (
 	"net/http"
+	"net/url"
 
 	"github.com/go-faster/errors"
 
@@ -258,7 +259,10 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: public_key.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "public_key",
@@ -963,7 +967,10 @@ func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed middleware.Parameters)
 func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
 	// Decode path: board.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "board",
@@ -1001,7 +1008,10 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 	}
 	// Decode path: thread.
 	if err := func() error {
-		param := args[1]
+		param, err := url.PathUnescape(args[1])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread",
@@ -1056,7 +1066,10 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 	}
 	// Decode path: num.
 	if err := func() error {
-		param := args[2]
+		param, err := url.PathUnescape(args[2])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "num",
@@ -1141,7 +1154,10 @@ func unpackAPIMobileV2InfoBoardThreadGetParams(packed middleware.Parameters) (pa
 func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
 	// Decode path: board.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "board",
@@ -1179,7 +1195,10 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 	}
 	// Decode path: thread.
 	if err := func() error {
-		param := args[1]
+		param, err := url.PathUnescape(args[1])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "thread",
@@ -1264,7 +1283,10 @@ func unpackAPIMobileV2PostBoardNumGetParams(packed middleware.Parameters) (param
 func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {
 	// Decode path: board.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "board",
@@ -1302,7 +1324,10 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 	}
 	// Decode path: num.
 	if err := func() error {
-		param := args[1]
+		param, err := url.PathUnescape(args[1])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "num",

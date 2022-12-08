@@ -4,13 +4,21 @@ package api
 
 import (
 	"net/http"
+	"net/url"
 	"strings"
+
+	"github.com/ogen-go/ogen/uri"
 )
 
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	if rawPath := r.URL.RawPath; rawPath != "" {
+		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
+			elem = normalized
+		}
+	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
 		if strings.HasPrefix(elem, prefix) {
 			// Cut prefix from the path.
@@ -221,6 +229,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	if elem == "" {
 		return r, false
 	}
+	defer func() {
+		for i, arg := range r.args[:r.count] {
+			if unescaped, err := url.PathUnescape(arg); err == nil {
+				r.args[i] = unescaped
+			}
+		}
+	}()
 
 	// Static code generated router with unwrapped path search.
 	switch {

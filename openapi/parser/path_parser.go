@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
+	"github.com/ogen-go/ogen/uri"
 )
 
 type pathParser[P any] struct {
@@ -58,12 +59,14 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 	switch {
 	case u.IsAbs() || u.Host != "" || u.User != nil:
 		return nil, errors.New("path MUST be relative")
-	case !strings.HasPrefix(u.Path, "/"):
-		return nil, errors.New("path MUST begin with a forward slash")
 	case u.RawQuery != "":
 		return nil, errors.New("path MUST NOT contain a query string")
+	case !strings.HasPrefix(path, "/"):
+		return nil, errors.New("path MUST begin with a forward slash")
 	}
-	path = u.Path
+	if normalized, ok := uri.NormalizeEscapedPath(path); ok {
+		path = normalized
+	}
 
 	return (&pathParser[*openapi.Parameter]{
 		path: path,

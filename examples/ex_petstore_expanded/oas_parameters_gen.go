@@ -4,6 +4,9 @@ package api
 
 import (
 	"net/http"
+	"net/url"
+
+	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
@@ -32,7 +35,10 @@ func unpackDeletePetParams(packed middleware.Parameters) (params DeletePetParams
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -91,7 +97,10 @@ func unpackFindPetByIDParams(packed middleware.Parameters) (params FindPetByIDPa
 func decodeFindPetByIDParams(args [1]string, r *http.Request) (params FindPetByIDParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",

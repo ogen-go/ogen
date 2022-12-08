@@ -85,7 +85,10 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 	{{- /* If we cannot find such path parameter, defined path parameter is not used */ -}}
 	{{- $idx := $.PathParamIndex $p.Spec.Name }}
 	{{- if ge $idx 0 }}
-		param := args[{{ $idx }}]
+		param, err := url.PathUnescape(args[{{ $idx }}])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param: {{ quote $p.Spec.Name }},

@@ -4,6 +4,7 @@ package api
 
 import (
 	"net/http"
+	"net/url"
 
 	"github.com/go-faster/errors"
 
@@ -41,7 +42,10 @@ func unpackDataGetParams(packed middleware.Parameters) (params DataGetParams) {
 func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -96,7 +100,10 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 	}
 	// Decode path: key.
 	if err := func() error {
-		param := args[1]
+		param, err := url.PathUnescape(args[1])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key",
@@ -154,7 +161,10 @@ func unpackDataGetIDParams(packed middleware.Parameters) (params DataGetIDParams
 func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDParams, _ error) {
 	// Decode path: id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",

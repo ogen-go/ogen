@@ -4,6 +4,9 @@ package api
 
 import (
 	"net/http"
+	"net/url"
+
+	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
@@ -32,7 +35,10 @@ func unpackPatchGuestDriveByIDParams(packed middleware.Parameters) (params Patch
 func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params PatchGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "drive_id",
@@ -91,7 +97,10 @@ func unpackPatchGuestNetworkInterfaceByIDParams(packed middleware.Parameters) (p
 func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PatchGuestNetworkInterfaceByIDParams, _ error) {
 	// Decode path: iface_id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "iface_id",
@@ -150,7 +159,10 @@ func unpackPutGuestDriveByIDParams(packed middleware.Parameters) (params PutGues
 func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "drive_id",
@@ -209,7 +221,10 @@ func unpackPutGuestNetworkInterfaceByIDParams(packed middleware.Parameters) (par
 func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PutGuestNetworkInterfaceByIDParams, _ error) {
 	// Decode path: iface_id.
 	if err := func() error {
-		param := args[0]
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "iface_id",
