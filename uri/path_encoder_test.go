@@ -307,3 +307,78 @@ func TestPathEncoder(t *testing.T) {
 		}
 	})
 }
+
+func BenchmarkPathEncoder(b *testing.B) {
+	b.Run("Array", func(b *testing.B) {
+		var (
+			cfg = PathEncoderConfig{
+				Param:   "tags",
+				Style:   PathStyleSimple,
+				Explode: true,
+			}
+			elems = []string{
+				"S&P500",
+				"100%",
+				"1_000_000",
+				"among us",
+				"foo",
+				"bar",
+			}
+
+			sink string
+		)
+
+		b.ReportAllocs()
+		b.ResetTimer()
+
+		for i := 0; i < b.N; i++ {
+			e := NewPathEncoder(cfg)
+			if err := e.EncodeArray(func(e Encoder) error {
+				for _, elem := range elems {
+					if err := e.EncodeValue(elem); err != nil {
+						return err
+					}
+				}
+				return nil
+			}); err != nil {
+				b.Fatal(err)
+			}
+			sink = e.Result()
+		}
+		if sink == "" {
+			b.Fatal("sink is empty")
+		}
+	})
+	b.Run("Object", func(b *testing.B) {
+		var (
+			cfg = PathEncoderConfig{
+				Param:   "user",
+				Style:   PathStyleSimple,
+				Explode: true,
+			}
+			fields = []Field{
+				{"username", "%dmin"},
+				{"name", "Dark&Brandon"},
+			}
+			sink string
+		)
+
+		b.ReportAllocs()
+		b.ResetTimer()
+
+		for i := 0; i < b.N; i++ {
+			e := NewPathEncoder(cfg)
+			for _, field := range fields {
+				if err := e.EncodeField(field.Name, func(e Encoder) error {
+					return e.EncodeValue(field.Value)
+				}); err != nil {
+					b.Fatal(err)
+				}
+			}
+			sink = e.Result()
+		}
+		if sink == "" {
+			b.Fatal("sink is empty")
+		}
+	})
+}
