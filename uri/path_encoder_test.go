@@ -25,6 +25,20 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param:   "id",
+				Input:   "f%o",
+				Expect:  "f%25o",
+				Style:   PathStyleSimple,
+				Explode: false,
+			},
+			{
+				Param:   "id",
+				Input:   "foo",
+				Expect:  "foo",
+				Style:   PathStyleSimple,
+				Explode: true,
+			},
+			{
+				Param:   "id",
 				Input:   "foo",
 				Expect:  "foo",
 				Style:   PathStyleSimple,
@@ -39,6 +53,13 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param:   "id",
+				Input:   "f%o",
+				Expect:  ".f%25o",
+				Style:   PathStyleLabel,
+				Explode: false,
+			},
+			{
+				Param:   "id",
 				Input:   "foo",
 				Expect:  ".foo",
 				Style:   PathStyleLabel,
@@ -48,6 +69,13 @@ func TestPathEncoder(t *testing.T) {
 				Param:   "id",
 				Input:   "foo",
 				Expect:  ";id=foo",
+				Style:   PathStyleMatrix,
+				Explode: false,
+			},
+			{
+				Param:   "id",
+				Input:   "f%o",
+				Expect:  ";id=f%25o",
 				Style:   PathStyleMatrix,
 				Explode: false,
 			},
@@ -88,6 +116,13 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param:   "id",
+				Input:   []string{"f%o", "b?r"},
+				Expect:  "f%25o,b%3Fr",
+				Style:   PathStyleSimple,
+				Explode: false,
+			},
+			{
+				Param:   "id",
 				Input:   []string{"foo", "bar"},
 				Expect:  "foo,bar",
 				Style:   PathStyleSimple,
@@ -102,6 +137,13 @@ func TestPathEncoder(t *testing.T) {
 			},
 			{
 				Param:   "id",
+				Input:   []string{"f%o", "b?r"},
+				Expect:  ".f%25o,b%3Fr",
+				Style:   PathStyleLabel,
+				Explode: false,
+			},
+			{
+				Param:   "id",
 				Input:   []string{"foo", "bar"},
 				Expect:  ".foo.bar",
 				Style:   PathStyleLabel,
@@ -111,6 +153,13 @@ func TestPathEncoder(t *testing.T) {
 				Param:   "id",
 				Input:   []string{"foo", "bar"},
 				Expect:  ";id=foo,bar",
+				Style:   PathStyleMatrix,
+				Explode: false,
+			},
+			{
+				Param:   "id",
+				Input:   []string{"f%o", "b?r"},
+				Expect:  ";id=f%25o,b%3Fr",
 				Style:   PathStyleMatrix,
 				Explode: false,
 			},
@@ -163,6 +212,16 @@ func TestPathEncoder(t *testing.T) {
 			{
 				Param: "id",
 				Input: []Field{
+					{"r?le", "%dmin"},
+					{"f?rstName", "Alex"},
+				},
+				Style:   PathStyleSimple,
+				Explode: false,
+				Expect:  "r%3Fle,%25dmin,f%3FrstName,Alex",
+			},
+			{
+				Param: "id",
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -183,6 +242,16 @@ func TestPathEncoder(t *testing.T) {
 			{
 				Param: "id",
 				Input: []Field{
+					{"r?le", "%dmin"},
+					{"f?rstName", "Alex"},
+				},
+				Style:   PathStyleLabel,
+				Explode: false,
+				Expect:  ".r%3Fle,%25dmin,f%3FrstName,Alex",
+			},
+			{
+				Param: "id",
+				Input: []Field{
 					{"role", "admin"},
 					{"firstName", "Alex"},
 				},
@@ -199,6 +268,16 @@ func TestPathEncoder(t *testing.T) {
 				Style:   PathStyleMatrix,
 				Explode: false,
 				Expect:  ";id=role,admin,firstName,Alex",
+			},
+			{
+				Param: "id",
+				Input: []Field{
+					{"r?le", "%dmin"},
+					{"f?rstName", "Alex"},
+				},
+				Style:   PathStyleMatrix,
+				Explode: false,
+				Expect:  ";id=r%3Fle,%25dmin,f%3FrstName,Alex",
 			},
 			{
 				Param: "id",
