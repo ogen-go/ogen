@@ -1,20 +1,19 @@
-{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
-{{ define "encode_path_parameters" }}
+{{ define "encode_path_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 u := uri.Clone(c.requestURL(ctx))
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 	{{- if $part.Raw }}
 		u.Path += {{ quote $part.Raw }}
 	{{- else }}
 	{
-		{{- $param := $part.Param }}
-		// Encode {{ quote $param.Spec.Name }} parameter.
+		{{- $p := $part.Param }}
+		// Encode {{ quote $p.Spec.Name }} parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param: {{ quote $param.Spec.Name }},
-			Style: uri.PathStyle{{ capitalize $param.Spec.Style.String }},
-			Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+			Param: {{ quote $p.Spec.Name }},
+			Style: uri.PathStyle{{ capitalize $p.Spec.Style.String }},
+			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 		})
 		if err := func() error {
-			{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
+    		{{- template "encode_parameter" $p -}}
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
@@ -24,29 +23,19 @@ u := uri.Clone(c.requestURL(ctx))
 {{- end }}
 {{- end }}
 
-{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
-{{ define "encode_query_parameters" }}
+{{ define "encode_query_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 q := uri.NewQueryEncoder()
-{{- range $param := $.QueryParams }}
+{{- range $p := $.QueryParams }}
 {
-	// Encode {{ quote $param.Spec.Name }} parameter.
+	// Encode {{ quote $p.Spec.Name }} parameter.
 	cfg := uri.QueryParameterEncodingConfig{
-		Name:    {{ quote $param.Spec.Name }},
-		Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
-		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+		Name:    {{ quote $p.Spec.Name }},
+		Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
+		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 	}
 
 	if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-		{{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
-		{{- if $param.Spec.Content }}
-			enc := jx.GetEncoder()
-			func(e *jx.Encoder) {
-            	{{ template "json/enc" $el }}
-			}(enc)
-			return e.EncodeValue(string(enc.Bytes()))
-		{{- else }}
-		    {{- template "uri/encode" $el }}
-		{{- end }}
+		{{- template "encode_parameter" $p -}}
 	}); err != nil {
 		return res, errors.Wrap(err, "encode query")
 	}
@@ -55,7 +44,7 @@ q := uri.NewQueryEncoder()
 u.RawQuery = q.Values().Encode()
 {{- end }}
 
-{{ define "encode_header_parameters" }}
+{{ define "encode_header_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 h := uri.NewHeaderEncoder(r.Header)
 {{- range $p := $.HeaderParams }}
 {
@@ -64,19 +53,24 @@ h := uri.NewHeaderEncoder(r.Header)
 		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 	}
 	if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-		{{- $el := elem $p.Type (printf "params.%s" $p.Name) }}
-		{{- if $p.Spec.Content }}
-			enc := jx.GetEncoder()
-			func(e *jx.Encoder) {
-            	{{ template "json/enc" $el }}
-			}(enc)
-			return e.EncodeValue(string(enc.Bytes()))
-		{{- else }}
-		    {{- template "uri/encode" $el }}
-		{{- end }}
+		{{- template "encode_parameter" $p -}}
 	}); err != nil {
 		return res, errors.Wrap(err, "encode header")
 	}
 }
+{{- end }}
+{{ end }}
+
+{{ define "encode_parameter" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/}}
+{{- $param := $ }}
+{{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
+{{- if $param.Spec.Content }}
+	enc := jx.GetEncoder()
+	func(e *jx.Encoder) {
+    	{{ template "json/enc" $el }}
+	}(enc)
+	return e.EncodeValue(string(enc.Bytes()))
+{{- else }}
+    {{- template "uri/encode" $el }}
 {{- end }}
 {{ end }}
