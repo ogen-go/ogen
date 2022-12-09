@@ -86,33 +86,38 @@ func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 			var wrapper PetsHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'x-next' header.
+			// Parse "x-next" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "x-next",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotXNextVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXNextVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXNextVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotXNextVal = c
+						wrapper.XNext.SetTo(wrapperDotXNextVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.XNext.SetTo(wrapperDotXNextVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse x-next header")
 				}
 			}

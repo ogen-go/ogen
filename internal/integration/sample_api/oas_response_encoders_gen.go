@@ -150,19 +150,6 @@ func encodeFoobarPutResponse(response *FoobarPutDef, w http.ResponseWriter, span
 	return nil
 }
 
-func encodeGetHeaderResponse(response *Hash, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
-
-	e := jx.GetEncoder()
-	response.Encode(e)
-	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
-}
-
 func encodeNoAdditionalPropertiesTestResponse(response *NoAdditionalPropertiesTest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -535,19 +522,6 @@ func encodeStringIntMapGetResponse(response *StringIntMap, w http.ResponseWriter
 	return nil
 }
 
-func encodeTestContentParameterResponse(response string, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
-
-	e := jx.GetEncoder()
-	e.Str(response)
-	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
-}
-
 func encodeTestFloatValidationResponse(response *TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -596,17 +570,4 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 	default:
 		return errors.Errorf("unexpected response type: %T", response)
 	}
-}
-
-func encodeTestObjectQueryParameterResponse(response *TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
-
-	e := jx.GetEncoder()
-	response.Encode(e)
-	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
 }

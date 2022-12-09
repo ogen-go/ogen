@@ -63,15 +63,6 @@ func (UnimplementedHandler) FoobarPut(ctx context.Context) (r *FoobarPutDef, _ e
 	return r, ht.ErrNotImplemented
 }
 
-// GetHeader implements getHeader operation.
-//
-// Test for header param.
-//
-// GET /test/header
-func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParams) (r *Hash, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
 // NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
@@ -214,13 +205,6 @@ func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r *StringIntMa
 	return r, ht.ErrNotImplemented
 }
 
-// TestContentParameter implements testContentParameter operation.
-//
-// GET /testContentParameter
-func (UnimplementedHandler) TestContentParameter(ctx context.Context, params TestContentParameterParams) (r string, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
 // TestFloatValidation implements testFloatValidation operation.
 //
 // POST /testFloatValidation
@@ -232,12 +216,5 @@ func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req *TestFl
 //
 // GET /testNullableOneofs
 func (UnimplementedHandler) TestNullableOneofs(ctx context.Context) (r TestNullableOneofsRes, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// TestObjectQueryParameter implements testObjectQueryParameter operation.
-//
-// GET /testObjectQueryParameter
-func (UnimplementedHandler) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (r *TestObjectQueryParameterOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

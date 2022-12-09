@@ -55,6 +55,13 @@ func (UnimplementedHandler) HeadersDefault(ctx context.Context) (r *HeadersDefau
 	return r, ht.ErrNotImplemented
 }
 
+// HeadersJSON implements headersJSON operation.
+//
+// GET /headersJSON
+func (UnimplementedHandler) HeadersJSON(ctx context.Context) (r *HeadersJSONOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // HeadersPattern implements headersPattern operation.
 //
 // GET /headersPattern

@@ -221,26 +221,31 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error
 		// Code 200.
 		var wrapper Headers200OK
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'TestHeader' header.
+		// Parse "TestHeader" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "TestHeader",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				val, err := d.DecodeValue()
-				if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapper.TestHeader = c
+					return nil
+				}); err != nil {
 					return err
 				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				wrapper.TestHeader = c
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse TestHeader header")
 			}
 		}
@@ -255,26 +260,31 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 		// Code 200.
 		var wrapper HeadersCombinedOK
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'TestHeader' header.
+		// Parse "TestHeader" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "TestHeader",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				val, err := d.DecodeValue()
-				if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapper.TestHeader = c
+					return nil
+				}); err != nil {
 					return err
 				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				wrapper.TestHeader = c
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse TestHeader header")
 			}
 		}
@@ -286,12 +296,47 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 		var wrapper HeadersCombined4XX
 		wrapper.StatusCode = resp.StatusCode
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'TestHeader' header.
+		// Parse "TestHeader" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "TestHeader",
 				Explode: false,
 			}
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapper.TestHeader = c
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "parse TestHeader header")
+			}
+		}
+		return &wrapper, nil
+	}
+	// Default response.
+	var wrapper HeadersCombinedDef
+	wrapper.StatusCode = resp.StatusCode
+	h := uri.NewHeaderDecoder(resp.Header)
+	// Parse "TestHeader" header.
+	{
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "TestHeader",
+			Explode: false,
+		}
+		if err := func() error {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -306,35 +351,10 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 				wrapper.TestHeader = c
 				return nil
 			}); err != nil {
-				return res, errors.Wrap(err, "parse TestHeader header")
-			}
-		}
-		return &wrapper, nil
-	}
-	// Default response.
-	var wrapper HeadersCombinedDef
-	wrapper.StatusCode = resp.StatusCode
-	h := uri.NewHeaderDecoder(resp.Header)
-	// Parse 'TestHeader' header.
-	{
-		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "TestHeader",
-			Explode: false,
-		}
-		if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-			val, err := d.DecodeValue()
-			if err != nil {
 				return err
 			}
-
-			c, err := conv.ToString(val)
-			if err != nil {
-				return err
-			}
-
-			wrapper.TestHeader = c
 			return nil
-		}); err != nil {
+		}(); err != nil {
 			return res, errors.Wrap(err, "parse TestHeader header")
 		}
 	}
@@ -346,45 +366,13 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, 
 	var wrapper HeadersDefaultDef
 	wrapper.StatusCode = resp.StatusCode
 	h := uri.NewHeaderDecoder(resp.Header)
-	// Parse 'TestHeader' header.
+	// Parse "TestHeader" header.
 	{
 		cfg := uri.HeaderParameterDecodingConfig{
 			Name:    "TestHeader",
 			Explode: false,
 		}
-		if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-			val, err := d.DecodeValue()
-			if err != nil {
-				return err
-			}
-
-			c, err := conv.ToString(val)
-			if err != nil {
-				return err
-			}
-
-			wrapper.TestHeader = c
-			return nil
-		}); err != nil {
-			return res, errors.Wrap(err, "parse TestHeader header")
-		}
-	}
-	return &wrapper, nil
-}
-
-func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, err error) {
-	switch resp.StatusCode / 100 {
-	case 4:
-		// Pattern 4XX.
-		var wrapper HeadersPattern4XX
-		wrapper.StatusCode = resp.StatusCode
-		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'TestHeader' header.
-		{
-			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "TestHeader",
-				Explode: false,
-			}
+		if err := func() error {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
@@ -399,6 +387,127 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 				wrapper.TestHeader = c
 				return nil
 			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "parse TestHeader header")
+		}
+	}
+	return &wrapper, nil
+}
+
+func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		var wrapper HeadersJSONOK
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse "X-JSON-Custom-Header" header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "X-JSON-Custom-Header",
+				Explode: false,
+			}
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+						v, err := d.RawAppend(nil)
+						wrapper.XJSONCustomHeader = jx.Raw(v)
+						if err != nil {
+							return err
+						}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "parse X-JSON-Custom-Header header")
+			}
+		}
+		// Parse "X-JSON-Header" header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "X-JSON-Header",
+				Explode: false,
+			}
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+					if err := func(d *jx.Decoder) error {
+						if err := wrapper.XJSONHeader.Decode(d); err != nil {
+							return err
+						}
+						return nil
+					}(jx.DecodeStr(val)); err != nil {
+						return err
+					}
+					return nil
+				}); err != nil {
+					return err
+				}
+				if err := func() error {
+					if err := wrapper.XJSONHeader.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "parse X-JSON-Header header")
+			}
+		}
+		return &wrapper, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, err error) {
+	switch resp.StatusCode / 100 {
+	case 4:
+		// Pattern 4XX.
+		var wrapper HeadersPattern4XX
+		wrapper.StatusCode = resp.StatusCode
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse "TestHeader" header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapper.TestHeader = c
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse TestHeader header")
 			}
 		}

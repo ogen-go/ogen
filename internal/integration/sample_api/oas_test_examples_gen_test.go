@@ -133,18 +133,6 @@ func TestError_EncodeDecode(t *testing.T) {
 	var typ2 Error
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestHash_EncodeDecode(t *testing.T) {
-	var typ Hash
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 Hash
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestID_EncodeDecode(t *testing.T) {
 	var typ ID
 	typ.SetFake()
@@ -715,18 +703,6 @@ func TestStringStringMap_EncodeDecode(t *testing.T) {
 	typ2 = make(StringStringMap)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestTestContentParameterParam_EncodeDecode(t *testing.T) {
-	var typ TestContentParameterParam
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TestContentParameterParam
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestTestFloatValidation_EncodeDecode(t *testing.T) {
 	var typ TestFloatValidation
 	typ.SetFake()
@@ -761,18 +737,6 @@ func TestTestNullableOneofsApplicationJSONOK_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestNullableOneofsApplicationJSONOK
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTestObjectQueryParameterOK_EncodeDecode(t *testing.T) {
-	var typ TestObjectQueryParameterOK
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TestObjectQueryParameterOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestValidationStringMap_EncodeDecode(t *testing.T) {

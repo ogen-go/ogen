@@ -28,11 +28,6 @@ type FoobarGetParams struct {
 	Skip int32
 }
 
-// GetHeaderParams is parameters of getHeader operation.
-type GetHeaderParams struct {
-	XAuthToken string
-}
-
 // PetFriendsNamesByIDParams is parameters of petFriendsNamesByID operation.
 type PetFriendsNamesByIDParams struct {
 	// Pet ID.
@@ -79,15 +74,4 @@ type PetNameByIDParams struct {
 type PetUploadAvatarByIDParams struct {
 	// ID of pet.
 	PetID int64
-}
-
-// TestContentParameterParams is parameters of testContentParameter operation.
-type TestContentParameterParams struct {
-	Param OptTestContentParameterParam
-}
-
-// TestObjectQueryParameterParams is parameters of testObjectQueryParameter operation.
-type TestObjectQueryParameterParams struct {
-	FormObject OptTestObjectQueryParameterFormObject
-	DeepObject OptTestObjectQueryParameterDeepObject
 }

@@ -285,6 +285,53 @@ func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWr
 	return nil
 }
 
+func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode "X-JSON-Custom-Header" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "X-JSON-Custom-Header",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				enc := jx.GetEncoder()
+				func(e *jx.Encoder) {
+
+					if len(response.XJSONCustomHeader) != 0 {
+						e.Raw(response.XJSONCustomHeader)
+					}
+				}(enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			}); err != nil {
+				return errors.Wrap(err, "encode X-JSON-Custom-Header header")
+			}
+		}
+		// Encode "X-JSON-Header" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "X-JSON-Header",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				enc := jx.GetEncoder()
+				func(e *jx.Encoder) {
+
+					response.XJSONHeader.Encode(e)
+				}(enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			}); err != nil {
+				return errors.Wrap(err, "encode X-JSON-Header header")
+			}
+		}
+	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
 func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{

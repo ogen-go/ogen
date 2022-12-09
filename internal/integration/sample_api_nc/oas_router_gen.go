@@ -610,42 +610,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/header"
-					if l := len("/header"); len(elem) >= l && elem[0:l] == "/header" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleGetHeaderRequest([0]string{}, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
-						}
-
-						return
-					}
-				case 'C': // Prefix: "ContentParameter"
-					if l := len("ContentParameter"); len(elem) >= l && elem[0:l] == "ContentParameter" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleTestContentParameterRequest([0]string{}, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
-						}
-
-						return
-					}
 				case 'F': // Prefix: "FloatValidation"
 					if l := len("FloatValidation"); len(elem) >= l && elem[0:l] == "FloatValidation" {
 						elem = elem[l:]
@@ -676,24 +640,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						switch r.Method {
 						case "GET":
 							s.handleTestNullableOneofsRequest([0]string{}, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
-						}
-
-						return
-					}
-				case 'O': // Prefix: "ObjectQueryParameter"
-					if l := len("ObjectQueryParameter"); len(elem) >= l && elem[0:l] == "ObjectQueryParameter" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleTestObjectQueryParameterRequest([0]string{}, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -1370,46 +1316,6 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/header"
-					if l := len("/header"); len(elem) >= l && elem[0:l] == "/header" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						switch method {
-						case "GET":
-							// Leaf: GetHeader
-							r.name = "GetHeader"
-							r.operationID = "getHeader"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
-						}
-					}
-				case 'C': // Prefix: "ContentParameter"
-					if l := len("ContentParameter"); len(elem) >= l && elem[0:l] == "ContentParameter" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						switch method {
-						case "GET":
-							// Leaf: TestContentParameter
-							r.name = "TestContentParameter"
-							r.operationID = "testContentParameter"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
-						}
-					}
 				case 'F': // Prefix: "FloatValidation"
 					if l := len("FloatValidation"); len(elem) >= l && elem[0:l] == "FloatValidation" {
 						elem = elem[l:]
@@ -1443,26 +1349,6 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							// Leaf: TestNullableOneofs
 							r.name = "TestNullableOneofs"
 							r.operationID = "testNullableOneofs"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
-						}
-					}
-				case 'O': // Prefix: "ObjectQueryParameter"
-					if l := len("ObjectQueryParameter"); len(elem) >= l && elem[0:l] == "ObjectQueryParameter" {
-						elem = elem[l:]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						switch method {
-						case "GET":
-							// Leaf: TestObjectQueryParameter
-							r.name = "TestObjectQueryParameter"
-							r.operationID = "testObjectQueryParameter"
 							r.args = args
 							r.count = 0
 							return r, true
