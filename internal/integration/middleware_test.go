@@ -3,12 +3,11 @@ package integration
 import (
 	"bytes"
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
 	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -109,12 +108,8 @@ func (s *testMiddleware) PetUploadAvatarByID(
 	return &api.PetUploadAvatarByIDOK{}, nil
 }
 
-func (s *testMiddleware) GetHeader(ctx context.Context, params api.GetHeaderParams) (*api.Hash, error) {
-	h := sha256.Sum256([]byte(params.XAuthToken))
-	return &api.Hash{
-		Raw: h[:],
-		Hex: hex.EncodeToString(h[:]),
-	}, nil
+func (s *testMiddleware) PetNameByID(ctx context.Context, params api.PetNameByIDParams) (string, error) {
+	return strconv.Itoa(params.ID), nil
 }
 
 func (s *testMiddleware) ErrorGet(ctx context.Context) (*api.ErrorStatusCode, error) {
@@ -172,13 +167,11 @@ func TestMiddleware(t *testing.T) {
 	checkLog(a)
 
 	// Test an endpoint with params only.
-	const token = "test_token"
-	hash, err := client.GetHeader(ctx, api.GetHeaderParams{
-		XAuthToken: token,
+	hash, err := client.PetNameByID(ctx, api.PetNameByIDParams{
+		ID: 10,
 	})
 	a.NoError(err)
-	sum := sha256.Sum256([]byte(token))
-	a.Equal(sum[:], hash.Raw)
+	a.Equal("10", hash)
 	checkLog(a)
 
 	// Test an endpoint without params and body.

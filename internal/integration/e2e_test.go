@@ -3,9 +3,7 @@ package integration
 import (
 	"bytes"
 	"context"
-	"crypto/sha256"
 	_ "embed"
-	"encoding/hex"
 	"fmt"
 	"io"
 	"net/http"
@@ -15,7 +13,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
@@ -79,14 +76,6 @@ func (s sampleAPIServer) DataGetFormat(ctx context.Context, params api.DataGetFo
 		params.Baz,
 		params.Kek,
 	), nil
-}
-
-func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderParams) (*api.Hash, error) {
-	h := sha256.Sum256([]byte(params.XAuthToken))
-	return &api.Hash{
-		Raw: h[:],
-		Hex: hex.EncodeToString(h[:]),
-	}, nil
 }
 
 func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (*api.PetUpdateNamePostDef, error) {
@@ -183,26 +172,6 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (*api.ErrorStatusCode, e
 	}, nil
 }
 
-func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params api.TestObjectQueryParameterParams) (*api.TestObjectQueryParameterOK, error) {
-	if param, ok := params.FormObject.Get(); ok {
-		return &api.TestObjectQueryParameterOK{
-			Style:  "form",
-			Min:    param.Min,
-			Max:    param.Max,
-			Filter: param.Filter,
-		}, nil
-	}
-	if param, ok := params.DeepObject.Get(); ok {
-		return &api.TestObjectQueryParameterOK{
-			Style:  "deepObject",
-			Min:    param.Min,
-			Max:    param.Max,
-			Filter: param.Filter,
-		}, nil
-	}
-	return &api.TestObjectQueryParameterOK{}, errors.New("invalid input")
-}
-
 func (s sampleAPIServer) DefaultTest(ctx context.Context, req *api.DefaultTest, params api.DefaultTestParams) (int32, error) {
 	return params.Default.Value, nil
 }
@@ -212,11 +181,6 @@ func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (*api.NilI
 		StatusCode: 200,
 		Response:   api.NewNilInt(1337),
 	}, nil
-}
-
-func (s sampleAPIServer) TestContentParameter(ctx context.Context, params api.TestContentParameterParams) (string, error) {
-	val, _ := params.Param.Get()
-	return val.Style, nil
 }
 
 var _ api.Handler = (*sampleAPIServer)(nil)
@@ -480,49 +444,6 @@ func TestIntegration(t *testing.T) {
 			require.NoError(t, err)
 			require.Equal(t, http.StatusOK, h.StatusCode)
 		})
-		t.Run("GetHeader", func(t *testing.T) {
-			h, err := client.GetHeader(ctx, api.GetHeaderParams{XAuthToken: "hello, world"})
-			require.NoError(t, err)
-			assert.NotEmpty(t, h.Raw)
-			assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
-			assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
-		})
-		t.Run("TestObjectQueryParameter", func(t *testing.T) {
-			const (
-				min    = 1
-				max    = 5
-				filter = "abc"
-			)
-
-			t.Run("formStyle", func(t *testing.T) {
-				resp, err := client.TestObjectQueryParameter(ctx, api.TestObjectQueryParameterParams{
-					FormObject: api.NewOptTestObjectQueryParameterFormObject(api.TestObjectQueryParameterFormObject{
-						Min:    min,
-						Max:    max,
-						Filter: filter,
-					}),
-				})
-				require.NoError(t, err)
-				require.Equal(t, resp.Style, "form")
-				require.Equal(t, resp.Min, min)
-				require.Equal(t, resp.Max, max)
-				require.Equal(t, resp.Filter, filter)
-			})
-			t.Run("deepObjectStyle", func(t *testing.T) {
-				resp, err := client.TestObjectQueryParameter(ctx, api.TestObjectQueryParameterParams{
-					DeepObject: api.NewOptTestObjectQueryParameterDeepObject(api.TestObjectQueryParameterDeepObject{
-						Min:    min,
-						Max:    max,
-						Filter: filter,
-					}),
-				})
-				require.NoError(t, err)
-				require.Equal(t, resp.Style, "deepObject")
-				require.Equal(t, resp.Min, min)
-				require.Equal(t, resp.Max, max)
-				require.Equal(t, resp.Filter, filter)
-			})
-		})
 		t.Run("DefaultParameters", func(t *testing.T) {
 			a := require.New(t)
 
@@ -542,12 +463,6 @@ func TestIntegration(t *testing.T) {
 			resp, err := client.SecurityTest(ctx)
 			a.NoError(err)
 			a.Equal("десять", resp)
-		})
-		t.Run("TestContentParameter", func(t *testing.T) {
-			a := require.New(t)
-			a.HTTPBodyContains(h.ServeHTTP, http.MethodGet, s.URL+"/testContentParameter", url.Values{
-				"param": {`{"filter":"bar","style":"foo","min":10,"max":10}`},
-			}, "foo")
 		})
 	})
 

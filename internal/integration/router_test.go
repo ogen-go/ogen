@@ -106,13 +106,10 @@ func routerTestCases() []routerTestCase {
 		post("/foobar", "FoobarPost"),
 		put("/foobar", "FoobarPut"),
 		get("/error", "ErrorGet"),
-		get("/test/header", "GetHeader"),
 		// "/name/{id}/{foo}1234{bar}-{baz}!{kek}"
 		get("/name/10/foobar1234barh-buzz!-kek", "DataGetFormat",
 			"10", "foobar", "barh", "buzz", "-kek"),
-		get("/testObjectQueryParameter", "TestObjectQueryParameter"),
 		post("/testFloatValidation", "TestFloatValidation"),
-		get("/test/header", "GetHeader"),
 
 		get("/test", ""),
 		post("/test", ""),
@@ -120,7 +117,6 @@ func routerTestCases() []routerTestCase {
 		post("/pet/aboba", "").defined(),
 		del("/foobar", "").defined(),
 		del("/name/10/foobar1234barh-buzz!-kek", "").defined(),
-		post("/test/header", "").defined(),
 	}
 }
 

@@ -1,0 +1,276 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "title",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/objectQueryParameter": {
+      "get": {
+        "operationId": "objectQueryParameter",
+        "parameters": [
+          {
+            "name": "formObject",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "object",
+              "required": [
+                "min",
+                "max",
+                "filter"
+              ],
+              "properties": {
+                "min": {
+                  "type": "integer"
+                },
+                "max": {
+                  "type": "integer"
+                },
+                "filter": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "name": "deepObject",
+            "in": "query",
+            "style": "deepObject",
+            "schema": {
+              "type": "object",
+              "required": [
+                "min",
+                "max",
+                "filter"
+              ],
+              "properties": {
+                "min": {
+                  "type": "integer"
+                },
+                "max": {
+                  "type": "integer"
+                },
+                "filter": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "style",
+                    "min",
+                    "max",
+                    "filter"
+                  ],
+                  "properties": {
+                    "style": {
+                      "type": "string"
+                    },
+                    "min": {
+                      "type": "integer"
+                    },
+                    "max": {
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contentQueryParameter": {
+      "get": {
+        "operationId": "contentQueryParameter",
+        "parameters": [
+          {
+            "name": "param",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "style",
+                    "min",
+                    "max",
+                    "filter"
+                  ],
+                  "properties": {
+                    "style": {
+                      "type": "string"
+                    },
+                    "min": {
+                      "type": "integer"
+                    },
+                    "max": {
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/complicatedParameterName": {
+      "get": {
+        "parameters": [
+          {
+            "name": "=",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "+",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "question?",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "and&",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "percent%",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    },
+    "/headerParameter": {
+      "get": {
+        "description": "Test for header param",
+        "operationId": "headerParameter",
+        "parameters": [
+          {
+            "in": "header",
+            "required": true,
+            "name": "x-auth-token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns sha256 of header value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hash"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/same_name/{path}" : {
+      "get": {
+        "operationId": "sameName",
+        "summary": "parameter with different location, but the same name",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Hash": {
+        "type": "object",
+        "required": [
+          "raw",
+          "hex"
+        ],
+        "properties": {
+          "raw": {
+            "type": "string",
+            "format": "byte"
+          },
+          "hex": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          }
+        }
+      }
+    }
+  }
+}

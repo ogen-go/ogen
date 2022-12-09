@@ -102,18 +102,17 @@ func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req *api.
 }
 
 func TestRequests(t *testing.T) {
-	a := require.New(t)
 	ctx := context.Background()
 
 	testData := "bababoi"
-	srv, err := api.NewServer(testHTTPRequests{})
-	a.NoError(err)
+	h, err := api.NewServer(testHTTPRequests{})
+	require.NoError(t, err)
 
-	s := httptest.NewServer(srv)
+	s := httptest.NewServer(h)
 	defer s.Close()
 
 	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
-	a.NoError(err)
+	require.NoError(t, err)
 
 	t.Run("AllRequestBodies", func(t *testing.T) {
 		reqs := []api.AllRequestBodiesReq{
