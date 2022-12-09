@@ -20,7 +20,6 @@ type testParameters struct {
 }
 
 func (s *testParameters) ComplicatedParameterNameGet(ctx context.Context, params api.ComplicatedParameterNameGetParams) (*api.ComplicatedParameterNameGetOK, error) {
-	//TODO implement me
 	panic("implement me")
 }
 
@@ -57,8 +56,11 @@ func (s *testParameters) ObjectQueryParameter(ctx context.Context, params api.Ob
 	return &api.ObjectQueryParameterOK{}, errors.New("invalid input")
 }
 
+func (s *testParameters) PathObjectParameter(ctx context.Context, params api.PathObjectParameterParams) (*api.User, error) {
+	return &params.Param, nil
+}
+
 func (s *testParameters) SameName(ctx context.Context, params api.SameNameParams) (*api.SameNameOK, error) {
-	//TODO implement me
 	panic("implement me")
 }
 
@@ -117,9 +119,31 @@ func TestParameters(t *testing.T) {
 		assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
 		assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
 	})
-	t.Run("ContentParameter", func(t *testing.T) {
+	t.Run("ContentQueryParameter", func(t *testing.T) {
 		require.HTTPBodyContains(t, h.ServeHTTP, http.MethodGet, s.URL+"/contentQueryParameter", url.Values{
 			"param": {`{"filter":"bar","style":"foo","min":10,"max":10}`},
 		}, "foo")
+	})
+	t.Run("PathObjectParameter", func(t *testing.T) {
+		user := api.User{
+			ID:       1,
+			Username: "admin",
+			Role:     api.UserRoleAdmin,
+			Friends: []api.User{
+				{
+					ID:       2,
+					Username: "alice",
+					Role:     api.UserRoleUser,
+				},
+				{
+					ID:       3,
+					Username: "`\"';,./<>?[]{}\\|~!@#$%^&*()_+-=",
+					Role:     api.UserRoleBot,
+				},
+			},
+		}
+		resp, err := client.PathObjectParameter(ctx, api.PathObjectParameterParams{Param: user})
+		require.NoError(t, err)
+		assert.Equal(t, user, *resp)
 	})
 }
