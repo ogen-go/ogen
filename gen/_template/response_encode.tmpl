@@ -71,9 +71,18 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 			Explode: {{ if $header.Spec.Explode }}true{{ else }}false{{ end }},
 		}
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error{
-			{{- template "uri/encode" elem $header.Type (printf "response.%s" $header.Name) }}
+			{{- $el := elem $header.Type (printf "response.%s" $header.Name) }}
+			{{- if $header.Spec.Content }}
+				enc := jx.GetEncoder()
+				func(e *jx.Encoder) {
+					{{ template "json/enc" $el }}
+				}(enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			{{- else }}
+				{{- template "uri/encode" $el }}
+			{{- end }}
 		}); err != nil {
-			return errors.Wrap(err, "encode {{ $header.Spec.Name }} header")
+			return errors.Wrap(err, {{ printf "encode %s header" $header.Spec.Name | quote }})
 		}
 	}
 	{{- end }}
