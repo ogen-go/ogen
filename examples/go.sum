@@ -12,8 +12,8 @@ github.com/go-faster/errors v0.6.1 h1:nNIPOBkprlKzkThvS/0YaX8Zs9KewLCOSFQS5BU06F
 github.com/go-faster/errors v0.6.1/go.mod h1:5MGV2/2T9yvlrbhe9pD9LO5Z/2zCSq2T8j+Jpi2LAyY=
 github.com/go-faster/jx v0.40.0 h1:Y9cDVPguBRX4WbZFJlEVHwA1/YDmWWOyHtzyfxaByk0=
 github.com/go-faster/jx v0.40.0/go.mod h1:ALDOh8oc4TjEID/ytTY0Yqlf1ZnNAZ0GJF3SCNo2c8s=
-github.com/go-faster/yamlx v0.3.8 h1:AhJGTFnWvsC3dLHcB0tis5IhWkgqp0CIKTqNrCMtCws=
-github.com/go-faster/yamlx v0.3.8/go.mod h1:y3ycw0JOKv3joUzjYcCZVylNNpFlj4x1t6x8WoRSlmE=
+github.com/go-faster/yamlx v0.4.0 h1:JkZM/4xIAw1ll0m7TGjY34KwJVEIpw/qB0HqTZ6kXh8=
+github.com/go-faster/yamlx v0.4.0/go.mod h1:y3ycw0JOKv3joUzjYcCZVylNNpFlj4x1t6x8WoRSlmE=
 github.com/go-logr/logr v1.2.2/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
 github.com/go-logr/logr v1.2.3 h1:2DntVwHkVopvECVRSlL5PSo9eG+cAkDCuckLubN+rq0=
 github.com/go-logr/logr v1.2.3/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
