@@ -87,6 +87,9 @@ type Schema struct {
 	Default    any
 	DefaultSet bool
 
+	// ExtraTags is a map of extra struct field tags
+	ExtraTags map[string]string
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 

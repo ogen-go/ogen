@@ -5954,9 +5954,15 @@ func (s *Pet) encodeFields(e *jx.Encoder) {
 			s.NullValue.Encode(e)
 		}
 	}
+	{
+		if s.ExtraTags.Set {
+			e.FieldStart("extraTags")
+			s.ExtraTags.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfPet = [30]string{
+var jsonFieldsNameOfPet = [31]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -5987,6 +5993,7 @@ var jsonFieldsNameOfPet = [30]string{
 	27: "testTime",
 	28: "testDateTime",
 	29: "nullValue",
+	30: "extraTags",
 }
 
 // Decode decodes Pet from json.
@@ -6341,6 +6348,16 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"nullValue\"")
+			}
+		case "extraTags":
+			if err := func() error {
+				s.ExtraTags.Reset()
+				if err := s.ExtraTags.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"extraTags\"")
 			}
 		default:
 			return d.Skip()

@@ -3922,6 +3922,7 @@ type Pet struct {
 	TestTime          OptTime              `json:"testTime"`
 	TestDateTime      OptDateTime          `json:"testDateTime"`
 	NullValue         OptNullValue         `json:"nullValue"`
+	ExtraTags         OptString            `json:"extraTags" gorm:"index" valid:"customValidator"`
 }
 
 // GetPrimary returns the value of Primary.
@@ -4074,6 +4075,11 @@ func (s *Pet) GetNullValue() OptNullValue {
 	return s.NullValue
 }
 
+// GetExtraTags returns the value of ExtraTags.
+func (s *Pet) GetExtraTags() OptString {
+	return s.ExtraTags
+}
+
 // SetPrimary sets the value of Primary.
 func (s *Pet) SetPrimary(val *Pet) {
 	s.Primary = val
@@ -4222,6 +4228,11 @@ func (s *Pet) SetTestDateTime(val OptDateTime) {
 // SetNullValue sets the value of NullValue.
 func (s *Pet) SetNullValue(val OptNullValue) {
 	s.NullValue = val
+}
+
+// SetExtraTags sets the value of ExtraTags.
+func (s *Pet) SetExtraTags(val OptString) {
+	s.ExtraTags = val
 }
 
 func (*Pet) foobarGetRes()  {}

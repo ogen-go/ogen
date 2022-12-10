@@ -198,7 +198,8 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				Name: fieldName,
 				Type: t,
 				Tag: ir.Tag{
-					JSON: prop.Name,
+					JSON:      prop.Name,
+					ExtraTags: prop.Schema.ExtraTags,
 				},
 				Spec: &prop,
 			})

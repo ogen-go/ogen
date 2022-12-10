@@ -15,6 +15,11 @@ import (
 	"github.com/ogen-go/ogen/ogenregex"
 )
 
+const (
+	xOgenName      = "x-ogen-name"
+	xOapiExtraTags = "x-oapi-codegen-extra-tags"
+)
+
 // Parser parses JSON schemas.
 type Parser struct {
 	external ExternalResolver
@@ -125,9 +130,14 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 			return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
 		}
 	}
-	if a, ok := schema.Common.Extensions["x-ogen-name"]; ok {
+	if a, ok := schema.Common.Extensions[xOgenName]; ok {
 		if err := a.Decode(&s.XOgenName); err != nil {
-			return nil, errors.Wrap(err, "parse x-ogen-name")
+			return nil, errors.Wrap(err, "parse "+xOgenName)
+		}
+	}
+	if a, ok := schema.Common.Extensions[xOapiExtraTags]; ok {
+		if err := a.Decode(&s.ExtraTags); err != nil {
+			return nil, errors.Wrap(err, "parse "+xOapiExtraTags)
 		}
 	}
 

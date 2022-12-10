@@ -1207,6 +1207,11 @@ func (s *Pet) SetFake() {
 			s.NullValue.SetFake()
 		}
 	}
+	{
+		{
+			s.ExtraTags.SetFake()
+		}
+	}
 }
 
 // SetFake set fake values.
