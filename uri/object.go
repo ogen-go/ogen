@@ -34,7 +34,7 @@ func encodeObject(kvSep, fieldSep byte, fields []Field) string {
 	return sb.String()
 }
 
-func decodeObject(cur *cursor, kvSep, fieldSep rune, f func(field, value string) error) error {
+func decodeObject(cur *cursor, kvSep, fieldSep byte, f func(field, value string) error) error {
 	var (
 		fname string
 		field = true

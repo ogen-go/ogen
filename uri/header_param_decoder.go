@@ -42,12 +42,12 @@ func (d *headerParamDecoder) DecodeFields(f func(field string, d Decoder) error)
 	}
 
 	pushField := func(field, value string) error { return f(field, constval{value}) }
-	kvSep, fieldSep := ',', ','
+	var kvSep, fieldSep byte = ',', ','
 	if d.explode {
 		kvSep = '='
 	}
 	return decodeObject(
-		(&cursor{src: []rune(val)}),
+		(&cursor{src: val}),
 		kvSep, fieldSep, pushField,
 	)
 }

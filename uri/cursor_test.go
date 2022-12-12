@@ -11,7 +11,7 @@ import (
 func Test_cursor_readUntil(t *testing.T) {
 	a := require.New(t)
 	c := &cursor{
-		src: []rune(`abc,def,ghi`),
+		src: `abc,def,ghi`,
 	}
 
 	r, err := c.readUntil(',')
@@ -22,7 +22,7 @@ func Test_cursor_readUntil(t *testing.T) {
 	a.NoError(err)
 	a.Equal("def", r)
 
-	r, err = c.readUntil(',')
+	_, err = c.readUntil(',')
 	a.ErrorIs(err, io.EOF)
 }
 
@@ -34,7 +34,7 @@ func Test_cursor_readValue(t *testing.T) {
 	}
 	for i, tt := range []struct {
 		input  string
-		sep    rune
+		sep    byte
 		states []state
 	}{
 		{
@@ -68,7 +68,7 @@ func Test_cursor_readValue(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 			c := &cursor{
-				src: []rune(tt.input),
+				src: tt.input,
 			}
 
 			for _, s := range tt.states {
@@ -98,9 +98,7 @@ func BenchmarkCursor(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		sink = sink[:0]
-		c := &cursor{
-			src: []rune(input),
-		}
+		c := &cursor{src: input}
 		sinkErr = parseArray(c, ',', func(d Decoder) error {
 			v, err := d.DecodeValue()
 			if err != nil {

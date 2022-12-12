@@ -23,7 +23,7 @@ type PathDecoderConfig struct {
 
 func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
 	return &PathDecoder{
-		cur:     &cursor{src: []rune(cfg.Value)},
+		cur:     &cursor{src: cfg.Value},
 		param:   cfg.Param,
 		style:   cfg.Style,
 		explode: cfg.Explode,
@@ -72,7 +72,7 @@ func (d *PathDecoder) DecodeArray(f func(d Decoder) error) error {
 			return errors.New(`value must begin with "."`)
 		}
 
-		delim := ','
+		delim := byte(',')
 		if d.explode {
 			delim = '.'
 		}
@@ -185,7 +185,7 @@ func (d *PathDecoder) DecodeFields(f func(name string, d Decoder) error) error {
 	}
 }
 
-func parseArray(cur *cursor, delim rune, f func(d Decoder) error) error {
+func parseArray(cur *cursor, delim byte, f func(d Decoder) error) error {
 	for {
 		value, hasNext, err := cur.readValue(delim)
 		if err != nil {
