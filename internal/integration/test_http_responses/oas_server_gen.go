@@ -32,6 +32,10 @@ type Handler interface {
 	//
 	// GET /headersDefault
 	HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error)
+	// HeadersJSON implements headersJSON operation.
+	//
+	// GET /headersJSON
+	HeadersJSON(ctx context.Context) (*HeadersJSONOK, error)
 	// HeadersPattern implements headersPattern operation.
 	//
 	// GET /headersPattern

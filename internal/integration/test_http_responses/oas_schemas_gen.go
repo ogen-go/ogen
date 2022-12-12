@@ -6,6 +6,7 @@ import (
 	"io"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 type AnyContentTypeBinaryStringSchemaDefaultDef struct {
@@ -354,6 +355,32 @@ func (s *HeadersDefaultDef) SetStatusCode(val int) {
 	s.StatusCode = val
 }
 
+// HeadersJSONOK is response for HeadersJSON operation.
+type HeadersJSONOK struct {
+	XJSONCustomHeader jx.Raw
+	XJSONHeader       User
+}
+
+// GetXJSONCustomHeader returns the value of XJSONCustomHeader.
+func (s *HeadersJSONOK) GetXJSONCustomHeader() jx.Raw {
+	return s.XJSONCustomHeader
+}
+
+// GetXJSONHeader returns the value of XJSONHeader.
+func (s *HeadersJSONOK) GetXJSONHeader() User {
+	return s.XJSONHeader
+}
+
+// SetXJSONCustomHeader sets the value of XJSONCustomHeader.
+func (s *HeadersJSONOK) SetXJSONCustomHeader(val jx.Raw) {
+	s.XJSONCustomHeader = val
+}
+
+// SetXJSONHeader sets the value of XJSONHeader.
+func (s *HeadersJSONOK) SetXJSONHeader(val User) {
+	s.XJSONHeader = val
+}
+
 // HeadersPattern4XX is 4XX pattern response for HeadersPattern operation.
 type HeadersPattern4XX struct {
 	TestHeader string
@@ -523,4 +550,91 @@ type TextPlainBinaryStringSchemaOK struct {
 // Kept to satisfy the io.Reader interface.
 func (s TextPlainBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
+}
+
+// Ref: #/components/schemas/User
+type User struct {
+	ID       int      `json:"id"`
+	Username string   `json:"username"`
+	Role     UserRole `json:"role"`
+	Friends  []User   `json:"friends"`
+}
+
+// GetID returns the value of ID.
+func (s *User) GetID() int {
+	return s.ID
+}
+
+// GetUsername returns the value of Username.
+func (s *User) GetUsername() string {
+	return s.Username
+}
+
+// GetRole returns the value of Role.
+func (s *User) GetRole() UserRole {
+	return s.Role
+}
+
+// GetFriends returns the value of Friends.
+func (s *User) GetFriends() []User {
+	return s.Friends
+}
+
+// SetID sets the value of ID.
+func (s *User) SetID(val int) {
+	s.ID = val
+}
+
+// SetUsername sets the value of Username.
+func (s *User) SetUsername(val string) {
+	s.Username = val
+}
+
+// SetRole sets the value of Role.
+func (s *User) SetRole(val UserRole) {
+	s.Role = val
+}
+
+// SetFriends sets the value of Friends.
+func (s *User) SetFriends(val []User) {
+	s.Friends = val
+}
+
+type UserRole string
+
+const (
+	UserRoleAdmin UserRole = "admin"
+	UserRoleUser  UserRole = "user"
+	UserRoleBot   UserRole = "bot"
+)
+
+// MarshalText implements encoding.TextMarshaler.
+func (s UserRole) MarshalText() ([]byte, error) {
+	switch s {
+	case UserRoleAdmin:
+		return []byte(s), nil
+	case UserRoleUser:
+		return []byte(s), nil
+	case UserRoleBot:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *UserRole) UnmarshalText(data []byte) error {
+	switch UserRole(data) {
+	case UserRoleAdmin:
+		*s = UserRoleAdmin
+		return nil
+	case UserRoleUser:
+		*s = UserRoleUser
+		return nil
+	case UserRoleBot:
+		*s = UserRoleBot
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }

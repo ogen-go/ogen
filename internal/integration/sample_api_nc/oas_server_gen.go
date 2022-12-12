@@ -40,12 +40,6 @@ type Handler interface {
 	//
 	// PUT /foobar
 	FoobarPut(ctx context.Context) (*FoobarPutDef, error)
-	// GetHeader implements getHeader operation.
-	//
-	// Test for header param.
-	//
-	// GET /test/header
-	GetHeader(ctx context.Context, params GetHeaderParams) (*Hash, error)
 	// NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 	//
 	// GET /noAdditionalPropertiesTest
@@ -134,10 +128,6 @@ type Handler interface {
 	//
 	// GET /stringIntMap
 	StringIntMapGet(ctx context.Context) (*StringIntMap, error)
-	// TestContentParameter implements testContentParameter operation.
-	//
-	// GET /testContentParameter
-	TestContentParameter(ctx context.Context, params TestContentParameterParams) (string, error)
 	// TestFloatValidation implements testFloatValidation operation.
 	//
 	// POST /testFloatValidation
@@ -146,10 +136,6 @@ type Handler interface {
 	//
 	// GET /testNullableOneofs
 	TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error)
-	// TestObjectQueryParameter implements testObjectQueryParameter operation.
-	//
-	// GET /testObjectQueryParameter
-	TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (*TestObjectQueryParameterOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

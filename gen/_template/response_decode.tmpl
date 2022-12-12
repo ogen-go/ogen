@@ -152,16 +152,43 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 {{- $response := $ }}
 h := uri.NewHeaderDecoder(resp.Header)
 {{- range $_, $header := $response.Headers }}
-// Parse '{{ $header.Spec.Name }}' header.
+// Parse {{ quote $header.Spec.Name }} header.
 {
 	cfg := uri.HeaderParameterDecodingConfig{
 		Name:    {{ quote $header.Spec.Name }},
-		Explode: {{ if $header.Spec.Explode}}true{{ else }}false{{ end }},
+		Explode: {{ if $header.Spec.Explode }}true{{ else }}false{{ end }},
 	}
-	if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-		{{- template "uri/decode" elem $header.Type (printf "wrapper.%s" $header.Name) }}
-	}); err != nil {
-		return res, errors.Wrap(err, "parse {{ $header.Spec.Name }} header")
+	{{- $el := elem $header.Type (printf "wrapper.%s" $header.Name) }}
+	if err := func() error {
+		if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+			{{- if $header.Spec.Content }}
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					{{- template "json/dec" $el }}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			{{- else }}
+				{{- template "uri/decode" $el }}
+			{{- end }}
+		}); err != nil {
+			return err
+		}
+		{{- if $header.Type.NeedValidation }}
+		if err := func() error {
+			{{- template "validate" $el }}
+		}(); err != nil {
+			return err
+		}
+		{{- end }}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, {{ printf "parse %s header" $header.Spec.Name | quote }})
 	}
 }
 {{- end }}

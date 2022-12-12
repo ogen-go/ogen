@@ -122,9 +122,6 @@ func TestGenerate(t *testing.T) {
 			"content_header_response.json": {
 				"parameter content encoding",
 			},
-			"content_path_parameter.yml": {
-				"parameter content encoding",
-			},
 		}))
 
 	t.Run("Examples", runPositive("_testdata/examples",

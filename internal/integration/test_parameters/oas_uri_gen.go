@@ -13,8 +13,8 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-// EncodeURI encodes TestObjectQueryParameterDeepObject as URI form.
-func (s *TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
+// EncodeURI encodes ObjectQueryParameterDeepObject as URI form.
+func (s *ObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(s.Min))
 	}); err != nil {
@@ -33,16 +33,16 @@ func (s *TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
 	return nil
 }
 
-var uriFieldsNameOfTestObjectQueryParameterDeepObject = [3]string{
+var uriFieldsNameOfObjectQueryParameterDeepObject = [3]string{
 	0: "min",
 	1: "max",
 	2: "filter",
 }
 
-// DecodeURI decodes TestObjectQueryParameterDeepObject from URI form.
-func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
+// DecodeURI decodes ObjectQueryParameterDeepObject from URI form.
+func (s *ObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode TestObjectQueryParameterDeepObject to nil")
+		return errors.New("invalid: unable to decode ObjectQueryParameterDeepObject to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -107,7 +107,7 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode TestObjectQueryParameterDeepObject")
+		return errors.Wrap(err, "decode ObjectQueryParameterDeepObject")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -124,8 +124,8 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(uriFieldsNameOfTestObjectQueryParameterDeepObject) {
-					name = uriFieldsNameOfTestObjectQueryParameterDeepObject[fieldIdx]
+				if fieldIdx < len(uriFieldsNameOfObjectQueryParameterDeepObject) {
+					name = uriFieldsNameOfObjectQueryParameterDeepObject[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -145,8 +145,8 @@ func (s *TestObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 	return nil
 }
 
-// EncodeURI encodes TestObjectQueryParameterFormObject as URI form.
-func (s *TestObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
+// EncodeURI encodes ObjectQueryParameterFormObject as URI form.
+func (s *ObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(s.Min))
 	}); err != nil {
@@ -165,16 +165,16 @@ func (s *TestObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
 	return nil
 }
 
-var uriFieldsNameOfTestObjectQueryParameterFormObject = [3]string{
+var uriFieldsNameOfObjectQueryParameterFormObject = [3]string{
 	0: "min",
 	1: "max",
 	2: "filter",
 }
 
-// DecodeURI decodes TestObjectQueryParameterFormObject from URI form.
-func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
+// DecodeURI decodes ObjectQueryParameterFormObject from URI form.
+func (s *ObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode TestObjectQueryParameterFormObject to nil")
+		return errors.New("invalid: unable to decode ObjectQueryParameterFormObject to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -239,7 +239,7 @@ func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode TestObjectQueryParameterFormObject")
+		return errors.Wrap(err, "decode ObjectQueryParameterFormObject")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -256,8 +256,8 @@ func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(uriFieldsNameOfTestObjectQueryParameterFormObject) {
-					name = uriFieldsNameOfTestObjectQueryParameterFormObject[fieldIdx]
+				if fieldIdx < len(uriFieldsNameOfObjectQueryParameterFormObject) {
+					name = uriFieldsNameOfObjectQueryParameterFormObject[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}

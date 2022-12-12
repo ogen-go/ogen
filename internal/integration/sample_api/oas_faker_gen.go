@@ -270,20 +270,6 @@ func (s *Error) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *Hash) SetFake() {
-	{
-		{
-			s.Raw = []byte("[]byte")
-		}
-	}
-	{
-		{
-			s.Hex = "string"
-		}
-	}
-}
-
-// SetFake set fake values.
 func (s *ID) SetFake() {
 	var elem string
 
@@ -1002,15 +988,6 @@ func (s *OptStringStringMap) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptTestContentParameterParam) SetFake() {
-	var elem TestContentParameterParam
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
 func (s *OptTime) SetFake() {
 	var elem time.Time
 	{
@@ -1360,30 +1337,6 @@ func (s *StringStringMap) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TestContentParameterParam) SetFake() {
-	{
-		{
-			s.Style = "string"
-		}
-	}
-	{
-		{
-			s.Min = int(0)
-		}
-	}
-	{
-		{
-			s.Max = int(0)
-		}
-	}
-	{
-		{
-			s.Filter = "string"
-		}
-	}
-}
-
-// SetFake set fake values.
 func (s *TestFloatValidation) SetFake() {
 	{
 		{
@@ -1413,30 +1366,6 @@ func (s *TestNullableOneofsApplicationJSONOK) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = TestNullableOneofsApplicationJSONOK(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TestObjectQueryParameterOK) SetFake() {
-	{
-		{
-			s.Style = "string"
-		}
-	}
-	{
-		{
-			s.Min = int(0)
-		}
-	}
-	{
-		{
-			s.Max = int(0)
-		}
-	}
-	{
-		{
-			s.Filter = "string"
-		}
-	}
 }
 
 // SetFake set fake values.

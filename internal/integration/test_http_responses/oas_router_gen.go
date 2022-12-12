@@ -172,6 +172,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
+				case 'J': // Prefix: "JSON"
+					if l := len("JSON"); len(elem) >= l && elem[0:l] == "JSON" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleHeadersJSONRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
 				case 'P': // Prefix: "Pattern"
 					if l := len("Pattern"); len(elem) >= l && elem[0:l] == "Pattern" {
 						elem = elem[l:]
@@ -485,6 +503,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							// Leaf: HeadersDefault
 							r.name = "HeadersDefault"
 							r.operationID = "headersDefault"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'J': // Prefix: "JSON"
+					if l := len("JSON"); len(elem) >= l && elem[0:l] == "JSON" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: HeadersJSON
+							r.name = "HeadersJSON"
+							r.operationID = "headersJSON"
 							r.args = args
 							r.count = 0
 							return r, true

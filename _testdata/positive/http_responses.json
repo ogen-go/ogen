@@ -338,10 +338,70 @@
           }
         }
       }
+    },
+    "/headersJSON": {
+      "get": {
+        "operationId": "headersJSON",
+        "responses": {
+          "200": {
+            "description": "test",
+            "headers": {
+              "X-JSON-Header": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  }
+                }
+              },
+              "X-JSON-Custom-Header": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "User": {
+        "type": "object",
+        "required": [
+          "id",
+          "username",
+          "role"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "user",
+              "bot"
+            ]
+          },
+          "friends": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      }
     }
   }
 }

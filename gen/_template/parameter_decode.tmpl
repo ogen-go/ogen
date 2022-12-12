@@ -1,5 +1,5 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
 {{ define "parameter_decoder" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
 {{ if $.Params }}
 func unpack{{ $.Name }}Params(packed middleware.Parameters) (params {{ $.Name }}Params) {
 	{{- range $p := $.Params }}
@@ -52,21 +52,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				{{- if $p.Spec.Content }}
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-					if err := func(d *jx.Decoder) error {
-                    	{{- template "json/dec" $el }}
-						return nil
-					}(jx.DecodeStr(val)); err != nil {
-						return err
-					}
-					return nil
-				{{- else }}
-				    {{- template "uri/decode" $el }}
-				{{- end }}
+    			{{- template "decode_parameter" $p -}}
 			}); err != nil {
 				return err
 			}
@@ -98,7 +84,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 			})
 
 			if err := func() error {
-				{{- template "uri/decode" $el }}
+        		{{- template "decode_parameter" $p -}}
 			}(); err != nil {
 				return err
 			}
@@ -123,21 +109,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 		}
 		if err := h.HasParam(cfg); err == nil {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				{{- if $p.Spec.Content }}
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-					if err := func(d *jx.Decoder) error {
-                    	{{- template "json/dec" $el }}
-						return nil
-					}(jx.DecodeStr(val)); err != nil {
-						return err
-					}
-					return nil
-				{{- else }}
-				    {{- template "uri/decode" $el }}
-				{{- end }}
+        		{{- template "decode_parameter" $p -}}
 			}); err != nil {
 				return err
 			}
@@ -167,4 +139,24 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 	return params, nil
 }
 {{ end }}
+{{ end }}
+
+{{ define "decode_parameter" }}{{ $param := $ }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/ -}}
+{{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
+{{- if $param.Spec.Content }}
+	val, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
+	if err := func(d *jx.Decoder) error {
+    	{{- template "json/dec" $el }}
+		return nil
+	}(jx.DecodeStr(val)); err != nil {
+		return err
+	}
+	return nil
+{{- else }}
+    {{- template "uri/decode" $el }}
+{{- end }}
 {{ end }}

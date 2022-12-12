@@ -10,6 +10,7 @@ import (
 	"sync/atomic"
 	"testing"
 
+	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
 
 	api "github.com/ogen-go/ogen/internal/integration/test_http_responses"
@@ -17,6 +18,9 @@ import (
 
 type testHTTPResponses struct {
 	data []byte
+
+	headerUser    api.User
+	headerJSONRaw jx.Raw
 }
 
 func (t testHTTPResponses) AnyContentTypeBinaryStringSchema(ctx context.Context) (api.AnyContentTypeBinaryStringSchemaOK, error) {
@@ -136,12 +140,17 @@ func (t testHTTPResponses) HeadersCombined(ctx context.Context, params api.Heade
 	}
 }
 
-func testResponsesInit(t *testing.T, testData []byte) (*require.Assertions, *api.Client) {
+func (t testHTTPResponses) HeadersJSON(ctx context.Context) (*api.HeadersJSONOK, error) {
+	return &api.HeadersJSONOK{
+		XJSONCustomHeader: t.headerJSONRaw,
+		XJSONHeader:       t.headerUser,
+	}, nil
+}
+
+func testResponsesInit(t *testing.T, h testHTTPResponses) (*require.Assertions, *api.Client) {
 	a := require.New(t)
 
-	srv, err := api.NewServer(testHTTPResponses{
-		data: testData,
-	})
+	srv, err := api.NewServer(h)
 	a.NoError(err)
 
 	s := httptest.NewServer(srv)
@@ -158,7 +167,9 @@ func testResponsesInit(t *testing.T, testData []byte) (*require.Assertions, *api
 func TestResponsesEncoding(t *testing.T) {
 	testData := []byte("bababoi")
 	create := func(t *testing.T) (context.Context, *require.Assertions, *api.Client) {
-		a, client := testResponsesInit(t, testData)
+		a, client := testResponsesInit(t, testHTTPResponses{
+			data: testData,
+		})
 		return context.Background(), a, client
 	}
 
@@ -220,7 +231,9 @@ func TestResponsesEncoding(t *testing.T) {
 func TestResponsesHeaders(t *testing.T) {
 	testData := []byte("bababoi")
 	create := func(t *testing.T) (context.Context, *require.Assertions, *api.Client) {
-		a, client := testResponsesInit(t, testData)
+		a, client := testResponsesInit(t, testHTTPResponses{
+			data: testData,
+		})
 		return context.Background(), a, client
 	}
 
@@ -280,10 +293,44 @@ func TestResponsesHeaders(t *testing.T) {
 	})
 }
 
+func TestResponsesJSONHeaders(t *testing.T) {
+	user := api.User{
+		ID:       1,
+		Username: "admin",
+		Role:     api.UserRoleAdmin,
+		Friends: []api.User{
+			{
+				ID:       2,
+				Username: "alice",
+				Role:     api.UserRoleUser,
+			},
+			{
+				ID:       3,
+				Username: "amongus",
+				Role:     api.UserRoleBot,
+			},
+		},
+	}
+	raw := jx.Raw(fmt.Sprintf(`{"foo":%q}`, "`\"';,./<>?[]{}\\|~!@#$%^&*()_+-="))
+	a, client := testResponsesInit(t, testHTTPResponses{
+		headerUser:    user,
+		headerJSONRaw: raw,
+	})
+	ctx := context.Background()
+
+	res, err := client.HeadersJSON(ctx)
+	a.NoError(err)
+
+	a.Equal(user, res.XJSONHeader)
+	a.Equal(raw, res.XJSONCustomHeader)
+}
+
 func TestResponsesPattern(t *testing.T) {
 	testData := []byte("bababoi")
 	create := func(t *testing.T) (context.Context, *require.Assertions, *api.Client) {
-		a, client := testResponsesInit(t, testData)
+		a, client := testResponsesInit(t, testHTTPResponses{
+			data: testData,
+		})
 		return context.Background(), a, client
 	}
 

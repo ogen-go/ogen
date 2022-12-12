@@ -241,42 +241,6 @@ func decodeFoobarPutResponse(resp *http.Response) (res *FoobarPutDef, err error)
 	}, nil
 }
 
-func decodeGetHeaderResponse(resp *http.Response) (res *Hash, err error) {
-	switch resp.StatusCode {
-	case 200:
-		// Code 200.
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
-		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-
-			d := jx.DecodeBytes(b)
-			var response Hash
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
-			}
-			return &response, nil
-		default:
-			return res, validate.InvalidContentType(ct)
-		}
-	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
-}
-
 func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res *NoAdditionalPropertiesTest, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -937,44 +901,6 @@ func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, err 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestContentParameterResponse(resp *http.Response) (res string, err error) {
-	switch resp.StatusCode {
-	case 200:
-		// Code 200.
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
-		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-
-			d := jx.DecodeBytes(b)
-			var response string
-			if err := func() error {
-				v, err := d.Str()
-				response = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
-			}
-			return response, nil
-		default:
-			return res, validate.InvalidContentType(ct)
-		}
-	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
-}
-
 func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValidationOK, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -1061,42 +987,6 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 
 			d := jx.DecodeBytes(b)
 			var response OneOfBooleanSumNullables
-			if err := func() error {
-				if err := response.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
-			}
-			return &response, nil
-		default:
-			return res, validate.InvalidContentType(ct)
-		}
-	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
-}
-
-func decodeTestObjectQueryParameterResponse(resp *http.Response) (res *TestObjectQueryParameterOK, err error) {
-	switch resp.StatusCode {
-	case 200:
-		// Code 200.
-		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
-		if err != nil {
-			return res, errors.Wrap(err, "parse media type")
-		}
-		switch {
-		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-
-			d := jx.DecodeBytes(b)
-			var response TestObjectQueryParameterOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

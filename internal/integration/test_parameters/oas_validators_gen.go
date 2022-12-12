@@ -10,60 +10,24 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *CombinedDefStatusCode) Validate() error {
+func (s *Hash) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
+		if err := (validate.String{
+			MinLength:    64,
+			MinLengthSet: true,
+			MaxLength:    64,
+			MaxLengthSet: true,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Hex)); err != nil {
+			return errors.Wrap(err, "string")
 		}
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s CombinedType) Validate() error {
-	switch s {
-	case "200":
-		return nil
-	case "2XX":
-		return nil
-	case "5XX":
-		return nil
-	case "default":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-func (s HeadersCombinedType) Validate() error {
-	switch s {
-	case "200":
-		return nil
-	case "default":
-		return nil
-	case "4XX":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-func (s *HeadersJSONOK) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := s.XJSONHeader.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "XJSONHeader",
+			Name:  "hex",
 			Error: err,
 		})
 	}

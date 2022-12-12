@@ -571,33 +571,38 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDow
 		// Code 302.
 		var wrapper ActionsDownloadArtifactFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -612,33 +617,38 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (re
 		// Code 302.
 		var wrapper ActionsDownloadJobLogsForWorkflowRunFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -653,33 +663,38 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *Act
 		// Code 302.
 		var wrapper ActionsDownloadWorkflowRunLogsFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -1384,33 +1399,38 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *Action
 			var wrapper ActionsListArtifactsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -1453,33 +1473,38 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *Acti
 			var wrapper ActionsListEnvironmentSecretsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -1522,33 +1547,38 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *Acti
 			var wrapper ActionsListJobsForWorkflowRunOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -1591,33 +1621,38 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListO
 			var wrapper ActionsListOrgSecretsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -1696,33 +1731,38 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsList
 			var wrapper ActionsListRepoSecretsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -1765,33 +1805,38 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsLi
 			var wrapper ActionsListRepoWorkflowsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -2030,33 +2075,38 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 			var wrapper ActionsListSelfHostedRunnersForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -2099,33 +2149,38 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 			var wrapper ActionsListSelfHostedRunnersForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -2168,33 +2223,38 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 			var wrapper ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -2237,33 +2297,38 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *Ac
 			var wrapper ActionsListWorkflowRunArtifactsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -2306,33 +2371,38 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *Act
 			var wrapper ActionsListWorkflowRunsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -3167,33 +3237,38 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 			var wrapper ActivityListNotificationsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -3829,33 +3904,38 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 			var wrapper ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -3906,33 +3986,38 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			var wrapper ActivityListReposStarredByAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -4046,33 +4131,38 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *Act
 			var wrapper ActivityListReposWatchedByUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -4123,33 +4213,38 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			var wrapper ActivityListWatchedReposForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -4263,33 +4358,38 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *Activi
 			var wrapper ActivityListWatchersForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6077,33 +6177,38 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 			var wrapper AppsListAccountsForPlanOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6244,33 +6349,38 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res Apps
 			var wrapper AppsListAccountsForPlanStubbedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6343,33 +6453,38 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			var wrapper AppsListInstallationReposForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6483,33 +6598,38 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 			var wrapper AppsListPlansOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6620,33 +6740,38 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 			var wrapper AppsListPlansStubbedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6719,33 +6844,38 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 			var wrapper AppsListReposAccessibleToInstallationOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6859,33 +6989,38 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			var wrapper AppsListSubscriptionsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -6999,33 +7134,38 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 			var wrapper AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -8180,33 +8320,38 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAn
 			var wrapper ChecksListAnnotationsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -8249,33 +8394,38 @@ func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefO
 			var wrapper ChecksListForRefOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -8318,33 +8468,38 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSu
 			var wrapper ChecksListForSuiteOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -8387,33 +8542,38 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListS
 			var wrapper ChecksListSuitesForRefOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -10491,33 +10651,38 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 			var wrapper EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -10560,33 +10725,38 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 			var wrapper EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -11016,33 +11186,38 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 			var wrapper GistSimpleHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -11178,33 +11353,38 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 			var wrapper GistCommentHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -11454,33 +11634,38 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 			var wrapper BaseGistHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -11948,33 +12133,38 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 			var wrapper GistsListOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -12058,33 +12248,38 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 			var wrapper GistsListCommentsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -12198,33 +12393,38 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 			var wrapper GistsListCommitsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -12338,33 +12538,38 @@ func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRe
 			var wrapper GistsListForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -12445,33 +12650,38 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 			var wrapper GistsListForksOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -12585,33 +12795,38 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 			var wrapper GistsListPublicOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -12725,33 +12940,38 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 			var wrapper GistsListStarredOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -13067,33 +13287,38 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 			var wrapper ShortBlobHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -13256,33 +13481,38 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 			var wrapper GitCommitHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -13385,33 +13615,38 @@ func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, err e
 			var wrapper GitRefHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -13484,33 +13719,38 @@ func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, err e
 			var wrapper GitTagHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -13583,33 +13823,38 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 			var wrapper GitTreeHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -14209,33 +14454,38 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchin
 			var wrapper GitListMatchingRefsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -14698,33 +14948,38 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 			var wrapper IssueHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -14917,33 +15172,38 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 			var wrapper IssueCommentHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -15106,33 +15366,38 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 			var wrapper LabelHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -15235,33 +15500,38 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 			var wrapper MilestoneHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -15882,33 +16152,38 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error
 			var wrapper IssuesListOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16022,33 +16297,38 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 			var wrapper IssuesListAssigneesOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16129,33 +16409,38 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 			var wrapper IssuesListCommentsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16266,33 +16551,38 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 			var wrapper IssuesListCommentsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16403,33 +16693,38 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListE
 			var wrapper IssuesListEventsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16510,33 +16805,38 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res Issu
 			var wrapper IssuesListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16620,33 +16920,38 @@ func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRe
 			var wrapper IssuesListForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16727,33 +17032,38 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 			var wrapper IssuesListForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16894,33 +17204,38 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *Issue
 			var wrapper IssuesListLabelsForMilestoneOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -16971,33 +17286,38 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 			var wrapper IssuesListLabelsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -17078,33 +17398,38 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 			var wrapper IssuesListLabelsOnIssueOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -17185,33 +17510,38 @@ func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMile
 			var wrapper IssuesListMilestonesOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -18170,63 +18500,73 @@ func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, e
 			var wrapper MarkdownRenderOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Content-Length' header.
+			// Parse "Content-Length" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Content-Length",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotContentLengthVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotContentLengthVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotContentLengthVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotContentLengthVal = c
+						wrapper.ContentLength.SetTo(wrapperDotContentLengthVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.ContentLength.SetTo(wrapperDotContentLengthVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Content-Length header")
 				}
 			}
-			// Parse 'X-CommonMarker-Version' header.
+			// Parse "X-CommonMarker-Version" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "X-CommonMarker-Version",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotXCommonMarkerVersionVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXCommonMarkerVersionVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXCommonMarkerVersionVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotXCommonMarkerVersionVal = c
+						wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse X-CommonMarker-Version header")
 				}
 			}
@@ -18261,33 +18601,38 @@ func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRaw
 			var wrapper MarkdownRenderRawOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'X-CommonMarker-Version' header.
+			// Parse "X-CommonMarker-Version" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "X-CommonMarker-Version",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotXCommonMarkerVersionVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXCommonMarkerVersionVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXCommonMarkerVersionVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotXCommonMarkerVersionVal = c
+						wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse X-CommonMarker-Version header")
 				}
 			}
@@ -19098,33 +19443,38 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 			var wrapper MigrationsListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -19238,33 +19588,38 @@ func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsLis
 			var wrapper MigrationsListForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -19315,33 +19670,38 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 			var wrapper MigrationsListReposForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -19422,33 +19782,38 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 			var wrapper MigrationsListReposForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -19908,33 +20273,38 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 			var wrapper ImportHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -20214,33 +20584,38 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 			var wrapper AuthorizationHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -20748,33 +21123,38 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -20811,33 +21191,38 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -20973,33 +21358,38 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -21036,33 +21426,38 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -21143,33 +21538,38 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 			var wrapper OAuthAuthorizationsListAuthorizationsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -21313,33 +21713,38 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 			var wrapper OAuthAuthorizationsListGrantsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -21666,33 +22071,38 @@ func decodeOrgsCheckMembershipForUserResponse(resp *http.Response) (res OrgsChec
 		// Code 302.
 		var wrapper OrgsCheckMembershipForUserFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -21915,33 +22325,38 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 			var wrapper OrgHookHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -22591,33 +23006,38 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
 			var wrapper OrgsListOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -22737,33 +23157,38 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 			var wrapper OrgsListFailedInvitationsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -22844,33 +23269,38 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 			var wrapper OrgsListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -22984,33 +23414,38 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKH
 			var wrapper OrgsListForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23061,33 +23496,38 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 			var wrapper OrgsListInvitationTeamsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23168,33 +23608,38 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 			var wrapper OrgsListMembersOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23206,33 +23651,38 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 		// Code 302.
 		var wrapper OrgsListMembersFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -23310,33 +23760,38 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 			var wrapper OrgsListMembershipsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23480,33 +23935,38 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsL
 			var wrapper OrgsListOutsideCollaboratorsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23557,33 +24017,38 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 			var wrapper OrgsListPendingInvitationsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23664,33 +24129,38 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPubl
 			var wrapper OrgsListPublicMembersOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -23881,33 +24351,38 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 			var wrapper OrgsListWebhooksOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -28352,33 +28827,38 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 			var wrapper ProjectsListCardsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -28492,33 +28972,38 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 			var wrapper ProjectsListCollaboratorsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -28692,33 +29177,38 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 			var wrapper ProjectsListColumnsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -28832,33 +29322,38 @@ func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForO
 			var wrapper ProjectsListForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -28939,33 +29434,38 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 			var wrapper ProjectsListForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -29166,33 +29666,38 @@ func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListFor
 			var wrapper ProjectsListForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -30117,33 +30622,38 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err err
 			var wrapper PullRequestHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -30246,33 +30756,38 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 			var wrapper PullRequestReviewCommentHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -30441,33 +30956,38 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 			var wrapper PullRequestReviewCommentHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -31040,33 +31560,38 @@ func decodePullsListResponse(resp *http.Response) (res PullsListRes, err error) 
 			var wrapper PullsListOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31150,33 +31675,38 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 			var wrapper PullsListCommentsForReviewOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31257,33 +31787,38 @@ func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsO
 			var wrapper PullsListCommitsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31334,33 +31869,38 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 			var wrapper PullsListFilesOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31463,33 +32003,38 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRe
 			var wrapper PullRequestReviewRequestHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31540,33 +32085,38 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListR
 			var wrapper PullsListReviewCommentsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31617,33 +32167,38 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *Pul
 			var wrapper PullsListReviewCommentsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -31694,33 +32249,38 @@ func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsO
 			var wrapper PullsListReviewsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -32435,93 +32995,108 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 			var wrapper RateLimitOverviewHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'X-RateLimit-Limit' header.
+			// Parse "X-RateLimit-Limit" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "X-RateLimit-Limit",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotXRateLimitLimitVal int
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXRateLimitLimitVal int
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToInt(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXRateLimitLimitVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToInt(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotXRateLimitLimitVal = c
+						wrapper.XRateLimitLimit.SetTo(wrapperDotXRateLimitLimitVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.XRateLimitLimit.SetTo(wrapperDotXRateLimitLimitVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse X-RateLimit-Limit header")
 				}
 			}
-			// Parse 'X-RateLimit-Remaining' header.
+			// Parse "X-RateLimit-Remaining" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "X-RateLimit-Remaining",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotXRateLimitRemainingVal int
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXRateLimitRemainingVal int
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToInt(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXRateLimitRemainingVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToInt(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotXRateLimitRemainingVal = c
+						wrapper.XRateLimitRemaining.SetTo(wrapperDotXRateLimitRemainingVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.XRateLimitRemaining.SetTo(wrapperDotXRateLimitRemainingVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse X-RateLimit-Remaining header")
 				}
 			}
-			// Parse 'X-RateLimit-Reset' header.
+			// Parse "X-RateLimit-Reset" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "X-RateLimit-Reset",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotXRateLimitResetVal int
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotXRateLimitResetVal int
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToInt(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotXRateLimitResetVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToInt(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotXRateLimitResetVal = c
+						wrapper.XRateLimitReset.SetTo(wrapperDotXRateLimitResetVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.XRateLimitReset.SetTo(wrapperDotXRateLimitResetVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse X-RateLimit-Reset header")
 				}
 			}
@@ -33625,33 +34200,38 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 			var wrapper ReactionsListForCommitCommentOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -33762,33 +34342,38 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 			var wrapper ReactionsListForIssueOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -33929,33 +34514,38 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 			var wrapper ReactionsListForIssueCommentOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -34066,33 +34656,38 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 			var wrapper ReactionsListForPullRequestReviewCommentOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -34203,33 +34798,38 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 			var wrapper ReactionsListForTeamDiscussionCommentInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -34280,33 +34880,38 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 			var wrapper ReactionsListForTeamDiscussionCommentLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -34357,33 +34962,38 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 			var wrapper ReactionsListForTeamDiscussionInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -34434,33 +35044,38 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (re
 			var wrapper ReactionsListForTeamDiscussionLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -35148,33 +35763,38 @@ func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAuto
 			var wrapper AutolinkHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -35247,33 +35867,38 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 			var wrapper CommitCommentHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -35442,33 +36067,38 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHead
 			var wrapper StatusHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -35511,33 +36141,38 @@ func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDep
 			var wrapper DeployKeyHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -35709,33 +36344,38 @@ func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCr
 			var wrapper DeploymentStatusHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -35847,33 +36487,38 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 			var wrapper RepositoryHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -36225,33 +36870,38 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 			var wrapper RepositoryHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -36636,33 +37286,38 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 			var wrapper ReleaseHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -36765,33 +37420,38 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *Repositor
 			var wrapper RepositoryHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -36834,33 +37494,38 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 			var wrapper HookHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Location' header.
+			// Parse "Location" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Location",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLocationVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLocationVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLocationVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLocationVal = c
+						wrapper.Location.SetTo(wrapperDotLocationVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
@@ -37847,33 +38512,38 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposD
 		// Code 302.
 		var wrapper ReposDownloadTarballArchiveFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -37888,33 +38558,38 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposD
 		// Code 302.
 		var wrapper ReposDownloadZipballArchiveFound
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse 'Location' header.
+		// Parse "Location" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
 				Name:    "Location",
 				Explode: false,
 			}
-			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-				var wrapperDotLocationVal string
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
+			if err := func() error {
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotLocationVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotLocationVal = c
+						return nil
+					}(); err != nil {
 						return err
 					}
-
-					c, err := conv.ToString(val)
-					if err != nil {
-						return err
-					}
-
-					wrapperDotLocationVal = c
+					wrapper.Location.SetTo(wrapperDotLocationVal)
 					return nil
-				}(); err != nil {
+				}); err != nil {
 					return err
 				}
-				wrapper.Location.SetTo(wrapperDotLocationVal)
 				return nil
-			}); err != nil {
+			}(); err != nil {
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
@@ -41138,33 +41813,38 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 			var wrapper ReposListBranchesOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -41311,33 +41991,38 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 			var wrapper ReposListCollaboratorsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -41418,33 +42103,38 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposLi
 			var wrapper ReposListCommentsForCommitOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -41495,33 +42185,38 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *Rep
 			var wrapper ReposListCommitCommentsForRepoOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -41572,33 +42267,38 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 			var wrapper ReposListCommitStatusesForRefOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -41679,33 +42379,38 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 			var wrapper ReposListCommitsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -41876,33 +42581,38 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 			var wrapper ReposListContributorsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42016,33 +42726,38 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeplo
 			var wrapper ReposListDeployKeysOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42093,33 +42808,38 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 			var wrapper ReposListDeploymentStatusesOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42200,33 +42920,38 @@ func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDepl
 			var wrapper ReposListDeploymentsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42406,33 +43131,38 @@ func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKH
 			var wrapper ReposListForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42483,33 +43213,38 @@ func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserO
 			var wrapper ReposListForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42560,33 +43295,38 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, e
 			var wrapper ReposListForksOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42667,33 +43407,38 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvi
 			var wrapper ReposListInvitationsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42744,33 +43489,38 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 			var wrapper ReposListInvitationsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -42950,33 +43700,38 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPage
 			var wrapper ReposListPagesBuildsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43027,33 +43782,38 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 			var wrapper ReposListPublicOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43137,33 +43897,38 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 			var wrapper ReposListPullRequestsAssociatedWithCommitOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43214,33 +43979,38 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListRe
 			var wrapper ReposListReleaseAssetsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43291,33 +44061,38 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 			var wrapper ReposListReleasesOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43398,33 +44173,38 @@ func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeade
 			var wrapper ReposListTagsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43475,33 +44255,38 @@ func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHea
 			var wrapper ReposListTeamsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -43648,33 +44433,38 @@ func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooks
 			var wrapper ReposListWebhooksOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -46722,33 +47512,38 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 			var wrapper SecretScanningListAlertsForOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48416,33 +49211,38 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 			var wrapper TeamsListOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48523,33 +49323,38 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChild
 			var wrapper TeamsListChildInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48600,33 +49405,38 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 			var wrapper TeamsListChildLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48767,33 +49577,38 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *T
 			var wrapper TeamsListDiscussionCommentsInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48844,33 +49659,38 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *
 			var wrapper TeamsListDiscussionCommentsLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48921,33 +49741,38 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsLis
 			var wrapper TeamsListDiscussionsInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -48998,33 +49823,38 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsLi
 			var wrapper TeamsListDiscussionsLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49075,33 +49905,38 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 			var wrapper TeamsListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49303,33 +50138,38 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMapp
 			var wrapper GroupMappingHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49416,33 +50256,38 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMem
 			var wrapper TeamsListMembersInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49493,33 +50338,38 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 			var wrapper TeamsListMembersLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49600,33 +50450,38 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *T
 			var wrapper TeamsListPendingInvitationsInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49677,33 +50532,38 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *
 			var wrapper TeamsListPendingInvitationsLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49754,33 +50614,38 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListPr
 			var wrapper TeamsListProjectsInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49831,33 +50696,38 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 			var wrapper TeamsListProjectsLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -49938,33 +50808,38 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListRepos
 			var wrapper TeamsListReposInOrgOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -50015,33 +50890,38 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 			var wrapper TeamsListReposLegacyOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -52462,33 +53342,38 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) 
 			var wrapper UsersListOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -52701,33 +53586,38 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 			var wrapper UsersListEmailsForAuthenticatedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -52871,33 +53761,38 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 			var wrapper UsersListFollowedByAuthenticatedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53011,33 +53906,38 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 			var wrapper UsersListFollowersForAuthenticatedUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53151,33 +54051,38 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersLis
 			var wrapper UsersListFollowersForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53228,33 +54133,38 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersLis
 			var wrapper UsersListFollowingForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53305,33 +54215,38 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 			var wrapper UsersListGpgKeysForAuthenticatedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53475,33 +54390,38 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListG
 			var wrapper UsersListGpgKeysForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53552,33 +54472,38 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 			var wrapper UsersListPublicEmailsForAuthenticatedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53722,33 +54647,38 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersLi
 			var wrapper UsersListPublicKeysForUserOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
@@ -53799,33 +54729,38 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 			var wrapper UsersListPublicSSHKeysForAuthenticatedOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
-			// Parse 'Link' header.
+			// Parse "Link" header.
 			{
 				cfg := uri.HeaderParameterDecodingConfig{
 					Name:    "Link",
 					Explode: false,
 				}
-				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
-					var wrapperDotLinkVal string
-					if err := func() error {
-						val, err := d.DecodeValue()
-						if err != nil {
+				if err := func() error {
+					if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+						var wrapperDotLinkVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							wrapperDotLinkVal = c
+							return nil
+						}(); err != nil {
 							return err
 						}
-
-						c, err := conv.ToString(val)
-						if err != nil {
-							return err
-						}
-
-						wrapperDotLinkVal = c
+						wrapper.Link.SetTo(wrapperDotLinkVal)
 						return nil
-					}(); err != nil {
+					}); err != nil {
 						return err
 					}
-					wrapper.Link.SetTo(wrapperDotLinkVal)
 					return nil
-				}); err != nil {
+				}(); err != nil {
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
