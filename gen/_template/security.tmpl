@@ -34,7 +34,14 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 		t.Username = username
 		t.Password = password
 	{{- else if $s.Format.IsBearerSecurity }}
-		t.Token = req.Header.Get("Authorization")
+		scheme, token, ok := strings.Cut(req.Header.Get("Authorization"), " ")
+		if !ok {
+			return nil, errors.New("invalid bearer auth")
+		}
+		if !strings.EqualFold(scheme, "Bearer") {
+			return nil, errors.Errorf("invalid auth scheme: %q", scheme)
+		}
+		t.Token = token
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
@@ -72,7 +79,7 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName s
     {{- else if $s.Format.IsBasicHTTPSecurity }}
 		req.SetBasicAuth(t.Username, t.Password)
 	{{- else if $s.Format.IsBearerSecurity }}
-		req.Header.Set("Authorization", t.Token)
+		req.Header.Set("Authorization", "Bearer " + t.Token)
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
