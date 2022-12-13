@@ -23,7 +23,7 @@ func (e *headerParamEncoder) serialize() {
 		e.header.Set(e.paramName, strings.Join(e.items, ","))
 		return
 	case typeObject:
-		kvSep, fieldSep := ',', ','
+		var kvSep, fieldSep byte = ',', ','
 		if e.explode {
 			kvSep = '='
 		}
