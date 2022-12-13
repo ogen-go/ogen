@@ -116,7 +116,7 @@ func (e *PathEncoder) object() string {
 		return encodeObject(kvSep, fieldSep, e.fields)
 
 	case PathStyleLabel:
-		kvSep, fieldSep := ',', ','
+		var kvSep, fieldSep byte = ',', ','
 		if e.explode {
 			kvSep, fieldSep = '=', '.'
 		}

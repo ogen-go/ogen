@@ -7,14 +7,28 @@ type Field struct {
 	Value string
 }
 
-func encodeObject(kvSep, fieldSep rune, fields []Field) string {
-	var sb strings.Builder
+func encodeObject(kvSep, fieldSep byte, fields []Field) string {
+	var (
+		sb   strings.Builder
+		size int
+	)
+	// Preallocate the buffer.
+	{
+		for _, f := range fields {
+			size += len(f.Name) + len(f.Value) + 2
+		}
+		if len(fields) == 1 {
+			// If there are less than 2 fields, we don't need to add the field separator.
+			size--
+		}
+	}
+	sb.Grow(size)
 	for i, f := range fields {
 		if i > 0 {
-			sb.WriteRune(fieldSep)
+			sb.WriteByte(fieldSep)
 		}
 		sb.WriteString(f.Name)
-		sb.WriteRune(kvSep)
+		sb.WriteByte(kvSep)
 		sb.WriteString(f.Value)
 	}
 	return sb.String()
