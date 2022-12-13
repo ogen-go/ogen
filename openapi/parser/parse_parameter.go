@@ -172,11 +172,8 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 		Pointer:       locator.Pointer(p.file(ctx)),
 	}
 
-	// TODO: Validate content?
-	if param.Content == nil {
-		if err := p.validateParamStyle(op, p.file(ctx)); err != nil {
-			return nil, err
-		}
+	if err := p.validateParamStyle(op, p.file(ctx)); err != nil {
+		return nil, err
 	}
 
 	return op, nil
@@ -322,8 +319,16 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		return nil
 	}
 
-	if err := check(param.Schema); err != nil {
-		return wrap("schema", err)
+	switch {
+	case param.Schema != nil:
+		if err := check(param.Schema); err != nil {
+			return wrap("schema", err)
+		}
+	case param.Content != nil:
+		if !allowed(primitive) {
+			err := errors.New("content parameter should be primitive")
+			return wrap("style", err)
+		}
 	}
 
 	return nil
