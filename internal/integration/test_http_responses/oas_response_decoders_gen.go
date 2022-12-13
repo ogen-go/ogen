@@ -13,6 +13,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -76,23 +77,28 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response CombinedOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -108,12 +114,12 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response int
 			if err := func() error {
 				v, err := d.Int()
@@ -121,12 +127,17 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 				if err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &Combined2XXStatusCode{
 				StatusCode: resp.StatusCode,
@@ -143,12 +154,12 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response bool
 			if err := func() error {
 				v, err := d.Bool()
@@ -156,12 +167,17 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 				if err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &Combined5XXStatusCode{
 				StatusCode: resp.StatusCode,
@@ -178,12 +194,12 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response []string
 		if err := func() error {
 			response = make([]string, 0)
@@ -199,12 +215,17 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 			}); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &CombinedDefStatusCode{
 			StatusCode: resp.StatusCode,
@@ -526,23 +547,28 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response IntersectPatternCodeOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -558,12 +584,12 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response int
 			if err := func() error {
 				v, err := d.Int()
@@ -571,12 +597,17 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 				if err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &IntersectPatternCode2XXStatusCode{
 				StatusCode: resp.StatusCode,
@@ -599,23 +630,28 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response NilInt
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -629,23 +665,28 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response NilString
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:

@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -32,12 +33,12 @@ func decodeContentQueryParameterResponse(resp *http.Response) (res string, err e
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -45,12 +46,17 @@ func decodeContentQueryParameterResponse(resp *http.Response) (res string, err e
 				if err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return response, nil
 		default:
@@ -70,23 +76,28 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Hash, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Hash
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -106,23 +117,28 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response ObjectQueryParameterOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -142,23 +158,28 @@ func decodePathObjectParameterResponse(resp *http.Response) (res *User, err erro
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response User
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:

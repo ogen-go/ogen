@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -26,23 +27,28 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, e
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -56,23 +62,28 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, e
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -96,23 +107,28 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -126,23 +142,28 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -163,23 +184,28 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Balloon
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -193,23 +219,28 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -223,23 +254,28 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -260,23 +296,28 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response BalloonStats
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -290,23 +331,28 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -320,23 +366,28 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -357,23 +408,28 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRe
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response InstanceInfo
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -387,23 +443,28 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRe
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -424,23 +485,28 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfig
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response FullVmConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -454,23 +520,28 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfig
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -491,23 +562,28 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineC
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response MachineConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -521,23 +597,28 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineC
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -561,23 +642,28 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err e
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -591,23 +677,28 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err e
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -631,23 +722,28 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -661,23 +757,28 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -698,23 +799,28 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response MmdsGetOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -728,23 +834,28 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -758,23 +869,28 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -798,23 +914,28 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) 
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -828,23 +949,28 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) 
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -868,23 +994,28 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -898,23 +1029,28 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -938,23 +1074,28 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err e
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -968,23 +1109,28 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err e
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1008,23 +1154,28 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1038,23 +1189,28 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1078,23 +1234,28 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1108,23 +1269,28 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1148,23 +1314,28 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1178,23 +1349,28 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1218,23 +1394,28 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1248,23 +1429,28 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1288,23 +1474,28 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1318,23 +1509,28 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1358,23 +1554,28 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1388,23 +1589,28 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1428,23 +1634,28 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1458,23 +1669,28 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1498,23 +1714,28 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1528,23 +1749,28 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1568,23 +1794,28 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1598,23 +1829,28 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1638,23 +1874,28 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1668,23 +1909,28 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1708,23 +1954,28 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) 
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1738,23 +1989,28 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) 
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1778,23 +2034,28 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1808,23 +2069,28 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -1848,23 +2114,28 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error
 		}
 		switch {
 		case ct == "application/json":
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
 				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
 			}
 			return &response, nil
 		default:
@@ -1878,23 +2149,28 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error
 	}
 	switch {
 	case ct == "application/json":
-		b, err := io.ReadAll(resp.Body)
+		buf, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return res, err
 		}
 
-		d := jx.DecodeBytes(b)
+		d := jx.DecodeBytes(buf)
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return res, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return res, err
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,

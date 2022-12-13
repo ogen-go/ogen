@@ -93,21 +93,26 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- end }}
 
 		{{- if $encoding.JSON }}
-			b, err := io.ReadAll(resp.Body)
+			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
 
-			d := jx.DecodeBytes(b)
+			d := jx.DecodeBytes(buf)
 			var response {{ $type.Go }}
 			if err := func() error {
 				{{- template "json/dec" elem $type "response" }}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
-			}
-			if err := d.Skip(); err != io.EOF {
-				return res, errors.New("unexpected trailing data")
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body: buf,
+					Err: err,
+				}
+				return res, err
 			}
 		{{- else if $type.IsStream }}
 			{{- if $type.IsBase64Stream }}

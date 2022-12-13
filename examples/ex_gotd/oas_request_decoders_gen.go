@@ -11,6 +11,7 @@ import (
 	"github.com/go-faster/jx"
 	"go.uber.org/multierr"
 
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -59,12 +60,17 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -125,12 +131,17 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -191,12 +202,17 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -257,12 +273,17 @@ func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -315,12 +336,17 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -381,12 +407,17 @@ func (s *Server) decodeAnswerWebAppQueryRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -447,12 +478,17 @@ func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -505,12 +541,17 @@ func (s *Server) decodeBanChatMemberRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -563,12 +604,17 @@ func (s *Server) decodeBanChatSenderChatRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -621,12 +667,17 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -687,12 +738,17 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -753,12 +809,17 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -819,12 +880,17 @@ func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -877,12 +943,17 @@ func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -935,12 +1006,17 @@ func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -993,12 +1069,17 @@ func (s *Server) decodeDeleteMessageRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1055,12 +1136,17 @@ func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -1113,12 +1199,17 @@ func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1175,12 +1266,17 @@ func (s *Server) decodeDeleteWebhookRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -1233,12 +1329,17 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1299,12 +1400,17 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1365,12 +1471,17 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1431,12 +1542,17 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1497,12 +1613,17 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1563,12 +1684,17 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1629,12 +1755,17 @@ func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1687,12 +1818,17 @@ func (s *Server) decodeForwardMessageRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1745,12 +1881,17 @@ func (s *Server) decodeGetChatRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1803,12 +1944,17 @@ func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1861,12 +2007,17 @@ func (s *Server) decodeGetChatMemberRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1919,12 +2070,17 @@ func (s *Server) decodeGetChatMemberCountRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -1981,12 +2137,17 @@ func (s *Server) decodeGetChatMenuButtonRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -2039,12 +2200,17 @@ func (s *Server) decodeGetFileRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2097,12 +2263,17 @@ func (s *Server) decodeGetGameHighScoresRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2159,12 +2330,17 @@ func (s *Server) decodeGetMyCommandsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -2221,12 +2397,17 @@ func (s *Server) decodeGetMyDefaultAdministratorRightsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -2279,12 +2460,17 @@ func (s *Server) decodeGetStickerSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2341,12 +2527,17 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if request.Set {
@@ -2414,12 +2605,17 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2480,12 +2676,17 @@ func (s *Server) decodeLeaveChatRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2538,12 +2739,17 @@ func (s *Server) decodePinChatMessageRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2596,12 +2802,17 @@ func (s *Server) decodePromoteChatMemberRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2654,12 +2865,17 @@ func (s *Server) decodeRestrictChatMemberRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2712,12 +2928,17 @@ func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2770,12 +2991,17 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2836,12 +3062,17 @@ func (s *Server) decodeSendAudioRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2902,12 +3133,17 @@ func (s *Server) decodeSendChatActionRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -2960,12 +3196,17 @@ func (s *Server) decodeSendContactRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3026,12 +3267,17 @@ func (s *Server) decodeSendDiceRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3092,12 +3338,17 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3158,12 +3409,17 @@ func (s *Server) decodeSendGameRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3224,12 +3480,17 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3290,12 +3551,17 @@ func (s *Server) decodeSendLocationRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3356,12 +3622,17 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3422,12 +3693,17 @@ func (s *Server) decodeSendMessageRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3488,12 +3764,17 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3554,12 +3835,17 @@ func (s *Server) decodeSendPollRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3620,12 +3906,17 @@ func (s *Server) decodeSendStickerRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3686,12 +3977,17 @@ func (s *Server) decodeSendVenueRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3752,12 +4048,17 @@ func (s *Server) decodeSendVideoRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3818,12 +4119,17 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3884,12 +4190,17 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3950,12 +4261,17 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4016,12 +4332,17 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4086,12 +4407,17 @@ func (s *Server) decodeSetChatMenuButtonRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -4144,12 +4470,17 @@ func (s *Server) decodeSetChatPermissionsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4202,12 +4533,17 @@ func (s *Server) decodeSetChatPhotoRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4260,12 +4596,17 @@ func (s *Server) decodeSetChatStickerSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4318,12 +4659,17 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4384,12 +4730,17 @@ func (s *Server) decodeSetGameScoreRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4442,12 +4793,17 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4512,12 +4868,17 @@ func (s *Server) decodeSetMyDefaultAdministratorRightsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return request, close, nil
 	default:
@@ -4570,12 +4931,17 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4636,12 +5002,17 @@ func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4694,12 +5065,17 @@ func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4752,12 +5128,17 @@ func (s *Server) decodeSetWebhookRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -4810,12 +5191,17 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4876,12 +5262,17 @@ func (s *Server) decodeStopPollRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4942,12 +5333,17 @@ func (s *Server) decodeUnbanChatMemberRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -5000,12 +5396,17 @@ func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -5058,12 +5459,17 @@ func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -5116,12 +5522,17 @@ func (s *Server) decodeUnpinChatMessageRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:
@@ -5174,12 +5585,17 @@ func (s *Server) decodeUploadStickerFileRequest(r *http.Request) (
 			if err := request.Decode(d); err != nil {
 				return err
 			}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "decode \"application/json\"")
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body:        buf,
+				Err:         err,
+			}
+			return req, close, err
 		}
 		return &request, close, nil
 	default:

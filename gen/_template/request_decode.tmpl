@@ -92,12 +92,17 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			{{- template "json/dec" elem $t "request" }}
+			if err := d.Skip(); err != io.EOF {
+				return errors.New("unexpected trailing data")
+			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
-		}
-		if err := d.Skip(); err != io.EOF {
-			return req, close, errors.New("unexpected trailing data")
+			err = &ogenerrors.DecodeBodyError{
+				ContentType: ct,
+				Body: buf,
+				Err: err,
+			}
+			return req, close, err
 		}
 		{{- if $t.NeedValidation }}
 		if err := func() error {
