@@ -83,11 +83,8 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 		Pointer:     locator.Pointer(p.file(ctx)),
 	}
 
-	// TODO: Validate content?
-	if header.Content == nil {
-		if err := p.validateParamStyle(op, p.file(ctx)); err != nil {
-			return nil, err
-		}
+	if err := p.validateParamStyle(op, p.file(ctx)); err != nil {
+		return nil, err
 	}
 
 	return op, nil

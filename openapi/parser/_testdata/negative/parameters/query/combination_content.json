@@ -1,0 +1,35 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "get": {
+        "parameters": [
+          {
+            "name": "foo",
+            "in": "query",
+            "style": "pipeDelimited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  }
+}
