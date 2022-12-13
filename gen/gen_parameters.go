@@ -181,7 +181,7 @@ func isSupportedParamStyle(param *openapi.Parameter) error {
 		return &ErrNotImplemented{Name: "spaceDelimited parameter style"}
 
 	case openapi.QueryStylePipeDelimited:
-		if param.Schema.Type == jsonschema.Object {
+		if s := param.Schema; s != nil && s.Type == jsonschema.Object {
 			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
 		}
 	}
