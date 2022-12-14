@@ -143,12 +143,13 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			m,
 			mreq,
 			{{ if $op.Params }}unpack{{ $op.Name }}Params{{ else }}nil{{ end }},
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				{{- if $op.Responses.DoPass }}response,{{ end }}err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
+		{{- if $op.Responses.DoPass }}response,{{ end }} err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
 	}
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}

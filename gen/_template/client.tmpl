@@ -98,7 +98,21 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }} {
+	res, err := c.send{{ $op.Name }}(ctx
+		{{- if $op.WebhookInfo }},targetURL{{ end -}}
+		{{- if $op.Request }},request{{ end -}}
+		{{- if $op.Params }},params{{ end -}}
+	)
+	_ = res
+	return {{ if $op.Responses.DoPass }}res,{{ end }} err
+}
+
+func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx context.Context
+	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
+	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
+
 	{{- $hasOTELAttrs := false }}
 	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}

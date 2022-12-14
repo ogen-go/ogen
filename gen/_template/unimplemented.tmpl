@@ -39,7 +39,7 @@ var _ WebhookHandler = UnimplementedHandler{}
 // {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
-func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.GoType }}, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "r" "" }} {
+	return {{ if $op.Responses.DoPass }}r,{{ end }} ht.ErrNotImplemented
 }
 {{ end }}
