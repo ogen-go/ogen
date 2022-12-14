@@ -106,12 +106,13 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 			m,
 			mreq,
 			unpackComplicatedParameterNameGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ComplicatedParameterNameGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ComplicatedParameterNameGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.ComplicatedParameterNameGet(ctx, params)
+		err = s.h.ComplicatedParameterNameGet(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -203,8 +204,9 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 			m,
 			mreq,
 			unpackContentQueryParameterParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ContentQueryParameter(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ContentQueryParameter(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -302,8 +304,9 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			unpackHeaderParameterParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.HeaderParameter(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.HeaderParameter(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -403,8 +406,9 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			unpackObjectQueryParameterParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ObjectQueryParameter(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ObjectQueryParameter(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -500,8 +504,9 @@ func (s *Server) handlePathObjectParameterRequest(args [1]string, w http.Respons
 			m,
 			mreq,
 			unpackPathObjectParameterParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PathObjectParameter(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PathObjectParameter(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -603,12 +608,13 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			unpackSameNameParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SameName(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.SameName(ctx, params)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.SameName(ctx, params)
+		err = s.h.SameName(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)

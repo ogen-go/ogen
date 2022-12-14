@@ -19,7 +19,7 @@ import (
 type testParameters struct {
 }
 
-func (s *testParameters) ComplicatedParameterNameGet(ctx context.Context, params api.ComplicatedParameterNameGetParams) (*api.ComplicatedParameterNameGetOK, error) {
+func (s *testParameters) ComplicatedParameterNameGet(ctx context.Context, params api.ComplicatedParameterNameGetParams) error {
 	panic("implement me")
 }
 
@@ -60,7 +60,7 @@ func (s *testParameters) PathObjectParameter(ctx context.Context, params api.Pat
 	return &params.Param, nil
 }
 
-func (s *testParameters) SameName(ctx context.Context, params api.SameNameParams) (*api.SameNameOK, error) {
+func (s *testParameters) SameName(ctx context.Context, params api.SameNameParams) error {
 	panic("implement me")
 }
 

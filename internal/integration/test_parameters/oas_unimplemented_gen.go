@@ -16,8 +16,8 @@ var _ Handler = UnimplementedHandler{}
 // ComplicatedParameterNameGet implements GET /complicatedParameterName operation.
 //
 // GET /complicatedParameterName
-func (UnimplementedHandler) ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (r *ComplicatedParameterNameGetOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ContentQueryParameter implements contentQueryParameter operation.
@@ -55,6 +55,6 @@ func (UnimplementedHandler) PathObjectParameter(ctx context.Context, params Path
 // Parameter with different location, but the same name.
 //
 // GET /same_name/{path}
-func (UnimplementedHandler) SameName(ctx context.Context, params SameNameParams) (r *SameNameOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) SameName(ctx context.Context, params SameNameParams) error {
+	return ht.ErrNotImplemented
 }

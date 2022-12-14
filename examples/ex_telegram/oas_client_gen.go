@@ -66,7 +66,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // AddStickerToSet invokes addStickerToSet operation.
 //
 // POST /addStickerToSet
-func (c *Client) AddStickerToSet(ctx context.Context, request *AddStickerToSet) (res *Result, err error) {
+func (c *Client) AddStickerToSet(ctx context.Context, request *AddStickerToSet) (*Result, error) {
+	res, err := c.sendAddStickerToSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addStickerToSet"),
 	}
@@ -138,7 +144,13 @@ func (c *Client) AddStickerToSet(ctx context.Context, request *AddStickerToSet) 
 // AnswerCallbackQuery invokes answerCallbackQuery operation.
 //
 // POST /answerCallbackQuery
-func (c *Client) AnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (res *Result, err error) {
+func (c *Client) AnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (*Result, error) {
+	res, err := c.sendAnswerCallbackQuery(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerCallbackQuery"),
 	}
@@ -210,7 +222,13 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request *AnswerCallbac
 // AnswerInlineQuery invokes answerInlineQuery operation.
 //
 // POST /answerInlineQuery
-func (c *Client) AnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (res *Result, err error) {
+func (c *Client) AnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (*Result, error) {
+	res, err := c.sendAnswerInlineQuery(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerInlineQuery"),
 	}
@@ -282,7 +300,13 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request *AnswerInlineQue
 // AnswerPreCheckoutQuery invokes answerPreCheckoutQuery operation.
 //
 // POST /answerPreCheckoutQuery
-func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreCheckoutQuery) (res *Result, err error) {
+func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreCheckoutQuery) (*Result, error) {
+	res, err := c.sendAnswerPreCheckoutQuery(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreCheckoutQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerPreCheckoutQuery"),
 	}
@@ -345,7 +369,13 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreC
 // AnswerShippingQuery invokes answerShippingQuery operation.
 //
 // POST /answerShippingQuery
-func (c *Client) AnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (res *Result, err error) {
+func (c *Client) AnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (*Result, error) {
+	res, err := c.sendAnswerShippingQuery(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerShippingQuery"),
 	}
@@ -417,7 +447,13 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request *AnswerShippin
 // ApproveChatJoinRequest invokes approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
-func (c *Client) ApproveChatJoinRequest(ctx context.Context, request *ApproveChatJoinRequest) (res *Result, err error) {
+func (c *Client) ApproveChatJoinRequest(ctx context.Context, request *ApproveChatJoinRequest) (*Result, error) {
+	res, err := c.sendApproveChatJoinRequest(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendApproveChatJoinRequest(ctx context.Context, request *ApproveChatJoinRequest) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("approveChatJoinRequest"),
 	}
@@ -480,7 +516,13 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request *ApproveCha
 // BanChatMember invokes banChatMember operation.
 //
 // POST /banChatMember
-func (c *Client) BanChatMember(ctx context.Context, request *BanChatMember) (res *Result, err error) {
+func (c *Client) BanChatMember(ctx context.Context, request *BanChatMember) (*Result, error) {
+	res, err := c.sendBanChatMember(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBanChatMember(ctx context.Context, request *BanChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatMember"),
 	}
@@ -543,7 +585,13 @@ func (c *Client) BanChatMember(ctx context.Context, request *BanChatMember) (res
 // BanChatSenderChat invokes banChatSenderChat operation.
 //
 // POST /banChatSenderChat
-func (c *Client) BanChatSenderChat(ctx context.Context, request *BanChatSenderChat) (res *Result, err error) {
+func (c *Client) BanChatSenderChat(ctx context.Context, request *BanChatSenderChat) (*Result, error) {
+	res, err := c.sendBanChatSenderChat(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBanChatSenderChat(ctx context.Context, request *BanChatSenderChat) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatSenderChat"),
 	}
@@ -606,7 +654,13 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request *BanChatSenderCh
 // Close invokes close operation.
 //
 // POST /close
-func (c *Client) Close(ctx context.Context) (res *Result, err error) {
+func (c *Client) Close(ctx context.Context) (*Result, error) {
+	res, err := c.sendClose(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendClose(ctx context.Context) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("close"),
 	}
@@ -666,7 +720,13 @@ func (c *Client) Close(ctx context.Context) (res *Result, err error) {
 // CopyMessage invokes copyMessage operation.
 //
 // POST /copyMessage
-func (c *Client) CopyMessage(ctx context.Context, request *CopyMessage) (res *ResultMessageId, err error) {
+func (c *Client) CopyMessage(ctx context.Context, request *CopyMessage) (*ResultMessageId, error) {
+	res, err := c.sendCopyMessage(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res *ResultMessageId, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("copyMessage"),
 	}
@@ -738,7 +798,13 @@ func (c *Client) CopyMessage(ctx context.Context, request *CopyMessage) (res *Re
 // CreateChatInviteLink invokes createChatInviteLink operation.
 //
 // POST /createChatInviteLink
-func (c *Client) CreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (res *ResultChatInviteLink, err error) {
+func (c *Client) CreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (*ResultChatInviteLink, error) {
+	res, err := c.sendCreateChatInviteLink(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (res *ResultChatInviteLink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatInviteLink"),
 	}
@@ -810,7 +876,13 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request *CreateChatIn
 // CreateNewStickerSet invokes createNewStickerSet operation.
 //
 // POST /createNewStickerSet
-func (c *Client) CreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (res *Result, err error) {
+func (c *Client) CreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (*Result, error) {
+	res, err := c.sendCreateNewStickerSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createNewStickerSet"),
 	}
@@ -882,7 +954,13 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request *CreateNewStic
 // DeclineChatJoinRequest invokes declineChatJoinRequest operation.
 //
 // POST /declineChatJoinRequest
-func (c *Client) DeclineChatJoinRequest(ctx context.Context, request *DeclineChatJoinRequest) (res *Result, err error) {
+func (c *Client) DeclineChatJoinRequest(ctx context.Context, request *DeclineChatJoinRequest) (*Result, error) {
+	res, err := c.sendDeclineChatJoinRequest(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeclineChatJoinRequest(ctx context.Context, request *DeclineChatJoinRequest) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("declineChatJoinRequest"),
 	}
@@ -945,7 +1023,13 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request *DeclineCha
 // DeleteChatPhoto invokes deleteChatPhoto operation.
 //
 // POST /deleteChatPhoto
-func (c *Client) DeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) (res *Result, err error) {
+func (c *Client) DeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) (*Result, error) {
+	res, err := c.sendDeleteChatPhoto(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatPhoto"),
 	}
@@ -1008,7 +1092,13 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) 
 // DeleteChatStickerSet invokes deleteChatStickerSet operation.
 //
 // POST /deleteChatStickerSet
-func (c *Client) DeleteChatStickerSet(ctx context.Context, request *DeleteChatStickerSet) (res *Result, err error) {
+func (c *Client) DeleteChatStickerSet(ctx context.Context, request *DeleteChatStickerSet) (*Result, error) {
+	res, err := c.sendDeleteChatStickerSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeleteChatStickerSet(ctx context.Context, request *DeleteChatStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatStickerSet"),
 	}
@@ -1071,7 +1161,13 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request *DeleteChatSt
 // DeleteMessage invokes deleteMessage operation.
 //
 // POST /deleteMessage
-func (c *Client) DeleteMessage(ctx context.Context, request *DeleteMessage) (res *Result, err error) {
+func (c *Client) DeleteMessage(ctx context.Context, request *DeleteMessage) (*Result, error) {
+	res, err := c.sendDeleteMessage(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeleteMessage(ctx context.Context, request *DeleteMessage) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMessage"),
 	}
@@ -1134,7 +1230,13 @@ func (c *Client) DeleteMessage(ctx context.Context, request *DeleteMessage) (res
 // DeleteMyCommands invokes deleteMyCommands operation.
 //
 // POST /deleteMyCommands
-func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (res *Result, err error) {
+func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (*Result, error) {
+	res, err := c.sendDeleteMyCommands(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMyCommands"),
 	}
@@ -1197,7 +1299,13 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 // DeleteStickerFromSet invokes deleteStickerFromSet operation.
 //
 // POST /deleteStickerFromSet
-func (c *Client) DeleteStickerFromSet(ctx context.Context, request *DeleteStickerFromSet) (res *Result, err error) {
+func (c *Client) DeleteStickerFromSet(ctx context.Context, request *DeleteStickerFromSet) (*Result, error) {
+	res, err := c.sendDeleteStickerFromSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeleteStickerFromSet(ctx context.Context, request *DeleteStickerFromSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteStickerFromSet"),
 	}
@@ -1260,7 +1368,13 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request *DeleteSticke
 // DeleteWebhook invokes deleteWebhook operation.
 //
 // POST /deleteWebhook
-func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (res *Result, err error) {
+func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (*Result, error) {
+	res, err := c.sendDeleteWebhook(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDeleteWebhook(ctx context.Context, request OptDeleteWebhook) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteWebhook"),
 	}
@@ -1323,7 +1437,13 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 // EditChatInviteLink invokes editChatInviteLink operation.
 //
 // POST /editChatInviteLink
-func (c *Client) EditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (res *ResultChatInviteLink, err error) {
+func (c *Client) EditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (*ResultChatInviteLink, error) {
+	res, err := c.sendEditChatInviteLink(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (res *ResultChatInviteLink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editChatInviteLink"),
 	}
@@ -1395,7 +1515,13 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request *EditChatInvite
 // EditMessageCaption invokes editMessageCaption operation.
 //
 // POST /editMessageCaption
-func (c *Client) EditMessageCaption(ctx context.Context, request *EditMessageCaption) (res *Result, err error) {
+func (c *Client) EditMessageCaption(ctx context.Context, request *EditMessageCaption) (*Result, error) {
+	res, err := c.sendEditMessageCaption(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessageCaption) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageCaption"),
 	}
@@ -1467,7 +1593,13 @@ func (c *Client) EditMessageCaption(ctx context.Context, request *EditMessageCap
 // EditMessageLiveLocation invokes editMessageLiveLocation operation.
 //
 // POST /editMessageLiveLocation
-func (c *Client) EditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (res *Result, err error) {
+func (c *Client) EditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (*Result, error) {
+	res, err := c.sendEditMessageLiveLocation(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageLiveLocation"),
 	}
@@ -1539,7 +1671,13 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request *EditMessa
 // EditMessageMedia invokes editMessageMedia operation.
 //
 // POST /editMessageMedia
-func (c *Client) EditMessageMedia(ctx context.Context, request *EditMessageMedia) (res *Result, err error) {
+func (c *Client) EditMessageMedia(ctx context.Context, request *EditMessageMedia) (*Result, error) {
+	res, err := c.sendEditMessageMedia(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageMedia) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageMedia"),
 	}
@@ -1611,7 +1749,13 @@ func (c *Client) EditMessageMedia(ctx context.Context, request *EditMessageMedia
 // EditMessageReplyMarkup invokes editMessageReplyMarkup operation.
 //
 // POST /editMessageReplyMarkup
-func (c *Client) EditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (res *Result, err error) {
+func (c *Client) EditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (*Result, error) {
+	res, err := c.sendEditMessageReplyMarkup(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageReplyMarkup"),
 	}
@@ -1683,7 +1827,13 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request *EditMessag
 // EditMessageText invokes editMessageText operation.
 //
 // POST /editMessageText
-func (c *Client) EditMessageText(ctx context.Context, request *EditMessageText) (res *Result, err error) {
+func (c *Client) EditMessageText(ctx context.Context, request *EditMessageText) (*Result, error) {
+	res, err := c.sendEditMessageText(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageText) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageText"),
 	}
@@ -1755,7 +1905,13 @@ func (c *Client) EditMessageText(ctx context.Context, request *EditMessageText) 
 // ExportChatInviteLink invokes exportChatInviteLink operation.
 //
 // POST /exportChatInviteLink
-func (c *Client) ExportChatInviteLink(ctx context.Context, request *ExportChatInviteLink) (res *ResultString, err error) {
+func (c *Client) ExportChatInviteLink(ctx context.Context, request *ExportChatInviteLink) (*ResultString, error) {
+	res, err := c.sendExportChatInviteLink(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendExportChatInviteLink(ctx context.Context, request *ExportChatInviteLink) (res *ResultString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("exportChatInviteLink"),
 	}
@@ -1818,7 +1974,13 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request *ExportChatIn
 // ForwardMessage invokes forwardMessage operation.
 //
 // POST /forwardMessage
-func (c *Client) ForwardMessage(ctx context.Context, request *ForwardMessage) (res *ResultMessage, err error) {
+func (c *Client) ForwardMessage(ctx context.Context, request *ForwardMessage) (*ResultMessage, error) {
+	res, err := c.sendForwardMessage(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendForwardMessage(ctx context.Context, request *ForwardMessage) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("forwardMessage"),
 	}
@@ -1881,7 +2043,13 @@ func (c *Client) ForwardMessage(ctx context.Context, request *ForwardMessage) (r
 // GetChat invokes getChat operation.
 //
 // POST /getChat
-func (c *Client) GetChat(ctx context.Context, request *GetChat) (res *ResultChat, err error) {
+func (c *Client) GetChat(ctx context.Context, request *GetChat) (*ResultChat, error) {
+	res, err := c.sendGetChat(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetChat(ctx context.Context, request *GetChat) (res *ResultChat, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChat"),
 	}
@@ -1944,7 +2112,13 @@ func (c *Client) GetChat(ctx context.Context, request *GetChat) (res *ResultChat
 // GetChatAdministrators invokes getChatAdministrators operation.
 //
 // POST /getChatAdministrators
-func (c *Client) GetChatAdministrators(ctx context.Context, request *GetChatAdministrators) (res *ResultArrayOfChatMember, err error) {
+func (c *Client) GetChatAdministrators(ctx context.Context, request *GetChatAdministrators) (*ResultArrayOfChatMember, error) {
+	res, err := c.sendGetChatAdministrators(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetChatAdministrators(ctx context.Context, request *GetChatAdministrators) (res *ResultArrayOfChatMember, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatAdministrators"),
 	}
@@ -2007,7 +2181,13 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request *GetChatAdmi
 // GetChatMember invokes getChatMember operation.
 //
 // POST /getChatMember
-func (c *Client) GetChatMember(ctx context.Context, request *GetChatMember) (res *ResultChatMember, err error) {
+func (c *Client) GetChatMember(ctx context.Context, request *GetChatMember) (*ResultChatMember, error) {
+	res, err := c.sendGetChatMember(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetChatMember(ctx context.Context, request *GetChatMember) (res *ResultChatMember, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMember"),
 	}
@@ -2070,7 +2250,13 @@ func (c *Client) GetChatMember(ctx context.Context, request *GetChatMember) (res
 // GetChatMemberCount invokes getChatMemberCount operation.
 //
 // POST /getChatMemberCount
-func (c *Client) GetChatMemberCount(ctx context.Context, request *GetChatMemberCount) (res *ResultInt, err error) {
+func (c *Client) GetChatMemberCount(ctx context.Context, request *GetChatMemberCount) (*ResultInt, error) {
+	res, err := c.sendGetChatMemberCount(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetChatMemberCount(ctx context.Context, request *GetChatMemberCount) (res *ResultInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMemberCount"),
 	}
@@ -2133,7 +2319,13 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request *GetChatMemberC
 // GetFile invokes getFile operation.
 //
 // POST /getFile
-func (c *Client) GetFile(ctx context.Context, request *GetFile) (res *Result, err error) {
+func (c *Client) GetFile(ctx context.Context, request *GetFile) (*Result, error) {
+	res, err := c.sendGetFile(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetFile(ctx context.Context, request *GetFile) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFile"),
 	}
@@ -2196,7 +2388,13 @@ func (c *Client) GetFile(ctx context.Context, request *GetFile) (res *Result, er
 // GetGameHighScores invokes getGameHighScores operation.
 //
 // POST /getGameHighScores
-func (c *Client) GetGameHighScores(ctx context.Context, request *GetGameHighScores) (res *ResultArrayOfGameHighScore, err error) {
+func (c *Client) GetGameHighScores(ctx context.Context, request *GetGameHighScores) (*ResultArrayOfGameHighScore, error) {
+	res, err := c.sendGetGameHighScores(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetGameHighScores(ctx context.Context, request *GetGameHighScores) (res *ResultArrayOfGameHighScore, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getGameHighScores"),
 	}
@@ -2259,7 +2457,13 @@ func (c *Client) GetGameHighScores(ctx context.Context, request *GetGameHighScor
 // GetMe invokes getMe operation.
 //
 // POST /getMe
-func (c *Client) GetMe(ctx context.Context) (res *ResultUser, err error) {
+func (c *Client) GetMe(ctx context.Context) (*ResultUser, error) {
+	res, err := c.sendGetMe(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetMe(ctx context.Context) (res *ResultUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMe"),
 	}
@@ -2319,7 +2523,13 @@ func (c *Client) GetMe(ctx context.Context) (res *ResultUser, err error) {
 // GetMyCommands invokes getMyCommands operation.
 //
 // POST /getMyCommands
-func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (res *ResultArrayOfBotCommand, err error) {
+func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (*ResultArrayOfBotCommand, error) {
+	res, err := c.sendGetMyCommands(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetMyCommands(ctx context.Context, request OptGetMyCommands) (res *ResultArrayOfBotCommand, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMyCommands"),
 	}
@@ -2382,7 +2592,13 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 // GetStickerSet invokes getStickerSet operation.
 //
 // POST /getStickerSet
-func (c *Client) GetStickerSet(ctx context.Context, request *GetStickerSet) (res *Result, err error) {
+func (c *Client) GetStickerSet(ctx context.Context, request *GetStickerSet) (*Result, error) {
+	res, err := c.sendGetStickerSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetStickerSet(ctx context.Context, request *GetStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStickerSet"),
 	}
@@ -2445,7 +2661,13 @@ func (c *Client) GetStickerSet(ctx context.Context, request *GetStickerSet) (res
 // GetUpdates invokes getUpdates operation.
 //
 // POST /getUpdates
-func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res *ResultArrayOfUpdate, err error) {
+func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (*ResultArrayOfUpdate, error) {
+	res, err := c.sendGetUpdates(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res *ResultArrayOfUpdate, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUpdates"),
 	}
@@ -2524,7 +2746,13 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res *Re
 // GetUserProfilePhotos invokes getUserProfilePhotos operation.
 //
 // POST /getUserProfilePhotos
-func (c *Client) GetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (res *ResultUserProfilePhotos, err error) {
+func (c *Client) GetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (*ResultUserProfilePhotos, error) {
+	res, err := c.sendGetUserProfilePhotos(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (res *ResultUserProfilePhotos, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUserProfilePhotos"),
 	}
@@ -2596,7 +2824,13 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request *GetUserProfi
 // GetWebhookInfo invokes getWebhookInfo operation.
 //
 // POST /getWebhookInfo
-func (c *Client) GetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo, err error) {
+func (c *Client) GetWebhookInfo(ctx context.Context) (*ResultWebhookInfo, error) {
+	res, err := c.sendGetWebhookInfo(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getWebhookInfo"),
 	}
@@ -2656,7 +2890,13 @@ func (c *Client) GetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo, er
 // LeaveChat invokes leaveChat operation.
 //
 // POST /leaveChat
-func (c *Client) LeaveChat(ctx context.Context, request *LeaveChat) (res *Result, err error) {
+func (c *Client) LeaveChat(ctx context.Context, request *LeaveChat) (*Result, error) {
+	res, err := c.sendLeaveChat(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendLeaveChat(ctx context.Context, request *LeaveChat) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("leaveChat"),
 	}
@@ -2719,7 +2959,13 @@ func (c *Client) LeaveChat(ctx context.Context, request *LeaveChat) (res *Result
 // LogOut invokes logOut operation.
 //
 // POST /logOut
-func (c *Client) LogOut(ctx context.Context) (res *Result, err error) {
+func (c *Client) LogOut(ctx context.Context) (*Result, error) {
+	res, err := c.sendLogOut(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendLogOut(ctx context.Context) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logOut"),
 	}
@@ -2779,7 +3025,13 @@ func (c *Client) LogOut(ctx context.Context) (res *Result, err error) {
 // PinChatMessage invokes pinChatMessage operation.
 //
 // POST /pinChatMessage
-func (c *Client) PinChatMessage(ctx context.Context, request *PinChatMessage) (res *Result, err error) {
+func (c *Client) PinChatMessage(ctx context.Context, request *PinChatMessage) (*Result, error) {
+	res, err := c.sendPinChatMessage(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPinChatMessage(ctx context.Context, request *PinChatMessage) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pinChatMessage"),
 	}
@@ -2842,7 +3094,13 @@ func (c *Client) PinChatMessage(ctx context.Context, request *PinChatMessage) (r
 // PromoteChatMember invokes promoteChatMember operation.
 //
 // POST /promoteChatMember
-func (c *Client) PromoteChatMember(ctx context.Context, request *PromoteChatMember) (res *Result, err error) {
+func (c *Client) PromoteChatMember(ctx context.Context, request *PromoteChatMember) (*Result, error) {
+	res, err := c.sendPromoteChatMember(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPromoteChatMember(ctx context.Context, request *PromoteChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("promoteChatMember"),
 	}
@@ -2905,7 +3163,13 @@ func (c *Client) PromoteChatMember(ctx context.Context, request *PromoteChatMemb
 // RestrictChatMember invokes restrictChatMember operation.
 //
 // POST /restrictChatMember
-func (c *Client) RestrictChatMember(ctx context.Context, request *RestrictChatMember) (res *Result, err error) {
+func (c *Client) RestrictChatMember(ctx context.Context, request *RestrictChatMember) (*Result, error) {
+	res, err := c.sendRestrictChatMember(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendRestrictChatMember(ctx context.Context, request *RestrictChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("restrictChatMember"),
 	}
@@ -2968,7 +3232,13 @@ func (c *Client) RestrictChatMember(ctx context.Context, request *RestrictChatMe
 // RevokeChatInviteLink invokes revokeChatInviteLink operation.
 //
 // POST /revokeChatInviteLink
-func (c *Client) RevokeChatInviteLink(ctx context.Context, request *RevokeChatInviteLink) (res *ResultChatInviteLink, err error) {
+func (c *Client) RevokeChatInviteLink(ctx context.Context, request *RevokeChatInviteLink) (*ResultChatInviteLink, error) {
+	res, err := c.sendRevokeChatInviteLink(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendRevokeChatInviteLink(ctx context.Context, request *RevokeChatInviteLink) (res *ResultChatInviteLink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("revokeChatInviteLink"),
 	}
@@ -3031,7 +3301,13 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request *RevokeChatIn
 // SendAnimation invokes sendAnimation operation.
 //
 // POST /sendAnimation
-func (c *Client) SendAnimation(ctx context.Context, request *SendAnimation) (res *ResultMessage, err error) {
+func (c *Client) SendAnimation(ctx context.Context, request *SendAnimation) (*ResultMessage, error) {
+	res, err := c.sendSendAnimation(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAnimation"),
 	}
@@ -3103,7 +3379,13 @@ func (c *Client) SendAnimation(ctx context.Context, request *SendAnimation) (res
 // SendAudio invokes sendAudio operation.
 //
 // POST /sendAudio
-func (c *Client) SendAudio(ctx context.Context, request *SendAudio) (res *ResultMessage, err error) {
+func (c *Client) SendAudio(ctx context.Context, request *SendAudio) (*ResultMessage, error) {
+	res, err := c.sendSendAudio(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAudio"),
 	}
@@ -3175,7 +3457,13 @@ func (c *Client) SendAudio(ctx context.Context, request *SendAudio) (res *Result
 // SendChatAction invokes sendChatAction operation.
 //
 // POST /sendChatAction
-func (c *Client) SendChatAction(ctx context.Context, request *SendChatAction) (res *Result, err error) {
+func (c *Client) SendChatAction(ctx context.Context, request *SendChatAction) (*Result, error) {
+	res, err := c.sendSendChatAction(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendChatAction(ctx context.Context, request *SendChatAction) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendChatAction"),
 	}
@@ -3238,7 +3526,13 @@ func (c *Client) SendChatAction(ctx context.Context, request *SendChatAction) (r
 // SendContact invokes sendContact operation.
 //
 // POST /sendContact
-func (c *Client) SendContact(ctx context.Context, request *SendContact) (res *ResultMessage, err error) {
+func (c *Client) SendContact(ctx context.Context, request *SendContact) (*ResultMessage, error) {
+	res, err := c.sendSendContact(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendContact"),
 	}
@@ -3310,7 +3604,13 @@ func (c *Client) SendContact(ctx context.Context, request *SendContact) (res *Re
 // SendDice invokes sendDice operation.
 //
 // POST /sendDice
-func (c *Client) SendDice(ctx context.Context, request *SendDice) (res *ResultMessage, err error) {
+func (c *Client) SendDice(ctx context.Context, request *SendDice) (*ResultMessage, error) {
+	res, err := c.sendSendDice(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDice"),
 	}
@@ -3382,7 +3682,13 @@ func (c *Client) SendDice(ctx context.Context, request *SendDice) (res *ResultMe
 // SendDocument invokes sendDocument operation.
 //
 // POST /sendDocument
-func (c *Client) SendDocument(ctx context.Context, request *SendDocument) (res *ResultMessage, err error) {
+func (c *Client) SendDocument(ctx context.Context, request *SendDocument) (*ResultMessage, error) {
+	res, err := c.sendSendDocument(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDocument"),
 	}
@@ -3454,7 +3760,13 @@ func (c *Client) SendDocument(ctx context.Context, request *SendDocument) (res *
 // SendGame invokes sendGame operation.
 //
 // POST /sendGame
-func (c *Client) SendGame(ctx context.Context, request *SendGame) (res *ResultMessage, err error) {
+func (c *Client) SendGame(ctx context.Context, request *SendGame) (*ResultMessage, error) {
+	res, err := c.sendSendGame(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendGame"),
 	}
@@ -3526,7 +3838,13 @@ func (c *Client) SendGame(ctx context.Context, request *SendGame) (res *ResultMe
 // SendInvoice invokes sendInvoice operation.
 //
 // POST /sendInvoice
-func (c *Client) SendInvoice(ctx context.Context, request *SendInvoice) (res *ResultMessage, err error) {
+func (c *Client) SendInvoice(ctx context.Context, request *SendInvoice) (*ResultMessage, error) {
+	res, err := c.sendSendInvoice(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendInvoice"),
 	}
@@ -3598,7 +3916,13 @@ func (c *Client) SendInvoice(ctx context.Context, request *SendInvoice) (res *Re
 // SendLocation invokes sendLocation operation.
 //
 // POST /sendLocation
-func (c *Client) SendLocation(ctx context.Context, request *SendLocation) (res *ResultMessage, err error) {
+func (c *Client) SendLocation(ctx context.Context, request *SendLocation) (*ResultMessage, error) {
+	res, err := c.sendSendLocation(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendLocation"),
 	}
@@ -3670,7 +3994,13 @@ func (c *Client) SendLocation(ctx context.Context, request *SendLocation) (res *
 // SendMediaGroup invokes sendMediaGroup operation.
 //
 // POST /sendMediaGroup
-func (c *Client) SendMediaGroup(ctx context.Context, request *SendMediaGroup) (res *ResultArrayOfMessage, err error) {
+func (c *Client) SendMediaGroup(ctx context.Context, request *SendMediaGroup) (*ResultArrayOfMessage, error) {
+	res, err := c.sendSendMediaGroup(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup) (res *ResultArrayOfMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMediaGroup"),
 	}
@@ -3742,7 +4072,13 @@ func (c *Client) SendMediaGroup(ctx context.Context, request *SendMediaGroup) (r
 // SendMessage invokes sendMessage operation.
 //
 // POST /sendMessage
-func (c *Client) SendMessage(ctx context.Context, request *SendMessage) (res *ResultMessage, err error) {
+func (c *Client) SendMessage(ctx context.Context, request *SendMessage) (*ResultMessage, error) {
+	res, err := c.sendSendMessage(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMessage"),
 	}
@@ -3814,7 +4150,13 @@ func (c *Client) SendMessage(ctx context.Context, request *SendMessage) (res *Re
 // SendPhoto invokes sendPhoto operation.
 //
 // POST /sendPhoto
-func (c *Client) SendPhoto(ctx context.Context, request *SendPhoto) (res *ResultMessage, err error) {
+func (c *Client) SendPhoto(ctx context.Context, request *SendPhoto) (*ResultMessage, error) {
+	res, err := c.sendSendPhoto(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPhoto"),
 	}
@@ -3886,7 +4228,13 @@ func (c *Client) SendPhoto(ctx context.Context, request *SendPhoto) (res *Result
 // SendPoll invokes sendPoll operation.
 //
 // POST /sendPoll
-func (c *Client) SendPoll(ctx context.Context, request *SendPoll) (res *ResultMessage, err error) {
+func (c *Client) SendPoll(ctx context.Context, request *SendPoll) (*ResultMessage, error) {
+	res, err := c.sendSendPoll(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPoll"),
 	}
@@ -3958,7 +4306,13 @@ func (c *Client) SendPoll(ctx context.Context, request *SendPoll) (res *ResultMe
 // SendSticker invokes sendSticker operation.
 //
 // POST /sendSticker
-func (c *Client) SendSticker(ctx context.Context, request *SendSticker) (res *ResultMessage, err error) {
+func (c *Client) SendSticker(ctx context.Context, request *SendSticker) (*ResultMessage, error) {
+	res, err := c.sendSendSticker(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendSticker"),
 	}
@@ -4030,7 +4384,13 @@ func (c *Client) SendSticker(ctx context.Context, request *SendSticker) (res *Re
 // SendVenue invokes sendVenue operation.
 //
 // POST /sendVenue
-func (c *Client) SendVenue(ctx context.Context, request *SendVenue) (res *ResultMessage, err error) {
+func (c *Client) SendVenue(ctx context.Context, request *SendVenue) (*ResultMessage, error) {
+	res, err := c.sendSendVenue(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVenue"),
 	}
@@ -4102,7 +4462,13 @@ func (c *Client) SendVenue(ctx context.Context, request *SendVenue) (res *Result
 // SendVideo invokes sendVideo operation.
 //
 // POST /sendVideo
-func (c *Client) SendVideo(ctx context.Context, request *SendVideo) (res *ResultMessage, err error) {
+func (c *Client) SendVideo(ctx context.Context, request *SendVideo) (*ResultMessage, error) {
+	res, err := c.sendSendVideo(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideo"),
 	}
@@ -4174,7 +4540,13 @@ func (c *Client) SendVideo(ctx context.Context, request *SendVideo) (res *Result
 // SendVideoNote invokes sendVideoNote operation.
 //
 // POST /sendVideoNote
-func (c *Client) SendVideoNote(ctx context.Context, request *SendVideoNote) (res *ResultMessage, err error) {
+func (c *Client) SendVideoNote(ctx context.Context, request *SendVideoNote) (*ResultMessage, error) {
+	res, err := c.sendSendVideoNote(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideoNote"),
 	}
@@ -4246,7 +4618,13 @@ func (c *Client) SendVideoNote(ctx context.Context, request *SendVideoNote) (res
 // SendVoice invokes sendVoice operation.
 //
 // POST /sendVoice
-func (c *Client) SendVoice(ctx context.Context, request *SendVoice) (res *ResultMessage, err error) {
+func (c *Client) SendVoice(ctx context.Context, request *SendVoice) (*ResultMessage, error) {
+	res, err := c.sendSendVoice(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVoice"),
 	}
@@ -4318,7 +4696,13 @@ func (c *Client) SendVoice(ctx context.Context, request *SendVoice) (res *Result
 // SetChatAdministratorCustomTitle invokes setChatAdministratorCustomTitle operation.
 //
 // POST /setChatAdministratorCustomTitle
-func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (res *Result, err error) {
+func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (*Result, error) {
+	res, err := c.sendSetChatAdministratorCustomTitle(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatAdministratorCustomTitle"),
 	}
@@ -4390,7 +4774,13 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request *S
 // SetChatDescription invokes setChatDescription operation.
 //
 // POST /setChatDescription
-func (c *Client) SetChatDescription(ctx context.Context, request *SetChatDescription) (res *Result, err error) {
+func (c *Client) SetChatDescription(ctx context.Context, request *SetChatDescription) (*Result, error) {
+	res, err := c.sendSetChatDescription(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDescription) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatDescription"),
 	}
@@ -4462,7 +4852,13 @@ func (c *Client) SetChatDescription(ctx context.Context, request *SetChatDescrip
 // SetChatPermissions invokes setChatPermissions operation.
 //
 // POST /setChatPermissions
-func (c *Client) SetChatPermissions(ctx context.Context, request *SetChatPermissions) (res *Result, err error) {
+func (c *Client) SetChatPermissions(ctx context.Context, request *SetChatPermissions) (*Result, error) {
+	res, err := c.sendSetChatPermissions(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetChatPermissions(ctx context.Context, request *SetChatPermissions) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPermissions"),
 	}
@@ -4525,7 +4921,13 @@ func (c *Client) SetChatPermissions(ctx context.Context, request *SetChatPermiss
 // SetChatPhoto invokes setChatPhoto operation.
 //
 // POST /setChatPhoto
-func (c *Client) SetChatPhoto(ctx context.Context, request *SetChatPhoto) (res *Result, err error) {
+func (c *Client) SetChatPhoto(ctx context.Context, request *SetChatPhoto) (*Result, error) {
+	res, err := c.sendSetChatPhoto(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetChatPhoto(ctx context.Context, request *SetChatPhoto) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPhoto"),
 	}
@@ -4588,7 +4990,13 @@ func (c *Client) SetChatPhoto(ctx context.Context, request *SetChatPhoto) (res *
 // SetChatStickerSet invokes setChatStickerSet operation.
 //
 // POST /setChatStickerSet
-func (c *Client) SetChatStickerSet(ctx context.Context, request *SetChatStickerSet) (res *Result, err error) {
+func (c *Client) SetChatStickerSet(ctx context.Context, request *SetChatStickerSet) (*Result, error) {
+	res, err := c.sendSetChatStickerSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetChatStickerSet(ctx context.Context, request *SetChatStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatStickerSet"),
 	}
@@ -4651,7 +5059,13 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request *SetChatStickerS
 // SetChatTitle invokes setChatTitle operation.
 //
 // POST /setChatTitle
-func (c *Client) SetChatTitle(ctx context.Context, request *SetChatTitle) (res *Result, err error) {
+func (c *Client) SetChatTitle(ctx context.Context, request *SetChatTitle) (*Result, error) {
+	res, err := c.sendSetChatTitle(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatTitle"),
 	}
@@ -4723,7 +5137,13 @@ func (c *Client) SetChatTitle(ctx context.Context, request *SetChatTitle) (res *
 // SetGameScore invokes setGameScore operation.
 //
 // POST /setGameScore
-func (c *Client) SetGameScore(ctx context.Context, request *SetGameScore) (res *Result, err error) {
+func (c *Client) SetGameScore(ctx context.Context, request *SetGameScore) (*Result, error) {
+	res, err := c.sendSetGameScore(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetGameScore(ctx context.Context, request *SetGameScore) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setGameScore"),
 	}
@@ -4786,7 +5206,13 @@ func (c *Client) SetGameScore(ctx context.Context, request *SetGameScore) (res *
 // SetMyCommands invokes setMyCommands operation.
 //
 // POST /setMyCommands
-func (c *Client) SetMyCommands(ctx context.Context, request *SetMyCommands) (res *Result, err error) {
+func (c *Client) SetMyCommands(ctx context.Context, request *SetMyCommands) (*Result, error) {
+	res, err := c.sendSetMyCommands(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setMyCommands"),
 	}
@@ -4858,7 +5284,13 @@ func (c *Client) SetMyCommands(ctx context.Context, request *SetMyCommands) (res
 // SetPassportDataErrors invokes setPassportDataErrors operation.
 //
 // POST /setPassportDataErrors
-func (c *Client) SetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (res *Result, err error) {
+func (c *Client) SetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (*Result, error) {
+	res, err := c.sendSetPassportDataErrors(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setPassportDataErrors"),
 	}
@@ -4930,7 +5362,13 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request *SetPassport
 // SetStickerPositionInSet invokes setStickerPositionInSet operation.
 //
 // POST /setStickerPositionInSet
-func (c *Client) SetStickerPositionInSet(ctx context.Context, request *SetStickerPositionInSet) (res *Result, err error) {
+func (c *Client) SetStickerPositionInSet(ctx context.Context, request *SetStickerPositionInSet) (*Result, error) {
+	res, err := c.sendSetStickerPositionInSet(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetStickerPositionInSet(ctx context.Context, request *SetStickerPositionInSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerPositionInSet"),
 	}
@@ -4993,7 +5431,13 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request *SetSticke
 // SetStickerSetThumb invokes setStickerSetThumb operation.
 //
 // POST /setStickerSetThumb
-func (c *Client) SetStickerSetThumb(ctx context.Context, request *SetStickerSetThumb) (res *Result, err error) {
+func (c *Client) SetStickerSetThumb(ctx context.Context, request *SetStickerSetThumb) (*Result, error) {
+	res, err := c.sendSetStickerSetThumb(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetStickerSetThumb(ctx context.Context, request *SetStickerSetThumb) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerSetThumb"),
 	}
@@ -5056,7 +5500,13 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request *SetStickerSetT
 // SetWebhook invokes setWebhook operation.
 //
 // POST /setWebhook
-func (c *Client) SetWebhook(ctx context.Context, request *SetWebhook) (res *Result, err error) {
+func (c *Client) SetWebhook(ctx context.Context, request *SetWebhook) (*Result, error) {
+	res, err := c.sendSetWebhook(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSetWebhook(ctx context.Context, request *SetWebhook) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setWebhook"),
 	}
@@ -5119,7 +5569,13 @@ func (c *Client) SetWebhook(ctx context.Context, request *SetWebhook) (res *Resu
 // StopMessageLiveLocation invokes stopMessageLiveLocation operation.
 //
 // POST /stopMessageLiveLocation
-func (c *Client) StopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (res *Result, err error) {
+func (c *Client) StopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (*Result, error) {
+	res, err := c.sendStopMessageLiveLocation(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopMessageLiveLocation"),
 	}
@@ -5191,7 +5647,13 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request *StopMessa
 // StopPoll invokes stopPoll operation.
 //
 // POST /stopPoll
-func (c *Client) StopPoll(ctx context.Context, request *StopPoll) (res *ResultPoll, err error) {
+func (c *Client) StopPoll(ctx context.Context, request *StopPoll) (*ResultPoll, error) {
+	res, err := c.sendStopPoll(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *ResultPoll, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopPoll"),
 	}
@@ -5263,7 +5725,13 @@ func (c *Client) StopPoll(ctx context.Context, request *StopPoll) (res *ResultPo
 // UnbanChatMember invokes unbanChatMember operation.
 //
 // POST /unbanChatMember
-func (c *Client) UnbanChatMember(ctx context.Context, request *UnbanChatMember) (res *Result, err error) {
+func (c *Client) UnbanChatMember(ctx context.Context, request *UnbanChatMember) (*Result, error) {
+	res, err := c.sendUnbanChatMember(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUnbanChatMember(ctx context.Context, request *UnbanChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatMember"),
 	}
@@ -5326,7 +5794,13 @@ func (c *Client) UnbanChatMember(ctx context.Context, request *UnbanChatMember) 
 // UnbanChatSenderChat invokes unbanChatSenderChat operation.
 //
 // POST /unbanChatSenderChat
-func (c *Client) UnbanChatSenderChat(ctx context.Context, request *UnbanChatSenderChat) (res *Result, err error) {
+func (c *Client) UnbanChatSenderChat(ctx context.Context, request *UnbanChatSenderChat) (*Result, error) {
+	res, err := c.sendUnbanChatSenderChat(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUnbanChatSenderChat(ctx context.Context, request *UnbanChatSenderChat) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatSenderChat"),
 	}
@@ -5389,7 +5863,13 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request *UnbanChatSend
 // UnpinAllChatMessages invokes unpinAllChatMessages operation.
 //
 // POST /unpinAllChatMessages
-func (c *Client) UnpinAllChatMessages(ctx context.Context, request *UnpinAllChatMessages) (res *Result, err error) {
+func (c *Client) UnpinAllChatMessages(ctx context.Context, request *UnpinAllChatMessages) (*Result, error) {
+	res, err := c.sendUnpinAllChatMessages(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUnpinAllChatMessages(ctx context.Context, request *UnpinAllChatMessages) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinAllChatMessages"),
 	}
@@ -5452,7 +5932,13 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request *UnpinAllChat
 // UnpinChatMessage invokes unpinChatMessage operation.
 //
 // POST /unpinChatMessage
-func (c *Client) UnpinChatMessage(ctx context.Context, request *UnpinChatMessage) (res *Result, err error) {
+func (c *Client) UnpinChatMessage(ctx context.Context, request *UnpinChatMessage) (*Result, error) {
+	res, err := c.sendUnpinChatMessage(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUnpinChatMessage(ctx context.Context, request *UnpinChatMessage) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinChatMessage"),
 	}
@@ -5515,7 +6001,13 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request *UnpinChatMessage
 // UploadStickerFile invokes uploadStickerFile operation.
 //
 // POST /uploadStickerFile
-func (c *Client) UploadStickerFile(ctx context.Context, request *UploadStickerFile) (res *ResultFile, err error) {
+func (c *Client) UploadStickerFile(ctx context.Context, request *UploadStickerFile) (*ResultFile, error) {
+	res, err := c.sendUploadStickerFile(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUploadStickerFile(ctx context.Context, request *UploadStickerFile) (res *ResultFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("uploadStickerFile"),
 	}

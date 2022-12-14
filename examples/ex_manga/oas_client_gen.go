@@ -64,7 +64,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Gets metadata of book.
 //
 // GET /api/gallery/{book_id}
-func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
+func (c *Client) GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error) {
+	res, err := c.sendGetBook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBook"),
 	}
@@ -140,7 +146,13 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 // Gets page cover.
 //
 // GET /galleries/{media_id}/cover.{format}
-func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
+func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error) {
+	res, err := c.sendGetPageCoverImage(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (res GetPageCoverImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageCoverImage"),
 	}
@@ -231,7 +243,13 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 // Gets page.
 //
 // GET /galleries/{media_id}/{page}.{format}
-func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
+func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error) {
+	res, err := c.sendGetPageImage(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams) (res GetPageImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageImage"),
 	}
@@ -337,7 +355,13 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 // Gets page thumbnail.
 //
 // GET /galleries/{media_id}/{page}t.{format}
-func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
+func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error) {
+	res, err := c.sendGetPageThumbnailImage(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (res GetPageThumbnailImageRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageThumbnailImage"),
 	}
@@ -443,7 +467,13 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 // Search for comics.
 //
 // GET /api/galleries/search
-func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
+func (c *Client) Search(ctx context.Context, params SearchParams) (SearchRes, error) {
+	res, err := c.sendSearch(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search"),
 	}
@@ -540,7 +570,13 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 // Search for comics by tag ID.
 //
 // GET /api/galleries/tagged
-func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
+func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (SearchByTagIDRes, error) {
+	res, err := c.sendSearchByTagID(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("searchByTagID"),
 	}

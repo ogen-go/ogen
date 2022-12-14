@@ -95,12 +95,13 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.NullableStrings(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.NullableStrings(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.NullableStrings(ctx, request)
+		err = s.h.NullableStrings(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -194,12 +195,13 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+		err = s.h.ObjectsWithConflictingArrayProperty(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -293,12 +295,13 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ObjectsWithConflictingProperties(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ObjectsWithConflictingProperties(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.ObjectsWithConflictingProperties(ctx, request)
+		err = s.h.ObjectsWithConflictingProperties(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -392,12 +395,13 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReferencedAllof(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ReferencedAllof(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.ReferencedAllof(ctx, request)
+		err = s.h.ReferencedAllof(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -491,12 +495,13 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReferencedAllofOptional(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ReferencedAllofOptional(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.ReferencedAllofOptional(ctx, request)
+		err = s.h.ReferencedAllofOptional(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -590,12 +595,13 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SimpleInteger(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.SimpleInteger(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.SimpleInteger(ctx, request)
+		err = s.h.SimpleInteger(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -689,12 +695,13 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SimpleObjects(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.SimpleObjects(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.SimpleObjects(ctx, request)
+		err = s.h.SimpleObjects(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)

@@ -111,8 +111,9 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 			m,
 			mreq,
 			unpackDataGetFormatParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataGetFormat(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DataGetFormat(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -223,8 +224,9 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			unpackDefaultTestParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DefaultTest(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DefaultTest(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -303,8 +305,9 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ErrorGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ErrorGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -406,8 +409,9 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			unpackFoobarGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.FoobarGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.FoobarGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -505,8 +509,9 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.FoobarPost(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.FoobarPost(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -580,8 +585,9 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.FoobarPut(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.FoobarPut(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -658,8 +664,9 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.NoAdditionalPropertiesTest(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.NoAdditionalPropertiesTest(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -736,8 +743,9 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.NullableDefaultResponse(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.NullableDefaultResponse(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -833,12 +841,13 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OneofBug(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.OneofBug(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.OneofBug(ctx, request)
+		err = s.h.OneofBug(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -908,8 +917,9 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatternRecursiveMapGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatternRecursiveMapGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -1007,8 +1017,9 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetCreate(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetCreate(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1106,8 +1117,9 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 			m,
 			mreq,
 			unpackPetFriendsNamesByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetFriendsNamesByID(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetFriendsNamesByID(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1217,8 +1229,9 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 			m,
 			mreq,
 			unpackPetGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1316,8 +1329,9 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			unpackPetGetAvatarByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetGetAvatarByID(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetGetAvatarByID(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1415,8 +1429,9 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 			m,
 			mreq,
 			unpackPetGetAvatarByNameParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetGetAvatarByName(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetGetAvatarByName(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1514,8 +1529,9 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 			m,
 			mreq,
 			unpackPetGetByNameParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetGetByName(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetGetByName(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1613,8 +1629,9 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 			m,
 			mreq,
 			unpackPetNameByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetNameByID(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetNameByID(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1707,8 +1724,9 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetUpdateNameAliasPost(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetUpdateNameAliasPost(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1801,8 +1819,9 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetUpdateNamePost(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetUpdateNamePost(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1915,8 +1934,9 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			unpackPetUploadAvatarByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PetUploadAvatarByID(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PetUploadAvatarByID(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1990,8 +2010,9 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.RecursiveArrayGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.RecursiveArrayGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -2065,8 +2086,9 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.RecursiveMapGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.RecursiveMapGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -2159,8 +2181,9 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SecurityTest(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SecurityTest(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -2234,8 +2257,9 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.StringIntMapGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.StringIntMapGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -2331,12 +2355,13 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestFloatValidation(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestFloatValidation(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.TestFloatValidation(ctx, request)
+		err = s.h.TestFloatValidation(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2409,8 +2434,9 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestNullableOneofs(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.TestNullableOneofs(ctx)
+				return response, err
 			},
 		)
 	} else {

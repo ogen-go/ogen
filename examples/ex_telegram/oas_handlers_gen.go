@@ -95,8 +95,9 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AddStickerToSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AddStickerToSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -200,8 +201,9 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AnswerCallbackQuery(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AnswerCallbackQuery(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -305,8 +307,9 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AnswerInlineQuery(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AnswerInlineQuery(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -410,8 +413,9 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AnswerPreCheckoutQuery(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AnswerPreCheckoutQuery(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -515,8 +519,9 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AnswerShippingQuery(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AnswerShippingQuery(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -620,8 +625,9 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ApproveChatJoinRequest(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ApproveChatJoinRequest(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -725,8 +731,9 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.BanChatMember(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.BanChatMember(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -830,8 +837,9 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.BanChatSenderChat(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.BanChatSenderChat(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -916,8 +924,9 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Close(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Close(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -1021,8 +1030,9 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CopyMessage(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CopyMessage(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1126,8 +1136,9 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreateChatInviteLink(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreateChatInviteLink(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1231,8 +1242,9 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreateNewStickerSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreateNewStickerSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1336,8 +1348,9 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeclineChatJoinRequest(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeclineChatJoinRequest(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1441,8 +1454,9 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeleteChatPhoto(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeleteChatPhoto(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1546,8 +1560,9 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeleteChatStickerSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeleteChatStickerSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1651,8 +1666,9 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeleteMessage(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeleteMessage(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1756,8 +1772,9 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeleteMyCommands(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeleteMyCommands(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1861,8 +1878,9 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeleteStickerFromSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeleteStickerFromSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1966,8 +1984,9 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeleteWebhook(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeleteWebhook(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2071,8 +2090,9 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EditChatInviteLink(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.EditChatInviteLink(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2176,8 +2196,9 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EditMessageCaption(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.EditMessageCaption(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2281,8 +2302,9 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EditMessageLiveLocation(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.EditMessageLiveLocation(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2386,8 +2408,9 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EditMessageMedia(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.EditMessageMedia(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2491,8 +2514,9 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EditMessageReplyMarkup(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.EditMessageReplyMarkup(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2596,8 +2620,9 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EditMessageText(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.EditMessageText(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2701,8 +2726,9 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ExportChatInviteLink(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ExportChatInviteLink(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2806,8 +2832,9 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ForwardMessage(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ForwardMessage(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2911,8 +2938,9 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetChat(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetChat(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3016,8 +3044,9 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetChatAdministrators(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetChatAdministrators(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3121,8 +3150,9 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetChatMember(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetChatMember(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3226,8 +3256,9 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetChatMemberCount(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetChatMemberCount(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3331,8 +3362,9 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetFile(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetFile(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3436,8 +3468,9 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetGameHighScores(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetGameHighScores(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3522,8 +3555,9 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetMe(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetMe(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -3627,8 +3661,9 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetMyCommands(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetMyCommands(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3732,8 +3767,9 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetStickerSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetStickerSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3837,8 +3873,9 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetUpdates(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetUpdates(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -3942,8 +3979,9 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetUserProfilePhotos(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetUserProfilePhotos(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4028,8 +4066,9 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetWebhookInfo(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetWebhookInfo(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -4133,8 +4172,9 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.LeaveChat(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.LeaveChat(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4219,8 +4259,9 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.LogOut(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.LogOut(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -4324,8 +4365,9 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PinChatMessage(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PinChatMessage(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4429,8 +4471,9 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PromoteChatMember(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PromoteChatMember(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4534,8 +4577,9 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.RestrictChatMember(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.RestrictChatMember(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4639,8 +4683,9 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.RevokeChatInviteLink(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.RevokeChatInviteLink(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4744,8 +4789,9 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendAnimation(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendAnimation(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4849,8 +4895,9 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendAudio(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendAudio(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -4954,8 +5001,9 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendChatAction(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendChatAction(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5059,8 +5107,9 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendContact(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendContact(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5164,8 +5213,9 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendDice(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendDice(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5269,8 +5319,9 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendDocument(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendDocument(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5374,8 +5425,9 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendGame(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendGame(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5479,8 +5531,9 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendInvoice(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendInvoice(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5584,8 +5637,9 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendLocation(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendLocation(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5689,8 +5743,9 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendMediaGroup(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendMediaGroup(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5794,8 +5849,9 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendMessage(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendMessage(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -5899,8 +5955,9 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendPhoto(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendPhoto(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6004,8 +6061,9 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendPoll(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendPoll(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6109,8 +6167,9 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendSticker(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendSticker(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6214,8 +6273,9 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendVenue(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendVenue(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6319,8 +6379,9 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendVideo(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendVideo(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6424,8 +6485,9 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendVideoNote(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendVideoNote(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6529,8 +6591,9 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SendVoice(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SendVoice(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6634,8 +6697,9 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetChatAdministratorCustomTitle(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetChatAdministratorCustomTitle(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6739,8 +6803,9 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetChatDescription(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetChatDescription(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6844,8 +6909,9 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetChatPermissions(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetChatPermissions(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -6949,8 +7015,9 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetChatPhoto(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetChatPhoto(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7054,8 +7121,9 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetChatStickerSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetChatStickerSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7159,8 +7227,9 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetChatTitle(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetChatTitle(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7264,8 +7333,9 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetGameScore(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetGameScore(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7369,8 +7439,9 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetMyCommands(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetMyCommands(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7474,8 +7545,9 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetPassportDataErrors(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetPassportDataErrors(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7579,8 +7651,9 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetStickerPositionInSet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetStickerPositionInSet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7684,8 +7757,9 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetStickerSetThumb(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetStickerSetThumb(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7789,8 +7863,9 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SetWebhook(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SetWebhook(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7894,8 +7969,9 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.StopMessageLiveLocation(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.StopMessageLiveLocation(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -7999,8 +8075,9 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.StopPoll(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.StopPoll(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -8104,8 +8181,9 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UnbanChatMember(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UnbanChatMember(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -8209,8 +8287,9 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UnbanChatSenderChat(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UnbanChatSenderChat(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -8314,8 +8393,9 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UnpinAllChatMessages(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UnpinAllChatMessages(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -8419,8 +8499,9 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UnpinChatMessage(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UnpinChatMessage(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -8524,8 +8605,9 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UploadStickerFile(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UploadStickerFile(ctx, request)
+				return response, err
 			},
 		)
 	} else {

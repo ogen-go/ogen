@@ -62,7 +62,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // AnyContentTypeBinaryStringSchema invokes anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
-func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyContentTypeBinaryStringSchemaOK, err error) {
+func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (AnyContentTypeBinaryStringSchemaOK, error) {
+	res, err := c.sendAnyContentTypeBinaryStringSchema(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyContentTypeBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 	}
@@ -122,7 +128,13 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 // AnyContentTypeBinaryStringSchemaDefault invokes anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
-func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error) {
+	res, err := c.sendAnyContentTypeBinaryStringSchemaDefault(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 	}
@@ -182,7 +194,13 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 // Combined invokes combined operation.
 //
 // GET /combined
-func (c *Client) Combined(ctx context.Context, params CombinedParams) (res CombinedRes, err error) {
+func (c *Client) Combined(ctx context.Context, params CombinedParams) (CombinedRes, error) {
+	res, err := c.sendCombined(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res CombinedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
 	}
@@ -260,7 +278,13 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 // Headers200 invokes headers200 operation.
 //
 // GET /headers200
-func (c *Client) Headers200(ctx context.Context) (res *Headers200OK, err error) {
+func (c *Client) Headers200(ctx context.Context) (*Headers200OK, error) {
+	res, err := c.sendHeaders200(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
 	}
@@ -320,7 +344,13 @@ func (c *Client) Headers200(ctx context.Context) (res *Headers200OK, err error) 
 // HeadersCombined invokes headersCombined operation.
 //
 // GET /headersCombined
-func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedParams) (res HeadersCombinedRes, err error) {
+func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedParams) (HeadersCombinedRes, error) {
+	res, err := c.sendHeadersCombined(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombinedParams) (res HeadersCombinedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
 	}
@@ -398,7 +428,13 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 // HeadersDefault invokes headersDefault operation.
 //
 // GET /headersDefault
-func (c *Client) HeadersDefault(ctx context.Context) (res *HeadersDefaultDef, err error) {
+func (c *Client) HeadersDefault(ctx context.Context) (*HeadersDefaultDef, error) {
+	res, err := c.sendHeadersDefault(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
 	}
@@ -458,7 +494,13 @@ func (c *Client) HeadersDefault(ctx context.Context) (res *HeadersDefaultDef, er
 // HeadersJSON invokes headersJSON operation.
 //
 // GET /headersJSON
-func (c *Client) HeadersJSON(ctx context.Context) (res *HeadersJSONOK, err error) {
+func (c *Client) HeadersJSON(ctx context.Context) (*HeadersJSONOK, error) {
+	res, err := c.sendHeadersJSON(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
 	}
@@ -518,7 +560,13 @@ func (c *Client) HeadersJSON(ctx context.Context) (res *HeadersJSONOK, err error
 // HeadersPattern invokes headersPattern operation.
 //
 // GET /headersPattern
-func (c *Client) HeadersPattern(ctx context.Context) (res *HeadersPattern4XX, err error) {
+func (c *Client) HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error) {
+	res, err := c.sendHeadersPattern(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
 	}
@@ -581,7 +629,13 @@ func (c *Client) HeadersPattern(ctx context.Context) (res *HeadersPattern4XX, er
 // over the range definition for that code.
 //
 // GET /intersectPatternCode
-func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (res IntersectPatternCodeRes, err error) {
+func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (IntersectPatternCodeRes, error) {
+	res, err := c.sendIntersectPatternCode(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (res IntersectPatternCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
 	}
@@ -659,7 +713,13 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 // MultipleGenericResponses invokes multipleGenericResponses operation.
 //
 // GET /multipleGenericResponses
-func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGenericResponsesRes, err error) {
+func (c *Client) MultipleGenericResponses(ctx context.Context) (MultipleGenericResponsesRes, error) {
+	res, err := c.sendMultipleGenericResponses(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res MultipleGenericResponsesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
 	}
@@ -719,7 +779,13 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 // OctetStreamBinaryStringSchema invokes octetStreamBinaryStringSchema operation.
 //
 // GET /octetStreamBinaryStringSchema
-func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetStreamBinaryStringSchemaOK, err error) {
+func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (OctetStreamBinaryStringSchemaOK, error) {
+	res, err := c.sendOctetStreamBinaryStringSchema(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res OctetStreamBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
 	}
@@ -779,7 +845,13 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 // OctetStreamEmptySchema invokes octetStreamEmptySchema operation.
 //
 // GET /octetStreamEmptySchema
-func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmptySchemaOK, err error) {
+func (c *Client) OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error) {
+	res, err := c.sendOctetStreamEmptySchema(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmptySchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
 	}
@@ -839,7 +911,13 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 // TextPlainBinaryStringSchema invokes textPlainBinaryStringSchema operation.
 //
 // GET /textPlainBinaryStringSchema
-func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (res TextPlainBinaryStringSchemaOK, err error) {
+func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (TextPlainBinaryStringSchemaOK, error) {
+	res, err := c.sendTextPlainBinaryStringSchema(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextPlainBinaryStringSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
 	}

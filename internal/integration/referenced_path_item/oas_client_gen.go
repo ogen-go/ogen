@@ -59,7 +59,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // FooGet invokes GET /foo operation.
 //
 // GET /foo
-func (c *Client) FooGet(ctx context.Context) (res string, err error) {
+func (c *Client) FooGet(ctx context.Context) (string, error) {
+	res, err := c.sendFooGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendFooGet(ctx context.Context) (res string, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.

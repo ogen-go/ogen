@@ -63,7 +63,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // ComplicatedParameterNameGet invokes GET /complicatedParameterName operation.
 //
 // GET /complicatedParameterName
-func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (res *ComplicatedParameterNameGetOK, err error) {
+func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) error {
+	res, err := c.sendComplicatedParameterNameGet(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (res *ComplicatedParameterNameGetOK, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -194,7 +200,13 @@ func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params Complic
 // ContentQueryParameter invokes contentQueryParameter operation.
 //
 // GET /contentQueryParameter
-func (c *Client) ContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (res string, err error) {
+func (c *Client) ContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (string, error) {
+	res, err := c.sendContentQueryParameter(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentQueryParameter"),
 	}
@@ -280,7 +292,13 @@ func (c *Client) ContentQueryParameter(ctx context.Context, params ContentQueryP
 // Test for header param.
 //
 // GET /headerParameter
-func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterParams) (res *Hash, err error) {
+func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterParams) (*Hash, error) {
+	res, err := c.sendHeaderParameter(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameterParams) (res *Hash, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
 	}
@@ -354,7 +372,13 @@ func (c *Client) HeaderParameter(ctx context.Context, params HeaderParameterPara
 // ObjectQueryParameter invokes objectQueryParameter operation.
 //
 // GET /objectQueryParameter
-func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (res *ObjectQueryParameterOK, err error) {
+func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (*ObjectQueryParameterOK, error) {
+	res, err := c.sendObjectQueryParameter(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (res *ObjectQueryParameterOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
 	}
@@ -452,7 +476,13 @@ func (c *Client) ObjectQueryParameter(ctx context.Context, params ObjectQueryPar
 // PathObjectParameter invokes pathObjectParameter operation.
 //
 // GET /pathObjectParameter/{param}
-func (c *Client) PathObjectParameter(ctx context.Context, params PathObjectParameterParams) (res *User, err error) {
+func (c *Client) PathObjectParameter(ctx context.Context, params PathObjectParameterParams) (*User, error) {
+	res, err := c.sendPathObjectParameter(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPathObjectParameter(ctx context.Context, params PathObjectParameterParams) (res *User, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pathObjectParameter"),
 	}
@@ -533,7 +563,13 @@ func (c *Client) PathObjectParameter(ctx context.Context, params PathObjectParam
 // Parameter with different location, but the same name.
 //
 // GET /same_name/{path}
-func (c *Client) SameName(ctx context.Context, params SameNameParams) (res *SameNameOK, err error) {
+func (c *Client) SameName(ctx context.Context, params SameNameParams) error {
+	res, err := c.sendSameName(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *SameNameOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
 	}

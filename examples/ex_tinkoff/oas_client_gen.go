@@ -64,7 +64,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Получение списка облигаций.
 //
 // GET /market/bonds
-func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
+func (c *Client) MarketBondsGet(ctx context.Context) (MarketBondsGetRes, error) {
+	res, err := c.sendMarketBondsGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -128,7 +134,13 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 // Получение исторических свечей по FIGI.
 //
 // GET /market/candles
-func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
+func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (MarketCandlesGetRes, error) {
+	res, err := c.sendMarketCandlesGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -252,7 +264,13 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 // Получение списка валютных пар.
 //
 // GET /market/currencies
-func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
+func (c *Client) MarketCurrenciesGet(ctx context.Context) (MarketCurrenciesGetRes, error) {
+	res, err := c.sendMarketCurrenciesGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -316,7 +334,13 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 // Получение списка ETF.
 //
 // GET /market/etfs
-func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
+func (c *Client) MarketEtfsGet(ctx context.Context) (MarketEtfsGetRes, error) {
+	res, err := c.sendMarketEtfsGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -380,7 +404,13 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 // Получение стакана по FIGI.
 //
 // GET /market/orderbook
-func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
+func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (MarketOrderbookGetRes, error) {
+	res, err := c.sendMarketOrderbookGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -476,7 +506,13 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 // Получение инструмента по FIGI.
 //
 // GET /market/search/by-figi
-func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
+func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (MarketSearchByFigiGetRes, error) {
+	res, err := c.sendMarketSearchByFigiGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -558,7 +594,13 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 // Получение инструмента по тикеру.
 //
 // GET /market/search/by-ticker
-func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
+func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (MarketSearchByTickerGetRes, error) {
+	res, err := c.sendMarketSearchByTickerGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -640,7 +682,13 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 // Получение списка акций.
 //
 // GET /market/stocks
-func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
+func (c *Client) MarketStocksGet(ctx context.Context) (MarketStocksGetRes, error) {
+	res, err := c.sendMarketStocksGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -704,7 +752,13 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 // Получение списка операций.
 //
 // GET /operations
-func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
+func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (OperationsGetRes, error) {
+	res, err := c.sendOperationsGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -834,7 +888,13 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 // Отмена заявки.
 //
 // POST /orders/cancel
-func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
+func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (OrdersCancelPostRes, error) {
+	res, err := c.sendOrdersCancelPost(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -933,7 +993,13 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 // Получение списка активных заявок.
 //
 // GET /orders
-func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
+func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (OrdersGetRes, error) {
+	res, err := c.sendOrdersGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1018,7 +1084,13 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 // Создание лимитной заявки.
 //
 // POST /orders/limit-order
-func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
+func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (OrdersLimitOrderPostRes, error) {
+	res, err := c.sendOrdersLimitOrderPost(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1129,7 +1201,13 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRe
 // Создание рыночной заявки.
 //
 // POST /orders/market-order
-func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
+func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (OrdersMarketOrderPostRes, error) {
+	res, err := c.sendOrdersMarketOrderPost(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1240,7 +1318,13 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrder
 // Получение валютных активов клиента.
 //
 // GET /portfolio/currencies
-func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
+func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (PortfolioCurrenciesGetRes, error) {
+	res, err := c.sendPortfolioCurrenciesGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1325,7 +1409,13 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 // Получение портфеля клиента.
 //
 // GET /portfolio
-func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
+func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (PortfolioGetRes, error) {
+	res, err := c.sendPortfolioGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1410,7 +1500,13 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 // Удаление всех позиций клиента.
 //
 // POST /sandbox/clear
-func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
+func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (SandboxClearPostRes, error) {
+	res, err := c.sendSandboxClearPost(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1495,7 +1591,13 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 // Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
-func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
+func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (SandboxCurrenciesBalancePostRes, error) {
+	res, err := c.sendSandboxCurrenciesBalancePost(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1592,7 +1694,13 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *Sand
 // Выставление баланса по инструментным позициям.
 //
 // POST /sandbox/positions/balance
-func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
+func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (SandboxPositionsBalancePostRes, error) {
+	res, err := c.sendSandboxPositionsBalancePost(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1689,7 +1797,13 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *Sandb
 // Создание счета и валютных позиций для клиента.
 //
 // POST /sandbox/register
-func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
+func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (SandboxRegisterPostRes, error) {
+	res, err := c.sendSandboxRegisterPost(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1772,7 +1886,13 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 // Удаление счета клиента.
 //
 // POST /sandbox/remove
-func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
+func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (SandboxRemovePostRes, error) {
+	res, err := c.sendSandboxRemovePost(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1857,7 +1977,13 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 // Получение брокерских счетов клиента.
 //
 // GET /user/accounts
-func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
+func (c *Client) UserAccountsGet(ctx context.Context) (UserAccountsGetRes, error) {
+	res, err := c.sendUserAccountsGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.

@@ -174,9 +174,43 @@ func (r *Responses) DoTakePtr() bool {
 	return doTakePtr(r.Type)
 }
 
+// DoPass whether response type should be present in result tuple.
+func (r *Responses) DoPass() bool {
+	// In case of pattern responses or default response, the response type
+	// has a StatusCode field, so it should be passed.
+	if r.Default != nil || len(r.StatusCode) > 1 || r.HasPattern() {
+		return true
+	}
+	t := r.Type
+	// Do not pass response type if it is empty struct.
+	if t.IsStruct() && len(t.Fields) == 0 {
+		return false
+	}
+	return true
+}
+
 // GoType returns Go type of this response.
 func (r *Responses) GoType() string {
 	return reqRespGoType(r.Type)
+}
+
+// ResultTuple returns result tuple for this response.
+func (r *Responses) ResultTuple(a, b string) string {
+	if !r.DoPass() {
+		return fmt.Sprintf("(%s error)", b)
+	}
+	typ := reqRespGoType(r.Type)
+	if len(a)+len(b) > 0 {
+		// Ensure that all result tuple elements are named
+		// if any of them already is.
+		if a == "" {
+			a = "_"
+		}
+		if b == "" {
+			b = "_"
+		}
+	}
+	return fmt.Sprintf("(%s %s, %s error)", a, typ, b)
 }
 
 func (r *Responses) HasPattern() bool {

@@ -68,8 +68,9 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.FooGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.FooGet(ctx)
+				return response, err
 			},
 		)
 	} else {

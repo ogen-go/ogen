@@ -67,7 +67,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Retrieve data.
 //
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
-func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) (res string, err error) {
+func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error) {
+	res, err := c.sendDataGetFormat(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetFormat"),
 	}
@@ -201,7 +207,13 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 // DefaultTest invokes defaultTest operation.
 //
 // POST /defaultTest
-func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (res int32, err error) {
+func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (int32, error) {
+	res, err := c.sendDefaultTest(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, params DefaultTestParams) (res int32, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
 	}
@@ -296,7 +308,13 @@ func (c *Client) DefaultTest(ctx context.Context, request *DefaultTest, params D
 // Returns error.
 //
 // GET /error
-func (c *Client) ErrorGet(ctx context.Context) (res *ErrorStatusCode, err error) {
+func (c *Client) ErrorGet(ctx context.Context) (*ErrorStatusCode, error) {
+	res, err := c.sendErrorGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendErrorGet(ctx context.Context) (res *ErrorStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("errorGet"),
 	}
@@ -358,7 +376,13 @@ func (c *Client) ErrorGet(ctx context.Context) (res *ErrorStatusCode, err error)
 // Dumb endpoint for testing things.
 //
 // GET /foobar
-func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
+func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error) {
+	res, err := c.sendFoobarGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarGet"),
 	}
@@ -452,7 +476,13 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 // Dumb endpoint for testing things.
 //
 // POST /foobar
-func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPostRes, err error) {
+func (c *Client) FoobarPost(ctx context.Context, request OptPet) (FoobarPostRes, error) {
+	res, err := c.sendFoobarPost(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res FoobarPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarPost"),
 	}
@@ -531,7 +561,13 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 // FoobarPut invokes PUT /foobar operation.
 //
 // PUT /foobar
-func (c *Client) FoobarPut(ctx context.Context) (res *FoobarPutDef, err error) {
+func (c *Client) FoobarPut(ctx context.Context) (*FoobarPutDef, error) {
+	res, err := c.sendFoobarPut(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendFoobarPut(ctx context.Context) (res *FoobarPutDef, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -588,7 +624,13 @@ func (c *Client) FoobarPut(ctx context.Context) (res *FoobarPutDef, err error) {
 // NoAdditionalPropertiesTest invokes noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
-func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res *NoAdditionalPropertiesTest, err error) {
+func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (*NoAdditionalPropertiesTest, error) {
+	res, err := c.sendNoAdditionalPropertiesTest(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdditionalPropertiesTest, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("noAdditionalPropertiesTest"),
 	}
@@ -648,7 +690,13 @@ func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res *NoAdditio
 // NullableDefaultResponse invokes nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
-func (c *Client) NullableDefaultResponse(ctx context.Context) (res *NilIntStatusCode, err error) {
+func (c *Client) NullableDefaultResponse(ctx context.Context) (*NilIntStatusCode, error) {
+	res, err := c.sendNullableDefaultResponse(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res *NilIntStatusCode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableDefaultResponse"),
 	}
@@ -708,7 +756,13 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res *NilIntStatus
 // OneofBug invokes oneofBug operation.
 //
 // POST /oneofBug
-func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) (res *OneofBugOK, err error) {
+func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) error {
+	res, err := c.sendOneofBug(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *OneofBugOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
 	}
@@ -780,7 +834,13 @@ func (c *Client) OneofBug(ctx context.Context, request *OneOfBugs) (res *OneofBu
 // PatternRecursiveMapGet invokes GET /patternRecursiveMap operation.
 //
 // GET /patternRecursiveMap
-func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursiveMap, err error) {
+func (c *Client) PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error) {
+	res, err := c.sendPatternRecursiveMapGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRecursiveMap, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -839,7 +899,13 @@ func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursi
 // Creates pet.
 //
 // POST /pet
-func (c *Client) PetCreate(ctx context.Context, request OptPet) (res *Pet, err error) {
+func (c *Client) PetCreate(ctx context.Context, request OptPet) (*Pet, error) {
+	res, err := c.sendPetCreate(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
 	}
@@ -920,7 +986,13 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res *Pet, err e
 // Returns names of all friends of pet.
 //
 // GET /pet/friendNames/{id}
-func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
+func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error) {
+	res, err := c.sendPetFriendsNamesByID(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petFriendsNamesByID"),
 	}
@@ -996,7 +1068,13 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 // Returns pet from the system that the user has access to.
 //
 // GET /pet
-func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
+func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error) {
+	res, err := c.sendPetGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGet"),
 	}
@@ -1133,7 +1211,13 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 // Returns pet avatar by id.
 //
 // GET /pet/avatar
-func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
+func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error) {
+	res, err := c.sendPetGetAvatarByID(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByID"),
 	}
@@ -1213,7 +1297,13 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 // Returns pet's avatar by name.
 //
 // GET /pet/{name}/avatar
-func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (res PetGetAvatarByNameRes, err error) {
+func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (PetGetAvatarByNameRes, error) {
+	res, err := c.sendPetGetAvatarByName(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (res PetGetAvatarByNameRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByName"),
 	}
@@ -1290,7 +1380,13 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 // Returns pet by name from the system that the user has access to.
 //
 // GET /pet/{name}
-func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res *Pet, err error) {
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error) {
+	res, err := c.sendPetGetByName(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetByName"),
 	}
@@ -1366,7 +1462,13 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 // Returns pet name by pet id.
 //
 // GET /pet/name/{id}
-func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
+func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error) {
+	res, err := c.sendPetNameByID(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petNameByID"),
 	}
@@ -1440,7 +1542,13 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 // PetUpdateNameAliasPost invokes POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
-func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res *PetUpdateNameAliasPostDef, err error) {
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (*PetUpdateNameAliasPostDef, error) {
+	res, err := c.sendPetUpdateNameAliasPost(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res *PetUpdateNameAliasPostDef, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1516,7 +1624,13 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 // PetUpdateNamePost invokes POST /pet/updateName operation.
 //
 // POST /pet/updateName
-func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res *PetUpdateNamePostDef, err error) {
+func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (*PetUpdateNamePostDef, error) {
+	res, err := c.sendPetUpdateNamePost(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (res *PetUpdateNamePostDef, err error) {
 	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
@@ -1602,7 +1716,13 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 // Uploads pet avatar by id.
 //
 // POST /pet/avatar
-func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
+func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error) {
+	res, err := c.sendPetUploadAvatarByID(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petUploadAvatarByID"),
 	}
@@ -1683,7 +1803,13 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 // RecursiveArrayGet invokes GET /recursiveArray operation.
 //
 // GET /recursiveArray
-func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err error) {
+func (c *Client) RecursiveArrayGet(ctx context.Context) (RecursiveArray, error) {
+	res, err := c.sendRecursiveArrayGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1740,7 +1866,13 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 // RecursiveMapGet invokes GET /recursiveMap operation.
 //
 // GET /recursiveMap
-func (c *Client) RecursiveMapGet(ctx context.Context) (res *RecursiveMap, err error) {
+func (c *Client) RecursiveMapGet(ctx context.Context) (*RecursiveMap, error) {
+	res, err := c.sendRecursiveMapGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1797,7 +1929,13 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res *RecursiveMap, err er
 // SecurityTest invokes securityTest operation.
 //
 // GET /securityTest
-func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
+func (c *Client) SecurityTest(ctx context.Context) (string, error) {
+	res, err := c.sendSecurityTest(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("securityTest"),
 	}
@@ -1862,7 +2000,13 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 // StringIntMapGet invokes GET /stringIntMap operation.
 //
 // GET /stringIntMap
-func (c *Client) StringIntMapGet(ctx context.Context) (res *StringIntMap, err error) {
+func (c *Client) StringIntMapGet(ctx context.Context) (*StringIntMap, error) {
+	res, err := c.sendStringIntMapGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -1919,7 +2063,13 @@ func (c *Client) StringIntMapGet(ctx context.Context) (res *StringIntMap, err er
 // TestFloatValidation invokes testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatValidation) (res *TestFloatValidationOK, err error) {
+func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatValidation) error {
+	res, err := c.sendTestFloatValidation(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloatValidation) (res *TestFloatValidationOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
 	}
@@ -1991,7 +2141,13 @@ func (c *Client) TestFloatValidation(ctx context.Context, request *TestFloatVali
 // TestNullableOneofs invokes testNullableOneofs operation.
 //
 // GET /testNullableOneofs
-func (c *Client) TestNullableOneofs(ctx context.Context) (res TestNullableOneofsRes, err error) {
+func (c *Client) TestNullableOneofs(ctx context.Context) (TestNullableOneofsRes, error) {
+	res, err := c.sendTestNullableOneofs(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOneofsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testNullableOneofs"),
 	}

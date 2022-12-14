@@ -26,8 +26,8 @@ var _ Handler = UnimplementedHandler{}
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (UnimplementedHandler) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsAddSelectedRepoToOrgSecret implements actions/add-selected-repo-to-org-secret operation.
@@ -53,8 +53,8 @@ func (UnimplementedHandler) ActionsAddSelectedRepoToOrgSecret(ctx context.Contex
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (r *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsApproveWorkflowRun implements actions/approve-workflow-run operation.
@@ -77,8 +77,8 @@ func (UnimplementedHandler) ActionsApproveWorkflowRun(ctx context.Context, param
 // endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
-func (UnimplementedHandler) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (r *ActionsCancelWorkflowRunAccepted, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsCreateOrUpdateEnvironmentSecret implements actions/create-or-update-environment-secret operation.
@@ -355,8 +355,8 @@ func (UnimplementedHandler) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (UnimplementedHandler) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (r *ActionsDeleteArtifactNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteEnvironmentSecret implements actions/delete-environment-secret operation.
@@ -366,8 +366,8 @@ func (UnimplementedHandler) ActionsDeleteArtifact(ctx context.Context, params Ac
 // permission to use this endpoint.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (UnimplementedHandler) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (r *ActionsDeleteEnvironmentSecretNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteOrgSecret implements actions/delete-org-secret operation.
@@ -377,8 +377,8 @@ func (UnimplementedHandler) ActionsDeleteEnvironmentSecret(ctx context.Context, 
 // organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (r *ActionsDeleteOrgSecretNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteRepoSecret implements actions/delete-repo-secret operation.
@@ -388,8 +388,8 @@ func (UnimplementedHandler) ActionsDeleteOrgSecret(ctx context.Context, params A
 // permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (UnimplementedHandler) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (r *ActionsDeleteRepoSecretNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteSelfHostedRunnerFromOrg implements actions/delete-self-hosted-runner-from-org operation.
@@ -399,8 +399,8 @@ func (UnimplementedHandler) ActionsDeleteRepoSecret(ctx context.Context, params 
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
-func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (r *ActionsDeleteSelfHostedRunnerFromOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteSelfHostedRunnerFromRepo implements actions/delete-self-hosted-runner-from-repo operation.
@@ -411,8 +411,8 @@ func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Con
 // scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (r *ActionsDeleteSelfHostedRunnerFromRepoNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteSelfHostedRunnerGroupFromOrg implements actions/delete-self-hosted-runner-group-from-org operation.
@@ -424,8 +424,8 @@ func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Co
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (r *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteWorkflowRun implements actions/delete-workflow-run operation.
@@ -437,8 +437,8 @@ func (UnimplementedHandler) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx contex
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-func (UnimplementedHandler) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (r *ActionsDeleteWorkflowRunNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDeleteWorkflowRunLogs implements actions/delete-workflow-run-logs operation.
@@ -448,8 +448,8 @@ func (UnimplementedHandler) ActionsDeleteWorkflowRun(ctx context.Context, params
 // endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (UnimplementedHandler) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (r *ActionsDeleteWorkflowRunLogsNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDisableSelectedRepositoryGithubActionsOrganization implements actions/disable-selected-repository-github-actions-organization operation.
@@ -462,8 +462,8 @@ func (UnimplementedHandler) ActionsDeleteWorkflowRunLogs(ctx context.Context, pa
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (r *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsDownloadArtifact implements actions/download-artifact operation.
@@ -523,8 +523,8 @@ func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, 
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (UnimplementedHandler) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (r *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsGetAllowedActionsOrganization implements actions/get-allowed-actions-organization operation.
@@ -953,8 +953,8 @@ func (UnimplementedHandler) ActionsListWorkflowRunsForRepo(ctx context.Context, 
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
-func (UnimplementedHandler) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (r *ActionsReRunWorkflowCreated, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg implements actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -969,8 +969,8 @@ func (UnimplementedHandler) ActionsReRunWorkflow(ctx context.Context, params Act
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (UnimplementedHandler) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsRemoveSelectedRepoFromOrgSecret implements actions/remove-selected-repo-from-org-secret operation.
@@ -996,8 +996,8 @@ func (UnimplementedHandler) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.C
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (r *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsRetryWorkflow implements actions/retry-workflow operation.
@@ -1007,8 +1007,8 @@ func (UnimplementedHandler) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx con
 // this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
-func (UnimplementedHandler) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (r *ActionsRetryWorkflowCreated, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsReviewPendingDeploymentsForRun implements actions/review-pending-deployments-for-run operation.
@@ -1036,8 +1036,8 @@ func (UnimplementedHandler) ActionsReviewPendingDeploymentsForRun(ctx context.Co
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (UnimplementedHandler) ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (r *ActionsSetAllowedActionsOrganizationNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetAllowedActionsOrganization(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetAllowedActionsRepository implements actions/set-allowed-actions-repository operation.
@@ -1054,8 +1054,8 @@ func (UnimplementedHandler) ActionsSetAllowedActionsOrganization(ctx context.Con
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (UnimplementedHandler) ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (r *ActionsSetAllowedActionsRepositoryNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetAllowedActionsRepository(ctx context.Context, req OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetGithubActionsPermissionsOrganization implements actions/set-github-actions-permissions-organization operation.
@@ -1068,8 +1068,8 @@ func (UnimplementedHandler) ActionsSetAllowedActionsRepository(ctx context.Conte
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions
-func (UnimplementedHandler) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (r *ActionsSetGithubActionsPermissionsOrganizationNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, req *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetGithubActionsPermissionsRepository implements actions/set-github-actions-permissions-repository operation.
@@ -1083,8 +1083,8 @@ func (UnimplementedHandler) ActionsSetGithubActionsPermissionsOrganization(ctx c
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
-func (UnimplementedHandler) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (r *ActionsSetGithubActionsPermissionsRepositoryNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, req *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg implements actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -1097,8 +1097,8 @@ func (UnimplementedHandler) ActionsSetGithubActionsPermissionsRepository(ctx con
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (UnimplementedHandler) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (r *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, req *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetSelectedReposForOrgSecret implements actions/set-selected-repos-for-org-secret operation.
@@ -1110,8 +1110,8 @@ func (UnimplementedHandler) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (UnimplementedHandler) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (r *ActionsSetSelectedReposForOrgSecretNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetSelectedReposForOrgSecret(ctx context.Context, req *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization implements actions/set-selected-repositories-enabled-github-actions-organization operation.
@@ -1124,8 +1124,8 @@ func (UnimplementedHandler) ActionsSetSelectedReposForOrgSecret(ctx context.Cont
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
-func (UnimplementedHandler) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (r *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, req *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsSetSelfHostedRunnersInGroupForOrg implements actions/set-self-hosted-runners-in-group-for-org operation.
@@ -1137,8 +1137,8 @@ func (UnimplementedHandler) ActionsSetSelectedRepositoriesEnabledGithubActionsOr
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (r *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, req *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActionsUpdateSelfHostedRunnerGroupForOrg implements actions/update-self-hosted-runner-group-for-org operation.
@@ -1170,8 +1170,8 @@ func (UnimplementedHandler) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx co
 // manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
 //
 // DELETE /repos/{owner}/{repo}/subscription
-func (UnimplementedHandler) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (r *ActivityDeleteRepoSubscriptionNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ActivityDeleteThreadSubscription implements activity/delete-thread-subscription operation.
@@ -1854,8 +1854,8 @@ func (UnimplementedHandler) AppsResetToken(ctx context.Context, req *AppsResetTo
 // to access this endpoint.
 //
 // DELETE /installation/token
-func (UnimplementedHandler) AppsRevokeInstallationAccessToken(ctx context.Context) (r *AppsRevokeInstallationAccessTokenNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) AppsRevokeInstallationAccessToken(ctx context.Context) error {
+	return ht.ErrNotImplemented
 }
 
 // AppsScopeToken implements apps/scope-token operation.
@@ -2148,8 +2148,8 @@ func (UnimplementedHandler) ChecksListSuitesForRef(ctx context.Context, params C
 // repository or pull access to a public repository.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
-func (UnimplementedHandler) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (r *ChecksRerequestSuiteCreated, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ChecksSetSuitesPreferences implements checks/set-suites-preferences operation.
@@ -2420,8 +2420,8 @@ func (UnimplementedHandler) EmojisGet(ctx context.Context) (r EmojisGetRes, _ er
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise implements enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
@@ -2431,8 +2431,8 @@ func (UnimplementedHandler) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupIn
 // scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (r *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminCreateRegistrationTokenForEnterprise implements enterprise-admin/create-registration-token-for-enterprise operation.
@@ -2485,8 +2485,8 @@ func (UnimplementedHandler) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpr
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (r *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise implements enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
@@ -2496,8 +2496,8 @@ func (UnimplementedHandler) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx con
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (r *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise implements enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
@@ -2506,8 +2506,8 @@ func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (r *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminDeleteUserFromEnterprise implements enterprise-admin/delete-user-from-enterprise operation.
@@ -2516,8 +2516,8 @@ func (UnimplementedHandler) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterp
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (UnimplementedHandler) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (r *EnterpriseAdminDeleteUserFromEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
@@ -2529,8 +2529,8 @@ func (UnimplementedHandler) EnterpriseAdminDeleteUserFromEnterprise(ctx context.
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (r *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise implements enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
@@ -2542,8 +2542,8 @@ func (UnimplementedHandler) EnterpriseAdminDisableSelectedOrganizationGithubActi
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (r *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminGetAllowedActionsEnterprise implements enterprise-admin/get-allowed-actions-enterprise operation.
@@ -2764,8 +2764,8 @@ func (UnimplementedHandler) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx 
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (UnimplementedHandler) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise implements enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
@@ -2775,8 +2775,8 @@ func (UnimplementedHandler) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGrou
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (UnimplementedHandler) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (r *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminSetAllowedActionsEnterprise implements enterprise-admin/set-allowed-actions-enterprise operation.
@@ -2788,8 +2788,8 @@ func (UnimplementedHandler) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnt
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-func (UnimplementedHandler) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (r *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, req *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminSetGithubActionsPermissionsEnterprise implements enterprise-admin/set-github-actions-permissions-enterprise operation.
@@ -2798,8 +2798,8 @@ func (UnimplementedHandler) EnterpriseAdminSetAllowedActionsEnterprise(ctx conte
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
-func (UnimplementedHandler) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (r *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, req *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminSetInformationForProvisionedEnterpriseGroup implements enterprise-admin/set-information-for-provisioned-enterprise-group operation.
@@ -2842,8 +2842,8 @@ func (UnimplementedHandler) EnterpriseAdminSetInformationForProvisionedEnterpris
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (UnimplementedHandler) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (r *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, req *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise implements enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
@@ -2855,8 +2855,8 @@ func (UnimplementedHandler) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupIn
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
-func (UnimplementedHandler) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (r *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, req *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
@@ -2865,8 +2865,8 @@ func (UnimplementedHandler) EnterpriseAdminSetSelectedOrganizationsEnabledGithub
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (r *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // EnterpriseAdminUpdateAttributeForEnterpriseGroup implements enterprise-admin/update-attribute-for-enterprise-group operation.
@@ -3412,8 +3412,8 @@ func (UnimplementedHandler) GitignoreGetTemplate(ctx context.Context, params Git
 // Removes any interaction restrictions from your public repositories.
 //
 // DELETE /user/interaction-limits
-func (UnimplementedHandler) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (r *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) error {
+	return ht.ErrNotImplemented
 }
 
 // InteractionsRemoveRestrictionsForOrg implements interactions/remove-restrictions-for-org operation.
@@ -3422,8 +3422,8 @@ func (UnimplementedHandler) InteractionsRemoveRestrictionsForAuthenticatedUser(c
 // be an organization owner to remove restrictions.
 //
 // DELETE /orgs/{org}/interaction-limits
-func (UnimplementedHandler) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (r *InteractionsRemoveRestrictionsForOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // InteractionsRemoveRestrictionsForRepo implements interactions/remove-restrictions-for-repo operation.
@@ -3550,8 +3550,8 @@ func (UnimplementedHandler) IssuesCreateMilestone(ctx context.Context, req *Issu
 // Delete an issue comment.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (UnimplementedHandler) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (r *IssuesDeleteCommentNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) error {
+	return ht.ErrNotImplemented
 }
 
 // IssuesDeleteLabel implements issues/delete-label operation.
@@ -3559,8 +3559,8 @@ func (UnimplementedHandler) IssuesDeleteComment(ctx context.Context, params Issu
 // Delete a label.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
-func (UnimplementedHandler) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (r *IssuesDeleteLabelNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) error {
+	return ht.ErrNotImplemented
 }
 
 // IssuesDeleteMilestone implements issues/delete-milestone operation.
@@ -3962,8 +3962,8 @@ func (UnimplementedHandler) MetaRoot(ctx context.Context) (r *MetaRootOK, _ erro
 // Stop an import for a repository.
 //
 // DELETE /repos/{owner}/{repo}/import
-func (UnimplementedHandler) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (r *MigrationsCancelImportNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) error {
+	return ht.ErrNotImplemented
 }
 
 // MigrationsDeleteArchiveForAuthenticatedUser implements migrations/delete-archive-for-authenticated-user operation.
@@ -4902,8 +4902,8 @@ func (UnimplementedHandler) OrgsRemoveOutsideCollaborator(ctx context.Context, p
 // Remove public organization membership for the authenticated user.
 //
 // DELETE /orgs/{org}/public_members/{username}
-func (UnimplementedHandler) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (r *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) error {
+	return ht.ErrNotImplemented
 }
 
 // OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
@@ -4961,8 +4961,8 @@ func (UnimplementedHandler) OrgsSetPublicMembershipForAuthenticatedUser(ctx cont
 // Unblock a user from an organization.
 //
 // DELETE /orgs/{org}/blocks/{username}
-func (UnimplementedHandler) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (r *OrgsUnblockUserNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) error {
+	return ht.ErrNotImplemented
 }
 
 // OrgsUpdateMembershipForAuthenticatedUser implements orgs/update-membership-for-authenticated-user operation.
@@ -6072,8 +6072,8 @@ func (UnimplementedHandler) ReactionsCreateForTeamDiscussionLegacy(ctx context.C
 // Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (r *ReactionsDeleteForCommitCommentNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReactionsDeleteForIssue implements reactions/delete-for-issue operation.
@@ -6083,8 +6083,8 @@ func (UnimplementedHandler) ReactionsDeleteForCommitComment(ctx context.Context,
 // Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (r *ReactionsDeleteForIssueNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
@@ -6094,8 +6094,8 @@ func (UnimplementedHandler) ReactionsDeleteForIssue(ctx context.Context, params 
 // Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (r *ReactionsDeleteForIssueCommentNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
@@ -6106,8 +6106,8 @@ func (UnimplementedHandler) ReactionsDeleteForIssueComment(ctx context.Context, 
 // com/rest/reference/pulls#review-comments).
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (r *ReactionsDeleteForPullRequestCommentNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReactionsDeleteForTeamDiscussion implements reactions/delete-for-team-discussion operation.
@@ -6122,8 +6122,8 @@ func (UnimplementedHandler) ReactionsDeleteForPullRequestComment(ctx context.Con
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (r *ReactionsDeleteForTeamDiscussionNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReactionsDeleteForTeamDiscussionComment implements reactions/delete-for-team-discussion-comment operation.
@@ -6136,8 +6136,8 @@ func (UnimplementedHandler) ReactionsDeleteForTeamDiscussion(ctx context.Context
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-func (UnimplementedHandler) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (r *ReactionsDeleteForTeamDiscussionCommentNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReactionsDeleteLegacy implements reactions/delete-legacy operation.
@@ -6764,8 +6764,8 @@ func (UnimplementedHandler) ReposDelete(ctx context.Context, params ReposDeleteP
 // Disables the ability to restrict who can push to this branch.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (UnimplementedHandler) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (r *ReposDeleteAccessRestrictionsNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDeleteAdminBranchProtection implements repos/delete-admin-branch-protection operation.
@@ -6788,8 +6788,8 @@ func (UnimplementedHandler) ReposDeleteAdminBranchProtection(ctx context.Context
 // You must authenticate using an access token with the repo scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
-func (UnimplementedHandler) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (r *ReposDeleteAnEnvironmentNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDeleteAutolink implements repos/delete-autolink operation.
@@ -6846,8 +6846,8 @@ func (UnimplementedHandler) ReposDeleteCommitSignatureProtection(ctx context.Con
 // instead.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
-func (UnimplementedHandler) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (r *ReposDeleteDeployKeyNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDeleteDeployment implements repos/delete-deployment operation.
@@ -6888,8 +6888,8 @@ func (UnimplementedHandler) ReposDeleteFile(ctx context.Context, req *ReposDelet
 // Delete a repository invitation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-func (UnimplementedHandler) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (r *ReposDeleteInvitationNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDeletePagesSite implements repos/delete-pages-site operation.
@@ -6919,8 +6919,8 @@ func (UnimplementedHandler) ReposDeletePullRequestReviewProtection(ctx context.C
 // Users with push access to the repository can delete a release.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
-func (UnimplementedHandler) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (r *ReposDeleteReleaseNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDeleteReleaseAsset implements repos/delete-release-asset operation.
@@ -6928,8 +6928,8 @@ func (UnimplementedHandler) ReposDeleteRelease(ctx context.Context, params Repos
 // Delete a release asset.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (UnimplementedHandler) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (r *ReposDeleteReleaseAssetNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDeleteWebhook implements repos/delete-webhook operation.
@@ -6948,8 +6948,8 @@ func (UnimplementedHandler) ReposDeleteWebhook(ctx context.Context, params Repos
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
-func (UnimplementedHandler) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (r *ReposDisableAutomatedSecurityFixesNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDisableLfsForRepo implements repos/disable-lfs-for-repo operation.
@@ -6957,8 +6957,8 @@ func (UnimplementedHandler) ReposDisableAutomatedSecurityFixes(ctx context.Conte
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // DELETE /repos/{owner}/{repo}/lfs
-func (UnimplementedHandler) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (r *ReposDisableLfsForRepoNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDisableVulnerabilityAlerts implements repos/disable-vulnerability-alerts operation.
@@ -6969,8 +6969,8 @@ func (UnimplementedHandler) ReposDisableLfsForRepo(ctx context.Context, params R
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
-func (UnimplementedHandler) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (r *ReposDisableVulnerabilityAlertsNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposDownloadTarballArchive implements repos/download-tarball-archive operation.
@@ -7008,8 +7008,8 @@ func (UnimplementedHandler) ReposDownloadZipballArchive(ctx context.Context, par
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
-func (UnimplementedHandler) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (r *ReposEnableAutomatedSecurityFixesNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposEnableLfsForRepo implements repos/enable-lfs-for-repo operation.
@@ -7029,8 +7029,8 @@ func (UnimplementedHandler) ReposEnableLfsForRepo(ctx context.Context, params Re
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
-func (UnimplementedHandler) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (r *ReposEnableVulnerabilityAlertsNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposGet implements repos/get operation.
@@ -7981,8 +7981,8 @@ func (UnimplementedHandler) ReposRemoveAppAccessRestrictions(ctx context.Context
 // Remove a repository collaborator.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
-func (UnimplementedHandler) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (r *ReposRemoveCollaboratorNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposRemoveStatusCheckContexts implements repos/remove-status-check-contexts operation.
@@ -8007,8 +8007,8 @@ func (UnimplementedHandler) ReposRemoveStatusCheckContexts(ctx context.Context, 
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (UnimplementedHandler) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (r *ReposRemoveStatusCheckProtectionNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) error {
+	return ht.ErrNotImplemented
 }
 
 // ReposRemoveTeamAccessRestrictions implements repos/remove-team-access-restrictions operation.
@@ -8738,8 +8738,8 @@ func (UnimplementedHandler) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context
 // com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (UnimplementedHandler) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (r *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsAddOrUpdateRepoPermissionsLegacy implements teams/add-or-update-repo-permissions-legacy operation.
@@ -8969,8 +8969,8 @@ func (UnimplementedHandler) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx con
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (r *TeamsDeleteDiscussionCommentInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsDeleteDiscussionCommentLegacy implements teams/delete-discussion-comment-legacy operation.
@@ -8984,8 +8984,8 @@ func (UnimplementedHandler) TeamsDeleteDiscussionCommentInOrg(ctx context.Contex
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (r *TeamsDeleteDiscussionCommentLegacyNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsDeleteDiscussionInOrg implements teams/delete-discussion-in-org operation.
@@ -8996,8 +8996,8 @@ func (UnimplementedHandler) TeamsDeleteDiscussionCommentLegacy(ctx context.Conte
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (r *TeamsDeleteDiscussionInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsDeleteDiscussionLegacy implements teams/delete-discussion-legacy operation.
@@ -9011,8 +9011,8 @@ func (UnimplementedHandler) TeamsDeleteDiscussionInOrg(ctx context.Context, para
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
-func (UnimplementedHandler) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (r *TeamsDeleteDiscussionLegacyNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsDeleteInOrg implements teams/delete-in-org operation.
@@ -9024,8 +9024,8 @@ func (UnimplementedHandler) TeamsDeleteDiscussionLegacy(ctx context.Context, par
 // /organizations/{org_id}/team/{team_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
-func (UnimplementedHandler) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (r *TeamsDeleteInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsDeleteLegacy implements teams/delete-legacy operation.
@@ -9509,8 +9509,8 @@ func (UnimplementedHandler) TeamsRemoveMembershipForUserLegacy(ctx context.Conte
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (UnimplementedHandler) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (r *TeamsRemoveProjectInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsRemoveProjectLegacy implements teams/remove-project-legacy operation.
@@ -9540,8 +9540,8 @@ func (UnimplementedHandler) TeamsRemoveProjectLegacy(ctx context.Context, params
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (UnimplementedHandler) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (r *TeamsRemoveRepoInOrgNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsRemoveRepoLegacy implements teams/remove-repo-legacy operation.
@@ -9557,8 +9557,8 @@ func (UnimplementedHandler) TeamsRemoveRepoInOrg(ctx context.Context, params Tea
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
-func (UnimplementedHandler) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (r *TeamsRemoveRepoLegacyNoContent, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) error {
+	return ht.ErrNotImplemented
 }
 
 // TeamsUpdateDiscussionCommentInOrg implements teams/update-discussion-comment-in-org operation.

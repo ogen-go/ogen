@@ -73,8 +73,9 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.IntegerNumber(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.IntegerNumber(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -151,8 +152,9 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.JaegerAnyOf(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.JaegerAnyOf(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -229,8 +231,9 @@ func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OneUUID(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OneUUID(ctx)
+				return response, err
 			},
 		)
 	} else {

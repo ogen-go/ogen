@@ -94,8 +94,9 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 			m,
 			mreq,
 			unpackAPICaptcha2chcaptchaIDGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptcha2chcaptchaIDGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APICaptcha2chcaptchaIDGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -190,8 +191,9 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 			m,
 			mreq,
 			unpackAPICaptcha2chcaptchaShowGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptcha2chcaptchaShowGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APICaptcha2chcaptchaShowGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -298,8 +300,9 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 			m,
 			mreq,
 			unpackAPICaptchaAppIDPublicKeyGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -398,8 +401,9 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			m,
 			mreq,
 			unpackAPICaptchaInvisibleRecaptchaIDGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -475,12 +479,13 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+		err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -575,8 +580,9 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 			m,
 			mreq,
 			unpackAPICaptchaRecaptchaIDGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaRecaptchaIDGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APICaptchaRecaptchaIDGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -652,12 +658,13 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaRecaptchaMobileGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.APICaptchaRecaptchaMobileGet(ctx)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.APICaptchaRecaptchaMobileGet(ctx)
+		err = s.h.APICaptchaRecaptchaMobileGet(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -752,8 +759,9 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			unpackAPIDislikeGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APIDislikeGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APIDislikeGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -852,8 +860,9 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			unpackAPILikeGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APILikeGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APILikeGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -958,8 +967,9 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			m,
 			mreq,
 			unpackAPIMobileV2AfterBoardThreadNumGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1035,8 +1045,9 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APIMobileV2BoardsGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APIMobileV2BoardsGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -1135,8 +1146,9 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 			m,
 			mreq,
 			unpackAPIMobileV2InfoBoardThreadGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1235,8 +1247,9 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 			m,
 			mreq,
 			unpackAPIMobileV2PostBoardNumGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APIMobileV2PostBoardNumGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.APIMobileV2PostBoardNumGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1346,8 +1359,9 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			unpackUserPassloginPostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UserPassloginPost(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UserPassloginPost(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1442,8 +1456,9 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UserPostingPost(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UserPostingPost(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1538,8 +1553,9 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UserReportPost(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UserReportPost(ctx, request)
+				return response, err
 			},
 		)
 	} else {

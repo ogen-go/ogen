@@ -3564,8 +3564,8 @@ func (UnimplementedHandler) TestResponseBooleanNullableArrayArray(ctx context.Co
 // TestResponseEmptyStruct implements test_response_EmptyStruct operation.
 //
 // POST /test_response_EmptyStruct
-func (UnimplementedHandler) TestResponseEmptyStruct(ctx context.Context, req string) (r *TestResponseEmptyStructOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TestResponseEmptyStruct(ctx context.Context, req string) error {
+	return ht.ErrNotImplemented
 }
 
 // TestResponseFormatTest implements test_response_FormatTest operation.

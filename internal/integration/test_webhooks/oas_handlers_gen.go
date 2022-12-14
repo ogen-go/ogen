@@ -95,8 +95,9 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PublishEvent(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PublishEvent(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -180,8 +181,9 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.StatusWebhook(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.StatusWebhook(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -256,8 +258,9 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UpdateDelete(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UpdateDelete(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -371,8 +374,9 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			unpackUpdateWebhookParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UpdateWebhook(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UpdateWebhook(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {

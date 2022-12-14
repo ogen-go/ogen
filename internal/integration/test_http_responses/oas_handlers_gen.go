@@ -74,8 +74,9 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AnyContentTypeBinaryStringSchema(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AnyContentTypeBinaryStringSchema(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -152,8 +153,9 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -249,8 +251,9 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			unpackCombinedParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Combined(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Combined(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -327,8 +330,9 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Headers200(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Headers200(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -424,8 +428,9 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			unpackHeadersCombinedParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.HeadersCombined(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.HeadersCombined(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -502,8 +507,9 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.HeadersDefault(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.HeadersDefault(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -580,8 +586,9 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter,
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.HeadersJSON(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.HeadersJSON(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -658,8 +665,9 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.HeadersPattern(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.HeadersPattern(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -758,8 +766,9 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			unpackIntersectPatternCodeParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.IntersectPatternCode(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.IntersectPatternCode(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -836,8 +845,9 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MultipleGenericResponses(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MultipleGenericResponses(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -914,8 +924,9 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OctetStreamBinaryStringSchema(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OctetStreamBinaryStringSchema(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -992,8 +1003,9 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OctetStreamEmptySchema(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OctetStreamEmptySchema(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -1070,8 +1082,9 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TextPlainBinaryStringSchema(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.TextPlainBinaryStringSchema(ctx)
+				return response, err
 			},
 		)
 	} else {
