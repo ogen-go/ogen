@@ -95,8 +95,9 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreatePet(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreatePet(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -209,8 +210,9 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			m,
 			mreq,
 			unpackCreatePetCategoriesParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreatePetCategories(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreatePetCategories(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -323,8 +325,9 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			m,
 			mreq,
 			unpackCreatePetFriendsParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreatePetFriends(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreatePetFriends(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -437,8 +440,9 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			m,
 			mreq,
 			unpackCreatePetOwnerParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreatePetOwner(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreatePetOwner(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -536,8 +540,9 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			unpackDeletePetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeletePet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeletePet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -635,8 +640,9 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 			m,
 			mreq,
 			unpackDeletePetOwnerParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DeletePetOwner(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DeletePetOwner(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -738,8 +744,9 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			unpackListPetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ListPet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ListPet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -845,8 +852,9 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 			m,
 			mreq,
 			unpackListPetCategoriesParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ListPetCategories(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ListPetCategories(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -952,8 +960,9 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 			m,
 			mreq,
 			unpackListPetFriendsParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ListPetFriends(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ListPetFriends(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1051,8 +1060,9 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			unpackReadPetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReadPet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ReadPet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1150,8 +1160,9 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 			m,
 			mreq,
 			unpackReadPetOwnerParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReadPetOwner(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ReadPetOwner(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1264,8 +1275,9 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			unpackUpdatePetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UpdatePet(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UpdatePet(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {

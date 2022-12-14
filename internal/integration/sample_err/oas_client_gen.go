@@ -68,7 +68,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Creates data.
 //
 // POST /data
-func (c *Client) DataCreate(ctx context.Context, request OptData) (res *Data, err error) {
+func (c *Client) DataCreate(ctx context.Context, request OptData) (*Data, error) {
+	res, err := c.sendDataCreate(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
 	}
@@ -133,7 +139,13 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res *Data, er
 // Retrieve data.
 //
 // GET /data
-func (c *Client) DataGet(ctx context.Context) (res *Data, err error) {
+func (c *Client) DataGet(ctx context.Context) (*Data, error) {
+	res, err := c.sendDataGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 	}

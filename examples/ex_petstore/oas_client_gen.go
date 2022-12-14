@@ -64,7 +64,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Create a pet.
 //
 // POST /pets
-func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) {
+func (c *Client) CreatePets(ctx context.Context) (CreatePetsRes, error) {
+	res, err := c.sendCreatePets(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCreatePets(ctx context.Context) (res CreatePetsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
 	}
@@ -126,7 +132,13 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 // List all pets.
 //
 // GET /pets
-func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
+func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (ListPetsRes, error) {
+	res, err := c.sendListPets(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
 	}
@@ -209,7 +221,13 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 // Info for a specific pet.
 //
 // GET /pets/{petId}
-func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res ShowPetByIdRes, err error) {
+func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (ShowPetByIdRes, error) {
+	res, err := c.sendShowPetById(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) (res ShowPetByIdRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
 	}

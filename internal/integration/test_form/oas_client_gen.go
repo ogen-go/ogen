@@ -61,7 +61,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // TestFormURLEncoded invokes testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
-func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) (res *TestFormURLEncodedOK, err error) {
+func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) error {
+	res, err := c.sendTestFormURLEncoded(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) (res *TestFormURLEncodedOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
 	}
@@ -124,7 +130,13 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request *TestForm) (res
 // TestMultipart invokes testMultipart operation.
 //
 // POST /testMultipart
-func (c *Client) TestMultipart(ctx context.Context, request *TestForm) (res *TestMultipartOK, err error) {
+func (c *Client) TestMultipart(ctx context.Context, request *TestForm) error {
+	res, err := c.sendTestMultipart(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTestMultipart(ctx context.Context, request *TestForm) (res *TestMultipartOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
 	}
@@ -187,7 +199,13 @@ func (c *Client) TestMultipart(ctx context.Context, request *TestForm) (res *Tes
 // TestMultipartUpload invokes testMultipartUpload operation.
 //
 // POST /testMultipartUpload
-func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipartUploadReqForm) (res *TestMultipartUploadOK, err error) {
+func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipartUploadReqForm) (*TestMultipartUploadOK, error) {
+	res, err := c.sendTestMultipartUpload(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMultipartUploadReqForm) (res *TestMultipartUploadOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
 	}
@@ -259,7 +277,13 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request *TestMultipart
 // TestShareFormSchema invokes testShareFormSchema operation.
 //
 // POST /testShareFormSchema
-func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res *TestShareFormSchemaOK, err error) {
+func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) error {
+	res, err := c.sendTestShareFormSchema(ctx, request)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareFormSchemaReq) (res *TestShareFormSchemaOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
 	}

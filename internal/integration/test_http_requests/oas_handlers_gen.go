@@ -93,8 +93,9 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AllRequestBodies(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AllRequestBodies(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -190,8 +191,9 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AllRequestBodiesOptional(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.AllRequestBodiesOptional(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -287,8 +289,9 @@ func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Base64Request(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Base64Request(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -384,8 +387,9 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MaskContentType(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MaskContentType(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -481,8 +485,9 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MaskContentTypeOptional(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MaskContentTypeOptional(ctx, request)
+				return response, err
 			},
 		)
 	} else {

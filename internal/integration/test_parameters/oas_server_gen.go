@@ -11,7 +11,7 @@ type Handler interface {
 	// ComplicatedParameterNameGet implements GET /complicatedParameterName operation.
 	//
 	// GET /complicatedParameterName
-	ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (*ComplicatedParameterNameGetOK, error)
+	ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) error
 	// ContentQueryParameter implements contentQueryParameter operation.
 	//
 	// GET /contentQueryParameter
@@ -35,7 +35,7 @@ type Handler interface {
 	// Parameter with different location, but the same name.
 	//
 	// GET /same_name/{path}
-	SameName(ctx context.Context, params SameNameParams) (*SameNameOK, error)
+	SameName(ctx context.Context, params SameNameParams) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

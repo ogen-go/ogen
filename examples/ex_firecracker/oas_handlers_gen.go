@@ -95,8 +95,9 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreateSnapshot(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreateSnapshot(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -194,8 +195,9 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreateSyncAction(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreateSyncAction(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -274,8 +276,9 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DescribeBalloonConfig(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DescribeBalloonConfig(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -354,8 +357,9 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DescribeBalloonStats(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DescribeBalloonStats(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -434,8 +438,9 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DescribeInstance(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DescribeInstance(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -514,8 +519,9 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetExportVmConfig(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetExportVmConfig(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -596,8 +602,9 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.GetMachineConfiguration(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.GetMachineConfiguration(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -696,8 +703,9 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.LoadSnapshot(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.LoadSnapshot(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -792,8 +800,9 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MmdsConfigPut(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MmdsConfigPut(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -869,8 +878,9 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MmdsGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MmdsGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -965,8 +975,9 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MmdsPatch(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MmdsPatch(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1061,8 +1072,9 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MmdsPut(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MmdsPut(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1161,8 +1173,9 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatchBalloon(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchBalloon(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1261,8 +1274,9 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatchBalloonStatsInterval(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchBalloonStatsInterval(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1376,8 +1390,9 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 			m,
 			mreq,
 			unpackPatchGuestDriveByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatchGuestDriveByID(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchGuestDriveByID(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1490,8 +1505,9 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 			m,
 			mreq,
 			unpackPatchGuestNetworkInterfaceByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1590,8 +1606,9 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatchMachineConfiguration(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchMachineConfiguration(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1689,8 +1706,9 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PatchVm(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchVm(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1789,8 +1807,9 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutBalloon(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutBalloon(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -1889,8 +1908,9 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutGuestBootSource(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutGuestBootSource(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2004,8 +2024,9 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 			m,
 			mreq,
 			unpackPutGuestDriveByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutGuestDriveByID(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutGuestDriveByID(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -2118,8 +2139,9 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 			m,
 			mreq,
 			unpackPutGuestNetworkInterfaceByIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -2218,8 +2240,9 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutGuestVsock(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutGuestVsock(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2317,8 +2340,9 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutLogger(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutLogger(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2419,8 +2443,9 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutMachineConfiguration(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutMachineConfiguration(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2518,8 +2543,9 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PutMetrics(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PutMetrics(ctx, request)
+				return response, err
 			},
 		)
 	} else {

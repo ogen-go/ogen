@@ -99,8 +99,9 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			unpackDataGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DataGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -179,8 +180,9 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataGetAny(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DataGetAny(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -278,8 +280,9 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			unpackDataGetIDParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataGetID(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DataGetID(ctx, params)
+				return response, err
 			},
 		)
 	} else {

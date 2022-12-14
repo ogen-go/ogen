@@ -76,8 +76,9 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.CreatePets(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CreatePets(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -175,8 +176,9 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 			m,
 			mreq,
 			unpackListPetsParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ListPets(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ListPets(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -274,8 +276,9 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 			m,
 			mreq,
 			unpackShowPetByIdParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ShowPetById(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ShowPetById(ctx, params)
+				return response, err
 			},
 		)
 	} else {

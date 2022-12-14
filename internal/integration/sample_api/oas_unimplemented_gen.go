@@ -80,8 +80,8 @@ func (UnimplementedHandler) NullableDefaultResponse(ctx context.Context) (r *Nil
 // OneofBug implements oneofBug operation.
 //
 // POST /oneofBug
-func (UnimplementedHandler) OneofBug(ctx context.Context, req *OneOfBugs) (r *OneofBugOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) OneofBug(ctx context.Context, req *OneOfBugs) error {
+	return ht.ErrNotImplemented
 }
 
 // PatternRecursiveMapGet implements GET /patternRecursiveMap operation.
@@ -208,8 +208,8 @@ func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r *StringIntMa
 // TestFloatValidation implements testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req *TestFloatValidation) (r *TestFloatValidationOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req *TestFloatValidation) error {
+	return ht.ErrNotImplemented
 }
 
 // TestNullableOneofs implements testNullableOneofs operation.

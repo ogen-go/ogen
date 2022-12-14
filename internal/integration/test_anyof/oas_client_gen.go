@@ -61,7 +61,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // IntegerNumber invokes integerNumber operation.
 //
 // GET /integerNumber
-func (c *Client) IntegerNumber(ctx context.Context) (res *IntegerNumber, err error) {
+func (c *Client) IntegerNumber(ctx context.Context) (*IntegerNumber, error) {
+	res, err := c.sendIntegerNumber(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
 	}
@@ -121,7 +127,13 @@ func (c *Client) IntegerNumber(ctx context.Context) (res *IntegerNumber, err err
 // JaegerAnyOf invokes jaegerAnyOf operation.
 //
 // GET /jaegerAnyOf
-func (c *Client) JaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err error) {
+func (c *Client) JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error) {
+	res, err := c.sendJaegerAnyOf(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
 	}
@@ -181,7 +193,13 @@ func (c *Client) JaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err error) 
 // OneUUID invokes oneUUID operation.
 //
 // GET /oneUUID
-func (c *Client) OneUUID(ctx context.Context) (res *OneUUID, err error) {
+func (c *Client) OneUUID(ctx context.Context) (*OneUUID, error) {
+	res, err := c.sendOneUUID(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
 	}

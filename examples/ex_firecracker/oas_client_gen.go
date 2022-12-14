@@ -64,7 +64,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
 //
 // PUT /snapshot/create
-func (c *Client) CreateSnapshot(ctx context.Context, request *SnapshotCreateParams) (res CreateSnapshotRes, err error) {
+func (c *Client) CreateSnapshot(ctx context.Context, request *SnapshotCreateParams) (CreateSnapshotRes, error) {
+	res, err := c.sendCreateSnapshot(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSnapshot"),
 	}
@@ -138,7 +144,13 @@ func (c *Client) CreateSnapshot(ctx context.Context, request *SnapshotCreatePara
 // Creates a synchronous action.
 //
 // PUT /actions
-func (c *Client) CreateSyncAction(ctx context.Context, request *InstanceActionInfo) (res CreateSyncActionRes, err error) {
+func (c *Client) CreateSyncAction(ctx context.Context, request *InstanceActionInfo) (CreateSyncActionRes, error) {
+	res, err := c.sendCreateSyncAction(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActionInfo) (res CreateSyncActionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSyncAction"),
 	}
@@ -212,7 +224,13 @@ func (c *Client) CreateSyncAction(ctx context.Context, request *InstanceActionIn
 // Returns the current balloon device configuration.
 //
 // GET /balloon
-func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
+func (c *Client) DescribeBalloonConfig(ctx context.Context) (DescribeBalloonConfigRes, error) {
+	res, err := c.sendDescribeBalloonConfig(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonConfig"),
 	}
@@ -274,7 +292,13 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 // Returns the latest balloon device statistics, only if enabled pre-boot.
 //
 // GET /balloon/statistics
-func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
+func (c *Client) DescribeBalloonStats(ctx context.Context) (DescribeBalloonStatsRes, error) {
+	res, err := c.sendDescribeBalloonStats(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonStats"),
 	}
@@ -336,7 +360,13 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 // Returns general information about an instance.
 //
 // GET /
-func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
+func (c *Client) DescribeInstance(ctx context.Context) (DescribeInstanceRes, error) {
+	res, err := c.sendDescribeInstance(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
 	}
@@ -398,7 +428,13 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 // Gets configuration for all VM resources.
 //
 // GET /vm/config
-func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
+func (c *Client) GetExportVmConfig(ctx context.Context) (GetExportVmConfigRes, error) {
+	res, err := c.sendGetExportVmConfig(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
 	}
@@ -462,7 +498,13 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 // disabled and there is no CPU Template.
 //
 // GET /machine-config
-func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
+func (c *Client) GetMachineConfiguration(ctx context.Context) (GetMachineConfigurationRes, error) {
+	res, err := c.sendGetMachineConfiguration(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
 	}
@@ -525,7 +567,13 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 // configuring any resource other than the Logger and Metrics).
 //
 // PUT /snapshot/load
-func (c *Client) LoadSnapshot(ctx context.Context, request *SnapshotLoadParams) (res LoadSnapshotRes, err error) {
+func (c *Client) LoadSnapshot(ctx context.Context, request *SnapshotLoadParams) (LoadSnapshotRes, error) {
+	res, err := c.sendLoadSnapshot(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadParams) (res LoadSnapshotRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
 	}
@@ -590,7 +638,13 @@ func (c *Client) LoadSnapshot(ctx context.Context, request *SnapshotLoadParams) 
 // Creates MMDS configuration to be used by the MMDS network stack.
 //
 // PUT /mmds/config
-func (c *Client) MmdsConfigPut(ctx context.Context, request *MmdsConfig) (res MmdsConfigPutRes, err error) {
+func (c *Client) MmdsConfigPut(ctx context.Context, request *MmdsConfig) (MmdsConfigPutRes, error) {
+	res, err := c.sendMmdsConfigPut(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (res MmdsConfigPutRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -652,7 +706,13 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request *MmdsConfig) (res Mm
 // Get the MMDS data store.
 //
 // GET /mmds
-func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
+func (c *Client) MmdsGet(ctx context.Context) (MmdsGetRes, error) {
+	res, err := c.sendMmdsGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -711,7 +771,13 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 // Updates the MMDS data store.
 //
 // PATCH /mmds
-func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
+func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (MmdsPatchRes, error) {
+	res, err := c.sendMmdsPatch(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -773,7 +839,13 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 // Creates a MMDS (Microvm Metadata Service) data store.
 //
 // PUT /mmds
-func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
+func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (MmdsPutRes, error) {
+	res, err := c.sendMmdsPut(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -836,7 +908,13 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 // possible.
 //
 // PATCH /balloon
-func (c *Client) PatchBalloon(ctx context.Context, request *BalloonUpdate) (res PatchBalloonRes, err error) {
+func (c *Client) PatchBalloon(ctx context.Context, request *BalloonUpdate) (PatchBalloonRes, error) {
+	res, err := c.sendPatchBalloon(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (res PatchBalloonRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
 	}
@@ -902,7 +980,13 @@ func (c *Client) PatchBalloon(ctx context.Context, request *BalloonUpdate) (res 
 // if update is not possible.
 //
 // PATCH /balloon/statistics
-func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request *BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
+func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request *BalloonStatsUpdate) (PatchBalloonStatsIntervalRes, error) {
+	res, err := c.sendPatchBalloonStatsInterval(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
 	}
@@ -968,7 +1052,13 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request *Balloon
 // update is not possible.
 //
 // PATCH /drives/{drive_id}
-func (c *Client) PatchGuestDriveByID(ctx context.Context, request *PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
+func (c *Client) PatchGuestDriveByID(ctx context.Context, request *PartialDrive, params PatchGuestDriveByIDParams) (PatchGuestDriveByIDRes, error) {
+	res, err := c.sendPatchGuestDriveByID(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestDriveByID"),
 	}
@@ -1056,7 +1146,13 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request *PartialDrive,
 // Updates the rate limiters applied to a network interface.
 //
 // PATCH /network-interfaces/{iface_id}
-func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request *PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request *PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (PatchGuestNetworkInterfaceByIDRes, error) {
+	res, err := c.sendPatchGuestNetworkInterfaceByID(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request *PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
 	}
@@ -1145,7 +1241,13 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request *Pa
 // parameters has an incorrect value, the whole update fails.
 //
 // PATCH /machine-config
-func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (PatchMachineConfigurationRes, error) {
+	res, err := c.sendPatchMachineConfiguration(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchMachineConfiguration"),
 	}
@@ -1226,7 +1328,13 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 // Sets the desired state (Paused or Resumed) for the microVM.
 //
 // PATCH /vm
-func (c *Client) PatchVm(ctx context.Context, request *VM) (res PatchVmRes, err error) {
+func (c *Client) PatchVm(ctx context.Context, request *VM) (PatchVmRes, error) {
+	res, err := c.sendPatchVm(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchVm"),
 	}
@@ -1301,7 +1409,13 @@ func (c *Client) PatchVm(ctx context.Context, request *VM) (res PatchVmRes, err 
 // startup. This will fail after machine startup. Will fail if update is not possible.
 //
 // PUT /balloon
-func (c *Client) PutBalloon(ctx context.Context, request *Balloon) (res PutBalloonRes, err error) {
+func (c *Client) PutBalloon(ctx context.Context, request *Balloon) (PutBalloonRes, error) {
+	res, err := c.sendPutBalloon(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutBalloonRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
 	}
@@ -1367,7 +1481,13 @@ func (c *Client) PutBalloon(ctx context.Context, request *Balloon) (res PutBallo
 // is not possible.
 //
 // PUT /boot-source
-func (c *Client) PutGuestBootSource(ctx context.Context, request *BootSource) (res PutGuestBootSourceRes, err error) {
+func (c *Client) PutGuestBootSource(ctx context.Context, request *BootSource) (PutGuestBootSourceRes, error) {
+	res, err := c.sendPutGuestBootSource(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource) (res PutGuestBootSourceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
 	}
@@ -1433,7 +1553,13 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request *BootSource) (r
 // already exists, updates its state based on new input. Will fail if update is not possible.
 //
 // PUT /drives/{drive_id}
-func (c *Client) PutGuestDriveByID(ctx context.Context, request *Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
+func (c *Client) PutGuestDriveByID(ctx context.Context, request *Drive, params PutGuestDriveByIDParams) (PutGuestDriveByIDRes, error) {
+	res, err := c.sendPutGuestDriveByID(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestDriveByID"),
 	}
@@ -1521,7 +1647,13 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request *Drive, params P
 // Creates new network interface with ID specified by iface_id path parameter.
 //
 // PUT /network-interfaces/{iface_id}
-func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request *NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
+func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request *NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (PutGuestNetworkInterfaceByIDRes, error) {
+	res, err := c.sendPutGuestNetworkInterfaceByID(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestNetworkInterfaceByID"),
 	}
@@ -1610,7 +1742,13 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request *Netw
 // update the device configuration. May fail if update is not possible.
 //
 // PUT /vsock
-func (c *Client) PutGuestVsock(ctx context.Context, request *Vsock) (res PutGuestVsockRes, err error) {
+func (c *Client) PutGuestVsock(ctx context.Context, request *Vsock) (PutGuestVsockRes, error) {
+	res, err := c.sendPutGuestVsock(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res PutGuestVsockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestVsock"),
 	}
@@ -1684,7 +1822,13 @@ func (c *Client) PutGuestVsock(ctx context.Context, request *Vsock) (res PutGues
 // Initializes the logger by specifying a named pipe or a file for the logs output.
 //
 // PUT /logger
-func (c *Client) PutLogger(ctx context.Context, request *Logger) (res PutLoggerRes, err error) {
+func (c *Client) PutLogger(ctx context.Context, request *Logger) (PutLoggerRes, error) {
+	res, err := c.sendPutLogger(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLoggerRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putLogger"),
 	}
@@ -1761,7 +1905,13 @@ func (c *Client) PutLogger(ctx context.Context, request *Logger) (res PutLoggerR
 // the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
 //
 // PUT /machine-config
-func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PutMachineConfigurationRes, err error) {
+func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (PutMachineConfigurationRes, error) {
+	res, err := c.sendPutMachineConfiguration(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PutMachineConfigurationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMachineConfiguration"),
 	}
@@ -1842,7 +1992,13 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 // Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 //
 // PUT /metrics
-func (c *Client) PutMetrics(ctx context.Context, request *Metrics) (res PutMetricsRes, err error) {
+func (c *Client) PutMetrics(ctx context.Context, request *Metrics) (PutMetricsRes, error) {
+	res, err := c.sendPutMetrics(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutMetricsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
 	}

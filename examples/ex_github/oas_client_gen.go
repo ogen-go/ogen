@@ -72,7 +72,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
+	res, err := c.sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
 	}
@@ -182,7 +188,13 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 // `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
+func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (ActionsAddSelectedRepoToOrgSecretRes, error) {
+	res, err := c.sendActionsAddSelectedRepoToOrgSecret(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
 	}
@@ -293,7 +305,13 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 // scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
+func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) error {
+	res, err := c.sendActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
 	}
@@ -403,7 +421,13 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 // Apps must have the `actions:write` permission to use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
-func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunRes, err error) {
+func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (ActionsApproveWorkflowRunRes, error) {
+	res, err := c.sendActionsApproveWorkflowRun(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/approve-workflow-run"),
 	}
@@ -512,7 +536,13 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 // endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
-func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res *ActionsCancelWorkflowRunAccepted, err error) {
+func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) error {
+	res, err := c.sendActionsCancelWorkflowRun(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res *ActionsCancelWorkflowRunAccepted, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/cancel-workflow-run"),
 	}
@@ -672,7 +702,13 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 // ```.
 //
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
+func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (ActionsCreateOrUpdateEnvironmentSecretRes, error) {
+	res, err := c.sendActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, request *ActionsCreateOrUpdateEnvironmentSecretReq, params ActionsCreateOrUpdateEnvironmentSecretParams) (res ActionsCreateOrUpdateEnvironmentSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-environment-secret"),
 	}
@@ -843,7 +879,13 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 // ```.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}
-func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
+func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (ActionsCreateOrUpdateOrgSecretRes, error) {
+	res, err := c.sendActionsCreateOrUpdateOrgSecret(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request *ActionsCreateOrUpdateOrgSecretReq, params ActionsCreateOrUpdateOrgSecretParams) (res ActionsCreateOrUpdateOrgSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-org-secret"),
 	}
@@ -999,7 +1041,13 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request *Ac
 // ```.
 //
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
+func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (ActionsCreateOrUpdateRepoSecretRes, error) {
+	res, err := c.sendActionsCreateOrUpdateRepoSecret(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, request *ActionsCreateOrUpdateRepoSecretReq, params ActionsCreateOrUpdateRepoSecretParams) (res ActionsCreateOrUpdateRepoSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-repo-secret"),
 	}
@@ -1124,7 +1172,13 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request *A
 // ```.
 //
 // POST /orgs/{org}/actions/runners/registration-token
-func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (res *AuthenticationToken, err error) {
+func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (*AuthenticationToken, error) {
+	res, err := c.sendActionsCreateRegistrationTokenForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-org"),
 	}
@@ -1209,7 +1263,13 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 // ```.
 //
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
-func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (res *AuthenticationToken, err error) {
+func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (*AuthenticationToken, error) {
+	res, err := c.sendActionsCreateRegistrationTokenForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-repo"),
 	}
@@ -1310,7 +1370,13 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 // ```.
 //
 // POST /orgs/{org}/actions/runners/remove-token
-func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (res *AuthenticationToken, err error) {
+func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (*AuthenticationToken, error) {
+	res, err := c.sendActionsCreateRemoveTokenForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-org"),
 	}
@@ -1395,7 +1461,13 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 // ```.
 //
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
-func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (res *AuthenticationToken, err error) {
+func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (*AuthenticationToken, error) {
+	res, err := c.sendActionsCreateRemoveTokenForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-repo"),
 	}
@@ -1491,7 +1563,13 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // POST /orgs/{org}/actions/runner-groups
-func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
+func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error) {
+	res, err := c.sendActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
 	}
@@ -1582,7 +1660,13 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res *ActionsDeleteArtifactNoContent, err error) {
+func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) error {
+	res, err := c.sendActionsDeleteArtifact(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res *ActionsDeleteArtifactNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-artifact"),
 	}
@@ -1690,7 +1774,13 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 // permission to use this endpoint.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res *ActionsDeleteEnvironmentSecretNoContent, err error) {
+func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) error {
+	res, err := c.sendActionsDeleteEnvironmentSecret(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res *ActionsDeleteEnvironmentSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-environment-secret"),
 	}
@@ -1798,7 +1888,13 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 // organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
-func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res *ActionsDeleteOrgSecretNoContent, err error) {
+func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) error {
+	res, err := c.sendActionsDeleteOrgSecret(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res *ActionsDeleteOrgSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-org-secret"),
 	}
@@ -1891,7 +1987,13 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 // permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res *ActionsDeleteRepoSecretNoContent, err error) {
+func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) error {
+	res, err := c.sendActionsDeleteRepoSecret(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res *ActionsDeleteRepoSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-repo-secret"),
 	}
@@ -1999,7 +2101,13 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
-func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res *ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) error {
+	res, err := c.sendActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res *ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
 	}
@@ -2093,7 +2201,13 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 // scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res *ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) error {
+	res, err := c.sendActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res *ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
 	}
@@ -2203,7 +2317,13 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
+func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) error {
+	res, err := c.sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
 	}
@@ -2298,7 +2418,13 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 // this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res *ActionsDeleteWorkflowRunNoContent, err error) {
+func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) error {
+	res, err := c.sendActionsDeleteWorkflowRun(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res *ActionsDeleteWorkflowRunNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run"),
 	}
@@ -2406,7 +2532,13 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 // endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res *ActionsDeleteWorkflowRunLogsNoContent, err error) {
+func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) error {
+	res, err := c.sendActionsDeleteWorkflowRunLogs(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res *ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
 	}
@@ -2518,7 +2650,13 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error {
+	res, err := c.sendActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
 	}
@@ -2615,7 +2753,13 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res *ActionsDownloadArtifactFound, err error) {
+func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (*ActionsDownloadArtifactFound, error) {
+	res, err := c.sendActionsDownloadArtifact(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res *ActionsDownloadArtifactFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-artifact"),
 	}
@@ -2744,7 +2888,13 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res *ActionsDownloadJobLogsForWorkflowRunFound, err error) {
+func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (*ActionsDownloadJobLogsForWorkflowRunFound, error) {
+	res, err := c.sendActionsDownloadJobLogsForWorkflowRun(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res *ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
 	}
@@ -2857,7 +3007,13 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 // the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res *ActionsDownloadWorkflowRunLogsFound, err error) {
+func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (*ActionsDownloadWorkflowRunLogsFound, error) {
+	res, err := c.sendActionsDownloadWorkflowRunLogs(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res *ActionsDownloadWorkflowRunLogsFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-workflow-run-logs"),
 	}
@@ -2969,7 +3125,13 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error {
+	res, err := c.sendActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
 	}
@@ -3065,7 +3227,13 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions/selected-actions
-func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (res *SelectedActions, err error) {
+func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (*SelectedActions, error) {
+	res, err := c.sendActionsGetAllowedActionsOrganization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (res *SelectedActions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-organization"),
 	}
@@ -3147,7 +3315,13 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 // Apps must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (res *SelectedActions, err error) {
+func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (*SelectedActions, error) {
+	res, err := c.sendActionsGetAllowedActionsRepository(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (res *SelectedActions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-repository"),
 	}
@@ -3241,7 +3415,13 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 // GitHub Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (res *Artifact, err error) {
+func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (*Artifact, error) {
+	res, err := c.sendActionsGetArtifact(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (res *Artifact, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-artifact"),
 	}
@@ -3350,7 +3530,13 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 // the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
-func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (res *ActionsPublicKey, err error) {
+func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (*ActionsPublicKey, error) {
+	res, err := c.sendActionsGetEnvironmentPublicKey(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (res *ActionsPublicKey, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-public-key"),
 	}
@@ -3444,7 +3630,13 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 // `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (res *ActionsSecret, err error) {
+func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (*ActionsSecret, error) {
+	res, err := c.sendActionsGetEnvironmentSecret(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (res *ActionsSecret, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-secret"),
 	}
@@ -3552,7 +3744,13 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions
-func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (res *ActionsOrganizationPermissions, err error) {
+func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (*ActionsOrganizationPermissions, error) {
+	res, err := c.sendActionsGetGithubActionsPermissionsOrganization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (res *ActionsOrganizationPermissions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
 	}
@@ -3632,7 +3830,13 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 // endpoint. GitHub Apps must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions
-func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (res *ActionsRepositoryPermissions, err error) {
+func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (*ActionsRepositoryPermissions, error) {
+	res, err := c.sendActionsGetGithubActionsPermissionsRepository(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (res *ActionsRepositoryPermissions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
 	}
@@ -3726,7 +3930,13 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
-func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (res *Job, err error) {
+func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (*Job, error) {
+	res, err := c.sendActionsGetJobForWorkflowRun(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (res *Job, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-job-for-workflow-run"),
 	}
@@ -3835,7 +4045,13 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 // this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/public-key
-func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (res *ActionsPublicKey, err error) {
+func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (*ActionsPublicKey, error) {
+	res, err := c.sendActionsGetOrgPublicKey(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (res *ActionsPublicKey, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-public-key"),
 	}
@@ -3914,7 +4130,13 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 // `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}
-func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (res *OrganizationActionsSecret, err error) {
+func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (*OrganizationActionsSecret, error) {
+	res, err := c.sendActionsGetOrgSecret(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (res *OrganizationActionsSecret, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-secret"),
 	}
@@ -4008,7 +4230,13 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
-func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (res *ActionsPublicKey, err error) {
+func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (*ActionsPublicKey, error) {
+	res, err := c.sendActionsGetRepoPublicKey(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (res *ActionsPublicKey, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-public-key"),
 	}
@@ -4102,7 +4330,13 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 // repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (res *ActionsSecret, err error) {
+func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (*ActionsSecret, error) {
+	res, err := c.sendActionsGetRepoSecret(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (res *ActionsSecret, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-secret"),
 	}
@@ -4210,7 +4444,13 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
-func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) (res []EnvironmentApprovals, err error) {
+func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) ([]EnvironmentApprovals, error) {
+	res, err := c.sendActionsGetReviewsForRun(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) (res []EnvironmentApprovals, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-reviews-for-run"),
 	}
@@ -4318,7 +4558,13 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/{runner_id}
-func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (res *Runner, err error) {
+func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (*Runner, error) {
+	res, err := c.sendActionsGetSelfHostedRunnerForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (res *Runner, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
 	}
@@ -4411,7 +4657,13 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 // endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (res *Runner, err error) {
+func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (*Runner, error) {
+	res, err := c.sendActionsGetSelfHostedRunnerForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (res *Runner, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
 	}
@@ -4521,7 +4773,13 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
+func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error) {
+	res, err := c.sendActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
 	}
@@ -4614,7 +4872,13 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 // have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
-func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (res *WorkflowRun, err error) {
+func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (*WorkflowRun, error) {
+	res, err := c.sendActionsGetWorkflowRun(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (res *WorkflowRun, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run"),
 	}
@@ -4729,7 +4993,13 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
-func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (res *WorkflowRunUsage, err error) {
+func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (*WorkflowRunUsage, error) {
+	res, err := c.sendActionsGetWorkflowRunUsage(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (res *WorkflowRunUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run-usage"),
 	}
@@ -4838,7 +5108,13 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts
-func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res *ActionsListArtifactsForRepoOKHeaders, err error) {
+func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (*ActionsListArtifactsForRepoOKHeaders, error) {
+	res, err := c.sendActionsListArtifactsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res *ActionsListArtifactsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-artifacts-for-repo"),
 	}
@@ -4970,7 +5246,13 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
-func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res *ActionsListEnvironmentSecretsOKHeaders, err error) {
+func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (*ActionsListEnvironmentSecretsOKHeaders, error) {
+	res, err := c.sendActionsListEnvironmentSecrets(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res *ActionsListEnvironmentSecretsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-environment-secrets"),
 	}
@@ -5104,7 +5386,13 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 // com/rest/overview/resources-in-the-rest-api#parameters).
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res *ActionsListJobsForWorkflowRunOKHeaders, err error) {
+func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (*ActionsListJobsForWorkflowRunOKHeaders, error) {
+	res, err := c.sendActionsListJobsForWorkflowRun(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res *ActionsListJobsForWorkflowRunOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
 	}
@@ -5268,7 +5556,13 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 // must have the `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets
-func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res *ActionsListOrgSecretsOKHeaders, err error) {
+func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (*ActionsListOrgSecretsOKHeaders, error) {
+	res, err := c.sendActionsListOrgSecrets(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res *ActionsListOrgSecretsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-org-secrets"),
 	}
@@ -5387,7 +5681,13 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
+func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (*ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, error) {
+	res, err := c.sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
 	}
@@ -5519,7 +5819,13 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
-func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res *ActionsListRepoSecretsOKHeaders, err error) {
+func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (*ActionsListRepoSecretsOKHeaders, error) {
+	res, err := c.sendActionsListRepoSecrets(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res *ActionsListRepoSecretsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-secrets"),
 	}
@@ -5651,7 +5957,13 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/workflows
-func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res *ActionsListRepoWorkflowsOKHeaders, err error) {
+func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (*ActionsListRepoWorkflowsOKHeaders, error) {
+	res, err := c.sendActionsListRepoWorkflows(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res *ActionsListRepoWorkflowsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-workflows"),
 	}
@@ -5782,7 +6094,13 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/downloads
-func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) (res []RunnerApplication, err error) {
+func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) ([]RunnerApplication, error) {
+	res, err := c.sendActionsListRunnerApplicationsForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) (res []RunnerApplication, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-org"),
 	}
@@ -5860,7 +6178,13 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 // You must authenticate using an access token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/downloads
-func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) (res []RunnerApplication, err error) {
+func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) ([]RunnerApplication, error) {
+	res, err := c.sendActionsListRunnerApplicationsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) (res []RunnerApplication, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-repo"),
 	}
@@ -5955,7 +6279,13 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 // this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res *ActionsListSelectedReposForOrgSecretOK, err error) {
+func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (*ActionsListSelectedReposForOrgSecretOK, error) {
+	res, err := c.sendActionsListSelectedReposForOrgSecret(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res *ActionsListSelectedReposForOrgSecretOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
 	}
@@ -6090,7 +6420,13 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions/repositories
-func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
+func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (*ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, error) {
+	res, err := c.sendActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
 	}
@@ -6209,7 +6545,13 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups
-func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res *ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
+func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (*ActionsListSelfHostedRunnerGroupsForOrgOK, error) {
+	res, err := c.sendActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res *ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
 	}
@@ -6325,7 +6667,13 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners
-func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res *ActionsListSelfHostedRunnersForOrgOKHeaders, err error) {
+func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (*ActionsListSelfHostedRunnersForOrgOKHeaders, error) {
+	res, err := c.sendActionsListSelfHostedRunnersForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res *ActionsListSelfHostedRunnersForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
 	}
@@ -6441,7 +6789,13 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 // token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners
-func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res *ActionsListSelfHostedRunnersForRepoOKHeaders, err error) {
+func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (*ActionsListSelfHostedRunnersForRepoOKHeaders, error) {
+	res, err := c.sendActionsListSelfHostedRunnersForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res *ActionsListSelfHostedRunnersForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
 	}
@@ -6575,7 +6929,13 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, err error) {
+func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (*ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, error) {
+	res, err := c.sendActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
 	}
@@ -6707,7 +7067,13 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res *ActionsListWorkflowRunArtifactsOKHeaders, err error) {
+func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (*ActionsListWorkflowRunArtifactsOKHeaders, error) {
+	res, err := c.sendActionsListWorkflowRunArtifacts(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res *ActionsListWorkflowRunArtifactsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-run-artifacts"),
 	}
@@ -6857,7 +7223,13 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs
-func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res *ActionsListWorkflowRunsForRepoOKHeaders, err error) {
+func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (*ActionsListWorkflowRunsForRepoOKHeaders, error) {
+	res, err := c.sendActionsListWorkflowRunsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res *ActionsListWorkflowRunsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
 	}
@@ -7079,7 +7451,13 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
-func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res *ActionsReRunWorkflowCreated, err error) {
+func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) error {
+	res, err := c.sendActionsReRunWorkflow(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res *ActionsReRunWorkflowCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/re-run-workflow"),
 	}
@@ -7193,7 +7571,13 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
+	res, err := c.sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
 	}
@@ -7303,7 +7687,13 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
+func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (ActionsRemoveSelectedRepoFromOrgSecretRes, error) {
+	res, err := c.sendActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
 	}
@@ -7414,7 +7804,13 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
+func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) error {
+	res, err := c.sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
 	}
@@ -7522,7 +7918,13 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 // this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
-func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res *ActionsRetryWorkflowCreated, err error) {
+func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) error {
+	res, err := c.sendActionsRetryWorkflow(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res *ActionsRetryWorkflowCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/retry-workflow"),
 	}
@@ -7630,7 +8032,13 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 // Anyone with read access to the repository contents and deployments can use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
-func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (res []Deployment, err error) {
+func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) ([]Deployment, error) {
+	res, err := c.sendActionsReviewPendingDeploymentsForRun(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, request *ActionsReviewPendingDeploymentsForRunReq, params ActionsReviewPendingDeploymentsForRunParams) (res []Deployment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/review-pending-deployments-for-run"),
 	}
@@ -7759,7 +8167,13 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res *ActionsSetAllowedActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) error {
+	res, err := c.sendActionsSetAllowedActionsOrganization(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res *ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
 	}
@@ -7848,7 +8262,13 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res *ActionsSetAllowedActionsRepositoryNoContent, err error) {
+func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) error {
+	res, err := c.sendActionsSetAllowedActionsRepository(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res *ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
 	}
@@ -7948,7 +8368,13 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions
-func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) error {
+	res, err := c.sendActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.Context, request *ActionsSetGithubActionsPermissionsOrganizationReq, params ActionsSetGithubActionsPermissionsOrganizationParams) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
 	}
@@ -8043,7 +8469,13 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 // Apps must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
-func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
+func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) error {
+	res, err := c.sendActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Context, request *ActionsSetGithubActionsPermissionsRepositoryReq, params ActionsSetGithubActionsPermissionsRepositoryParams) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
 	}
@@ -8152,7 +8584,13 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) error {
+	res, err := c.sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, request *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
 	}
@@ -8260,7 +8698,13 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 // GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res *ActionsSetSelectedReposForOrgSecretNoContent, err error) {
+func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) error {
+	res, err := c.sendActionsSetSelectedReposForOrgSecret(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, request *ActionsSetSelectedReposForOrgSecretReq, params ActionsSetSelectedReposForOrgSecretParams) (res *ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
 	}
@@ -8369,7 +8813,13 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 // GitHub Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
-func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
+func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) error {
+	res, err := c.sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, request *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
 	}
@@ -8462,7 +8912,13 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
+func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) error {
+	res, err := c.sendActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, request *ActionsSetSelfHostedRunnersInGroupForOrgReq, params ActionsSetSelfHostedRunnersInGroupForOrgParams) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
 	}
@@ -8570,7 +9026,13 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
+func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error) {
+	res, err := c.sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsUpdateSelfHostedRunnerGroupForOrgReq, params ActionsUpdateSelfHostedRunnerGroupForOrgParams) (res *RunnerGroupsOrg, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
 	}
@@ -8673,7 +9135,13 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 // Check if a repository is starred by the authenticated user.
 //
 // GET /user/starred/{owner}/{repo}
-func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
+func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (ActivityCheckRepoIsStarredByAuthenticatedUserRes, error) {
+	res, err := c.sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
 	}
@@ -8766,7 +9234,13 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 // manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
 //
 // DELETE /repos/{owner}/{repo}/subscription
-func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res *ActivityDeleteRepoSubscriptionNoContent, err error) {
+func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) error {
+	res, err := c.sendActivityDeleteRepoSubscription(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res *ActivityDeleteRepoSubscriptionNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-repo-subscription"),
 	}
@@ -8862,7 +9336,13 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 // endpoint and set `ignore` to `true`.
 //
 // DELETE /notifications/threads/{thread_id}/subscription
-func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionRes, err error) {
+func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (ActivityDeleteThreadSubscriptionRes, error) {
+	res, err := c.sendActivityDeleteThreadSubscription(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-thread-subscription"),
 	}
@@ -8953,7 +9433,13 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 // the older, non revocable auth tokens.
 //
 // GET /feeds
-func (c *Client) ActivityGetFeeds(ctx context.Context) (res *Feed, err error) {
+func (c *Client) ActivityGetFeeds(ctx context.Context) (*Feed, error) {
+	res, err := c.sendActivityGetFeeds(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-feeds"),
 	}
@@ -9015,7 +9501,13 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res *Feed, err error) {
 // Get a repository subscription.
 //
 // GET /repos/{owner}/{repo}/subscription
-func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
+func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (ActivityGetRepoSubscriptionRes, error) {
+	res, err := c.sendActivityGetRepoSubscription(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-repo-subscription"),
 	}
@@ -9107,7 +9599,13 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 // Get a thread.
 //
 // GET /notifications/threads/{thread_id}
-func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
+func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (ActivityGetThreadRes, error) {
+	res, err := c.sendActivityGetThread(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread"),
 	}
@@ -9186,7 +9684,13 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 // example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
 //
 // GET /notifications/threads/{thread_id}/subscription
-func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
+func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (ActivityGetThreadSubscriptionForAuthenticatedUserRes, error) {
+	res, err := c.sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
 	}
@@ -9264,7 +9768,13 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 // only see public events.
 //
 // GET /users/{username}/events
-func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) (res []Event, err error) {
+func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error) {
+	res, err := c.sendActivityListEventsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-events-for-authenticated-user"),
 	}
@@ -9379,7 +9889,13 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 // List all notifications for the current user, sorted by most recently updated.
 //
 // GET /notifications
-func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
+func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (ActivityListNotificationsForAuthenticatedUserRes, error) {
+	res, err := c.sendActivityListNotificationsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
 	}
@@ -9547,7 +10063,13 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 // This is the user's organization dashboard. You must be authenticated as the user to view this.
 //
 // GET /users/{username}/events/orgs/{org}
-func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) (res []Event, err error) {
+func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error) {
+	res, err := c.sendActivityListOrgEventsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
 	}
@@ -9677,7 +10199,13 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 // public events API actually occurred at least five minutes ago.
 //
 // GET /events
-func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (res ActivityListPublicEventsRes, err error) {
+func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsRes, error) {
+	res, err := c.sendActivityListPublicEvents(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (res ActivityListPublicEventsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events"),
 	}
@@ -9777,7 +10305,13 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 // List public events for a network of repositories.
 //
 // GET /networks/{owner}/{repo}/events
-func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
+func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkRes, error) {
+	res, err := c.sendActivityListPublicEventsForRepoNetwork(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-repo-network"),
 	}
@@ -9907,7 +10441,13 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 // List public events for a user.
 //
 // GET /users/{username}/events/public
-func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) (res []Event, err error) {
+func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error) {
+	res, err := c.sendActivityListPublicEventsForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-user"),
 	}
@@ -10022,7 +10562,13 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 // List public organization events.
 //
 // GET /orgs/{org}/events
-func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) (res []Event, err error) {
+func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error) {
+	res, err := c.sendActivityListPublicOrgEvents(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-org-events"),
 	}
@@ -10139,7 +10685,13 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 // events.
 //
 // GET /users/{username}/received_events
-func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) (res []Event, err error) {
+func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error) {
+	res, err := c.sendActivityListReceivedEventsForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-events-for-user"),
 	}
@@ -10254,7 +10806,13 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 // List public events received by a user.
 //
 // GET /users/{username}/received_events/public
-func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) (res []Event, err error) {
+func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error) {
+	res, err := c.sendActivityListReceivedPublicEventsForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-public-events-for-user"),
 	}
@@ -10369,7 +10927,13 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 // List repository events.
 //
 // GET /repos/{owner}/{repo}/events
-func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) (res []Event, err error) {
+func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error) {
+	res, err := c.sendActivityListRepoEvents(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) (res []Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-events"),
 	}
@@ -10499,7 +11063,13 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 // List all notifications for the current user.
 //
 // GET /repos/{owner}/{repo}/notifications
-func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (res *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, err error) {
+func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (*ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, error) {
+	res, err := c.sendActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (res *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
 	}
@@ -10699,7 +11269,13 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 // type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:.
 //
 // GET /user/starred
-func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (res ActivityListReposStarredByAuthenticatedUserRes, err error) {
+func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (ActivityListReposStarredByAuthenticatedUserRes, error) {
+	res, err := c.sendActivityListReposStarredByAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (res ActivityListReposStarredByAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
 	}
@@ -10833,7 +11409,13 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 // Lists repositories a user is watching.
 //
 // GET /users/{username}/subscriptions
-func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (res *ActivityListReposWatchedByUserOKHeaders, err error) {
+func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (*ActivityListReposWatchedByUserOKHeaders, error) {
+	res, err := c.sendActivityListReposWatchedByUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (res *ActivityListReposWatchedByUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-watched-by-user"),
 	}
@@ -10948,7 +11530,13 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 // Lists repositories the authenticated user is watching.
 //
 // GET /user/subscriptions
-func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
+func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (ActivityListWatchedReposForAuthenticatedUserRes, error) {
+	res, err := c.sendActivityListWatchedReposForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
 	}
@@ -11048,7 +11636,13 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 // Lists the people watching the specified repository.
 //
 // GET /repos/{owner}/{repo}/subscribers
-func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (res *ActivityListWatchersForRepoOKHeaders, err error) {
+func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (*ActivityListWatchersForRepoOKHeaders, error) {
+	res, err := c.sendActivityListWatchersForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (res *ActivityListWatchersForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watchers-for-repo"),
 	}
@@ -11184,7 +11778,13 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 // query parameter `all=false`.
 //
 // PUT /notifications
-func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
+func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (ActivityMarkNotificationsAsReadRes, error) {
+	res, err := c.sendActivityMarkNotificationsAsRead(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-notifications-as-read"),
 	}
@@ -11255,7 +11855,13 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 // pass the query parameter `all=false`.
 //
 // PUT /repos/{owner}/{repo}/notifications
-func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
+func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (ActivityMarkRepoNotificationsAsReadRes, error) {
+	res, err := c.sendActivityMarkRepoNotificationsAsRead(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
 	}
@@ -11350,7 +11956,13 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 // Mark a thread as read.
 //
 // PATCH /notifications/threads/{thread_id}
-func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
+func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (ActivityMarkThreadAsReadRes, error) {
+	res, err := c.sendActivityMarkThreadAsRead(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-thread-as-read"),
 	}
@@ -11429,7 +12041,13 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 // com/rest/reference/activity#delete-a-repository-subscription) completely.
 //
 // PUT /repos/{owner}/{repo}/subscription
-func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res *RepositorySubscription, err error) {
+func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (*RepositorySubscription, error) {
+	res, err := c.sendActivitySetRepoSubscription(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res *RepositorySubscription, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-repo-subscription"),
 	}
@@ -11531,7 +12149,13 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 // com/rest/reference/activity#delete-a-thread-subscription) endpoint.
 //
 // PUT /notifications/threads/{thread_id}/subscription
-func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
+func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (ActivitySetThreadSubscriptionRes, error) {
+	res, err := c.sendActivitySetThreadSubscription(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-thread-subscription"),
 	}
@@ -11613,7 +12237,13 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /user/starred/{owner}/{repo}
-func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
+func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (ActivityStarRepoForAuthenticatedUserRes, error) {
+	res, err := c.sendActivityStarRepoForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
 	}
@@ -11704,7 +12334,13 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 // Unstar a repository for the authenticated user.
 //
 // DELETE /user/starred/{owner}/{repo}
-func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
+func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (ActivityUnstarRepoForAuthenticatedUserRes, error) {
+	res, err := c.sendActivityUnstarRepoForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
 	}
@@ -11800,7 +12436,13 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 // com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
 //
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
-func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationRes, err error) {
+func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (AppsAddRepoToInstallationRes, error) {
+	res, err := c.sendAppsAddRepoToInstallation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/add-repo-to-installation"),
 	}
@@ -11896,7 +12538,13 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 // tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token
-func (c *Client) AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (res AppsCheckTokenRes, err error) {
+func (c *Client) AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (AppsCheckTokenRes, error) {
+	res, err := c.sendAppsCheckToken(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckTokenReq, params AppsCheckTokenParams) (res AppsCheckTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/check-token"),
 	}
@@ -11985,7 +12633,13 @@ func (c *Client) AppsCheckToken(ctx context.Context, request *AppsCheckTokenReq,
 // to access this endpoint.
 //
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
-func (c *Client) AppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (res AppsCreateContentAttachmentRes, err error) {
+func (c *Client) AppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (AppsCreateContentAttachmentRes, error) {
+	res, err := c.sendAppsCreateContentAttachment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *AppsCreateContentAttachmentReq, params AppsCreateContentAttachmentParams) (res AppsCreateContentAttachmentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-content-attachment"),
 	}
@@ -12107,7 +12761,13 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request *AppsC
 // retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
 //
 // POST /app-manifests/{code}/conversions
-func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (res AppsCreateFromManifestRes, err error) {
+func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (AppsCreateFromManifestRes, error) {
+	res, err := c.sendAppsCreateFromManifest(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCreateFromManifestReq, params AppsCreateFromManifestParams) (res AppsCreateFromManifestRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-from-manifest"),
 	}
@@ -12196,7 +12856,13 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 // access this endpoint.
 //
 // POST /app/installations/{installation_id}/access_tokens
-func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (res AppsCreateInstallationAccessTokenRes, err error) {
+func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (AppsCreateInstallationAccessTokenRes, error) {
+	res, err := c.sendAppsCreateInstallationAccessToken(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, request OptAppsCreateInstallationAccessTokenReq, params AppsCreateInstallationAccessTokenParams) (res AppsCreateInstallationAccessTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-installation-access-token"),
 	}
@@ -12301,7 +12967,13 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 // GitHub](https://github.com/settings/applications#authorized).
 //
 // DELETE /applications/{client_id}/grant
-func (c *Client) AppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (res AppsDeleteAuthorizationRes, err error) {
+func (c *Client) AppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (AppsDeleteAuthorizationRes, error) {
+	res, err := c.sendAppsDeleteAuthorization(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (res AppsDeleteAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-authorization"),
 	}
@@ -12386,7 +13058,13 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request *AppsDelet
 // access this endpoint.
 //
 // DELETE /app/installations/{installation_id}
-func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationRes, err error) {
+func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (AppsDeleteInstallationRes, error) {
+	res, err := c.sendAppsDeleteInstallation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-installation"),
 	}
@@ -12465,7 +13143,13 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 // using the OAuth application's `client_id` and `client_secret` as the username and password.
 //
 // DELETE /applications/{client_id}/token
-func (c *Client) AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (res AppsDeleteTokenRes, err error) {
+func (c *Client) AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (AppsDeleteTokenRes, error) {
+	res, err := c.sendAppsDeleteToken(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTokenReq, params AppsDeleteTokenParams) (res AppsDeleteTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-token"),
 	}
@@ -12552,7 +13236,13 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request *AppsDeleteTokenRe
 // access this endpoint.
 //
 // GET /app
-func (c *Client) AppsGetAuthenticated(ctx context.Context) (res *Integration, err error) {
+func (c *Client) AppsGetAuthenticated(ctx context.Context) (*Integration, error) {
+	res, err := c.sendAppsGetAuthenticated(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-authenticated"),
 	}
@@ -12621,7 +13311,13 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res *Integration, er
 // to access this endpoint.
 //
 // GET /apps/{app_slug}
-func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugRes, err error) {
+func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (AppsGetBySlugRes, error) {
+	res, err := c.sendAppsGetBySlug(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-by-slug"),
 	}
@@ -12704,7 +13400,13 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/accounts/{account_id}
-func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
+func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (AppsGetSubscriptionPlanForAccountRes, error) {
+	res, err := c.sendAppsGetSubscriptionPlanForAccount(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account"),
 	}
@@ -12787,7 +13489,13 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/accounts/{account_id}
-func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
+func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (AppsGetSubscriptionPlanForAccountStubbedRes, error) {
+	res, err := c.sendAppsGetSubscriptionPlanForAccountStubbed(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
 	}
@@ -12867,7 +13575,13 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 // access this endpoint.
 //
 // GET /app/hook/config
-func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res *WebhookConfig, err error) {
+func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (*WebhookConfig, error) {
+	res, err := c.sendAppsGetWebhookConfigForApp(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-config-for-app"),
 	}
@@ -12932,7 +13646,13 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res *WebhookCo
 // access this endpoint.
 //
 // GET /app/hook/deliveries/{delivery_id}
-func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (res AppsGetWebhookDeliveryRes, err error) {
+func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (AppsGetWebhookDeliveryRes, error) {
+	res, err := c.sendAppsGetWebhookDelivery(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (res AppsGetWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-delivery"),
 	}
@@ -13016,7 +13736,13 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/plans/{plan_id}/accounts
-func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (res AppsListAccountsForPlanRes, err error) {
+func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (AppsListAccountsForPlanRes, error) {
+	res, err := c.sendAppsListAccountsForPlan(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (res AppsListAccountsForPlanRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan"),
 	}
@@ -13173,7 +13899,13 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
-func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (res AppsListAccountsForPlanStubbedRes, err error) {
+func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (AppsListAccountsForPlanStubbedRes, error) {
+	res, err := c.sendAppsListAccountsForPlanStubbed(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (res AppsListAccountsForPlanStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
 	}
@@ -13328,7 +14060,13 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 // The access the user has to each repository is included in the hash under the `permissions` key.
 //
 // GET /user/installations/{installation_id}/repositories
-func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
+func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (AppsListInstallationReposForAuthenticatedUserRes, error) {
+	res, err := c.sendAppsListInstallationReposForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
 	}
@@ -13448,7 +14186,13 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/plans
-func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansRes, err error) {
+func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (AppsListPlansRes, error) {
+	res, err := c.sendAppsListPlans(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans"),
 	}
@@ -13553,7 +14297,13 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 // client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/plans
-func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedRes, err error) {
+func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedRes, error) {
+	res, err := c.sendAppsListPlansStubbed(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans-stubbed"),
 	}
@@ -13656,7 +14406,13 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 // to access this endpoint.
 //
 // GET /installation/repositories
-func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationRes, err error) {
+func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (AppsListReposAccessibleToInstallationRes, error) {
+	res, err := c.sendAppsListReposAccessibleToInstallation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
 	}
@@ -13758,7 +14514,13 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 // com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
 //
 // GET /user/marketplace_purchases
-func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
+func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (AppsListSubscriptionsForAuthenticatedUserRes, error) {
+	res, err := c.sendAppsListSubscriptionsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
 	}
@@ -13860,7 +14622,13 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 // com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
 //
 // GET /user/marketplace_purchases/stubbed
-func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
+func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (AppsListSubscriptionsForAuthenticatedUserStubbedRes, error) {
+	res, err := c.sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
 	}
@@ -13963,7 +14731,13 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 // access this endpoint.
 //
 // GET /app/hook/deliveries
-func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (res AppsListWebhookDeliveriesRes, err error) {
+func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (AppsListWebhookDeliveriesRes, error) {
+	res, err := c.sendAppsListWebhookDeliveries(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (res AppsListWebhookDeliveriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-webhook-deliveries"),
 	}
@@ -14066,7 +14840,13 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 // access this endpoint.
 //
 // POST /app/hook/deliveries/{delivery_id}/attempts
-func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (res AppsRedeliverWebhookDeliveryRes, err error) {
+func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (AppsRedeliverWebhookDeliveryRes, error) {
+	res, err := c.sendAppsRedeliverWebhookDelivery(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (res AppsRedeliverWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/redeliver-webhook-delivery"),
 	}
@@ -14148,7 +14928,13 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 // com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
-func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationRes, err error) {
+func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (AppsRemoveRepoFromInstallationRes, error) {
+	res, err := c.sendAppsRemoveRepoFromInstallation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/remove-repo-from-installation"),
 	}
@@ -14244,7 +15030,13 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 // Invalid tokens will return `404 NOT FOUND`.
 //
 // PATCH /applications/{client_id}/token
-func (c *Client) AppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (res AppsResetTokenRes, err error) {
+func (c *Client) AppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (AppsResetTokenRes, error) {
+	res, err := c.sendAppsResetToken(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetTokenReq, params AppsResetTokenParams) (res AppsResetTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/reset-token"),
 	}
@@ -14333,7 +15125,13 @@ func (c *Client) AppsResetToken(ctx context.Context, request *AppsResetTokenReq,
 // to access this endpoint.
 //
 // DELETE /installation/token
-func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res *AppsRevokeInstallationAccessTokenNoContent, err error) {
+func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) error {
+	res, err := c.sendAppsRevokeInstallationAccessToken(ctx)
+	_ = res
+	return err
+}
+
+func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res *AppsRevokeInstallationAccessTokenNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/revoke-installation-access-token"),
 	}
@@ -14400,7 +15198,13 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res *Ap
 // password. Invalid tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token/scoped
-func (c *Client) AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (res AppsScopeTokenRes, err error) {
+func (c *Client) AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (AppsScopeTokenRes, error) {
+	res, err := c.sendAppsScopeToken(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeTokenReq, params AppsScopeTokenParams) (res AppsScopeTokenRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/scope-token"),
 	}
@@ -14494,7 +15298,13 @@ func (c *Client) AppsScopeToken(ctx context.Context, request *AppsScopeTokenReq,
 // access this endpoint.
 //
 // PUT /app/installations/{installation_id}/suspended
-func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationRes, err error) {
+func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (AppsSuspendInstallationRes, error) {
+	res, err := c.sendAppsSuspendInstallation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/suspend-installation"),
 	}
@@ -14574,7 +15384,13 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 // access this endpoint.
 //
 // DELETE /app/installations/{installation_id}/suspended
-func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationRes, err error) {
+func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (AppsUnsuspendInstallationRes, error) {
+	res, err := c.sendAppsUnsuspendInstallation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/unsuspend-installation"),
 	}
@@ -14655,7 +15471,13 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 // access this endpoint.
 //
 // PATCH /app/hook/config
-func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (res *WebhookConfig, err error) {
+func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (*WebhookConfig, error) {
+	res, err := c.sendAppsUpdateWebhookConfigForApp(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request OptAppsUpdateWebhookConfigForAppReq) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/update-webhook-config-for-app"),
 	}
@@ -14743,7 +15565,13 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/actions
-func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (res *ActionsBillingUsage, err error) {
+func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (*ActionsBillingUsage, error) {
+	res, err := c.sendBillingGetGithubActionsBillingGhe(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (res *ActionsBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
 	}
@@ -14827,7 +15655,13 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/actions
-func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (res *ActionsBillingUsage, err error) {
+func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (*ActionsBillingUsage, error) {
+	res, err := c.sendBillingGetGithubActionsBillingOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (res *ActionsBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-org"),
 	}
@@ -14911,7 +15745,13 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/actions
-func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (res *ActionsBillingUsage, err error) {
+func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (*ActionsBillingUsage, error) {
+	res, err := c.sendBillingGetGithubActionsBillingUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (res *ActionsBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-user"),
 	}
@@ -14992,7 +15832,13 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/packages
-func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (res *PackagesBillingUsage, err error) {
+func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (*PackagesBillingUsage, error) {
+	res, err := c.sendBillingGetGithubPackagesBillingGhe(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (res *PackagesBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
 	}
@@ -15073,7 +15919,13 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/packages
-func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (res *PackagesBillingUsage, err error) {
+func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (*PackagesBillingUsage, error) {
+	res, err := c.sendBillingGetGithubPackagesBillingOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (res *PackagesBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-org"),
 	}
@@ -15154,7 +16006,13 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/packages
-func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (res *PackagesBillingUsage, err error) {
+func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (*PackagesBillingUsage, error) {
+	res, err := c.sendBillingGetGithubPackagesBillingUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (res *PackagesBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-user"),
 	}
@@ -15235,7 +16093,13 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
-func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (res *CombinedBillingUsage, err error) {
+func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (*CombinedBillingUsage, error) {
+	res, err := c.sendBillingGetSharedStorageBillingGhe(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (res *CombinedBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
 	}
@@ -15316,7 +16180,13 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/shared-storage
-func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (res *CombinedBillingUsage, err error) {
+func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (*CombinedBillingUsage, error) {
+	res, err := c.sendBillingGetSharedStorageBillingOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (res *CombinedBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-org"),
 	}
@@ -15397,7 +16267,13 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/shared-storage
-func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (res *CombinedBillingUsage, err error) {
+func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (*CombinedBillingUsage, error) {
+	res, err := c.sendBillingGetSharedStorageBillingUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (res *CombinedBillingUsage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-user"),
 	}
@@ -15482,7 +16358,13 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 // have the `checks:write` permission to create check suites.
 //
 // POST /repos/{owner}/{repo}/check-suites
-func (c *Client) ChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
+func (c *Client) ChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (ChecksCreateSuiteRes, error) {
+	res, err := c.sendChecksCreateSuite(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/create-suite"),
 	}
@@ -15582,7 +16464,13 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request *ChecksCreateSui
 // authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
-func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res *CheckRun, err error) {
+func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (*CheckRun, error) {
+	res, err := c.sendChecksGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res *CheckRun, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get"),
 	}
@@ -15693,7 +16581,13 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res *Ch
 // authenticated users must have the `repo` scope to get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
-func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (res *CheckSuite, err error) {
+func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (*CheckSuite, error) {
+	res, err := c.sendChecksGetSuite(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (res *CheckSuite, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get-suite"),
 	}
@@ -15802,7 +16696,13 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 // annotations for a check run in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (res *ChecksListAnnotationsOKHeaders, err error) {
+func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (*ChecksListAnnotationsOKHeaders, error) {
+	res, err := c.sendChecksListAnnotations(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (res *ChecksListAnnotationsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-annotations"),
 	}
@@ -15953,7 +16853,13 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 // check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res *ChecksListForRefOKHeaders, err error) {
+func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (*ChecksListForRefOKHeaders, error) {
+	res, err := c.sendChecksListForRef(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res *ChecksListForRefOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-ref"),
 	}
@@ -16171,7 +17077,13 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 // Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res *ChecksListForSuiteOKHeaders, err error) {
+func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (*ChecksListForSuiteOKHeaders, error) {
+	res, err := c.sendChecksListForSuite(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res *ChecksListForSuiteOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-suite"),
 	}
@@ -16373,7 +17285,13 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 // get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res *ChecksListSuitesForRefOKHeaders, err error) {
+func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (*ChecksListSuitesForRefOKHeaders, error) {
+	res, err := c.sendChecksListSuitesForRef(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res *ChecksListSuitesForRefOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-suites-for-ref"),
 	}
@@ -16557,7 +17475,13 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 // repository or pull access to a public repository.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
-func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res *ChecksRerequestSuiteCreated, err error) {
+func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) error {
+	res, err := c.sendChecksRerequestSuite(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res *ChecksRerequestSuiteCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/rerequest-suite"),
 	}
@@ -16668,7 +17592,13 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 // to set preferences for check suites.
 //
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
-func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res *CheckSuitePreference, err error) {
+func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (*CheckSuitePreference, error) {
+	res, err := c.sendChecksSetSuitesPreferences(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res *CheckSuitePreference, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/set-suites-preferences"),
 	}
@@ -16821,7 +17751,13 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request *Checks
 // in each set undeleted to avoid removing a tool's analysis entirely.
 //
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisRes, err error) {
+func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error) {
+	res, err := c.sendCodeScanningDeleteAnalysis(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/delete-analysis"),
 	}
@@ -16954,7 +17890,13 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 // a GET request to the URL specified by `instances_url`.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (res CodeScanningGetAlertRes, err error) {
+func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertRes, error) {
+	res, err := c.sendCodeScanningGetAlert(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (res CodeScanningGetAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-alert"),
 	}
@@ -17081,7 +18023,13 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 // `tool` field.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (res CodeScanningGetAnalysisRes, err error) {
+func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (CodeScanningGetAnalysisRes, error) {
+	res, err := c.sendCodeScanningGetAnalysis(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (res CodeScanningGetAnalysisRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-analysis"),
 	}
@@ -17192,7 +18140,13 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 // have the `security_events` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
-func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifRes, err error) {
+func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (CodeScanningGetSarifRes, error) {
+	res, err := c.sendCodeScanningGetSarif(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-sarif"),
 	}
@@ -17300,7 +18254,13 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
-func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesRes, err error) {
+func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesRes, error) {
+	res, err := c.sendCodeScanningListAlertInstances(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alert-instances"),
 	}
@@ -17475,7 +18435,13 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 // (if you used `ref` in the request).
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts
-func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (res CodeScanningListAlertsForRepoRes, err error) {
+func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (CodeScanningListAlertsForRepoRes, error) {
+	res, err := c.sendCodeScanningListAlertsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (res CodeScanningListAlertsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
 	}
@@ -17696,7 +18662,13 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 // `tool` field.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses
-func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesRes, err error) {
+func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error) {
+	res, err := c.sendCodeScanningListRecentAnalyses(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-recent-analyses"),
 	}
@@ -17908,7 +18880,13 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 // permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
+func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertRes, error) {
+	res, err := c.sendCodeScanningUpdateAlert(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (res CodeScanningUpdateAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/update-alert"),
 	}
@@ -18055,7 +19033,13 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request *CodeScann
 // upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).".
 //
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
-func (c *Client) CodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
+func (c *Client) CodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (CodeScanningUploadSarifRes, error) {
+	res, err := c.sendCodeScanningUploadSarif(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeScanningUploadSarifReq, params CodeScanningUploadSarifParams) (res CodeScanningUploadSarifRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/upload-sarif"),
 	}
@@ -18159,7 +19143,13 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request *CodeScann
 // Get all codes of conduct.
 //
 // GET /codes_of_conduct
-func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
+func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (CodesOfConductGetAllCodesOfConductRes, error) {
+	res, err := c.sendCodesOfConductGetAllCodesOfConduct(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
 	}
@@ -18221,7 +19211,13 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 // Get a code of conduct.
 //
 // GET /codes_of_conduct/{key}
-func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
+func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (CodesOfConductGetConductCodeRes, error) {
+	res, err := c.sendCodesOfConductGetConductCode(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
 	}
@@ -18297,7 +19293,13 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 // Lists all the emojis available to use on GitHub.
 //
 // GET /emojis
-func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
+func (c *Client) EmojisGet(ctx context.Context) (EmojisGetRes, error) {
+	res, err := c.sendEmojisGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("emojis/get"),
 	}
@@ -18363,7 +19365,13 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
 	}
@@ -18471,7 +19479,13 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 // scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
 	}
@@ -18584,7 +19598,13 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 // ```.
 //
 // POST /enterprises/{enterprise}/actions/runners/registration-token
-func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (res *AuthenticationToken, err error) {
+func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (*AuthenticationToken, error) {
+	res, err := c.sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
 	}
@@ -18670,7 +19690,13 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 // ```.
 //
 // POST /enterprises/{enterprise}/actions/runners/remove-token
-func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (res *AuthenticationToken, err error) {
+func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (*AuthenticationToken, error) {
+	res, err := c.sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (res *AuthenticationToken, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
 	}
@@ -18748,7 +19774,13 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // POST /enterprises/{enterprise}/actions/runner-groups
-func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error) {
+	res, err := c.sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
 	}
@@ -18838,7 +19870,13 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
 	}
@@ -18931,7 +19969,13 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
 	}
@@ -19023,7 +20067,13 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
 	}
@@ -19115,7 +20165,13 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res *EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res *EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
 	}
@@ -19210,7 +20266,13 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
 	}
@@ -19305,7 +20367,13 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
 	}
@@ -19400,7 +20468,13 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
-func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (res *SelectedActions, err error) {
+func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (*SelectedActions, error) {
+	res, err := c.sendEnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (res *SelectedActions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
 	}
@@ -19478,7 +20552,13 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 // you must use an access token with the `admin:enterprise` scope.
 //
 // GET /enterprises/{enterprise}/audit-log
-func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) (res []AuditLogEvent, err error) {
+func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) ([]AuditLogEvent, error) {
+	res, err := c.sendEnterpriseAdminGetAuditLog(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) (res []AuditLogEvent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-audit-log"),
 	}
@@ -19679,7 +20759,13 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions
-func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (res *ActionsEnterprisePermissions, err error) {
+func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (*ActionsEnterprisePermissions, error) {
+	res, err := c.sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (res *ActionsEnterprisePermissions, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
 	}
@@ -19757,7 +20843,13 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
+	res, err := c.sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
 	}
@@ -19870,7 +20962,13 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (*ScimEnterpriseUser, error) {
+	res, err := c.sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
 	}
@@ -19962,7 +21060,13 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
-func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (res *Runner, err error) {
+func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (*Runner, error) {
+	res, err := c.sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (res *Runner, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
 	}
@@ -20054,7 +21158,13 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error) {
+	res, err := c.sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
 	}
@@ -20146,7 +21256,13 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
+func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (*EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, error) {
+	res, err := c.sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
 	}
@@ -20277,7 +21393,13 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups
-func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (res *ScimGroupListEnterprise, err error) {
+func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (*ScimGroupListEnterprise, error) {
+	res, err := c.sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (res *ScimGroupListEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
 	}
@@ -20452,7 +21574,13 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 // added to the GitHub enterprise, and the external identity `null` entry remains in place.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users
-func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (res *ScimUserListEnterprise, err error) {
+func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (*ScimUserListEnterprise, error) {
+	res, err := c.sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (res *ScimUserListEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
 	}
@@ -20585,7 +21713,13 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/downloads
-func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) (res []RunnerApplication, err error) {
+func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) ([]RunnerApplication, error) {
+	res, err := c.sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) (res []RunnerApplication, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
 	}
@@ -20666,7 +21800,13 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions/organizations
-func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
+func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (*EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, error) {
+	res, err := c.sendEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
 	}
@@ -20782,7 +21922,13 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups
-func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
+func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, error) {
+	res, err := c.sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
 	}
@@ -20898,7 +22044,13 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners
-func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, err error) {
+func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, error) {
+	res, err := c.sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
 	}
@@ -21014,7 +22166,13 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, err error) {
+func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (*EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, error) {
+	res, err := c.sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
 	}
@@ -21148,7 +22306,13 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 // to.
 //
 // POST /scim/v2/enterprises/{enterprise}/Groups
-func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
+	res, err := c.sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
 	}
@@ -21243,7 +22407,13 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 // will be sent.
 //
 // POST /scim/v2/enterprises/{enterprise}/Users
-func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (*ScimEnterpriseUser, error) {
+	res, err := c.sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Context, request *EnterpriseAdminProvisionAndInviteEnterpriseUserReq, params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
 	}
@@ -21336,7 +22506,13 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
 	}
@@ -21444,7 +22620,13 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
 	}
@@ -21554,7 +22736,13 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request *SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
 	}
@@ -21635,7 +22823,13 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
-func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx context.Context, request *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
 	}
@@ -21730,7 +22924,13 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 // group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
+	res, err := c.sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
 	}
@@ -21842,7 +23042,13 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 // identity, and deletes the associated `{scim_user_id}`.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (*ScimEnterpriseUser, error) {
+	res, err := c.sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx context.Context, request *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
 	}
@@ -21947,7 +23153,13 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, request *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
 	}
@@ -22055,7 +23267,13 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
-func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, request *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
 	}
@@ -22145,7 +23363,13 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
+func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) error {
+	res, err := c.sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, request *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
 	}
@@ -22254,7 +23478,13 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 // [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
+func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (*ScimEnterpriseGroup, error) {
+	res, err := c.sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (res *ScimEnterpriseGroup, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
 	}
@@ -22379,7 +23609,13 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 // ```.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
+func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (*ScimEnterpriseUser, error) {
+	res, err := c.sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, request *EnterpriseAdminUpdateAttributeForEnterpriseUserReq, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (res *ScimEnterpriseUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
 	}
@@ -22483,7 +23719,13 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
+func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (*RunnerGroupsEnterprise, error) {
+	res, err := c.sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx context.Context, request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) (res *RunnerGroupsEnterprise, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
 	}
@@ -22593,7 +23835,13 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 // Check if a gist is starred.
 //
 // GET /gists/{gist_id}/star
-func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
+func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error) {
+	res, err := c.sendGistsCheckIsStarred(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/check-is-starred"),
 	}
@@ -22672,7 +23920,13 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 // automatic naming scheme that Gist uses internally.
 //
 // POST /gists
-func (c *Client) GistsCreate(ctx context.Context, request *GistsCreateReq) (res GistsCreateRes, err error) {
+func (c *Client) GistsCreate(ctx context.Context, request *GistsCreateReq) (GistsCreateRes, error) {
+	res, err := c.sendGistsCreate(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (res GistsCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create"),
 	}
@@ -22746,7 +24000,13 @@ func (c *Client) GistsCreate(ctx context.Context, request *GistsCreateReq) (res 
 // Create a gist comment.
 //
 // POST /gists/{gist_id}/comments
-func (c *Client) GistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
+func (c *Client) GistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (GistsCreateCommentRes, error) {
+	res, err := c.sendGistsCreateComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreateCommentReq, params GistsCreateCommentParams) (res GistsCreateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create-comment"),
 	}
@@ -22835,7 +24095,13 @@ func (c *Client) GistsCreateComment(ctx context.Context, request *GistsCreateCom
 // Delete a gist.
 //
 // DELETE /gists/{gist_id}
-func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
+func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteRes, error) {
+	res, err := c.sendGistsDelete(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete"),
 	}
@@ -22911,7 +24177,13 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 // Delete a gist comment.
 //
 // DELETE /gists/{gist_id}/comments/{comment_id}
-func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
+func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error) {
+	res, err := c.sendGistsDeleteComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete-comment"),
 	}
@@ -23002,7 +24274,13 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 // **Note**: This was previously `/gists/:gist_id/fork`.
 //
 // POST /gists/{gist_id}/forks
-func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res GistsForkRes, err error) {
+func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error) {
+	res, err := c.sendGistsFork(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res GistsForkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/fork"),
 	}
@@ -23079,7 +24357,13 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 // Get a gist.
 //
 // GET /gists/{gist_id}
-func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res GistsGetRes, err error) {
+func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error) {
+	res, err := c.sendGistsGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res GistsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get"),
 	}
@@ -23155,7 +24439,13 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 // Get a gist comment.
 //
 // GET /gists/{gist_id}/comments/{comment_id}
-func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
+func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error) {
+	res, err := c.sendGistsGetComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-comment"),
 	}
@@ -23246,7 +24536,13 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 // Get a gist revision.
 //
 // GET /gists/{gist_id}/{sha}
-func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (res GistsGetRevisionRes, err error) {
+func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error) {
+	res, err := c.sendGistsGetRevision(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (res GistsGetRevisionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-revision"),
 	}
@@ -23338,7 +24634,13 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 // gists:.
 //
 // GET /gists
-func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res GistsListRes, err error) {
+func (c *Client) GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error) {
+	res, err := c.sendGistsList(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res GistsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list"),
 	}
@@ -23455,7 +24757,13 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 // List gist comments.
 //
 // GET /gists/{gist_id}/comments
-func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
+func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (GistsListCommentsRes, error) {
+	res, err := c.sendGistsListComments(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-comments"),
 	}
@@ -23570,7 +24878,13 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 // List gist commits.
 //
 // GET /gists/{gist_id}/commits
-func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
+func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error) {
+	res, err := c.sendGistsListCommits(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-commits"),
 	}
@@ -23685,7 +24999,13 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 // Lists public gists for the specified user:.
 //
 // GET /users/{username}/gists
-func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserParams) (res GistsListForUserRes, err error) {
+func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error) {
+	res, err := c.sendGistsListForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUserParams) (res GistsListForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-for-user"),
 	}
@@ -23817,7 +25137,13 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 // List gist forks.
 //
 // GET /gists/{gist_id}/forks
-func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams) (res GistsListForksRes, err error) {
+func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error) {
+	res, err := c.sendGistsListForks(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksParams) (res GistsListForksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-forks"),
 	}
@@ -23935,7 +25261,13 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 // example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
 //
 // GET /gists/public
-func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicParams) (res GistsListPublicRes, err error) {
+func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicParams) (GistsListPublicRes, error) {
+	res, err := c.sendGistsListPublic(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublicParams) (res GistsListPublicRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-public"),
 	}
@@ -24052,7 +25384,13 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 // List the authenticated user's starred gists:.
 //
 // GET /gists/starred
-func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredRes, err error) {
+func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error) {
+	res, err := c.sendGistsListStarred(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-starred"),
 	}
@@ -24171,7 +25509,13 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /gists/{gist_id}/star
-func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res GistsStarRes, err error) {
+func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (GistsStarRes, error) {
+	res, err := c.sendGistsStar(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res GistsStarRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/star"),
 	}
@@ -24248,7 +25592,13 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 // Unstar a gist.
 //
 // DELETE /gists/{gist_id}/star
-func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
+func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (GistsUnstarRes, error) {
+	res, err := c.sendGistsUnstar(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/unstar"),
 	}
@@ -24325,7 +25675,13 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 // Update a gist comment.
 //
 // PATCH /gists/{gist_id}/comments/{comment_id}
-func (c *Client) GistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
+func (c *Client) GistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (GistsUpdateCommentRes, error) {
+	res, err := c.sendGistsUpdateComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdateCommentReq, params GistsUpdateCommentParams) (res GistsUpdateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/update-comment"),
 	}
@@ -24428,7 +25784,13 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request *GistsUpdateCom
 // Create a blob.
 //
 // POST /repos/{owner}/{repo}/git/blobs
-func (c *Client) GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (res GitCreateBlobRes, err error) {
+func (c *Client) GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (GitCreateBlobRes, error) {
+	res, err := c.sendGitCreateBlob(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobReq, params GitCreateBlobParams) (res GitCreateBlobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-blob"),
 	}
@@ -24556,7 +25918,13 @@ func (c *Client) GitCreateBlob(ctx context.Context, request *GitCreateBlobReq, p
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // POST /repos/{owner}/{repo}/git/commits
-func (c *Client) GitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (res GitCreateCommitRes, err error) {
+func (c *Client) GitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (GitCreateCommitRes, error) {
+	res, err := c.sendGitCreateCommit(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateCommitReq, params GitCreateCommitParams) (res GitCreateCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-commit"),
 	}
@@ -24653,7 +26021,13 @@ func (c *Client) GitCreateCommit(ctx context.Context, request *GitCreateCommitRe
 // without branches.
 //
 // POST /repos/{owner}/{repo}/git/refs
-func (c *Client) GitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (res GitCreateRefRes, err error) {
+func (c *Client) GitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (GitCreateRefRes, error) {
+	res, err := c.sendGitCreateRef(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq, params GitCreateRefParams) (res GitCreateRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-ref"),
 	}
@@ -24784,7 +26158,13 @@ func (c *Client) GitCreateRef(ctx context.Context, request *GitCreateRefReq, par
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // POST /repos/{owner}/{repo}/git/tags
-func (c *Client) GitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (res GitCreateTagRes, err error) {
+func (c *Client) GitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (GitCreateTagRes, error) {
+	res, err := c.sendGitCreateTag(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq, params GitCreateTagParams) (res GitCreateTagRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tag"),
 	}
@@ -24894,7 +26274,13 @@ func (c *Client) GitCreateTag(ctx context.Context, request *GitCreateTagReq, par
 // reference](https://docs.github.com/rest/reference/git#update-a-reference).".
 //
 // POST /repos/{owner}/{repo}/git/trees
-func (c *Client) GitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (res GitCreateTreeRes, err error) {
+func (c *Client) GitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (GitCreateTreeRes, error) {
+	res, err := c.sendGitCreateTree(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeReq, params GitCreateTreeParams) (res GitCreateTreeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tree"),
 	}
@@ -24998,7 +26384,13 @@ func (c *Client) GitCreateTree(ctx context.Context, request *GitCreateTreeReq, p
 // Delete a reference.
 //
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
-func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (res GitDeleteRefRes, err error) {
+func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (GitDeleteRefRes, error) {
+	res, err := c.sendGitDeleteRef(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams) (res GitDeleteRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/delete-ref"),
 	}
@@ -25105,7 +26497,13 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 // _Note_: This API supports blobs up to 100 megabytes in size.
 //
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
-func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res GitGetBlobRes, err error) {
+func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (GitGetBlobRes, error) {
+	res, err := c.sendGitGetBlob(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (res GitGetBlobRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-blob"),
 	}
@@ -25244,7 +26642,13 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
-func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitRes, err error) {
+func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitRes, error) {
+	res, err := c.sendGitGetCommit(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-commit"),
 	}
@@ -25357,7 +26761,13 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 // com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
 //
 // GET /repos/{owner}/{repo}/git/ref/{ref}
-func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefRes, err error) {
+func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (GitGetRefRes, error) {
+	res, err := c.sendGitGetRef(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-ref"),
 	}
@@ -25494,7 +26904,13 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
-func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagRes, err error) {
+func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (GitGetTagRes, error) {
+	res, err := c.sendGitGetTag(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tag"),
 	}
@@ -25603,7 +27019,13 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 // and fetch one sub-tree at a time.
 //
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
-func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res GitGetTreeRes, err error) {
+func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (GitGetTreeRes, error) {
+	res, err := c.sendGitGetTree(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (res GitGetTreeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tree"),
 	}
@@ -25744,7 +27166,13 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 // such as `featureA` and `featureB`.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (res *GitListMatchingRefsOKHeaders, err error) {
+func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (*GitListMatchingRefsOKHeaders, error) {
+	res, err := c.sendGitListMatchingRefs(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (res *GitListMatchingRefsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/list-matching-refs"),
 	}
@@ -25888,7 +27316,13 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 // Update a reference.
 //
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
-func (c *Client) GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (res GitUpdateRefRes, err error) {
+func (c *Client) GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (GitUpdateRefRes, error) {
+	res, err := c.sendGitUpdateRef(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq, params GitUpdateRefParams) (res GitUpdateRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/update-ref"),
 	}
@@ -25998,7 +27432,13 @@ func (c *Client) GitUpdateRef(ctx context.Context, request *GitUpdateRefReq, par
 // com/rest/reference/repos#create-a-repository-for-the-authenticated-user).
 //
 // GET /gitignore/templates
-func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesRes, err error) {
+func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (GitignoreGetAllTemplatesRes, error) {
+	res, err := c.sendGitignoreGetAllTemplates(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-all-templates"),
 	}
@@ -26062,7 +27502,13 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 // contents.
 //
 // GET /gitignore/templates/{name}
-func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateRes, err error) {
+func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (GitignoreGetTemplateRes, error) {
+	res, err := c.sendGitignoreGetTemplate(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-template"),
 	}
@@ -26138,7 +27584,13 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 // Removes any interaction restrictions from your public repositories.
 //
 // DELETE /user/interaction-limits
-func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) error {
+	res, err := c.sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+	_ = res
+	return err
+}
+
+func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
 	}
@@ -26201,7 +27653,13 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 // be an organization owner to remove restrictions.
 //
 // DELETE /orgs/{org}/interaction-limits
-func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res *InteractionsRemoveRestrictionsForOrgNoContent, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) error {
+	res, err := c.sendInteractionsRemoveRestrictionsForOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res *InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
 	}
@@ -26281,7 +27739,13 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 // endpoint to change the interaction limit for a single repository.
 //
 // DELETE /repos/{owner}/{repo}/interaction-limits
-func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
+func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (InteractionsRemoveRestrictionsForRepoRes, error) {
+	res, err := c.sendInteractionsRemoveRestrictionsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
 	}
@@ -26375,7 +27839,13 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 // for individual repositories owned by the user.
 //
 // PUT /user/interaction-limits
-func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
+func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (InteractionsSetRestrictionsForAuthenticatedUserRes, error) {
+	res, err := c.sendInteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context.Context, request *InteractionLimit) (res InteractionsSetRestrictionsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
 	}
@@ -26452,7 +27922,13 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 // individual repositories owned by the organization.
 //
 // PUT /orgs/{org}/interaction-limits
-func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (res InteractionsSetRestrictionsForOrgRes, err error) {
+func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (InteractionsSetRestrictionsForOrgRes, error) {
+	res, err := c.sendInteractionsSetRestrictionsForOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForOrgParams) (res InteractionsSetRestrictionsForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-org"),
 	}
@@ -26544,7 +28020,13 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 // will not be able to use this endpoint to change the interaction limit for a single repository.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
-func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
+func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (InteractionsSetRestrictionsForRepoRes, error) {
+	res, err := c.sendInteractionsSetRestrictionsForRepo(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, request *InteractionLimit, params InteractionsSetRestrictionsForRepoParams) (res InteractionsSetRestrictionsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-repo"),
 	}
@@ -26648,7 +28130,13 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 // Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res *IssueSimple, err error) {
+func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (*IssueSimple, error) {
+	res, err := c.sendIssuesAddAssignees(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res *IssueSimple, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/add-assignees"),
 	}
@@ -26761,7 +28249,13 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 // Otherwise a `404` status code is returned.
 //
 // GET /repos/{owner}/{repo}/assignees/{assignee}
-func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedRes, err error) {
+func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (IssuesCheckUserCanBeAssignedRes, error) {
+	res, err := c.sendIssuesCheckUserCanBeAssigned(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/check-user-can-be-assigned"),
 	}
@@ -26876,7 +28370,13 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/issues
-func (c *Client) IssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (res IssuesCreateRes, err error) {
+func (c *Client) IssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (IssuesCreateRes, error) {
+	res, err := c.sendIssuesCreate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq, params IssuesCreateParams) (res IssuesCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create"),
 	}
@@ -26977,7 +28477,13 @@ func (c *Client) IssuesCreate(ctx context.Context, request *IssuesCreateReq, par
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (c *Client) IssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (res IssuesCreateCommentRes, err error) {
+func (c *Client) IssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (IssuesCreateCommentRes, error) {
+	res, err := c.sendIssuesCreateComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCreateCommentReq, params IssuesCreateCommentParams) (res IssuesCreateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-comment"),
 	}
@@ -27087,7 +28593,13 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request *IssuesCreateC
 // Create a label.
 //
 // POST /repos/{owner}/{repo}/labels
-func (c *Client) IssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (res IssuesCreateLabelRes, err error) {
+func (c *Client) IssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (IssuesCreateLabelRes, error) {
+	res, err := c.sendIssuesCreateLabel(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreateLabelReq, params IssuesCreateLabelParams) (res IssuesCreateLabelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-label"),
 	}
@@ -27182,7 +28694,13 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request *IssuesCreateLab
 // Create a milestone.
 //
 // POST /repos/{owner}/{repo}/milestones
-func (c *Client) IssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (res IssuesCreateMilestoneRes, err error) {
+func (c *Client) IssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (IssuesCreateMilestoneRes, error) {
+	res, err := c.sendIssuesCreateMilestone(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesCreateMilestoneReq, params IssuesCreateMilestoneParams) (res IssuesCreateMilestoneRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-milestone"),
 	}
@@ -27286,7 +28804,13 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request *IssuesCreat
 // Delete an issue comment.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res *IssuesDeleteCommentNoContent, err error) {
+func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) error {
+	res, err := c.sendIssuesDeleteComment(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res *IssuesDeleteCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-comment"),
 	}
@@ -27392,7 +28916,13 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 // Delete a label.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
-func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res *IssuesDeleteLabelNoContent, err error) {
+func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) error {
+	res, err := c.sendIssuesDeleteLabel(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res *IssuesDeleteLabelNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-label"),
 	}
@@ -27498,7 +29028,13 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 // Delete a milestone.
 //
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
-func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
+func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (IssuesDeleteMilestoneRes, error) {
+	res, err := c.sendIssuesDeleteMilestone(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-milestone"),
 	}
@@ -27622,7 +29158,13 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}
-func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res IssuesGetRes, err error) {
+func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (IssuesGetRes, error) {
+	res, err := c.sendIssuesGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res IssuesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get"),
 	}
@@ -27728,7 +29270,13 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 // Get an issue comment.
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
+func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (IssuesGetCommentRes, error) {
+	res, err := c.sendIssuesGetComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-comment"),
 	}
@@ -27834,7 +29382,13 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 // Get an issue event.
 //
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
-func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (res IssuesGetEventRes, err error) {
+func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventRes, error) {
+	res, err := c.sendIssuesGetEvent(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (res IssuesGetEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-event"),
 	}
@@ -27940,7 +29494,13 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 // Get a label.
 //
 // GET /repos/{owner}/{repo}/labels/{name}
-func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
+func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (IssuesGetLabelRes, error) {
+	res, err := c.sendIssuesGetLabel(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-label"),
 	}
@@ -28046,7 +29606,13 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 // Get a milestone.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
-func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
+func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (IssuesGetMilestoneRes, error) {
+	res, err := c.sendIssuesGetMilestone(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-milestone"),
 	}
@@ -28164,7 +29730,13 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /issues
-func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res IssuesListRes, err error) {
+func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (IssuesListRes, error) {
+	res, err := c.sendIssuesList(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (res IssuesListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list"),
 	}
@@ -28435,7 +30007,13 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 // com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
 //
 // GET /repos/{owner}/{repo}/assignees
-func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesRes, err error) {
+func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (IssuesListAssigneesRes, error) {
+	res, err := c.sendIssuesListAssignees(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-assignees"),
 	}
@@ -28565,7 +30143,13 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 // Issue Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsRes, err error) {
+func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsRes, error) {
+	res, err := c.sendIssuesListComments(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments"),
 	}
@@ -28727,7 +30311,13 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 // By default, Issue Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/issues/comments
-func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (res IssuesListCommentsForRepoRes, err error) {
+func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (IssuesListCommentsForRepoRes, error) {
+	res, err := c.sendIssuesListCommentsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (res IssuesListCommentsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments-for-repo"),
 	}
@@ -28908,7 +30498,13 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 // List issue events for a repository.
 //
 // GET /repos/{owner}/{repo}/issues/events
-func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (res IssuesListEventsForRepoRes, err error) {
+func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (IssuesListEventsForRepoRes, error) {
+	res, err := c.sendIssuesListEventsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (res IssuesListEventsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-events-for-repo"),
 	}
@@ -29046,7 +30642,13 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /user/issues
-func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (res IssuesListForAuthenticatedUserRes, err error) {
+func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (IssuesListForAuthenticatedUserRes, error) {
+	res, err := c.sendIssuesListForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (res IssuesListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-authenticated-user"),
 	}
@@ -29256,7 +30858,13 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /orgs/{org}/issues
-func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (res IssuesListForOrgRes, err error) {
+func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (IssuesListForOrgRes, error) {
+	res, err := c.sendIssuesListForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (res IssuesListForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-org"),
 	}
@@ -29481,7 +31089,13 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 // com/rest/reference/pulls#list-pull-requests)" endpoint.
 //
 // GET /repos/{owner}/{repo}/issues
-func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (res IssuesListForRepoRes, err error) {
+func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (IssuesListForRepoRes, error) {
+	res, err := c.sendIssuesListForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (res IssuesListForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-repo"),
 	}
@@ -29764,7 +31378,13 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 // List labels for issues in a milestone.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (res *IssuesListLabelsForMilestoneOKHeaders, err error) {
+func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (*IssuesListLabelsForMilestoneOKHeaders, error) {
+	res, err := c.sendIssuesListLabelsForMilestone(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (res *IssuesListLabelsForMilestoneOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-milestone"),
 	}
@@ -29909,7 +31529,13 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 // List labels for a repository.
 //
 // GET /repos/{owner}/{repo}/labels
-func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
+func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (IssuesListLabelsForRepoRes, error) {
+	res, err := c.sendIssuesListLabelsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-repo"),
 	}
@@ -30039,7 +31665,13 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 // List labels for an issue.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
-func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
+func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (IssuesListLabelsOnIssueRes, error) {
+	res, err := c.sendIssuesListLabelsOnIssue(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-on-issue"),
 	}
@@ -30184,7 +31816,13 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 // List milestones.
 //
 // GET /repos/{owner}/{repo}/milestones
-func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (res IssuesListMilestonesRes, err error) {
+func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (IssuesListMilestonesRes, error) {
+	res, err := c.sendIssuesListMilestones(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (res IssuesListMilestonesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-milestones"),
 	}
@@ -30368,7 +32006,13 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
+func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error) {
+	res, err := c.sendIssuesLock(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/lock"),
 	}
@@ -30494,7 +32138,13 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 // Remove all labels from an issue.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
-func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
+func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (IssuesRemoveAllLabelsRes, error) {
+	res, err := c.sendIssuesRemoveAllLabels(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-all-labels"),
 	}
@@ -30601,7 +32251,13 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 // Removes one or more assignees from an issue.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res *IssueSimple, err error) {
+func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (*IssueSimple, error) {
+	res, err := c.sendIssuesRemoveAssignees(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res *IssueSimple, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-assignees"),
 	}
@@ -30712,7 +32368,13 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 // endpoint returns a `404 Not Found` status if the label does not exist.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
-func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelRes, err error) {
+func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (IssuesRemoveLabelRes, error) {
+	res, err := c.sendIssuesRemoveLabel(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-label"),
 	}
@@ -30833,7 +32495,13 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 // Users with push access can unlock an issue's conversation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockRes, err error) {
+func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (IssuesUnlockRes, error) {
+	res, err := c.sendIssuesUnlock(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/unlock"),
 	}
@@ -30940,7 +32608,13 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 // Issue owners and users with push access can edit an issue.
 //
 // PATCH /repos/{owner}/{repo}/issues/{issue_number}
-func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (res IssuesUpdateRes, err error) {
+func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (IssuesUpdateRes, error) {
+	res, err := c.sendIssuesUpdate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, params IssuesUpdateParams) (res IssuesUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update"),
 	}
@@ -31065,7 +32739,13 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 // Update an issue comment.
 //
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (c *Client) IssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (res IssuesUpdateCommentRes, err error) {
+func (c *Client) IssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (IssuesUpdateCommentRes, error) {
+	res, err := c.sendIssuesUpdateComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (res IssuesUpdateCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-comment"),
 	}
@@ -31174,7 +32854,13 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request *IssuesUpdateC
 // Update a label.
 //
 // PATCH /repos/{owner}/{repo}/labels/{name}
-func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res *Label, err error) {
+func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (*Label, error) {
+	res, err := c.sendIssuesUpdateLabel(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res *Label, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-label"),
 	}
@@ -31283,7 +32969,13 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 // Update a milestone.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res *Milestone, err error) {
+func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (*Milestone, error) {
+	res, err := c.sendIssuesUpdateMilestone(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssuesUpdateMilestoneReq, params IssuesUpdateMilestoneParams) (res *Milestone, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-milestone"),
 	}
@@ -31408,7 +33100,13 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 // Get a license.
 //
 // GET /licenses/{license}
-func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
+func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (LicensesGetRes, error) {
+	res, err := c.sendLicensesGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get"),
 	}
@@ -31484,7 +33182,13 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 // Get all commonly used licenses.
 //
 // GET /licenses
-func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
+func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (LicensesGetAllCommonlyUsedRes, error) {
+	res, err := c.sendLicensesGetAllCommonlyUsed(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-all-commonly-used"),
 	}
@@ -31605,7 +33309,13 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 // or rendered license HTML.
 //
 // GET /repos/{owner}/{repo}/license
-func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (res *LicenseContent, err error) {
+func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (*LicenseContent, error) {
+	res, err := c.sendLicensesGetForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (res *LicenseContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-for-repo"),
 	}
@@ -31697,7 +33407,13 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 // Render a Markdown document.
 //
 // POST /markdown
-func (c *Client) MarkdownRender(ctx context.Context, request *MarkdownRenderReq) (res MarkdownRenderRes, err error) {
+func (c *Client) MarkdownRender(ctx context.Context, request *MarkdownRenderReq) (MarkdownRenderRes, error) {
+	res, err := c.sendMarkdownRender(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRenderReq) (res MarkdownRenderRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render"),
 	}
@@ -31774,7 +33490,13 @@ func (c *Client) MarkdownRender(ctx context.Context, request *MarkdownRenderReq)
 // format like a README.md file. Markdown content must be 400 KB or less.
 //
 // POST /markdown/raw
-func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
+func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (MarkdownRenderRawRes, error) {
+	res, err := c.sendMarkdownRenderRaw(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render-raw"),
 	}
@@ -31854,7 +33576,13 @@ func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRa
 // always query the API directly to get the latest list of IP addresses.
 //
 // GET /meta
-func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
+func (c *Client) MetaGet(ctx context.Context) (MetaGetRes, error) {
+	res, err := c.sendMetaGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get"),
 	}
@@ -31916,7 +33644,13 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 // Get the octocat as ASCII art.
 //
 // GET /octocat
-func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (res MetaGetOctocatOK, err error) {
+func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (MetaGetOctocatOK, error) {
+	res, err := c.sendMetaGetOctocat(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (res MetaGetOctocatOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-octocat"),
 	}
@@ -31999,7 +33733,13 @@ func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams
 // Get a random sentence from the Zen of GitHub.
 //
 // GET /zen
-func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
+func (c *Client) MetaGetZen(ctx context.Context) (MetaGetZenOK, error) {
+	res, err := c.sendMetaGetZen(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-zen"),
 	}
@@ -32061,7 +33801,13 @@ func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 // Get Hypermedia links to resources accessible in GitHub's REST API.
 //
 // GET /
-func (c *Client) MetaRoot(ctx context.Context) (res *MetaRootOK, err error) {
+func (c *Client) MetaRoot(ctx context.Context) (*MetaRootOK, error) {
+	res, err := c.sendMetaRoot(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/root"),
 	}
@@ -32123,7 +33869,13 @@ func (c *Client) MetaRoot(ctx context.Context) (res *MetaRootOK, err error) {
 // Stop an import for a repository.
 //
 // DELETE /repos/{owner}/{repo}/import
-func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res *MigrationsCancelImportNoContent, err error) {
+func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) error {
+	res, err := c.sendMigrationsCancelImport(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendMigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res *MigrationsCancelImportNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/cancel-import"),
 	}
@@ -32219,7 +33971,13 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 // will continue to be available even after an archive is deleted.
 //
 // DELETE /user/migrations/{migration_id}/archive
-func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
+func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (MigrationsDeleteArchiveForAuthenticatedUserRes, error) {
+	res, err := c.sendMigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
 	}
@@ -32297,7 +34055,13 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 // days.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
-func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgRes, err error) {
+func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (MigrationsDeleteArchiveForOrgRes, error) {
+	res, err := c.sendMigrationsDeleteArchiveForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-org"),
 	}
@@ -32389,7 +34153,13 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 // Fetches the URL to a migration archive.
 //
 // GET /orgs/{org}/migrations/{migration_id}/archive
-func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgRes, err error) {
+func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (MigrationsDownloadArchiveForOrgRes, error) {
+	res, err := c.sendMigrationsDownloadArchiveForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/download-archive-for-org"),
 	}
@@ -32501,7 +34271,13 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 // uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
 //
 // GET /user/migrations/{migration_id}/archive
-func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
+func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (MigrationsGetArchiveForAuthenticatedUserRes, error) {
+	res, err := c.sendMigrationsGetArchiveForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
 	}
@@ -32585,7 +34361,13 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 // author information.
 //
 // GET /repos/{owner}/{repo}/import/authors
-func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsRes, err error) {
+func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (MigrationsGetCommitAuthorsRes, error) {
+	res, err := c.sendMigrationsGetCommitAuthors(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-commit-authors"),
 	}
@@ -32750,7 +34532,13 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 // repository. To see a list of these files, make a "Get Large Files" request.
 //
 // GET /repos/{owner}/{repo}/import
-func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusRes, err error) {
+func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (MigrationsGetImportStatusRes, error) {
+	res, err := c.sendMigrationsGetImportStatus(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-import-status"),
 	}
@@ -32842,7 +34630,13 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 // List files larger than 100MB found during the import.
 //
 // GET /repos/{owner}/{repo}/import/large_files
-func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) (res []PorterLargeFile, err error) {
+func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error) {
+	res, err := c.sendMigrationsGetLargeFiles(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) (res []PorterLargeFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-large-files"),
 	}
@@ -32941,7 +34735,13 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 // github.com/rest/reference/migrations#download-a-user-migration-archive).
 //
 // GET /user/migrations/{migration_id}
-func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
+func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error) {
+	res, err := c.sendMigrationsGetStatusForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
 	}
@@ -33049,7 +34849,13 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 // *   `failed`, which means the migration failed.
 //
 // GET /orgs/{org}/migrations/{migration_id}
-func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (res MigrationsGetStatusForOrgRes, err error) {
+func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error) {
+	res, err := c.sendMigrationsGetStatusForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (res MigrationsGetStatusForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-org"),
 	}
@@ -33167,7 +34973,13 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 // Lists all migrations a user has started.
 //
 // GET /user/migrations
-func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserRes, err error) {
+func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error) {
+	res, err := c.sendMigrationsListForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-authenticated-user"),
 	}
@@ -33267,7 +35079,13 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 // Lists the most recent migrations.
 //
 // GET /orgs/{org}/migrations
-func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (res *MigrationsListForOrgOKHeaders, err error) {
+func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (*MigrationsListForOrgOKHeaders, error) {
+	res, err := c.sendMigrationsListForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (res *MigrationsListForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-org"),
 	}
@@ -33405,7 +35223,13 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 // List all the repositories for this organization migration.
 //
 // GET /orgs/{org}/migrations/{migration_id}/repositories
-func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgRes, err error) {
+func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (MigrationsListReposForOrgRes, error) {
+	res, err := c.sendMigrationsListReposForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-org"),
 	}
@@ -33535,7 +35359,13 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 // Lists all the repositories for this user migration.
 //
 // GET /user/migrations/{migration_id}/repositories
-func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserRes, err error) {
+func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (MigrationsListReposForUserRes, error) {
+	res, err := c.sendMigrationsListReposForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-user"),
 	}
@@ -33651,7 +35481,13 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 // time before you push new commits to the repository.
 //
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
-func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (res MigrationsMapCommitAuthorRes, err error) {
+func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (MigrationsMapCommitAuthorRes, error) {
+	res, err := c.sendMigrationsMapCommitAuthor(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (res MigrationsMapCommitAuthorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/map-commit-author"),
 	}
@@ -33763,7 +35599,13 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 // com/articles/versioning-large-files/).
 //
 // PATCH /repos/{owner}/{repo}/import/lfs
-func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (res MigrationsSetLfsPreferenceRes, err error) {
+func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (MigrationsSetLfsPreferenceRes, error) {
+	res, err := c.sendMigrationsSetLfsPreference(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (res MigrationsSetLfsPreferenceRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/set-lfs-preference"),
 	}
@@ -33867,7 +35709,13 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request *Migrat
 // Initiates the generation of a user migration archive.
 //
 // POST /user/migrations
-func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (res MigrationsStartForAuthenticatedUserRes, err error) {
+func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (MigrationsStartForAuthenticatedUserRes, error) {
+	res, err := c.sendMigrationsStartForAuthenticatedUser(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, request *MigrationsStartForAuthenticatedUserReq) (res MigrationsStartForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-authenticated-user"),
 	}
@@ -33941,7 +35789,13 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 // Initiates the generation of a migration archive.
 //
 // POST /orgs/{org}/migrations
-func (c *Client) MigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (res MigrationsStartForOrgRes, err error) {
+func (c *Client) MigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (MigrationsStartForOrgRes, error) {
+	res, err := c.sendMigrationsStartForOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (res MigrationsStartForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-org"),
 	}
@@ -34030,7 +35884,13 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request *MigrationsS
 // Start a source import to a GitHub repository using GitHub Importer.
 //
 // PUT /repos/{owner}/{repo}/import
-func (c *Client) MigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (res MigrationsStartImportRes, err error) {
+func (c *Client) MigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (MigrationsStartImportRes, error) {
+	res, err := c.sendMigrationsStartImport(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsStartImport(ctx context.Context, request *MigrationsStartImportReq, params MigrationsStartImportParams) (res MigrationsStartImportRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-import"),
 	}
@@ -34138,7 +35998,13 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request *MigrationsS
 // status of `404 Not Found` if the repository is not locked.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
-func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
+func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (MigrationsUnlockRepoForAuthenticatedUserRes, error) {
+	res, err := c.sendMigrationsUnlockRepoForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
 	}
@@ -34232,7 +36098,13 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 // is complete and you no longer need the source data.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
-func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgRes, err error) {
+func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (MigrationsUnlockRepoForOrgRes, error) {
+	res, err := c.sendMigrationsUnlockRepoForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-org"),
 	}
@@ -34341,7 +36213,13 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 // request. If no parameters are provided, the import will be restarted.
 //
 // PATCH /repos/{owner}/{repo}/import
-func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res *Import, err error) {
+func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (*Import, error) {
+	res, err := c.sendMigrationsUpdateImport(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res *Import, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/update-import"),
 	}
@@ -34465,7 +36343,13 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /authorizations
-func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
+func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (OAuthAuthorizationsCreateAuthorizationRes, error) {
+	res, err := c.sendOAuthAuthorizationsCreateAuthorization(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context, request OptOAuthAuthorizationsCreateAuthorizationReq) (res OAuthAuthorizationsCreateAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/create-authorization"),
 	}
@@ -34555,7 +36439,13 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /authorizations/{authorization_id}
-func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
+func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (OAuthAuthorizationsDeleteAuthorizationRes, error) {
+	res, err := c.sendOAuthAuthorizationsDeleteAuthorization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-authorization"),
 	}
@@ -34643,7 +36533,13 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /applications/grants/{grant_id}
-func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
+func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (OAuthAuthorizationsDeleteGrantRes, error) {
+	res, err := c.sendOAuthAuthorizationsDeleteGrant(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-grant"),
 	}
@@ -34728,7 +36624,13 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations/{authorization_id}
-func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
+func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (OAuthAuthorizationsGetAuthorizationRes, error) {
+	res, err := c.sendOAuthAuthorizationsGetAuthorization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-authorization"),
 	}
@@ -34813,7 +36715,13 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants/{grant_id}
-func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
+func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (OAuthAuthorizationsGetGrantRes, error) {
+	res, err := c.sendOAuthAuthorizationsGetGrant(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-grant"),
 	}
@@ -34917,7 +36825,13 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}
-func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
+func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, error) {
+	res, err := c.sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
 	}
@@ -35028,7 +36942,13 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}/{fingerprint}
-func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
+func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, error) {
+	res, err := c.sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx context.Context, request *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) (res OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
 	}
@@ -35140,7 +37060,13 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations
-func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
+func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (OAuthAuthorizationsListAuthorizationsRes, error) {
+	res, err := c.sendOAuthAuthorizationsListAuthorizations(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-authorizations"),
 	}
@@ -35277,7 +37203,13 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants
-func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
+func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (OAuthAuthorizationsListGrantsRes, error) {
+	res, err := c.sendOAuthAuthorizationsListGrants(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-grants"),
 	}
@@ -35407,7 +37339,13 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /authorizations/{authorization_id}
-func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
+func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (OAuthAuthorizationsUpdateAuthorizationRes, error) {
+	res, err := c.sendOAuthAuthorizationsUpdateAuthorization(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context, request OptOAuthAuthorizationsUpdateAuthorizationReq, params OAuthAuthorizationsUpdateAuthorizationParams) (res OAuthAuthorizationsUpdateAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/update-authorization"),
 	}
@@ -35502,7 +37440,13 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 // Block a user from an organization.
 //
 // PUT /orgs/{org}/blocks/{username}
-func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (res OrgsBlockUserRes, err error) {
+func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (OrgsBlockUserRes, error) {
+	res, err := c.sendOrgsBlockUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (res OrgsBlockUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/block-user"),
 	}
@@ -35596,7 +37540,13 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 // com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications).
 //
 // DELETE /orgs/{org}/invitations/{invitation_id}
-func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (res OrgsCancelInvitationRes, err error) {
+func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (OrgsCancelInvitationRes, error) {
+	res, err := c.sendOrgsCancelInvitation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (res OrgsCancelInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/cancel-invitation"),
 	}
@@ -35687,7 +37637,13 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 // Check if a user is blocked by an organization.
 //
 // GET /orgs/{org}/blocks/{username}
-func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
+func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (OrgsCheckBlockedUserRes, error) {
+	res, err := c.sendOrgsCheckBlockedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-blocked-user"),
 	}
@@ -35778,7 +37734,13 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 // Check if a user is, publicly or privately, a member of the organization.
 //
 // GET /orgs/{org}/members/{username}
-func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserRes, err error) {
+func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (OrgsCheckMembershipForUserRes, error) {
+	res, err := c.sendOrgsCheckMembershipForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-membership-for-user"),
 	}
@@ -35869,7 +37831,13 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 // Check public organization membership for a user.
 //
 // GET /orgs/{org}/public_members/{username}
-func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
+func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (OrgsCheckPublicMembershipForUserRes, error) {
+	res, err := c.sendOrgsCheckPublicMembershipForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-public-membership-for-user"),
 	}
@@ -35964,7 +37932,13 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 // com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
 //
 // PUT /orgs/{org}/outside_collaborators/{username}
-func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
+func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (OrgsConvertMemberToOutsideCollaboratorRes, error) {
+	res, err := c.sendOrgsConvertMemberToOutsideCollaborator(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
 	}
@@ -36063,7 +38037,13 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /orgs/{org}/invitations
-func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (res OrgsCreateInvitationRes, err error) {
+func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (OrgsCreateInvitationRes, error) {
+	res, err := c.sendOrgsCreateInvitation(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCreateInvitationReq, params OrgsCreateInvitationParams) (res OrgsCreateInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-invitation"),
 	}
@@ -36159,7 +38139,13 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 // Here's how you can create a hook that posts payloads in JSON format:.
 //
 // POST /orgs/{org}/hooks
-func (c *Client) OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (res OrgsCreateWebhookRes, err error) {
+func (c *Client) OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (OrgsCreateWebhookRes, error) {
+	res, err := c.sendOrgsCreateWebhook(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebhookReq, params OrgsCreateWebhookParams) (res OrgsCreateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-webhook"),
 	}
@@ -36248,7 +38234,13 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request *OrgsCreateWebho
 // Delete an organization webhook.
 //
 // DELETE /orgs/{org}/hooks/{hook_id}
-func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
+func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (OrgsDeleteWebhookRes, error) {
+	res, err := c.sendOrgsDeleteWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/delete-webhook"),
 	}
@@ -36347,7 +38339,13 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 // response, see 'Response with GitHub plan information' below.".
 //
 // GET /orgs/{org}
-func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetRes, err error) {
+func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error) {
+	res, err := c.sendOrgsGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get"),
 	}
@@ -36428,7 +38426,13 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 // this endpoint.
 //
 // GET /orgs/{org}/audit-log
-func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) (res []AuditLogEvent, err error) {
+func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error) {
+	res, err := c.sendOrgsGetAuditLog(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) (res []AuditLogEvent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-audit-log"),
 	}
@@ -36628,7 +38632,13 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 // Get an organization membership for the authenticated user.
 //
 // GET /user/memberships/orgs/{org}
-func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
+func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (OrgsGetMembershipForAuthenticatedUserRes, error) {
+	res, err := c.sendOrgsGetMembershipForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
 	}
@@ -36706,7 +38716,13 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 // membership status.
 //
 // GET /orgs/{org}/memberships/{username}
-func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserRes, err error) {
+func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (OrgsGetMembershipForUserRes, error) {
+	res, err := c.sendOrgsGetMembershipForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-user"),
 	}
@@ -36799,7 +38815,13 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 // organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization).".
 //
 // GET /orgs/{org}/hooks/{hook_id}
-func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookRes, err error) {
+func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (OrgsGetWebhookRes, error) {
+	res, err := c.sendOrgsGetWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook"),
 	}
@@ -36894,7 +38916,13 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 // `organization_hooks:read` permission.
 //
 // GET /orgs/{org}/hooks/{hook_id}/config
-func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
+func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (*WebhookConfig, error) {
+	res, err := c.sendOrgsGetWebhookConfigForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-config-for-org"),
 	}
@@ -36986,7 +39014,13 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 // Returns a delivery for a webhook configured in an organization.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
-func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (res OrgsGetWebhookDeliveryRes, err error) {
+func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (OrgsGetWebhookDeliveryRes, error) {
+	res, err := c.sendOrgsGetWebhookDelivery(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (res OrgsGetWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-delivery"),
 	}
@@ -37095,7 +39129,13 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 // URL for the next page of organizations.
 //
 // GET /organizations
-func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsListRes, err error) {
+func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (OrgsListRes, error) {
+	res, err := c.sendOrgsList(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res OrgsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list"),
 	}
@@ -37195,7 +39235,13 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 // List the users blocked by an organization.
 //
 // GET /orgs/{org}/blocks
-func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersRes, err error) {
+func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (OrgsListBlockedUsersRes, error) {
+	res, err := c.sendOrgsListBlockedUsers(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-blocked-users"),
 	}
@@ -37273,7 +39319,13 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 // the invitation failed and the reason for the failure.
 //
 // GET /orgs/{org}/failed_invitations
-func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsRes, err error) {
+func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsRes, error) {
+	res, err := c.sendOrgsListFailedInvitations(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-failed-invitations"),
 	}
@@ -37393,7 +39445,13 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 // requests with insufficient scope receive a `403 Forbidden` response.
 //
 // GET /user/orgs
-func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserRes, err error) {
+func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (OrgsListForAuthenticatedUserRes, error) {
+	res, err := c.sendOrgsListForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-authenticated-user"),
 	}
@@ -37498,7 +39556,13 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 // com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
 //
 // GET /users/{username}/orgs
-func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (res *OrgsListForUserOKHeaders, err error) {
+func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (*OrgsListForUserOKHeaders, error) {
+	res, err := c.sendOrgsListForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUserParams) (res *OrgsListForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-user"),
 	}
@@ -37614,7 +39678,13 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 // authenticated user must be an organization owner.
 //
 // GET /orgs/{org}/invitations/{invitation_id}/teams
-func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsRes, err error) {
+func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (OrgsListInvitationTeamsRes, error) {
+	res, err := c.sendOrgsListInvitationTeams(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-invitation-teams"),
 	}
@@ -37745,7 +39815,13 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 // this organization then both concealed and public members will be returned.
 //
 // GET /orgs/{org}/members
-func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (res OrgsListMembersRes, err error) {
+func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (OrgsListMembersRes, error) {
+	res, err := c.sendOrgsListMembers(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembersParams) (res OrgsListMembersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-members"),
 	}
@@ -37894,7 +39970,13 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 // List organization memberships for the authenticated user.
 //
 // GET /user/memberships/orgs
-func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
+func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (OrgsListMembershipsForAuthenticatedUserRes, error) {
+	res, err := c.sendOrgsListMembershipsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
 	}
@@ -38011,7 +40093,13 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 // List all users who are outside collaborators of an organization.
 //
 // GET /orgs/{org}/outside_collaborators
-func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (res *OrgsListOutsideCollaboratorsOKHeaders, err error) {
+func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (*OrgsListOutsideCollaboratorsOKHeaders, error) {
+	res, err := c.sendOrgsListOutsideCollaborators(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (res *OrgsListOutsideCollaboratorsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-outside-collaborators"),
 	}
@@ -38146,7 +40234,13 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 // `null`.
 //
 // GET /orgs/{org}/invitations
-func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsRes, err error) {
+func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (OrgsListPendingInvitationsRes, error) {
+	res, err := c.sendOrgsListPendingInvitations(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-pending-invitations"),
 	}
@@ -38261,7 +40355,13 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 // Members of an organization can choose to have their membership publicized or not.
 //
 // GET /orgs/{org}/public_members
-func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (res *OrgsListPublicMembersOKHeaders, err error) {
+func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (*OrgsListPublicMembersOKHeaders, error) {
+	res, err := c.sendOrgsListPublicMembers(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (res *OrgsListPublicMembersOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-public-members"),
 	}
@@ -38383,7 +40483,13 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 // com/en/articles/about-authentication-with-saml-single-sign-on).
 //
 // GET /orgs/{org}/credential-authorizations
-func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) (res []CredentialAuthorization, err error) {
+func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error) {
+	res, err := c.sendOrgsListSamlSSOAuthorizations(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) (res []CredentialAuthorization, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
 	}
@@ -38460,7 +40566,13 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 // Returns a list of webhook deliveries for a webhook configured in an organization.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries
-func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (res OrgsListWebhookDeliveriesRes, err error) {
+func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (OrgsListWebhookDeliveriesRes, error) {
+	res, err := c.sendOrgsListWebhookDeliveries(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (res OrgsListWebhookDeliveriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhook-deliveries"),
 	}
@@ -38590,7 +40702,13 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 // List organization webhooks.
 //
 // GET /orgs/{org}/hooks
-func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
+func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (OrgsListWebhooksRes, error) {
+	res, err := c.sendOrgsListWebhooks(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhooks"),
 	}
@@ -38706,7 +40824,13 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 // hook.
 //
 // POST /orgs/{org}/hooks/{hook_id}/pings
-func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookRes, err error) {
+func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (OrgsPingWebhookRes, error) {
+	res, err := c.sendOrgsPingWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/ping-webhook"),
 	}
@@ -38798,7 +40922,13 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 // Redeliver a delivery for a webhook configured in an organization.
 //
 // POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (res OrgsRedeliverWebhookDeliveryRes, err error) {
+func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (OrgsRedeliverWebhookDeliveryRes, error) {
+	res, err := c.sendOrgsRedeliverWebhookDelivery(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (res OrgsRedeliverWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
 	}
@@ -38906,7 +41036,13 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 // access to the organization's repositories.
 //
 // DELETE /orgs/{org}/members/{username}
-func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberRes, err error) {
+func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (OrgsRemoveMemberRes, error) {
+	res, err := c.sendOrgsRemoveMember(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-member"),
 	}
@@ -39001,7 +41137,13 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 // invitation. The specified user will receive an email notification in both cases.
 //
 // DELETE /orgs/{org}/memberships/{username}
-func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserRes, err error) {
+func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (OrgsRemoveMembershipForUserRes, error) {
+	res, err := c.sendOrgsRemoveMembershipForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-membership-for-user"),
 	}
@@ -39092,7 +41234,13 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 // Removing a user from this list will remove them from all the organization's repositories.
 //
 // DELETE /orgs/{org}/outside_collaborators/{username}
-func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorRes, err error) {
+func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (OrgsRemoveOutsideCollaboratorRes, error) {
+	res, err := c.sendOrgsRemoveOutsideCollaborator(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-outside-collaborator"),
 	}
@@ -39183,7 +41331,13 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 // Remove public organization membership for the authenticated user.
 //
 // DELETE /orgs/{org}/public_members/{username}
-func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
+func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) error {
+	res, err := c.sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
 	}
@@ -39280,7 +41434,13 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 // for the organization they want to access.
 //
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
-func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
+func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationRes, error) {
+	res, err := c.sendOrgsRemoveSamlSSOAuthorization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
 	}
@@ -39384,7 +41544,13 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 // invitations per 24 hour period.
 //
 // PUT /orgs/{org}/memberships/{username}
-func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (res OrgsSetMembershipForUserRes, err error) {
+func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (OrgsSetMembershipForUserRes, error) {
+	res, err := c.sendOrgsSetMembershipForUser(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOrgsSetMembershipForUserReq, params OrgsSetMembershipForUserParams) (res OrgsSetMembershipForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-membership-for-user"),
 	}
@@ -39498,7 +41664,13 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /orgs/{org}/public_members/{username}
-func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
+func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (OrgsSetPublicMembershipForAuthenticatedUserRes, error) {
+	res, err := c.sendOrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
 	}
@@ -39589,7 +41761,13 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 // Unblock a user from an organization.
 //
 // DELETE /orgs/{org}/blocks/{username}
-func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res *OrgsUnblockUserNoContent, err error) {
+func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) error {
+	res, err := c.sendOrgsUnblockUser(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res *OrgsUnblockUserNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/unblock-user"),
 	}
@@ -39680,7 +41858,13 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 // Update an organization membership for the authenticated user.
 //
 // PATCH /user/memberships/orgs/{org}
-func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
+func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (OrgsUpdateMembershipForAuthenticatedUserRes, error) {
+	res, err := c.sendOrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, request *OrgsUpdateMembershipForAuthenticatedUserReq, params OrgsUpdateMembershipForAuthenticatedUserParams) (res OrgsUpdateMembershipForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
 	}
@@ -39772,7 +41956,13 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 // organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization).".
 //
 // PATCH /orgs/{org}/hooks/{hook_id}
-func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (res OrgsUpdateWebhookRes, err error) {
+func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (OrgsUpdateWebhookRes, error) {
+	res, err := c.sendOrgsUpdateWebhook(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWebhookReq, params OrgsUpdateWebhookParams) (res OrgsUpdateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook"),
 	}
@@ -39886,7 +42076,13 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 // `organization_hooks:write` permission.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
-func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
+func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (*WebhookConfig, error) {
+	res, err := c.sendOrgsUpdateWebhookConfigForOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook-config-for-org"),
 	}
@@ -40002,7 +42198,13 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // DELETE /user/packages/{package_type}/{package_name}
-func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (res PackagesDeletePackageForAuthenticatedUserRes, err error) {
+func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (PackagesDeletePackageForAuthenticatedUserRes, error) {
+	res, err := c.sendPackagesDeletePackageForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (res PackagesDeletePackageForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
 	}
@@ -40100,7 +42302,13 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 // to delete.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
-func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (res PackagesDeletePackageForOrgRes, err error) {
+func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (PackagesDeletePackageForOrgRes, error) {
+	res, err := c.sendPackagesDeletePackageForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (res PackagesDeletePackageForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-org"),
 	}
@@ -40213,7 +42421,13 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 // to delete.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}
-func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (res PackagesDeletePackageForUserRes, err error) {
+func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (PackagesDeletePackageForUserRes, error) {
+	res, err := c.sendPackagesDeletePackageForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (res PackagesDeletePackageForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-user"),
 	}
@@ -40324,7 +42538,13 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (res PackagesDeletePackageVersionForAuthenticatedUserRes, err error) {
+func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (PackagesDeletePackageVersionForAuthenticatedUserRes, error) {
+	res, err := c.sendPackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (res PackagesDeletePackageVersionForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
 	}
@@ -40437,7 +42657,13 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 // to delete.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (res PackagesDeletePackageVersionForOrgRes, err error) {
+func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (PackagesDeletePackageVersionForOrgRes, error) {
+	res, err := c.sendPackagesDeletePackageVersionForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (res PackagesDeletePackageVersionForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-org"),
 	}
@@ -40565,7 +42791,13 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 // to delete.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (res PackagesDeletePackageVersionForUserRes, err error) {
+func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (PackagesDeletePackageVersionForUserRes, error) {
+	res, err := c.sendPackagesDeletePackageVersionForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (res PackagesDeletePackageVersionForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-user"),
 	}
@@ -40688,7 +42920,13 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions
-func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, err error) {
+func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, error) {
+	res, err := c.sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
 	}
@@ -40837,7 +43075,13 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
-func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, err error) {
+func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, error) {
+	res, err := c.sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
 	}
@@ -41001,7 +43245,13 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
-func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, err error) {
+func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByUserRes, error) {
+	res, err := c.sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
 	}
@@ -41110,7 +43360,13 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}
-func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (res *Package, err error) {
+func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (*Package, error) {
+	res, err := c.sendPackagesGetPackageForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (res *Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-authenticated-user"),
 	}
@@ -41203,7 +43459,13 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}
-func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (res *Package, err error) {
+func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (*Package, error) {
+	res, err := c.sendPackagesGetPackageForOrganization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (res *Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-organization"),
 	}
@@ -41311,7 +43573,13 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}
-func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (res *Package, err error) {
+func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (*Package, error) {
+	res, err := c.sendPackagesGetPackageForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (res *Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-user"),
 	}
@@ -41419,7 +43687,13 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (res *PackageVersion, err error) {
+func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (*PackageVersion, error) {
+	res, err := c.sendPackagesGetPackageVersionForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (res *PackageVersion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
 	}
@@ -41527,7 +43801,13 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (res *PackageVersion, err error) {
+func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (*PackageVersion, error) {
+	res, err := c.sendPackagesGetPackageVersionForOrganization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (res *PackageVersion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-organization"),
 	}
@@ -41651,7 +43931,13 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (res *PackageVersion, err error) {
+func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (*PackageVersion, error) {
+	res, err := c.sendPackagesGetPackageVersionForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (res *PackageVersion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-user"),
 	}
@@ -41774,7 +44060,13 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages
-func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) (res []Package, err error) {
+func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) ([]Package, error) {
+	res, err := c.sendPackagesListPackagesForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) (res []Package, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
 	}
@@ -41873,7 +44165,13 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages
-func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (res PackagesListPackagesForOrganizationRes, err error) {
+func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (PackagesListPackagesForOrganizationRes, error) {
+	res, err := c.sendPackagesListPackagesForOrganization(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (res PackagesListPackagesForOrganizationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-organization"),
 	}
@@ -41987,7 +44285,13 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 // If `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages
-func (c *Client) PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (res PackagesListPackagesForUserRes, err error) {
+func (c *Client) PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (PackagesListPackagesForUserRes, error) {
+	res, err := c.sendPackagesListPackagesForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (res PackagesListPackagesForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-user"),
 	}
@@ -42108,7 +44412,13 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 // `repo` scope.
 //
 // POST /user/packages/{package_type}/{package_name}/restore
-func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (res PackagesRestorePackageForAuthenticatedUserRes, err error) {
+func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (PackagesRestorePackageForAuthenticatedUserRes, error) {
+	res, err := c.sendPackagesRestorePackageForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (res PackagesRestorePackageForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
 	}
@@ -42232,7 +44542,13 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 // want to restore.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
-func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (res PackagesRestorePackageForOrgRes, err error) {
+func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (PackagesRestorePackageForOrgRes, error) {
+	res, err := c.sendPackagesRestorePackageForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (res PackagesRestorePackageForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-org"),
 	}
@@ -42371,7 +44687,13 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 // want to restore.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
-func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (res PackagesRestorePackageForUserRes, err error) {
+func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (PackagesRestorePackageForUserRes, error) {
+	res, err := c.sendPackagesRestorePackageForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (res PackagesRestorePackageForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-user"),
 	}
@@ -42508,7 +44830,13 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 // `repo` scope.
 //
 // POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (res PackagesRestorePackageVersionForAuthenticatedUserRes, err error) {
+func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (PackagesRestorePackageVersionForAuthenticatedUserRes, error) {
+	res, err := c.sendPackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (res PackagesRestorePackageVersionForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
 	}
@@ -42626,7 +44954,13 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 // want to restore.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (res PackagesRestorePackageVersionForOrgRes, err error) {
+func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (PackagesRestorePackageVersionForOrgRes, error) {
+	res, err := c.sendPackagesRestorePackageVersionForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (res PackagesRestorePackageVersionForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-org"),
 	}
@@ -42759,7 +45093,13 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 // want to restore.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (res PackagesRestorePackageVersionForUserRes, err error) {
+func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (PackagesRestorePackageVersionForUserRes, error) {
+	res, err := c.sendPackagesRestorePackageVersionForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (res PackagesRestorePackageVersionForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-user"),
 	}
@@ -42882,7 +45222,13 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 // organization owner or a project `admin` to add a collaborator.
 //
 // PUT /projects/{project_id}/collaborators/{username}
-func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
+func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error) {
+	res, err := c.sendProjectsAddCollaborator(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/add-collaborator"),
 	}
@@ -42992,7 +45338,13 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 // Create a project column.
 //
 // POST /projects/{project_id}/columns
-func (c *Client) ProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
+func (c *Client) ProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (ProjectsCreateColumnRes, error) {
+	res, err := c.sendProjectsCreateColumn(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-column"),
 	}
@@ -43072,7 +45424,13 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request *ProjectsCrea
 // Create a user project.
 //
 // POST /user/projects
-func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
+func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (ProjectsCreateForAuthenticatedUserRes, error) {
+	res, err := c.sendProjectsCreateForAuthenticatedUser(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, request *ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-authenticated-user"),
 	}
@@ -43139,7 +45497,13 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 // Unauthorized` or `410 Gone` status is returned.
 //
 // POST /orgs/{org}/projects
-func (c *Client) ProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
+func (c *Client) ProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (ProjectsCreateForOrgRes, error) {
+	res, err := c.sendProjectsCreateForOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-org"),
 	}
@@ -43221,7 +45585,13 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request *ProjectsCrea
 // Unauthorized` or `410 Gone` status is returned.
 //
 // POST /repos/{owner}/{repo}/projects
-func (c *Client) ProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
+func (c *Client) ProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (ProjectsCreateForRepoRes, error) {
+	res, err := c.sendProjectsCreateForRepo(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-repo"),
 	}
@@ -43316,7 +45686,13 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request *ProjectsCre
 // Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
 //
 // DELETE /projects/{project_id}
-func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteRes, err error) {
+func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (ProjectsDeleteRes, error) {
+	res, err := c.sendProjectsDelete(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete"),
 	}
@@ -43392,7 +45768,13 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 // Delete a project card.
 //
 // DELETE /projects/columns/cards/{card_id}
-func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
+func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (ProjectsDeleteCardRes, error) {
+	res, err := c.sendProjectsDeleteCard(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-card"),
 	}
@@ -43468,7 +45850,13 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 // Delete a project column.
 //
 // DELETE /projects/columns/{column_id}
-func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
+func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (ProjectsDeleteColumnRes, error) {
+	res, err := c.sendProjectsDeleteColumn(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-column"),
 	}
@@ -43546,7 +45934,13 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 // is returned.
 //
 // GET /projects/{project_id}
-func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetRes, err error) {
+func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (ProjectsGetRes, error) {
+	res, err := c.sendProjectsGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get"),
 	}
@@ -43622,7 +46016,13 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 // Get a project card.
 //
 // GET /projects/columns/cards/{card_id}
-func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
+func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (ProjectsGetCardRes, error) {
+	res, err := c.sendProjectsGetCard(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-card"),
 	}
@@ -43698,7 +46098,13 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 // Get a project column.
 //
 // GET /projects/columns/{column_id}
-func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
+func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (ProjectsGetColumnRes, error) {
+	res, err := c.sendProjectsGetColumn(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-column"),
 	}
@@ -43776,7 +46182,13 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 // `admin` to review a user's permission level.
 //
 // GET /projects/{project_id}/collaborators/{username}/permission
-func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (res ProjectsGetPermissionForUserRes, err error) {
+func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (ProjectsGetPermissionForUserRes, error) {
+	res, err := c.sendProjectsGetPermissionForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (res ProjectsGetPermissionForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-permission-for-user"),
 	}
@@ -43868,7 +46280,13 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 // List project cards.
 //
 // GET /projects/columns/{column_id}/cards
-func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (res ProjectsListCardsRes, err error) {
+func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (ProjectsListCardsRes, error) {
+	res, err := c.sendProjectsListCards(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (res ProjectsListCardsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-cards"),
 	}
@@ -44004,7 +46422,13 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 // `admin` to list collaborators.
 //
 // GET /projects/{project_id}/collaborators
-func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (res ProjectsListCollaboratorsRes, err error) {
+func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (ProjectsListCollaboratorsRes, error) {
+	res, err := c.sendProjectsListCollaborators(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (res ProjectsListCollaboratorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-collaborators"),
 	}
@@ -44136,7 +46560,13 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 // List project columns.
 //
 // GET /projects/{project_id}/columns
-func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
+func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (ProjectsListColumnsRes, error) {
+	res, err := c.sendProjectsListColumns(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-columns"),
 	}
@@ -44253,7 +46683,13 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 // Unauthorized` or `410 Gone` status is returned.
 //
 // GET /orgs/{org}/projects
-func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (res ProjectsListForOrgRes, err error) {
+func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (ProjectsListForOrgRes, error) {
+	res, err := c.sendProjectsListForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (res ProjectsListForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-org"),
 	}
@@ -44387,7 +46823,13 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 // Unauthorized` or `410 Gone` status is returned.
 //
 // GET /repos/{owner}/{repo}/projects
-func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (res ProjectsListForRepoRes, err error) {
+func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (ProjectsListForRepoRes, error) {
+	res, err := c.sendProjectsListForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (res ProjectsListForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-repo"),
 	}
@@ -44534,7 +46976,13 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 // List user projects.
 //
 // GET /users/{username}/projects
-func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (res ProjectsListForUserRes, err error) {
+func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (ProjectsListForUserRes, error) {
+	res, err := c.sendProjectsListForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (res ProjectsListForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-user"),
 	}
@@ -44666,7 +47114,13 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 // Move a project card.
 //
 // POST /projects/columns/cards/{card_id}/moves
-func (c *Client) ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (res ProjectsMoveCardRes, err error) {
+func (c *Client) ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (ProjectsMoveCardRes, error) {
+	res, err := c.sendProjectsMoveCard(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMoveCardReq, params ProjectsMoveCardParams) (res ProjectsMoveCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-card"),
 	}
@@ -44755,7 +47209,13 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request *ProjectsMoveCard
 // Move a project column.
 //
 // POST /projects/columns/{column_id}/moves
-func (c *Client) ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
+func (c *Client) ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (ProjectsMoveColumnRes, error) {
+	res, err := c.sendProjectsMoveColumn(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMoveColumnReq, params ProjectsMoveColumnParams) (res ProjectsMoveColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-column"),
 	}
@@ -44845,7 +47305,13 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request *ProjectsMoveCo
 // project `admin` to remove a collaborator.
 //
 // DELETE /projects/{project_id}/collaborators/{username}
-func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (res ProjectsRemoveCollaboratorRes, err error) {
+func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (ProjectsRemoveCollaboratorRes, error) {
+	res, err := c.sendProjectsRemoveCollaborator(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (res ProjectsRemoveCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/remove-collaborator"),
 	}
@@ -44938,7 +47404,13 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 // Gone` status is returned.
 //
 // PATCH /projects/{project_id}
-func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
+func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (ProjectsUpdateRes, error) {
+	res, err := c.sendProjectsUpdate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpdateReq, params ProjectsUpdateParams) (res ProjectsUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update"),
 	}
@@ -45033,7 +47505,13 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 // Update an existing project card.
 //
 // PATCH /projects/columns/cards/{card_id}
-func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
+func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (ProjectsUpdateCardRes, error) {
+	res, err := c.sendProjectsUpdateCard(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-card"),
 	}
@@ -45112,7 +47590,13 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 // Update an existing project column.
 //
 // PATCH /projects/columns/{column_id}
-func (c *Client) ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
+func (c *Client) ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (ProjectsUpdateColumnRes, error) {
+	res, err := c.sendProjectsUpdateColumn(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-column"),
 	}
@@ -45191,7 +47675,13 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request *ProjectsUpda
 // Check if a pull request has been merged.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
+func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (PullsCheckIfMergedRes, error) {
+	res, err := c.sendPullsCheckIfMerged(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/check-if-merged"),
 	}
@@ -45313,7 +47803,13 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 // com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls
-func (c *Client) PullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (res PullsCreateRes, err error) {
+func (c *Client) PullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (PullsCreateRes, error) {
+	res, err := c.sendPullsCreate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, params PullsCreateParams) (res PullsCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create"),
 	}
@@ -45417,7 +47913,13 @@ func (c *Client) PullsCreate(ctx context.Context, request *PullsCreateReq, param
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
-func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
+func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentRes, error) {
+	res, err := c.sendPullsCreateReplyForReviewComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, request *PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
 	}
@@ -45560,7 +48062,13 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request *
 // and additional hunks until the beginning of a new file.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
+func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (PullsCreateReviewRes, error) {
+	res, err := c.sendPullsCreateReview(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCreateReviewReq, params PullsCreateReviewParams) (res PullsCreateReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review"),
 	}
@@ -45705,7 +48213,13 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (c *Client) PullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (res PullsCreateReviewCommentRes, err error) {
+func (c *Client) PullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (PullsCreateReviewCommentRes, error) {
+	res, err := c.sendPullsCreateReviewComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *PullsCreateReviewCommentReq, params PullsCreateReviewCommentParams) (res PullsCreateReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review-comment"),
 	}
@@ -45824,7 +48338,13 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request *PullsCre
 // Delete a pending review for a pull request.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
+func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (PullsDeletePendingReviewRes, error) {
+	res, err := c.sendPullsDeletePendingReview(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-pending-review"),
 	}
@@ -45945,7 +48465,13 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 // Deletes a review comment.
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentRes, err error) {
+func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (PullsDeleteReviewCommentRes, error) {
+	res, err := c.sendPullsDeleteReviewComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-review-comment"),
 	}
@@ -46053,7 +48579,13 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 // list of people or teams who can dismiss pull request reviews.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
-func (c *Client) PullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
+func (c *Client) PullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (PullsDismissReviewRes, error) {
+	res, err := c.sendPullsDismissReview(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/dismiss-review"),
 	}
@@ -46211,7 +48743,13 @@ func (c *Client) PullsDismissReview(ctx context.Context, request *PullsDismissRe
 // patch formats.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
-func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res PullsGetRes, err error) {
+func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (PullsGetRes, error) {
+	res, err := c.sendPullsGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res PullsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get"),
 	}
@@ -46317,7 +48855,13 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 // Get a review for a pull request.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
+func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (PullsGetReviewRes, error) {
+	res, err := c.sendPullsGetReview(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review"),
 	}
@@ -46438,7 +48982,13 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 // Provides details for a review comment.
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentRes, err error) {
+func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (PullsGetReviewCommentRes, error) {
+	res, err := c.sendPullsGetReviewComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review-comment"),
 	}
@@ -46548,7 +49098,13 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/pulls
-func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res PullsListRes, err error) {
+func (c *Client) PullsList(ctx context.Context, params PullsListParams) (PullsListRes, error) {
+	res, err := c.sendPullsList(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res PullsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list"),
 	}
@@ -46763,7 +49319,13 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 // List comments for a specific pull request review.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
-func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewRes, err error) {
+func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (PullsListCommentsForReviewRes, error) {
+	res, err := c.sendPullsListCommentsForReview(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-comments-for-review"),
 	}
@@ -46925,7 +49487,13 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 // com/rest/reference/repos#list-commits) endpoint.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (res *PullsListCommitsOKHeaders, err error) {
+func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (*PullsListCommitsOKHeaders, error) {
+	res, err := c.sendPullsListCommits(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommitsParams) (res *PullsListCommitsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-commits"),
 	}
@@ -47071,7 +49639,13 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 // page by default.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
-func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams) (res PullsListFilesRes, err error) {
+func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams) (PullsListFilesRes, error) {
+	res, err := c.sendPullsListFiles(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesParams) (res PullsListFilesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-files"),
 	}
@@ -47216,7 +49790,13 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 // List requested reviewers for a pull request.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (res *PullRequestReviewRequestHeaders, err error) {
+func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (*PullRequestReviewRequestHeaders, error) {
+	res, err := c.sendPullsListRequestedReviewers(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (res *PullRequestReviewRequestHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-requested-reviewers"),
 	}
@@ -47362,7 +49942,13 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 // by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (res *PullsListReviewCommentsOKHeaders, err error) {
+func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (*PullsListReviewCommentsOKHeaders, error) {
+	res, err := c.sendPullsListReviewComments(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (res *PullsListReviewCommentsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments"),
 	}
@@ -47559,7 +50145,13 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 // ascending order by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/comments
-func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (res *PullsListReviewCommentsForRepoOKHeaders, err error) {
+func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (*PullsListReviewCommentsForRepoOKHeaders, error) {
+	res, err := c.sendPullsListReviewCommentsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (res *PullsListReviewCommentsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments-for-repo"),
 	}
@@ -47740,7 +50332,13 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 // The list of reviews returns in chronological order.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (res *PullsListReviewsOKHeaders, err error) {
+func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (*PullsListReviewsOKHeaders, error) {
+	res, err := c.sendPullsListReviews(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListReviewsParams) (res *PullsListReviewsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-reviews"),
 	}
@@ -47891,7 +50489,13 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
+func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error) {
+	res, err := c.sendPullsMerge(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/merge"),
 	}
@@ -48017,7 +50621,13 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 // Remove requested reviewers from a pull request.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (res PullsRemoveRequestedReviewersRes, err error) {
+func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (PullsRemoveRequestedReviewersRes, error) {
+	res, err := c.sendPullsRemoveRequestedReviewers(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request *PullsRemoveRequestedReviewersReq, params PullsRemoveRequestedReviewersParams) (res PullsRemoveRequestedReviewersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/remove-requested-reviewers"),
 	}
@@ -48136,7 +50746,13 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request *Pul
 // Submit a review for a pull request.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
-func (c *Client) PullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
+func (c *Client) PullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (PullsSubmitReviewRes, error) {
+	res, err := c.sendPullsSubmitReview(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmitReviewReq, params PullsSubmitReviewParams) (res PullsSubmitReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/submit-review"),
 	}
@@ -48277,7 +50893,13 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request *PullsSubmitRevi
 // that owns the repository to open or update a pull request.
 //
 // PATCH /repos/{owner}/{repo}/pulls/{pull_number}
-func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (res PullsUpdateRes, err error) {
+func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (PullsUpdateRes, error) {
+	res, err := c.sendPullsUpdate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq, params PullsUpdateParams) (res PullsUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update"),
 	}
@@ -48403,7 +51025,13 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 // branch into the pull request branch.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
-func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
+func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error) {
+	res, err := c.sendPullsUpdateBranch(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-branch"),
 	}
@@ -48513,7 +51141,13 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 // Update the review summary comment with new text.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (c *Client) PullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
+func (c *Client) PullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (PullsUpdateReviewRes, error) {
+	res, err := c.sendPullsUpdateReview(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review"),
 	}
@@ -48637,7 +51271,13 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request *PullsUpdateRevi
 // Enables you to edit a review comment.
 //
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (c *Client) PullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res *PullRequestReviewComment, err error) {
+func (c *Client) PullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (*PullRequestReviewComment, error) {
+	res, err := c.sendPullsUpdateReviewComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res *PullRequestReviewComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review-comment"),
 	}
@@ -48749,7 +51389,13 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request *PullsUpd
 // contains the same information that is present in the `rate` object.
 //
 // GET /rate_limit
-func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err error) {
+func (c *Client) RateLimitGet(ctx context.Context) (RateLimitGetRes, error) {
+	res, err := c.sendRateLimitGet(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("rate-limit/get"),
 	}
@@ -48813,7 +51459,13 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 // comment.
 //
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (res ReactionsCreateForCommitCommentRes, err error) {
+func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (ReactionsCreateForCommitCommentRes, error) {
+	res, err := c.sendReactionsCreateForCommitComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, request *ReactionsCreateForCommitCommentReq, params ReactionsCreateForCommitCommentParams) (res ReactionsCreateForCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-commit-comment"),
 	}
@@ -48933,7 +51585,13 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request *R
 // an HTTP `200` status means that you already added the reaction type to this issue.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (c *Client) ReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (res ReactionsCreateForIssueRes, err error) {
+func (c *Client) ReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (ReactionsCreateForIssueRes, error) {
+	res, err := c.sendReactionsCreateForIssue(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *ReactionsCreateForIssueReq, params ReactionsCreateForIssueParams) (res ReactionsCreateForIssueRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue"),
 	}
@@ -49054,7 +51712,13 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request *Reactions
 // comment.
 //
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (res ReactionsCreateForIssueCommentRes, err error) {
+func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (ReactionsCreateForIssueCommentRes, error) {
+	res, err := c.sendReactionsCreateForIssueComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request *ReactionsCreateForIssueCommentReq, params ReactionsCreateForIssueCommentParams) (res ReactionsCreateForIssueCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue-comment"),
 	}
@@ -49175,7 +51839,13 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request *Re
 // added the reaction type to this pull request review comment.
 //
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
+func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (ReactionsCreateForPullRequestReviewCommentRes, error) {
+	res, err := c.sendReactionsCreateForPullRequestReviewComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Context, request *ReactionsCreateForPullRequestReviewCommentReq, params ReactionsCreateForPullRequestReviewCommentParams) (res ReactionsCreateForPullRequestReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
 	}
@@ -49295,7 +51965,13 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 // response with a `Status: 200 OK` means that you already added the reaction type to this release.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
-func (c *Client) ReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (res ReactionsCreateForReleaseRes, err error) {
+func (c *Client) ReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (ReactionsCreateForReleaseRes, error) {
+	res, err := c.sendReactionsCreateForRelease(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *ReactionsCreateForReleaseReq, params ReactionsCreateForReleaseParams) (res ReactionsCreateForReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-release"),
 	}
@@ -49420,7 +52096,13 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request *Reactio
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (ReactionsCreateForTeamDiscussionCommentInOrgRes, error) {
+	res, err := c.sendReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentInOrgReq, params ReactionsCreateForTeamDiscussionCommentInOrgParams) (res ReactionsCreateForTeamDiscussionCommentInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
 	}
@@ -49564,7 +52246,13 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res *Reaction, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (*Reaction, error) {
+	res, err := c.sendReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionCommentLegacyReq, params ReactionsCreateForTeamDiscussionCommentLegacyParams) (res *Reaction, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
 	}
@@ -49690,7 +52378,13 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (ReactionsCreateForTeamDiscussionInOrgRes, error) {
+	res, err := c.sendReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, request *ReactionsCreateForTeamDiscussionInOrgReq, params ReactionsCreateForTeamDiscussionInOrgParams) (res ReactionsCreateForTeamDiscussionInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
 	}
@@ -49820,7 +52514,13 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
-func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res *Reaction, err error) {
+func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (*Reaction, error) {
+	res, err := c.sendReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context, request *ReactionsCreateForTeamDiscussionLegacyReq, params ReactionsCreateForTeamDiscussionLegacyParams) (res *Reaction, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
 	}
@@ -49926,7 +52626,13 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 // Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res *ReactionsDeleteForCommitCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) error {
+	res, err := c.sendReactionsDeleteForCommitComment(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res *ReactionsDeleteForCommitCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
 	}
@@ -50049,7 +52755,13 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 // Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res *ReactionsDeleteForIssueNoContent, err error) {
+func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) error {
+	res, err := c.sendReactionsDeleteForIssue(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res *ReactionsDeleteForIssueNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue"),
 	}
@@ -50172,7 +52884,13 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 // Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res *ReactionsDeleteForIssueCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) error {
+	res, err := c.sendReactionsDeleteForIssueComment(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res *ReactionsDeleteForIssueCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
 	}
@@ -50296,7 +53014,13 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 // com/rest/reference/pulls#review-comments).
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res *ReactionsDeleteForPullRequestCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) error {
+	res, err := c.sendReactionsDeleteForPullRequestComment(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res *ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
 	}
@@ -50424,7 +53148,13 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res *ReactionsDeleteForTeamDiscussionNoContent, err error) {
+func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) error {
+	res, err := c.sendReactionsDeleteForTeamDiscussion(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res *ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
 	}
@@ -50550,7 +53280,13 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res *ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
+func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) error {
+	res, err := c.sendReactionsDeleteForTeamDiscussionComment(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res *ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
 	}
@@ -50695,7 +53431,13 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /reactions/{reaction_id}
-func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
+func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (ReactionsDeleteLegacyRes, error) {
+	res, err := c.sendReactionsDeleteLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-legacy"),
 	}
@@ -50771,7 +53513,13 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 // List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (c *Client) ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (res ReactionsListForCommitCommentRes, err error) {
+func (c *Client) ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (ReactionsListForCommitCommentRes, error) {
+	res, err := c.sendReactionsListForCommitComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (res ReactionsListForCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-commit-comment"),
 	}
@@ -50933,7 +53681,13 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 // List the reactions to an [issue](https://docs.github.com/rest/reference/issues).
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (res ReactionsListForIssueRes, err error) {
+func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (ReactionsListForIssueRes, error) {
+	res, err := c.sendReactionsListForIssue(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (res ReactionsListForIssueRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue"),
 	}
@@ -51095,7 +53849,13 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 // List the reactions to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (c *Client) ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (res ReactionsListForIssueCommentRes, err error) {
+func (c *Client) ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (ReactionsListForIssueCommentRes, error) {
+	res, err := c.sendReactionsListForIssueComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (res ReactionsListForIssueCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue-comment"),
 	}
@@ -51258,7 +54018,13 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 // com/rest/reference/pulls#review-comments).
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (res ReactionsListForPullRequestReviewCommentRes, err error) {
+func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (ReactionsListForPullRequestReviewCommentRes, error) {
+	res, err := c.sendReactionsListForPullRequestReviewComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (res ReactionsListForPullRequestReviewCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
 	}
@@ -51424,7 +54190,13 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (res *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, err error) {
+func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (*ReactionsListForTeamDiscussionCommentInOrgOKHeaders, error) {
+	res, err := c.sendReactionsListForTeamDiscussionCommentInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (res *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
 	}
@@ -51609,7 +54381,13 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (res *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
+func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (*ReactionsListForTeamDiscussionCommentLegacyOKHeaders, error) {
+	res, err := c.sendReactionsListForTeamDiscussionCommentLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (res *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
 	}
@@ -51775,7 +54553,13 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (res *ReactionsListForTeamDiscussionInOrgOKHeaders, err error) {
+func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (*ReactionsListForTeamDiscussionInOrgOKHeaders, error) {
+	res, err := c.sendReactionsListForTeamDiscussionInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (res *ReactionsListForTeamDiscussionInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
 	}
@@ -51945,7 +54729,13 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
-func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (res *ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
+func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (*ReactionsListForTeamDiscussionLegacyOKHeaders, error) {
+	res, err := c.sendReactionsListForTeamDiscussionLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (res *ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
 	}
@@ -52092,7 +54882,13 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 // Accept a repository invitation.
 //
 // PATCH /user/repository_invitations/{invitation_id}
-func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
+func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (ReposAcceptInvitationRes, error) {
+	res, err := c.sendReposAcceptInvitation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/accept-invitation"),
 	}
@@ -52182,7 +54978,13 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 // The list of users, apps, and teams in total is limited to 100 items. |.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (res ReposAddAppAccessRestrictionsRes, err error) {
+func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (ReposAddAppAccessRestrictionsRes, error) {
+	res, err := c.sendReposAddAppAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request OptReposAddAppAccessRestrictionsReq, params ReposAddAppAccessRestrictionsParams) (res ReposAddAppAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-app-access-restrictions"),
 	}
@@ -52327,7 +55129,13 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 // limit if you are inviting organization members to an organization repository.
 //
 // PUT /repos/{owner}/{repo}/collaborators/{username}
-func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (res ReposAddCollaboratorRes, err error) {
+func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (ReposAddCollaboratorRes, error) {
+	res, err := c.sendReposAddCollaborator(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposAddCollaboratorReq, params ReposAddCollaboratorParams) (res ReposAddCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-collaborator"),
 	}
@@ -52456,7 +55264,13 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 // GitHub Help documentation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (res ReposAddStatusCheckContextsRes, err error) {
+func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (ReposAddStatusCheckContextsRes, error) {
+	res, err := c.sendReposAddStatusCheckContexts(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request OptReposAddStatusCheckContextsReq, params ReposAddStatusCheckContextsParams) (res ReposAddStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-status-check-contexts"),
 	}
@@ -52596,7 +55410,13 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 // users, apps, and teams in total is limited to 100 items. |.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (res ReposAddTeamAccessRestrictionsRes, err error) {
+func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (ReposAddTeamAccessRestrictionsRes, error) {
+	res, err := c.sendReposAddTeamAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request OptReposAddTeamAccessRestrictionsReq, params ReposAddTeamAccessRestrictionsParams) (res ReposAddTeamAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-team-access-restrictions"),
 	}
@@ -52735,7 +55555,13 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 // teams in total is limited to 100 items. |.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (res ReposAddUserAccessRestrictionsRes, err error) {
+func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (ReposAddUserAccessRestrictionsRes, error) {
+	res, err := c.sendReposAddUserAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request OptReposAddUserAccessRestrictionsReq, params ReposAddUserAccessRestrictionsParams) (res ReposAddUserAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-user-access-restrictions"),
 	}
@@ -52865,7 +55691,13 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 // Team members will include the members of child teams.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
-func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorRes, err error) {
+func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (ReposCheckCollaboratorRes, error) {
+	res, err := c.sendReposCheckCollaborator(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-collaborator"),
 	}
@@ -52974,7 +55806,13 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // GET /repos/{owner}/{repo}/vulnerability-alerts
-func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsRes, err error) {
+func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (ReposCheckVulnerabilityAlertsRes, error) {
+	res, err := c.sendReposCheckVulnerabilityAlerts(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-vulnerability-alerts"),
 	}
@@ -53120,7 +55958,13 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/compare/{basehead}
-func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsRes, err error) {
+func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (ReposCompareCommitsRes, error) {
+	res, err := c.sendReposCompareCommits(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/compare-commits"),
 	}
@@ -53264,7 +56108,13 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 // Users with admin access to the repository can create an autolink.
 //
 // POST /repos/{owner}/{repo}/autolinks
-func (c *Client) ReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (res ReposCreateAutolinkRes, err error) {
+func (c *Client) ReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (ReposCreateAutolinkRes, error) {
+	res, err := c.sendReposCreateAutolink(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (res ReposCreateAutolinkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-autolink"),
 	}
@@ -53366,7 +56216,13 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request *ReposCreateAu
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (c *Client) ReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (res ReposCreateCommitCommentRes, err error) {
+func (c *Client) ReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (ReposCreateCommitCommentRes, error) {
+	res, err := c.sendReposCreateCommitComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (res ReposCreateCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-comment"),
 	}
@@ -53482,7 +56338,13 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request *ReposCre
 // require signed commits on a branch. You must enable branch protection to require signed commits.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionRes, err error) {
+func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (ReposCreateCommitSignatureProtectionRes, error) {
+	res, err := c.sendReposCreateCommitSignatureProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-signature-protection"),
 	}
@@ -53591,7 +56453,13 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 // create more than 1000 statuses will result in a validation error.
 //
 // POST /repos/{owner}/{repo}/statuses/{sha}
-func (c *Client) ReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res *StatusHeaders, err error) {
+func (c *Client) ReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (*StatusHeaders, error) {
+	res, err := c.sendReposCreateCommitStatus(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (res *StatusHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-status"),
 	}
@@ -53709,7 +56577,13 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request *ReposCrea
 // You can create a read-only deploy key.
 //
 // POST /repos/{owner}/{repo}/keys
-func (c *Client) ReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (res ReposCreateDeployKeyRes, err error) {
+func (c *Client) ReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (ReposCreateDeployKeyRes, error) {
+	res, err := c.sendReposCreateDeployKey(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (res ReposCreateDeployKeyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deploy-key"),
 	}
@@ -53859,7 +56733,13 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request *ReposCreateD
 // of `success`.
 //
 // POST /repos/{owner}/{repo}/deployments
-func (c *Client) ReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (res ReposCreateDeploymentRes, err error) {
+func (c *Client) ReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (ReposCreateDeploymentRes, error) {
+	res, err := c.sendReposCreateDeployment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (res ReposCreateDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment"),
 	}
@@ -53956,7 +56836,13 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request *ReposCreate
 // contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
 //
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (res ReposCreateDeploymentStatusRes, err error) {
+func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (ReposCreateDeploymentStatusRes, error) {
+	res, err := c.sendReposCreateDeploymentStatus(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *ReposCreateDeploymentStatusReq, params ReposCreateDeploymentStatusParams) (res ReposCreateDeploymentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment-status"),
 	}
@@ -54094,7 +56980,13 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request *Repos
 // This input example shows how you can use the `client_payload` as a test to debug your workflow.
 //
 // POST /repos/{owner}/{repo}/dispatches
-func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (res ReposCreateDispatchEventRes, err error) {
+func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (ReposCreateDispatchEventRes, error) {
+	res, err := c.sendReposCreateDispatchEvent(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *ReposCreateDispatchEventReq, params ReposCreateDispatchEventParams) (res ReposCreateDispatchEventRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-dispatch-event"),
 	}
@@ -54204,7 +57096,13 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request *ReposCre
 // *   `repo` scope to create a private repository.
 //
 // POST /user/repos
-func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (res ReposCreateForAuthenticatedUserRes, err error) {
+func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (ReposCreateForAuthenticatedUserRes, error) {
+	res, err := c.sendReposCreateForAuthenticatedUser(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, request *ReposCreateForAuthenticatedUserReq) (res ReposCreateForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-for-authenticated-user"),
 	}
@@ -54272,7 +57170,13 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request *R
 // [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
 //
 // POST /repos/{owner}/{repo}/forks
-func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
+func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error) {
+	res, err := c.sendReposCreateFork(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-fork"),
 	}
@@ -54374,7 +57278,13 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 // *   `repo` scope to create a private repository.
 //
 // POST /orgs/{org}/repos
-func (c *Client) ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (res ReposCreateInOrgRes, err error) {
+func (c *Client) ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (ReposCreateInOrgRes, error) {
+	res, err := c.sendReposCreateInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateInOrgReq, params ReposCreateInOrgParams) (res ReposCreateInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-in-org"),
 	}
@@ -54463,7 +57373,13 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request *ReposCreateInOrg
 // Creates a new file or replaces an existing file in a repository.
 //
 // PUT /repos/{owner}/{repo}/contents/{path}
-func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (res ReposCreateOrUpdateFileContentsRes, err error) {
+func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (ReposCreateOrUpdateFileContentsRes, error) {
+	res, err := c.sendReposCreateOrUpdateFileContents(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, request *ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (res ReposCreateOrUpdateFileContentsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-or-update-file-contents"),
 	}
@@ -54573,7 +57489,13 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request *R
 // Pages](/github/working-with-github-pages/about-github-pages).".
 //
 // POST /repos/{owner}/{repo}/pages
-func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
+func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error) {
+	res, err := c.sendReposCreatePagesSite(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-pages-site"),
 	}
@@ -54684,7 +57606,13 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // POST /repos/{owner}/{repo}/releases
-func (c *Client) ReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (res ReposCreateReleaseRes, err error) {
+func (c *Client) ReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (ReposCreateReleaseRes, error) {
+	res, err := c.sendReposCreateRelease(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreateReleaseReq, params ReposCreateReleaseParams) (res ReposCreateReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-release"),
 	}
@@ -54790,7 +57718,13 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request *ReposCreateRel
 // *   `repo` scope to create a private repository.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
-func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res *RepositoryHeaders, err error) {
+func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (*RepositoryHeaders, error) {
+	res, err := c.sendReposCreateUsingTemplate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res *RepositoryHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-using-template"),
 	}
@@ -54887,7 +57821,13 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request *ReposCre
 // share the same `config` as long as those webhooks do not have any `events` that overlap.
 //
 // POST /repos/{owner}/{repo}/hooks
-func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
+func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error) {
+	res, err := c.sendReposCreateWebhook(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-webhook"),
 	}
@@ -54998,7 +57938,13 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 // Decline a repository invitation.
 //
 // DELETE /user/repository_invitations/{invitation_id}
-func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
+func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (ReposDeclineInvitationRes, error) {
+	res, err := c.sendReposDeclineInvitation(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/decline-invitation"),
 	}
@@ -55077,7 +58023,13 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 // repositories, you will get a `403 Forbidden` response.
 //
 // DELETE /repos/{owner}/{repo}
-func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteRes, err error) {
+func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (ReposDeleteRes, error) {
+	res, err := c.sendReposDelete(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete"),
 	}
@@ -55173,7 +58125,13 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 // Disables the ability to restrict who can push to this branch.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res *ReposDeleteAccessRestrictionsNoContent, err error) {
+func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) error {
+	res, err := c.sendReposDeleteAccessRestrictions(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res *ReposDeleteAccessRestrictionsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-access-restrictions"),
 	}
@@ -55286,7 +58244,13 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 // protection to be enabled.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionRes, err error) {
+func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (ReposDeleteAdminBranchProtectionRes, error) {
+	res, err := c.sendReposDeleteAdminBranchProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-admin-branch-protection"),
 	}
@@ -55393,7 +58357,13 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 // You must authenticate using an access token with the repo scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
-func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res *ReposDeleteAnEnvironmentNoContent, err error) {
+func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) error {
+	res, err := c.sendReposDeleteAnEnvironment(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res *ReposDeleteAnEnvironmentNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-an-environment"),
 	}
@@ -55500,7 +58470,13 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 // Information about autolinks are only available to repository administrators.
 //
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
-func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkRes, err error) {
+func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (ReposDeleteAutolinkRes, error) {
+	res, err := c.sendReposDeleteAutolink(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-autolink"),
 	}
@@ -55610,7 +58586,13 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
-func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionRes, err error) {
+func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (ReposDeleteBranchProtectionRes, error) {
+	res, err := c.sendReposDeleteBranchProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-branch-protection"),
 	}
@@ -55717,7 +58699,13 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 // Delete a commit comment.
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
-func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
+func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (ReposDeleteCommitCommentRes, error) {
+	res, err := c.sendReposDeleteCommitComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-comment"),
 	}
@@ -55830,7 +58818,13 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 // commits.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionRes, err error) {
+func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (ReposDeleteCommitSignatureProtectionRes, error) {
+	res, err := c.sendReposDeleteCommitSignatureProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-signature-protection"),
 	}
@@ -55938,7 +58932,13 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 // instead.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
-func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res *ReposDeleteDeployKeyNoContent, err error) {
+func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) error {
+	res, err := c.sendReposDeleteDeployKey(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res *ReposDeleteDeployKeyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deploy-key"),
 	}
@@ -56052,7 +59052,13 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 // github.com/rest/reference/repos#create-a-deployment-status).".
 //
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
-func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentRes, err error) {
+func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (ReposDeleteDeploymentRes, error) {
+	res, err := c.sendReposDeleteDeployment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deployment"),
 	}
@@ -56165,7 +59171,13 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 // `committer`. Otherwise, you'll receive a `422` status code.
 //
 // DELETE /repos/{owner}/{repo}/contents/{path}
-func (c *Client) ReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (res ReposDeleteFileRes, err error) {
+func (c *Client) ReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (ReposDeleteFileRes, error) {
+	res, err := c.sendReposDeleteFile(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFileReq, params ReposDeleteFileParams) (res ReposDeleteFileRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-file"),
 	}
@@ -56274,7 +59286,13 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request *ReposDeleteFileRe
 // Delete a repository invitation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res *ReposDeleteInvitationNoContent, err error) {
+func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) error {
+	res, err := c.sendReposDeleteInvitation(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res *ReposDeleteInvitationNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-invitation"),
 	}
@@ -56380,7 +59398,13 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 // Delete a GitHub Pages site.
 //
 // DELETE /repos/{owner}/{repo}/pages
-func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (res ReposDeletePagesSiteRes, err error) {
+func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (ReposDeletePagesSiteRes, error) {
+	res, err := c.sendReposDeletePagesSite(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (res ReposDeletePagesSiteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pages-site"),
 	}
@@ -56476,7 +59500,13 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionRes, err error) {
+func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (ReposDeletePullRequestReviewProtectionRes, error) {
+	res, err := c.sendReposDeletePullRequestReviewProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pull-request-review-protection"),
 	}
@@ -56583,7 +59613,13 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 // Users with push access to the repository can delete a release.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
-func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res *ReposDeleteReleaseNoContent, err error) {
+func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) error {
+	res, err := c.sendReposDeleteRelease(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res *ReposDeleteReleaseNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release"),
 	}
@@ -56689,7 +59725,13 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 // Delete a release asset.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res *ReposDeleteReleaseAssetNoContent, err error) {
+func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) error {
+	res, err := c.sendReposDeleteReleaseAsset(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res *ReposDeleteReleaseAssetNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release-asset"),
 	}
@@ -56795,7 +59837,13 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 // Delete a repository webhook.
 //
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
-func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
+func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (ReposDeleteWebhookRes, error) {
+	res, err := c.sendReposDeleteWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-webhook"),
 	}
@@ -56903,7 +59951,13 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
-func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res *ReposDisableAutomatedSecurityFixesNoContent, err error) {
+func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) error {
+	res, err := c.sendReposDisableAutomatedSecurityFixes(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res *ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
 	}
@@ -56995,7 +60049,13 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // DELETE /repos/{owner}/{repo}/lfs
-func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res *ReposDisableLfsForRepoNoContent, err error) {
+func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) error {
+	res, err := c.sendReposDisableLfsForRepo(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res *ReposDisableLfsForRepoNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
 	}
@@ -57090,7 +60150,13 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
-func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res *ReposDisableVulnerabilityAlertsNoContent, err error) {
+func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) error {
+	res, err := c.sendReposDisableVulnerabilityAlerts(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res *ReposDisableVulnerabilityAlertsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
 	}
@@ -57187,7 +60253,13 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
-func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res *ReposDownloadTarballArchiveFound, err error) {
+func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (*ReposDownloadTarballArchiveFound, error) {
+	res, err := c.sendReposDownloadTarballArchive(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res *ReposDownloadTarballArchiveFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-tarball-archive"),
 	}
@@ -57298,7 +60370,13 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 // **Note**: For private repositories, these links are temporary and expire after five minutes.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
-func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res *ReposDownloadZipballArchiveFound, err error) {
+func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (*ReposDownloadZipballArchiveFound, error) {
+	res, err := c.sendReposDownloadZipballArchive(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res *ReposDownloadZipballArchiveFound, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-zipball-archive"),
 	}
@@ -57406,7 +60484,13 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 // github.com/en/articles/configuring-automated-security-fixes)".
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
-func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res *ReposEnableAutomatedSecurityFixesNoContent, err error) {
+func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) error {
+	res, err := c.sendReposEnableAutomatedSecurityFixes(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res *ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
 	}
@@ -57498,7 +60582,13 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 // **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // PUT /repos/{owner}/{repo}/lfs
-func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoRes, err error) {
+func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (ReposEnableLfsForRepoRes, error) {
+	res, err := c.sendReposEnableLfsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-lfs-for-repo"),
 	}
@@ -57593,7 +60683,13 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 // com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
-func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res *ReposEnableVulnerabilityAlertsNoContent, err error) {
+func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) error {
+	res, err := c.sendReposEnableVulnerabilityAlerts(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res *ReposEnableVulnerabilityAlertsNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
 	}
@@ -57686,7 +60782,13 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 // repository this repository was forked from, `source` is the ultimate source for the network.
 //
 // GET /repos/{owner}/{repo}
-func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res ReposGetRes, err error) {
+func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (ReposGetRes, error) {
+	res, err := c.sendReposGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res ReposGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get"),
 	}
@@ -57784,7 +60886,13 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 // repositories.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsRes, err error) {
+func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (ReposGetAccessRestrictionsRes, error) {
+	res, err := c.sendReposGetAccessRestrictions(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-access-restrictions"),
 	}
@@ -57895,7 +61003,13 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (res *ProtectedBranchAdminEnforced, err error) {
+func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error) {
+	res, err := c.sendReposGetAdminBranchProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (res *ProtectedBranchAdminEnforced, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-admin-branch-protection"),
 	}
@@ -58006,7 +61120,13 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsRes, err error) {
+func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (ReposGetAllStatusCheckContextsRes, error) {
+	res, err := c.sendReposGetAllStatusCheckContexts(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-status-check-contexts"),
 	}
@@ -58113,7 +61233,13 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 // Get all repository topics.
 //
 // GET /repos/{owner}/{repo}/topics
-func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
+func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (ReposGetAllTopicsRes, error) {
+	res, err := c.sendReposGetAllTopics(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-topics"),
 	}
@@ -58250,7 +61376,13 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 // branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
+func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (ReposGetAppsWithAccessToProtectedBranchRes, error) {
+	res, err := c.sendReposGetAppsWithAccessToProtectedBranch(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
 	}
@@ -58358,7 +61490,13 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 // Information about autolinks are only available to repository administrators.
 //
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
-func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkRes, err error) {
+func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (ReposGetAutolinkRes, error) {
+	res, err := c.sendReposGetAutolink(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-autolink"),
 	}
@@ -58464,7 +61602,13 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 // Get a branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}
-func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
+func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (ReposGetBranchRes, error) {
+	res, err := c.sendReposGetBranch(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch"),
 	}
@@ -58574,7 +61718,13 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
-func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionRes, err error) {
+func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (ReposGetBranchProtectionRes, error) {
+	res, err := c.sendReposGetBranchProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch-protection"),
 	}
@@ -58682,7 +61832,13 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 // aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 //
 // GET /repos/{owner}/{repo}/traffic/clones
-func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams) (res ReposGetClonesRes, err error) {
+func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams) (ReposGetClonesRes, error) {
+	res, err := c.sendReposGetClones(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesParams) (res ReposGetClonesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-clones"),
 	}
@@ -58795,7 +61951,13 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 // Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
 //
 // GET /repos/{owner}/{repo}/stats/code_frequency
-func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsRes, err error) {
+func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (ReposGetCodeFrequencyStatsRes, error) {
+	res, err := c.sendReposGetCodeFrequencyStats(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-code-frequency-stats"),
 	}
@@ -58888,7 +62050,13 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 // `admin`, `write`, `read`, and `none`.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
-func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelRes, err error) {
+func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (ReposGetCollaboratorPermissionLevelRes, error) {
+	res, err := c.sendReposGetCollaboratorPermissionLevel(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-collaborator-permission-level"),
 	}
@@ -59003,7 +62171,13 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 // *   **success** if the latest status for all contexts is `success`.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/status
-func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefRes, err error) {
+func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (ReposGetCombinedStatusForRefRes, error) {
+	res, err := c.sendReposGetCombinedStatusForRef(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-combined-status-for-ref"),
 	}
@@ -59194,7 +62368,13 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}
-func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (res ReposGetCommitRes, err error) {
+func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (ReposGetCommitRes, error) {
+	res, err := c.sendReposGetCommit(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitParams) (res ReposGetCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit"),
 	}
@@ -59339,7 +62519,13 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 // per day, starting on `Sunday`.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
-func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsRes, err error) {
+func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (ReposGetCommitActivityStatsRes, error) {
+	res, err := c.sendReposGetCommitActivityStats(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-activity-stats"),
 	}
@@ -59431,7 +62617,13 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 // Get a commit comment.
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}
-func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
+func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (ReposGetCommitCommentRes, error) {
+	res, err := c.sendReposGetCommitComment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-comment"),
 	}
@@ -59546,7 +62738,13 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 // **Note**: You must enable branch protection to require signed commits.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionRes, err error) {
+func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (ReposGetCommitSignatureProtectionRes, error) {
+	res, err := c.sendReposGetCommitSignatureProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-signature-protection"),
 	}
@@ -59662,7 +62860,13 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 // `content_reports_enabled` is only returned for organization-owned repositories.
 //
 // GET /repos/{owner}/{repo}/community/profile
-func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (res *CommunityProfile, err error) {
+func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (*CommunityProfile, error) {
+	res, err := c.sendReposGetCommunityProfileMetrics(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (res *CommunityProfile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-community-profile-metrics"),
 	}
@@ -59759,7 +62963,13 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 // *   `c` - Number of commits.
 //
 // GET /repos/{owner}/{repo}/stats/contributors
-func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsRes, err error) {
+func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (ReposGetContributorsStatsRes, error) {
+	res, err := c.sendReposGetContributorsStats(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-contributors-stats"),
 	}
@@ -59851,7 +63061,13 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 // Get a deploy key.
 //
 // GET /repos/{owner}/{repo}/keys/{key_id}
-func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
+func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (ReposGetDeployKeyRes, error) {
+	res, err := c.sendReposGetDeployKey(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deploy-key"),
 	}
@@ -59957,7 +63173,13 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 // Get a deployment.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
-func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (res ReposGetDeploymentRes, err error) {
+func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (ReposGetDeploymentRes, error) {
+	res, err := c.sendReposGetDeployment(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (res ReposGetDeploymentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment"),
 	}
@@ -60063,7 +63285,13 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 // Users with pull access can view a deployment status for a deployment:.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
-func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusRes, err error) {
+func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusRes, error) {
+	res, err := c.sendReposGetDeploymentStatus(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment-status"),
 	}
@@ -60184,7 +63412,13 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 // Get latest Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/latest
-func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (res *PageBuild, err error) {
+func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (*PageBuild, error) {
+	res, err := c.sendReposGetLatestPagesBuild(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (res *PageBuild, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-pages-build"),
 	}
@@ -60279,7 +63513,13 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 // and not the date when the release was drafted or published.
 //
 // GET /repos/{owner}/{repo}/releases/latest
-func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (res *Release, err error) {
+func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (*Release, error) {
+	res, err := c.sendReposGetLatestRelease(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (res *Release, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-release"),
 	}
@@ -60371,7 +63611,13 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 // Get a GitHub Pages site.
 //
 // GET /repos/{owner}/{repo}/pages
-func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
+func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error) {
+	res, err := c.sendReposGetPages(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages"),
 	}
@@ -60463,7 +63709,13 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 // Get GitHub Pages build.
 //
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
-func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (res *PageBuild, err error) {
+func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (*PageBuild, error) {
+	res, err := c.sendReposGetPagesBuild(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (res *PageBuild, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-build"),
 	}
@@ -60575,7 +63827,13 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 // `administration:write` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/pages/health
-func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckRes, err error) {
+func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (ReposGetPagesHealthCheckRes, error) {
+	res, err := c.sendReposGetPagesHealthCheck(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-health-check"),
 	}
@@ -60670,7 +63928,13 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 // The array order is oldest week (index 0) to most recent week.
 //
 // GET /repos/{owner}/{repo}/stats/participation
-func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsRes, err error) {
+func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (ReposGetParticipationStatsRes, error) {
+	res, err := c.sendReposGetParticipationStats(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-participation-stats"),
 	}
@@ -60766,7 +64030,13 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (res *ProtectedBranchPullRequestReview, err error) {
+func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (*ProtectedBranchPullRequestReview, error) {
+	res, err := c.sendReposGetPullRequestReviewProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (res *ProtectedBranchPullRequestReview, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pull-request-review-protection"),
 	}
@@ -60878,7 +64148,13 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 // Tuesdays. All times are based on the time zone of individual commits.
 //
 // GET /repos/{owner}/{repo}/stats/punch_card
-func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsRes, err error) {
+func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (ReposGetPunchCardStatsRes, error) {
+	res, err := c.sendReposGetPunchCardStats(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-punch-card-stats"),
 	}
@@ -60972,7 +64248,13 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 // com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
 //
 // GET /repos/{owner}/{repo}/readme
-func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (res ReposGetReadmeRes, err error) {
+func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (ReposGetReadmeRes, error) {
+	res, err := c.sendReposGetReadme(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (res ReposGetReadmeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme"),
 	}
@@ -61087,7 +64369,13 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 // com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
 //
 // GET /repos/{owner}/{repo}/readme/{dir}
-func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (res ReposGetReadmeInDirectoryRes, err error) {
+func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (ReposGetReadmeInDirectoryRes, error) {
+	res, err := c.sendReposGetReadmeInDirectory(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (res ReposGetReadmeInDirectoryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme-in-directory"),
 	}
@@ -61216,7 +64504,13 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 // com/rest/overview/resources-in-the-rest-api#hypermedia).
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}
-func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseRes, err error) {
+func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (ReposGetReleaseRes, error) {
+	res, err := c.sendReposGetRelease(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release"),
 	}
@@ -61325,7 +64619,13 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 // handle both a `200` or `302` response.
 //
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetRes, err error) {
+func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (ReposGetReleaseAssetRes, error) {
+	res, err := c.sendReposGetReleaseAsset(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-asset"),
 	}
@@ -61431,7 +64731,13 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 // Get a published release with the specified tag.
 //
 // GET /repos/{owner}/{repo}/releases/tags/{tag}
-func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagRes, err error) {
+func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (ReposGetReleaseByTagRes, error) {
+	res, err := c.sendReposGetReleaseByTag(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-by-tag"),
 	}
@@ -61541,7 +64847,13 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionRes, err error) {
+func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (ReposGetStatusChecksProtectionRes, error) {
+	res, err := c.sendReposGetStatusChecksProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-status-checks-protection"),
 	}
@@ -61653,7 +64965,13 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 // Lists the teams who have push access to this branch. The list includes child teams.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
+func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (ReposGetTeamsWithAccessToProtectedBranchRes, error) {
+	res, err := c.sendReposGetTeamsWithAccessToProtectedBranch(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
 	}
@@ -61760,7 +65078,13 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 // Get the top 10 popular contents over the last 14 days.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/paths
-func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsRes, err error) {
+func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (ReposGetTopPathsRes, error) {
+	res, err := c.sendReposGetTopPaths(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-paths"),
 	}
@@ -61852,7 +65176,13 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 // Get the top 10 referrers over the last 14 days.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/referrers
-func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersRes, err error) {
+func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (ReposGetTopReferrersRes, error) {
+	res, err := c.sendReposGetTopReferrers(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-referrers"),
 	}
@@ -61949,7 +65279,13 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 // Lists the people who have push access to this branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
+func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (ReposGetUsersWithAccessToProtectedBranchRes, error) {
+	res, err := c.sendReposGetUsersWithAccessToProtectedBranch(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
 	}
@@ -62057,7 +65393,13 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 // aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
 //
 // GET /repos/{owner}/{repo}/traffic/views
-func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) (res ReposGetViewsRes, err error) {
+func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) (ReposGetViewsRes, error) {
+	res, err := c.sendReposGetViews(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsParams) (res ReposGetViewsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-views"),
 	}
@@ -62172,7 +65514,13 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 // repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository).".
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
-func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (res ReposGetWebhookRes, err error) {
+func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (ReposGetWebhookRes, error) {
+	res, err := c.sendReposGetWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (res ReposGetWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook"),
 	}
@@ -62282,7 +65630,13 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 // `repository_hooks:read` permission.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
+func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (*WebhookConfig, error) {
+	res, err := c.sendReposGetWebhookConfigForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-config-for-repo"),
 	}
@@ -62389,7 +65743,13 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 // Returns a delivery for a webhook configured in a repository.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
-func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (res ReposGetWebhookDeliveryRes, err error) {
+func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (ReposGetWebhookDeliveryRes, error) {
+	res, err := c.sendReposGetWebhookDelivery(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (res ReposGetWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-delivery"),
 	}
@@ -62511,7 +65871,13 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 // Information about autolinks are only available to repository administrators.
 //
 // GET /repos/{owner}/{repo}/autolinks
-func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) (res []Autolink, err error) {
+func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) ([]Autolink, error) {
+	res, err := c.sendReposListAutolinks(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) (res []Autolink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-autolinks"),
 	}
@@ -62624,7 +65990,13 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 // List branches.
 //
 // GET /repos/{owner}/{repo}/branches
-func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
+func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (ReposListBranchesRes, error) {
+	res, err := c.sendReposListBranches(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches"),
 	}
@@ -62776,7 +66148,13 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 // Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
-func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (res ReposListBranchesForHeadCommitRes, err error) {
+func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (ReposListBranchesForHeadCommitRes, error) {
+	res, err := c.sendReposListBranchesForHeadCommit(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (res ReposListBranchesForHeadCommitRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches-for-head-commit"),
 	}
@@ -62887,7 +66265,13 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 // Team members will include the members of child teams.
 //
 // GET /repos/{owner}/{repo}/collaborators
-func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (res ReposListCollaboratorsRes, err error) {
+func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (ReposListCollaboratorsRes, error) {
+	res, err := c.sendReposListCollaborators(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (res ReposListCollaboratorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-collaborators"),
 	}
@@ -63034,7 +66418,13 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 // Use the `:commit_sha` to specify the commit that will have its comments listed.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (res *ReposListCommentsForCommitOKHeaders, err error) {
+func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (*ReposListCommentsForCommitOKHeaders, error) {
+	res, err := c.sendReposListCommentsForCommit(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (res *ReposListCommentsForCommitOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-comments-for-commit"),
 	}
@@ -63182,7 +66572,13 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 // Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/comments
-func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (res *ReposListCommitCommentsForRepoOKHeaders, err error) {
+func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (*ReposListCommitCommentsForRepoOKHeaders, error) {
+	res, err := c.sendReposListCommitCommentsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (res *ReposListCommitCommentsForRepoOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-comments-for-repo"),
 	}
@@ -63315,7 +66711,13 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 // This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
-func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefRes, err error) {
+func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (ReposListCommitStatusesForRefRes, error) {
+	res, err := c.sendReposListCommitStatusesForRef(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
 	}
@@ -63491,7 +66893,13 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 // | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
 //
 // GET /repos/{owner}/{repo}/commits
-func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsRes, err error) {
+func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsRes, error) {
+	res, err := c.sendReposListCommits(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commits"),
 	}
@@ -63712,7 +67120,13 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 // anonymous contributors without associated GitHub user information.
 //
 // GET /repos/{owner}/{repo}/contributors
-func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsRes, err error) {
+func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (ReposListContributorsRes, error) {
+	res, err := c.sendReposListContributors(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-contributors"),
 	}
@@ -63859,7 +67273,13 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 // List deploy keys.
 //
 // GET /repos/{owner}/{repo}/keys
-func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (res *ReposListDeployKeysOKHeaders, err error) {
+func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (*ReposListDeployKeysOKHeaders, error) {
+	res, err := c.sendReposListDeployKeys(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (res *ReposListDeployKeysOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deploy-keys"),
 	}
@@ -63989,7 +67409,13 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 // Users with pull access can view deployment statuses for a deployment:.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesRes, err error) {
+func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (ReposListDeploymentStatusesRes, error) {
+	res, err := c.sendReposListDeploymentStatuses(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployment-statuses"),
 	}
@@ -64134,7 +67560,13 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 // Simple filtering of deployments is available via query parameters:.
 //
 // GET /repos/{owner}/{repo}/deployments
-func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (res *ReposListDeploymentsOKHeaders, err error) {
+func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (*ReposListDeploymentsOKHeaders, error) {
+	res, err := c.sendReposListDeployments(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (res *ReposListDeploymentsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployments"),
 	}
@@ -64335,7 +67767,13 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 // they are a collaborator, and repositories that they can access through an organization membership.
 //
 // GET /user/repos
-func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (res ReposListForAuthenticatedUserRes, err error) {
+func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (ReposListForAuthenticatedUserRes, error) {
+	res, err := c.sendReposListForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (res ReposListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-authenticated-user"),
 	}
@@ -64554,7 +67992,13 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 // Lists repositories for the specified organization.
 //
 // GET /orgs/{org}/repos
-func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (res *ReposListForOrgOKHeaders, err error) {
+func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (*ReposListForOrgOKHeaders, error) {
+	res, err := c.sendReposListForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrgParams) (res *ReposListForOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-org"),
 	}
@@ -64721,7 +68165,13 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 // internal repositories for the specified user.
 //
 // GET /users/{username}/repos
-func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserParams) (res *ReposListForUserOKHeaders, err error) {
+func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserParams) (*ReposListForUserOKHeaders, error) {
+	res, err := c.sendReposListForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUserParams) (res *ReposListForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-user"),
 	}
@@ -64887,7 +68337,13 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 // List forks.
 //
 // GET /repos/{owner}/{repo}/forks
-func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams) (res ReposListForksRes, err error) {
+func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams) (ReposListForksRes, error) {
+	res, err := c.sendReposListForks(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksParams) (res ReposListForksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-forks"),
 	}
@@ -65035,7 +68491,13 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 // currently open repository invitations.
 //
 // GET /repos/{owner}/{repo}/invitations
-func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (res *ReposListInvitationsOKHeaders, err error) {
+func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (*ReposListInvitationsOKHeaders, error) {
+	res, err := c.sendReposListInvitations(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (res *ReposListInvitationsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations"),
 	}
@@ -65166,7 +68628,13 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 // for that user.
 //
 // GET /user/repository_invitations
-func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
+func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (ReposListInvitationsForAuthenticatedUserRes, error) {
+	res, err := c.sendReposListInvitationsForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
 	}
@@ -65267,7 +68735,13 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 // bytes of code written in that language.
 //
 // GET /repos/{owner}/{repo}/languages
-func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (res Language, err error) {
+func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (Language, error) {
+	res, err := c.sendReposListLanguages(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (res Language, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-languages"),
 	}
@@ -65359,7 +68833,13 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 // List GitHub Pages builds.
 //
 // GET /repos/{owner}/{repo}/pages/builds
-func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (res *ReposListPagesBuildsOKHeaders, err error) {
+func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (*ReposListPagesBuildsOKHeaders, error) {
+	res, err := c.sendReposListPagesBuilds(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (res *ReposListPagesBuildsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pages-builds"),
 	}
@@ -65495,7 +68975,13 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 // of repositories.
 //
 // GET /repositories
-func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicParams) (res ReposListPublicRes, err error) {
+func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicParams) (ReposListPublicRes, error) {
+	res, err := c.sendReposListPublic(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublicParams) (res ReposListPublicRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-public"),
 	}
@@ -65583,7 +69069,13 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 // requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (res *ReposListPullRequestsAssociatedWithCommitOKHeaders, err error) {
+func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (*ReposListPullRequestsAssociatedWithCommitOKHeaders, error) {
+	res, err := c.sendReposListPullRequestsAssociatedWithCommit(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (res *ReposListPullRequestsAssociatedWithCommitOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
 	}
@@ -65728,7 +69220,13 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 // List release assets.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
-func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (res *ReposListReleaseAssetsOKHeaders, err error) {
+func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (*ReposListReleaseAssetsOKHeaders, error) {
+	res, err := c.sendReposListReleaseAssets(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (res *ReposListReleaseAssetsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-release-assets"),
 	}
@@ -65877,7 +69375,13 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 // receive listings for draft releases.
 //
 // GET /repos/{owner}/{repo}/releases
-func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesRes, err error) {
+func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (ReposListReleasesRes, error) {
+	res, err := c.sendReposListReleases(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-releases"),
 	}
@@ -66007,7 +69511,13 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 // List repository tags.
 //
 // GET /repos/{owner}/{repo}/tags
-func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) (res *ReposListTagsOKHeaders, err error) {
+func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) (*ReposListTagsOKHeaders, error) {
+	res, err := c.sendReposListTags(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsParams) (res *ReposListTagsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-tags"),
 	}
@@ -66137,7 +69647,13 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 // List repository teams.
 //
 // GET /repos/{owner}/{repo}/teams
-func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (res *ReposListTeamsOKHeaders, err error) {
+func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (*ReposListTeamsOKHeaders, error) {
+	res, err := c.sendReposListTeams(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsParams) (res *ReposListTeamsOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-teams"),
 	}
@@ -66267,7 +69783,13 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 // Returns a list of webhook deliveries for a webhook configured in a repository.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
-func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (res ReposListWebhookDeliveriesRes, err error) {
+func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (ReposListWebhookDeliveriesRes, error) {
+	res, err := c.sendReposListWebhookDeliveries(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (res ReposListWebhookDeliveriesRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhook-deliveries"),
 	}
@@ -66412,7 +69934,13 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 // List repository webhooks.
 //
 // GET /repos/{owner}/{repo}/hooks
-func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (res ReposListWebhooksRes, err error) {
+func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (ReposListWebhooksRes, error) {
+	res, err := c.sendReposListWebhooks(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (res ReposListWebhooksRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhooks"),
 	}
@@ -66542,7 +70070,13 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 // Merge a branch.
 //
 // POST /repos/{owner}/{repo}/merges
-func (c *Client) ReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (res ReposMergeRes, err error) {
+func (c *Client) ReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (ReposMergeRes, error) {
+	res, err := c.sendReposMerge(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, params ReposMergeParams) (res ReposMergeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge"),
 	}
@@ -66638,7 +70172,13 @@ func (c *Client) ReposMerge(ctx context.Context, request *ReposMergeReq, params 
 // Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
 //
 // POST /repos/{owner}/{repo}/merge-upstream
-func (c *Client) ReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
+func (c *Client) ReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (ReposMergeUpstreamRes, error) {
+	res, err := c.sendReposMergeUpstream(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge-upstream"),
 	}
@@ -66734,7 +70274,13 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request *ReposMergeUpst
 // hook.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
-func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookRes, err error) {
+func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (ReposPingWebhookRes, error) {
+	res, err := c.sendReposPingWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/ping-webhook"),
 	}
@@ -66841,7 +70387,13 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 // Redeliver a webhook delivery for a webhook configured in a repository.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (res ReposRedeliverWebhookDeliveryRes, err error) {
+func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (ReposRedeliverWebhookDeliveryRes, error) {
+	res, err := c.sendReposRedeliverWebhookDelivery(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (res ReposRedeliverWebhookDeliveryRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/redeliver-webhook-delivery"),
 	}
@@ -66977,7 +70529,13 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 // The list of users, apps, and teams in total is limited to 100 items. |.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (res ReposRemoveAppAccessRestrictionsRes, err error) {
+func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (ReposRemoveAppAccessRestrictionsRes, error) {
+	res, err := c.sendReposRemoveAppAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, request OptReposRemoveAppAccessRestrictionsReq, params ReposRemoveAppAccessRestrictionsParams) (res ReposRemoveAppAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-app-access-restrictions"),
 	}
@@ -67103,7 +70661,13 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 // Remove a repository collaborator.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
-func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res *ReposRemoveCollaboratorNoContent, err error) {
+func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) error {
+	res, err := c.sendReposRemoveCollaborator(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res *ReposRemoveCollaboratorNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-collaborator"),
 	}
@@ -67213,7 +70777,13 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (res ReposRemoveStatusCheckContextsRes, err error) {
+func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (ReposRemoveStatusCheckContextsRes, error) {
+	res, err := c.sendReposRemoveStatusCheckContexts(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request OptReposRemoveStatusCheckContextsReq, params ReposRemoveStatusCheckContextsParams) (res ReposRemoveStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-contexts"),
 	}
@@ -67343,7 +70913,13 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res *ReposRemoveStatusCheckProtectionNoContent, err error) {
+func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) error {
+	res, err := c.sendReposRemoveStatusCheckProtection(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res *ReposRemoveStatusCheckProtectionNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-protection"),
 	}
@@ -67464,7 +71040,13 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 // list of users, apps, and teams in total is limited to 100 items. |.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
+func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (ReposRemoveTeamAccessRestrictionsRes, error) {
+	res, err := c.sendReposRemoveTeamAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, request OptReposRemoveTeamAccessRestrictionsReq, params ReposRemoveTeamAccessRestrictionsParams) (res ReposRemoveTeamAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-team-access-restrictions"),
 	}
@@ -67603,7 +71185,13 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 // users, apps, and teams in total is limited to 100 items. |.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (res ReposRemoveUserAccessRestrictionsRes, err error) {
+func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (ReposRemoveUserAccessRestrictionsRes, error) {
+	res, err := c.sendReposRemoveUserAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, request OptReposRemoveUserAccessRestrictionsReq, params ReposRemoveUserAccessRestrictionsParams) (res ReposRemoveUserAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-user-access-restrictions"),
 	}
@@ -67741,7 +71329,13 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 // * GitHub Apps must have the `administration:write` repository permission.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
-func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (res ReposRenameBranchRes, err error) {
+func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (ReposRenameBranchRes, error) {
+	res, err := c.sendReposRenameBranch(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (res ReposRenameBranchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/rename-branch"),
 	}
@@ -67851,7 +71445,13 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 // Replace all repository topics.
 //
 // PUT /repos/{owner}/{repo}/topics
-func (c *Client) ReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
+func (c *Client) ReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (ReposReplaceAllTopicsRes, error) {
+	res, err := c.sendReposReplaceAllTopics(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposReplaceAllTopicsReq, params ReposReplaceAllTopicsParams) (res ReposReplaceAllTopicsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/replace-all-topics"),
 	}
@@ -67960,7 +71560,13 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request *ReposReplac
 // queued until the first completes.
 //
 // POST /repos/{owner}/{repo}/pages/builds
-func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (res *PageBuildStatus, err error) {
+func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (*PageBuildStatus, error) {
+	res, err := c.sendReposRequestPagesBuild(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (res *PageBuildStatus, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/request-pages-build"),
 	}
@@ -68058,7 +71664,13 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 // protection to be enabled.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (res *ProtectedBranchAdminEnforced, err error) {
+func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (*ProtectedBranchAdminEnforced, error) {
+	res, err := c.sendReposSetAdminBranchProtection(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (res *ProtectedBranchAdminEnforced, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-admin-branch-protection"),
 	}
@@ -68181,7 +71793,13 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 // The list of users, apps, and teams in total is limited to 100 items. |.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (res ReposSetAppAccessRestrictionsRes, err error) {
+func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (ReposSetAppAccessRestrictionsRes, error) {
+	res, err := c.sendReposSetAppAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request OptReposSetAppAccessRestrictionsReq, params ReposSetAppAccessRestrictionsParams) (res ReposSetAppAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-app-access-restrictions"),
 	}
@@ -68311,7 +71929,13 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 // GitHub Help documentation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (res ReposSetStatusCheckContextsRes, err error) {
+func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (ReposSetStatusCheckContextsRes, error) {
+	res, err := c.sendReposSetStatusCheckContexts(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request OptReposSetStatusCheckContextsReq, params ReposSetStatusCheckContextsParams) (res ReposSetStatusCheckContextsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-status-check-contexts"),
 	}
@@ -68452,7 +72076,13 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 // users, apps, and teams in total is limited to 100 items. |.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (res ReposSetTeamAccessRestrictionsRes, err error) {
+func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (ReposSetTeamAccessRestrictionsRes, error) {
+	res, err := c.sendReposSetTeamAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request OptReposSetTeamAccessRestrictionsReq, params ReposSetTeamAccessRestrictionsParams) (res ReposSetTeamAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-team-access-restrictions"),
 	}
@@ -68592,7 +72222,13 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 // teams in total is limited to 100 items. |.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (res ReposSetUserAccessRestrictionsRes, err error) {
+func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (ReposSetUserAccessRestrictionsRes, error) {
+	res, err := c.sendReposSetUserAccessRestrictions(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request OptReposSetUserAccessRestrictionsReq, params ReposSetUserAccessRestrictionsParams) (res ReposSetUserAccessRestrictionsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-user-access-restrictions"),
 	}
@@ -68721,7 +72357,13 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 // **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
-func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookRes, err error) {
+func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (ReposTestPushWebhookRes, error) {
+	res, err := c.sendReposTestPushWebhook(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/test-push-webhook"),
 	}
@@ -68832,7 +72474,13 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 // com/articles/about-repository-transfers/).
 //
 // POST /repos/{owner}/{repo}/transfer
-func (c *Client) ReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (res *MinimalRepository, err error) {
+func (c *Client) ReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (*MinimalRepository, error) {
+	res, err := c.sendReposTransfer(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferReq, params ReposTransferParams) (res *MinimalRepository, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/transfer"),
 	}
@@ -68928,7 +72576,13 @@ func (c *Client) ReposTransfer(ctx context.Context, request *ReposTransferReq, p
 // github.com/rest/reference/repos#replace-all-repository-topics) endpoint.
 //
 // PATCH /repos/{owner}/{repo}
-func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (res ReposUpdateRes, err error) {
+func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (ReposUpdateRes, error) {
+	res, err := c.sendReposUpdate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq, params ReposUpdateParams) (res ReposUpdateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update"),
 	}
@@ -69045,7 +72699,13 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 // **Note**: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
-func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
+func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (ReposUpdateBranchProtectionRes, error) {
+	res, err := c.sendReposUpdateBranchProtection(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *ReposUpdateBranchProtectionReq, params ReposUpdateBranchProtectionParams) (res ReposUpdateBranchProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-branch-protection"),
 	}
@@ -69164,7 +72824,13 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request *Repos
 // Update a commit comment.
 //
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
-func (c *Client) ReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
+func (c *Client) ReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (ReposUpdateCommitCommentRes, error) {
+	res, err := c.sendReposUpdateCommitComment(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-commit-comment"),
 	}
@@ -69273,7 +72939,13 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request *ReposUpd
 // Update a repository invitation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res *RepositoryInvitation, err error) {
+func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (*RepositoryInvitation, error) {
+	res, err := c.sendReposUpdateInvitation(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptReposUpdateInvitationReq, params ReposUpdateInvitationParams) (res *RepositoryInvitation, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-invitation"),
 	}
@@ -69405,7 +73077,13 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 // **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
+func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (ReposUpdatePullRequestReviewProtectionRes, error) {
+	res, err := c.sendReposUpdatePullRequestReviewProtection(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
 	}
@@ -69515,7 +73193,13 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 // Users with push access to the repository can edit a release.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
-func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
+func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (ReposUpdateReleaseRes, error) {
+	res, err := c.sendReposUpdateRelease(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release"),
 	}
@@ -69624,7 +73308,13 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 // Users with push access to the repository can edit a release asset.
 //
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res *ReleaseAsset, err error) {
+func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (*ReleaseAsset, error) {
+	res, err := c.sendReposUpdateReleaseAsset(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res *ReleaseAsset, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release-asset"),
 	}
@@ -69739,7 +73429,13 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 // protection to be enabled.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (res ReposUpdateStatusCheckProtectionRes, err error) {
+func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (ReposUpdateStatusCheckProtectionRes, error) {
+	res, err := c.sendReposUpdateStatusCheckProtection(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (res ReposUpdateStatusCheckProtectionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-status-check-protection"),
 	}
@@ -69852,7 +73548,13 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 // repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository).".
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}
-func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (res ReposUpdateWebhookRes, err error) {
+func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (ReposUpdateWebhookRes, error) {
+	res, err := c.sendReposUpdateWebhook(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpdateWebhookReq, params ReposUpdateWebhookParams) (res ReposUpdateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook"),
 	}
@@ -69981,7 +73683,13 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 // `repository_hooks:write` permission.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
+func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (*WebhookConfig, error) {
+	res, err := c.sendReposUpdateWebhookConfigForRepo(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res *WebhookConfig, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook-config-for-repo"),
 	}
@@ -70132,7 +73840,13 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 // error and must delete the old file before you can re-upload the new asset.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/assets
-func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (res *ReleaseAsset, err error) {
+func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (*ReleaseAsset, error) {
+	res, err := c.sendReposUploadReleaseAsset(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (res *ReleaseAsset, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/upload-release-asset"),
 	}
@@ -70277,7 +73991,13 @@ func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request *ReposUplo
 // Delete a SCIM user from an organization.
 //
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
-func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
+func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error) {
+	res, err := c.sendScimDeleteUserFromOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("scim/delete-user-from-org"),
 	}
@@ -70387,7 +74107,13 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 // language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
 //
 // GET /search/code
-func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res SearchCodeRes, err error) {
+func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (SearchCodeRes, error) {
+	res, err := c.sendSearchCode(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (res SearchCodeRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/code"),
 	}
@@ -70545,7 +74271,13 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 // `q=repo:octocat/Spoon-Knife+css`.
 //
 // GET /search/commits
-func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) (res SearchCommitsRes, err error) {
+func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) (SearchCommitsRes, error) {
+	res, err := c.sendSearchCommits(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsParams) (res SearchCommitsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/commits"),
 	}
@@ -70715,7 +74447,13 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 // com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests).".
 //
 // GET /search/issues
-func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (res SearchIssuesAndPullRequestsRes, err error) {
+func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (SearchIssuesAndPullRequestsRes, error) {
+	res, err := c.sendSearchIssuesAndPullRequests(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (res SearchIssuesAndPullRequestsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/issues-and-pull-requests"),
 	}
@@ -70872,7 +74610,13 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 // The labels that best match the query appear first in the search results.
 //
 // GET /search/labels
-func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (res SearchLabelsRes, err error) {
+func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (SearchLabelsRes, error) {
+	res, err := c.sendSearchLabels(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams) (res SearchLabelsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/labels"),
 	}
@@ -71049,7 +74793,13 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 // `q=topic:ruby+topic:rails`.
 //
 // GET /search/repositories
-func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res SearchReposRes, err error) {
+func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (SearchReposRes, error) {
+	res, err := c.sendSearchRepos(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) (res SearchReposRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/repos"),
 	}
@@ -71210,7 +74960,13 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 // results.
 //
 // GET /search/topics
-func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (res SearchTopicsRes, err error) {
+func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsRes, error) {
+	res, err := c.sendSearchTopics(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams) (res SearchTopicsRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/topics"),
 	}
@@ -71335,7 +75091,13 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 // than 42 repositories and over 1,000 followers.
 //
 // GET /search/users
-func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res SearchUsersRes, err error) {
+func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (SearchUsersRes, error) {
+	res, err := c.sendSearchUsers(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) (res SearchUsersRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/users"),
 	}
@@ -71486,7 +75248,13 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertRes, err error) {
+func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (SecretScanningGetAlertRes, error) {
+	res, err := c.sendSecretScanningGetAlert(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/get-alert"),
 	}
@@ -71599,7 +75367,13 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /orgs/{org}/secret-scanning/alerts
-func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (res SecretScanningListAlertsForOrgRes, err error) {
+func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (SecretScanningListAlertsForOrgRes, error) {
+	res, err := c.sendSecretScanningListAlertsForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (res SecretScanningListAlertsForOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
 	}
@@ -71751,7 +75525,13 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
-func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (res SecretScanningListAlertsForRepoRes, err error) {
+func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (SecretScanningListAlertsForRepoRes, error) {
+	res, err := c.sendSecretScanningListAlertsForRepo(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (res SecretScanningListAlertsForRepoRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
 	}
@@ -71918,7 +75698,13 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 // GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
+func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (SecretScanningUpdateAlertRes, error) {
+	res, err := c.sendSecretScanningUpdateAlert(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *SecretScanningUpdateAlertReq, params SecretScanningUpdateAlertParams) (res SecretScanningUpdateAlertRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/update-alert"),
 	}
@@ -72060,7 +75846,13 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request *SecretS
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/members/{username}
-func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
+func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (TeamsAddMemberLegacyRes, error) {
+	res, err := c.sendTeamsAddMemberLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-member-legacy"),
 	}
@@ -72172,7 +75964,13 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 // /organizations/{org_id}/team/{team_id}/memberships/{username}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (TeamsAddOrUpdateMembershipForUserInOrgRes, error) {
+	res, err := c.sendTeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserInOrgReq, params TeamsAddOrUpdateMembershipForUserInOrgParams) (res TeamsAddOrUpdateMembershipForUserInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
 	}
@@ -72323,7 +76121,13 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/memberships/{username}
-func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
+func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (TeamsAddOrUpdateMembershipForUserLegacyRes, error) {
+	res, err := c.sendTeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, request OptTeamsAddOrUpdateMembershipForUserLegacyReq, params TeamsAddOrUpdateMembershipForUserLegacyParams) (res TeamsAddOrUpdateMembershipForUserLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
 	}
@@ -72437,7 +76241,13 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error) {
+	res, err := c.sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
 	}
@@ -72570,7 +76380,13 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/projects/{project_id}
-func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
+func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (TeamsAddOrUpdateProjectPermissionsLegacyRes, error) {
+	res, err := c.sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsLegacyReq, params TeamsAddOrUpdateProjectPermissionsLegacyParams) (res TeamsAddOrUpdateProjectPermissionsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
 	}
@@ -72691,7 +76507,13 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 // com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) error {
+	res, err := c.sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsInOrgReq, params TeamsAddOrUpdateRepoPermissionsInOrgParams) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
 	}
@@ -72844,7 +76666,13 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/repos/{owner}/{repo}
-func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
+func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (TeamsAddOrUpdateRepoPermissionsLegacyRes, error) {
+	res, err := c.sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, request OptTeamsAddOrUpdateRepoPermissionsLegacyReq, params TeamsAddOrUpdateRepoPermissionsLegacyParams) (res TeamsAddOrUpdateRepoPermissionsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
 	}
@@ -72972,7 +76800,13 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
+func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (TeamsCheckPermissionsForProjectInOrgRes, error) {
+	res, err := c.sendTeamsCheckPermissionsForProjectInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
 	}
@@ -73085,7 +76919,13 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/projects/{project_id}
-func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
+func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (TeamsCheckPermissionsForProjectLegacyRes, error) {
+	res, err := c.sendTeamsCheckPermissionsForProjectLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
 	}
@@ -73184,7 +77024,13 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
+func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (TeamsCheckPermissionsForRepoInOrgRes, error) {
+	res, err := c.sendTeamsCheckPermissionsForRepoInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
 	}
@@ -73314,7 +77160,13 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos/{owner}/{repo}
-func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
+func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (TeamsCheckPermissionsForRepoLegacyRes, error) {
+	res, err := c.sendTeamsCheckPermissionsForRepoLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
 	}
@@ -73427,7 +77279,13 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 // com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
 //
 // POST /orgs/{org}/teams
-func (c *Client) TeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (res TeamsCreateRes, err error) {
+func (c *Client) TeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (TeamsCreateRes, error) {
+	res, err := c.sendTeamsCreate(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, params TeamsCreateParams) (res TeamsCreateRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create"),
 	}
@@ -73526,7 +77384,13 @@ func (c *Client) TeamsCreate(ctx context.Context, request *TeamsCreateReq, param
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
+func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error) {
+	res, err := c.sendTeamsCreateDiscussionCommentInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, request *TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
 	}
@@ -73649,7 +77513,13 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
-func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
+func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error) {
+	res, err := c.sendTeamsCreateDiscussionCommentLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, request *TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
 	}
@@ -73754,7 +77624,13 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions
-func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res *TeamDiscussion, err error) {
+func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (*TeamDiscussion, error) {
+	res, err := c.sendTeamsCreateDiscussionInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-in-org"),
 	}
@@ -73862,7 +77738,13 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request *TeamsC
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions
-func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res *TeamDiscussion, err error) {
+func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (*TeamDiscussion, error) {
+	res, err := c.sendTeamsCreateDiscussionLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-legacy"),
 	}
@@ -73949,7 +77831,13 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request *Teams
 // /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res *GroupMapping, err error) {
+func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (*GroupMapping, error) {
+	res, err := c.sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res *GroupMapping, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
 	}
@@ -74055,7 +77943,13 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
-func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
+func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, error) {
+	res, err := c.sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Context, request *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) (res TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
 	}
@@ -74147,7 +78041,13 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res *TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) error {
+	res, err := c.sendTeamsDeleteDiscussionCommentInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res *TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
 	}
@@ -74274,7 +78174,13 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res *TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) error {
+	res, err := c.sendTeamsDeleteDiscussionCommentLegacy(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res *TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
 	}
@@ -74383,7 +78289,13 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res *TeamsDeleteDiscussionInOrgNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) error {
+	res, err := c.sendTeamsDeleteDiscussionInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res *TeamsDeleteDiscussionInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-in-org"),
 	}
@@ -74495,7 +78407,13 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
-func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res *TeamsDeleteDiscussionLegacyNoContent, err error) {
+func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) error {
+	res, err := c.sendTeamsDeleteDiscussionLegacy(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res *TeamsDeleteDiscussionLegacyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-legacy"),
 	}
@@ -74590,7 +78508,13 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 // /organizations/{org_id}/team/{team_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
-func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res *TeamsDeleteInOrgNoContent, err error) {
+func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) error {
+	res, err := c.sendTeamsDeleteInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res *TeamsDeleteInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-in-org"),
 	}
@@ -74688,7 +78612,13 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}
-func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (res TeamsDeleteLegacyRes, err error) {
+func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (TeamsDeleteLegacyRes, error) {
+	res, err := c.sendTeamsDeleteLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (res TeamsDeleteLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-legacy"),
 	}
@@ -74766,7 +78696,13 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 // /organizations/{org_id}/team/{team_id}`.
 //
 // GET /orgs/{org}/teams/{team_slug}
-func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameRes, err error) {
+func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (TeamsGetByNameRes, error) {
+	res, err := c.sendTeamsGetByName(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-by-name"),
 	}
@@ -74860,7 +78796,13 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
+func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (*TeamDiscussionComment, error) {
+	res, err := c.sendTeamsGetDiscussionCommentInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-in-org"),
 	}
@@ -74987,7 +78929,13 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
+func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (*TeamDiscussionComment, error) {
+	res, err := c.sendTeamsGetDiscussionCommentLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-legacy"),
 	}
@@ -75096,7 +79044,13 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (res *TeamDiscussion, err error) {
+func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (*TeamDiscussion, error) {
+	res, err := c.sendTeamsGetDiscussionInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-in-org"),
 	}
@@ -75208,7 +79162,13 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}
-func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (res *TeamDiscussion, err error) {
+func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (*TeamDiscussion, error) {
+	res, err := c.sendTeamsGetDiscussionLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-legacy"),
 	}
@@ -75303,7 +79263,13 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}
-func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
+func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyRes, error) {
+	res, err := c.sendTeamsGetLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-legacy"),
 	}
@@ -75385,7 +79351,13 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members/{username}
-func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
+func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (TeamsGetMemberLegacyRes, error) {
+	res, err := c.sendTeamsGetMemberLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-member-legacy"),
 	}
@@ -75483,7 +79455,13 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 // roles, see see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
 //
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgRes, err error) {
+func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (TeamsGetMembershipForUserInOrgRes, error) {
+	res, err := c.sendTeamsGetMembershipForUserInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-in-org"),
 	}
@@ -75599,7 +79577,13 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/memberships/{username}
-func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
+func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (TeamsGetMembershipForUserLegacyRes, error) {
+	res, err := c.sendTeamsGetMembershipForUserLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-legacy"),
 	}
@@ -75690,7 +79674,13 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 // Lists all teams in an organization that are visible to the authenticated user.
 //
 // GET /orgs/{org}/teams
-func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res TeamsListRes, err error) {
+func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (TeamsListRes, error) {
+	res, err := c.sendTeamsList(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res TeamsListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list"),
 	}
@@ -75807,7 +79797,13 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 // /organizations/{org_id}/team/{team_id}/teams`.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
-func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (res *TeamsListChildInOrgOKHeaders, err error) {
+func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (*TeamsListChildInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListChildInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (res *TeamsListChildInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-in-org"),
 	}
@@ -75941,7 +79937,13 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/teams
-func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (res TeamsListChildLegacyRes, err error) {
+func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (TeamsListChildLegacyRes, error) {
+	res, err := c.sendTeamsListChildLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (res TeamsListChildLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-legacy"),
 	}
@@ -76059,7 +80061,13 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (res *TeamsListDiscussionCommentsInOrgOKHeaders, err error) {
+func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (*TeamsListDiscussionCommentsInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListDiscussionCommentsInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (res *TeamsListDiscussionCommentsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-in-org"),
 	}
@@ -76227,7 +80235,13 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
-func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (res *TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
+func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (*TeamsListDiscussionCommentsLegacyOKHeaders, error) {
+	res, err := c.sendTeamsListDiscussionCommentsLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (res *TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-legacy"),
 	}
@@ -76377,7 +80391,13 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
-func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (res *TeamsListDiscussionsInOrgOKHeaders, err error) {
+func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (*TeamsListDiscussionsInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListDiscussionsInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (res *TeamsListDiscussionsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-in-org"),
 	}
@@ -76547,7 +80567,13 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions
-func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (res *TeamsListDiscussionsLegacyOKHeaders, err error) {
+func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (*TeamsListDiscussionsLegacyOKHeaders, error) {
+	res, err := c.sendTeamsListDiscussionsLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (res *TeamsListDiscussionsLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-legacy"),
 	}
@@ -76682,7 +80708,13 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 // [OAuth](https://docs.github.com/apps/building-oauth-apps/).
 //
 // GET /user/teams
-func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserRes, err error) {
+func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserRes, error) {
+	res, err := c.sendTeamsListForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-for-authenticated-user"),
 	}
@@ -76790,7 +80822,13 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/team-sync/group-mappings
-func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
+func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (TeamsListIdpGroupsForLegacyRes, error) {
+	res, err := c.sendTeamsListIdpGroupsForLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
 	}
@@ -76873,7 +80911,13 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 // explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
 //
 // GET /orgs/{org}/team-sync/groups
-func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (res *GroupMappingHeaders, err error) {
+func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (*GroupMappingHeaders, error) {
+	res, err := c.sendTeamsListIdpGroupsForOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (res *GroupMappingHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-org"),
 	}
@@ -76993,7 +81037,13 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 // /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (res *GroupMapping, err error) {
+func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (*GroupMapping, error) {
+	res, err := c.sendTeamsListIdpGroupsInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (res *GroupMapping, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-in-org"),
 	}
@@ -77086,7 +81136,13 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 // To list members in a team, the team must be visible to the authenticated user.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
-func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (res *TeamsListMembersInOrgOKHeaders, err error) {
+func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (*TeamsListMembersInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListMembersInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (res *TeamsListMembersInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-in-org"),
 	}
@@ -77238,7 +81294,13 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members
-func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (res TeamsListMembersLegacyRes, err error) {
+func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (TeamsListMembersLegacyRes, error) {
+	res, err := c.sendTeamsListMembersLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (res TeamsListMembersLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-legacy"),
 	}
@@ -77375,7 +81437,13 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 // /organizations/{org_id}/team/{team_id}/invitations`.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
-func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (res *TeamsListPendingInvitationsInOrgOKHeaders, err error) {
+func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (*TeamsListPendingInvitationsInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListPendingInvitationsInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (res *TeamsListPendingInvitationsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-in-org"),
 	}
@@ -77513,7 +81581,13 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/invitations
-func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (res *TeamsListPendingInvitationsLegacyOKHeaders, err error) {
+func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (*TeamsListPendingInvitationsLegacyOKHeaders, error) {
+	res, err := c.sendTeamsListPendingInvitationsLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (res *TeamsListPendingInvitationsLegacyOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-legacy"),
 	}
@@ -77630,7 +81704,13 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 // /organizations/{org_id}/team/{team_id}/projects`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
-func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (res *TeamsListProjectsInOrgOKHeaders, err error) {
+func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (*TeamsListProjectsInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListProjectsInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (res *TeamsListProjectsInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-in-org"),
 	}
@@ -77765,7 +81845,13 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/projects
-func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
+func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (TeamsListProjectsLegacyRes, error) {
+	res, err := c.sendTeamsListProjectsLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-legacy"),
 	}
@@ -77882,7 +81968,13 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 // /organizations/{org_id}/team/{team_id}/repos`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
-func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (res *TeamsListReposInOrgOKHeaders, err error) {
+func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (*TeamsListReposInOrgOKHeaders, error) {
+	res, err := c.sendTeamsListReposInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (res *TeamsListReposInOrgOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-in-org"),
 	}
@@ -78016,7 +82108,13 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos
-func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
+func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (TeamsListReposLegacyRes, error) {
+	res, err := c.sendTeamsListReposLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-legacy"),
 	}
@@ -78151,7 +82249,13 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/members/{username}
-func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
+func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (TeamsRemoveMemberLegacyRes, error) {
+	res, err := c.sendTeamsRemoveMemberLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-member-legacy"),
 	}
@@ -78256,7 +82360,13 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 // /organizations/{org_id}/team/{team_id}/memberships/{username}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
+func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (TeamsRemoveMembershipForUserInOrgRes, error) {
+	res, err := c.sendTeamsRemoveMembershipForUserInOrg(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
 	}
@@ -78379,7 +82489,13 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/memberships/{username}
-func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
+func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (TeamsRemoveMembershipForUserLegacyRes, error) {
+	res, err := c.sendTeamsRemoveMembershipForUserLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
 	}
@@ -78475,7 +82591,13 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res *TeamsRemoveProjectInOrgNoContent, err error) {
+func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) error {
+	res, err := c.sendTeamsRemoveProjectInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res *TeamsRemoveProjectInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-in-org"),
 	}
@@ -78589,7 +82711,13 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/projects/{project_id}
-func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (res TeamsRemoveProjectLegacyRes, err error) {
+func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (TeamsRemoveProjectLegacyRes, error) {
+	res, err := c.sendTeamsRemoveProjectLegacy(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (res TeamsRemoveProjectLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-legacy"),
 	}
@@ -78685,7 +82813,13 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 // /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res *TeamsRemoveRepoInOrgNoContent, err error) {
+func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) error {
+	res, err := c.sendTeamsRemoveRepoInOrg(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res *TeamsRemoveRepoInOrgNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-in-org"),
 	}
@@ -78814,7 +82948,13 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
-func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res *TeamsRemoveRepoLegacyNoContent, err error) {
+func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) error {
+	res, err := c.sendTeamsRemoveRepoLegacy(ctx, params)
+	_ = res
+	return err
+}
+
+func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res *TeamsRemoveRepoLegacyNoContent, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-legacy"),
 	}
@@ -78923,7 +83063,13 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
+func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (*TeamDiscussionComment, error) {
+	res, err := c.sendTeamsUpdateDiscussionCommentInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, request *TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
 	}
@@ -79053,7 +83199,13 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
+func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (*TeamDiscussionComment, error) {
+	res, err := c.sendTeamsUpdateDiscussionCommentLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, request *TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res *TeamDiscussionComment, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
 	}
@@ -79166,7 +83318,13 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res *TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (*TeamDiscussion, error) {
+	res, err := c.sendTeamsUpdateDiscussionInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-in-org"),
 	}
@@ -79282,7 +83440,13 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
-func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res *TeamDiscussion, err error) {
+func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (*TeamDiscussion, error) {
+	res, err := c.sendTeamsUpdateDiscussionLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res *TeamDiscussion, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-legacy"),
 	}
@@ -79378,7 +83542,13 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 // /organizations/{org_id}/team/{team_id}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
-func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res *TeamFull, err error) {
+func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (*TeamFull, error) {
+	res, err := c.sendTeamsUpdateInOrg(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInOrgReq, params TeamsUpdateInOrgParams) (res *TeamFull, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-in-org"),
 	}
@@ -79494,7 +83664,13 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}
-func (c *Client) TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (res TeamsUpdateLegacyRes, err error) {
+func (c *Client) TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (TeamsUpdateLegacyRes, error) {
+	res, err := c.sendTeamsUpdateLegacy(ctx, request, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLegacyReq, params TeamsUpdateLegacyParams) (res TeamsUpdateLegacyRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-legacy"),
 	}
@@ -79582,7 +83758,13 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request *TeamsUpdateLega
 // This endpoint is accessible with the `user` scope.
 //
 // POST /user/emails
-func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (res UsersAddEmailForAuthenticatedRes, err error) {
+func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (UsersAddEmailForAuthenticatedRes, error) {
+	res, err := c.sendUsersAddEmailForAuthenticated(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request OptUsersAddEmailForAuthenticatedReq) (res UsersAddEmailForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/add-email-for-authenticated"),
 	}
@@ -79663,7 +83845,13 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 // Block a user.
 //
 // PUT /user/blocks/{username}
-func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res UsersBlockRes, err error) {
+func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (UsersBlockRes, error) {
+	res, err := c.sendUsersBlock(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (res UsersBlockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/block"),
 	}
@@ -79739,7 +83927,13 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 // Check if a user is blocked by the authenticated user.
 //
 // GET /user/blocks/{username}
-func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
+func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (UsersCheckBlockedRes, error) {
+	res, err := c.sendUsersCheckBlocked(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-blocked"),
 	}
@@ -79815,7 +84009,13 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 // Check if a user follows another user.
 //
 // GET /users/{username}/following/{target_user}
-func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
+func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (UsersCheckFollowingForUserRes, error) {
+	res, err := c.sendUsersCheckFollowingForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-following-for-user"),
 	}
@@ -79906,7 +84106,13 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 // Check if a person is followed by the authenticated user.
 //
 // GET /user/following/{username}
-func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
+func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error) {
+	res, err := c.sendUsersCheckPersonIsFollowedByAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
 	}
@@ -79984,7 +84190,13 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // POST /user/gpg_keys
-func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
+func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (UsersCreateGpgKeyForAuthenticatedRes, error) {
+	res, err := c.sendUsersCreateGpgKeyForAuthenticated(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, request *UsersCreateGpgKeyForAuthenticatedReq) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
 	}
@@ -80051,7 +84263,13 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // POST /user/keys
-func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
+func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (UsersCreatePublicSSHKeyForAuthenticatedRes, error) {
+	res, err := c.sendUsersCreatePublicSSHKeyForAuthenticated(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, request *UsersCreatePublicSSHKeyForAuthenticatedReq) (res UsersCreatePublicSSHKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
 	}
@@ -80125,7 +84343,13 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 // This endpoint is accessible with the `user` scope.
 //
 // DELETE /user/emails
-func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (res UsersDeleteEmailForAuthenticatedRes, err error) {
+func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (UsersDeleteEmailForAuthenticatedRes, error) {
+	res, err := c.sendUsersDeleteEmailForAuthenticated(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, request OptUsersDeleteEmailForAuthenticatedReq) (res UsersDeleteEmailForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-email-for-authenticated"),
 	}
@@ -80208,7 +84432,13 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /user/gpg_keys/{gpg_key_id}
-func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
+func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (UsersDeleteGpgKeyForAuthenticatedRes, error) {
+	res, err := c.sendUsersDeleteGpgKeyForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
 	}
@@ -80286,7 +84516,13 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // DELETE /user/keys/{key_id}
-func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
+func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (UsersDeletePublicSSHKeyForAuthenticatedRes, error) {
+	res, err := c.sendUsersDeletePublicSSHKeyForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
 	}
@@ -80366,7 +84602,13 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 // the `user:follow` scope.
 //
 // PUT /user/following/{username}
-func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowRes, err error) {
+func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (UsersFollowRes, error) {
+	res, err := c.sendUsersFollow(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/follow"),
 	}
@@ -80445,7 +84687,13 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 // response lists only public profile information.
 //
 // GET /user
-func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
+func (c *Client) UsersGetAuthenticated(ctx context.Context) (UsersGetAuthenticatedRes, error) {
+	res, err := c.sendUsersGetAuthenticated(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-authenticated"),
 	}
@@ -80521,7 +84769,13 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 // com/rest/reference/users#emails)".
 //
 // GET /users/{username}
-func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
+func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (UsersGetByUsernameRes, error) {
+	res, err := c.sendUsersGetByUsername(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-by-username"),
 	}
@@ -80606,7 +84860,13 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 // ```.
 //
 // GET /users/{username}/hovercard
-func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (res UsersGetContextForUserRes, err error) {
+func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (UsersGetContextForUserRes, error) {
+	res, err := c.sendUsersGetContextForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (res UsersGetContextForUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-context-for-user"),
 	}
@@ -80723,7 +84983,13 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/gpg_keys/{gpg_key_id}
-func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
+func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error) {
+	res, err := c.sendUsersGetGpgKeyForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
 	}
@@ -80801,7 +85067,13 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/keys/{key_id}
-func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
+func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (UsersGetPublicSSHKeyForAuthenticatedRes, error) {
+	res, err := c.sendUsersGetPublicSSHKeyForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
 	}
@@ -80881,7 +85153,13 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 // URL for the next page of users.
 //
 // GET /users
-func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res UsersListRes, err error) {
+func (c *Client) UsersList(ctx context.Context, params UsersListParams) (UsersListRes, error) {
+	res, err := c.sendUsersList(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res UsersListRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list"),
 	}
@@ -80981,7 +85259,13 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 // List the users you've blocked on your personal account.
 //
 // GET /user/blocks
-func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedRes, err error) {
+func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (UsersListBlockedByAuthenticatedRes, error) {
+	res, err := c.sendUsersListBlockedByAuthenticated(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-blocked-by-authenticated"),
 	}
@@ -81044,7 +85328,13 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 // is accessible with the `user:email` scope.
 //
 // GET /user/emails
-func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedRes, err error) {
+func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (UsersListEmailsForAuthenticatedRes, error) {
+	res, err := c.sendUsersListEmailsForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-emails-for-authenticated"),
 	}
@@ -81144,7 +85434,13 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 // Lists the people who the authenticated user follows.
 //
 // GET /user/following
-func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedRes, err error) {
+func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (UsersListFollowedByAuthenticatedRes, error) {
+	res, err := c.sendUsersListFollowedByAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followed-by-authenticated"),
 	}
@@ -81244,7 +85540,13 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 // Lists the people following the authenticated user.
 //
 // GET /user/followers
-func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserRes, err error) {
+func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (UsersListFollowersForAuthenticatedUserRes, error) {
+	res, err := c.sendUsersListFollowersForAuthenticatedUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-authenticated-user"),
 	}
@@ -81344,7 +85646,13 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 // Lists the people following the specified user.
 //
 // GET /users/{username}/followers
-func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (res *UsersListFollowersForUserOKHeaders, err error) {
+func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (*UsersListFollowersForUserOKHeaders, error) {
+	res, err := c.sendUsersListFollowersForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (res *UsersListFollowersForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-user"),
 	}
@@ -81459,7 +85767,13 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 // Lists the people who the specified user follows.
 //
 // GET /users/{username}/following
-func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (res *UsersListFollowingForUserOKHeaders, err error) {
+func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (*UsersListFollowingForUserOKHeaders, error) {
+	res, err := c.sendUsersListFollowingForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (res *UsersListFollowingForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-following-for-user"),
 	}
@@ -81576,7 +85890,13 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 // com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/gpg_keys
-func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedRes, err error) {
+func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error) {
+	res, err := c.sendUsersListGpgKeysForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
 	}
@@ -81676,7 +85996,13 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 // Lists the GPG keys for a user. This information is accessible by anyone.
 //
 // GET /users/{username}/gpg_keys
-func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (res *UsersListGpgKeysForUserOKHeaders, err error) {
+func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (*UsersListGpgKeysForUserOKHeaders, error) {
+	res, err := c.sendUsersListGpgKeysForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (res *UsersListGpgKeysForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-user"),
 	}
@@ -81794,7 +86120,13 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 // endpoint is accessible with the `user:email` scope.
 //
 // GET /user/public_emails
-func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
+func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (UsersListPublicEmailsForAuthenticatedRes, error) {
+	res, err := c.sendUsersListPublicEmailsForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-emails-for-authenticated"),
 	}
@@ -81894,7 +86226,13 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 // Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 //
 // GET /users/{username}/keys
-func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (res *UsersListPublicKeysForUserOKHeaders, err error) {
+func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (*UsersListPublicKeysForUserOKHeaders, error) {
+	res, err := c.sendUsersListPublicKeysForUser(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (res *UsersListPublicKeysForUserOKHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-keys-for-user"),
 	}
@@ -82011,7 +86349,13 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 // github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /user/keys
-func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
+func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (UsersListPublicSSHKeysForAuthenticatedRes, error) {
+	res, err := c.sendUsersListPublicSSHKeysForAuthenticated(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
 	}
@@ -82111,7 +86455,13 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 // Sets the visibility for your primary email addresses.
 //
 // PATCH /user/email/visibility
-func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
+func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (UsersSetPrimaryEmailVisibilityForAuthenticatedRes, error) {
+	res, err := c.sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Context, request *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) (res UsersSetPrimaryEmailVisibilityForAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
 	}
@@ -82185,7 +86535,13 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 // Unblock a user.
 //
 // DELETE /user/blocks/{username}
-func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {
+func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (UsersUnblockRes, error) {
+	res, err := c.sendUsersUnblock(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unblock"),
 	}
@@ -82262,7 +86618,13 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 // with the `user:follow` scope.
 //
 // DELETE /user/following/{username}
-func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowRes, err error) {
+func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (UsersUnfollowRes, error) {
+	res, err := c.sendUsersUnfollow(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unfollow"),
 	}
@@ -82340,7 +86702,13 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 // not be displayed on your public profile or via the API.
 //
 // PATCH /user
-func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (res UsersUpdateAuthenticatedRes, err error) {
+func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (UsersUpdateAuthenticatedRes, error) {
+	res, err := c.sendUsersUpdateAuthenticated(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (res UsersUpdateAuthenticatedRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/update-authenticated"),
 	}

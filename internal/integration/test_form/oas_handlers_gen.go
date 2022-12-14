@@ -93,12 +93,13 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestFormURLEncoded(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestFormURLEncoded(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.TestFormURLEncoded(ctx, request)
+		err = s.h.TestFormURLEncoded(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -190,12 +191,13 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestMultipart(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestMultipart(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.TestMultipart(ctx, request)
+		err = s.h.TestMultipart(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -287,8 +289,9 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestMultipartUpload(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.TestMultipartUpload(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -384,12 +387,13 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestShareFormSchema(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestShareFormSchema(ctx, request)
+				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.TestShareFormSchema(ctx, request)
+		err = s.h.TestShareFormSchema(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)

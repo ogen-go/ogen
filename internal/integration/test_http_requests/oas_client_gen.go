@@ -61,7 +61,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // AllRequestBodies invokes allRequestBodies operation.
 //
 // POST /allRequestBodies
-func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (res AllRequestBodiesOK, err error) {
+func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (AllRequestBodiesOK, error) {
+	res, err := c.sendAllRequestBodies(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (res AllRequestBodiesOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
 	}
@@ -139,7 +145,13 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 // AllRequestBodiesOptional invokes allRequestBodiesOptional operation.
 //
 // POST /allRequestBodiesOptional
-func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (res AllRequestBodiesOptionalOK, err error) {
+func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (AllRequestBodiesOptionalOK, error) {
+	res, err := c.sendAllRequestBodiesOptional(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (res AllRequestBodiesOptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
 	}
@@ -219,7 +231,13 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 // Base64Request invokes base64Request operation.
 //
 // POST /base64Request
-func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (res Base64RequestOK, err error) {
+func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (Base64RequestOK, error) {
+	res, err := c.sendBase64Request(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq) (res Base64RequestOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
 	}
@@ -282,7 +300,13 @@ func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (r
 // MaskContentType invokes maskContentType operation.
 //
 // POST /maskContentType
-func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (res *MaskResponse, err error) {
+func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (*MaskResponse, error) {
+	res, err := c.sendMaskContentType(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
 	}
@@ -345,7 +369,13 @@ func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeRe
 // MaskContentTypeOptional invokes maskContentTypeOptional operation.
 //
 // POST /maskContentTypeOptional
-func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (res *MaskResponse, err error) {
+func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error) {
+	res, err := c.sendMaskContentTypeOptional(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
 	}

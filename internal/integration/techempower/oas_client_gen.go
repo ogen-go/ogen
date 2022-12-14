@@ -69,7 +69,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // (Note: a distributed caching test type could be added later.).
 //
 // GET /cached-worlds
-func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
+func (c *Client) Caching(ctx context.Context, params CachingParams) (WorldObjects, error) {
+	res, err := c.sendCaching(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Caching"),
 	}
@@ -150,7 +156,13 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 // random number generator, database driver, and database connection pool.
 //
 // GET /db
-func (c *Client) DB(ctx context.Context) (res *WorldObject, err error) {
+func (c *Client) DB(ctx context.Context) (*WorldObject, error) {
+	res, err := c.sendDB(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
 	}
@@ -214,7 +226,13 @@ func (c *Client) DB(ctx context.Context) (res *WorldObject, err error) {
 // response header generation, and request count throughput.
 //
 // GET /json
-func (c *Client) JSON(ctx context.Context) (res *HelloWorld, err error) {
+func (c *Client) JSON(ctx context.Context) (*HelloWorld, error) {
+	res, err := c.sendJSON(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
 	}
@@ -279,7 +297,13 @@ func (c *Client) JSON(ctx context.Context) (res *HelloWorld, err error) {
 // convergence toward zero requests-per-second as database activity increases.
 //
 // GET /queries
-func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
+func (c *Client) Queries(ctx context.Context, params QueriesParams) (WorldObjects, error) {
+	res, err := c.sendQueries(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Queries"),
 	}
@@ -361,7 +385,13 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 // spirit of this test is to exercise a variable number of read-then-write style database operations.
 //
 // GET /updates
-func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
+func (c *Client) Updates(ctx context.Context, params UpdatesParams) (WorldObjects, error) {
+	res, err := c.sendUpdates(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Updates"),
 	}

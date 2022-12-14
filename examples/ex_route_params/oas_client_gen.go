@@ -64,7 +64,13 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Retrieve data.
 //
 // GET /name/{id}/{key}
-func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string, err error) {
+func (c *Client) DataGet(ctx context.Context, params DataGetParams) (string, error) {
+	res, err := c.sendDataGet(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 	}
@@ -155,7 +161,13 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 // Retrieve any data.
 //
 // GET /name
-func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
+func (c *Client) DataGetAny(ctx context.Context) (string, error) {
+	res, err := c.sendDataGetAny(ctx)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetAny"),
 	}
@@ -217,7 +229,13 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 // Retrieve data.
 //
 // GET /name/{id}
-func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {
+func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (string, error) {
+	res, err := c.sendDataGetID(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetID"),
 	}

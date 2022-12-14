@@ -2041,7 +2041,7 @@ type Handler interface {
 	// TestResponseEmptyStruct implements test_response_EmptyStruct operation.
 	//
 	// POST /test_response_EmptyStruct
-	TestResponseEmptyStruct(ctx context.Context, req string) (*TestResponseEmptyStructOK, error)
+	TestResponseEmptyStruct(ctx context.Context, req string) error
 	// TestResponseFormatTest implements test_response_FormatTest operation.
 	//
 	// POST /test_response_FormatTest

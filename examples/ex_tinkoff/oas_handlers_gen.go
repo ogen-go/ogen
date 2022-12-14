@@ -87,8 +87,9 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketBondsGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketBondsGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -207,8 +208,9 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			unpackMarketCandlesGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketCandlesGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketCandlesGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -300,8 +302,9 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketCurrenciesGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketCurrenciesGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -393,8 +396,9 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketEtfsGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketEtfsGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -505,8 +509,9 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			m,
 			mreq,
 			unpackMarketOrderbookGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketOrderbookGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketOrderbookGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -613,8 +618,9 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			m,
 			mreq,
 			unpackMarketSearchByFigiGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketSearchByFigiGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketSearchByFigiGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -721,8 +727,9 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			m,
 			mreq,
 			unpackMarketSearchByTickerGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketSearchByTickerGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketSearchByTickerGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -814,8 +821,9 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MarketStocksGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.MarketStocksGet(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -934,8 +942,9 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			m,
 			mreq,
 			unpackOperationsGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OperationsGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OperationsGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1046,8 +1055,9 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			unpackOrdersCancelPostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OrdersCancelPost(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OrdersCancelPost(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1154,8 +1164,9 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			m,
 			mreq,
 			unpackOrdersGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OrdersGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OrdersGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1281,8 +1292,9 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			m,
 			mreq,
 			unpackOrdersLimitOrderPostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OrdersLimitOrderPost(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OrdersLimitOrderPost(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1408,8 +1420,9 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			m,
 			mreq,
 			unpackOrdersMarketOrderPostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OrdersMarketOrderPost(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.OrdersMarketOrderPost(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1516,8 +1529,9 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			m,
 			mreq,
 			unpackPortfolioCurrenciesGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PortfolioCurrenciesGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PortfolioCurrenciesGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1624,8 +1638,9 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			m,
 			mreq,
 			unpackPortfolioGetParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.PortfolioGet(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PortfolioGet(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1732,8 +1747,9 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			m,
 			mreq,
 			unpackSandboxClearPostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SandboxClearPost(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SandboxClearPost(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1855,8 +1871,9 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			m,
 			mreq,
 			unpackSandboxCurrenciesBalancePostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SandboxCurrenciesBalancePost(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SandboxCurrenciesBalancePost(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -1978,8 +1995,9 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			m,
 			mreq,
 			unpackSandboxPositionsBalancePostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SandboxPositionsBalancePost(ctx, request, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SandboxPositionsBalancePost(ctx, request, params)
+				return response, err
 			},
 		)
 	} else {
@@ -2086,8 +2104,9 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SandboxRegisterPost(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SandboxRegisterPost(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -2194,8 +2213,9 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			m,
 			mreq,
 			unpackSandboxRemovePostParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.SandboxRemovePost(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.SandboxRemovePost(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -2287,8 +2307,9 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.UserAccountsGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.UserAccountsGet(ctx)
+				return response, err
 			},
 		)
 	} else {

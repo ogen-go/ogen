@@ -97,8 +97,9 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataCreate(ctx, request)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DataCreate(ctx, request)
+				return response, err
 			},
 		)
 	} else {
@@ -185,8 +186,9 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataGet(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DataGet(ctx)
+				return response, err
 			},
 		)
 	} else {

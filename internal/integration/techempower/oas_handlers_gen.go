@@ -100,8 +100,9 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			unpackCachingParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Caching(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Caching(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -181,8 +182,9 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DB(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.DB(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -263,8 +265,9 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 			m,
 			mreq,
 			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.JSON(ctx)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.JSON(ctx)
+				return response, err
 			},
 		)
 	} else {
@@ -365,8 +368,9 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			unpackQueriesParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Queries(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Queries(ctx, params)
+				return response, err
 			},
 		)
 	} else {
@@ -466,8 +470,9 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 			m,
 			mreq,
 			unpackUpdatesParams,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.Updates(ctx, params)
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.Updates(ctx, params)
+				return response, err
 			},
 		)
 	} else {
