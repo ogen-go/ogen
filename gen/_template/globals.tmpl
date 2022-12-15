@@ -8,6 +8,16 @@ var regexMap = map[string]ogenregex.Regexp{
 	{{ quote $regex }}: ogenregex.MustCompile({{ quote $regex }}),
 	{{- end }}
 }
+
+// OverrideRegexp allows to override regexes used in generated code.
+// Returns true if regex was overridden, false otherwise.
+//
+// NOTE: this function MUST be called before any generated code is executed.
+func OverrideRegexp(key string, r ogenregex.Regexp) (ok bool) {
+	_, ok = regexMap[key]
+	regexMap[key] = r
+	return ok
+}
 {{- end }}
 
 {{- with $ratStrings := $.RatStrings }}
