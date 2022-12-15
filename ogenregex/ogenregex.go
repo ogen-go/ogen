@@ -22,35 +22,45 @@ var _ = []Regexp{
 }
 
 type goRegexp struct {
-	exp *regexp.Regexp
+	re *regexp.Regexp
+}
+
+// Go returns wrapper for Go's regexp.
+func Go(re *regexp.Regexp) Regexp {
+	return goRegexp{re}
 }
 
 func (r goRegexp) Match(s []byte) (bool, error) {
-	return r.exp.Match(s), nil
+	return r.re.Match(s), nil
 }
 
 func (r goRegexp) MatchString(s string) (bool, error) {
-	return r.exp.MatchString(s), nil
+	return r.re.MatchString(s), nil
 }
 
 func (r goRegexp) String() string {
-	return r.exp.String()
+	return r.re.String()
 }
 
 type regexp2Regexp struct {
-	exp *regexp2.Regexp
+	re *regexp2.Regexp
+}
+
+// Regexp2 returns wrapper for dlclark/regexp2.
+func Regexp2(re *regexp2.Regexp) Regexp {
+	return regexp2Regexp{re}
 }
 
 func (r regexp2Regexp) Match(s []byte) (bool, error) {
-	return r.exp.MatchRunes([]rune(string(s)))
+	return r.re.MatchRunes([]rune(string(s)))
 }
 
 func (r regexp2Regexp) MatchString(s string) (bool, error) {
-	return r.exp.MatchString(s)
+	return r.re.MatchString(s)
 }
 
 func (r regexp2Regexp) String() string {
-	return r.exp.String()
+	return r.re.String()
 }
 
 // Regexp is a regular expression interface.
@@ -63,11 +73,11 @@ type Regexp interface {
 // Compile compiles a regular expression.
 //
 // NOTE: this function may compile the same expression multiple times and can
-// be slow. Compile the expression once and reuse it.
+// be slow. Call it once and reuse the result.
 func Compile(exp string) (Regexp, error) {
 	if converted, ok := Convert(exp); ok {
 		if re, err := regexp.Compile(converted); err == nil {
-			return goRegexp{re}, nil
+			return Go(re), nil
 		}
 	}
 	re, err := regexp2.Compile(exp, regexp2.ECMAScript|regexp2.Unicode)
@@ -77,7 +87,7 @@ func Compile(exp string) (Regexp, error) {
 	// FIXME(tdakkota): Default timeout is "forever", which may lead to DoS.
 	// 	Probably, we should make this configurable.
 	re.MatchTimeout = 15 * time.Second
-	return regexp2Regexp{re}, nil
+	return Regexp2(re), nil
 }
 
 // MustCompile compiles a regular expression and panics on error.
