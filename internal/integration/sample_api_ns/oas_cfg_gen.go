@@ -22,6 +22,17 @@ var regexMap = map[string]ogenregex.Regexp{
 	"foo[^\r\n\u2028\u2029]*":     ogenregex.MustCompile("foo[^\r\n\u2028\u2029]*"),
 	"string_[^\r\n\u2028\u2029]*": ogenregex.MustCompile("string_[^\r\n\u2028\u2029]*"),
 }
+
+// OverrideRegexp allows to override regexes used in generated code.
+// Returns true if regex was overridden, false otherwise.
+//
+// NOTE: this function MUST be called before any generated code is executed.
+func OverrideRegexp(key string, r ogenregex.Regexp) (ok bool) {
+	_, ok = regexMap[key]
+	regexMap[key] = r
+	return ok
+}
+
 var ratMap = map[string]*big.Rat{
 	"10": func() *big.Rat {
 		r, ok := new(big.Rat).SetString("10")

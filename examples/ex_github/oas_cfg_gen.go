@@ -24,6 +24,17 @@ var regexMap = map[string]ogenregex.Regexp{
 	"^[0-9a-fA-F]+$":                                          ogenregex.MustCompile("^[0-9a-fA-F]+$"),
 	"^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ": ogenregex.MustCompile("^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) "),
 }
+
+// OverrideRegexp allows to override regexes used in generated code.
+// Returns true if regex was overridden, false otherwise.
+//
+// NOTE: this function MUST be called before any generated code is executed.
+func OverrideRegexp(key string, r ogenregex.Regexp) (ok bool) {
+	_, ok = regexMap[key]
+	regexMap[key] = r
+	return ok
+}
+
 var (
 	// Allocate option closure once.
 	clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)

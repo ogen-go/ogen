@@ -20,6 +20,17 @@ import (
 var regexMap = map[string]ogenregex.Regexp{
 	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": ogenregex.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
 }
+
+// OverrideRegexp allows to override regexes used in generated code.
+// Returns true if regex was overridden, false otherwise.
+//
+// NOTE: this function MUST be called before any generated code is executed.
+func OverrideRegexp(key string, r ogenregex.Regexp) (ok bool) {
+	_, ok = regexMap[key]
+	regexMap[key] = r
+	return ok
+}
+
 var (
 	// Allocate option closure once.
 	clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
