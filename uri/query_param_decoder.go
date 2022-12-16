@@ -148,7 +148,7 @@ func (d *queryParamDecoder) DecodeFields(f func(name string, d Decoder) error) e
 			return errors.Errorf("query parameter %q multiple values", d.paramName)
 		}
 
-		cur := &cursor{src: []rune(values[0])}
+		cur := &cursor{src: values[0]}
 		return decodeObject(cur, ',', ',', adapter)
 
 	case QueryStyleSpaceDelimited:
