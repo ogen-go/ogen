@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"net/http"
+	"strings"
 
 	"github.com/go-faster/errors"
 )
@@ -17,7 +18,14 @@ type SecurityHandler interface {
 
 func (s *Server) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) (context.Context, error) {
 	var t SSOAuth
-	t.Token = req.Header.Get("Authorization")
+	scheme, token, ok := strings.Cut(req.Header.Get("Authorization"), " ")
+	if !ok {
+		return nil, errors.New("invalid bearer auth")
+	}
+	if !strings.EqualFold(scheme, "Bearer") {
+		return nil, errors.Errorf("invalid auth scheme: %q", scheme)
+	}
+	t.Token = token
 	return s.sec.HandleSSOAuth(ctx, operationName, t)
 }
 
@@ -32,6 +40,6 @@ func (s *Client) securitySSOAuth(ctx context.Context, operationName string, req 
 	if err != nil {
 		return errors.Wrap(err, "security source \"SSOAuth\"")
 	}
-	req.Header.Set("Authorization", t.Token)
+	req.Header.Set("Authorization", "Bearer "+t.Token)
 	return nil
 }
