@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"strconv"
 	"testing"
 
@@ -44,7 +45,11 @@ func FuzzRouter(f *testing.F) {
 	require.NoError(f, err)
 
 	f.Fuzz(func(t *testing.T, method, path string) {
-		s.FindRoute(method, path)
+		u, err := url.Parse(path)
+		if err != nil {
+			t.Skipf("Parse %q: %#v", path, err)
+		}
+		s.FindPath(method, u)
 	})
 }
 
@@ -130,7 +135,11 @@ func TestRouter(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			t.Run("FindRoute", func(t *testing.T) {
 				a := require.New(t)
-				r, ok := s.FindRoute(tc.Method, tc.Path)
+
+				u, err := url.Parse(tc.Path)
+				a.NoError(err)
+
+				r, ok := s.FindPath(tc.Method, u)
 				if tc.Name == "" {
 					a.False(ok, r.Name())
 					return

@@ -235,22 +235,30 @@ func (r Route) Args() []string {
 }
 
 // FindRoute finds Route for given method and path.
-func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
+//
+// Note: this method does not unescape path or handle reserved characters in path properly. Use FindPath instead.
+func (s *Server) FindRoute(method, path string) (Route, bool) {
+	return s.FindPath(method, &url.URL{Path: path})
+}
+
+// FindPath finds Route for given method and URL.
+func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 	var (
-		args = [0]string{}
-		elem = path
+		elem = u.Path
+		args = r.args
 	)
-	r.args = args
-	if elem == "" {
-		return r, false
-	}
-	defer func() {
-		for i, arg := range r.args[:r.count] {
-			if unescaped, err := url.PathUnescape(arg); err == nil {
-				r.args[i] = unescaped
-			}
+	if rawPath := u.RawPath; rawPath != "" {
+		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
+			elem = normalized
 		}
-	}()
+		defer func() {
+			for i, arg := range r.args[:r.count] {
+				if unescaped, err := url.PathUnescape(arg); err == nil {
+					r.args[i] = unescaped
+				}
+			}
+		}()
+	}
 
 	// Static code generated router with unwrapped path search.
 	switch {
