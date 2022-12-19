@@ -3,7 +3,20 @@
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- $tmpVar := camelSpecial (printf "%sVal" $var) }}
-{{- if $t.IsPrimitive }}
+{{- if $t.CustomFormat }}
+	val, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
+
+	c, err := format{{ $t.CustomFormat }}.DecodeText(val)
+	if err != nil {
+		return err
+	}
+
+	{{ $var }} = c
+	return nil
+{{- else if $t.IsPrimitive }}
 	val, err := d.DecodeValue()
 	if err != nil {
 		return err

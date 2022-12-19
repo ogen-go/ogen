@@ -11,17 +11,31 @@ e.FieldStart({{ $.Tag.EscapedJSON }})
 {{- define "json/enc_generic" -}}
 {{- $g := $.Type.GenericOf -}}
 {{- $v := $.Type.GenericVariant -}}
+
 {{- if $v.Optional -}}
-	if {{ $.Var }}.Set {
-		{{- template "json/enc_field" $ }}
-		{{ $.Var }}.Encode(e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
-	}
-{{- else -}}
-	{{- template "json/enc_field" $ }}
-	{{ $.Var }}.Encode(e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
+if {{ $.Var }}.Set {
+	{{- template "json/enc_generic_field" $ }}
+}
+{{- else }}
+    {{- template "json/enc_generic_field" $ }}
 {{- end -}}
+
 {{- end }}
 
+{{- define "json/enc_generic_field" -}}
+{{- $g := $.Type.GenericOf -}}
+{{- $v := $.Type.GenericVariant -}}
+
+{{- template "json/enc_field" $ }}
+{{- if $g.Format }}
+	{{ $.Var }}.Encode(e, json.Encode{{ $g.JSON.Format }})
+{{- else if $g.CustomFormat }}
+    {{ $.Var }}.Encode(e, format{{ $g.CustomFormat }}.EncodeJSON)
+{{- else }}
+    {{ $.Var }}.Encode(e)
+{{- end }}
+
+{{- end }}
 
 {{/* Encode array with all elements */}}
 {{- define "json/enc_array_elems" }}
@@ -101,6 +115,8 @@ e.FieldStart({{ $.Tag.EscapedJSON }})
 	{{- else if $j.Fn -}}
 		{{- template "json/enc_field" $ }}
 		e.{{ $j.Fn }}({{ $.Var }})
+    {{- else if $t.CustomFormat }}
+		format{{ $t.CustomFormat }}.EncodeJSON(e, {{ $.Var }})
 	{{- else -}}
 		{{ errorf "unsupported: %s" $t }}
 	{{- end }}

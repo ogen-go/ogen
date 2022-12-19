@@ -41,6 +41,7 @@ func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.
 	gen := newSchemaGen(ctx.lookupRef)
 	gen.log = g.log.Named("schemagen")
 	gen.fail = g.fail
+	gen.customFormats = g.customFormats
 
 	t, err := gen.generate(name, schema, optional)
 	if err != nil {

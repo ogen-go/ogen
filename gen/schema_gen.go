@@ -19,12 +19,12 @@ type schemaGen struct {
 	nameRef   func(ref jsonschema.Ref) (string, error)
 	fail      func(err error) error
 
-	log *zap.Logger
+	customFormats map[jsonschema.SchemaType]map[string]ir.CustomFormat
+	log           *zap.Logger
 }
 
 func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {
 	return &schemaGen{
-		side:      nil,
 		localRefs: map[jsonschema.Ref]*ir.Type{},
 		lookupRef: lookupRef,
 		nameRef: func(ref jsonschema.Ref) (string, error) {
@@ -37,7 +37,8 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		fail: func(err error) error {
 			return err
 		},
-		log: zap.NewNop(),
+		customFormats: map[jsonschema.SchemaType]map[string]ir.CustomFormat{},
+		log:           zap.NewNop(),
 	}
 }
 
