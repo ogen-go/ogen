@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/phone": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Phone"
+          },
+          {
+            "$ref": "#/components/parameters/Color"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Phone": {
+        "name": "phone",
+        "in": "query",
+        "description": "Phone number",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "phone"
+        }
+      },
+      "Color": {
+        "name": "color",
+        "in": "query",
+        "description": "Color",
+        "schema": {
+          "type": "string",
+          "format": "rgba"
+        }
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": [
+          "id",
+          "phone",
+          "profile_color"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "phone": {
+            "type": "string",
+            "format": "phone"
+          },
+          "home_phone": {
+            "type": "string",
+            "format": "phone"
+          },
+          "profile_color": {
+            "type": "string",
+            "format": "rgba"
+          },
+          "background_color": {
+            "type": "string",
+            "format": "rgba"
+          }
+        }
+      }
+    }
+  }
+}
