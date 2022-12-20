@@ -116,6 +116,7 @@ if {{ $.Var }}.Set {
 		{{- template "json/enc_field" $ }}
 		e.{{ $j.Fn }}({{ $.Var }})
     {{- else if $t.CustomFormat }}
+        {{- template "json/enc_field" $ }}
 		format{{ $t.CustomFormat }}.EncodeJSON(e, {{ $.Var }})
 	{{- else -}}
 		{{ errorf "unsupported: %s" $t }}
