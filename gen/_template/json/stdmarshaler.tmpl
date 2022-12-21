@@ -4,22 +4,34 @@
 // MarshalJSON implements stdjson.Marshaler.
 func (s {{ $.ReadOnlyReceiver }}) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
-	{{- if $.IsGeneric }}
-	s.Encode(&e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
+{{- if $.IsGeneric }}
+	{{- if $g.Format }}
+	s.Encode(&e, json.Encode{{ $g.JSON.Format }})
+	{{- else if $g.CustomFormat }}
+	s.Encode(&e, format{{ $g.CustomFormat }}().EncodeJSON)
 	{{- else }}
 	s.Encode(&e)
 	{{- end }}
+{{- else }}
+	s.Encode(&e)
+{{- end }}
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *{{ $.Name }}) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
-	{{- if $.IsGeneric }}
-	return s.Decode(d{{ if $g.Format }}, json.Decode{{ $g.JSON.Format }}{{ end }})
+{{- if $.IsGeneric }}
+	{{- if $g.Format }}
+	return s.Decode(d, json.Decode{{ $g.JSON.Format }})
+	{{- else if $g.CustomFormat }}
+	return s.Decode(d, format{{ $g.CustomFormat }}().DecodeJSON)
 	{{- else }}
 	return s.Decode(d)
 	{{- end }}
+{{- else }}
+	return s.Decode(d)
+{{- end }}
 }
 
 {{ end }}

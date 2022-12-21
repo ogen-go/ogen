@@ -3,7 +3,7 @@
 {{ $g := $.GenericOf }}
 {{ $v := $.GenericVariant }}
 // Encode encodes {{ $g.Go }} as json.
-func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if $g.Format }}, format func(*jx.Encoder, {{ $g.Go }}){{ end }}) {
+func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if or $g.Format $g.CustomFormat }}, format func(*jx.Encoder, {{ $g.Go }}){{ end }}) {
 {{- if $v.Optional }}
 	if !o.Set {
 		return
@@ -19,6 +19,8 @@ func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if $g.Format }}, format
 	format(e, o.Value)
 {{- else if $g.JSON.Format }}
 	json.Encode{{ $g.JSON.Format }}(e, o.Value)
+{{- else if $g.CustomFormat }}
+	format{{ $g.CustomFormat }}().EncodeJSON(e, o.Value)
 {{- else if $g.JSON.Fn }}
 	{{- if $g.IsAny }}
 		{{ errorf "unexpected optional any" }}
@@ -36,7 +38,7 @@ func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if $g.Format }}, format
 }
 
 // Decode decodes {{ $g.Go }} from json.
-func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.Decoder) ({{ $g.Go }}, error){{ end }}) error {
+func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if or $g.Format $g.CustomFormat }}, format func(*jx.Decoder) ({{ $g.Go }}, error){{ end }}) error {
 	if o == nil {
 		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
@@ -70,6 +72,12 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 		o.Value = v
 	{{- else if $g.JSON.Format }}
 		v, err := json.Decode{{ $g.JSON.Format }}(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.CustomFormat }}
+		v, err := format{{ $g.CustomFormat }}().DecodeJSON(d)
 		if err != nil {
 			return err
 		}

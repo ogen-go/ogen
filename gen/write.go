@@ -33,6 +33,8 @@ type TemplateConfig struct {
 	Securities    map[string]*ir.Security
 	Router        Router
 	WebhookRouter WebhookRouter
+	CustomImports []string
+	CustomFormats []ir.CustomFormat
 	ClientEnabled bool
 	ServerEnabled bool
 
@@ -222,6 +224,16 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		types[name] = t
 	}
 
+	var customFormats []ir.CustomFormat
+	for _, formats := range g.customFormats {
+		for _, format := range formats {
+			customFormats = append(customFormats, format)
+		}
+	}
+	slices.SortStableFunc(customFormats, func(i, j ir.CustomFormat) bool {
+		return i.Name < j.Name
+	})
+
 	cfg := TemplateConfig{
 		Package:       pkgName,
 		Operations:    g.operations,
@@ -234,6 +246,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Securities:    g.securities,
 		Router:        g.router,
 		WebhookRouter: g.webhookRouter,
+		CustomImports: g.imports,
+		CustomFormats: customFormats,
 		ClientEnabled: !g.opt.NoClient,
 		ServerEnabled: !g.opt.NoServer,
 		skipTestRegex: g.opt.SkipTestRegex,

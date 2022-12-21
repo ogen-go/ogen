@@ -2,10 +2,12 @@ package gen
 
 import (
 	"net/url"
+	"reflect"
 	"regexp"
 	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"go.uber.org/zap"
 	"golang.org/x/exp/slices"
 
@@ -33,6 +35,8 @@ type Options struct {
 	// InferSchemaType enables type inference for schemas. Schema parser will try to detect schema type
 	// by its properties.
 	InferSchemaType bool
+	// CustomFormats sets custom formats.
+	CustomFormats CustomFormatsMap
 
 	// AllowRemote enables remote references resolving.
 	//
@@ -118,4 +122,37 @@ func (f Filters) accept(op *openapi.Operation) bool {
 	}
 
 	return true
+}
+
+// CustomFormatsMap is map of custom formats.
+type CustomFormatsMap = map[jsonschema.SchemaType]map[string]CustomFormatDef
+
+// CustomFormatDef defines custom format type.
+type CustomFormatDef struct {
+	typ  reflect.Type
+	json reflect.Type
+	text reflect.Type
+}
+
+// CustomFormat returns custom format definition.
+func CustomFormat[
+	T any,
+	JSON interface {
+		~struct{} // Enforce implementation without state.
+
+		EncodeJSON(*jx.Encoder, T)
+		DecodeJSON(*jx.Decoder) (T, error)
+	},
+	Text interface {
+		~struct{} // Enforce implementation without state.
+
+		EncodeText(T) string
+		DecodeText(string) (T, error)
+	},
+]() CustomFormatDef {
+	return CustomFormatDef{
+		typ:  reflect.TypeOf(new(T)).Elem(),
+		json: reflect.TypeOf(new(JSON)).Elem(),
+		text: reflect.TypeOf(new(Text)).Elem(),
+	}
 }

@@ -19,12 +19,12 @@ type schemaGen struct {
 	nameRef   func(ref jsonschema.Ref) (string, error)
 	fail      func(err error) error
 
-	log *zap.Logger
+	customFormats map[jsonschema.SchemaType]map[string]ir.CustomFormat
+	log           *zap.Logger
 }
 
 func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {
 	return &schemaGen{
-		side:      nil,
 		localRefs: map[jsonschema.Ref]*ir.Type{},
 		lookupRef: lookupRef,
 		nameRef: func(ref jsonschema.Ref) (string, error) {
@@ -37,7 +37,8 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		fail: func(err error) error {
 			return err
 		},
-		log: zap.NewNop(),
+		customFormats: map[jsonschema.SchemaType]map[string]ir.CustomFormat{},
+		log:           zap.NewNop(),
 	}
 }
 
@@ -279,6 +280,16 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		case jsonschema.String:
 			if err := t.Validators.SetString(schema); err != nil {
 				return nil, errors.Wrap(err, "string validator")
+			}
+			switch t.Primitive {
+			case ir.String, ir.ByteSlice:
+			default:
+				g.log.Warn("String validator cannot be applied to non-string type and will be ignored",
+					zapPosition(schema),
+					zap.String("type", string(schema.Type)),
+					zap.String("format", schema.Format),
+					zap.String("go_type", t.Go()),
+				)
 			}
 		case jsonschema.Integer:
 			if err := t.Validators.SetInt(schema); err != nil {

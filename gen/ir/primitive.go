@@ -50,6 +50,8 @@ func (p PrimitiveType) String() string {
 		return "url.URL"
 	case File:
 		return "ht.MultipartFile"
+	case Custom:
+		return "<custom>"
 	default:
 		panic(fmt.Sprintf("unexpected PrimitiveType: %d", p))
 	}
@@ -84,4 +86,5 @@ const (
 	IP
 	URL
 	File
+	Custom
 )

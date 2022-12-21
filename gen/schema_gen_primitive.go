@@ -12,7 +12,7 @@ import (
 )
 
 func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type, error) {
-	t := parseSimple(schema)
+	t := g.parseSimple(schema)
 
 	if len(schema.Enum) > 0 {
 		return g.enum(name, t, schema)
@@ -146,12 +146,17 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	}, nil
 }
 
-func parseSimple(schema *jsonschema.Schema) *ir.Type {
+func (g *schemaGen) parseSimple(schema *jsonschema.Schema) *ir.Type {
 	mapping := TypeFormatMapping()
 
 	// TODO(tdakkota): check ContentEncoding field
 	t, found := mapping[schema.Type][schema.Format]
 	if !found {
+		if custom, ok := g.customFormats[schema.Type][schema.Format]; ok {
+			typ := ir.Primitive(ir.Custom, schema)
+			typ.CustomFormat = &custom
+			return typ
+		}
 		// Fallback to default.
 		t = mapping[schema.Type][""]
 	}
