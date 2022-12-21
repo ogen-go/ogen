@@ -52,6 +52,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59,8 +60,9 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
-			ID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
@@ -80,6 +82,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			Context:       ctx,
 			OperationName: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -164,6 +167,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsAddSelectedRepoToOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -171,8 +175,9 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsAddSelectedRepoToOrgSecret",
-			ID:   "actions/add-selected-repo-to-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, r)
@@ -192,6 +197,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "ActionsAddSelectedRepoToOrgSecret",
 			OperationID:   "actions/add-selected-repo-to-org-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -277,6 +283,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsAddSelfHostedRunnerToGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -284,8 +291,9 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsAddSelfHostedRunnerToGroupForOrg",
-			ID:   "actions/add-self-hosted-runner-to-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, r)
@@ -305,6 +313,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 			Context:       ctx,
 			OperationName: "ActionsAddSelfHostedRunnerToGroupForOrg",
 			OperationID:   "actions/add-self-hosted-runner-to-group-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -389,6 +398,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsApproveWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -396,8 +406,9 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsApproveWorkflowRun",
-			ID:   "actions/approve-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsApproveWorkflowRunParams(args, r)
@@ -417,6 +428,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 			Context:       ctx,
 			OperationName: "ActionsApproveWorkflowRun",
 			OperationID:   "actions/approve-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -499,6 +511,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCancelWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -506,8 +519,9 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCancelWorkflowRun",
-			ID:   "actions/cancel-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCancelWorkflowRunParams(args, r)
@@ -527,6 +541,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ActionsCancelWorkflowRun",
 			OperationID:   "actions/cancel-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -660,6 +675,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateOrUpdateEnvironmentSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -667,8 +683,9 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateOrUpdateEnvironmentSecret",
-			ID:   "actions/create-or-update-environment-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, r)
@@ -703,6 +720,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 			Context:       ctx,
 			OperationName: "ActionsCreateOrUpdateEnvironmentSecret",
 			OperationID:   "actions/create-or-update-environment-secret",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -836,6 +854,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateOrUpdateOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -843,8 +862,9 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateOrUpdateOrgSecret",
-			ID:   "actions/create-or-update-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, r)
@@ -879,6 +899,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ActionsCreateOrUpdateOrgSecret",
 			OperationID:   "actions/create-or-update-org-secret",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1008,6 +1029,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateOrUpdateRepoSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1015,8 +1037,9 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateOrUpdateRepoSecret",
-			ID:   "actions/create-or-update-repo-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, r)
@@ -1051,6 +1074,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 			Context:       ctx,
 			OperationName: "ActionsCreateOrUpdateRepoSecret",
 			OperationID:   "actions/create-or-update-repo-secret",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1138,6 +1162,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateRegistrationTokenForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1145,8 +1170,9 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRegistrationTokenForOrg",
-			ID:   "actions/create-registration-token-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, r)
@@ -1166,6 +1192,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "ActionsCreateRegistrationTokenForOrg",
 			OperationID:   "actions/create-registration-token-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1246,6 +1273,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateRegistrationTokenForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1253,8 +1281,9 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRegistrationTokenForRepo",
-			ID:   "actions/create-registration-token-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, r)
@@ -1274,6 +1303,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "ActionsCreateRegistrationTokenForRepo",
 			OperationID:   "actions/create-registration-token-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1359,6 +1389,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateRemoveTokenForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1366,8 +1397,9 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRemoveTokenForOrg",
-			ID:   "actions/create-remove-token-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, r)
@@ -1387,6 +1419,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "ActionsCreateRemoveTokenForOrg",
 			OperationID:   "actions/create-remove-token-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1467,6 +1500,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateRemoveTokenForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1474,8 +1508,9 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRemoveTokenForRepo",
-			ID:   "actions/create-remove-token-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, r)
@@ -1495,6 +1530,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "ActionsCreateRemoveTokenForRepo",
 			OperationID:   "actions/create-remove-token-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1575,6 +1611,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsCreateSelfHostedRunnerGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1582,8 +1619,9 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateSelfHostedRunnerGroupForOrg",
-			ID:   "actions/create-self-hosted-runner-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, r)
@@ -1618,6 +1656,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 			Context:       ctx,
 			OperationName: "ActionsCreateSelfHostedRunnerGroupForOrg",
 			OperationID:   "actions/create-self-hosted-runner-group-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1692,6 +1731,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteArtifact
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1699,8 +1739,9 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteArtifact",
-			ID:   "actions/delete-artifact",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteArtifactParams(args, r)
@@ -1720,6 +1761,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ActionsDeleteArtifact",
 			OperationID:   "actions/delete-artifact",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1802,6 +1844,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteEnvironmentSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1809,8 +1852,9 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteEnvironmentSecret",
-			ID:   "actions/delete-environment-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteEnvironmentSecretParams(args, r)
@@ -1830,6 +1874,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ActionsDeleteEnvironmentSecret",
 			OperationID:   "actions/delete-environment-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1912,6 +1957,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1919,8 +1965,9 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteOrgSecret",
-			ID:   "actions/delete-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteOrgSecretParams(args, r)
@@ -1940,6 +1987,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ActionsDeleteOrgSecret",
 			OperationID:   "actions/delete-org-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2018,6 +2066,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteRepoSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2025,8 +2074,9 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteRepoSecret",
-			ID:   "actions/delete-repo-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteRepoSecretParams(args, r)
@@ -2046,6 +2096,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ActionsDeleteRepoSecret",
 			OperationID:   "actions/delete-repo-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2128,6 +2179,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteSelfHostedRunnerFromOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2135,8 +2187,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteSelfHostedRunnerFromOrg",
-			ID:   "actions/delete-self-hosted-runner-from-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, r)
@@ -2156,6 +2209,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ActionsDeleteSelfHostedRunnerFromOrg",
 			OperationID:   "actions/delete-self-hosted-runner-from-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2235,6 +2289,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteSelfHostedRunnerFromRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2242,8 +2297,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteSelfHostedRunnerFromRepo",
-			ID:   "actions/delete-self-hosted-runner-from-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, r)
@@ -2263,6 +2319,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 			Context:       ctx,
 			OperationName: "ActionsDeleteSelfHostedRunnerFromRepo",
 			OperationID:   "actions/delete-self-hosted-runner-from-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2347,6 +2404,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteSelfHostedRunnerGroupFromOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2354,8 +2412,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
-			ID:   "actions/delete-self-hosted-runner-group-from-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, r)
@@ -2375,6 +2434,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 			Context:       ctx,
 			OperationName: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
 			OperationID:   "actions/delete-self-hosted-runner-group-from-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2455,6 +2515,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2462,8 +2523,9 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteWorkflowRun",
-			ID:   "actions/delete-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteWorkflowRunParams(args, r)
@@ -2483,6 +2545,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ActionsDeleteWorkflowRun",
 			OperationID:   "actions/delete-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2565,6 +2628,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDeleteWorkflowRunLogs
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2572,8 +2636,9 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteWorkflowRunLogs",
-			ID:   "actions/delete-workflow-run-logs",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, r)
@@ -2593,6 +2658,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "ActionsDeleteWorkflowRunLogs",
 			OperationID:   "actions/delete-workflow-run-logs",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2678,6 +2744,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDisableSelectedRepositoryGithubActionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2685,8 +2752,9 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
-			ID:   "actions/disable-selected-repository-github-actions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, r)
@@ -2706,6 +2774,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 			Context:       ctx,
 			OperationName: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
 			OperationID:   "actions/disable-selected-repository-github-actions-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2788,6 +2857,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDownloadArtifact
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2795,8 +2865,9 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDownloadArtifact",
-			ID:   "actions/download-artifact",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDownloadArtifactParams(args, r)
@@ -2816,6 +2887,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 			Context:       ctx,
 			OperationName: "ActionsDownloadArtifact",
 			OperationID:   "actions/download-artifact",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2908,6 +2980,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDownloadJobLogsForWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2915,8 +2988,9 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDownloadJobLogsForWorkflowRun",
-			ID:   "actions/download-job-logs-for-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, r)
@@ -2936,6 +3010,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 			Context:       ctx,
 			OperationName: "ActionsDownloadJobLogsForWorkflowRun",
 			OperationID:   "actions/download-job-logs-for-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3022,6 +3097,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsDownloadWorkflowRunLogs
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3029,8 +3105,9 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDownloadWorkflowRunLogs",
-			ID:   "actions/download-workflow-run-logs",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, r)
@@ -3050,6 +3127,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ActionsDownloadWorkflowRunLogs",
 			OperationID:   "actions/download-workflow-run-logs",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3135,6 +3213,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsEnableSelectedRepositoryGithubActionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3142,8 +3221,9 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
-			ID:   "actions/enable-selected-repository-github-actions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, r)
@@ -3163,6 +3243,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 			Context:       ctx,
 			OperationName: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
 			OperationID:   "actions/enable-selected-repository-github-actions-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3244,6 +3325,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetAllowedActionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3251,8 +3333,9 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetAllowedActionsOrganization",
-			ID:   "actions/get-allowed-actions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, r)
@@ -3272,6 +3355,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "ActionsGetAllowedActionsOrganization",
 			OperationID:   "actions/get-allowed-actions-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3349,6 +3433,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetAllowedActionsRepository
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3356,8 +3441,9 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetAllowedActionsRepository",
-			ID:   "actions/get-allowed-actions-repository",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, r)
@@ -3377,6 +3463,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ActionsGetAllowedActionsRepository",
 			OperationID:   "actions/get-allowed-actions-repository",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3455,6 +3542,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetArtifact
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3462,8 +3550,9 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetArtifact",
-			ID:   "actions/get-artifact",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetArtifactParams(args, r)
@@ -3483,6 +3572,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ActionsGetArtifact",
 			OperationID:   "actions/get-artifact",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3566,6 +3656,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetEnvironmentPublicKey
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3573,8 +3664,9 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetEnvironmentPublicKey",
-			ID:   "actions/get-environment-public-key",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, r)
@@ -3594,6 +3686,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ActionsGetEnvironmentPublicKey",
 			OperationID:   "actions/get-environment-public-key",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3672,6 +3765,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetEnvironmentSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3679,8 +3773,9 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetEnvironmentSecret",
-			ID:   "actions/get-environment-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetEnvironmentSecretParams(args, r)
@@ -3700,6 +3795,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ActionsGetEnvironmentSecret",
 			OperationID:   "actions/get-environment-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3782,6 +3878,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetGithubActionsPermissionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3789,8 +3886,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetGithubActionsPermissionsOrganization",
-			ID:   "actions/get-github-actions-permissions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, r)
@@ -3810,6 +3908,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 			Context:       ctx,
 			OperationName: "ActionsGetGithubActionsPermissionsOrganization",
 			OperationID:   "actions/get-github-actions-permissions-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3885,6 +3984,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetGithubActionsPermissionsRepository
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3892,8 +3992,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetGithubActionsPermissionsRepository",
-			ID:   "actions/get-github-actions-permissions-repository",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, r)
@@ -3913,6 +4014,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 			Context:       ctx,
 			OperationName: "ActionsGetGithubActionsPermissionsRepository",
 			OperationID:   "actions/get-github-actions-permissions-repository",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3991,6 +4093,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetJobForWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3998,8 +4101,9 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetJobForWorkflowRun",
-			ID:   "actions/get-job-for-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetJobForWorkflowRunParams(args, r)
@@ -4019,6 +4123,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ActionsGetJobForWorkflowRun",
 			OperationID:   "actions/get-job-for-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4102,6 +4207,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetOrgPublicKey
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4109,8 +4215,9 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetOrgPublicKey",
-			ID:   "actions/get-org-public-key",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetOrgPublicKeyParams(args, r)
@@ -4130,6 +4237,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ActionsGetOrgPublicKey",
 			OperationID:   "actions/get-org-public-key",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4204,6 +4312,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4211,8 +4320,9 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetOrgSecret",
-			ID:   "actions/get-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetOrgSecretParams(args, r)
@@ -4232,6 +4342,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ActionsGetOrgSecret",
 			OperationID:   "actions/get-org-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4311,6 +4422,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetRepoPublicKey
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4318,8 +4430,9 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetRepoPublicKey",
-			ID:   "actions/get-repo-public-key",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetRepoPublicKeyParams(args, r)
@@ -4339,6 +4452,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "ActionsGetRepoPublicKey",
 			OperationID:   "actions/get-repo-public-key",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4417,6 +4531,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetRepoSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4424,8 +4539,9 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetRepoSecret",
-			ID:   "actions/get-repo-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetRepoSecretParams(args, r)
@@ -4445,6 +4561,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ActionsGetRepoSecret",
 			OperationID:   "actions/get-repo-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4527,6 +4644,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetReviewsForRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4534,8 +4652,9 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetReviewsForRun",
-			ID:   "actions/get-reviews-for-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetReviewsForRunParams(args, r)
@@ -4555,6 +4674,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ActionsGetReviewsForRun",
 			OperationID:   "actions/get-reviews-for-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4636,6 +4756,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetSelfHostedRunnerForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4643,8 +4764,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetSelfHostedRunnerForOrg",
-			ID:   "actions/get-self-hosted-runner-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, r)
@@ -4664,6 +4786,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 			Context:       ctx,
 			OperationName: "ActionsGetSelfHostedRunnerForOrg",
 			OperationID:   "actions/get-self-hosted-runner-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4742,6 +4865,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetSelfHostedRunnerForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4749,8 +4873,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetSelfHostedRunnerForRepo",
-			ID:   "actions/get-self-hosted-runner-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, r)
@@ -4770,6 +4895,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "ActionsGetSelfHostedRunnerForRepo",
 			OperationID:   "actions/get-self-hosted-runner-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4854,6 +4980,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetSelfHostedRunnerGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4861,8 +4988,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetSelfHostedRunnerGroupForOrg",
-			ID:   "actions/get-self-hosted-runner-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, r)
@@ -4882,6 +5010,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "ActionsGetSelfHostedRunnerGroupForOrg",
 			OperationID:   "actions/get-self-hosted-runner-group-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4960,6 +5089,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4967,8 +5097,9 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetWorkflowRun",
-			ID:   "actions/get-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetWorkflowRunParams(args, r)
@@ -4988,6 +5119,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ActionsGetWorkflowRun",
 			OperationID:   "actions/get-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5077,6 +5209,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsGetWorkflowRunUsage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5084,8 +5217,9 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetWorkflowRunUsage",
-			ID:   "actions/get-workflow-run-usage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsGetWorkflowRunUsageParams(args, r)
@@ -5105,6 +5239,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "ActionsGetWorkflowRunUsage",
 			OperationID:   "actions/get-workflow-run-usage",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5187,6 +5322,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListArtifactsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5194,8 +5330,9 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListArtifactsForRepo",
-			ID:   "actions/list-artifacts-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListArtifactsForRepoParams(args, r)
@@ -5215,6 +5352,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ActionsListArtifactsForRepo",
 			OperationID:   "actions/list-artifacts-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5301,6 +5439,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListEnvironmentSecrets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5308,8 +5447,9 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListEnvironmentSecrets",
-			ID:   "actions/list-environment-secrets",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListEnvironmentSecretsParams(args, r)
@@ -5329,6 +5469,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "ActionsListEnvironmentSecrets",
 			OperationID:   "actions/list-environment-secrets",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5417,6 +5558,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListJobsForWorkflowRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5424,8 +5566,9 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListJobsForWorkflowRun",
-			ID:   "actions/list-jobs-for-workflow-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListJobsForWorkflowRunParams(args, r)
@@ -5445,6 +5588,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ActionsListJobsForWorkflowRun",
 			OperationID:   "actions/list-jobs-for-workflow-run",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5539,6 +5683,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListOrgSecrets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5546,8 +5691,9 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListOrgSecrets",
-			ID:   "actions/list-org-secrets",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListOrgSecretsParams(args, r)
@@ -5567,6 +5713,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ActionsListOrgSecrets",
 			OperationID:   "actions/list-org-secrets",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5651,6 +5798,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5658,8 +5806,9 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
-			ID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
@@ -5679,6 +5828,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 			Context:       ctx,
 			OperationName: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5765,6 +5915,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListRepoSecrets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5772,8 +5923,9 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRepoSecrets",
-			ID:   "actions/list-repo-secrets",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListRepoSecretsParams(args, r)
@@ -5793,6 +5945,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ActionsListRepoSecrets",
 			OperationID:   "actions/list-repo-secrets",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5879,6 +6032,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListRepoWorkflows
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5886,8 +6040,9 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRepoWorkflows",
-			ID:   "actions/list-repo-workflows",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListRepoWorkflowsParams(args, r)
@@ -5907,6 +6062,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "ActionsListRepoWorkflows",
 			OperationID:   "actions/list-repo-workflows",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5992,6 +6148,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListRunnerApplicationsForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5999,8 +6156,9 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRunnerApplicationsForOrg",
-			ID:   "actions/list-runner-applications-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, r)
@@ -6020,6 +6178,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 			Context:       ctx,
 			OperationName: "ActionsListRunnerApplicationsForOrg",
 			OperationID:   "actions/list-runner-applications-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6093,6 +6252,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListRunnerApplicationsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6100,8 +6260,9 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRunnerApplicationsForRepo",
-			ID:   "actions/list-runner-applications-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, r)
@@ -6121,6 +6282,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ActionsListRunnerApplicationsForRepo",
 			OperationID:   "actions/list-runner-applications-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6200,6 +6362,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListSelectedReposForOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6207,8 +6370,9 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelectedReposForOrgSecret",
-			ID:   "actions/list-selected-repos-for-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, r)
@@ -6228,6 +6392,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ActionsListSelectedReposForOrgSecret",
 			OperationID:   "actions/list-selected-repos-for-org-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6317,6 +6482,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6324,8 +6490,9 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
-			ID:   "actions/list-selected-repositories-enabled-github-actions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
@@ -6345,6 +6512,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 			Context:       ctx,
 			OperationName: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
 			OperationID:   "actions/list-selected-repositories-enabled-github-actions-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6429,6 +6597,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListSelfHostedRunnerGroupsForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6436,8 +6605,9 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnerGroupsForOrg",
-			ID:   "actions/list-self-hosted-runner-groups-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, r)
@@ -6457,6 +6627,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 			Context:       ctx,
 			OperationName: "ActionsListSelfHostedRunnerGroupsForOrg",
 			OperationID:   "actions/list-self-hosted-runner-groups-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6538,6 +6709,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListSelfHostedRunnersForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6545,8 +6717,9 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnersForOrg",
-			ID:   "actions/list-self-hosted-runners-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, r)
@@ -6566,6 +6739,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "ActionsListSelfHostedRunnersForOrg",
 			OperationID:   "actions/list-self-hosted-runners-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6647,6 +6821,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListSelfHostedRunnersForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6654,8 +6829,9 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnersForRepo",
-			ID:   "actions/list-self-hosted-runners-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, r)
@@ -6675,6 +6851,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ActionsListSelfHostedRunnersForRepo",
 			OperationID:   "actions/list-self-hosted-runners-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6763,6 +6940,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListSelfHostedRunnersInGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6770,8 +6948,9 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnersInGroupForOrg",
-			ID:   "actions/list-self-hosted-runners-in-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, r)
@@ -6791,6 +6970,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 			Context:       ctx,
 			OperationName: "ActionsListSelfHostedRunnersInGroupForOrg",
 			OperationID:   "actions/list-self-hosted-runners-in-group-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6877,6 +7057,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListWorkflowRunArtifacts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6884,8 +7065,9 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListWorkflowRunArtifacts",
-			ID:   "actions/list-workflow-run-artifacts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListWorkflowRunArtifactsParams(args, r)
@@ -6905,6 +7087,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 			Context:       ctx,
 			OperationName: "ActionsListWorkflowRunArtifacts",
 			OperationID:   "actions/list-workflow-run-artifacts",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -6998,6 +7181,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsListWorkflowRunsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7005,8 +7189,9 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListWorkflowRunsForRepo",
-			ID:   "actions/list-workflow-runs-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsListWorkflowRunsForRepoParams(args, r)
@@ -7026,6 +7211,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ActionsListWorkflowRunsForRepo",
 			OperationID:   "actions/list-workflow-runs-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -7137,6 +7323,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsReRunWorkflow
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7144,8 +7331,9 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsReRunWorkflow",
-			ID:   "actions/re-run-workflow",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsReRunWorkflowParams(args, r)
@@ -7165,6 +7353,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ActionsReRunWorkflow",
 			OperationID:   "actions/re-run-workflow",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -7252,6 +7441,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7259,8 +7449,9 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
-			ID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
@@ -7280,6 +7471,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 			Context:       ctx,
 			OperationName: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -7364,6 +7556,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsRemoveSelectedRepoFromOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7371,8 +7564,9 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRemoveSelectedRepoFromOrgSecret",
-			ID:   "actions/remove-selected-repo-from-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, r)
@@ -7392,6 +7586,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 			Context:       ctx,
 			OperationName: "ActionsRemoveSelectedRepoFromOrgSecret",
 			OperationID:   "actions/remove-selected-repo-from-org-secret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -7477,6 +7672,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsRemoveSelfHostedRunnerFromGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7484,8 +7680,9 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
-			ID:   "actions/remove-self-hosted-runner-from-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, r)
@@ -7505,6 +7702,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 			Context:       ctx,
 			OperationName: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
 			OperationID:   "actions/remove-self-hosted-runner-from-group-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -7587,6 +7785,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsRetryWorkflow
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7594,8 +7793,9 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRetryWorkflow",
-			ID:   "actions/retry-workflow",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsRetryWorkflowParams(args, r)
@@ -7615,6 +7815,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ActionsRetryWorkflow",
 			OperationID:   "actions/retry-workflow",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -7696,6 +7897,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsReviewPendingDeploymentsForRun
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7703,8 +7905,9 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsReviewPendingDeploymentsForRun",
-			ID:   "actions/review-pending-deployments-for-run",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
@@ -7739,6 +7942,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 			Context:       ctx,
 			OperationName: "ActionsReviewPendingDeploymentsForRun",
 			OperationID:   "actions/review-pending-deployments-for-run",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -7829,6 +8033,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetAllowedActionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7836,8 +8041,9 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetAllowedActionsOrganization",
-			ID:   "actions/set-allowed-actions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, r)
@@ -7872,6 +8078,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "ActionsSetAllowedActionsOrganization",
 			OperationID:   "actions/set-allowed-actions-organization",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -7953,6 +8160,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetAllowedActionsRepository
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7960,8 +8168,9 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetAllowedActionsRepository",
-			ID:   "actions/set-allowed-actions-repository",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, r)
@@ -7996,6 +8205,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ActionsSetAllowedActionsRepository",
 			OperationID:   "actions/set-allowed-actions-repository",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8077,6 +8287,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetGithubActionsPermissionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8084,8 +8295,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetGithubActionsPermissionsOrganization",
-			ID:   "actions/set-github-actions-permissions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, r)
@@ -8120,6 +8332,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 			Context:       ctx,
 			OperationName: "ActionsSetGithubActionsPermissionsOrganization",
 			OperationID:   "actions/set-github-actions-permissions-organization",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8198,6 +8411,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetGithubActionsPermissionsRepository
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8205,8 +8419,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetGithubActionsPermissionsRepository",
-			ID:   "actions/set-github-actions-permissions-repository",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, r)
@@ -8241,6 +8456,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 			Context:       ctx,
 			OperationName: "ActionsSetGithubActionsPermissionsRepository",
 			OperationID:   "actions/set-github-actions-permissions-repository",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8322,6 +8538,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8329,8 +8546,9 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-			ID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
@@ -8365,6 +8583,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			Context:       ctx,
 			OperationName: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8445,6 +8664,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetSelectedReposForOrgSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8452,8 +8672,9 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetSelectedReposForOrgSecret",
-			ID:   "actions/set-selected-repos-for-org-secret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, r)
@@ -8488,6 +8709,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ActionsSetSelectedReposForOrgSecret",
 			OperationID:   "actions/set-selected-repos-for-org-secret",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8569,6 +8791,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8576,8 +8799,9 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-			ID:   "actions/set-selected-repositories-enabled-github-actions-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
@@ -8612,6 +8836,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			Context:       ctx,
 			OperationName: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
 			OperationID:   "actions/set-selected-repositories-enabled-github-actions-organization",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8688,6 +8913,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsSetSelfHostedRunnersInGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8695,8 +8921,9 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetSelfHostedRunnersInGroupForOrg",
-			ID:   "actions/set-self-hosted-runners-in-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, r)
@@ -8731,6 +8958,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 			Context:       ctx,
 			OperationName: "ActionsSetSelfHostedRunnersInGroupForOrg",
 			OperationID:   "actions/set-self-hosted-runners-in-group-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8811,6 +9039,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActionsUpdateSelfHostedRunnerGroupForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8818,8 +9047,9 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsUpdateSelfHostedRunnerGroupForOrg",
-			ID:   "actions/update-self-hosted-runner-group-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, r)
@@ -8854,6 +9084,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 			Context:       ctx,
 			OperationName: "ActionsUpdateSelfHostedRunnerGroupForOrg",
 			OperationID:   "actions/update-self-hosted-runner-group-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -8930,6 +9161,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityCheckRepoIsStarredByAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8937,8 +9169,9 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityCheckRepoIsStarredByAuthenticatedUser",
-			ID:   "activity/check-repo-is-starred-by-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, r)
@@ -8958,6 +9191,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 			Context:       ctx,
 			OperationName: "ActivityCheckRepoIsStarredByAuthenticatedUser",
 			OperationID:   "activity/check-repo-is-starred-by-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9036,6 +9270,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityDeleteRepoSubscription
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9043,8 +9278,9 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityDeleteRepoSubscription",
-			ID:   "activity/delete-repo-subscription",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityDeleteRepoSubscriptionParams(args, r)
@@ -9064,6 +9300,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ActivityDeleteRepoSubscription",
 			OperationID:   "activity/delete-repo-subscription",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9144,6 +9381,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityDeleteThreadSubscription
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9151,8 +9389,9 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityDeleteThreadSubscription",
-			ID:   "activity/delete-thread-subscription",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityDeleteThreadSubscriptionParams(args, r)
@@ -9172,6 +9411,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 			Context:       ctx,
 			OperationName: "ActivityDeleteThreadSubscription",
 			OperationID:   "activity/delete-thread-subscription",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9258,6 +9498,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityGetFeeds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9272,6 +9513,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ActivityGetFeeds",
 			OperationID:   "activity/get-feeds",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9339,6 +9581,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityGetRepoSubscription
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9346,8 +9589,9 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityGetRepoSubscription",
-			ID:   "activity/get-repo-subscription",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityGetRepoSubscriptionParams(args, r)
@@ -9367,6 +9611,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ActivityGetRepoSubscription",
 			OperationID:   "activity/get-repo-subscription",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9443,6 +9688,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityGetThread
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9450,8 +9696,9 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityGetThread",
-			ID:   "activity/get-thread",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityGetThreadParams(args, r)
@@ -9471,6 +9718,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ActivityGetThread",
 			OperationID:   "activity/get-thread",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9546,6 +9794,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityGetThreadSubscriptionForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9553,8 +9802,9 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityGetThreadSubscriptionForAuthenticatedUser",
-			ID:   "activity/get-thread-subscription-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, r)
@@ -9574,6 +9824,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 			Context:       ctx,
 			OperationName: "ActivityGetThreadSubscriptionForAuthenticatedUser",
 			OperationID:   "activity/get-thread-subscription-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9647,6 +9898,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListEventsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9654,8 +9906,9 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListEventsForAuthenticatedUser",
-			ID:   "activity/list-events-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, r)
@@ -9675,6 +9928,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 			Context:       ctx,
 			OperationName: "ActivityListEventsForAuthenticatedUser",
 			OperationID:   "activity/list-events-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9755,6 +10009,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListNotificationsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9762,8 +10017,9 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListNotificationsForAuthenticatedUser",
-			ID:   "activity/list-notifications-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
@@ -9783,6 +10039,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 			Context:       ctx,
 			OperationName: "ActivityListNotificationsForAuthenticatedUser",
 			OperationID:   "activity/list-notifications-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9875,6 +10132,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListOrgEventsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9882,8 +10140,9 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListOrgEventsForAuthenticatedUser",
-			ID:   "activity/list-org-events-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, r)
@@ -9903,6 +10162,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 			Context:       ctx,
 			OperationName: "ActivityListOrgEventsForAuthenticatedUser",
 			OperationID:   "activity/list-org-events-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -9988,6 +10248,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListPublicEvents
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9995,8 +10256,9 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicEvents",
-			ID:   "activity/list-public-events",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListPublicEventsParams(args, r)
@@ -10016,6 +10278,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "ActivityListPublicEvents",
 			OperationID:   "activity/list-public-events",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10092,6 +10355,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListPublicEventsForRepoNetwork
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10099,8 +10363,9 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicEventsForRepoNetwork",
-			ID:   "activity/list-public-events-for-repo-network",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, r)
@@ -10120,6 +10385,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ActivityListPublicEventsForRepoNetwork",
 			OperationID:   "activity/list-public-events-for-repo-network",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10204,6 +10470,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListPublicEventsForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10211,8 +10478,9 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicEventsForUser",
-			ID:   "activity/list-public-events-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListPublicEventsForUserParams(args, r)
@@ -10232,6 +10500,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 			Context:       ctx,
 			OperationName: "ActivityListPublicEventsForUser",
 			OperationID:   "activity/list-public-events-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10312,6 +10581,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListPublicOrgEvents
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10319,8 +10589,9 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicOrgEvents",
-			ID:   "activity/list-public-org-events",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListPublicOrgEventsParams(args, r)
@@ -10340,6 +10611,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "ActivityListPublicOrgEvents",
 			OperationID:   "activity/list-public-org-events",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10422,6 +10694,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListReceivedEventsForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10429,8 +10702,9 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReceivedEventsForUser",
-			ID:   "activity/list-received-events-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListReceivedEventsForUserParams(args, r)
@@ -10450,6 +10724,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "ActivityListReceivedEventsForUser",
 			OperationID:   "activity/list-received-events-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10530,6 +10805,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListReceivedPublicEventsForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10537,8 +10813,9 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReceivedPublicEventsForUser",
-			ID:   "activity/list-received-public-events-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, r)
@@ -10558,6 +10835,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 			Context:       ctx,
 			OperationName: "ActivityListReceivedPublicEventsForUser",
 			OperationID:   "activity/list-received-public-events-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10638,6 +10916,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListRepoEvents
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10645,8 +10924,9 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListRepoEvents",
-			ID:   "activity/list-repo-events",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListRepoEventsParams(args, r)
@@ -10666,6 +10946,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ActivityListRepoEvents",
 			OperationID:   "activity/list-repo-events",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10750,6 +11031,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListRepoNotificationsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10757,8 +11039,9 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListRepoNotificationsForAuthenticatedUser",
-			ID:   "activity/list-repo-notifications-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, r)
@@ -10778,6 +11061,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 			Context:       ctx,
 			OperationName: "ActivityListRepoNotificationsForAuthenticatedUser",
 			OperationID:   "activity/list-repo-notifications-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10880,6 +11164,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListReposStarredByAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10887,8 +11172,9 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReposStarredByAuthenticatedUser",
-			ID:   "activity/list-repos-starred-by-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, r)
@@ -10908,6 +11194,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 			Context:       ctx,
 			OperationName: "ActivityListReposStarredByAuthenticatedUser",
 			OperationID:   "activity/list-repos-starred-by-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -10992,6 +11279,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListReposWatchedByUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10999,8 +11287,9 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReposWatchedByUser",
-			ID:   "activity/list-repos-watched-by-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListReposWatchedByUserParams(args, r)
@@ -11020,6 +11309,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "ActivityListReposWatchedByUser",
 			OperationID:   "activity/list-repos-watched-by-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11100,6 +11390,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListWatchedReposForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11107,8 +11398,9 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListWatchedReposForAuthenticatedUser",
-			ID:   "activity/list-watched-repos-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, r)
@@ -11128,6 +11420,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 			Context:       ctx,
 			OperationName: "ActivityListWatchedReposForAuthenticatedUser",
 			OperationID:   "activity/list-watched-repos-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11204,6 +11497,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityListWatchersForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11211,8 +11505,9 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListWatchersForRepo",
-			ID:   "activity/list-watchers-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityListWatchersForRepoParams(args, r)
@@ -11232,6 +11527,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ActivityListWatchersForRepo",
 			OperationID:   "activity/list-watchers-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11322,6 +11618,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityMarkNotificationsAsRead
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11329,8 +11626,9 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityMarkNotificationsAsRead",
-			ID:   "activity/mark-notifications-as-read",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeActivityMarkNotificationsAsReadRequest(r)
@@ -11355,6 +11653,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "ActivityMarkNotificationsAsRead",
 			OperationID:   "activity/mark-notifications-as-read",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11428,6 +11727,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityMarkRepoNotificationsAsRead
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11435,8 +11735,9 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityMarkRepoNotificationsAsRead",
-			ID:   "activity/mark-repo-notifications-as-read",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, r)
@@ -11471,6 +11772,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ActivityMarkRepoNotificationsAsRead",
 			OperationID:   "activity/mark-repo-notifications-as-read",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -11547,6 +11849,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityMarkThreadAsRead
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11554,8 +11857,9 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityMarkThreadAsRead",
-			ID:   "activity/mark-thread-as-read",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityMarkThreadAsReadParams(args, r)
@@ -11575,6 +11879,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 			Context:       ctx,
 			OperationName: "ActivityMarkThreadAsRead",
 			OperationID:   "activity/mark-thread-as-read",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11650,6 +11955,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivitySetRepoSubscription
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11657,8 +11963,9 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivitySetRepoSubscription",
-			ID:   "activity/set-repo-subscription",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivitySetRepoSubscriptionParams(args, r)
@@ -11693,6 +12000,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ActivitySetRepoSubscription",
 			OperationID:   "activity/set-repo-subscription",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -11776,6 +12084,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivitySetThreadSubscription
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11783,8 +12092,9 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivitySetThreadSubscription",
-			ID:   "activity/set-thread-subscription",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivitySetThreadSubscriptionParams(args, r)
@@ -11819,6 +12129,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ActivitySetThreadSubscription",
 			OperationID:   "activity/set-thread-subscription",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -11893,6 +12204,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityStarRepoForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11900,8 +12212,9 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityStarRepoForAuthenticatedUser",
-			ID:   "activity/star-repo-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, r)
@@ -11921,6 +12234,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ActivityStarRepoForAuthenticatedUser",
 			OperationID:   "activity/star-repo-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11997,6 +12311,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ActivityUnstarRepoForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12004,8 +12319,9 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityUnstarRepoForAuthenticatedUser",
-			ID:   "activity/unstar-repo-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, r)
@@ -12025,6 +12341,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ActivityUnstarRepoForAuthenticatedUser",
 			OperationID:   "activity/unstar-repo-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12106,6 +12423,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsAddRepoToInstallation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12113,8 +12431,9 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsAddRepoToInstallation",
-			ID:   "apps/add-repo-to-installation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsAddRepoToInstallationParams(args, r)
@@ -12134,6 +12453,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "AppsAddRepoToInstallation",
 			OperationID:   "apps/add-repo-to-installation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12215,6 +12535,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsCheckToken
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12222,8 +12543,9 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCheckToken",
-			ID:   "apps/check-token",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsCheckTokenParams(args, r)
@@ -12258,6 +12580,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "AppsCheckToken",
 			OperationID:   "apps/check-token",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -12339,6 +12662,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsCreateContentAttachment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12346,8 +12670,9 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCreateContentAttachment",
-			ID:   "apps/create-content-attachment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsCreateContentAttachmentParams(args, r)
@@ -12382,6 +12707,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "AppsCreateContentAttachment",
 			OperationID:   "apps/create-content-attachment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -12465,6 +12791,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsCreateFromManifest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12472,8 +12799,9 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCreateFromManifest",
-			ID:   "apps/create-from-manifest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsCreateFromManifestParams(args, r)
@@ -12508,6 +12836,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "AppsCreateFromManifest",
 			OperationID:   "apps/create-from-manifest",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -12589,6 +12918,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsCreateInstallationAccessToken
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12596,8 +12926,9 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCreateInstallationAccessToken",
-			ID:   "apps/create-installation-access-token",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
@@ -12632,6 +12963,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "AppsCreateInstallationAccessToken",
 			OperationID:   "apps/create-installation-access-token",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -12713,6 +13045,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsDeleteAuthorization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12720,8 +13053,9 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsDeleteAuthorization",
-			ID:   "apps/delete-authorization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsDeleteAuthorizationParams(args, r)
@@ -12756,6 +13090,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "AppsDeleteAuthorization",
 			OperationID:   "apps/delete-authorization",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -12833,6 +13168,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsDeleteInstallation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12840,8 +13176,9 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsDeleteInstallation",
-			ID:   "apps/delete-installation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsDeleteInstallationParams(args, r)
@@ -12861,6 +13198,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "AppsDeleteInstallation",
 			OperationID:   "apps/delete-installation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12936,6 +13274,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsDeleteToken
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12943,8 +13282,9 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsDeleteToken",
-			ID:   "apps/delete-token",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsDeleteTokenParams(args, r)
@@ -12979,6 +13319,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "AppsDeleteToken",
 			OperationID:   "apps/delete-token",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -13058,6 +13399,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsGetAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13072,6 +13414,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "AppsGetAuthenticated",
 			OperationID:   "apps/get-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13146,6 +13489,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsGetBySlug
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13153,8 +13497,9 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetBySlug",
-			ID:   "apps/get-by-slug",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsGetBySlugParams(args, r)
@@ -13174,6 +13519,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "AppsGetBySlug",
 			OperationID:   "apps/get-by-slug",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13253,6 +13599,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsGetSubscriptionPlanForAccount
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13260,8 +13607,9 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetSubscriptionPlanForAccount",
-			ID:   "apps/get-subscription-plan-for-account",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, r)
@@ -13281,6 +13629,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "AppsGetSubscriptionPlanForAccount",
 			OperationID:   "apps/get-subscription-plan-for-account",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13360,6 +13709,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsGetSubscriptionPlanForAccountStubbed
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13367,8 +13717,9 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetSubscriptionPlanForAccountStubbed",
-			ID:   "apps/get-subscription-plan-for-account-stubbed",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, r)
@@ -13388,6 +13739,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 			Context:       ctx,
 			OperationName: "AppsGetSubscriptionPlanForAccountStubbed",
 			OperationID:   "apps/get-subscription-plan-for-account-stubbed",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13464,6 +13816,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsGetWebhookConfigForApp
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13478,6 +13831,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "AppsGetWebhookConfigForApp",
 			OperationID:   "apps/get-webhook-config-for-app",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13548,6 +13902,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsGetWebhookDelivery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13555,8 +13910,9 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetWebhookDelivery",
-			ID:   "apps/get-webhook-delivery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
@@ -13576,6 +13932,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "AppsGetWebhookDelivery",
 			OperationID:   "apps/get-webhook-delivery",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13656,6 +14013,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListAccountsForPlan
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13663,8 +14021,9 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListAccountsForPlan",
-			ID:   "apps/list-accounts-for-plan",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListAccountsForPlanParams(args, r)
@@ -13684,6 +14043,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "AppsListAccountsForPlan",
 			OperationID:   "apps/list-accounts-for-plan",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13780,6 +14140,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListAccountsForPlanStubbed
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13787,8 +14148,9 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListAccountsForPlanStubbed",
-			ID:   "apps/list-accounts-for-plan-stubbed",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListAccountsForPlanStubbedParams(args, r)
@@ -13808,6 +14170,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "AppsListAccountsForPlanStubbed",
 			OperationID:   "apps/list-accounts-for-plan-stubbed",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13902,6 +14265,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListInstallationReposForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13909,8 +14273,9 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListInstallationReposForAuthenticatedUser",
-			ID:   "apps/list-installation-repos-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, r)
@@ -13930,6 +14295,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 			Context:       ctx,
 			OperationName: "AppsListInstallationReposForAuthenticatedUser",
 			OperationID:   "apps/list-installation-repos-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14015,6 +14381,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListPlans
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14022,8 +14389,9 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListPlans",
-			ID:   "apps/list-plans",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListPlansParams(args, r)
@@ -14043,6 +14411,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "AppsListPlans",
 			OperationID:   "apps/list-plans",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14124,6 +14493,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListPlansStubbed
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14131,8 +14501,9 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListPlansStubbed",
-			ID:   "apps/list-plans-stubbed",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListPlansStubbedParams(args, r)
@@ -14152,6 +14523,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "AppsListPlansStubbed",
 			OperationID:   "apps/list-plans-stubbed",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14231,6 +14603,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListReposAccessibleToInstallation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14238,8 +14611,9 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListReposAccessibleToInstallation",
-			ID:   "apps/list-repos-accessible-to-installation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListReposAccessibleToInstallationParams(args, r)
@@ -14259,6 +14633,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "AppsListReposAccessibleToInstallation",
 			OperationID:   "apps/list-repos-accessible-to-installation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14337,6 +14712,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListSubscriptionsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14344,8 +14720,9 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListSubscriptionsForAuthenticatedUser",
-			ID:   "apps/list-subscriptions-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, r)
@@ -14365,6 +14742,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 			Context:       ctx,
 			OperationName: "AppsListSubscriptionsForAuthenticatedUser",
 			OperationID:   "apps/list-subscriptions-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14443,6 +14821,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListSubscriptionsForAuthenticatedUserStubbed
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14450,8 +14829,9 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListSubscriptionsForAuthenticatedUserStubbed",
-			ID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, r)
@@ -14471,6 +14851,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 			Context:       ctx,
 			OperationName: "AppsListSubscriptionsForAuthenticatedUserStubbed",
 			OperationID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14550,6 +14931,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsListWebhookDeliveries
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14557,8 +14939,9 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListWebhookDeliveries",
-			ID:   "apps/list-webhook-deliveries",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
@@ -14578,6 +14961,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "AppsListWebhookDeliveries",
 			OperationID:   "apps/list-webhook-deliveries",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14657,6 +15041,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsRedeliverWebhookDelivery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14664,8 +15049,9 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsRedeliverWebhookDelivery",
-			ID:   "apps/redeliver-webhook-delivery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
@@ -14685,6 +15071,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "AppsRedeliverWebhookDelivery",
 			OperationID:   "apps/redeliver-webhook-delivery",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14762,6 +15149,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsRemoveRepoFromInstallation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14769,8 +15157,9 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsRemoveRepoFromInstallation",
-			ID:   "apps/remove-repo-from-installation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsRemoveRepoFromInstallationParams(args, r)
@@ -14790,6 +15179,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "AppsRemoveRepoFromInstallation",
 			OperationID:   "apps/remove-repo-from-installation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14871,6 +15261,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsResetToken
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14878,8 +15269,9 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsResetToken",
-			ID:   "apps/reset-token",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsResetTokenParams(args, r)
@@ -14914,6 +15306,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "AppsResetToken",
 			OperationID:   "apps/reset-token",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -14995,6 +15388,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsRevokeInstallationAccessToken
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15009,6 +15403,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "AppsRevokeInstallationAccessToken",
 			OperationID:   "apps/revoke-installation-access-token",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15081,6 +15476,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsScopeToken
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15088,8 +15484,9 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsScopeToken",
-			ID:   "apps/scope-token",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsScopeTokenParams(args, r)
@@ -15124,6 +15521,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "AppsScopeToken",
 			OperationID:   "apps/scope-token",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -15201,6 +15599,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsSuspendInstallation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15208,8 +15607,9 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsSuspendInstallation",
-			ID:   "apps/suspend-installation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsSuspendInstallationParams(args, r)
@@ -15229,6 +15629,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "AppsSuspendInstallation",
 			OperationID:   "apps/suspend-installation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15304,6 +15705,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsUnsuspendInstallation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15311,8 +15713,9 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsUnsuspendInstallation",
-			ID:   "apps/unsuspend-installation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAppsUnsuspendInstallationParams(args, r)
@@ -15332,6 +15735,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "AppsUnsuspendInstallation",
 			OperationID:   "apps/unsuspend-installation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15408,6 +15812,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AppsUpdateWebhookConfigForApp
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15415,8 +15820,9 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsUpdateWebhookConfigForApp",
-			ID:   "apps/update-webhook-config-for-app",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAppsUpdateWebhookConfigForAppRequest(r)
@@ -15441,6 +15847,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "AppsUpdateWebhookConfigForApp",
 			OperationID:   "apps/update-webhook-config-for-app",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15515,6 +15922,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetGithubActionsBillingGhe
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15522,8 +15930,9 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubActionsBillingGhe",
-			ID:   "billing/get-github-actions-billing-ghe",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetGithubActionsBillingGheParams(args, r)
@@ -15543,6 +15952,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "BillingGetGithubActionsBillingGhe",
 			OperationID:   "billing/get-github-actions-billing-ghe",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15622,6 +16032,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetGithubActionsBillingOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15629,8 +16040,9 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubActionsBillingOrg",
-			ID:   "billing/get-github-actions-billing-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, r)
@@ -15650,6 +16062,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "BillingGetGithubActionsBillingOrg",
 			OperationID:   "billing/get-github-actions-billing-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15729,6 +16142,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetGithubActionsBillingUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15736,8 +16150,9 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubActionsBillingUser",
-			ID:   "billing/get-github-actions-billing-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetGithubActionsBillingUserParams(args, r)
@@ -15757,6 +16172,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "BillingGetGithubActionsBillingUser",
 			OperationID:   "billing/get-github-actions-billing-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15833,6 +16249,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetGithubPackagesBillingGhe
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15840,8 +16257,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubPackagesBillingGhe",
-			ID:   "billing/get-github-packages-billing-ghe",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, r)
@@ -15861,6 +16279,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "BillingGetGithubPackagesBillingGhe",
 			OperationID:   "billing/get-github-packages-billing-ghe",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15937,6 +16356,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetGithubPackagesBillingOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15944,8 +16364,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubPackagesBillingOrg",
-			ID:   "billing/get-github-packages-billing-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, r)
@@ -15965,6 +16386,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "BillingGetGithubPackagesBillingOrg",
 			OperationID:   "billing/get-github-packages-billing-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16041,6 +16463,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetGithubPackagesBillingUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16048,8 +16471,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubPackagesBillingUser",
-			ID:   "billing/get-github-packages-billing-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, r)
@@ -16069,6 +16493,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 			Context:       ctx,
 			OperationName: "BillingGetGithubPackagesBillingUser",
 			OperationID:   "billing/get-github-packages-billing-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16145,6 +16570,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetSharedStorageBillingGhe
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16152,8 +16578,9 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetSharedStorageBillingGhe",
-			ID:   "billing/get-shared-storage-billing-ghe",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetSharedStorageBillingGheParams(args, r)
@@ -16173,6 +16600,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "BillingGetSharedStorageBillingGhe",
 			OperationID:   "billing/get-shared-storage-billing-ghe",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16249,6 +16677,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetSharedStorageBillingOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16256,8 +16685,9 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetSharedStorageBillingOrg",
-			ID:   "billing/get-shared-storage-billing-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, r)
@@ -16277,6 +16707,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "BillingGetSharedStorageBillingOrg",
 			OperationID:   "billing/get-shared-storage-billing-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16353,6 +16784,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BillingGetSharedStorageBillingUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16360,8 +16792,9 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetSharedStorageBillingUser",
-			ID:   "billing/get-shared-storage-billing-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeBillingGetSharedStorageBillingUserParams(args, r)
@@ -16381,6 +16814,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "BillingGetSharedStorageBillingUser",
 			OperationID:   "billing/get-shared-storage-billing-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16461,6 +16895,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksCreateSuite
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16468,8 +16903,9 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksCreateSuite",
-			ID:   "checks/create-suite",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksCreateSuiteParams(args, r)
@@ -16504,6 +16940,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ChecksCreateSuite",
 			OperationID:   "checks/create-suite",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -16585,6 +17022,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16592,8 +17030,9 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksGet",
-			ID:   "checks/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksGetParams(args, r)
@@ -16613,6 +17052,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "ChecksGet",
 			OperationID:   "checks/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16698,6 +17138,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksGetSuite
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16705,8 +17146,9 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksGetSuite",
-			ID:   "checks/get-suite",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksGetSuiteParams(args, r)
@@ -16726,6 +17168,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ChecksGetSuite",
 			OperationID:   "checks/get-suite",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16809,6 +17252,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksListAnnotations
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16816,8 +17260,9 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListAnnotations",
-			ID:   "checks/list-annotations",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksListAnnotationsParams(args, r)
@@ -16837,6 +17282,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ChecksListAnnotations",
 			OperationID:   "checks/list-annotations",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16931,6 +17377,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksListForRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16938,8 +17385,9 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListForRef",
-			ID:   "checks/list-for-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksListForRefParams(args, r)
@@ -16959,6 +17407,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ChecksListForRef",
 			OperationID:   "checks/list-for-ref",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17068,6 +17517,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksListForSuite
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17075,8 +17525,9 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListForSuite",
-			ID:   "checks/list-for-suite",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksListForSuiteParams(args, r)
@@ -17096,6 +17547,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ChecksListForSuite",
 			OperationID:   "checks/list-for-suite",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17202,6 +17654,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksListSuitesForRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17209,8 +17662,9 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListSuitesForRef",
-			ID:   "checks/list-suites-for-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksListSuitesForRefParams(args, r)
@@ -17230,6 +17684,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ChecksListSuitesForRef",
 			OperationID:   "checks/list-suites-for-ref",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17331,6 +17786,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksRerequestSuite
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17338,8 +17794,9 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksRerequestSuite",
-			ID:   "checks/rerequest-suite",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksRerequestSuiteParams(args, r)
@@ -17359,6 +17816,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ChecksRerequestSuite",
 			OperationID:   "checks/rerequest-suite",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17443,6 +17901,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ChecksSetSuitesPreferences
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17450,8 +17909,9 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksSetSuitesPreferences",
-			ID:   "checks/set-suites-preferences",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeChecksSetSuitesPreferencesParams(args, r)
@@ -17486,6 +17946,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "ChecksSetSuitesPreferences",
 			OperationID:   "checks/set-suites-preferences",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -17620,6 +18081,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningDeleteAnalysis
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17627,8 +18089,9 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningDeleteAnalysis",
-			ID:   "code-scanning/delete-analysis",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningDeleteAnalysisParams(args, r)
@@ -17648,6 +18111,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "CodeScanningDeleteAnalysis",
 			OperationID:   "code-scanning/delete-analysis",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17738,6 +18202,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningGetAlert
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17745,8 +18210,9 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningGetAlert",
-			ID:   "code-scanning/get-alert",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningGetAlertParams(args, r)
@@ -17766,6 +18232,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "CodeScanningGetAlert",
 			OperationID:   "code-scanning/get-alert",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17864,6 +18331,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningGetAnalysis
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17871,8 +18339,9 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningGetAnalysis",
-			ID:   "code-scanning/get-analysis",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningGetAnalysisParams(args, r)
@@ -17892,6 +18361,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "CodeScanningGetAnalysis",
 			OperationID:   "code-scanning/get-analysis",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17977,6 +18447,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningGetSarif
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17984,8 +18455,9 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningGetSarif",
-			ID:   "code-scanning/get-sarif",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningGetSarifParams(args, r)
@@ -18005,6 +18477,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "CodeScanningGetSarif",
 			OperationID:   "code-scanning/get-sarif",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18087,6 +18560,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningListAlertInstances
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18094,8 +18568,9 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningListAlertInstances",
-			ID:   "code-scanning/list-alert-instances",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningListAlertInstancesParams(args, r)
@@ -18115,6 +18590,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "CodeScanningListAlertInstances",
 			OperationID:   "code-scanning/list-alert-instances",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18214,6 +18690,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningListAlertsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18221,8 +18698,9 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningListAlertsForRepo",
-			ID:   "code-scanning/list-alerts-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningListAlertsForRepoParams(args, r)
@@ -18242,6 +18720,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "CodeScanningListAlertsForRepo",
 			OperationID:   "code-scanning/list-alerts-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18356,6 +18835,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningListRecentAnalyses
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18363,8 +18843,9 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningListRecentAnalyses",
-			ID:   "code-scanning/list-recent-analyses",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningListRecentAnalysesParams(args, r)
@@ -18384,6 +18865,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "CodeScanningListRecentAnalyses",
 			OperationID:   "code-scanning/list-recent-analyses",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18486,6 +18968,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningUpdateAlert
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18493,8 +18976,9 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningUpdateAlert",
-			ID:   "code-scanning/update-alert",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningUpdateAlertParams(args, r)
@@ -18529,6 +19013,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "CodeScanningUpdateAlert",
 			OperationID:   "code-scanning/update-alert",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -18635,6 +19120,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodeScanningUploadSarif
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18642,8 +19128,9 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningUploadSarif",
-			ID:   "code-scanning/upload-sarif",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodeScanningUploadSarifParams(args, r)
@@ -18678,6 +19165,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "CodeScanningUploadSarif",
 			OperationID:   "code-scanning/upload-sarif",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -18754,6 +19242,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodesOfConductGetAllCodesOfConduct
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18768,6 +19257,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "CodesOfConductGetAllCodesOfConduct",
 			OperationID:   "codes-of-conduct/get-all-codes-of-conduct",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18835,6 +19325,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CodesOfConductGetConductCode
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18842,8 +19333,9 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodesOfConductGetConductCode",
-			ID:   "codes-of-conduct/get-conduct-code",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCodesOfConductGetConductCodeParams(args, r)
@@ -18863,6 +19355,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "CodesOfConductGetConductCode",
 			OperationID:   "codes-of-conduct/get-conduct-code",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18935,6 +19428,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EmojisGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18949,6 +19443,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "EmojisGet",
 			OperationID:   "emojis/get",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19020,6 +19515,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19027,8 +19523,9 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			ID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
@@ -19048,6 +19545,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 			Context:       ctx,
 			OperationName: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19130,6 +19628,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19137,8 +19636,9 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
-			ID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, r)
@@ -19158,6 +19658,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 			Context:       ctx,
 			OperationName: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
 			OperationID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19245,6 +19746,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminCreateRegistrationTokenForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19252,8 +19754,9 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
-			ID:   "enterprise-admin/create-registration-token-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, r)
@@ -19273,6 +19776,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 			Context:       ctx,
 			OperationName: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
 			OperationID:   "enterprise-admin/create-registration-token-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19354,6 +19858,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminCreateRemoveTokenForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19361,8 +19866,9 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminCreateRemoveTokenForEnterprise",
-			ID:   "enterprise-admin/create-remove-token-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, r)
@@ -19382,6 +19888,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 			Context:       ctx,
 			OperationName: "EnterpriseAdminCreateRemoveTokenForEnterprise",
 			OperationID:   "enterprise-admin/create-remove-token-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19455,6 +19962,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19462,8 +19970,9 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-			ID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, r)
@@ -19498,6 +20007,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			Context:       ctx,
 			OperationName: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
 			OperationID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -19571,6 +20081,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminDeleteScimGroupFromEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19578,8 +20089,9 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteScimGroupFromEnterprise",
-			ID:   "enterprise-admin/delete-scim-group-from-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, r)
@@ -19599,6 +20111,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 			Context:       ctx,
 			OperationName: "EnterpriseAdminDeleteScimGroupFromEnterprise",
 			OperationID:   "enterprise-admin/delete-scim-group-from-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19677,6 +20190,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19684,8 +20198,9 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
-			ID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, r)
@@ -19705,6 +20220,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 			Context:       ctx,
 			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
 			OperationID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19782,6 +20298,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19789,8 +20306,9 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
-			ID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, r)
@@ -19810,6 +20328,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 			Context:       ctx,
 			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
 			OperationID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19887,6 +20406,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminDeleteUserFromEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19894,8 +20414,9 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteUserFromEnterprise",
-			ID:   "enterprise-admin/delete-user-from-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, r)
@@ -19915,6 +20436,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 			Context:       ctx,
 			OperationName: "EnterpriseAdminDeleteUserFromEnterprise",
 			OperationID:   "enterprise-admin/delete-user-from-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19995,6 +20517,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20002,8 +20525,9 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
-			ID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
@@ -20023,6 +20547,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 			Context:       ctx,
 			OperationName: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20103,6 +20628,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20110,8 +20636,9 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
-			ID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
@@ -20131,6 +20658,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 			Context:       ctx,
 			OperationName: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20211,6 +20739,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetAllowedActionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20218,8 +20747,9 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetAllowedActionsEnterprise",
-			ID:   "enterprise-admin/get-allowed-actions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, r)
@@ -20239,6 +20769,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetAllowedActionsEnterprise",
 			OperationID:   "enterprise-admin/get-allowed-actions-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20312,6 +20843,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetAuditLog
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20319,8 +20851,9 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetAuditLog",
-			ID:   "enterprise-admin/get-audit-log",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
@@ -20340,6 +20873,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetAuditLog",
 			OperationID:   "enterprise-admin/get-audit-log",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20441,6 +20975,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetGithubActionsPermissionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20448,8 +20983,9 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
-			ID:   "enterprise-admin/get-github-actions-permissions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, r)
@@ -20469,6 +21005,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
 			OperationID:   "enterprise-admin/get-github-actions-permissions-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20542,6 +21079,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20549,8 +21087,9 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
-			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, r)
@@ -20570,6 +21109,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
 			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20651,6 +21191,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetProvisioningInformationForEnterpriseUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20658,8 +21199,9 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
-			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, r)
@@ -20679,6 +21221,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
 			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20756,6 +21299,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetSelfHostedRunnerForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20763,8 +21307,9 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
-			ID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, r)
@@ -20784,6 +21329,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
 			OperationID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20861,6 +21407,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20868,8 +21415,9 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
-			ID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, r)
@@ -20889,6 +21437,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 			Context:       ctx,
 			OperationName: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
 			OperationID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20966,6 +21515,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20973,8 +21523,9 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			ID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
@@ -20994,6 +21545,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21079,6 +21631,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListProvisionedGroupsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21086,8 +21639,9 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListProvisionedGroupsEnterprise",
-			ID:   "enterprise-admin/list-provisioned-groups-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, r)
@@ -21107,6 +21661,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListProvisionedGroupsEnterprise",
 			OperationID:   "enterprise-admin/list-provisioned-groups-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21221,6 +21776,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListProvisionedIdentitiesEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21228,8 +21784,9 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
-			ID:   "enterprise-admin/list-provisioned-identities-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, r)
@@ -21249,6 +21806,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
 			OperationID:   "enterprise-admin/list-provisioned-identities-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21334,6 +21892,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListRunnerApplicationsForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21341,8 +21900,9 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListRunnerApplicationsForEnterprise",
-			ID:   "enterprise-admin/list-runner-applications-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, r)
@@ -21362,6 +21922,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListRunnerApplicationsForEnterprise",
 			OperationID:   "enterprise-admin/list-runner-applications-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21438,6 +21999,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21445,8 +22007,9 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
-			ID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
@@ -21466,6 +22029,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21547,6 +22111,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21554,8 +22119,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
-			ID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, r)
@@ -21575,6 +22141,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
 			OperationID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21656,6 +22223,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListSelfHostedRunnersForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21663,8 +22231,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
-			ID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, r)
@@ -21684,6 +22253,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
 			OperationID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21765,6 +22335,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21772,8 +22343,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
-			ID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, r)
@@ -21793,6 +22365,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 			Context:       ctx,
 			OperationName: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
 			OperationID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21881,6 +22454,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminProvisionAndInviteEnterpriseGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21888,8 +22462,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-			ID:   "enterprise-admin/provision-and-invite-enterprise-group",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, r)
@@ -21924,6 +22499,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 			Context:       ctx,
 			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
 			OperationID:   "enterprise-admin/provision-and-invite-enterprise-group",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22002,6 +22578,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminProvisionAndInviteEnterpriseUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22009,8 +22586,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
-			ID:   "enterprise-admin/provision-and-invite-enterprise-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, r)
@@ -22045,6 +22623,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 			Context:       ctx,
 			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
 			OperationID:   "enterprise-admin/provision-and-invite-enterprise-user",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22121,6 +22700,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22128,8 +22708,9 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			ID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
@@ -22149,6 +22730,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 			Context:       ctx,
 			OperationName: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22231,6 +22813,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22238,8 +22821,9 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
-			ID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, r)
@@ -22259,6 +22843,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 			Context:       ctx,
 			OperationName: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
 			OperationID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22343,6 +22928,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetAllowedActionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22350,8 +22936,9 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetAllowedActionsEnterprise",
-			ID:   "enterprise-admin/set-allowed-actions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, r)
@@ -22386,6 +22973,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetAllowedActionsEnterprise",
 			OperationID:   "enterprise-admin/set-allowed-actions-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22459,6 +23047,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetGithubActionsPermissionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22466,8 +23055,9 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-			ID:   "enterprise-admin/set-github-actions-permissions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, r)
@@ -22502,6 +23092,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
 			OperationID:   "enterprise-admin/set-github-actions-permissions-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22580,6 +23171,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22587,8 +23179,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, r)
@@ -22623,6 +23216,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
 			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22708,6 +23302,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22715,8 +23310,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, r)
@@ -22751,6 +23347,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
 			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22829,6 +23426,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22836,8 +23434,9 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			ID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
@@ -22872,6 +23471,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -22952,6 +23552,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22959,8 +23560,9 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-			ID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
@@ -22995,6 +23597,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -23068,6 +23671,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23075,8 +23679,9 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-			ID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, r)
@@ -23111,6 +23716,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			Context:       ctx,
 			OperationName: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
 			OperationID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -23192,6 +23798,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminUpdateAttributeForEnterpriseGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23199,8 +23806,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-			ID:   "enterprise-admin/update-attribute-for-enterprise-group",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
@@ -23235,6 +23843,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 			Context:       ctx,
 			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
 			OperationID:   "enterprise-admin/update-attribute-for-enterprise-group",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -23333,6 +23942,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminUpdateAttributeForEnterpriseUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23340,8 +23950,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
-			ID:   "enterprise-admin/update-attribute-for-enterprise-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, r)
@@ -23376,6 +23987,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 			Context:       ctx,
 			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
 			OperationID:   "enterprise-admin/update-attribute-for-enterprise-user",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -23453,6 +24065,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23460,8 +24073,9 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-			ID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, r)
@@ -23496,6 +24110,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			Context:       ctx,
 			OperationName: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
 			OperationID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -23572,6 +24187,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsCheckIsStarred
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23579,8 +24195,9 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsCheckIsStarred",
-			ID:   "gists/check-is-starred",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsCheckIsStarredParams(args, r)
@@ -23600,6 +24217,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "GistsCheckIsStarred",
 			OperationID:   "gists/check-is-starred",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23674,6 +24292,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsCreate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23681,8 +24300,9 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsCreate",
-			ID:   "gists/create",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGistsCreateRequest(r)
@@ -23707,6 +24327,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "GistsCreate",
 			OperationID:   "gists/create",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23774,6 +24395,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsCreateComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23781,8 +24403,9 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsCreateComment",
-			ID:   "gists/create-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsCreateCommentParams(args, r)
@@ -23817,6 +24440,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "GistsCreateComment",
 			OperationID:   "gists/create-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -23889,6 +24513,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsDelete
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23896,8 +24521,9 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsDelete",
-			ID:   "gists/delete",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsDeleteParams(args, r)
@@ -23917,6 +24543,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "GistsDelete",
 			OperationID:   "gists/delete",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23989,6 +24616,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsDeleteComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23996,8 +24624,9 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsDeleteComment",
-			ID:   "gists/delete-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsDeleteCommentParams(args, r)
@@ -24017,6 +24646,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "GistsDeleteComment",
 			OperationID:   "gists/delete-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24093,6 +24723,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsFork
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24100,8 +24731,9 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsFork",
-			ID:   "gists/fork",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsForkParams(args, r)
@@ -24121,6 +24753,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "GistsFork",
 			OperationID:   "gists/fork",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24193,6 +24826,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24200,8 +24834,9 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsGet",
-			ID:   "gists/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsGetParams(args, r)
@@ -24221,6 +24856,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "GistsGet",
 			OperationID:   "gists/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24293,6 +24929,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsGetComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24300,8 +24937,9 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsGetComment",
-			ID:   "gists/get-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsGetCommentParams(args, r)
@@ -24321,6 +24959,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "GistsGetComment",
 			OperationID:   "gists/get-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24397,6 +25036,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsGetRevision
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24404,8 +25044,9 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsGetRevision",
-			ID:   "gists/get-revision",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsGetRevisionParams(args, r)
@@ -24425,6 +25066,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "GistsGetRevision",
 			OperationID:   "gists/get-revision",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24502,6 +25144,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24509,8 +25152,9 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsList",
-			ID:   "gists/list",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListParams(args, r)
@@ -24530,6 +25174,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "GistsList",
 			OperationID:   "gists/list",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24610,6 +25255,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsListComments
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24617,8 +25263,9 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListComments",
-			ID:   "gists/list-comments",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListCommentsParams(args, r)
@@ -24638,6 +25285,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GistsListComments",
 			OperationID:   "gists/list-comments",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24718,6 +25366,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsListCommits
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24725,8 +25374,9 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListCommits",
-			ID:   "gists/list-commits",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListCommitsParams(args, r)
@@ -24746,6 +25396,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "GistsListCommits",
 			OperationID:   "gists/list-commits",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24826,6 +25477,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsListForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24833,8 +25485,9 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListForUser",
-			ID:   "gists/list-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListForUserParams(args, r)
@@ -24854,6 +25507,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "GistsListForUser",
 			OperationID:   "gists/list-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24938,6 +25592,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsListForks
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24945,8 +25600,9 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListForks",
-			ID:   "gists/list-forks",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListForksParams(args, r)
@@ -24966,6 +25622,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "GistsListForks",
 			OperationID:   "gists/list-forks",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25049,6 +25706,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsListPublic
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25056,8 +25714,9 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListPublic",
-			ID:   "gists/list-public",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListPublicParams(args, r)
@@ -25077,6 +25736,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "GistsListPublic",
 			OperationID:   "gists/list-public",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25157,6 +25817,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsListStarred
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25164,8 +25825,9 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListStarred",
-			ID:   "gists/list-starred",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsListStarredParams(args, r)
@@ -25185,6 +25847,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "GistsListStarred",
 			OperationID:   "gists/list-starred",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25267,6 +25930,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsStar
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25274,8 +25938,9 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsStar",
-			ID:   "gists/star",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsStarParams(args, r)
@@ -25295,6 +25960,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "GistsStar",
 			OperationID:   "gists/star",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25367,6 +26033,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsUnstar
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25374,8 +26041,9 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsUnstar",
-			ID:   "gists/unstar",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsUnstarParams(args, r)
@@ -25395,6 +26063,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "GistsUnstar",
 			OperationID:   "gists/unstar",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25467,6 +26136,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GistsUpdateComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25474,8 +26144,9 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsUpdateComment",
-			ID:   "gists/update-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGistsUpdateCommentParams(args, r)
@@ -25510,6 +26181,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "GistsUpdateComment",
 			OperationID:   "gists/update-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -25586,6 +26258,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitCreateBlob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25593,8 +26266,9 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateBlob",
-			ID:   "git/create-blob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitCreateBlobParams(args, r)
@@ -25629,6 +26303,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "GitCreateBlob",
 			OperationID:   "git/create-blob",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -25738,6 +26413,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitCreateCommit
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25745,8 +26421,9 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateCommit",
-			ID:   "git/create-commit",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitCreateCommitParams(args, r)
@@ -25781,6 +26458,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "GitCreateCommit",
 			OperationID:   "git/create-commit",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -25859,6 +26537,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitCreateRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25866,8 +26545,9 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateRef",
-			ID:   "git/create-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitCreateRefParams(args, r)
@@ -25902,6 +26582,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "GitCreateRef",
 			OperationID:   "git/create-ref",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -26014,6 +26695,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitCreateTag
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26021,8 +26703,9 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateTag",
-			ID:   "git/create-tag",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitCreateTagParams(args, r)
@@ -26057,6 +26740,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "GitCreateTag",
 			OperationID:   "git/create-tag",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -26139,6 +26823,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitCreateTree
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26146,8 +26831,9 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateTree",
-			ID:   "git/create-tree",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitCreateTreeParams(args, r)
@@ -26182,6 +26868,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "GitCreateTree",
 			OperationID:   "git/create-tree",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -26258,6 +26945,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitDeleteRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26265,8 +26953,9 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitDeleteRef",
-			ID:   "git/delete-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitDeleteRefParams(args, r)
@@ -26286,6 +26975,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "GitDeleteRef",
 			OperationID:   "git/delete-ref",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26367,6 +27057,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitGetBlob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26374,8 +27065,9 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetBlob",
-			ID:   "git/get-blob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitGetBlobParams(args, r)
@@ -26395,6 +27087,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "GitGetBlob",
 			OperationID:   "git/get-blob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26508,6 +27201,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitGetCommit
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26515,8 +27209,9 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetCommit",
-			ID:   "git/get-commit",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitGetCommitParams(args, r)
@@ -26536,6 +27231,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "GitGetCommit",
 			OperationID:   "git/get-commit",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26623,6 +27319,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitGetRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26630,8 +27327,9 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetRef",
-			ID:   "git/get-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitGetRefParams(args, r)
@@ -26651,6 +27349,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "GitGetRef",
 			OperationID:   "git/get-ref",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26762,6 +27461,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitGetTag
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26769,8 +27469,9 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetTag",
-			ID:   "git/get-tag",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitGetTagParams(args, r)
@@ -26790,6 +27491,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "GitGetTag",
 			OperationID:   "git/get-tag",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26873,6 +27575,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitGetTree
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26880,8 +27583,9 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetTree",
-			ID:   "git/get-tree",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitGetTreeParams(args, r)
@@ -26901,6 +27605,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "GitGetTree",
 			OperationID:   "git/get-tree",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26999,6 +27704,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitListMatchingRefs
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27006,8 +27712,9 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitListMatchingRefs",
-			ID:   "git/list-matching-refs",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitListMatchingRefsParams(args, r)
@@ -27027,6 +27734,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 			Context:       ctx,
 			OperationName: "GitListMatchingRefs",
 			OperationID:   "git/list-matching-refs",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27115,6 +27823,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitUpdateRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27122,8 +27831,9 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitUpdateRef",
-			ID:   "git/update-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitUpdateRefParams(args, r)
@@ -27158,6 +27868,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "GitUpdateRef",
 			OperationID:   "git/update-ref",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -27239,6 +27950,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitignoreGetAllTemplates
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27253,6 +27965,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "GitignoreGetAllTemplates",
 			OperationID:   "gitignore/get-all-templates",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27322,6 +28035,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GitignoreGetTemplate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27329,8 +28043,9 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitignoreGetTemplate",
-			ID:   "gitignore/get-template",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGitignoreGetTemplateParams(args, r)
@@ -27350,6 +28065,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "GitignoreGetTemplate",
 			OperationID:   "gitignore/get-template",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27422,6 +28138,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().InteractionsRemoveRestrictionsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27436,6 +28153,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 			Context:       ctx,
 			OperationName: "InteractionsRemoveRestrictionsForAuthenticatedUser",
 			OperationID:   "interactions/remove-restrictions-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27504,6 +28222,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().InteractionsRemoveRestrictionsForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27511,8 +28230,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsRemoveRestrictionsForOrg",
-			ID:   "interactions/remove-restrictions-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, r)
@@ -27532,6 +28252,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "InteractionsRemoveRestrictionsForOrg",
 			OperationID:   "interactions/remove-restrictions-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27607,6 +28328,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().InteractionsRemoveRestrictionsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27614,8 +28336,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsRemoveRestrictionsForRepo",
-			ID:   "interactions/remove-restrictions-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, r)
@@ -27635,6 +28358,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "InteractionsRemoveRestrictionsForRepo",
 			OperationID:   "interactions/remove-restrictions-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27713,6 +28437,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().InteractionsSetRestrictionsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27720,8 +28445,9 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsSetRestrictionsForAuthenticatedUser",
-			ID:   "interactions/set-restrictions-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r)
@@ -27746,6 +28472,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 			Context:       ctx,
 			OperationName: "InteractionsSetRestrictionsForAuthenticatedUser",
 			OperationID:   "interactions/set-restrictions-for-authenticated-user",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27816,6 +28543,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().InteractionsSetRestrictionsForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27823,8 +28551,9 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsSetRestrictionsForOrg",
-			ID:   "interactions/set-restrictions-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
@@ -27859,6 +28588,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "InteractionsSetRestrictionsForOrg",
 			OperationID:   "interactions/set-restrictions-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -27934,6 +28664,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().InteractionsSetRestrictionsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27941,8 +28672,9 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsSetRestrictionsForRepo",
-			ID:   "interactions/set-restrictions-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, r)
@@ -27977,6 +28709,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "InteractionsSetRestrictionsForRepo",
 			OperationID:   "interactions/set-restrictions-for-repo",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -28053,6 +28786,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesAddAssignees
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28060,8 +28794,9 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesAddAssignees",
-			ID:   "issues/add-assignees",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesAddAssigneesParams(args, r)
@@ -28096,6 +28831,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "IssuesAddAssignees",
 			OperationID:   "issues/add-assignees",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -28179,6 +28915,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesCheckUserCanBeAssigned
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28186,8 +28923,9 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCheckUserCanBeAssigned",
-			ID:   "issues/check-user-can-be-assigned",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, r)
@@ -28207,6 +28945,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "IssuesCheckUserCanBeAssigned",
 			OperationID:   "issues/check-user-can-be-assigned",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28296,6 +29035,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesCreate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28303,8 +29043,9 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreate",
-			ID:   "issues/create",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesCreateParams(args, r)
@@ -28339,6 +29080,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "IssuesCreate",
 			OperationID:   "issues/create",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -28421,6 +29163,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesCreateComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28428,8 +29171,9 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreateComment",
-			ID:   "issues/create-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesCreateCommentParams(args, r)
@@ -28464,6 +29208,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 			Context:       ctx,
 			OperationName: "IssuesCreateComment",
 			OperationID:   "issues/create-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -28544,6 +29289,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesCreateLabel
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28551,8 +29297,9 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreateLabel",
-			ID:   "issues/create-label",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesCreateLabelParams(args, r)
@@ -28587,6 +29334,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "IssuesCreateLabel",
 			OperationID:   "issues/create-label",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -28663,6 +29411,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesCreateMilestone
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28670,8 +29419,9 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreateMilestone",
-			ID:   "issues/create-milestone",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesCreateMilestoneParams(args, r)
@@ -28706,6 +29456,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "IssuesCreateMilestone",
 			OperationID:   "issues/create-milestone",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -28782,6 +29533,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesDeleteComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28789,8 +29541,9 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesDeleteComment",
-			ID:   "issues/delete-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesDeleteCommentParams(args, r)
@@ -28810,6 +29563,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 			Context:       ctx,
 			OperationName: "IssuesDeleteComment",
 			OperationID:   "issues/delete-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28890,6 +29644,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesDeleteLabel
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28897,8 +29652,9 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesDeleteLabel",
-			ID:   "issues/delete-label",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesDeleteLabelParams(args, r)
@@ -28918,6 +29674,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "IssuesDeleteLabel",
 			OperationID:   "issues/delete-label",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28998,6 +29755,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesDeleteMilestone
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29005,8 +29763,9 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesDeleteMilestone",
-			ID:   "issues/delete-milestone",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesDeleteMilestoneParams(args, r)
@@ -29026,6 +29785,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "IssuesDeleteMilestone",
 			OperationID:   "issues/delete-milestone",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29124,6 +29884,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29131,8 +29892,9 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGet",
-			ID:   "issues/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesGetParams(args, r)
@@ -29152,6 +29914,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "IssuesGet",
 			OperationID:   "issues/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29232,6 +29995,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesGetComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29239,8 +30003,9 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetComment",
-			ID:   "issues/get-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesGetCommentParams(args, r)
@@ -29260,6 +30025,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "IssuesGetComment",
 			OperationID:   "issues/get-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29340,6 +30106,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesGetEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29347,8 +30114,9 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetEvent",
-			ID:   "issues/get-event",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesGetEventParams(args, r)
@@ -29368,6 +30136,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "IssuesGetEvent",
 			OperationID:   "issues/get-event",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29448,6 +30217,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesGetLabel
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29455,8 +30225,9 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetLabel",
-			ID:   "issues/get-label",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesGetLabelParams(args, r)
@@ -29476,6 +30247,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "IssuesGetLabel",
 			OperationID:   "issues/get-label",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29556,6 +30328,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesGetMilestone
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29563,8 +30336,9 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetMilestone",
-			ID:   "issues/get-milestone",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesGetMilestoneParams(args, r)
@@ -29584,6 +30358,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "IssuesGetMilestone",
 			OperationID:   "issues/get-milestone",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29676,6 +30451,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29683,8 +30459,9 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesList",
-			ID:   "issues/list",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListParams(args, r)
@@ -29704,6 +30481,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "IssuesList",
 			OperationID:   "issues/list",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29821,6 +30599,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListAssignees
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29828,8 +30607,9 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListAssignees",
-			ID:   "issues/list-assignees",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListAssigneesParams(args, r)
@@ -29849,6 +30629,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "IssuesListAssignees",
 			OperationID:   "issues/list-assignees",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29933,6 +30714,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListComments
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29940,8 +30722,9 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListComments",
-			ID:   "issues/list-comments",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListCommentsParams(args, r)
@@ -29961,6 +30744,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "IssuesListComments",
 			OperationID:   "issues/list-comments",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30053,6 +30837,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListCommentsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30060,8 +30845,9 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListCommentsForRepo",
-			ID:   "issues/list-comments-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListCommentsForRepoParams(args, r)
@@ -30081,6 +30867,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "IssuesListCommentsForRepo",
 			OperationID:   "issues/list-comments-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30177,6 +30964,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListEventsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30184,8 +30972,9 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListEventsForRepo",
-			ID:   "issues/list-events-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListEventsForRepoParams(args, r)
@@ -30205,6 +30994,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "IssuesListEventsForRepo",
 			OperationID:   "issues/list-events-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30297,6 +31087,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30304,8 +31095,9 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListForAuthenticatedUser",
-			ID:   "issues/list-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
@@ -30325,6 +31117,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "IssuesListForAuthenticatedUser",
 			OperationID:   "issues/list-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30433,6 +31226,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30440,8 +31234,9 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListForOrg",
-			ID:   "issues/list-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListForOrgParams(args, r)
@@ -30461,6 +31256,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "IssuesListForOrg",
 			OperationID:   "issues/list-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30573,6 +31369,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30580,8 +31377,9 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListForRepo",
-			ID:   "issues/list-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListForRepoParams(args, r)
@@ -30601,6 +31399,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "IssuesListForRepo",
 			OperationID:   "issues/list-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30721,6 +31520,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListLabelsForMilestone
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30728,8 +31528,9 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListLabelsForMilestone",
-			ID:   "issues/list-labels-for-milestone",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListLabelsForMilestoneParams(args, r)
@@ -30749,6 +31550,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "IssuesListLabelsForMilestone",
 			OperationID:   "issues/list-labels-for-milestone",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30837,6 +31639,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListLabelsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30844,8 +31647,9 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListLabelsForRepo",
-			ID:   "issues/list-labels-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListLabelsForRepoParams(args, r)
@@ -30865,6 +31669,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "IssuesListLabelsForRepo",
 			OperationID:   "issues/list-labels-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30949,6 +31754,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListLabelsOnIssue
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30956,8 +31762,9 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListLabelsOnIssue",
-			ID:   "issues/list-labels-on-issue",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListLabelsOnIssueParams(args, r)
@@ -30977,6 +31784,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "IssuesListLabelsOnIssue",
 			OperationID:   "issues/list-labels-on-issue",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31065,6 +31873,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesListMilestones
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31072,8 +31881,9 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListMilestones",
-			ID:   "issues/list-milestones",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesListMilestonesParams(args, r)
@@ -31093,6 +31903,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "IssuesListMilestones",
 			OperationID:   "issues/list-milestones",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31192,6 +32003,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesLock
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31199,8 +32011,9 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesLock",
-			ID:   "issues/lock",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesLockParams(args, r)
@@ -31235,6 +32048,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "IssuesLock",
 			OperationID:   "issues/lock",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -31315,6 +32129,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesRemoveAllLabels
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31322,8 +32137,9 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesRemoveAllLabels",
-			ID:   "issues/remove-all-labels",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesRemoveAllLabelsParams(args, r)
@@ -31343,6 +32159,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "IssuesRemoveAllLabels",
 			OperationID:   "issues/remove-all-labels",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31423,6 +32240,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesRemoveAssignees
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31430,8 +32248,9 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesRemoveAssignees",
-			ID:   "issues/remove-assignees",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesRemoveAssigneesParams(args, r)
@@ -31466,6 +32285,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "IssuesRemoveAssignees",
 			OperationID:   "issues/remove-assignees",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -31547,6 +32367,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesRemoveLabel
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31554,8 +32375,9 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesRemoveLabel",
-			ID:   "issues/remove-label",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesRemoveLabelParams(args, r)
@@ -31575,6 +32397,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "IssuesRemoveLabel",
 			OperationID:   "issues/remove-label",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31659,6 +32482,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesUnlock
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31666,8 +32490,9 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUnlock",
-			ID:   "issues/unlock",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesUnlockParams(args, r)
@@ -31687,6 +32512,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "IssuesUnlock",
 			OperationID:   "issues/unlock",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31767,6 +32593,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesUpdate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31774,8 +32601,9 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdate",
-			ID:   "issues/update",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesUpdateParams(args, r)
@@ -31810,6 +32638,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "IssuesUpdate",
 			OperationID:   "issues/update",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -31890,6 +32719,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesUpdateComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31897,8 +32727,9 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdateComment",
-			ID:   "issues/update-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesUpdateCommentParams(args, r)
@@ -31933,6 +32764,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 			Context:       ctx,
 			OperationName: "IssuesUpdateComment",
 			OperationID:   "issues/update-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -32013,6 +32845,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesUpdateLabel
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32020,8 +32853,9 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdateLabel",
-			ID:   "issues/update-label",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesUpdateLabelParams(args, r)
@@ -32056,6 +32890,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "IssuesUpdateLabel",
 			OperationID:   "issues/update-label",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -32136,6 +32971,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IssuesUpdateMilestone
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32143,8 +32979,9 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdateMilestone",
-			ID:   "issues/update-milestone",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIssuesUpdateMilestoneParams(args, r)
@@ -32179,6 +33016,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "IssuesUpdateMilestone",
 			OperationID:   "issues/update-milestone",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -32259,6 +33097,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LicensesGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32266,8 +33105,9 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LicensesGet",
-			ID:   "licenses/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeLicensesGetParams(args, r)
@@ -32287,6 +33127,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "LicensesGet",
 			OperationID:   "licenses/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32359,6 +33200,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LicensesGetAllCommonlyUsed
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32366,8 +33208,9 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LicensesGetAllCommonlyUsed",
-			ID:   "licenses/get-all-commonly-used",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeLicensesGetAllCommonlyUsedParams(args, r)
@@ -32387,6 +33230,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "LicensesGetAllCommonlyUsed",
 			OperationID:   "licenses/get-all-commonly-used",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32471,6 +33315,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LicensesGetForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32478,8 +33323,9 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LicensesGetForRepo",
-			ID:   "licenses/get-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeLicensesGetForRepoParams(args, r)
@@ -32499,6 +33345,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "LicensesGetForRepo",
 			OperationID:   "licenses/get-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32575,6 +33422,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarkdownRender
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32582,8 +33430,9 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarkdownRender",
-			ID:   "markdown/render",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMarkdownRenderRequest(r)
@@ -32608,6 +33457,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "MarkdownRender",
 			OperationID:   "markdown/render",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32678,6 +33528,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarkdownRenderRaw
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32685,8 +33536,9 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarkdownRenderRaw",
-			ID:   "markdown/render-raw",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMarkdownRenderRawRequest(r)
@@ -32711,6 +33563,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "MarkdownRenderRaw",
 			OperationID:   "markdown/render-raw",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32782,6 +33635,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MetaGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32796,6 +33650,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "MetaGet",
 			OperationID:   "meta/get",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32863,6 +33718,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MetaGetOctocat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32870,8 +33726,9 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MetaGetOctocat",
-			ID:   "meta/get-octocat",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMetaGetOctocatParams(args, r)
@@ -32891,6 +33748,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "MetaGetOctocat",
 			OperationID:   "meta/get-octocat",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32963,6 +33821,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MetaGetZen
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32977,6 +33836,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "MetaGetZen",
 			OperationID:   "meta/get-zen",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33044,6 +33904,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MetaRoot
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33058,6 +33919,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "MetaRoot",
 			OperationID:   "meta/root",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33125,6 +33987,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsCancelImport
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33132,8 +33995,9 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsCancelImport",
-			ID:   "migrations/cancel-import",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsCancelImportParams(args, r)
@@ -33153,6 +34017,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "MigrationsCancelImport",
 			OperationID:   "migrations/cancel-import",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33233,6 +34098,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsDeleteArchiveForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33240,8 +34106,9 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsDeleteArchiveForAuthenticatedUser",
-			ID:   "migrations/delete-archive-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, r)
@@ -33261,6 +34128,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 			Context:       ctx,
 			OperationName: "MigrationsDeleteArchiveForAuthenticatedUser",
 			OperationID:   "migrations/delete-archive-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33334,6 +34202,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsDeleteArchiveForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33341,8 +34210,9 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsDeleteArchiveForOrg",
-			ID:   "migrations/delete-archive-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, r)
@@ -33362,6 +34232,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "MigrationsDeleteArchiveForOrg",
 			OperationID:   "migrations/delete-archive-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33438,6 +34309,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsDownloadArchiveForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33445,8 +34317,9 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsDownloadArchiveForOrg",
-			ID:   "migrations/download-archive-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, r)
@@ -33466,6 +34339,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "MigrationsDownloadArchiveForOrg",
 			OperationID:   "migrations/download-archive-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33562,6 +34436,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsGetArchiveForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33569,8 +34444,9 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetArchiveForAuthenticatedUser",
-			ID:   "migrations/get-archive-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, r)
@@ -33590,6 +34466,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 			Context:       ctx,
 			OperationName: "MigrationsGetArchiveForAuthenticatedUser",
 			OperationID:   "migrations/get-archive-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33669,6 +34546,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsGetCommitAuthors
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33676,8 +34554,9 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetCommitAuthors",
-			ID:   "migrations/get-commit-authors",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsGetCommitAuthorsParams(args, r)
@@ -33697,6 +34576,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "MigrationsGetCommitAuthors",
 			OperationID:   "migrations/get-commit-authors",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33829,6 +34709,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsGetImportStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33836,8 +34717,9 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetImportStatus",
-			ID:   "migrations/get-import-status",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsGetImportStatusParams(args, r)
@@ -33857,6 +34739,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "MigrationsGetImportStatus",
 			OperationID:   "migrations/get-import-status",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33933,6 +34816,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsGetLargeFiles
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33940,8 +34824,9 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetLargeFiles",
-			ID:   "migrations/get-large-files",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsGetLargeFilesParams(args, r)
@@ -33961,6 +34846,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "MigrationsGetLargeFiles",
 			OperationID:   "migrations/get-large-files",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34044,6 +34930,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsGetStatusForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34051,8 +34938,9 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetStatusForAuthenticatedUser",
-			ID:   "migrations/get-status-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
@@ -34072,6 +34960,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 			Context:       ctx,
 			OperationName: "MigrationsGetStatusForAuthenticatedUser",
 			OperationID:   "migrations/get-status-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34153,6 +35042,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsGetStatusForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34160,8 +35050,9 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetStatusForOrg",
-			ID:   "migrations/get-status-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
@@ -34181,6 +35072,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "MigrationsGetStatusForOrg",
 			OperationID:   "migrations/get-status-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34261,6 +35153,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsListForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34268,8 +35161,9 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListForAuthenticatedUser",
-			ID:   "migrations/list-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
@@ -34289,6 +35183,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "MigrationsListForAuthenticatedUser",
 			OperationID:   "migrations/list-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34365,6 +35260,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsListForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34372,8 +35268,9 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListForOrg",
-			ID:   "migrations/list-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsListForOrgParams(args, r)
@@ -34393,6 +35290,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "MigrationsListForOrg",
 			OperationID:   "migrations/list-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34477,6 +35375,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsListReposForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34484,8 +35383,9 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListReposForOrg",
-			ID:   "migrations/list-repos-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsListReposForOrgParams(args, r)
@@ -34505,6 +35405,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "MigrationsListReposForOrg",
 			OperationID:   "migrations/list-repos-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34589,6 +35490,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsListReposForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34596,8 +35498,9 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListReposForUser",
-			ID:   "migrations/list-repos-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsListReposForUserParams(args, r)
@@ -34617,6 +35520,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "MigrationsListReposForUser",
 			OperationID:   "migrations/list-repos-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34698,6 +35602,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsMapCommitAuthor
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34705,8 +35610,9 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsMapCommitAuthor",
-			ID:   "migrations/map-commit-author",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
@@ -34741,6 +35647,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 			Context:       ctx,
 			OperationName: "MigrationsMapCommitAuthor",
 			OperationID:   "migrations/map-commit-author",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -34824,6 +35731,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsSetLfsPreference
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34831,8 +35739,9 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsSetLfsPreference",
-			ID:   "migrations/set-lfs-preference",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
@@ -34867,6 +35776,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "MigrationsSetLfsPreference",
 			OperationID:   "migrations/set-lfs-preference",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -34943,6 +35853,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsStartForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34950,8 +35861,9 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsStartForAuthenticatedUser",
-			ID:   "migrations/start-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMigrationsStartForAuthenticatedUserRequest(r)
@@ -34976,6 +35888,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 			Context:       ctx,
 			OperationName: "MigrationsStartForAuthenticatedUser",
 			OperationID:   "migrations/start-for-authenticated-user",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35043,6 +35956,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsStartForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35050,8 +35964,9 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsStartForOrg",
-			ID:   "migrations/start-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsStartForOrgParams(args, r)
@@ -35086,6 +36001,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 			Context:       ctx,
 			OperationName: "MigrationsStartForOrg",
 			OperationID:   "migrations/start-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -35158,6 +36074,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsStartImport
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35165,8 +36082,9 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsStartImport",
-			ID:   "migrations/start-import",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsStartImportParams(args, r)
@@ -35201,6 +36119,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "MigrationsStartImport",
 			OperationID:   "migrations/start-import",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -35281,6 +36200,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsUnlockRepoForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35288,8 +36208,9 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsUnlockRepoForAuthenticatedUser",
-			ID:   "migrations/unlock-repo-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, r)
@@ -35309,6 +36230,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 			Context:       ctx,
 			OperationName: "MigrationsUnlockRepoForAuthenticatedUser",
 			OperationID:   "migrations/unlock-repo-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35387,6 +36309,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsUnlockRepoForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35394,8 +36317,9 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsUnlockRepoForOrg",
-			ID:   "migrations/unlock-repo-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsUnlockRepoForOrgParams(args, r)
@@ -35415,6 +36339,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "MigrationsUnlockRepoForOrg",
 			OperationID:   "migrations/unlock-repo-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35497,6 +36422,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MigrationsUpdateImport
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35504,8 +36430,9 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsUpdateImport",
-			ID:   "migrations/update-import",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeMigrationsUpdateImportParams(args, r)
@@ -35540,6 +36467,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "MigrationsUpdateImport",
 			OperationID:   "migrations/update-import",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -35645,6 +36573,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsCreateAuthorization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35652,8 +36581,9 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsCreateAuthorization",
-			ID:   "oauth-authorizations/create-authorization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeOAuthAuthorizationsCreateAuthorizationRequest(r)
@@ -35678,6 +36608,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsCreateAuthorization",
 			OperationID:   "oauth-authorizations/create-authorization",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35754,6 +36685,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsDeleteAuthorization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35761,8 +36693,9 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsDeleteAuthorization",
-			ID:   "oauth-authorizations/delete-authorization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, r)
@@ -35782,6 +36715,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsDeleteAuthorization",
 			OperationID:   "oauth-authorizations/delete-authorization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35866,6 +36800,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsDeleteGrant
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35873,8 +36808,9 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsDeleteGrant",
-			ID:   "oauth-authorizations/delete-grant",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, r)
@@ -35894,6 +36830,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsDeleteGrant",
 			OperationID:   "oauth-authorizations/delete-grant",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35975,6 +36912,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsGetAuthorization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35982,8 +36920,9 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetAuthorization",
-			ID:   "oauth-authorizations/get-authorization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, r)
@@ -36003,6 +36942,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsGetAuthorization",
 			OperationID:   "oauth-authorizations/get-authorization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36084,6 +37024,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsGetGrant
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36091,8 +37032,9 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetGrant",
-			ID:   "oauth-authorizations/get-grant",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsGetGrantParams(args, r)
@@ -36112,6 +37054,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsGetGrant",
 			OperationID:   "oauth-authorizations/get-grant",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36212,6 +37155,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsGetOrCreateAuthorizationForApp
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36219,8 +37163,9 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-			ID:   "oauth-authorizations/get-or-create-authorization-for-app",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
@@ -36255,6 +37200,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
 			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -36350,6 +37296,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36357,8 +37304,9 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-			ID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
@@ -36393,6 +37341,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
 			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -36478,6 +37427,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsListAuthorizations
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36485,8 +37435,9 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsListAuthorizations",
-			ID:   "oauth-authorizations/list-authorizations",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, r)
@@ -36506,6 +37457,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsListAuthorizations",
 			OperationID:   "oauth-authorizations/list-authorizations",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36606,6 +37558,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsListGrants
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36613,8 +37566,9 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsListGrants",
-			ID:   "oauth-authorizations/list-grants",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsListGrantsParams(args, r)
@@ -36634,6 +37588,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsListGrants",
 			OperationID:   "oauth-authorizations/list-grants",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36727,6 +37682,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OAuthAuthorizationsUpdateAuthorization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36734,8 +37690,9 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsUpdateAuthorization",
-			ID:   "oauth-authorizations/update-authorization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
@@ -36770,6 +37727,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 			Context:       ctx,
 			OperationName: "OAuthAuthorizationsUpdateAuthorization",
 			OperationID:   "oauth-authorizations/update-authorization",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -36842,6 +37800,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsBlockUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36849,8 +37808,9 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsBlockUser",
-			ID:   "orgs/block-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsBlockUserParams(args, r)
@@ -36870,6 +37830,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "OrgsBlockUser",
 			OperationID:   "orgs/block-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36949,6 +37910,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsCancelInvitation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36956,8 +37918,9 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCancelInvitation",
-			ID:   "orgs/cancel-invitation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsCancelInvitationParams(args, r)
@@ -36977,6 +37940,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "OrgsCancelInvitation",
 			OperationID:   "orgs/cancel-invitation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37053,6 +38017,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsCheckBlockedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37060,8 +38025,9 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCheckBlockedUser",
-			ID:   "orgs/check-blocked-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsCheckBlockedUserParams(args, r)
@@ -37081,6 +38047,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "OrgsCheckBlockedUser",
 			OperationID:   "orgs/check-blocked-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37157,6 +38124,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsCheckMembershipForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37164,8 +38132,9 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCheckMembershipForUser",
-			ID:   "orgs/check-membership-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsCheckMembershipForUserParams(args, r)
@@ -37185,6 +38154,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "OrgsCheckMembershipForUser",
 			OperationID:   "orgs/check-membership-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37261,6 +38231,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsCheckPublicMembershipForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37268,8 +38239,9 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCheckPublicMembershipForUser",
-			ID:   "orgs/check-public-membership-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, r)
@@ -37289,6 +38261,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 			Context:       ctx,
 			OperationName: "OrgsCheckPublicMembershipForUser",
 			OperationID:   "orgs/check-public-membership-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37369,6 +38342,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsConvertMemberToOutsideCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37376,8 +38350,9 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsConvertMemberToOutsideCollaborator",
-			ID:   "orgs/convert-member-to-outside-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, r)
@@ -37397,6 +38372,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 			Context:       ctx,
 			OperationName: "OrgsConvertMemberToOutsideCollaborator",
 			OperationID:   "orgs/convert-member-to-outside-collaborator",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37481,6 +38457,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsCreateInvitation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37488,8 +38465,9 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCreateInvitation",
-			ID:   "orgs/create-invitation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsCreateInvitationParams(args, r)
@@ -37524,6 +38502,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "OrgsCreateInvitation",
 			OperationID:   "orgs/create-invitation",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -37596,6 +38575,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsCreateWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37603,8 +38583,9 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCreateWebhook",
-			ID:   "orgs/create-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsCreateWebhookParams(args, r)
@@ -37639,6 +38620,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "OrgsCreateWebhook",
 			OperationID:   "orgs/create-webhook",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -37711,6 +38693,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsDeleteWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37718,8 +38701,9 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsDeleteWebhook",
-			ID:   "orgs/delete-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsDeleteWebhookParams(args, r)
@@ -37739,6 +38723,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "OrgsDeleteWebhook",
 			OperationID:   "orgs/delete-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37823,6 +38808,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37830,8 +38816,9 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGet",
-			ID:   "orgs/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetParams(args, r)
@@ -37851,6 +38838,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "OrgsGet",
 			OperationID:   "orgs/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37928,6 +38916,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGetAuditLog
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37935,8 +38924,9 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetAuditLog",
-			ID:   "orgs/get-audit-log",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetAuditLogParams(args, r)
@@ -37956,6 +38946,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "OrgsGetAuditLog",
 			OperationID:   "orgs/get-audit-log",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38056,6 +39047,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGetMembershipForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38063,8 +39055,9 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetMembershipForAuthenticatedUser",
-			ID:   "orgs/get-membership-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, r)
@@ -38084,6 +39077,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 			Context:       ctx,
 			OperationName: "OrgsGetMembershipForAuthenticatedUser",
 			OperationID:   "orgs/get-membership-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38158,6 +39152,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGetMembershipForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38165,8 +39160,9 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetMembershipForUser",
-			ID:   "orgs/get-membership-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetMembershipForUserParams(args, r)
@@ -38186,6 +39182,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "OrgsGetMembershipForUser",
 			OperationID:   "orgs/get-membership-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38264,6 +39261,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGetWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38271,8 +39269,9 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetWebhook",
-			ID:   "orgs/get-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetWebhookParams(args, r)
@@ -38292,6 +39291,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "OrgsGetWebhook",
 			OperationID:   "orgs/get-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38372,6 +39372,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGetWebhookConfigForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38379,8 +39380,9 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetWebhookConfigForOrg",
-			ID:   "orgs/get-webhook-config-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, r)
@@ -38400,6 +39402,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "OrgsGetWebhookConfigForOrg",
 			OperationID:   "orgs/get-webhook-config-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38476,6 +39479,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsGetWebhookDelivery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38483,8 +39487,9 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetWebhookDelivery",
-			ID:   "orgs/get-webhook-delivery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
@@ -38504,6 +39509,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 			Context:       ctx,
 			OperationName: "OrgsGetWebhookDelivery",
 			OperationID:   "orgs/get-webhook-delivery",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38587,6 +39593,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38594,8 +39601,9 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsList",
-			ID:   "orgs/list",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListParams(args, r)
@@ -38615,6 +39623,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "OrgsList",
 			OperationID:   "orgs/list",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38691,6 +39700,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListBlockedUsers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38698,8 +39708,9 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListBlockedUsers",
-			ID:   "orgs/list-blocked-users",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListBlockedUsersParams(args, r)
@@ -38719,6 +39730,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "OrgsListBlockedUsers",
 			OperationID:   "orgs/list-blocked-users",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38792,6 +39804,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListFailedInvitations
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38799,8 +39812,9 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListFailedInvitations",
-			ID:   "orgs/list-failed-invitations",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListFailedInvitationsParams(args, r)
@@ -38820,6 +39834,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "OrgsListFailedInvitations",
 			OperationID:   "orgs/list-failed-invitations",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38905,6 +39920,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38912,8 +39928,9 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListForAuthenticatedUser",
-			ID:   "orgs/list-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListForAuthenticatedUserParams(args, r)
@@ -38933,6 +39950,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "OrgsListForAuthenticatedUser",
 			OperationID:   "orgs/list-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39014,6 +40032,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39021,8 +40040,9 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListForUser",
-			ID:   "orgs/list-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListForUserParams(args, r)
@@ -39042,6 +40062,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "OrgsListForUser",
 			OperationID:   "orgs/list-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39123,6 +40144,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListInvitationTeams
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39130,8 +40152,9 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListInvitationTeams",
-			ID:   "orgs/list-invitation-teams",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListInvitationTeamsParams(args, r)
@@ -39151,6 +40174,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "OrgsListInvitationTeams",
 			OperationID:   "orgs/list-invitation-teams",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39236,6 +40260,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListMembers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39243,8 +40268,9 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListMembers",
-			ID:   "orgs/list-members",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListMembersParams(args, r)
@@ -39264,6 +40290,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "OrgsListMembers",
 			OperationID:   "orgs/list-members",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39352,6 +40379,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListMembershipsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39359,8 +40387,9 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListMembershipsForAuthenticatedUser",
-			ID:   "orgs/list-memberships-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
@@ -39380,6 +40409,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 			Context:       ctx,
 			OperationName: "OrgsListMembershipsForAuthenticatedUser",
 			OperationID:   "orgs/list-memberships-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39460,6 +40490,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListOutsideCollaborators
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39467,8 +40498,9 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListOutsideCollaborators",
-			ID:   "orgs/list-outside-collaborators",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListOutsideCollaboratorsParams(args, r)
@@ -39488,6 +40520,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "OrgsListOutsideCollaborators",
 			OperationID:   "orgs/list-outside-collaborators",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39575,6 +40608,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListPendingInvitations
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39582,8 +40616,9 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListPendingInvitations",
-			ID:   "orgs/list-pending-invitations",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListPendingInvitationsParams(args, r)
@@ -39603,6 +40638,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "OrgsListPendingInvitations",
 			OperationID:   "orgs/list-pending-invitations",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39683,6 +40719,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListPublicMembers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39690,8 +40727,9 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListPublicMembers",
-			ID:   "orgs/list-public-members",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListPublicMembersParams(args, r)
@@ -39711,6 +40749,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 			Context:       ctx,
 			OperationName: "OrgsListPublicMembers",
 			OperationID:   "orgs/list-public-members",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39798,6 +40837,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListSamlSSOAuthorizations
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39805,8 +40845,9 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListSamlSSOAuthorizations",
-			ID:   "orgs/list-saml-sso-authorizations",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, r)
@@ -39826,6 +40867,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "OrgsListSamlSSOAuthorizations",
 			OperationID:   "orgs/list-saml-sso-authorizations",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39898,6 +40940,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListWebhookDeliveries
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39905,8 +40948,9 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListWebhookDeliveries",
-			ID:   "orgs/list-webhook-deliveries",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
@@ -39926,6 +40970,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "OrgsListWebhookDeliveries",
 			OperationID:   "orgs/list-webhook-deliveries",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40010,6 +41055,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsListWebhooks
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40017,8 +41063,9 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListWebhooks",
-			ID:   "orgs/list-webhooks",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsListWebhooksParams(args, r)
@@ -40038,6 +41085,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "OrgsListWebhooks",
 			OperationID:   "orgs/list-webhooks",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40119,6 +41167,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsPingWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40126,8 +41175,9 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsPingWebhook",
-			ID:   "orgs/ping-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsPingWebhookParams(args, r)
@@ -40147,6 +41197,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "OrgsPingWebhook",
 			OperationID:   "orgs/ping-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40223,6 +41274,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsRedeliverWebhookDelivery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40230,8 +41282,9 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRedeliverWebhookDelivery",
-			ID:   "orgs/redeliver-webhook-delivery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
@@ -40251,6 +41304,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "OrgsRedeliverWebhookDelivery",
 			OperationID:   "orgs/redeliver-webhook-delivery",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40332,6 +41386,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsRemoveMember
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40339,8 +41394,9 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveMember",
-			ID:   "orgs/remove-member",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsRemoveMemberParams(args, r)
@@ -40360,6 +41416,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "OrgsRemoveMember",
 			OperationID:   "orgs/remove-member",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40440,6 +41497,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsRemoveMembershipForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40447,8 +41505,9 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveMembershipForUser",
-			ID:   "orgs/remove-membership-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsRemoveMembershipForUserParams(args, r)
@@ -40468,6 +41527,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "OrgsRemoveMembershipForUser",
 			OperationID:   "orgs/remove-membership-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40544,6 +41604,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsRemoveOutsideCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40551,8 +41612,9 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveOutsideCollaborator",
-			ID:   "orgs/remove-outside-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, r)
@@ -40572,6 +41634,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "OrgsRemoveOutsideCollaborator",
 			OperationID:   "orgs/remove-outside-collaborator",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40648,6 +41711,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsRemovePublicMembershipForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40655,8 +41719,9 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemovePublicMembershipForAuthenticatedUser",
-			ID:   "orgs/remove-public-membership-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, r)
@@ -40676,6 +41741,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 			Context:       ctx,
 			OperationName: "OrgsRemovePublicMembershipForAuthenticatedUser",
 			OperationID:   "orgs/remove-public-membership-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40758,6 +41824,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsRemoveSamlSSOAuthorization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40765,8 +41832,9 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveSamlSSOAuthorization",
-			ID:   "orgs/remove-saml-sso-authorization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, r)
@@ -40786,6 +41854,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "OrgsRemoveSamlSSOAuthorization",
 			OperationID:   "orgs/remove-saml-sso-authorization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40875,6 +41944,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsSetMembershipForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40882,8 +41952,9 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsSetMembershipForUser",
-			ID:   "orgs/set-membership-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsSetMembershipForUserParams(args, r)
@@ -40918,6 +41989,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "OrgsSetMembershipForUser",
 			OperationID:   "orgs/set-membership-for-user",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -40998,6 +42070,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsSetPublicMembershipForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41005,8 +42078,9 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsSetPublicMembershipForAuthenticatedUser",
-			ID:   "orgs/set-public-membership-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, r)
@@ -41026,6 +42100,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 			Context:       ctx,
 			OperationName: "OrgsSetPublicMembershipForAuthenticatedUser",
 			OperationID:   "orgs/set-public-membership-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41102,6 +42177,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsUnblockUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41109,8 +42185,9 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUnblockUser",
-			ID:   "orgs/unblock-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsUnblockUserParams(args, r)
@@ -41130,6 +42207,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "OrgsUnblockUser",
 			OperationID:   "orgs/unblock-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41206,6 +42284,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsUpdateMembershipForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41213,8 +42292,9 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUpdateMembershipForAuthenticatedUser",
-			ID:   "orgs/update-membership-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
@@ -41249,6 +42329,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 			Context:       ctx,
 			OperationName: "OrgsUpdateMembershipForAuthenticatedUser",
 			OperationID:   "orgs/update-membership-for-authenticated-user",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -41325,6 +42406,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsUpdateWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41332,8 +42414,9 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUpdateWebhook",
-			ID:   "orgs/update-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsUpdateWebhookParams(args, r)
@@ -41368,6 +42451,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "OrgsUpdateWebhook",
 			OperationID:   "orgs/update-webhook",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -41448,6 +42532,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrgsUpdateWebhookConfigForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41455,8 +42540,9 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUpdateWebhookConfigForOrg",
-			ID:   "orgs/update-webhook-config-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, r)
@@ -41491,6 +42577,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "OrgsUpdateWebhookConfigForOrg",
 			OperationID:   "orgs/update-webhook-config-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -41572,6 +42659,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesDeletePackageForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41579,8 +42667,9 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageForAuthenticatedUser",
-			ID:   "packages/delete-package-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, r)
@@ -41600,6 +42689,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 			Context:       ctx,
 			OperationName: "PackagesDeletePackageForAuthenticatedUser",
 			OperationID:   "packages/delete-package-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41683,6 +42773,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesDeletePackageForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41690,8 +42781,9 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageForOrg",
-			ID:   "packages/delete-package-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesDeletePackageForOrgParams(args, r)
@@ -41711,6 +42803,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "PackagesDeletePackageForOrg",
 			OperationID:   "packages/delete-package-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41798,6 +42891,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesDeletePackageForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41805,8 +42899,9 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageForUser",
-			ID:   "packages/delete-package-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesDeletePackageForUserParams(args, r)
@@ -41826,6 +42921,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "PackagesDeletePackageForUser",
 			OperationID:   "packages/delete-package-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41911,6 +43007,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesDeletePackageVersionForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41918,8 +43015,9 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageVersionForAuthenticatedUser",
-			ID:   "packages/delete-package-version-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, r)
@@ -41939,6 +43037,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 			Context:       ctx,
 			OperationName: "PackagesDeletePackageVersionForAuthenticatedUser",
 			OperationID:   "packages/delete-package-version-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42026,6 +43125,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesDeletePackageVersionForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42033,8 +43133,9 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageVersionForOrg",
-			ID:   "packages/delete-package-version-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesDeletePackageVersionForOrgParams(args, r)
@@ -42054,6 +43155,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 			Context:       ctx,
 			OperationName: "PackagesDeletePackageVersionForOrg",
 			OperationID:   "packages/delete-package-version-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42145,6 +43247,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesDeletePackageVersionForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42152,8 +43255,9 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageVersionForUser",
-			ID:   "packages/delete-package-version-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesDeletePackageVersionForUserParams(args, r)
@@ -42173,6 +43277,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 			Context:       ctx,
 			OperationName: "PackagesDeletePackageVersionForUser",
 			OperationID:   "packages/delete-package-version-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42259,6 +43364,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42266,8 +43372,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
-			ID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
@@ -42287,6 +43394,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 			Context:       ctx,
 			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
 			OperationID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42377,6 +43485,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetAllPackageVersionsForPackageOwnedByOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42384,8 +43493,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
-			ID:   "packages/get-all-package-versions-for-package-owned-by-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
@@ -42405,6 +43515,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 			Context:       ctx,
 			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
 			OperationID:   "packages/get-all-package-versions-for-package-owned-by-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42499,6 +43610,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetAllPackageVersionsForPackageOwnedByUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42506,8 +43618,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
-			ID:   "packages/get-all-package-versions-for-package-owned-by-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
@@ -42527,6 +43640,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 			Context:       ctx,
 			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
 			OperationID:   "packages/get-all-package-versions-for-package-owned-by-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42609,6 +43723,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetPackageForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42616,8 +43731,9 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageForAuthenticatedUser",
-			ID:   "packages/get-package-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, r)
@@ -42637,6 +43753,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 			Context:       ctx,
 			OperationName: "PackagesGetPackageForAuthenticatedUser",
 			OperationID:   "packages/get-package-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42715,6 +43832,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetPackageForOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42722,8 +43840,9 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageForOrganization",
-			ID:   "packages/get-package-for-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetPackageForOrganizationParams(args, r)
@@ -42743,6 +43862,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "PackagesGetPackageForOrganization",
 			OperationID:   "packages/get-package-for-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42825,6 +43945,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetPackageForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42832,8 +43953,9 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageForUser",
-			ID:   "packages/get-package-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetPackageForUserParams(args, r)
@@ -42853,6 +43975,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 			Context:       ctx,
 			OperationName: "PackagesGetPackageForUser",
 			OperationID:   "packages/get-package-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42935,6 +44058,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetPackageVersionForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42942,8 +44066,9 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageVersionForAuthenticatedUser",
-			ID:   "packages/get-package-version-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
@@ -42963,6 +44088,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 			Context:       ctx,
 			OperationName: "PackagesGetPackageVersionForAuthenticatedUser",
 			OperationID:   "packages/get-package-version-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43045,6 +44171,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetPackageVersionForOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43052,8 +44179,9 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageVersionForOrganization",
-			ID:   "packages/get-package-version-for-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
@@ -43073,6 +44201,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 			Context:       ctx,
 			OperationName: "PackagesGetPackageVersionForOrganization",
 			OperationID:   "packages/get-package-version-for-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43160,6 +44289,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesGetPackageVersionForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43167,8 +44297,9 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageVersionForUser",
-			ID:   "packages/get-package-version-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
@@ -43188,6 +44319,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 			Context:       ctx,
 			OperationName: "PackagesGetPackageVersionForUser",
 			OperationID:   "packages/get-package-version-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43274,6 +44406,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesListPackagesForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43281,8 +44414,9 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesListPackagesForAuthenticatedUser",
-			ID:   "packages/list-packages-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, r)
@@ -43302,6 +44436,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 			Context:       ctx,
 			OperationName: "PackagesListPackagesForAuthenticatedUser",
 			OperationID:   "packages/list-packages-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43380,6 +44515,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesListPackagesForOrganization
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43387,8 +44523,9 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesListPackagesForOrganization",
-			ID:   "packages/list-packages-for-organization",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesListPackagesForOrganizationParams(args, r)
@@ -43408,6 +44545,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 			Context:       ctx,
 			OperationName: "PackagesListPackagesForOrganization",
 			OperationID:   "packages/list-packages-for-organization",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43490,6 +44628,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesListPackagesForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43497,8 +44636,9 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesListPackagesForUser",
-			ID:   "packages/list-packages-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesListPackagesForUserParams(args, r)
@@ -43518,6 +44658,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "PackagesListPackagesForUser",
 			OperationID:   "packages/list-packages-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43607,6 +44748,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesRestorePackageForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43614,8 +44756,9 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageForAuthenticatedUser",
-			ID:   "packages/restore-package-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, r)
@@ -43635,6 +44778,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 			Context:       ctx,
 			OperationName: "PackagesRestorePackageForAuthenticatedUser",
 			OperationID:   "packages/restore-package-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43726,6 +44870,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesRestorePackageForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43733,8 +44878,9 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageForOrg",
-			ID:   "packages/restore-package-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesRestorePackageForOrgParams(args, r)
@@ -43754,6 +44900,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "PackagesRestorePackageForOrg",
 			OperationID:   "packages/restore-package-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43849,6 +44996,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesRestorePackageForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43856,8 +45004,9 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageForUser",
-			ID:   "packages/restore-package-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesRestorePackageForUserParams(args, r)
@@ -43877,6 +45026,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "PackagesRestorePackageForUser",
 			OperationID:   "packages/restore-package-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43970,6 +45120,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesRestorePackageVersionForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43977,8 +45128,9 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageVersionForAuthenticatedUser",
-			ID:   "packages/restore-package-version-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, r)
@@ -43998,6 +45150,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 			Context:       ctx,
 			OperationName: "PackagesRestorePackageVersionForAuthenticatedUser",
 			OperationID:   "packages/restore-package-version-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44089,6 +45242,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesRestorePackageVersionForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44096,8 +45250,9 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageVersionForOrg",
-			ID:   "packages/restore-package-version-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesRestorePackageVersionForOrgParams(args, r)
@@ -44117,6 +45272,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 			Context:       ctx,
 			OperationName: "PackagesRestorePackageVersionForOrg",
 			OperationID:   "packages/restore-package-version-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44212,6 +45368,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PackagesRestorePackageVersionForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44219,8 +45376,9 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageVersionForUser",
-			ID:   "packages/restore-package-version-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePackagesRestorePackageVersionForUserParams(args, r)
@@ -44240,6 +45398,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 			Context:       ctx,
 			OperationName: "PackagesRestorePackageVersionForUser",
 			OperationID:   "packages/restore-package-version-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44325,6 +45484,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsAddCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44332,8 +45492,9 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsAddCollaborator",
-			ID:   "projects/add-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsAddCollaboratorParams(args, r)
@@ -44368,6 +45529,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "ProjectsAddCollaborator",
 			OperationID:   "projects/add-collaborator",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -44444,6 +45606,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsCreateColumn
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44451,8 +45614,9 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateColumn",
-			ID:   "projects/create-column",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsCreateColumnParams(args, r)
@@ -44487,6 +45651,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ProjectsCreateColumn",
 			OperationID:   "projects/create-column",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -44559,6 +45724,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsCreateForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44566,8 +45732,9 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateForAuthenticatedUser",
-			ID:   "projects/create-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeProjectsCreateForAuthenticatedUserRequest(r)
@@ -44592,6 +45759,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "ProjectsCreateForAuthenticatedUser",
 			OperationID:   "projects/create-for-authenticated-user",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44661,6 +45829,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsCreateForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44668,8 +45837,9 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateForOrg",
-			ID:   "projects/create-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsCreateForOrgParams(args, r)
@@ -44704,6 +45874,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ProjectsCreateForOrg",
 			OperationID:   "projects/create-for-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -44778,6 +45949,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsCreateForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44785,8 +45957,9 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateForRepo",
-			ID:   "projects/create-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsCreateForRepoParams(args, r)
@@ -44821,6 +45994,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ProjectsCreateForRepo",
 			OperationID:   "projects/create-for-repo",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -44897,6 +46071,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsDelete
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44904,8 +46079,9 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsDelete",
-			ID:   "projects/delete",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsDeleteParams(args, r)
@@ -44925,6 +46101,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ProjectsDelete",
 			OperationID:   "projects/delete",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44997,6 +46174,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsDeleteCard
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45004,8 +46182,9 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsDeleteCard",
-			ID:   "projects/delete-card",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsDeleteCardParams(args, r)
@@ -45025,6 +46204,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "ProjectsDeleteCard",
 			OperationID:   "projects/delete-card",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45097,6 +46277,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsDeleteColumn
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45104,8 +46285,9 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsDeleteColumn",
-			ID:   "projects/delete-column",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsDeleteColumnParams(args, r)
@@ -45125,6 +46307,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ProjectsDeleteColumn",
 			OperationID:   "projects/delete-column",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45199,6 +46382,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45206,8 +46390,9 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGet",
-			ID:   "projects/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsGetParams(args, r)
@@ -45227,6 +46412,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "ProjectsGet",
 			OperationID:   "projects/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45299,6 +46485,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsGetCard
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45306,8 +46493,9 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGetCard",
-			ID:   "projects/get-card",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsGetCardParams(args, r)
@@ -45327,6 +46515,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ProjectsGetCard",
 			OperationID:   "projects/get-card",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45399,6 +46588,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsGetColumn
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45406,8 +46596,9 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGetColumn",
-			ID:   "projects/get-column",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsGetColumnParams(args, r)
@@ -45427,6 +46618,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ProjectsGetColumn",
 			OperationID:   "projects/get-column",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45501,6 +46693,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsGetPermissionForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45508,8 +46701,9 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGetPermissionForUser",
-			ID:   "projects/get-permission-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsGetPermissionForUserParams(args, r)
@@ -45529,6 +46723,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 			Context:       ctx,
 			OperationName: "ProjectsGetPermissionForUser",
 			OperationID:   "projects/get-permission-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45605,6 +46800,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsListCards
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45612,8 +46808,9 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListCards",
-			ID:   "projects/list-cards",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsListCardsParams(args, r)
@@ -45633,6 +46830,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ProjectsListCards",
 			OperationID:   "projects/list-cards",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45721,6 +46919,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsListCollaborators
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45728,8 +46927,9 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListCollaborators",
-			ID:   "projects/list-collaborators",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsListCollaboratorsParams(args, r)
@@ -45749,6 +46949,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ProjectsListCollaborators",
 			OperationID:   "projects/list-collaborators",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45833,6 +47034,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsListColumns
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45840,8 +47042,9 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListColumns",
-			ID:   "projects/list-columns",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsListColumnsParams(args, r)
@@ -45861,6 +47064,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ProjectsListColumns",
 			OperationID:   "projects/list-columns",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45943,6 +47147,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsListForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45950,8 +47155,9 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListForOrg",
-			ID:   "projects/list-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsListForOrgParams(args, r)
@@ -45971,6 +47177,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "ProjectsListForOrg",
 			OperationID:   "projects/list-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46057,6 +47264,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsListForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46064,8 +47272,9 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListForRepo",
-			ID:   "projects/list-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsListForRepoParams(args, r)
@@ -46085,6 +47294,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ProjectsListForRepo",
 			OperationID:   "projects/list-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46173,6 +47383,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsListForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46180,8 +47391,9 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListForUser",
-			ID:   "projects/list-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsListForUserParams(args, r)
@@ -46201,6 +47413,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ProjectsListForUser",
 			OperationID:   "projects/list-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46285,6 +47498,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsMoveCard
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46292,8 +47506,9 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsMoveCard",
-			ID:   "projects/move-card",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsMoveCardParams(args, r)
@@ -46328,6 +47543,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ProjectsMoveCard",
 			OperationID:   "projects/move-card",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -46400,6 +47616,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsMoveColumn
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46407,8 +47624,9 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsMoveColumn",
-			ID:   "projects/move-column",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsMoveColumnParams(args, r)
@@ -46443,6 +47661,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "ProjectsMoveColumn",
 			OperationID:   "projects/move-column",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -46516,6 +47735,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsRemoveCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46523,8 +47743,9 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsRemoveCollaborator",
-			ID:   "projects/remove-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
@@ -46544,6 +47765,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "ProjectsRemoveCollaborator",
 			OperationID:   "projects/remove-collaborator",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46622,6 +47844,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsUpdate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46629,8 +47852,9 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsUpdate",
-			ID:   "projects/update",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsUpdateParams(args, r)
@@ -46665,6 +47889,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ProjectsUpdate",
 			OperationID:   "projects/update",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -46737,6 +47962,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsUpdateCard
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46744,8 +47970,9 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsUpdateCard",
-			ID:   "projects/update-card",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsUpdateCardParams(args, r)
@@ -46780,6 +48007,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "ProjectsUpdateCard",
 			OperationID:   "projects/update-card",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -46852,6 +48080,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProjectsUpdateColumn
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46859,8 +48088,9 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsUpdateColumn",
-			ID:   "projects/update-column",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeProjectsUpdateColumnParams(args, r)
@@ -46895,6 +48125,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ProjectsUpdateColumn",
 			OperationID:   "projects/update-column",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -46967,6 +48198,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsCheckIfMerged
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46974,8 +48206,9 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCheckIfMerged",
-			ID:   "pulls/check-if-merged",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsCheckIfMergedParams(args, r)
@@ -46995,6 +48228,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "PullsCheckIfMerged",
 			OperationID:   "pulls/check-if-merged",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47090,6 +48324,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsCreate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47097,8 +48332,9 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreate",
-			ID:   "pulls/create",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsCreateParams(args, r)
@@ -47133,6 +48369,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "PullsCreate",
 			OperationID:   "pulls/create",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -47218,6 +48455,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsCreateReplyForReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47225,8 +48463,9 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreateReplyForReviewComment",
-			ID:   "pulls/create-reply-for-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsCreateReplyForReviewCommentParams(args, r)
@@ -47261,6 +48500,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 			Context:       ctx,
 			OperationName: "PullsCreateReplyForReviewComment",
 			OperationID:   "pulls/create-reply-for-review-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -47363,6 +48603,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsCreateReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47370,8 +48611,9 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreateReview",
-			ID:   "pulls/create-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsCreateReviewParams(args, r)
@@ -47406,6 +48648,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PullsCreateReview",
 			OperationID:   "pulls/create-review",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -47505,6 +48748,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsCreateReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47512,8 +48756,9 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreateReviewComment",
-			ID:   "pulls/create-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsCreateReviewCommentParams(args, r)
@@ -47548,6 +48793,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "PullsCreateReviewComment",
 			OperationID:   "pulls/create-review-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -47628,6 +48874,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsDeletePendingReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47635,8 +48882,9 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsDeletePendingReview",
-			ID:   "pulls/delete-pending-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsDeletePendingReviewParams(args, r)
@@ -47656,6 +48904,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 			Context:       ctx,
 			OperationName: "PullsDeletePendingReview",
 			OperationID:   "pulls/delete-pending-review",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47740,6 +48989,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsDeleteReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47747,8 +48997,9 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsDeleteReviewComment",
-			ID:   "pulls/delete-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsDeleteReviewCommentParams(args, r)
@@ -47768,6 +49019,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "PullsDeleteReviewComment",
 			OperationID:   "pulls/delete-review-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47850,6 +49102,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsDismissReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47857,8 +49110,9 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsDismissReview",
-			ID:   "pulls/dismiss-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsDismissReviewParams(args, r)
@@ -47893,6 +49147,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 			Context:       ctx,
 			OperationName: "PullsDismissReview",
 			OperationID:   "pulls/dismiss-review",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -48010,6 +49265,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48017,8 +49273,9 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsGet",
-			ID:   "pulls/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsGetParams(args, r)
@@ -48038,6 +49295,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "PullsGet",
 			OperationID:   "pulls/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48118,6 +49376,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsGetReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48125,8 +49384,9 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsGetReview",
-			ID:   "pulls/get-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsGetReviewParams(args, r)
@@ -48146,6 +49406,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "PullsGetReview",
 			OperationID:   "pulls/get-review",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48230,6 +49491,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsGetReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48237,8 +49499,9 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsGetReviewComment",
-			ID:   "pulls/get-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsGetReviewCommentParams(args, r)
@@ -48258,6 +49521,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "PullsGetReviewComment",
 			OperationID:   "pulls/get-review-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48342,6 +49606,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48349,8 +49614,9 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsList",
-			ID:   "pulls/list",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListParams(args, r)
@@ -48370,6 +49636,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "PullsList",
 			OperationID:   "pulls/list",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48474,6 +49741,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListCommentsForReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48481,8 +49749,9 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListCommentsForReview",
-			ID:   "pulls/list-comments-for-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListCommentsForReviewParams(args, r)
@@ -48502,6 +49771,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 			Context:       ctx,
 			OperationName: "PullsListCommentsForReview",
 			OperationID:   "pulls/list-comments-for-review",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48596,6 +49866,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListCommits
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48603,8 +49874,9 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListCommits",
-			ID:   "pulls/list-commits",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListCommitsParams(args, r)
@@ -48624,6 +49896,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "PullsListCommits",
 			OperationID:   "pulls/list-commits",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48713,6 +49986,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListFiles
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48720,8 +49994,9 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListFiles",
-			ID:   "pulls/list-files",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListFilesParams(args, r)
@@ -48741,6 +50016,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "PullsListFiles",
 			OperationID:   "pulls/list-files",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48829,6 +50105,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListRequestedReviewers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48836,8 +50113,9 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListRequestedReviewers",
-			ID:   "pulls/list-requested-reviewers",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListRequestedReviewersParams(args, r)
@@ -48857,6 +50135,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "PullsListRequestedReviewers",
 			OperationID:   "pulls/list-requested-reviewers",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48946,6 +50225,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListReviewComments
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48953,8 +50233,9 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListReviewComments",
-			ID:   "pulls/list-review-comments",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListReviewCommentsParams(args, r)
@@ -48974,6 +50255,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "PullsListReviewComments",
 			OperationID:   "pulls/list-review-comments",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49075,6 +50357,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListReviewCommentsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49082,8 +50365,9 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListReviewCommentsForRepo",
-			ID:   "pulls/list-review-comments-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListReviewCommentsForRepoParams(args, r)
@@ -49103,6 +50387,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "PullsListReviewCommentsForRepo",
 			OperationID:   "pulls/list-review-comments-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49199,6 +50484,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsListReviews
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49206,8 +50492,9 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListReviews",
-			ID:   "pulls/list-reviews",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsListReviewsParams(args, r)
@@ -49227,6 +50514,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "PullsListReviews",
 			OperationID:   "pulls/list-reviews",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49321,6 +50609,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsMerge
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49328,8 +50617,9 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsMerge",
-			ID:   "pulls/merge",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsMergeParams(args, r)
@@ -49364,6 +50654,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "PullsMerge",
 			OperationID:   "pulls/merge",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -49444,6 +50735,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsRemoveRequestedReviewers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49451,8 +50743,9 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsRemoveRequestedReviewers",
-			ID:   "pulls/remove-requested-reviewers",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
@@ -49487,6 +50780,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "PullsRemoveRequestedReviewers",
 			OperationID:   "pulls/remove-requested-reviewers",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -49567,6 +50861,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsSubmitReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49574,8 +50869,9 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsSubmitReview",
-			ID:   "pulls/submit-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsSubmitReviewParams(args, r)
@@ -49610,6 +50906,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PullsSubmitReview",
 			OperationID:   "pulls/submit-review",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -49701,6 +50998,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsUpdate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49708,8 +51006,9 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdate",
-			ID:   "pulls/update",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsUpdateParams(args, r)
@@ -49744,6 +51043,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "PullsUpdate",
 			OperationID:   "pulls/update",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -49825,6 +51125,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsUpdateBranch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49832,8 +51133,9 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdateBranch",
-			ID:   "pulls/update-branch",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsUpdateBranchParams(args, r)
@@ -49868,6 +51170,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PullsUpdateBranch",
 			OperationID:   "pulls/update-branch",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -49948,6 +51251,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsUpdateReview
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49955,8 +51259,9 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdateReview",
-			ID:   "pulls/update-review",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsUpdateReviewParams(args, r)
@@ -49991,6 +51296,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PullsUpdateReview",
 			OperationID:   "pulls/update-review",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50075,6 +51381,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PullsUpdateReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50082,8 +51389,9 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdateReviewComment",
-			ID:   "pulls/update-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePullsUpdateReviewCommentParams(args, r)
@@ -50118,6 +51426,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "PullsUpdateReviewComment",
 			OperationID:   "pulls/update-review-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50201,6 +51510,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().RateLimitGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50215,6 +51525,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "RateLimitGet",
 			OperationID:   "rate-limit/get",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50284,6 +51595,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50291,8 +51603,9 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForCommitComment",
-			ID:   "reactions/create-for-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
@@ -50327,6 +51640,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 			Context:       ctx,
 			OperationName: "ReactionsCreateForCommitComment",
 			OperationID:   "reactions/create-for-commit-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50408,6 +51722,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForIssue
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50415,8 +51730,9 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForIssue",
-			ID:   "reactions/create-for-issue",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForIssueParams(args, r)
@@ -50451,6 +51767,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReactionsCreateForIssue",
 			OperationID:   "reactions/create-for-issue",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50533,6 +51850,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForIssueComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50540,8 +51858,9 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForIssueComment",
-			ID:   "reactions/create-for-issue-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
@@ -50576,6 +51895,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReactionsCreateForIssueComment",
 			OperationID:   "reactions/create-for-issue-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50658,6 +51978,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForPullRequestReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50665,8 +51986,9 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForPullRequestReviewComment",
-			ID:   "reactions/create-for-pull-request-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
@@ -50701,6 +52023,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 			Context:       ctx,
 			OperationName: "ReactionsCreateForPullRequestReviewComment",
 			OperationID:   "reactions/create-for-pull-request-review-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50782,6 +52105,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForRelease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50789,8 +52113,9 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForRelease",
-			ID:   "reactions/create-for-release",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForReleaseParams(args, r)
@@ -50825,6 +52150,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 			Context:       ctx,
 			OperationName: "ReactionsCreateForRelease",
 			OperationID:   "reactions/create-for-release",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -50911,6 +52237,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForTeamDiscussionCommentInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50918,8 +52245,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionCommentInOrg",
-			ID:   "reactions/create-for-team-discussion-comment-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, r)
@@ -50954,6 +52282,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 			Context:       ctx,
 			OperationName: "ReactionsCreateForTeamDiscussionCommentInOrg",
 			OperationID:   "reactions/create-for-team-discussion-comment-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -51048,6 +52377,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForTeamDiscussionCommentLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51055,8 +52385,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionCommentLegacy",
-			ID:   "reactions/create-for-team-discussion-comment-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, r)
@@ -51091,6 +52422,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 			Context:       ctx,
 			OperationName: "ReactionsCreateForTeamDiscussionCommentLegacy",
 			OperationID:   "reactions/create-for-team-discussion-comment-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -51178,6 +52510,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForTeamDiscussionInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51185,8 +52518,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionInOrg",
-			ID:   "reactions/create-for-team-discussion-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, r)
@@ -51221,6 +52555,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 			Context:       ctx,
 			OperationName: "ReactionsCreateForTeamDiscussionInOrg",
 			OperationID:   "reactions/create-for-team-discussion-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -51312,6 +52647,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsCreateForTeamDiscussionLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51319,8 +52655,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionLegacy",
-			ID:   "reactions/create-for-team-discussion-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, r)
@@ -51355,6 +52692,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ReactionsCreateForTeamDiscussionLegacy",
 			OperationID:   "reactions/create-for-team-discussion-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -51433,6 +52771,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteForCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51440,8 +52779,9 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForCommitComment",
-			ID:   "reactions/delete-for-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteForCommitCommentParams(args, r)
@@ -51461,6 +52801,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 			Context:       ctx,
 			OperationName: "ReactionsDeleteForCommitComment",
 			OperationID:   "reactions/delete-for-commit-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51547,6 +52888,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteForIssue
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51554,8 +52896,9 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForIssue",
-			ID:   "reactions/delete-for-issue",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteForIssueParams(args, r)
@@ -51575,6 +52918,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReactionsDeleteForIssue",
 			OperationID:   "reactions/delete-for-issue",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51661,6 +53005,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteForIssueComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51668,8 +53013,9 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForIssueComment",
-			ID:   "reactions/delete-for-issue-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteForIssueCommentParams(args, r)
@@ -51689,6 +53035,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 			Context:       ctx,
 			OperationName: "ReactionsDeleteForIssueComment",
 			OperationID:   "reactions/delete-for-issue-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51776,6 +53123,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteForPullRequestComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51783,8 +53131,9 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForPullRequestComment",
-			ID:   "reactions/delete-for-pull-request-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, r)
@@ -51804,6 +53153,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 			Context:       ctx,
 			OperationName: "ReactionsDeleteForPullRequestComment",
 			OperationID:   "reactions/delete-for-pull-request-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51895,6 +53245,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteForTeamDiscussion
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51902,8 +53253,9 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForTeamDiscussion",
-			ID:   "reactions/delete-for-team-discussion",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, r)
@@ -51923,6 +53275,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 			Context:       ctx,
 			OperationName: "ReactionsDeleteForTeamDiscussion",
 			OperationID:   "reactions/delete-for-team-discussion",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52012,6 +53365,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteForTeamDiscussionComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52019,8 +53373,9 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForTeamDiscussionComment",
-			ID:   "reactions/delete-for-team-discussion-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, r)
@@ -52040,6 +53395,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 			Context:       ctx,
 			OperationName: "ReactionsDeleteForTeamDiscussionComment",
 			OperationID:   "reactions/delete-for-team-discussion-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52137,6 +53493,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsDeleteLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52144,8 +53501,9 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteLegacy",
-			ID:   "reactions/delete-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsDeleteLegacyParams(args, r)
@@ -52165,6 +53523,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReactionsDeleteLegacy",
 			OperationID:   "reactions/delete-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52237,6 +53596,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52244,8 +53604,9 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForCommitComment",
-			ID:   "reactions/list-for-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForCommitCommentParams(args, r)
@@ -52265,6 +53626,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReactionsListForCommitComment",
 			OperationID:   "reactions/list-for-commit-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52357,6 +53719,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForIssue
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52364,8 +53727,9 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForIssue",
-			ID:   "reactions/list-for-issue",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForIssueParams(args, r)
@@ -52385,6 +53749,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReactionsListForIssue",
 			OperationID:   "reactions/list-for-issue",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52477,6 +53842,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForIssueComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52484,8 +53850,9 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForIssueComment",
-			ID:   "reactions/list-for-issue-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForIssueCommentParams(args, r)
@@ -52505,6 +53872,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "ReactionsListForIssueComment",
 			OperationID:   "reactions/list-for-issue-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52598,6 +53966,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForPullRequestReviewComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52605,8 +53974,9 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForPullRequestReviewComment",
-			ID:   "reactions/list-for-pull-request-review-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, r)
@@ -52626,6 +53996,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 			Context:       ctx,
 			OperationName: "ReactionsListForPullRequestReviewComment",
 			OperationID:   "reactions/list-for-pull-request-review-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52722,6 +54093,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForTeamDiscussionCommentInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52729,8 +54101,9 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionCommentInOrg",
-			ID:   "reactions/list-for-team-discussion-comment-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, r)
@@ -52750,6 +54123,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 			Context:       ctx,
 			OperationName: "ReactionsListForTeamDiscussionCommentInOrg",
 			OperationID:   "reactions/list-for-team-discussion-comment-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52854,6 +54228,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForTeamDiscussionCommentLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52861,8 +54236,9 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionCommentLegacy",
-			ID:   "reactions/list-for-team-discussion-comment-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, r)
@@ -52882,6 +54258,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 			Context:       ctx,
 			OperationName: "ReactionsListForTeamDiscussionCommentLegacy",
 			OperationID:   "reactions/list-for-team-discussion-comment-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52978,6 +54355,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForTeamDiscussionInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52985,8 +54363,9 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionInOrg",
-			ID:   "reactions/list-for-team-discussion-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, r)
@@ -53006,6 +54385,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 			Context:       ctx,
 			OperationName: "ReactionsListForTeamDiscussionInOrg",
 			OperationID:   "reactions/list-for-team-discussion-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53106,6 +54486,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReactionsListForTeamDiscussionLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53113,8 +54494,9 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionLegacy",
-			ID:   "reactions/list-for-team-discussion-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, r)
@@ -53134,6 +54516,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ReactionsListForTeamDiscussionLegacy",
 			OperationID:   "reactions/list-for-team-discussion-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53222,6 +54605,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposAcceptInvitation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53229,8 +54613,9 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAcceptInvitation",
-			ID:   "repos/accept-invitation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposAcceptInvitationParams(args, r)
@@ -53250,6 +54635,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposAcceptInvitation",
 			OperationID:   "repos/accept-invitation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53336,6 +54722,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposAddAppAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53343,8 +54730,9 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddAppAccessRestrictions",
-			ID:   "repos/add-app-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
@@ -53379,6 +54767,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReposAddAppAccessRestrictions",
 			OperationID:   "repos/add-app-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -53478,6 +54867,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposAddCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53485,8 +54875,9 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddCollaborator",
-			ID:   "repos/add-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposAddCollaboratorParams(args, r)
@@ -53521,6 +54912,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposAddCollaborator",
 			OperationID:   "repos/add-collaborator",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -53605,6 +54997,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposAddStatusCheckContexts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53612,8 +55005,9 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddStatusCheckContexts",
-			ID:   "repos/add-status-check-contexts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposAddStatusCheckContextsParams(args, r)
@@ -53648,6 +55042,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposAddStatusCheckContexts",
 			OperationID:   "repos/add-status-check-contexts",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -53742,6 +55137,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposAddTeamAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53749,8 +55145,9 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddTeamAccessRestrictions",
-			ID:   "repos/add-team-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
@@ -53785,6 +55182,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposAddTeamAccessRestrictions",
 			OperationID:   "repos/add-team-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -53878,6 +55276,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposAddUserAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53885,8 +55284,9 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddUserAccessRestrictions",
-			ID:   "repos/add-user-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
@@ -53921,6 +55321,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposAddUserAccessRestrictions",
 			OperationID:   "repos/add-user-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -54005,6 +55406,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCheckCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54012,8 +55414,9 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCheckCollaborator",
-			ID:   "repos/check-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCheckCollaboratorParams(args, r)
@@ -54033,6 +55436,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposCheckCollaborator",
 			OperationID:   "repos/check-collaborator",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54116,6 +55520,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCheckVulnerabilityAlerts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54123,8 +55528,9 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCheckVulnerabilityAlerts",
-			ID:   "repos/check-vulnerability-alerts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCheckVulnerabilityAlertsParams(args, r)
@@ -54144,6 +55550,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "ReposCheckVulnerabilityAlerts",
 			OperationID:   "repos/check-vulnerability-alerts",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54274,6 +55681,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCompareCommits
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54281,8 +55689,9 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCompareCommits",
-			ID:   "repos/compare-commits",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCompareCommitsParams(args, r)
@@ -54302,6 +55711,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ReposCompareCommits",
 			OperationID:   "repos/compare-commits",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54390,6 +55800,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateAutolink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54397,8 +55808,9 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateAutolink",
-			ID:   "repos/create-autolink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateAutolinkParams(args, r)
@@ -54433,6 +55845,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ReposCreateAutolink",
 			OperationID:   "repos/create-autolink",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -54516,6 +55929,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54523,8 +55937,9 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateCommitComment",
-			ID:   "repos/create-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateCommitCommentParams(args, r)
@@ -54559,6 +55974,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposCreateCommitComment",
 			OperationID:   "repos/create-commit-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -54645,6 +56061,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateCommitSignatureProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54652,8 +56069,9 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateCommitSignatureProtection",
-			ID:   "repos/create-commit-signature-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateCommitSignatureProtectionParams(args, r)
@@ -54673,6 +56091,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 			Context:       ctx,
 			OperationName: "ReposCreateCommitSignatureProtection",
 			OperationID:   "repos/create-commit-signature-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54755,6 +56174,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateCommitStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54762,8 +56182,9 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateCommitStatus",
-			ID:   "repos/create-commit-status",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateCommitStatusParams(args, r)
@@ -54798,6 +56219,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReposCreateCommitStatus",
 			OperationID:   "repos/create-commit-status",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -54878,6 +56300,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateDeployKey
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54885,8 +56308,9 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDeployKey",
-			ID:   "repos/create-deploy-key",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateDeployKeyParams(args, r)
@@ -54921,6 +56345,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposCreateDeployKey",
 			OperationID:   "repos/create-deploy-key",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55052,6 +56477,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateDeployment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55059,8 +56485,9 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDeployment",
-			ID:   "repos/create-deployment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateDeploymentParams(args, r)
@@ -55095,6 +56522,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposCreateDeployment",
 			OperationID:   "repos/create-deployment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55173,6 +56601,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateDeploymentStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55180,8 +56609,9 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDeploymentStatus",
-			ID:   "repos/create-deployment-status",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateDeploymentStatusParams(args, r)
@@ -55216,6 +56646,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposCreateDeploymentStatus",
 			OperationID:   "repos/create-deployment-status",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55315,6 +56746,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateDispatchEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55322,8 +56754,9 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDispatchEvent",
-			ID:   "repos/create-dispatch-event",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateDispatchEventParams(args, r)
@@ -55358,6 +56791,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposCreateDispatchEvent",
 			OperationID:   "repos/create-dispatch-event",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55440,6 +56874,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55447,8 +56882,9 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateForAuthenticatedUser",
-			ID:   "repos/create-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeReposCreateForAuthenticatedUserRequest(r)
@@ -55473,6 +56909,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "ReposCreateForAuthenticatedUser",
 			OperationID:   "repos/create-for-authenticated-user",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55543,6 +56980,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateFork
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55550,8 +56988,9 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateFork",
-			ID:   "repos/create-fork",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateForkParams(args, r)
@@ -55586,6 +57025,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReposCreateFork",
 			OperationID:   "repos/create-fork",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55669,6 +57109,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55676,8 +57117,9 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateInOrg",
-			ID:   "repos/create-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateInOrgParams(args, r)
@@ -55712,6 +57154,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ReposCreateInOrg",
 			OperationID:   "repos/create-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55784,6 +57227,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateOrUpdateFileContents
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55791,8 +57235,9 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateOrUpdateFileContents",
-			ID:   "repos/create-or-update-file-contents",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
@@ -55827,6 +57272,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 			Context:       ctx,
 			OperationName: "ReposCreateOrUpdateFileContents",
 			OperationID:   "repos/create-or-update-file-contents",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -55908,6 +57354,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreatePagesSite
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55915,8 +57362,9 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreatePagesSite",
-			ID:   "repos/create-pages-site",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreatePagesSiteParams(args, r)
@@ -55951,6 +57399,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposCreatePagesSite",
 			OperationID:   "repos/create-pages-site",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -56034,6 +57483,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateRelease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56041,8 +57491,9 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateRelease",
-			ID:   "repos/create-release",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateReleaseParams(args, r)
@@ -56077,6 +57528,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposCreateRelease",
 			OperationID:   "repos/create-release",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -56164,6 +57616,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateUsingTemplate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56171,8 +57624,9 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateUsingTemplate",
-			ID:   "repos/create-using-template",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateUsingTemplateParams(args, r)
@@ -56207,6 +57661,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposCreateUsingTemplate",
 			OperationID:   "repos/create-using-template",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -56285,6 +57740,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposCreateWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56292,8 +57748,9 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateWebhook",
-			ID:   "repos/create-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposCreateWebhookParams(args, r)
@@ -56328,6 +57785,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposCreateWebhook",
 			OperationID:   "repos/create-webhook",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -56404,6 +57862,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeclineInvitation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56411,8 +57870,9 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeclineInvitation",
-			ID:   "repos/decline-invitation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeclineInvitationParams(args, r)
@@ -56432,6 +57892,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposDeclineInvitation",
 			OperationID:   "repos/decline-invitation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56507,6 +57968,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDelete
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56514,8 +57976,9 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDelete",
-			ID:   "repos/delete",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteParams(args, r)
@@ -56535,6 +57998,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "ReposDelete",
 			OperationID:   "repos/delete",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56616,6 +58080,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56623,8 +58088,9 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAccessRestrictions",
-			ID:   "repos/delete-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteAccessRestrictionsParams(args, r)
@@ -56644,6 +58110,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReposDeleteAccessRestrictions",
 			OperationID:   "repos/delete-access-restrictions",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56730,6 +58197,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteAdminBranchProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56737,8 +58205,9 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAdminBranchProtection",
-			ID:   "repos/delete-admin-branch-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteAdminBranchProtectionParams(args, r)
@@ -56758,6 +58227,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 			Context:       ctx,
 			OperationName: "ReposDeleteAdminBranchProtection",
 			OperationID:   "repos/delete-admin-branch-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56838,6 +58308,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteAnEnvironment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56845,8 +58316,9 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAnEnvironment",
-			ID:   "repos/delete-an-environment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteAnEnvironmentParams(args, r)
@@ -56866,6 +58338,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposDeleteAnEnvironment",
 			OperationID:   "repos/delete-an-environment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56947,6 +58420,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteAutolink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56954,8 +58428,9 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAutolink",
-			ID:   "repos/delete-autolink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteAutolinkParams(args, r)
@@ -56975,6 +58450,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ReposDeleteAutolink",
 			OperationID:   "repos/delete-autolink",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57059,6 +58535,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteBranchProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57066,8 +58543,9 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteBranchProtection",
-			ID:   "repos/delete-branch-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteBranchProtectionParams(args, r)
@@ -57087,6 +58565,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposDeleteBranchProtection",
 			OperationID:   "repos/delete-branch-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57167,6 +58646,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57174,8 +58654,9 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteCommitComment",
-			ID:   "repos/delete-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteCommitCommentParams(args, r)
@@ -57195,6 +58676,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposDeleteCommitComment",
 			OperationID:   "repos/delete-commit-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57282,6 +58764,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteCommitSignatureProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57289,8 +58772,9 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteCommitSignatureProtection",
-			ID:   "repos/delete-commit-signature-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, r)
@@ -57310,6 +58794,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 			Context:       ctx,
 			OperationName: "ReposDeleteCommitSignatureProtection",
 			OperationID:   "repos/delete-commit-signature-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57391,6 +58876,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteDeployKey
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57398,8 +58884,9 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteDeployKey",
-			ID:   "repos/delete-deploy-key",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteDeployKeyParams(args, r)
@@ -57419,6 +58906,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposDeleteDeployKey",
 			OperationID:   "repos/delete-deploy-key",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57507,6 +58995,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteDeployment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57514,8 +59003,9 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteDeployment",
-			ID:   "repos/delete-deployment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteDeploymentParams(args, r)
@@ -57535,6 +59025,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposDeleteDeployment",
 			OperationID:   "repos/delete-deployment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57622,6 +59113,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteFile
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57629,8 +59121,9 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteFile",
-			ID:   "repos/delete-file",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteFileParams(args, r)
@@ -57665,6 +59158,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReposDeleteFile",
 			OperationID:   "repos/delete-file",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -57745,6 +59239,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteInvitation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57752,8 +59247,9 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteInvitation",
-			ID:   "repos/delete-invitation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteInvitationParams(args, r)
@@ -57773,6 +59269,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposDeleteInvitation",
 			OperationID:   "repos/delete-invitation",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57853,6 +59350,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeletePagesSite
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57860,8 +59358,9 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeletePagesSite",
-			ID:   "repos/delete-pages-site",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeletePagesSiteParams(args, r)
@@ -57881,6 +59380,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposDeletePagesSite",
 			OperationID:   "repos/delete-pages-site",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57961,6 +59461,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeletePullRequestReviewProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57968,8 +59469,9 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeletePullRequestReviewProtection",
-			ID:   "repos/delete-pull-request-review-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, r)
@@ -57989,6 +59491,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 			Context:       ctx,
 			OperationName: "ReposDeletePullRequestReviewProtection",
 			OperationID:   "repos/delete-pull-request-review-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58069,6 +59572,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteRelease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58076,8 +59580,9 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteRelease",
-			ID:   "repos/delete-release",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteReleaseParams(args, r)
@@ -58097,6 +59602,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposDeleteRelease",
 			OperationID:   "repos/delete-release",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58177,6 +59683,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteReleaseAsset
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58184,8 +59691,9 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteReleaseAsset",
-			ID:   "repos/delete-release-asset",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteReleaseAssetParams(args, r)
@@ -58205,6 +59713,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReposDeleteReleaseAsset",
 			OperationID:   "repos/delete-release-asset",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58285,6 +59794,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDeleteWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58292,8 +59802,9 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteWebhook",
-			ID:   "repos/delete-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDeleteWebhookParams(args, r)
@@ -58313,6 +59824,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposDeleteWebhook",
 			OperationID:   "repos/delete-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58395,6 +59907,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDisableAutomatedSecurityFixes
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58402,8 +59915,9 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDisableAutomatedSecurityFixes",
-			ID:   "repos/disable-automated-security-fixes",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, r)
@@ -58423,6 +59937,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ReposDisableAutomatedSecurityFixes",
 			OperationID:   "repos/disable-automated-security-fixes",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58499,6 +60014,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDisableLfsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58506,8 +60022,9 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDisableLfsForRepo",
-			ID:   "repos/disable-lfs-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDisableLfsForRepoParams(args, r)
@@ -58527,6 +60044,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposDisableLfsForRepo",
 			OperationID:   "repos/disable-lfs-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58606,6 +60124,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDisableVulnerabilityAlerts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58613,8 +60132,9 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDisableVulnerabilityAlerts",
-			ID:   "repos/disable-vulnerability-alerts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDisableVulnerabilityAlertsParams(args, r)
@@ -58634,6 +60154,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "ReposDisableVulnerabilityAlerts",
 			OperationID:   "repos/disable-vulnerability-alerts",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58715,6 +60236,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDownloadTarballArchive
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58722,8 +60244,9 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDownloadTarballArchive",
-			ID:   "repos/download-tarball-archive",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDownloadTarballArchiveParams(args, r)
@@ -58743,6 +60266,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposDownloadTarballArchive",
 			OperationID:   "repos/download-tarball-archive",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58828,6 +60352,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposDownloadZipballArchive
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58835,8 +60360,9 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDownloadZipballArchive",
-			ID:   "repos/download-zipball-archive",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposDownloadZipballArchiveParams(args, r)
@@ -58856,6 +60382,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposDownloadZipballArchive",
 			OperationID:   "repos/download-zipball-archive",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58938,6 +60465,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposEnableAutomatedSecurityFixes
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58945,8 +60473,9 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposEnableAutomatedSecurityFixes",
-			ID:   "repos/enable-automated-security-fixes",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, r)
@@ -58966,6 +60495,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ReposEnableAutomatedSecurityFixes",
 			OperationID:   "repos/enable-automated-security-fixes",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59042,6 +60572,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposEnableLfsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59049,8 +60580,9 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposEnableLfsForRepo",
-			ID:   "repos/enable-lfs-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposEnableLfsForRepoParams(args, r)
@@ -59070,6 +60602,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposEnableLfsForRepo",
 			OperationID:   "repos/enable-lfs-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59149,6 +60682,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposEnableVulnerabilityAlerts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59156,8 +60690,9 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposEnableVulnerabilityAlerts",
-			ID:   "repos/enable-vulnerability-alerts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposEnableVulnerabilityAlertsParams(args, r)
@@ -59177,6 +60712,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ReposEnableVulnerabilityAlerts",
 			OperationID:   "repos/enable-vulnerability-alerts",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59254,6 +60790,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59261,8 +60798,9 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGet",
-			ID:   "repos/get",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetParams(args, r)
@@ -59282,6 +60820,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "ReposGet",
 			OperationID:   "repos/get",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59365,6 +60904,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59372,8 +60912,9 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAccessRestrictions",
-			ID:   "repos/get-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetAccessRestrictionsParams(args, r)
@@ -59393,6 +60934,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "ReposGetAccessRestrictions",
 			OperationID:   "repos/get-access-restrictions",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59477,6 +61019,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetAdminBranchProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59484,8 +61027,9 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAdminBranchProtection",
-			ID:   "repos/get-admin-branch-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetAdminBranchProtectionParams(args, r)
@@ -59505,6 +61049,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReposGetAdminBranchProtection",
 			OperationID:   "repos/get-admin-branch-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59589,6 +61134,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetAllStatusCheckContexts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59596,8 +61142,9 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAllStatusCheckContexts",
-			ID:   "repos/get-all-status-check-contexts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetAllStatusCheckContextsParams(args, r)
@@ -59617,6 +61164,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposGetAllStatusCheckContexts",
 			OperationID:   "repos/get-all-status-check-contexts",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59697,6 +61245,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetAllTopics
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59704,8 +61253,9 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAllTopics",
-			ID:   "repos/get-all-topics",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetAllTopicsParams(args, r)
@@ -59725,6 +61275,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ReposGetAllTopics",
 			OperationID:   "repos/get-all-topics",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59816,6 +61367,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetAppsWithAccessToProtectedBranch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59823,8 +61375,9 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAppsWithAccessToProtectedBranch",
-			ID:   "repos/get-apps-with-access-to-protected-branch",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, r)
@@ -59844,6 +61397,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 			Context:       ctx,
 			OperationName: "ReposGetAppsWithAccessToProtectedBranch",
 			OperationID:   "repos/get-apps-with-access-to-protected-branch",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59925,6 +61479,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetAutolink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59932,8 +61487,9 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAutolink",
-			ID:   "repos/get-autolink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetAutolinkParams(args, r)
@@ -59953,6 +61509,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ReposGetAutolink",
 			OperationID:   "repos/get-autolink",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60033,6 +61590,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetBranch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60040,8 +61598,9 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetBranch",
-			ID:   "repos/get-branch",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetBranchParams(args, r)
@@ -60061,6 +61620,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReposGetBranch",
 			OperationID:   "repos/get-branch",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60145,6 +61705,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetBranchProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60152,8 +61713,9 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetBranchProtection",
-			ID:   "repos/get-branch-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetBranchProtectionParams(args, r)
@@ -60173,6 +61735,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposGetBranchProtection",
 			OperationID:   "repos/get-branch-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60254,6 +61817,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetClones
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60261,8 +61825,9 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetClones",
-			ID:   "repos/get-clones",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetClonesParams(args, r)
@@ -60282,6 +61847,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReposGetClones",
 			OperationID:   "repos/get-clones",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60362,6 +61928,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCodeFrequencyStats
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60369,8 +61936,9 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCodeFrequencyStats",
-			ID:   "repos/get-code-frequency-stats",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCodeFrequencyStatsParams(args, r)
@@ -60390,6 +61958,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "ReposGetCodeFrequencyStats",
 			OperationID:   "repos/get-code-frequency-stats",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60467,6 +62036,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCollaboratorPermissionLevel
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60474,8 +62044,9 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCollaboratorPermissionLevel",
-			ID:   "repos/get-collaborator-permission-level",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, r)
@@ -60495,6 +62066,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 			Context:       ctx,
 			OperationName: "ReposGetCollaboratorPermissionLevel",
 			OperationID:   "repos/get-collaborator-permission-level",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60583,6 +62155,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCombinedStatusForRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60590,8 +62163,9 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCombinedStatusForRef",
-			ID:   "repos/get-combined-status-for-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCombinedStatusForRefParams(args, r)
@@ -60611,6 +62185,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "ReposGetCombinedStatusForRef",
 			OperationID:   "repos/get-combined-status-for-ref",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60745,6 +62320,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCommit
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60752,8 +62328,9 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommit",
-			ID:   "repos/get-commit",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCommitParams(args, r)
@@ -60773,6 +62350,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReposGetCommit",
 			OperationID:   "repos/get-commit",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60862,6 +62440,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCommitActivityStats
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60869,8 +62448,9 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommitActivityStats",
-			ID:   "repos/get-commit-activity-stats",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCommitActivityStatsParams(args, r)
@@ -60890,6 +62470,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ReposGetCommitActivityStats",
 			OperationID:   "repos/get-commit-activity-stats",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60966,6 +62547,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60973,8 +62555,9 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommitComment",
-			ID:   "repos/get-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCommitCommentParams(args, r)
@@ -60994,6 +62577,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposGetCommitComment",
 			OperationID:   "repos/get-commit-comment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61083,6 +62667,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCommitSignatureProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61090,8 +62675,9 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommitSignatureProtection",
-			ID:   "repos/get-commit-signature-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCommitSignatureProtectionParams(args, r)
@@ -61111,6 +62697,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "ReposGetCommitSignatureProtection",
 			OperationID:   "repos/get-commit-signature-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61200,6 +62787,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetCommunityProfileMetrics
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61207,8 +62795,9 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommunityProfileMetrics",
-			ID:   "repos/get-community-profile-metrics",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetCommunityProfileMetricsParams(args, r)
@@ -61228,6 +62817,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "ReposGetCommunityProfileMetrics",
 			OperationID:   "repos/get-community-profile-metrics",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61309,6 +62899,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetContributorsStats
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61316,8 +62907,9 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetContributorsStats",
-			ID:   "repos/get-contributors-stats",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetContributorsStatsParams(args, r)
@@ -61337,6 +62929,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "ReposGetContributorsStats",
 			OperationID:   "repos/get-contributors-stats",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61413,6 +63006,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetDeployKey
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61420,8 +63014,9 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetDeployKey",
-			ID:   "repos/get-deploy-key",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetDeployKeyParams(args, r)
@@ -61441,6 +63036,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ReposGetDeployKey",
 			OperationID:   "repos/get-deploy-key",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61521,6 +63117,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetDeployment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61528,8 +63125,9 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetDeployment",
-			ID:   "repos/get-deployment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetDeploymentParams(args, r)
@@ -61549,6 +63147,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposGetDeployment",
 			OperationID:   "repos/get-deployment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61629,6 +63228,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetDeploymentStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61636,8 +63236,9 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetDeploymentStatus",
-			ID:   "repos/get-deployment-status",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetDeploymentStatusParams(args, r)
@@ -61657,6 +63258,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposGetDeploymentStatus",
 			OperationID:   "repos/get-deployment-status",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61741,6 +63343,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetLatestPagesBuild
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61748,8 +63351,9 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetLatestPagesBuild",
-			ID:   "repos/get-latest-pages-build",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetLatestPagesBuildParams(args, r)
@@ -61769,6 +63373,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposGetLatestPagesBuild",
 			OperationID:   "repos/get-latest-pages-build",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61848,6 +63453,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetLatestRelease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61855,8 +63461,9 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetLatestRelease",
-			ID:   "repos/get-latest-release",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetLatestReleaseParams(args, r)
@@ -61876,6 +63483,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposGetLatestRelease",
 			OperationID:   "repos/get-latest-release",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61952,6 +63560,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetPages
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61959,8 +63568,9 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPages",
-			ID:   "repos/get-pages",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetPagesParams(args, r)
@@ -61980,6 +63590,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "ReposGetPages",
 			OperationID:   "repos/get-pages",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62056,6 +63667,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetPagesBuild
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62063,8 +63675,9 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPagesBuild",
-			ID:   "repos/get-pages-build",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetPagesBuildParams(args, r)
@@ -62084,6 +63697,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposGetPagesBuild",
 			OperationID:   "repos/get-pages-build",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62170,6 +63784,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetPagesHealthCheck
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62177,8 +63792,9 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPagesHealthCheck",
-			ID:   "repos/get-pages-health-check",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetPagesHealthCheckParams(args, r)
@@ -62198,6 +63814,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposGetPagesHealthCheck",
 			OperationID:   "repos/get-pages-health-check",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62277,6 +63894,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetParticipationStats
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62284,8 +63902,9 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetParticipationStats",
-			ID:   "repos/get-participation-stats",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetParticipationStatsParams(args, r)
@@ -62305,6 +63924,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "ReposGetParticipationStats",
 			OperationID:   "repos/get-participation-stats",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62385,6 +64005,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetPullRequestReviewProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62392,8 +64013,9 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPullRequestReviewProtection",
-			ID:   "repos/get-pull-request-review-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetPullRequestReviewProtectionParams(args, r)
@@ -62413,6 +64035,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 			Context:       ctx,
 			OperationName: "ReposGetPullRequestReviewProtection",
 			OperationID:   "repos/get-pull-request-review-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62498,6 +64121,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetPunchCardStats
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62505,8 +64129,9 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPunchCardStats",
-			ID:   "repos/get-punch-card-stats",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetPunchCardStatsParams(args, r)
@@ -62526,6 +64151,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposGetPunchCardStats",
 			OperationID:   "repos/get-punch-card-stats",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62604,6 +64230,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetReadme
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62611,8 +64238,9 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReadme",
-			ID:   "repos/get-readme",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetReadmeParams(args, r)
@@ -62632,6 +64260,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReposGetReadme",
 			OperationID:   "repos/get-readme",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62714,6 +64343,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetReadmeInDirectory
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62721,8 +64351,9 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReadmeInDirectory",
-			ID:   "repos/get-readme-in-directory",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
@@ -62742,6 +64373,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 			Context:       ctx,
 			OperationName: "ReposGetReadmeInDirectory",
 			OperationID:   "repos/get-readme-in-directory",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62828,6 +64460,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetRelease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62835,8 +64468,9 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetRelease",
-			ID:   "repos/get-release",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetReleaseParams(args, r)
@@ -62856,6 +64490,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReposGetRelease",
 			OperationID:   "repos/get-release",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -62939,6 +64574,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetReleaseAsset
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62946,8 +64582,9 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReleaseAsset",
-			ID:   "repos/get-release-asset",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetReleaseAssetParams(args, r)
@@ -62967,6 +64604,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposGetReleaseAsset",
 			OperationID:   "repos/get-release-asset",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63047,6 +64685,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetReleaseByTag
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63054,8 +64693,9 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReleaseByTag",
-			ID:   "repos/get-release-by-tag",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetReleaseByTagParams(args, r)
@@ -63075,6 +64715,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposGetReleaseByTag",
 			OperationID:   "repos/get-release-by-tag",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63159,6 +64800,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetStatusChecksProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63166,8 +64808,9 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetStatusChecksProtection",
-			ID:   "repos/get-status-checks-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetStatusChecksProtectionParams(args, r)
@@ -63187,6 +64830,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposGetStatusChecksProtection",
 			OperationID:   "repos/get-status-checks-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63272,6 +64916,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetTeamsWithAccessToProtectedBranch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63279,8 +64924,9 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetTeamsWithAccessToProtectedBranch",
-			ID:   "repos/get-teams-with-access-to-protected-branch",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, r)
@@ -63300,6 +64946,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 			Context:       ctx,
 			OperationName: "ReposGetTeamsWithAccessToProtectedBranch",
 			OperationID:   "repos/get-teams-with-access-to-protected-branch",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63380,6 +65027,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetTopPaths
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63387,8 +65035,9 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetTopPaths",
-			ID:   "repos/get-top-paths",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetTopPathsParams(args, r)
@@ -63408,6 +65057,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ReposGetTopPaths",
 			OperationID:   "repos/get-top-paths",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63484,6 +65134,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetTopReferrers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63491,8 +65142,9 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetTopReferrers",
-			ID:   "repos/get-top-referrers",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetTopReferrersParams(args, r)
@@ -63512,6 +65164,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposGetTopReferrers",
 			OperationID:   "repos/get-top-referrers",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63593,6 +65246,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetUsersWithAccessToProtectedBranch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63600,8 +65254,9 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetUsersWithAccessToProtectedBranch",
-			ID:   "repos/get-users-with-access-to-protected-branch",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, r)
@@ -63621,6 +65276,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 			Context:       ctx,
 			OperationName: "ReposGetUsersWithAccessToProtectedBranch",
 			OperationID:   "repos/get-users-with-access-to-protected-branch",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63702,6 +65358,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetViews
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63709,8 +65366,9 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetViews",
-			ID:   "repos/get-views",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetViewsParams(args, r)
@@ -63730,6 +65388,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "ReposGetViews",
 			OperationID:   "repos/get-views",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63812,6 +65471,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63819,8 +65479,9 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetWebhook",
-			ID:   "repos/get-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetWebhookParams(args, r)
@@ -63840,6 +65501,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReposGetWebhook",
 			OperationID:   "repos/get-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -63924,6 +65586,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetWebhookConfigForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63931,8 +65594,9 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetWebhookConfigForRepo",
-			ID:   "repos/get-webhook-config-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetWebhookConfigForRepoParams(args, r)
@@ -63952,6 +65616,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 			Context:       ctx,
 			OperationName: "ReposGetWebhookConfigForRepo",
 			OperationID:   "repos/get-webhook-config-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64032,6 +65697,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposGetWebhookDelivery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64039,8 +65705,9 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetWebhookDelivery",
-			ID:   "repos/get-webhook-delivery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposGetWebhookDeliveryParams(args, r)
@@ -64060,6 +65727,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReposGetWebhookDelivery",
 			OperationID:   "repos/get-webhook-delivery",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64145,6 +65813,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListAutolinks
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64152,8 +65821,9 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListAutolinks",
-			ID:   "repos/list-autolinks",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListAutolinksParams(args, r)
@@ -64173,6 +65843,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposListAutolinks",
 			OperationID:   "repos/list-autolinks",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64253,6 +65924,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListBranches
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64260,8 +65932,9 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListBranches",
-			ID:   "repos/list-branches",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListBranchesParams(args, r)
@@ -64281,6 +65954,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ReposListBranches",
 			OperationID:   "repos/list-branches",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64374,6 +66048,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListBranchesForHeadCommit
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64381,8 +66056,9 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListBranchesForHeadCommit",
-			ID:   "repos/list-branches-for-head-commit",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
@@ -64402,6 +66078,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposListBranchesForHeadCommit",
 			OperationID:   "repos/list-branches-for-head-commit",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64486,6 +66163,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListCollaborators
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64493,8 +66171,9 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCollaborators",
-			ID:   "repos/list-collaborators",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListCollaboratorsParams(args, r)
@@ -64514,6 +66193,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposListCollaborators",
 			OperationID:   "repos/list-collaborators",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64602,6 +66282,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListCommentsForCommit
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64609,8 +66290,9 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommentsForCommit",
-			ID:   "repos/list-comments-for-commit",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListCommentsForCommitParams(args, r)
@@ -64630,6 +66312,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "ReposListCommentsForCommit",
 			OperationID:   "repos/list-comments-for-commit",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64721,6 +66404,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListCommitCommentsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64728,8 +66412,9 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommitCommentsForRepo",
-			ID:   "repos/list-commit-comments-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListCommitCommentsForRepoParams(args, r)
@@ -64749,6 +66434,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ReposListCommitCommentsForRepo",
 			OperationID:   "repos/list-commit-comments-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64836,6 +66522,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListCommitStatusesForRef
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64843,8 +66530,9 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommitStatusesForRef",
-			ID:   "repos/list-commit-statuses-for-ref",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListCommitStatusesForRefParams(args, r)
@@ -64864,6 +66552,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReposListCommitStatusesForRef",
 			OperationID:   "repos/list-commit-statuses-for-ref",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -64983,6 +66672,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListCommits
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64990,8 +66680,9 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommits",
-			ID:   "repos/list-commits",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListCommitsParams(args, r)
@@ -65011,6 +66702,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ReposListCommits",
 			OperationID:   "repos/list-commits",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65121,6 +66813,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListContributors
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65128,8 +66821,9 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListContributors",
-			ID:   "repos/list-contributors",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListContributorsParams(args, r)
@@ -65149,6 +66843,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposListContributors",
 			OperationID:   "repos/list-contributors",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65237,6 +66932,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListDeployKeys
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65244,8 +66940,9 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListDeployKeys",
-			ID:   "repos/list-deploy-keys",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListDeployKeysParams(args, r)
@@ -65265,6 +66962,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ReposListDeployKeys",
 			OperationID:   "repos/list-deploy-keys",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65349,6 +67047,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListDeploymentStatuses
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65356,8 +67055,9 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListDeploymentStatuses",
-			ID:   "repos/list-deployment-statuses",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListDeploymentStatusesParams(args, r)
@@ -65377,6 +67077,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposListDeploymentStatuses",
 			OperationID:   "repos/list-deployment-statuses",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65465,6 +67166,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListDeployments
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65472,8 +67174,9 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListDeployments",
-			ID:   "repos/list-deployments",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListDeploymentsParams(args, r)
@@ -65493,6 +67196,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposListDeployments",
 			OperationID:   "repos/list-deployments",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65596,6 +67300,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65603,8 +67308,9 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForAuthenticatedUser",
-			ID:   "repos/list-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListForAuthenticatedUserParams(args, r)
@@ -65624,6 +67330,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "ReposListForAuthenticatedUser",
 			OperationID:   "repos/list-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65728,6 +67435,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65735,8 +67443,9 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForOrg",
-			ID:   "repos/list-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListForOrgParams(args, r)
@@ -65756,6 +67465,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReposListForOrg",
 			OperationID:   "repos/list-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65849,6 +67559,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65856,8 +67567,9 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForUser",
-			ID:   "repos/list-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListForUserParams(args, r)
@@ -65877,6 +67589,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ReposListForUser",
 			OperationID:   "repos/list-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -65969,6 +67682,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListForks
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65976,8 +67690,9 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForks",
-			ID:   "repos/list-forks",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListForksParams(args, r)
@@ -65997,6 +67712,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReposListForks",
 			OperationID:   "repos/list-forks",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66086,6 +67802,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListInvitations
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66093,8 +67810,9 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListInvitations",
-			ID:   "repos/list-invitations",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListInvitationsParams(args, r)
@@ -66114,6 +67832,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposListInvitations",
 			OperationID:   "repos/list-invitations",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66199,6 +67918,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListInvitationsForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66206,8 +67926,9 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListInvitationsForAuthenticatedUser",
-			ID:   "repos/list-invitations-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, r)
@@ -66227,6 +67948,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 			Context:       ctx,
 			OperationName: "ReposListInvitationsForAuthenticatedUser",
 			OperationID:   "repos/list-invitations-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66304,6 +68026,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListLanguages
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66311,8 +68034,9 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListLanguages",
-			ID:   "repos/list-languages",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListLanguagesParams(args, r)
@@ -66332,6 +68056,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposListLanguages",
 			OperationID:   "repos/list-languages",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66408,6 +68133,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListPagesBuilds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66415,8 +68141,9 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListPagesBuilds",
-			ID:   "repos/list-pages-builds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListPagesBuildsParams(args, r)
@@ -66436,6 +68163,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposListPagesBuilds",
 			OperationID:   "repos/list-pages-builds",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66526,6 +68254,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListPublic
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66533,8 +68262,9 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListPublic",
-			ID:   "repos/list-public",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListPublicParams(args, r)
@@ -66554,6 +68284,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReposListPublic",
 			OperationID:   "repos/list-public",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66631,6 +68362,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListPullRequestsAssociatedWithCommit
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66638,8 +68370,9 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListPullRequestsAssociatedWithCommit",
-			ID:   "repos/list-pull-requests-associated-with-commit",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, r)
@@ -66659,6 +68392,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 			Context:       ctx,
 			OperationName: "ReposListPullRequestsAssociatedWithCommit",
 			OperationID:   "repos/list-pull-requests-associated-with-commit",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66747,6 +68481,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListReleaseAssets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66754,8 +68489,9 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListReleaseAssets",
-			ID:   "repos/list-release-assets",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListReleaseAssetsParams(args, r)
@@ -66775,6 +68511,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposListReleaseAssets",
 			OperationID:   "repos/list-release-assets",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66867,6 +68604,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListReleases
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66874,8 +68612,9 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListReleases",
-			ID:   "repos/list-releases",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListReleasesParams(args, r)
@@ -66895,6 +68634,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ReposListReleases",
 			OperationID:   "repos/list-releases",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -66979,6 +68719,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListTags
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66986,8 +68727,9 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListTags",
-			ID:   "repos/list-tags",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListTagsParams(args, r)
@@ -67007,6 +68749,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "ReposListTags",
 			OperationID:   "repos/list-tags",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -67091,6 +68834,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListTeams
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67098,8 +68842,9 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListTeams",
-			ID:   "repos/list-teams",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListTeamsParams(args, r)
@@ -67119,6 +68864,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReposListTeams",
 			OperationID:   "repos/list-teams",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -67203,6 +68949,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListWebhookDeliveries
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67210,8 +68957,9 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListWebhookDeliveries",
-			ID:   "repos/list-webhook-deliveries",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListWebhookDeliveriesParams(args, r)
@@ -67231,6 +68979,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "ReposListWebhookDeliveries",
 			OperationID:   "repos/list-webhook-deliveries",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -67319,6 +69068,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposListWebhooks
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67326,8 +69076,9 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListWebhooks",
-			ID:   "repos/list-webhooks",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposListWebhooksParams(args, r)
@@ -67347,6 +69098,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ReposListWebhooks",
 			OperationID:   "repos/list-webhooks",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -67431,6 +69183,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposMerge
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67438,8 +69191,9 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposMerge",
-			ID:   "repos/merge",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposMergeParams(args, r)
@@ -67474,6 +69228,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "ReposMerge",
 			OperationID:   "repos/merge",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -67551,6 +69306,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposMergeUpstream
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67558,8 +69314,9 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposMergeUpstream",
-			ID:   "repos/merge-upstream",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposMergeUpstreamParams(args, r)
@@ -67594,6 +69351,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposMergeUpstream",
 			OperationID:   "repos/merge-upstream",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -67671,6 +69429,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposPingWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67678,8 +69437,9 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposPingWebhook",
-			ID:   "repos/ping-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposPingWebhookParams(args, r)
@@ -67699,6 +69459,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "ReposPingWebhook",
 			OperationID:   "repos/ping-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -67779,6 +69540,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRedeliverWebhookDelivery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67786,8 +69548,9 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRedeliverWebhookDelivery",
-			ID:   "repos/redeliver-webhook-delivery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
@@ -67807,6 +69570,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 			Context:       ctx,
 			OperationName: "ReposRedeliverWebhookDelivery",
 			OperationID:   "repos/redeliver-webhook-delivery",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -67905,6 +69669,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRemoveAppAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67912,8 +69677,9 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveAppAccessRestrictions",
-			ID:   "repos/remove-app-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
@@ -67948,6 +69714,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 			Context:       ctx,
 			OperationName: "ReposRemoveAppAccessRestrictions",
 			OperationID:   "repos/remove-app-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -68028,6 +69795,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRemoveCollaborator
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68035,8 +69803,9 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveCollaborator",
-			ID:   "repos/remove-collaborator",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRemoveCollaboratorParams(args, r)
@@ -68056,6 +69825,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReposRemoveCollaborator",
 			OperationID:   "repos/remove-collaborator",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -68140,6 +69910,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRemoveStatusCheckContexts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68147,8 +69918,9 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveStatusCheckContexts",
-			ID:   "repos/remove-status-check-contexts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
@@ -68183,6 +69955,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposRemoveStatusCheckContexts",
 			OperationID:   "repos/remove-status-check-contexts",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -68267,6 +70040,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRemoveStatusCheckProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68274,8 +70048,9 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveStatusCheckProtection",
-			ID:   "repos/remove-status-check-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRemoveStatusCheckProtectionParams(args, r)
@@ -68295,6 +70070,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 			Context:       ctx,
 			OperationName: "ReposRemoveStatusCheckProtection",
 			OperationID:   "repos/remove-status-check-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -68389,6 +70165,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRemoveTeamAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68396,8 +70173,9 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveTeamAccessRestrictions",
-			ID:   "repos/remove-team-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
@@ -68432,6 +70210,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "ReposRemoveTeamAccessRestrictions",
 			OperationID:   "repos/remove-team-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -68525,6 +70304,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRemoveUserAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68532,8 +70312,9 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveUserAccessRestrictions",
-			ID:   "repos/remove-user-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
@@ -68568,6 +70349,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "ReposRemoveUserAccessRestrictions",
 			OperationID:   "repos/remove-user-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -68660,6 +70442,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRenameBranch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68667,8 +70450,9 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRenameBranch",
-			ID:   "repos/rename-branch",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRenameBranchParams(args, r)
@@ -68703,6 +70487,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "ReposRenameBranch",
 			OperationID:   "repos/rename-branch",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -68783,6 +70568,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposReplaceAllTopics
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68790,8 +70576,9 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposReplaceAllTopics",
-			ID:   "repos/replace-all-topics",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposReplaceAllTopicsParams(args, r)
@@ -68826,6 +70613,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposReplaceAllTopics",
 			OperationID:   "repos/replace-all-topics",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -68907,6 +70695,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposRequestPagesBuild
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68914,8 +70703,9 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRequestPagesBuild",
-			ID:   "repos/request-pages-build",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposRequestPagesBuildParams(args, r)
@@ -68935,6 +70725,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReposRequestPagesBuild",
 			OperationID:   "repos/request-pages-build",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -69017,6 +70808,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposSetAdminBranchProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69024,8 +70816,9 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetAdminBranchProtection",
-			ID:   "repos/set-admin-branch-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposSetAdminBranchProtectionParams(args, r)
@@ -69045,6 +70838,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReposSetAdminBranchProtection",
 			OperationID:   "repos/set-admin-branch-protection",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -69141,6 +70935,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposSetAppAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69148,8 +70943,9 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetAppAccessRestrictions",
-			ID:   "repos/set-app-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
@@ -69184,6 +70980,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 			Context:       ctx,
 			OperationName: "ReposSetAppAccessRestrictions",
 			OperationID:   "repos/set-app-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -69268,6 +71065,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposSetStatusCheckContexts
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69275,8 +71073,9 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetStatusCheckContexts",
-			ID:   "repos/set-status-check-contexts",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposSetStatusCheckContextsParams(args, r)
@@ -69311,6 +71110,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposSetStatusCheckContexts",
 			OperationID:   "repos/set-status-check-contexts",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -69406,6 +71206,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposSetTeamAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69413,8 +71214,9 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetTeamAccessRestrictions",
-			ID:   "repos/set-team-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
@@ -69449,6 +71251,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposSetTeamAccessRestrictions",
 			OperationID:   "repos/set-team-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -69543,6 +71346,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposSetUserAccessRestrictions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69550,8 +71354,9 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetUserAccessRestrictions",
-			ID:   "repos/set-user-access-restrictions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
@@ -69586,6 +71391,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "ReposSetUserAccessRestrictions",
 			OperationID:   "repos/set-user-access-restrictions",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -69669,6 +71475,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposTestPushWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69676,8 +71483,9 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposTestPushWebhook",
-			ID:   "repos/test-push-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposTestPushWebhookParams(args, r)
@@ -69697,6 +71505,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReposTestPushWebhook",
 			OperationID:   "repos/test-push-webhook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -69781,6 +71590,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposTransfer
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69788,8 +71598,9 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposTransfer",
-			ID:   "repos/transfer",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposTransferParams(args, r)
@@ -69824,6 +71635,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "ReposTransfer",
 			OperationID:   "repos/transfer",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -69901,6 +71713,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69908,8 +71721,9 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdate",
-			ID:   "repos/update",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateParams(args, r)
@@ -69944,6 +71758,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "ReposUpdate",
 			OperationID:   "repos/update",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70027,6 +71842,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateBranchProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70034,8 +71850,9 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateBranchProtection",
-			ID:   "repos/update-branch-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateBranchProtectionParams(args, r)
@@ -70070,6 +71887,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 			Context:       ctx,
 			OperationName: "ReposUpdateBranchProtection",
 			OperationID:   "repos/update-branch-protection",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70150,6 +71968,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateCommitComment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70157,8 +71976,9 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateCommitComment",
-			ID:   "repos/update-commit-comment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateCommitCommentParams(args, r)
@@ -70193,6 +72013,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReposUpdateCommitComment",
 			OperationID:   "repos/update-commit-comment",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70273,6 +72094,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateInvitation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70280,8 +72102,9 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateInvitation",
-			ID:   "repos/update-invitation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateInvitationParams(args, r)
@@ -70316,6 +72139,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ReposUpdateInvitation",
 			OperationID:   "repos/update-invitation",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70403,6 +72227,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdatePullRequestReviewProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70410,8 +72235,9 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdatePullRequestReviewProtection",
-			ID:   "repos/update-pull-request-review-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
@@ -70446,6 +72272,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 			Context:       ctx,
 			OperationName: "ReposUpdatePullRequestReviewProtection",
 			OperationID:   "repos/update-pull-request-review-protection",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70526,6 +72353,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateRelease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70533,8 +72361,9 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateRelease",
-			ID:   "repos/update-release",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateReleaseParams(args, r)
@@ -70569,6 +72398,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposUpdateRelease",
 			OperationID:   "repos/update-release",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70649,6 +72479,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateReleaseAsset
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70656,8 +72487,9 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateReleaseAsset",
-			ID:   "repos/update-release-asset",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateReleaseAssetParams(args, r)
@@ -70692,6 +72524,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReposUpdateReleaseAsset",
 			OperationID:   "repos/update-release-asset",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70778,6 +72611,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateStatusCheckProtection
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70785,8 +72619,9 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateStatusCheckProtection",
-			ID:   "repos/update-status-check-protection",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
@@ -70821,6 +72656,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 			Context:       ctx,
 			OperationName: "ReposUpdateStatusCheckProtection",
 			OperationID:   "repos/update-status-check-protection",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -70904,6 +72740,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70911,8 +72748,9 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateWebhook",
-			ID:   "repos/update-webhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateWebhookParams(args, r)
@@ -70947,6 +72785,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 			Context:       ctx,
 			OperationName: "ReposUpdateWebhook",
 			OperationID:   "repos/update-webhook",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -71031,6 +72870,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUpdateWebhookConfigForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71038,8 +72878,9 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateWebhookConfigForRepo",
-			ID:   "repos/update-webhook-config-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, r)
@@ -71074,6 +72915,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 			Context:       ctx,
 			OperationName: "ReposUpdateWebhookConfigForRepo",
 			OperationID:   "repos/update-webhook-config-for-repo",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -71179,6 +73021,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReposUploadReleaseAsset
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71186,8 +73029,9 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUploadReleaseAsset",
-			ID:   "repos/upload-release-asset",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeReposUploadReleaseAssetParams(args, r)
@@ -71222,6 +73066,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReposUploadReleaseAsset",
 			OperationID:   "repos/upload-release-asset",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -71310,6 +73155,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ScimDeleteUserFromOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71317,8 +73163,9 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ScimDeleteUserFromOrg",
-			ID:   "scim/delete-user-from-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeScimDeleteUserFromOrgParams(args, r)
@@ -71338,6 +73185,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ScimDeleteUserFromOrg",
 			OperationID:   "scim/delete-user-from-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -71433,6 +73281,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchCode
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71440,8 +73289,9 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchCode",
-			ID:   "search/code",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchCodeParams(args, r)
@@ -71461,6 +73311,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "SearchCode",
 			OperationID:   "search/code",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -71559,6 +73410,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchCommits
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71566,8 +73418,9 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchCommits",
-			ID:   "search/commits",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchCommitsParams(args, r)
@@ -71587,6 +73440,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SearchCommits",
 			OperationID:   "search/commits",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -71697,6 +73551,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchIssuesAndPullRequests
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71704,8 +73559,9 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchIssuesAndPullRequests",
-			ID:   "search/issues-and-pull-requests",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
@@ -71725,6 +73581,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "SearchIssuesAndPullRequests",
 			OperationID:   "search/issues-and-pull-requests",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -71822,6 +73679,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchLabels
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71829,8 +73687,9 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchLabels",
-			ID:   "search/labels",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchLabelsParams(args, r)
@@ -71850,6 +73709,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SearchLabels",
 			OperationID:   "search/labels",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -71957,6 +73817,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchRepos
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71964,8 +73825,9 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchRepos",
-			ID:   "search/repos",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchReposParams(args, r)
@@ -71985,6 +73847,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "SearchRepos",
 			OperationID:   "search/repos",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72086,6 +73949,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchTopics
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72093,8 +73957,9 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchTopics",
-			ID:   "search/topics",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchTopicsParams(args, r)
@@ -72114,6 +73979,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SearchTopics",
 			OperationID:   "search/topics",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72205,6 +74071,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchUsers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72212,8 +74079,9 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchUsers",
-			ID:   "search/users",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchUsersParams(args, r)
@@ -72233,6 +74101,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "SearchUsers",
 			OperationID:   "search/users",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72324,6 +74193,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SecretScanningGetAlert
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72331,8 +74201,9 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningGetAlert",
-			ID:   "secret-scanning/get-alert",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSecretScanningGetAlertParams(args, r)
@@ -72352,6 +74223,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 			Context:       ctx,
 			OperationName: "SecretScanningGetAlert",
 			OperationID:   "secret-scanning/get-alert",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72436,6 +74308,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SecretScanningListAlertsForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72443,8 +74316,9 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningListAlertsForOrg",
-			ID:   "secret-scanning/list-alerts-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSecretScanningListAlertsForOrgParams(args, r)
@@ -72464,6 +74338,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "SecretScanningListAlertsForOrg",
 			OperationID:   "secret-scanning/list-alerts-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72555,6 +74430,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SecretScanningListAlertsForRepo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72562,8 +74438,9 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningListAlertsForRepo",
-			ID:   "secret-scanning/list-alerts-for-repo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSecretScanningListAlertsForRepoParams(args, r)
@@ -72583,6 +74460,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "SecretScanningListAlertsForRepo",
 			OperationID:   "secret-scanning/list-alerts-for-repo",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72678,6 +74556,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SecretScanningUpdateAlert
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72685,8 +74564,9 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningUpdateAlert",
-			ID:   "secret-scanning/update-alert",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSecretScanningUpdateAlertParams(args, r)
@@ -72721,6 +74601,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 			Context:       ctx,
 			OperationName: "SecretScanningUpdateAlert",
 			OperationID:   "secret-scanning/update-alert",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -72822,6 +74703,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddMemberLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72829,8 +74711,9 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddMemberLegacy",
-			ID:   "teams/add-member-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddMemberLegacyParams(args, r)
@@ -72850,6 +74733,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TeamsAddMemberLegacy",
 			OperationID:   "teams/add-member-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -72947,6 +74831,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddOrUpdateMembershipForUserInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72954,8 +74839,9 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateMembershipForUserInOrg",
-			ID:   "teams/add-or-update-membership-for-user-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, r)
@@ -72990,6 +74876,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 			Context:       ctx,
 			OperationName: "TeamsAddOrUpdateMembershipForUserInOrg",
 			OperationID:   "teams/add-or-update-membership-for-user-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -73096,6 +74983,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddOrUpdateMembershipForUserLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73103,8 +74991,9 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateMembershipForUserLegacy",
-			ID:   "teams/add-or-update-membership-for-user-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, r)
@@ -73139,6 +75028,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 			Context:       ctx,
 			OperationName: "TeamsAddOrUpdateMembershipForUserLegacy",
 			OperationID:   "teams/add-or-update-membership-for-user-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -73219,6 +75109,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddOrUpdateProjectPermissionsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73226,8 +75117,9 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateProjectPermissionsInOrg",
-			ID:   "teams/add-or-update-project-permissions-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, r)
@@ -73262,6 +75154,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 			Context:       ctx,
 			OperationName: "TeamsAddOrUpdateProjectPermissionsInOrg",
 			OperationID:   "teams/add-or-update-project-permissions-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -73350,6 +75243,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddOrUpdateProjectPermissionsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73357,8 +75251,9 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateProjectPermissionsLegacy",
-			ID:   "teams/add-or-update-project-permissions-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
@@ -73393,6 +75288,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 			Context:       ctx,
 			OperationName: "TeamsAddOrUpdateProjectPermissionsLegacy",
 			OperationID:   "teams/add-or-update-project-permissions-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -73480,6 +75376,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddOrUpdateRepoPermissionsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73487,8 +75384,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateRepoPermissionsInOrg",
-			ID:   "teams/add-or-update-repo-permissions-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, r)
@@ -73523,6 +75421,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 			Context:       ctx,
 			OperationName: "TeamsAddOrUpdateRepoPermissionsInOrg",
 			OperationID:   "teams/add-or-update-repo-permissions-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -73620,6 +75519,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsAddOrUpdateRepoPermissionsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73627,8 +75527,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateRepoPermissionsLegacy",
-			ID:   "teams/add-or-update-repo-permissions-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
@@ -73663,6 +75564,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 			Context:       ctx,
 			OperationName: "TeamsAddOrUpdateRepoPermissionsLegacy",
 			OperationID:   "teams/add-or-update-repo-permissions-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -73746,6 +75648,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCheckPermissionsForProjectInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73753,8 +75656,9 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForProjectInOrg",
-			ID:   "teams/check-permissions-for-project-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, r)
@@ -73774,6 +75678,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 			Context:       ctx,
 			OperationName: "TeamsCheckPermissionsForProjectInOrg",
 			OperationID:   "teams/check-permissions-for-project-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -73861,6 +75766,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCheckPermissionsForProjectLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73868,8 +75774,9 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForProjectLegacy",
-			ID:   "teams/check-permissions-for-project-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, r)
@@ -73889,6 +75796,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "TeamsCheckPermissionsForProjectLegacy",
 			OperationID:   "teams/check-permissions-for-project-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -73973,6 +75881,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCheckPermissionsForRepoInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73980,8 +75889,9 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForRepoInOrg",
-			ID:   "teams/check-permissions-for-repo-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, r)
@@ -74001,6 +75911,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 			Context:       ctx,
 			OperationName: "TeamsCheckPermissionsForRepoInOrg",
 			OperationID:   "teams/check-permissions-for-repo-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -74094,6 +76005,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCheckPermissionsForRepoLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74101,8 +76013,9 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForRepoLegacy",
-			ID:   "teams/check-permissions-for-repo-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, r)
@@ -74122,6 +76035,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 			Context:       ctx,
 			OperationName: "TeamsCheckPermissionsForRepoLegacy",
 			OperationID:   "teams/check-permissions-for-repo-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -74209,6 +76123,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74216,8 +76131,9 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreate",
-			ID:   "teams/create",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateParams(args, r)
@@ -74252,6 +76168,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "TeamsCreate",
 			OperationID:   "teams/create",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -74334,6 +76251,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreateDiscussionCommentInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74341,8 +76259,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionCommentInOrg",
-			ID:   "teams/create-discussion-comment-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, r)
@@ -74377,6 +76296,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "TeamsCreateDiscussionCommentInOrg",
 			OperationID:   "teams/create-discussion-comment-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -74470,6 +76390,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreateDiscussionCommentLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74477,8 +76398,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionCommentLegacy",
-			ID:   "teams/create-discussion-comment-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, r)
@@ -74513,6 +76435,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "TeamsCreateDiscussionCommentLegacy",
 			OperationID:   "teams/create-discussion-comment-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -74599,6 +76522,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreateDiscussionInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74606,8 +76530,9 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionInOrg",
-			ID:   "teams/create-discussion-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateDiscussionInOrgParams(args, r)
@@ -74642,6 +76567,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "TeamsCreateDiscussionInOrg",
 			OperationID:   "teams/create-discussion-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -74731,6 +76657,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreateDiscussionLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74738,8 +76665,9 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionLegacy",
-			ID:   "teams/create-discussion-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateDiscussionLegacyParams(args, r)
@@ -74774,6 +76702,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "TeamsCreateDiscussionLegacy",
 			OperationID:   "teams/create-discussion-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -74853,6 +76782,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreateOrUpdateIdpGroupConnectionsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74860,8 +76790,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-			ID:   "teams/create-or-update-idp-group-connections-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, r)
@@ -74896,6 +76827,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 			Context:       ctx,
 			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
 			OperationID:   "teams/create-or-update-idp-group-connections-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -74983,6 +76915,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsCreateOrUpdateIdpGroupConnectionsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -74990,8 +76923,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-			ID:   "teams/create-or-update-idp-group-connections-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
@@ -75026,6 +76960,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 			Context:       ctx,
 			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
 			OperationID:   "teams/create-or-update-idp-group-connections-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -75101,6 +77036,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsDeleteDiscussionCommentInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75108,8 +77044,9 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionCommentInOrg",
-			ID:   "teams/delete-discussion-comment-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, r)
@@ -75129,6 +77066,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 			Context:       ctx,
 			OperationName: "TeamsDeleteDiscussionCommentInOrg",
 			OperationID:   "teams/delete-discussion-comment-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75219,6 +77157,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsDeleteDiscussionCommentLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75226,8 +77165,9 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionCommentLegacy",
-			ID:   "teams/delete-discussion-comment-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, r)
@@ -75247,6 +77187,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 			Context:       ctx,
 			OperationName: "TeamsDeleteDiscussionCommentLegacy",
 			OperationID:   "teams/delete-discussion-comment-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75330,6 +77271,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsDeleteDiscussionInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75337,8 +77279,9 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionInOrg",
-			ID:   "teams/delete-discussion-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, r)
@@ -75358,6 +77301,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "TeamsDeleteDiscussionInOrg",
 			OperationID:   "teams/delete-discussion-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75444,6 +77388,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsDeleteDiscussionLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75451,8 +77396,9 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionLegacy",
-			ID:   "teams/delete-discussion-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, r)
@@ -75472,6 +77418,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "TeamsDeleteDiscussionLegacy",
 			OperationID:   "teams/delete-discussion-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75552,6 +77499,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsDeleteInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75559,8 +77507,9 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteInOrg",
-			ID:   "teams/delete-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsDeleteInOrgParams(args, r)
@@ -75580,6 +77529,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "TeamsDeleteInOrg",
 			OperationID:   "teams/delete-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75663,6 +77613,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsDeleteLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75670,8 +77621,9 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteLegacy",
-			ID:   "teams/delete-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsDeleteLegacyParams(args, r)
@@ -75691,6 +77643,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "TeamsDeleteLegacy",
 			OperationID:   "teams/delete-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75765,6 +77718,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetByName
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75772,8 +77726,9 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetByName",
-			ID:   "teams/get-by-name",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetByNameParams(args, r)
@@ -75793,6 +77748,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "TeamsGetByName",
 			OperationID:   "teams/get-by-name",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75872,6 +77828,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetDiscussionCommentInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75879,8 +77836,9 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionCommentInOrg",
-			ID:   "teams/get-discussion-comment-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, r)
@@ -75900,6 +77858,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 			Context:       ctx,
 			OperationName: "TeamsGetDiscussionCommentInOrg",
 			OperationID:   "teams/get-discussion-comment-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -75990,6 +77949,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetDiscussionCommentLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -75997,8 +77957,9 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionCommentLegacy",
-			ID:   "teams/get-discussion-comment-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, r)
@@ -76018,6 +77979,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 			Context:       ctx,
 			OperationName: "TeamsGetDiscussionCommentLegacy",
 			OperationID:   "teams/get-discussion-comment-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76101,6 +78063,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetDiscussionInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76108,8 +78071,9 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionInOrg",
-			ID:   "teams/get-discussion-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetDiscussionInOrgParams(args, r)
@@ -76129,6 +78093,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "TeamsGetDiscussionInOrg",
 			OperationID:   "teams/get-discussion-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76215,6 +78180,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetDiscussionLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76222,8 +78188,9 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionLegacy",
-			ID:   "teams/get-discussion-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetDiscussionLegacyParams(args, r)
@@ -76243,6 +78210,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "TeamsGetDiscussionLegacy",
 			OperationID:   "teams/get-discussion-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76323,6 +78291,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76330,8 +78299,9 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetLegacy",
-			ID:   "teams/get-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetLegacyParams(args, r)
@@ -76351,6 +78321,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "TeamsGetLegacy",
 			OperationID:   "teams/get-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76429,6 +78400,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetMemberLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76436,8 +78408,9 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetMemberLegacy",
-			ID:   "teams/get-member-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetMemberLegacyParams(args, r)
@@ -76457,6 +78430,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TeamsGetMemberLegacy",
 			OperationID:   "teams/get-member-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76540,6 +78514,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetMembershipForUserInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76547,8 +78522,9 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetMembershipForUserInOrg",
-			ID:   "teams/get-membership-for-user-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, r)
@@ -76568,6 +78544,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 			Context:       ctx,
 			OperationName: "TeamsGetMembershipForUserInOrg",
 			OperationID:   "teams/get-membership-for-user-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76658,6 +78635,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsGetMembershipForUserLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76665,8 +78643,9 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetMembershipForUserLegacy",
-			ID:   "teams/get-membership-for-user-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, r)
@@ -76686,6 +78665,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "TeamsGetMembershipForUserLegacy",
 			OperationID:   "teams/get-membership-for-user-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76762,6 +78742,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76769,8 +78750,9 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsList",
-			ID:   "teams/list",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListParams(args, r)
@@ -76790,6 +78772,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "TeamsList",
 			OperationID:   "teams/list",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76872,6 +78855,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListChildInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76879,8 +78863,9 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListChildInOrg",
-			ID:   "teams/list-child-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListChildInOrgParams(args, r)
@@ -76900,6 +78885,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TeamsListChildInOrg",
 			OperationID:   "teams/list-child-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -76988,6 +78974,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListChildLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -76995,8 +78982,9 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListChildLegacy",
-			ID:   "teams/list-child-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListChildLegacyParams(args, r)
@@ -77016,6 +79004,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TeamsListChildLegacy",
 			OperationID:   "teams/list-child-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77099,6 +79088,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListDiscussionCommentsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77106,8 +79096,9 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionCommentsInOrg",
-			ID:   "teams/list-discussion-comments-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, r)
@@ -77127,6 +79118,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 			Context:       ctx,
 			OperationName: "TeamsListDiscussionCommentsInOrg",
 			OperationID:   "teams/list-discussion-comments-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77225,6 +79217,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListDiscussionCommentsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77232,8 +79225,9 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionCommentsLegacy",
-			ID:   "teams/list-discussion-comments-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, r)
@@ -77253,6 +79247,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "TeamsListDiscussionCommentsLegacy",
 			OperationID:   "teams/list-discussion-comments-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77344,6 +79339,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListDiscussionsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77351,8 +79347,9 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionsInOrg",
-			ID:   "teams/list-discussions-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListDiscussionsInOrgParams(args, r)
@@ -77372,6 +79369,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "TeamsListDiscussionsInOrg",
 			OperationID:   "teams/list-discussions-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77470,6 +79468,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListDiscussionsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77477,8 +79476,9 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionsLegacy",
-			ID:   "teams/list-discussions-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListDiscussionsLegacyParams(args, r)
@@ -77498,6 +79498,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "TeamsListDiscussionsLegacy",
 			OperationID:   "teams/list-discussions-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77585,6 +79586,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77592,8 +79594,9 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListForAuthenticatedUser",
-			ID:   "teams/list-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListForAuthenticatedUserParams(args, r)
@@ -77613,6 +79616,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TeamsListForAuthenticatedUser",
 			OperationID:   "teams/list-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77697,6 +79701,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListIdpGroupsForLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77704,8 +79709,9 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListIdpGroupsForLegacy",
-			ID:   "teams/list-idp-groups-for-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, r)
@@ -77725,6 +79731,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "TeamsListIdpGroupsForLegacy",
 			OperationID:   "teams/list-idp-groups-for-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77803,6 +79810,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListIdpGroupsForOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77810,8 +79818,9 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListIdpGroupsForOrg",
-			ID:   "teams/list-idp-groups-for-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListIdpGroupsForOrgParams(args, r)
@@ -77831,6 +79840,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 			Context:       ctx,
 			OperationName: "TeamsListIdpGroupsForOrg",
 			OperationID:   "teams/list-idp-groups-for-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -77916,6 +79926,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListIdpGroupsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -77923,8 +79934,9 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListIdpGroupsInOrg",
-			ID:   "teams/list-idp-groups-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListIdpGroupsInOrgParams(args, r)
@@ -77944,6 +79956,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "TeamsListIdpGroupsInOrg",
 			OperationID:   "teams/list-idp-groups-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78021,6 +80034,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListMembersInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78028,8 +80042,9 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListMembersInOrg",
-			ID:   "teams/list-members-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListMembersInOrgParams(args, r)
@@ -78049,6 +80064,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TeamsListMembersInOrg",
 			OperationID:   "teams/list-members-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78142,6 +80158,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListMembersLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78149,8 +80166,9 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListMembersLegacy",
-			ID:   "teams/list-members-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListMembersLegacyParams(args, r)
@@ -78170,6 +80188,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TeamsListMembersLegacy",
 			OperationID:   "teams/list-members-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78259,6 +80278,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListPendingInvitationsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78266,8 +80286,9 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListPendingInvitationsInOrg",
-			ID:   "teams/list-pending-invitations-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, r)
@@ -78287,6 +80308,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 			Context:       ctx,
 			OperationName: "TeamsListPendingInvitationsInOrg",
 			OperationID:   "teams/list-pending-invitations-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78379,6 +80401,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListPendingInvitationsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78386,8 +80409,9 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListPendingInvitationsLegacy",
-			ID:   "teams/list-pending-invitations-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, r)
@@ -78407,6 +80431,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "TeamsListPendingInvitationsLegacy",
 			OperationID:   "teams/list-pending-invitations-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78489,6 +80514,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListProjectsInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78496,8 +80522,9 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListProjectsInOrg",
-			ID:   "teams/list-projects-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListProjectsInOrgParams(args, r)
@@ -78517,6 +80544,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TeamsListProjectsInOrg",
 			OperationID:   "teams/list-projects-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78606,6 +80634,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListProjectsLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78613,8 +80642,9 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListProjectsLegacy",
-			ID:   "teams/list-projects-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListProjectsLegacyParams(args, r)
@@ -78634,6 +80664,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "TeamsListProjectsLegacy",
 			OperationID:   "teams/list-projects-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78716,6 +80747,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListReposInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78723,8 +80755,9 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListReposInOrg",
-			ID:   "teams/list-repos-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListReposInOrgParams(args, r)
@@ -78744,6 +80777,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TeamsListReposInOrg",
 			OperationID:   "teams/list-repos-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78832,6 +80866,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsListReposLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78839,8 +80874,9 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListReposLegacy",
-			ID:   "teams/list-repos-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsListReposLegacyParams(args, r)
@@ -78860,6 +80896,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TeamsListReposLegacy",
 			OperationID:   "teams/list-repos-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -78960,6 +80997,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveMemberLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -78967,8 +81005,9 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveMemberLegacy",
-			ID:   "teams/remove-member-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveMemberLegacyParams(args, r)
@@ -78988,6 +81027,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "TeamsRemoveMemberLegacy",
 			OperationID:   "teams/remove-member-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79078,6 +81118,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveMembershipForUserInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79085,8 +81126,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveMembershipForUserInOrg",
-			ID:   "teams/remove-membership-for-user-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, r)
@@ -79106,6 +81148,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "TeamsRemoveMembershipForUserInOrg",
 			OperationID:   "teams/remove-membership-for-user-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79203,6 +81246,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveMembershipForUserLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79210,8 +81254,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveMembershipForUserLegacy",
-			ID:   "teams/remove-membership-for-user-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, r)
@@ -79231,6 +81276,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "TeamsRemoveMembershipForUserLegacy",
 			OperationID:   "teams/remove-membership-for-user-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79312,6 +81358,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveProjectInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79319,8 +81366,9 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveProjectInOrg",
-			ID:   "teams/remove-project-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveProjectInOrgParams(args, r)
@@ -79340,6 +81388,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 			Context:       ctx,
 			OperationName: "TeamsRemoveProjectInOrg",
 			OperationID:   "teams/remove-project-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79428,6 +81477,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveProjectLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79435,8 +81485,9 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveProjectLegacy",
-			ID:   "teams/remove-project-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
@@ -79456,6 +81507,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "TeamsRemoveProjectLegacy",
 			OperationID:   "teams/remove-project-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79537,6 +81589,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveRepoInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79544,8 +81597,9 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveRepoInOrg",
-			ID:   "teams/remove-repo-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveRepoInOrgParams(args, r)
@@ -79565,6 +81619,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TeamsRemoveRepoInOrg",
 			OperationID:   "teams/remove-repo-in-org",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79657,6 +81712,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsRemoveRepoLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79664,8 +81720,9 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveRepoLegacy",
-			ID:   "teams/remove-repo-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsRemoveRepoLegacyParams(args, r)
@@ -79685,6 +81742,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TeamsRemoveRepoLegacy",
 			OperationID:   "teams/remove-repo-legacy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -79768,6 +81826,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsUpdateDiscussionCommentInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79775,8 +81834,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionCommentInOrg",
-			ID:   "teams/update-discussion-comment-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, r)
@@ -79811,6 +81871,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 			Context:       ctx,
 			OperationName: "TeamsUpdateDiscussionCommentInOrg",
 			OperationID:   "teams/update-discussion-comment-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -79901,6 +81962,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsUpdateDiscussionCommentLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -79908,8 +81970,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionCommentLegacy",
-			ID:   "teams/update-discussion-comment-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, r)
@@ -79944,6 +82007,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 			Context:       ctx,
 			OperationName: "TeamsUpdateDiscussionCommentLegacy",
 			OperationID:   "teams/update-discussion-comment-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -80028,6 +82092,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsUpdateDiscussionInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80035,8 +82100,9 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionInOrg",
-			ID:   "teams/update-discussion-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, r)
@@ -80071,6 +82137,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 			Context:       ctx,
 			OperationName: "TeamsUpdateDiscussionInOrg",
 			OperationID:   "teams/update-discussion-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -80158,6 +82225,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsUpdateDiscussionLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80165,8 +82233,9 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionLegacy",
-			ID:   "teams/update-discussion-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, r)
@@ -80201,6 +82270,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "TeamsUpdateDiscussionLegacy",
 			OperationID:   "teams/update-discussion-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -80279,6 +82349,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsUpdateInOrg
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80286,8 +82357,9 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateInOrg",
-			ID:   "teams/update-in-org",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsUpdateInOrgParams(args, r)
@@ -80322,6 +82394,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "TeamsUpdateInOrg",
 			OperationID:   "teams/update-in-org",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -80404,6 +82477,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TeamsUpdateLegacy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80411,8 +82485,9 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateLegacy",
-			ID:   "teams/update-legacy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTeamsUpdateLegacyParams(args, r)
@@ -80447,6 +82522,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "TeamsUpdateLegacy",
 			OperationID:   "teams/update-legacy",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -80519,6 +82595,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersAddEmailForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80526,8 +82603,9 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersAddEmailForAuthenticated",
-			ID:   "users/add-email-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUsersAddEmailForAuthenticatedRequest(r)
@@ -80552,6 +82630,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "UsersAddEmailForAuthenticated",
 			OperationID:   "users/add-email-for-authenticated",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -80619,6 +82698,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersBlock
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80626,8 +82706,9 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersBlock",
-			ID:   "users/block",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersBlockParams(args, r)
@@ -80647,6 +82728,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "UsersBlock",
 			OperationID:   "users/block",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -80719,6 +82801,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersCheckBlocked
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80726,8 +82809,9 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCheckBlocked",
-			ID:   "users/check-blocked",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersCheckBlockedParams(args, r)
@@ -80747,6 +82831,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "UsersCheckBlocked",
 			OperationID:   "users/check-blocked",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -80819,6 +82904,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersCheckFollowingForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80826,8 +82912,9 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCheckFollowingForUser",
-			ID:   "users/check-following-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersCheckFollowingForUserParams(args, r)
@@ -80847,6 +82934,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "UsersCheckFollowingForUser",
 			OperationID:   "users/check-following-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -80923,6 +83011,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersCheckPersonIsFollowedByAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -80930,8 +83019,9 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCheckPersonIsFollowedByAuthenticated",
-			ID:   "users/check-person-is-followed-by-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, r)
@@ -80951,6 +83041,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 			Context:       ctx,
 			OperationName: "UsersCheckPersonIsFollowedByAuthenticated",
 			OperationID:   "users/check-person-is-followed-by-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -81025,6 +83116,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersCreateGpgKeyForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81032,8 +83124,9 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCreateGpgKeyForAuthenticated",
-			ID:   "users/create-gpg-key-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUsersCreateGpgKeyForAuthenticatedRequest(r)
@@ -81058,6 +83151,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "UsersCreateGpgKeyForAuthenticated",
 			OperationID:   "users/create-gpg-key-for-authenticated",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -81127,6 +83221,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersCreatePublicSSHKeyForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81134,8 +83229,9 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCreatePublicSSHKeyForAuthenticated",
-			ID:   "users/create-public-ssh-key-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r)
@@ -81160,6 +83256,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 			Context:       ctx,
 			OperationName: "UsersCreatePublicSSHKeyForAuthenticated",
 			OperationID:   "users/create-public-ssh-key-for-authenticated",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -81227,6 +83324,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersDeleteEmailForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81234,8 +83332,9 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersDeleteEmailForAuthenticated",
-			ID:   "users/delete-email-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUsersDeleteEmailForAuthenticatedRequest(r)
@@ -81260,6 +83359,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "UsersDeleteEmailForAuthenticated",
 			OperationID:   "users/delete-email-for-authenticated",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -81329,6 +83429,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersDeleteGpgKeyForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81336,8 +83437,9 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersDeleteGpgKeyForAuthenticated",
-			ID:   "users/delete-gpg-key-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
@@ -81357,6 +83459,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "UsersDeleteGpgKeyForAuthenticated",
 			OperationID:   "users/delete-gpg-key-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -81431,6 +83534,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersDeletePublicSSHKeyForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81438,8 +83542,9 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersDeletePublicSSHKeyForAuthenticated",
-			ID:   "users/delete-public-ssh-key-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, r)
@@ -81459,6 +83564,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 			Context:       ctx,
 			OperationName: "UsersDeletePublicSSHKeyForAuthenticated",
 			OperationID:   "users/delete-public-ssh-key-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -81535,6 +83641,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersFollow
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81542,8 +83649,9 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersFollow",
-			ID:   "users/follow",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersFollowParams(args, r)
@@ -81563,6 +83671,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "UsersFollow",
 			OperationID:   "users/follow",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -81638,6 +83747,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersGetAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81652,6 +83762,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "UsersGetAuthenticated",
 			OperationID:   "users/get-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -81733,6 +83844,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersGetByUsername
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81740,8 +83852,9 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetByUsername",
-			ID:   "users/get-by-username",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersGetByUsernameParams(args, r)
@@ -81761,6 +83874,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "UsersGetByUsername",
 			OperationID:   "users/get-by-username",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -81842,6 +83956,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersGetContextForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81849,8 +83964,9 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetContextForUser",
-			ID:   "users/get-context-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersGetContextForUserParams(args, r)
@@ -81870,6 +83986,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "UsersGetContextForUser",
 			OperationID:   "users/get-context-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -81952,6 +84069,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersGetGpgKeyForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -81959,8 +84077,9 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetGpgKeyForAuthenticated",
-			ID:   "users/get-gpg-key-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
@@ -81980,6 +84099,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "UsersGetGpgKeyForAuthenticated",
 			OperationID:   "users/get-gpg-key-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82054,6 +84174,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersGetPublicSSHKeyForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82061,8 +84182,9 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetPublicSSHKeyForAuthenticated",
-			ID:   "users/get-public-ssh-key-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, r)
@@ -82082,6 +84204,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "UsersGetPublicSSHKeyForAuthenticated",
 			OperationID:   "users/get-public-ssh-key-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82158,6 +84281,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82165,8 +84289,9 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersList",
-			ID:   "users/list",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListParams(args, r)
@@ -82186,6 +84311,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "UsersList",
 			OperationID:   "users/list",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82262,6 +84388,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListBlockedByAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82276,6 +84403,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "UsersListBlockedByAuthenticated",
 			OperationID:   "users/list-blocked-by-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -82344,6 +84472,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListEmailsForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82351,8 +84480,9 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListEmailsForAuthenticated",
-			ID:   "users/list-emails-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListEmailsForAuthenticatedParams(args, r)
@@ -82372,6 +84502,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "UsersListEmailsForAuthenticated",
 			OperationID:   "users/list-emails-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82448,6 +84579,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListFollowedByAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82455,8 +84587,9 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowedByAuthenticated",
-			ID:   "users/list-followed-by-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListFollowedByAuthenticatedParams(args, r)
@@ -82476,6 +84609,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "UsersListFollowedByAuthenticated",
 			OperationID:   "users/list-followed-by-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82552,6 +84686,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListFollowersForAuthenticatedUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82559,8 +84694,9 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowersForAuthenticatedUser",
-			ID:   "users/list-followers-for-authenticated-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, r)
@@ -82580,6 +84716,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 			Context:       ctx,
 			OperationName: "UsersListFollowersForAuthenticatedUser",
 			OperationID:   "users/list-followers-for-authenticated-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82656,6 +84793,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListFollowersForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82663,8 +84801,9 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowersForUser",
-			ID:   "users/list-followers-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListFollowersForUserParams(args, r)
@@ -82684,6 +84823,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "UsersListFollowersForUser",
 			OperationID:   "users/list-followers-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82764,6 +84904,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListFollowingForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82771,8 +84912,9 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowingForUser",
-			ID:   "users/list-following-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListFollowingForUserParams(args, r)
@@ -82792,6 +84934,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "UsersListFollowingForUser",
 			OperationID:   "users/list-following-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82874,6 +85017,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListGpgKeysForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82881,8 +85025,9 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListGpgKeysForAuthenticated",
-			ID:   "users/list-gpg-keys-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
@@ -82902,6 +85047,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "UsersListGpgKeysForAuthenticated",
 			OperationID:   "users/list-gpg-keys-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -82978,6 +85124,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListGpgKeysForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -82985,8 +85132,9 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListGpgKeysForUser",
-			ID:   "users/list-gpg-keys-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListGpgKeysForUserParams(args, r)
@@ -83006,6 +85154,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "UsersListGpgKeysForUser",
 			OperationID:   "users/list-gpg-keys-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -83089,6 +85238,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListPublicEmailsForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83096,8 +85246,9 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListPublicEmailsForAuthenticated",
-			ID:   "users/list-public-emails-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, r)
@@ -83117,6 +85268,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "UsersListPublicEmailsForAuthenticated",
 			OperationID:   "users/list-public-emails-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -83193,6 +85345,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListPublicKeysForUser
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83200,8 +85353,9 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListPublicKeysForUser",
-			ID:   "users/list-public-keys-for-user",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListPublicKeysForUserParams(args, r)
@@ -83221,6 +85375,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "UsersListPublicKeysForUser",
 			OperationID:   "users/list-public-keys-for-user",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -83303,6 +85458,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersListPublicSSHKeysForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83310,8 +85466,9 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListPublicSSHKeysForAuthenticated",
-			ID:   "users/list-public-ssh-keys-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, r)
@@ -83331,6 +85488,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 			Context:       ctx,
 			OperationName: "UsersListPublicSSHKeysForAuthenticated",
 			OperationID:   "users/list-public-ssh-keys-for-authenticated",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -83407,6 +85565,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersSetPrimaryEmailVisibilityForAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83414,8 +85573,9 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersSetPrimaryEmailVisibilityForAuthenticated",
-			ID:   "users/set-primary-email-visibility-for-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r)
@@ -83440,6 +85600,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 			Context:       ctx,
 			OperationName: "UsersSetPrimaryEmailVisibilityForAuthenticated",
 			OperationID:   "users/set-primary-email-visibility-for-authenticated",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -83507,6 +85668,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersUnblock
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83514,8 +85676,9 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersUnblock",
-			ID:   "users/unblock",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersUnblockParams(args, r)
@@ -83535,6 +85698,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "UsersUnblock",
 			OperationID:   "users/unblock",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -83608,6 +85772,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersUnfollow
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83615,8 +85780,9 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersUnfollow",
-			ID:   "users/unfollow",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUsersUnfollowParams(args, r)
@@ -83636,6 +85802,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "UsersUnfollow",
 			OperationID:   "users/unfollow",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -83710,6 +85877,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UsersUpdateAuthenticated
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -83717,8 +85885,9 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersUpdateAuthenticated",
-			ID:   "users/update-authenticated",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUsersUpdateAuthenticatedRequest(r)
@@ -83743,6 +85912,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "UsersUpdateAuthenticated",
 			OperationID:   "users/update-authenticated",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

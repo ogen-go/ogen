@@ -44,6 +44,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DataGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGet",
-			ID:   "dataGet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeDataGetParams(args, r)
@@ -72,6 +74,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "DataGet",
 			OperationID:   "dataGet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -148,6 +151,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DataGetAny
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -162,6 +166,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "DataGetAny",
 			OperationID:   "dataGetAny",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -229,6 +234,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DataGetID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -236,8 +242,9 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGetID",
-			ID:   "dataGetID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeDataGetIDParams(args, r)
@@ -257,6 +264,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "DataGetID",
 			OperationID:   "dataGetID",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

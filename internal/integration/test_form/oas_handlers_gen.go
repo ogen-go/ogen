@@ -42,6 +42,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestFormURLEncoded
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49,8 +50,9 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestFormURLEncoded",
-			ID:   "testFormURLEncoded",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestFormURLEncodedRequest(r)
@@ -75,6 +77,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestFormURLEncoded",
 			OperationID:   "testFormURLEncoded",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -140,6 +143,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestMultipart
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -147,8 +151,9 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestMultipart",
-			ID:   "testMultipart",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestMultipartRequest(r)
@@ -173,6 +178,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "TestMultipart",
 			OperationID:   "testMultipart",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -238,6 +244,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestMultipartUpload
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -245,8 +252,9 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestMultipartUpload",
-			ID:   "testMultipartUpload",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestMultipartUploadRequest(r)
@@ -271,6 +279,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TestMultipartUpload",
 			OperationID:   "testMultipartUpload",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -336,6 +345,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestShareFormSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -343,8 +353,9 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestShareFormSchema",
-			ID:   "testShareFormSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestShareFormSchemaRequest(r)
@@ -369,6 +380,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TestShareFormSchema",
 			OperationID:   "testShareFormSchema",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

@@ -27,8 +27,8 @@ func Logging(logger *zap.Logger) middleware.Middleware {
 		next func(req middleware.Request) (middleware.Response, error),
 	) (middleware.Response, error) {
 		logger := logger.With(
-			zap.String("operation", req.OperationName),
-			zap.String("operationId", req.OperationID),
+			zap.String("operation", req.Op.Name),
+			zap.String("operationId", req.Op.ID),
 		)
 		logger.Info("Handling request")
 		resp, err := next(req)

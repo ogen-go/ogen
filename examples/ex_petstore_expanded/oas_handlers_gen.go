@@ -44,6 +44,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AddPet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AddPet",
-			ID:   "addPet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAddPetRequest(r)
@@ -77,6 +79,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 			Context:       ctx,
 			OperationName: "AddPet",
 			OperationID:   "addPet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -144,6 +147,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeletePet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -151,8 +155,9 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeletePet",
-			ID:   "deletePet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeDeletePetParams(args, r)
@@ -172,6 +177,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "DeletePet",
 			OperationID:   "deletePet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -244,6 +250,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().FindPetByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -251,8 +258,9 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FindPetByID",
-			ID:   "find pet by id",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeFindPetByIDParams(args, r)
@@ -272,6 +280,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "FindPetByID",
 			OperationID:   "find pet by id",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -362,6 +371,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().FindPets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -369,8 +379,9 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FindPets",
-			ID:   "findPets",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeFindPetsParams(args, r)
@@ -390,6 +401,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "FindPets",
 			OperationID:   "findPets",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

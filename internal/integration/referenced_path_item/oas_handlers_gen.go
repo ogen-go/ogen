@@ -36,6 +36,7 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().FooGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50,6 +51,7 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 			Context:       ctx,
 			OperationName: "FooGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,

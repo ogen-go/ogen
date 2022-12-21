@@ -49,6 +49,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Caching
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56,8 +57,9 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Caching",
-			ID:   "Caching",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCachingParams(args, r)
@@ -77,6 +79,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "Caching",
 			OperationID:   "Caching",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -150,6 +153,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DB
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -164,6 +168,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 			Context:       ctx,
 			OperationName: "DB",
 			OperationID:   "DB",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -233,6 +238,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().JSON
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -247,6 +253,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 			Context:       ctx,
 			OperationName: "JSON",
 			OperationID:   "json",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -317,6 +324,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Queries
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -324,8 +332,9 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Queries",
-			ID:   "Queries",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeQueriesParams(args, r)
@@ -345,6 +354,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "Queries",
 			OperationID:   "Queries",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -419,6 +429,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Updates
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -426,8 +437,9 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Updates",
-			ID:   "Updates",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUpdatesParams(args, r)
@@ -447,6 +459,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "Updates",
 			OperationID:   "Updates",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

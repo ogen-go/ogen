@@ -44,6 +44,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CreateSnapshot
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateSnapshot",
-			ID:   "createSnapshot",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeCreateSnapshotRequest(r)
@@ -77,6 +79,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "CreateSnapshot",
 			OperationID:   "createSnapshot",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -144,6 +147,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CreateSyncAction
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -151,8 +155,9 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateSyncAction",
-			ID:   "createSyncAction",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeCreateSyncActionRequest(r)
@@ -177,6 +182,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "CreateSyncAction",
 			OperationID:   "createSyncAction",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -244,6 +250,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DescribeBalloonConfig
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -258,6 +265,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "DescribeBalloonConfig",
 			OperationID:   "describeBalloonConfig",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -325,6 +333,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DescribeBalloonStats
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -339,6 +348,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "DescribeBalloonStats",
 			OperationID:   "describeBalloonStats",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -406,6 +416,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DescribeInstance
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -420,6 +431,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "DescribeInstance",
 			OperationID:   "describeInstance",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -487,6 +499,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetExportVmConfig
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -501,6 +514,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GetExportVmConfig",
 			OperationID:   "getExportVmConfig",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -570,6 +584,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetMachineConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -584,6 +599,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "GetMachineConfiguration",
 			OperationID:   "getMachineConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -652,6 +668,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LoadSnapshot
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -659,8 +676,9 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LoadSnapshot",
-			ID:   "loadSnapshot",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeLoadSnapshotRequest(r)
@@ -685,6 +703,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "LoadSnapshot",
 			OperationID:   "loadSnapshot",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -749,6 +768,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MmdsConfigPut
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -756,8 +776,9 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MmdsConfigPut",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMmdsConfigPutRequest(r)
@@ -782,6 +803,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "MmdsConfigPut",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -846,6 +868,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MmdsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -860,6 +883,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "MmdsGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -924,6 +948,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MmdsPatch
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -931,8 +956,9 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MmdsPatch",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMmdsPatchRequest(r)
@@ -957,6 +983,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "MmdsPatch",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1021,6 +1048,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MmdsPut
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1028,8 +1056,9 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MmdsPut",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMmdsPutRequest(r)
@@ -1054,6 +1083,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "MmdsPut",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1122,6 +1152,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatchBalloon
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1129,8 +1160,9 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PatchBalloon",
-			ID:   "patchBalloon",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePatchBalloonRequest(r)
@@ -1155,6 +1187,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "PatchBalloon",
 			OperationID:   "patchBalloon",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1223,6 +1256,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatchBalloonStatsInterval
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1230,8 +1264,9 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PatchBalloonStatsInterval",
-			ID:   "patchBalloonStatsInterval",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePatchBalloonStatsIntervalRequest(r)
@@ -1256,6 +1291,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "PatchBalloonStatsInterval",
 			OperationID:   "patchBalloonStatsInterval",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1324,6 +1360,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatchGuestDriveByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1331,8 +1368,9 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PatchGuestDriveByID",
-			ID:   "patchGuestDriveByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePatchGuestDriveByIDParams(args, r)
@@ -1367,6 +1405,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "PatchGuestDriveByID",
 			OperationID:   "patchGuestDriveByID",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1439,6 +1478,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatchGuestNetworkInterfaceByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1446,8 +1486,9 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PatchGuestNetworkInterfaceByID",
-			ID:   "patchGuestNetworkInterfaceByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
@@ -1482,6 +1523,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "PatchGuestNetworkInterfaceByID",
 			OperationID:   "patchGuestNetworkInterfaceByID",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1555,6 +1597,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatchMachineConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1562,8 +1605,9 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PatchMachineConfiguration",
-			ID:   "patchMachineConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePatchMachineConfigurationRequest(r)
@@ -1588,6 +1632,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "PatchMachineConfiguration",
 			OperationID:   "patchMachineConfiguration",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1655,6 +1700,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatchVm
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1662,8 +1708,9 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PatchVm",
-			ID:   "patchVm",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePatchVmRequest(r)
@@ -1688,6 +1735,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "PatchVm",
 			OperationID:   "patchVm",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1756,6 +1804,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutBalloon
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1763,8 +1812,9 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutBalloon",
-			ID:   "putBalloon",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePutBalloonRequest(r)
@@ -1789,6 +1839,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "PutBalloon",
 			OperationID:   "putBalloon",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1857,6 +1908,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutGuestBootSource
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1864,8 +1916,9 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutGuestBootSource",
-			ID:   "putGuestBootSource",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePutGuestBootSourceRequest(r)
@@ -1890,6 +1943,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "PutGuestBootSource",
 			OperationID:   "putGuestBootSource",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1958,6 +2012,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutGuestDriveByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1965,8 +2020,9 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutGuestDriveByID",
-			ID:   "putGuestDriveByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePutGuestDriveByIDParams(args, r)
@@ -2001,6 +2057,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PutGuestDriveByID",
 			OperationID:   "putGuestDriveByID",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -2073,6 +2130,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutGuestNetworkInterfaceByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2080,8 +2138,9 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutGuestNetworkInterfaceByID",
-			ID:   "putGuestNetworkInterfaceByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
@@ -2116,6 +2175,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "PutGuestNetworkInterfaceByID",
 			OperationID:   "putGuestNetworkInterfaceByID",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -2189,6 +2249,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutGuestVsock
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2196,8 +2257,9 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutGuestVsock",
-			ID:   "putGuestVsock",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePutGuestVsockRequest(r)
@@ -2222,6 +2284,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "PutGuestVsock",
 			OperationID:   "putGuestVsock",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2289,6 +2352,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutLogger
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2296,8 +2360,9 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutLogger",
-			ID:   "putLogger",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePutLoggerRequest(r)
@@ -2322,6 +2387,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "PutLogger",
 			OperationID:   "putLogger",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2392,6 +2458,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutMachineConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2399,8 +2466,9 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutMachineConfiguration",
-			ID:   "putMachineConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePutMachineConfigurationRequest(r)
@@ -2425,6 +2493,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "PutMachineConfiguration",
 			OperationID:   "putMachineConfiguration",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2492,6 +2561,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PutMetrics
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2499,8 +2569,9 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PutMetrics",
-			ID:   "putMetrics",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePutMetricsRequest(r)
@@ -2525,6 +2596,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "PutMetrics",
 			OperationID:   "putMetrics",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

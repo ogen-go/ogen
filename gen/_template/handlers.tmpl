@@ -52,6 +52,11 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		{{- if $op.WebhookInfo }}
+		op = getWebhooks().{{ $op.Name }}
+		{{- else }}
+		op = getPaths().{{ $op.Name }}
+		{{- end }}
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60,8 +65,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		err error
 		{{- if or $op.Request $op.Params $op.Security }}
 		opErrContext = ogenerrors.OperationContext{
-			Name: {{ quote $op.Name }},
-			ID: {{ quote $op.Spec.OperationID }},
+			Name: op.Name,
+			ID: op.ID,
+			Operation: op,
 		}
 		{{- end }}
 	)
@@ -118,6 +124,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			Context: ctx,
 			OperationName: {{ quote $op.Name }},
 			OperationID: {{ quote $op.Spec.OperationID }},
+			Op: op,
 			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
 			Params: middleware.Parameters{
 				{{- range $param := $op.Params }}

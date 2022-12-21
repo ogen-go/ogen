@@ -44,6 +44,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DataGetFormat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGetFormat",
-			ID:   "dataGetFormat",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeDataGetFormatParams(args, r)
@@ -72,6 +74,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "DataGetFormat",
 			OperationID:   "dataGetFormat",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -158,6 +161,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DefaultTest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -165,8 +169,9 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DefaultTest",
-			ID:   "defaultTest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeDefaultTestParams(args, r)
@@ -201,6 +206,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "DefaultTest",
 			OperationID:   "defaultTest",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -273,6 +279,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ErrorGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -287,6 +294,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "ErrorGet",
 			OperationID:   "errorGet",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -354,6 +362,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().FoobarGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -361,8 +370,9 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FoobarGet",
-			ID:   "foobarGet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeFoobarGetParams(args, r)
@@ -382,6 +392,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "FoobarGet",
 			OperationID:   "foobarGet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -458,6 +469,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().FoobarPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -465,8 +477,9 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FoobarPost",
-			ID:   "foobarPost",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeFoobarPostRequest(r)
@@ -491,6 +504,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "FoobarPost",
 			OperationID:   "foobarPost",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -553,6 +567,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().FoobarPut
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -567,6 +582,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "FoobarPut",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -632,6 +648,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().NoAdditionalPropertiesTest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -646,6 +663,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "NoAdditionalPropertiesTest",
 			OperationID:   "noAdditionalPropertiesTest",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -711,6 +729,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().NullableDefaultResponse
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -725,6 +744,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "NullableDefaultResponse",
 			OperationID:   "nullableDefaultResponse",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -790,6 +810,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OneofBug
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -797,8 +818,9 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OneofBug",
-			ID:   "oneofBug",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeOneofBugRequest(r)
@@ -823,6 +845,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "OneofBug",
 			OperationID:   "oneofBug",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -885,6 +908,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PatternRecursiveMapGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -899,6 +923,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "PatternRecursiveMapGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -966,6 +991,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetCreate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -973,8 +999,9 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetCreate",
-			ID:   "petCreate",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePetCreateRequest(r)
@@ -999,6 +1026,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "PetCreate",
 			OperationID:   "petCreate",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1066,6 +1094,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetFriendsNamesByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1073,8 +1102,9 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetFriendsNamesByID",
-			ID:   "petFriendsNamesByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetFriendsNamesByIDParams(args, r)
@@ -1094,6 +1124,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "PetFriendsNamesByID",
 			OperationID:   "petFriendsNamesByID",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1166,6 +1197,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1173,8 +1205,9 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGet",
-			ID:   "petGet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetGetParams(args, r)
@@ -1194,6 +1227,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 			Context:       ctx,
 			OperationName: "PetGet",
 			OperationID:   "petGet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1278,6 +1312,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetGetAvatarByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1285,8 +1320,9 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetAvatarByID",
-			ID:   "petGetAvatarByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetGetAvatarByIDParams(args, r)
@@ -1306,6 +1342,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "PetGetAvatarByID",
 			OperationID:   "petGetAvatarByID",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1378,6 +1415,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetGetAvatarByName
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1385,8 +1423,9 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetAvatarByName",
-			ID:   "petGetAvatarByName",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetGetAvatarByNameParams(args, r)
@@ -1406,6 +1445,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 			Context:       ctx,
 			OperationName: "PetGetAvatarByName",
 			OperationID:   "petGetAvatarByName",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1478,6 +1518,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetGetByName
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1485,8 +1526,9 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetByName",
-			ID:   "petGetByName",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetGetByNameParams(args, r)
@@ -1506,6 +1548,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "PetGetByName",
 			OperationID:   "petGetByName",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1578,6 +1621,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetNameByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1585,8 +1629,9 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetNameByID",
-			ID:   "petNameByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetNameByIDParams(args, r)
@@ -1606,6 +1651,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "PetNameByID",
 			OperationID:   "petNameByID",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1673,6 +1719,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetUpdateNameAliasPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1680,8 +1727,9 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUpdateNameAliasPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePetUpdateNameAliasPostRequest(r)
@@ -1706,6 +1754,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "PetUpdateNameAliasPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1768,6 +1817,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetUpdateNamePost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1775,8 +1825,9 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUpdateNamePost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePetUpdateNamePostRequest(r)
@@ -1801,6 +1852,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PetUpdateNamePost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1868,6 +1920,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PetUploadAvatarByID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1875,8 +1928,9 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUploadAvatarByID",
-			ID:   "petUploadAvatarByID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePetUploadAvatarByIDParams(args, r)
@@ -1911,6 +1965,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "PetUploadAvatarByID",
 			OperationID:   "petUploadAvatarByID",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1978,6 +2033,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().RecursiveArrayGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1992,6 +2048,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "RecursiveArrayGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2054,6 +2111,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().RecursiveMapGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2068,6 +2126,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "RecursiveMapGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2133,6 +2192,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SecurityTest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2140,8 +2200,9 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecurityTest",
-			ID:   "securityTest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityAPIKey(ctx, "SecurityTest", r); err != nil {
@@ -2163,6 +2224,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SecurityTest",
 			OperationID:   "securityTest",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2225,6 +2287,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().StringIntMapGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2239,6 +2302,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "StringIntMapGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2304,6 +2368,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestFloatValidation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2311,8 +2376,9 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestFloatValidation",
-			ID:   "testFloatValidation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestFloatValidationRequest(r)
@@ -2337,6 +2403,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TestFloatValidation",
 			OperationID:   "testFloatValidation",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2402,6 +2469,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestNullableOneofs
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2416,6 +2484,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestNullableOneofs",
 			OperationID:   "testNullableOneofs",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,

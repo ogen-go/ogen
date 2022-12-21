@@ -39,6 +39,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptcha2chcaptchaIDGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46,8 +47,9 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptcha2chcaptchaIDGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPICaptcha2chcaptchaIDGetParams(args, r)
@@ -67,6 +69,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "APICaptcha2chcaptchaIDGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -140,6 +143,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptcha2chcaptchaShowGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -147,8 +151,9 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptcha2chcaptchaShowGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPICaptcha2chcaptchaShowGetParams(args, r)
@@ -168,6 +173,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "APICaptcha2chcaptchaShowGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -241,6 +247,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptchaAppIDPublicKeyGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -248,8 +255,9 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptchaAppIDPublicKeyGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPICaptchaAppIDPublicKeyGetParams(args, r)
@@ -269,6 +277,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "APICaptchaAppIDPublicKeyGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -346,6 +355,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptchaInvisibleRecaptchaIDGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -353,8 +363,9 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptchaInvisibleRecaptchaIDGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPICaptchaInvisibleRecaptchaIDGetParams(args, r)
@@ -374,6 +385,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "APICaptchaInvisibleRecaptchaIDGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -447,6 +459,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptchaInvisibleRecaptchaMobileGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -461,6 +474,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "APICaptchaInvisibleRecaptchaMobileGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -525,6 +539,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptchaRecaptchaIDGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -532,8 +547,9 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptchaRecaptchaIDGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPICaptchaRecaptchaIDGetParams(args, r)
@@ -553,6 +569,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "APICaptchaRecaptchaIDGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -626,6 +643,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APICaptchaRecaptchaMobileGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -640,6 +658,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "APICaptchaRecaptchaMobileGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -704,6 +723,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APIDislikeGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -711,8 +731,9 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIDislikeGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPIDislikeGetParams(args, r)
@@ -732,6 +753,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "APIDislikeGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -805,6 +827,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APILikeGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -812,8 +835,9 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APILikeGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPILikeGetParams(args, r)
@@ -833,6 +857,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "APILikeGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -908,6 +933,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APIMobileV2AfterBoardThreadNumGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -915,8 +941,9 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIMobileV2AfterBoardThreadNumGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPIMobileV2AfterBoardThreadNumGetParams(args, r)
@@ -936,6 +963,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			Context:       ctx,
 			OperationName: "APIMobileV2AfterBoardThreadNumGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1013,6 +1041,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APIMobileV2BoardsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1027,6 +1056,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "APIMobileV2BoardsGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1091,6 +1121,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APIMobileV2InfoBoardThreadGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1098,8 +1129,9 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIMobileV2InfoBoardThreadGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPIMobileV2InfoBoardThreadGetParams(args, r)
@@ -1119,6 +1151,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "APIMobileV2InfoBoardThreadGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1192,6 +1225,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().APIMobileV2PostBoardNumGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1199,8 +1233,9 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIMobileV2PostBoardNumGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeAPIMobileV2PostBoardNumGetParams(args, r)
@@ -1220,6 +1255,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "APIMobileV2PostBoardNumGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1293,6 +1329,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UserPassloginPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1300,8 +1337,9 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserPassloginPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUserPassloginPostParams(args, r)
@@ -1336,6 +1374,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "UserPassloginPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1405,6 +1444,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UserPostingPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1412,8 +1452,9 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserPostingPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUserPostingPostRequest(r)
@@ -1438,6 +1479,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "UserPostingPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1502,6 +1544,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UserReportPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1509,8 +1552,9 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserReportPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUserReportPostRequest(r)
@@ -1535,6 +1579,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "UserReportPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

@@ -42,6 +42,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AllRequestBodies
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49,8 +50,9 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AllRequestBodies",
-			ID:   "allRequestBodies",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAllRequestBodiesRequest(r)
@@ -75,6 +77,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "AllRequestBodies",
 			OperationID:   "allRequestBodies",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -140,6 +143,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AllRequestBodiesOptional
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -147,8 +151,9 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AllRequestBodiesOptional",
-			ID:   "allRequestBodiesOptional",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAllRequestBodiesOptionalRequest(r)
@@ -173,6 +178,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "AllRequestBodiesOptional",
 			OperationID:   "allRequestBodiesOptional",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -238,6 +244,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Base64Request
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -245,8 +252,9 @@ func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Base64Request",
-			ID:   "base64Request",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeBase64RequestRequest(r)
@@ -271,6 +279,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "Base64Request",
 			OperationID:   "base64Request",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -336,6 +345,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MaskContentType
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -343,8 +353,9 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MaskContentType",
-			ID:   "maskContentType",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMaskContentTypeRequest(r)
@@ -369,6 +380,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "MaskContentType",
 			OperationID:   "maskContentType",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -434,6 +446,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MaskContentTypeOptional
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -441,8 +454,9 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MaskContentTypeOptional",
-			ID:   "maskContentTypeOptional",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeMaskContentTypeOptionalRequest(r)
@@ -467,6 +481,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "MaskContentTypeOptional",
 			OperationID:   "maskContentTypeOptional",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

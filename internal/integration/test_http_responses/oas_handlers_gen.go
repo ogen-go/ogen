@@ -42,6 +42,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnyContentTypeBinaryStringSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56,6 +57,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "AnyContentTypeBinaryStringSchema",
 			OperationID:   "anyContentTypeBinaryStringSchema",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -121,6 +123,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnyContentTypeBinaryStringSchemaDefault
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -135,6 +138,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			Context:       ctx,
 			OperationName: "AnyContentTypeBinaryStringSchemaDefault",
 			OperationID:   "anyContentTypeBinaryStringSchemaDefault",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -200,6 +204,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Combined
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -207,8 +212,9 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Combined",
-			ID:   "combined",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeCombinedParams(args, r)
@@ -228,6 +234,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "Combined",
 			OperationID:   "combined",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -298,6 +305,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Headers200
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -312,6 +320,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "Headers200",
 			OperationID:   "headers200",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -377,6 +386,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().HeadersCombined
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -384,8 +394,9 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "HeadersCombined",
-			ID:   "headersCombined",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeHeadersCombinedParams(args, r)
@@ -405,6 +416,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "HeadersCombined",
 			OperationID:   "headersCombined",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -475,6 +487,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().HeadersDefault
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -489,6 +502,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "HeadersDefault",
 			OperationID:   "headersDefault",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -554,6 +568,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().HeadersJSON
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -568,6 +583,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "HeadersJSON",
 			OperationID:   "headersJSON",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -633,6 +649,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().HeadersPattern
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -647,6 +664,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "HeadersPattern",
 			OperationID:   "headersPattern",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -715,6 +733,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IntersectPatternCode
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -722,8 +741,9 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IntersectPatternCode",
-			ID:   "intersectPatternCode",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeIntersectPatternCodeParams(args, r)
@@ -743,6 +763,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "IntersectPatternCode",
 			OperationID:   "intersectPatternCode",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -813,6 +834,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MultipleGenericResponses
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -827,6 +849,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "MultipleGenericResponses",
 			OperationID:   "multipleGenericResponses",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -892,6 +915,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OctetStreamBinaryStringSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -906,6 +930,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "OctetStreamBinaryStringSchema",
 			OperationID:   "octetStreamBinaryStringSchema",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -971,6 +996,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OctetStreamEmptySchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -985,6 +1011,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "OctetStreamEmptySchema",
 			OperationID:   "octetStreamEmptySchema",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1050,6 +1077,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TextPlainBinaryStringSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1064,6 +1092,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TextPlainBinaryStringSchema",
 			OperationID:   "textPlainBinaryStringSchema",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
