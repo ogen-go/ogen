@@ -48,7 +48,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 		return err
 	}
 {{- else if $g.CustomFormat }}
-	if err := {{ $.Var }}.Decode(d, format{{ $g.CustomFormat }}.DecodeJSON); err != nil {
+	if err := {{ $.Var }}.Decode(d, format{{ $g.CustomFormat }}().DecodeJSON); err != nil {
 		return err
 	}
 {{- else }}
@@ -93,7 +93,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 			return err
 		}
     {{- else if $t.CustomFormat }}
-		v, err := format{{ $t.CustomFormat }}.DecodeJSON(d)
+		v, err := format{{ $t.CustomFormat }}().DecodeJSON(d)
         {{ $.Var }} = v
 		if err != nil {
 			return err

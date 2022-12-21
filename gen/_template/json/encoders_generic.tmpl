@@ -20,7 +20,7 @@ func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if or $g.Format $g.Cust
 {{- else if $g.JSON.Format }}
 	json.Encode{{ $g.JSON.Format }}(e, o.Value)
 {{- else if $g.CustomFormat }}
-	format{{ $g.CustomFormat }}.EncodeJSON(e, o.Value)
+	format{{ $g.CustomFormat }}().EncodeJSON(e, o.Value)
 {{- else if $g.JSON.Fn }}
 	{{- if $g.IsAny }}
 		{{ errorf "unexpected optional any" }}
@@ -77,7 +77,7 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if or $g.Format $g.CustomFormat }}
 		}
 		o.Value = v
 	{{- else if $g.CustomFormat }}
-		v, err := format{{ $g.CustomFormat }}.DecodeJSON(d)
+		v, err := format{{ $g.CustomFormat }}().DecodeJSON(d)
 		if err != nil {
 			return err
 		}

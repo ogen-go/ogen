@@ -9,7 +9,7 @@
 		return err
 	}
 
-	c, err := format{{ $t.CustomFormat }}.DecodeText(val)
+	c, err := format{{ $t.CustomFormat }}().DecodeText(val)
 	if err != nil {
 		return err
 	}

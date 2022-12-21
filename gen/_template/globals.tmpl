@@ -27,10 +27,12 @@ var ratMap = map[string]*big.Rat{
 {{- with $cfs := $.CustomFormats }}
 var (
 	{{- range $cf := $cfs }}
-	format{{ $cf }} = struct{
-		{{ $cf.JSON.Go }}
+	format{{ $cf }} = func() (r struct{
+    	{{ $cf.JSON.Go }}
     	{{ $cf.Text.Go }}
-	}{}
+	}) {
+		return r
+	}
 	{{- end }}
 )
 {{- end }}
