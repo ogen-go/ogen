@@ -146,7 +146,10 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 			return true
 		}
 		if t.Validators.String.Set() {
-			return true
+			switch t.Primitive {
+			case String, ByteSlice:
+				return true
+			}
 		}
 		return false
 	case KindEnum:
