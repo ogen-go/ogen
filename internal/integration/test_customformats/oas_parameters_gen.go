@@ -5,8 +5,8 @@ package api
 import (
 	"net/http"
 
-	custom0 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
+	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
+	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
@@ -16,9 +16,11 @@ import (
 // PhoneGetParams is parameters of GET /phone operation.
 type PhoneGetParams struct {
 	// Phone number.
-	Phone custom0.Phone
+	Phone custom1.Phone
 	// Color.
 	Color OptRgba
+	// Hex.
+	Hex OptHex
 }
 
 func unpackPhoneGetParams(packed middleware.Parameters) (params PhoneGetParams) {
@@ -27,7 +29,7 @@ func unpackPhoneGetParams(packed middleware.Parameters) (params PhoneGetParams) 
 			Name: "phone",
 			In:   "query",
 		}
-		params.Phone = packed[key].(custom0.Phone)
+		params.Phone = packed[key].(custom1.Phone)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -36,6 +38,15 @@ func unpackPhoneGetParams(packed middleware.Parameters) (params PhoneGetParams) 
 		}
 		if v, ok := packed[key]; ok {
 			params.Color = v.(OptRgba)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hex",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Hex = v.(OptHex)
 		}
 	}
 	return params
@@ -89,7 +100,7 @@ func decodePhoneGetParams(args [0]string, r *http.Request) (params PhoneGetParam
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotColorVal custom1.RGBA
+				var paramsDotColorVal custom2.RGBA
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -116,6 +127,47 @@ func decodePhoneGetParams(args [0]string, r *http.Request) (params PhoneGetParam
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "color",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: hex.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "hex",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotHexVal int64
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := formatHex().DecodeText(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotHexVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Hex.SetTo(paramsDotHexVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "hex",
 			In:   "query",
 			Err:  err,
 		}

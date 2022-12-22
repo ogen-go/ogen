@@ -90,6 +90,10 @@ func (s *Server) handlePhoneGetRequest(args [0]string, w http.ResponseWriter, r 
 					Name: "color",
 					In:   "query",
 				}: params.Color,
+				{
+					Name: "hex",
+					In:   "query",
+				}: params.Hex,
 			},
 			Raw: r,
 		}
