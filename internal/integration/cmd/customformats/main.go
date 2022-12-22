@@ -53,16 +53,8 @@ func run(specPath, targetDir string) error {
 		RootURL: u,
 		CustomFormats: gen.CustomFormatsMap{
 			jsonschema.String: {
-				"phone": gen.CustomFormat[
-					phonetype.Phone,
-					phonetype.JSONPhoneEncoding,
-					phonetype.TextPhoneEncoding,
-				](),
-				"rgba": gen.CustomFormat[
-					rgbatype.RGBA,
-					rgbatype.JSONRGBAEncoding,
-					rgbatype.TextRGBAEncoding,
-				](),
+				"phone": phonetype.PhoneFormat,
+				"rgba":  rgbatype.RGBAFormat,
 			},
 		},
 		File:   location.NewFile(fileName, specPath, data),
