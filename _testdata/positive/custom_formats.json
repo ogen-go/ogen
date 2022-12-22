@@ -13,6 +13,9 @@
           },
           {
             "$ref": "#/components/parameters/Color"
+          },
+          {
+            "$ref": "#/components/parameters/Hex"
           }
         ],
         "requestBody": {
@@ -60,6 +63,15 @@
           "type": "string",
           "format": "rgba"
         }
+      },
+      "Hex": {
+        "name": "hex",
+        "in": "query",
+        "description": "Hex",
+        "schema": {
+          "type": "string",
+          "format": "hex"
+        }
       }
     },
     "schemas": {
@@ -90,6 +102,10 @@
           "background_color": {
             "type": "string",
             "format": "rgba"
+          },
+          "hex_color": {
+            "type": "string",
+            "format": "hex"
           }
         }
       }

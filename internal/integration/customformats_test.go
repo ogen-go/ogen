@@ -15,12 +15,14 @@ import (
 type testCustomFormats struct{}
 
 func (t testCustomFormats) PhoneGet(ctx context.Context, req *api.User, params api.PhoneGetParams) (*api.User, error) {
-	cpy := *req
-	cpy.HomePhone.SetTo(params.Phone)
+	req.HomePhone.SetTo(params.Phone)
 	if v, ok := params.Color.Get(); ok {
-		cpy.BackgroundColor.SetTo(v)
+		req.BackgroundColor.SetTo(v)
 	}
-	return &cpy, nil
+	if v, ok := params.Hex.Get(); ok {
+		req.HexColor.SetTo(v)
+	}
+	return req, nil
 }
 
 func TestCustomFormats(t *testing.T) {
@@ -39,7 +41,9 @@ func TestCustomFormats(t *testing.T) {
 	var (
 		homePhone       = phonetype.Phone("+1234567890")
 		backgroundColor = rgbatype.RGBA{R: 255, G: 0, B: 0, A: 255}
-		u               = &api.User{
+		hex             = int64(100)
+
+		u = &api.User{
 			ID:           10,
 			Phone:        "+1234567890",
 			ProfileColor: rgbatype.RGBA{R: 0, G: 0, B: 0, A: 255},
@@ -49,6 +53,7 @@ func TestCustomFormats(t *testing.T) {
 	u2, err := client.PhoneGet(ctx, u, api.PhoneGetParams{
 		Phone: homePhone,
 		Color: api.NewOptRgba(backgroundColor),
+		Hex:   api.NewOptHex(hex),
 	})
 	a.NoError(err)
 
@@ -57,4 +62,5 @@ func TestCustomFormats(t *testing.T) {
 	a.Equal(u.ProfileColor, u2.ProfileColor)
 	a.Equal(homePhone, u2.HomePhone.Or(""))
 	a.Equal(backgroundColor, u2.BackgroundColor.Or(rgbatype.RGBA{}))
+	a.Equal(hex, u2.HexColor.Or(0))
 }

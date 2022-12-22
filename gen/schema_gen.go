@@ -281,15 +281,17 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			if err := t.Validators.SetString(schema); err != nil {
 				return nil, errors.Wrap(err, "string validator")
 			}
-			switch t.Primitive {
-			case ir.String, ir.ByteSlice:
-			default:
-				g.log.Warn("String validator cannot be applied to non-string type and will be ignored",
-					zapPosition(schema),
-					zap.String("type", string(schema.Type)),
-					zap.String("format", schema.Format),
-					zap.String("go_type", t.Go()),
-				)
+			if t.Validators.String.Set() {
+				switch t.Primitive {
+				case ir.String, ir.ByteSlice:
+				default:
+					g.log.Warn("String validator cannot be applied to non-string type and will be ignored",
+						zapPosition(schema),
+						zap.String("type", string(schema.Type)),
+						zap.String("format", schema.Format),
+						zap.String("go_type", t.Go()),
+					)
+				}
 			}
 		case jsonschema.Integer:
 			if err := t.Validators.SetInt(schema); err != nil {

@@ -9,21 +9,56 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
-	custom0 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
+	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
+	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/validate"
 )
 
-// Encode encodes custom0.Phone as json.
-func (o OptPhone) Encode(e *jx.Encoder, format func(*jx.Encoder, custom0.Phone)) {
+// Encode encodes int64 as json.
+func (o OptHex) Encode(e *jx.Encoder, format func(*jx.Encoder, int64)) {
+	if !o.Set {
+		return
+	}
+	formatHex().EncodeJSON(e, o.Value)
+}
+
+// Decode decodes int64 from json.
+func (o *OptHex) Decode(d *jx.Decoder, format func(*jx.Decoder) (int64, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptHex to nil")
+	}
+	o.Set = true
+	v, err := formatHex().DecodeJSON(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptHex) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e, formatHex().EncodeJSON)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptHex) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d, formatHex().DecodeJSON)
+}
+
+// Encode encodes custom1.Phone as json.
+func (o OptPhone) Encode(e *jx.Encoder, format func(*jx.Encoder, custom1.Phone)) {
 	if !o.Set {
 		return
 	}
 	formatPhone().EncodeJSON(e, o.Value)
 }
 
-// Decode decodes custom0.Phone from json.
-func (o *OptPhone) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom0.Phone, error)) error {
+// Decode decodes custom1.Phone from json.
+func (o *OptPhone) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom1.Phone, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPhone to nil")
 	}
@@ -49,16 +84,16 @@ func (s *OptPhone) UnmarshalJSON(data []byte) error {
 	return s.Decode(d, formatPhone().DecodeJSON)
 }
 
-// Encode encodes custom1.RGBA as json.
-func (o OptRgba) Encode(e *jx.Encoder, format func(*jx.Encoder, custom1.RGBA)) {
+// Encode encodes custom2.RGBA as json.
+func (o OptRgba) Encode(e *jx.Encoder, format func(*jx.Encoder, custom2.RGBA)) {
 	if !o.Set {
 		return
 	}
 	formatRgba().EncodeJSON(e, o.Value)
 }
 
-// Decode decodes custom1.RGBA from json.
-func (o *OptRgba) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom1.RGBA, error)) error {
+// Decode decodes custom2.RGBA from json.
+func (o *OptRgba) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom2.RGBA, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRgba to nil")
 	}
@@ -120,14 +155,21 @@ func (s *User) encodeFields(e *jx.Encoder) {
 			s.BackgroundColor.Encode(e, formatRgba().EncodeJSON)
 		}
 	}
+	{
+		if s.HexColor.Set {
+			e.FieldStart("hex_color")
+			s.HexColor.Encode(e, formatHex().EncodeJSON)
+		}
+	}
 }
 
-var jsonFieldsNameOfUser = [5]string{
+var jsonFieldsNameOfUser = [6]string{
 	0: "id",
 	1: "phone",
 	2: "home_phone",
 	3: "profile_color",
 	4: "background_color",
+	5: "hex_color",
 }
 
 // Decode decodes User from json.
@@ -194,6 +236,16 @@ func (s *User) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"background_color\"")
+			}
+		case "hex_color":
+			if err := func() error {
+				s.HexColor.Reset()
+				if err := s.HexColor.Decode(d, formatHex().DecodeJSON); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"hex_color\"")
 			}
 		default:
 			return d.Skip()

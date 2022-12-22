@@ -130,6 +130,23 @@ func (c *Client) sendPhoneGet(ctx context.Context, request *User, params PhoneGe
 			return res, errors.Wrap(err, "encode query")
 		}
 	}
+	{
+		// Encode "hex" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "hex",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Hex.Get(); ok {
+				return e.EncodeValue(formatHex().EncodeText(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"

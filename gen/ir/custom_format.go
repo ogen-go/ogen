@@ -14,6 +14,10 @@ type ExternalType struct {
 
 // Go returns valid Go type for this ExternalType.
 func (c ExternalType) Go() string {
+	if c.Pkg == "" {
+		// Primitive type.
+		return c.Type.Name()
+	}
 	return fmt.Sprintf("%s.%s", c.Pkg, c.Type.Name())
 }
 

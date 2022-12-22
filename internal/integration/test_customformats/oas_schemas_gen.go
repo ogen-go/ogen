@@ -3,21 +3,67 @@
 package api
 
 import (
-	custom0 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
+	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
+	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 )
 
+// NewOptHex returns new OptHex with value set to v.
+func NewOptHex(v int64) OptHex {
+	return OptHex{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptHex is optional int64.
+type OptHex struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if OptHex was set.
+func (o OptHex) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptHex) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptHex) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptHex) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptHex) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPhone returns new OptPhone with value set to v.
-func NewOptPhone(v custom0.Phone) OptPhone {
+func NewOptPhone(v custom1.Phone) OptPhone {
 	return OptPhone{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptPhone is optional custom0.Phone.
+// OptPhone is optional custom1.Phone.
 type OptPhone struct {
-	Value custom0.Phone
+	Value custom1.Phone
 	Set   bool
 }
 
@@ -26,19 +72,19 @@ func (o OptPhone) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptPhone) Reset() {
-	var v custom0.Phone
+	var v custom1.Phone
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptPhone) SetTo(v custom0.Phone) {
+func (o *OptPhone) SetTo(v custom1.Phone) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptPhone) Get() (v custom0.Phone, ok bool) {
+func (o OptPhone) Get() (v custom1.Phone, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -46,7 +92,7 @@ func (o OptPhone) Get() (v custom0.Phone, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptPhone) Or(d custom0.Phone) custom0.Phone {
+func (o OptPhone) Or(d custom1.Phone) custom1.Phone {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -54,16 +100,16 @@ func (o OptPhone) Or(d custom0.Phone) custom0.Phone {
 }
 
 // NewOptRgba returns new OptRgba with value set to v.
-func NewOptRgba(v custom1.RGBA) OptRgba {
+func NewOptRgba(v custom2.RGBA) OptRgba {
 	return OptRgba{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptRgba is optional custom1.RGBA.
+// OptRgba is optional custom2.RGBA.
 type OptRgba struct {
-	Value custom1.RGBA
+	Value custom2.RGBA
 	Set   bool
 }
 
@@ -72,19 +118,19 @@ func (o OptRgba) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptRgba) Reset() {
-	var v custom1.RGBA
+	var v custom2.RGBA
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptRgba) SetTo(v custom1.RGBA) {
+func (o *OptRgba) SetTo(v custom2.RGBA) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptRgba) Get() (v custom1.RGBA, ok bool) {
+func (o OptRgba) Get() (v custom2.RGBA, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -92,7 +138,7 @@ func (o OptRgba) Get() (v custom1.RGBA, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptRgba) Or(d custom1.RGBA) custom1.RGBA {
+func (o OptRgba) Or(d custom2.RGBA) custom2.RGBA {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -102,10 +148,11 @@ func (o OptRgba) Or(d custom1.RGBA) custom1.RGBA {
 // Ref: #/components/schemas/User
 type User struct {
 	ID              int64         `json:"id"`
-	Phone           custom0.Phone `json:"phone"`
+	Phone           custom1.Phone `json:"phone"`
 	HomePhone       OptPhone      `json:"home_phone"`
-	ProfileColor    custom1.RGBA  `json:"profile_color"`
+	ProfileColor    custom2.RGBA  `json:"profile_color"`
 	BackgroundColor OptRgba       `json:"background_color"`
+	HexColor        OptHex        `json:"hex_color"`
 }
 
 // GetID returns the value of ID.
@@ -114,7 +161,7 @@ func (s *User) GetID() int64 {
 }
 
 // GetPhone returns the value of Phone.
-func (s *User) GetPhone() custom0.Phone {
+func (s *User) GetPhone() custom1.Phone {
 	return s.Phone
 }
 
@@ -124,7 +171,7 @@ func (s *User) GetHomePhone() OptPhone {
 }
 
 // GetProfileColor returns the value of ProfileColor.
-func (s *User) GetProfileColor() custom1.RGBA {
+func (s *User) GetProfileColor() custom2.RGBA {
 	return s.ProfileColor
 }
 
@@ -133,13 +180,18 @@ func (s *User) GetBackgroundColor() OptRgba {
 	return s.BackgroundColor
 }
 
+// GetHexColor returns the value of HexColor.
+func (s *User) GetHexColor() OptHex {
+	return s.HexColor
+}
+
 // SetID sets the value of ID.
 func (s *User) SetID(val int64) {
 	s.ID = val
 }
 
 // SetPhone sets the value of Phone.
-func (s *User) SetPhone(val custom0.Phone) {
+func (s *User) SetPhone(val custom1.Phone) {
 	s.Phone = val
 }
 
@@ -149,11 +201,16 @@ func (s *User) SetHomePhone(val OptPhone) {
 }
 
 // SetProfileColor sets the value of ProfileColor.
-func (s *User) SetProfileColor(val custom1.RGBA) {
+func (s *User) SetProfileColor(val custom2.RGBA) {
 	s.ProfileColor = val
 }
 
 // SetBackgroundColor sets the value of BackgroundColor.
 func (s *User) SetBackgroundColor(val OptRgba) {
 	s.BackgroundColor = val
+}
+
+// SetHexColor sets the value of HexColor.
+func (s *User) SetHexColor(val OptHex) {
+	s.HexColor = val
 }
