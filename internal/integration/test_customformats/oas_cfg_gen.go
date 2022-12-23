@@ -11,9 +11,10 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
-	custom0 "github.com/ogen-go/ogen/internal/integration/customformats/hextype"
-	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
+	custom0 "github.com/ogen-go/ogen/internal/integration/customformats/eventtype"
+	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/hextype"
+	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
+	custom3 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
@@ -21,20 +22,26 @@ import (
 
 var (
 	formatHex = func() (r struct {
-		custom0.JSONHexEncoding
-		custom0.TextHexEncoding
+		custom1.JSONHexEncoding
+		custom1.TextHexEncoding
 	}) {
 		return r
 	}
 	formatPhone = func() (r struct {
-		custom1.JSONPhoneEncoding
-		custom1.TextPhoneEncoding
+		custom2.JSONPhoneEncoding
+		custom2.TextPhoneEncoding
 	}) {
 		return r
 	}
 	formatRgba = func() (r struct {
-		custom2.JSONRGBAEncoding
-		custom2.TextRGBAEncoding
+		custom3.JSONRGBAEncoding
+		custom3.TextRGBAEncoding
+	}) {
+		return r
+	}
+	formatXMyEvent = func() (r struct {
+		custom0.JSONEventEncoding
+		custom0.TextEventEncoding
 	}) {
 		return r
 	}

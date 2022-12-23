@@ -9,8 +9,8 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
-	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
+	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
+	custom3 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -49,16 +49,16 @@ func (s *OptHex) UnmarshalJSON(data []byte) error {
 	return s.Decode(d, formatHex().DecodeJSON)
 }
 
-// Encode encodes custom1.Phone as json.
-func (o OptPhone) Encode(e *jx.Encoder, format func(*jx.Encoder, custom1.Phone)) {
+// Encode encodes custom2.Phone as json.
+func (o OptPhone) Encode(e *jx.Encoder, format func(*jx.Encoder, custom2.Phone)) {
 	if !o.Set {
 		return
 	}
 	formatPhone().EncodeJSON(e, o.Value)
 }
 
-// Decode decodes custom1.Phone from json.
-func (o *OptPhone) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom1.Phone, error)) error {
+// Decode decodes custom2.Phone from json.
+func (o *OptPhone) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom2.Phone, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPhone to nil")
 	}
@@ -84,16 +84,16 @@ func (s *OptPhone) UnmarshalJSON(data []byte) error {
 	return s.Decode(d, formatPhone().DecodeJSON)
 }
 
-// Encode encodes custom2.RGBA as json.
-func (o OptRgba) Encode(e *jx.Encoder, format func(*jx.Encoder, custom2.RGBA)) {
+// Encode encodes custom3.RGBA as json.
+func (o OptRgba) Encode(e *jx.Encoder, format func(*jx.Encoder, custom3.RGBA)) {
 	if !o.Set {
 		return
 	}
 	formatRgba().EncodeJSON(e, o.Value)
 }
 
-// Decode decodes custom2.RGBA from json.
-func (o *OptRgba) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom2.RGBA, error)) error {
+// Decode decodes custom3.RGBA from json.
+func (o *OptRgba) Decode(d *jx.Decoder, format func(*jx.Decoder) (custom3.RGBA, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRgba to nil")
 	}
