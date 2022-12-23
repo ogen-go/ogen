@@ -19,7 +19,16 @@ func checkImportableType(typ reflect.Type) error {
 
 	name := typ.Name()
 	if name == "" {
-		return errors.New("type must be named or primitive")
+		switch typ.Kind() {
+		case reflect.Interface:
+			if typ.NumMethod() == 0 {
+				// Allow empty interface.
+				break
+			}
+			fallthrough
+		default:
+			return errors.New("type must be named or primitive")
+		}
 	}
 
 	if path != "" && !token.IsExported(name) {
