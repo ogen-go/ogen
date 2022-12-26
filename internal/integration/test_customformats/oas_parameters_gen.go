@@ -5,8 +5,8 @@ package api
 import (
 	"net/http"
 
-	custom1 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
-	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
+	custom2 "github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
+	custom3 "github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
@@ -16,7 +16,7 @@ import (
 // PhoneGetParams is parameters of GET /phone operation.
 type PhoneGetParams struct {
 	// Phone number.
-	Phone custom1.Phone
+	Phone custom2.Phone
 	// Color.
 	Color OptRgba
 	// Hex.
@@ -29,7 +29,7 @@ func unpackPhoneGetParams(packed middleware.Parameters) (params PhoneGetParams) 
 			Name: "phone",
 			In:   "query",
 		}
-		params.Phone = packed[key].(custom1.Phone)
+		params.Phone = packed[key].(custom2.Phone)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -100,7 +100,7 @@ func decodePhoneGetParams(args [0]string, r *http.Request) (params PhoneGetParam
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotColorVal custom2.RGBA
+				var paramsDotColorVal custom3.RGBA
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {

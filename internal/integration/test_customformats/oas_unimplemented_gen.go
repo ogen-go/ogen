@@ -13,6 +13,13 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// EventPost implements POST /event operation.
+//
+// POST /event
+func (UnimplementedHandler) EventPost(ctx context.Context, req any) (r any, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // PhoneGet implements GET /phone operation.
 //
 // GET /phone

@@ -276,6 +276,12 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			return nil, errors.Wrap(err, "primitive")
 		}
 
+		fields := []zap.Field{
+			zapPosition(schema),
+			zap.String("type", string(schema.Type)),
+			zap.String("format", schema.Format),
+			zap.String("go_type", t.Go()),
+		}
 		switch schema.Type {
 		case jsonschema.String:
 			if err := t.Validators.SetString(schema); err != nil {
@@ -285,26 +291,39 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				switch t.Primitive {
 				case ir.String, ir.ByteSlice:
 				default:
-					g.log.Warn("String validator cannot be applied to non-string type and will be ignored",
-						zapPosition(schema),
-						zap.String("type", string(schema.Type)),
-						zap.String("format", schema.Format),
-						zap.String("go_type", t.Go()),
-					)
+					g.log.Warn("String validator cannot be applied to generated type and will be ignored", fields...)
 				}
 			}
 		case jsonschema.Integer:
 			if err := t.Validators.SetInt(schema); err != nil {
 				return nil, errors.Wrap(err, "int validator")
 			}
+			if t.Validators.Int.Set() {
+				switch t.Primitive {
+				case ir.String, ir.ByteSlice:
+				default:
+					g.log.Warn("Int validator cannot be applied to generated type and will be ignored", fields...)
+				}
+			}
 		case jsonschema.Number:
 			if err := t.Validators.SetFloat(schema); err != nil {
 				return nil, errors.Wrap(err, "float validator")
+			}
+			if t.Validators.Float.Set() {
+				switch t.Primitive {
+				case ir.String, ir.ByteSlice:
+				default:
+					g.log.Warn("Float validator cannot be applied to generated type and will be ignored", fields...)
+				}
 			}
 		}
 
 		return g.regtype(name, t), nil
 	case jsonschema.Empty:
+		if format, ok := g.customFormats[schema.Type][schema.Format]; ok {
+			return g.customFormat(format, schema), nil
+		}
+
 		g.log.Info("Type is not defined, using any",
 			zapPosition(schema),
 			zap.String("name", name),

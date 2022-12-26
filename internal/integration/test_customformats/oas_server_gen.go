@@ -8,6 +8,10 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// EventPost implements POST /event operation.
+	//
+	// POST /event
+	EventPost(ctx context.Context, req any) (any, error)
 	// PhoneGet implements GET /phone operation.
 	//
 	// GET /phone

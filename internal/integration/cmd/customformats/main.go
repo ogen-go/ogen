@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/integration/customformats/eventtype"
 	"github.com/ogen-go/ogen/internal/integration/customformats/hextype"
 	"github.com/ogen-go/ogen/internal/integration/customformats/phonetype"
 	"github.com/ogen-go/ogen/internal/integration/customformats/rgbatype"
@@ -57,6 +58,9 @@ func run(specPath, targetDir string) error {
 				"phone": phonetype.PhoneFormat,
 				"rgba":  rgbatype.RGBAFormat,
 				"hex":   hextype.HexFormat,
+			},
+			jsonschema.Empty: {
+				"x-my-event": eventtype.EventFormat,
 			},
 		},
 		File:   location.NewFile(fileName, specPath, data),

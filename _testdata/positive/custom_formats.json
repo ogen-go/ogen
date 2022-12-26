@@ -5,6 +5,32 @@
     "version": "v0.1.0"
   },
   "paths": {
+    "/event": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/phone": {
       "get": {
         "parameters": [
@@ -75,6 +101,9 @@
       }
     },
     "schemas": {
+      "Event": {
+        "format": "x-my-event"
+      },
       "User": {
         "type": "object",
         "required": [

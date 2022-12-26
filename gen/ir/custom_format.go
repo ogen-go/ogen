@@ -15,8 +15,16 @@ type ExternalType struct {
 // Go returns valid Go type for this ExternalType.
 func (c ExternalType) Go() string {
 	if c.Pkg == "" {
-		// Primitive type.
-		return c.Type.Name()
+		switch t := c.Type; t.Kind() {
+		case reflect.Interface:
+			if t.NumMethod() != 0 {
+				panic(fmt.Sprintf("unexpected interface type: %v", t))
+			}
+			return "any"
+		default:
+			// Primitive type.
+			return t.Name()
+		}
 	}
 	return fmt.Sprintf("%s.%s", c.Pkg, c.Type.Name())
 }
