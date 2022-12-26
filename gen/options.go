@@ -26,6 +26,11 @@ type Options struct {
 	NoClient bool
 	// NoServer disables server generation.
 	NoServer bool
+	// NoWebhookClient disables webhook client generation.
+	NoWebhookClient bool
+	// NoWebhookServer disables webhook server generation.
+	NoWebhookServer bool
+
 	// GenerateExampleTests whether to generate decoding tests using schema examples.
 	GenerateExampleTests bool
 	// SkipTestRegex is regex to skip generated tests.
@@ -136,19 +141,19 @@ type CustomFormatDef struct {
 
 // CustomFormat returns custom format definition.
 func CustomFormat[
-	T any,
-	JSON interface {
-		~struct{} // Enforce implementation without state.
+T any,
+JSON interface {
+	~struct{} // Enforce implementation without state.
 
-		EncodeJSON(*jx.Encoder, T)
-		DecodeJSON(*jx.Decoder) (T, error)
-	},
-	Text interface {
-		~struct{} // Enforce implementation without state.
+	EncodeJSON(*jx.Encoder, T)
+	DecodeJSON(*jx.Decoder) (T, error)
+},
+Text interface {
+	~struct{} // Enforce implementation without state.
 
-		EncodeText(T) string
-		DecodeText(string) (T, error)
-	},
+	EncodeText(T) string
+	DecodeText(string) (T, error)
+},
 ]() CustomFormatDef {
 	return CustomFormatDef{
 		typ:  reflect.TypeOf(new(T)).Elem(),

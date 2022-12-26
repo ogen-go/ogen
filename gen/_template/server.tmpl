@@ -4,6 +4,7 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- if $.PathsServerEnabled }}
 {{- with $ops := $.Operations }}
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
@@ -47,7 +48,9 @@ func NewServer(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}op
 	}, nil
 }
 {{- end }}
+{{- end }}
 
+{{- if $.WebhookServerEnabled }}
 {{- with $ops := $.Webhooks }}
 // WebhookHandler handles webhooks described by OpenAPI v3 specification.
 type WebhookHandler interface {
@@ -77,6 +80,7 @@ func NewWebhookServer(h WebhookHandler, opts ...ServerOption) (*WebhookServer, e
 		baseServer: s,
 	}, nil
 }
+{{- end }}
 {{- end }}
 
 {{ end }}

@@ -24,7 +24,7 @@ type {{ $op.Name }}Params struct {
 {{- end }}
 }
 
-{{- if $.Config.ServerEnabled }}
+{{- if $.Config.AnyServerEnabled }}
 	{{- template "parameter_decoder" $op }}
 {{- end }}
 

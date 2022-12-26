@@ -4,7 +4,7 @@
 {{ template "header" $ }}
 {{- if $.Securities }}
 
-{{- if $.ServerEnabled }}
+{{- if $.PathsServerEnabled }}
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
@@ -50,7 +50,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 {{- end }}
 {{- end }}
 
-{{- if $.ClientEnabled }}
+{{- if $.PathsClientEnabled }}
 // SecuritySource is provider of security values (tokens, passwords, etc.).
 type SecuritySource interface {
 {{- range $name, $s := $.Securities }}
