@@ -19,16 +19,16 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-var _ Handler = struct {
-	*Client
-}{}
-
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
 	sec       SecuritySource
 	baseClient
 }
+
+var _ Handler = struct {
+	*Client
+}{}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, sec SecuritySource, opts ...ClientOption) (*Client, error) {
