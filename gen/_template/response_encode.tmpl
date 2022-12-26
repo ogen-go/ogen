@@ -3,6 +3,7 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- if $.PathsServerEnabled }}
 {{- range $op := $.Operations }}
 	{{- template "response_encoders/operation" $op }}
 {{ end }}
@@ -25,10 +26,13 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, sp
 	{{- end }}
 }
 {{- end }}
+{{- end }}
 
+{{- if $.WebhookServerEnabled }}
 {{- range $op := $.Webhooks }}
     {{- template "response_encoders/operation" $op }}
 {{ end }}
+{{- end }}
 
 {{ end }}
 

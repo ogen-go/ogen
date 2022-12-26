@@ -35,10 +35,23 @@ type TemplateConfig struct {
 	WebhookRouter WebhookRouter
 	CustomImports []string
 	CustomFormats []ir.CustomFormat
-	ClientEnabled bool
-	ServerEnabled bool
+
+	PathsClientEnabled   bool
+	PathsServerEnabled   bool
+	WebhookClientEnabled bool
+	WebhookServerEnabled bool
 
 	skipTestRegex *regexp.Regexp
+}
+
+// AnyClientEnabled returns true, if webhooks or paths client is enabled.
+func (t TemplateConfig) AnyClientEnabled() bool {
+	return t.PathsClientEnabled || t.WebhookClientEnabled
+}
+
+// AnyServerEnabled returns true, if webhooks or paths server is enabled.
+func (t TemplateConfig) AnyServerEnabled() bool {
+	return t.PathsServerEnabled || t.WebhookServerEnabled
 }
 
 // ErrorGoType returns Go type of error.
@@ -235,22 +248,24 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	})
 
 	cfg := TemplateConfig{
-		Package:       pkgName,
-		Operations:    g.operations,
-		Webhooks:      g.webhooks,
-		Types:         types,
-		Interfaces:    interfaces,
-		Error:         g.errType,
-		ErrorType:     nil,
-		Servers:       g.servers,
-		Securities:    g.securities,
-		Router:        g.router,
-		WebhookRouter: g.webhookRouter,
-		CustomImports: g.imports,
-		CustomFormats: customFormats,
-		ClientEnabled: !g.opt.NoClient,
-		ServerEnabled: !g.opt.NoServer,
-		skipTestRegex: g.opt.SkipTestRegex,
+		Package:              pkgName,
+		Operations:           g.operations,
+		Webhooks:             g.webhooks,
+		Types:                types,
+		Interfaces:           interfaces,
+		Error:                g.errType,
+		ErrorType:            nil,
+		Servers:              g.servers,
+		Securities:           g.securities,
+		Router:               g.router,
+		WebhookRouter:        g.webhookRouter,
+		CustomImports:        g.imports,
+		CustomFormats:        customFormats,
+		PathsClientEnabled:   !g.opt.NoClient,
+		PathsServerEnabled:   !g.opt.NoServer,
+		WebhookClientEnabled: !g.opt.NoWebhookClient && len(g.webhooks) > 0,
+		WebhookServerEnabled: !g.opt.NoWebhookServer && len(g.webhooks) > 0,
+		skipTestRegex:        g.opt.SkipTestRegex,
 	}
 	if cfg.Error != nil {
 		if len(cfg.Error.Contents) != 1 {
@@ -278,7 +293,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 			return nil
 		})
 	}
-	genClient, genServer := !g.opt.NoClient, !g.opt.NoServer
+	var (
+		genClient = cfg.PathsClientEnabled || cfg.WebhookClientEnabled
+		genServer = cfg.PathsServerEnabled || cfg.WebhookServerEnabled
+	)
 	for _, t := range []struct {
 		name    string
 		enabled bool

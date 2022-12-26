@@ -17,6 +17,11 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// Client implements OAS client.
+type Client struct {
+	serverURL *url.URL
+	baseClient
+}
 type errorHandler interface {
 	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
@@ -25,12 +30,6 @@ var _ Handler = struct {
 	errorHandler
 	*Client
 }{}
-
-// Client implements OAS client.
-type Client struct {
-	serverURL *url.URL
-	baseClient
-}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {

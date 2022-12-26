@@ -37,13 +37,13 @@ var (
 )
 {{- end }}
 
-{{- if or $.ServerEnabled $.ClientEnabled }}
+{{- if or $.AnyServerEnabled $.AnyClientEnabled }}
 var (
-	{{- if $.ClientEnabled }}
+	{{- if $.AnyClientEnabled }}
 	// Allocate option closure once.
 	clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
 	{{- end }}
-	{{- if $.ServerEnabled }}
+	{{- if $.AnyServerEnabled }}
 	// Allocate option closure once.
 	serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
 	{{- end }}

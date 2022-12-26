@@ -6,11 +6,7 @@
 
 {{ template "globals" $ }}
 
-{{- if or $.ServerEnabled $.ClientEnabled }}
-
-{{- if $.ServerEnabled }}
-
-{{- end }}
+{{- if or $.AnyServerEnabled $.AnyClientEnabled }}
 
 type (
 	optionFunc[C any] func(*C)
@@ -37,7 +33,7 @@ func (cfg *otelConfig) initOTEL() {
 	cfg.Meter = cfg.MeterProvider.Meter(otelogen.Name)
 }
 
-{{- if $.ServerEnabled }}
+{{- if $.AnyServerEnabled }}
 // ErrorHandler is error handler.
 type ErrorHandler = ogenerrors.ErrorHandler
 
@@ -117,7 +113,7 @@ func (cfg serverConfig) baseServer() (s baseServer, err error) {
 }
 {{- end }}
 
-{{- if $.ClientEnabled }}
+{{- if $.AnyClientEnabled }}
 type clientConfig struct {
 	otelConfig
 	Client ht.Client
@@ -176,10 +172,10 @@ func (cfg clientConfig) baseClient() (c baseClient, err error) {
 
 // Option is config option.
 type Option interface {
-	{{- if $.ServerEnabled }}
+	{{- if $.AnyServerEnabled }}
 	ServerOption
 	{{- end }}
-	{{- if $.ClientEnabled }}
+	{{- if $.AnyClientEnabled }}
 	ClientOption
 	{{- end }}
 }
@@ -206,7 +202,7 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 	})
 }
 
-{{- if $.ClientEnabled }}
+{{- if $.AnyClientEnabled }}
 // WithClient specifies http client to use.
 func WithClient(client ht.Client) ClientOption {
 	return optionFunc[clientConfig](func(cfg *clientConfig) {
@@ -217,7 +213,7 @@ func WithClient(client ht.Client) ClientOption {
 }
 {{- end }}
 
-{{- if $.ServerEnabled }}
+{{- if $.AnyServerEnabled }}
 // WithNotFound specifies Not Found handler to use.
 func WithNotFound(notFound http.HandlerFunc) ServerOption {
 	return optionFunc[serverConfig](func(cfg *serverConfig) {

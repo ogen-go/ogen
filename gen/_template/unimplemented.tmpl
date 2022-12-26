@@ -6,6 +6,7 @@
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
 
+{{- if $.PathsServerEnabled }}
 {{- with $ops := $.Operations }}
 var _ Handler = UnimplementedHandler{}
 {{- range $op := $ops }}
@@ -24,11 +25,14 @@ func (UnimplementedHandler) NewError(ctx context.Context, err error) (r {{ $.Err
 	return r
 }
 {{- end }}
+{{- end }}
 
+{{- if $.WebhookServerEnabled }}
 {{- with $ops := $.Webhooks }}
 var _ WebhookHandler = UnimplementedHandler{}
 {{- range $op := $ops }}
     {{- template "unimplemented/operation" $op }}
+{{- end }}
 {{- end }}
 {{- end }}
 

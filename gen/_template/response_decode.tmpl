@@ -3,13 +3,17 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- if $.PathsClientEnabled }}
 {{- range $op := $.Operations }}
 	{{- template "response_decoders/operation" op_elem $op $ }}
 {{ end }}
+{{- end }}
 
+{{- if $.WebhookClientEnabled }}
 {{- range $op := $.Webhooks }}
     {{- template "response_decoders/operation" op_elem $op $ }}
 {{ end }}
+{{- end }}
 
 {{ end }}
 

@@ -3,6 +3,7 @@
 {{ template "header" $ }}
 {{- $router := $.Router }}
 
+{{- if $.PathsServerEnabled }}
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -101,8 +102,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
     {{- end }}
 	return r, false
 }
+{{- end }}
 
-{{- if $.Webhooks }}
+{{- if and $.WebhookServerEnabled $.Webhooks }}
 // Handle handles webhook request.
 //
 // Returns true if there is a webhook handler for given name and requested method.

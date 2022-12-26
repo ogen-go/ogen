@@ -19,15 +19,15 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-var _ Handler = struct {
-	*Client
-}{}
-
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
 	baseClient
 }
+
+var _ Handler = struct {
+	*Client
+}{}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {

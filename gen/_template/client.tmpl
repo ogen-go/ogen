@@ -3,7 +3,18 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- if $.ServerEnabled }}
+{{- if $.PathsClientEnabled }}
+{{- with $ops := $.Operations }}
+// Client implements OAS client.
+type Client struct {
+	serverURL *url.URL
+	{{- if $.Securities }}
+	sec 	  SecuritySource
+	{{- end }}
+	baseClient
+}
+
+{{- if $.PathsServerEnabled }}
 {{- if $.Error }}
 type errorHandler interface {
 	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
@@ -14,16 +25,6 @@ var _ Handler = struct{
 	*Client
 }{}
 {{- end }}
-
-{{- with $ops := $.Operations }}
-// Client implements OAS client.
-type Client struct {
-	serverURL *url.URL
-	{{- if $.Securities }}
-	sec 	  SecuritySource
-	{{- end }}
-	baseClient
-}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
@@ -64,7 +65,9 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 {{- end }}
 
 {{- end }}
+{{- end }}
 
+{{- if $.WebhookClientEnabled }}
 {{- with $ops := $.Webhooks }}
 // WebhookClient implements webhook client.
 type WebhookClient struct {
@@ -86,6 +89,7 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
     {{ template "client/operation" $op }}
 {{- end }}
 
+{{- end }}
 {{- end }}
 
 {{ end }}
