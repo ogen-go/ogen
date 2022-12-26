@@ -250,6 +250,8 @@ func run() error {
 		skipUnimplemented = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
 		noClient          = set.Bool("no-client", false, "Disables client generation")
 		noServer          = set.Bool("no-server", false, "Disables server generation")
+		noWebhookClient   = set.Bool("no-webhook-client", false, "Disables webhook client generation")
+		noWebhookServer   = set.Bool("no-webhook-server", false, "Disables webhook server generation")
 		// Debug options.
 		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented")
@@ -362,6 +364,8 @@ func run() error {
 	opts := gen.Options{
 		NoClient:             *noClient,
 		NoServer:             *noServer,
+		NoWebhookClient:      *noWebhookClient,
+		NoWebhookServer:      *noWebhookServer,
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,
