@@ -12,6 +12,8 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+const defaultSchemaDepthLimit = 1000
+
 type schemaGen struct {
 	side      []*ir.Type
 	localRefs map[jsonschema.Ref]*ir.Type
@@ -20,7 +22,10 @@ type schemaGen struct {
 	fail      func(err error) error
 
 	customFormats map[jsonschema.SchemaType]map[string]ir.CustomFormat
-	log           *zap.Logger
+	depthLimit    int
+	depthCount    int
+
+	log *zap.Logger
 }
 
 func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {
@@ -37,6 +42,7 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		fail: func(err error) error {
 			return err
 		},
+		depthLimit:    defaultSchemaDepthLimit,
 		customFormats: map[jsonschema.SchemaType]map[string]ir.CustomFormat{},
 		log:           zap.NewNop(),
 	}
@@ -47,6 +53,14 @@ func variantFieldName(t *ir.Type) string {
 }
 
 func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
+	g.depthCount++
+	if g.depthCount > g.depthLimit {
+		return nil, errors.Errorf("schema depth limit (%d) exceeded", g.depthLimit)
+	}
+	defer func() {
+		g.depthCount--
+	}()
+
 	t, err := g.generate2(name, schema)
 	if err != nil {
 		return nil, err

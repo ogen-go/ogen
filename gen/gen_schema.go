@@ -42,6 +42,7 @@ func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.
 	gen.log = g.log.Named("schemagen")
 	gen.fail = g.fail
 	gen.customFormats = g.customFormats
+	gen.depthLimit = g.opt.SchemaDepthLimit
 
 	t, err := gen.generate(name, schema, optional)
 	if err != nil {

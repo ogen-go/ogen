@@ -40,6 +40,8 @@ type Options struct {
 	// InferSchemaType enables type inference for schemas. Schema parser will try to detect schema type
 	// by its properties.
 	InferSchemaType bool
+	// SchemaDepthLimit is maximum depth of schema generation. Default is 1000.
+	SchemaDepthLimit int
 	// CustomFormats sets custom formats.
 	CustomFormats CustomFormatsMap
 
@@ -71,6 +73,9 @@ type Options struct {
 }
 
 func (o *Options) setDefaults() {
+	if o.SchemaDepthLimit <= 0 {
+		o.SchemaDepthLimit = defaultSchemaDepthLimit
+	}
 	if o.Logger == nil {
 		o.Logger = zap.NewNop()
 	}
@@ -141,19 +146,19 @@ type CustomFormatDef struct {
 
 // CustomFormat returns custom format definition.
 func CustomFormat[
-T any,
-JSON interface {
-	~struct{} // Enforce implementation without state.
+	T any,
+	JSON interface {
+		~struct{} // Enforce implementation without state.
 
-	EncodeJSON(*jx.Encoder, T)
-	DecodeJSON(*jx.Decoder) (T, error)
-},
-Text interface {
-	~struct{} // Enforce implementation without state.
+		EncodeJSON(*jx.Encoder, T)
+		DecodeJSON(*jx.Decoder) (T, error)
+	},
+	Text interface {
+		~struct{} // Enforce implementation without state.
 
-	EncodeText(T) string
-	DecodeText(string) (T, error)
-},
+		EncodeText(T) string
+		DecodeText(string) (T, error)
+	},
 ]() CustomFormatDef {
 	return CustomFormatDef{
 		typ:  reflect.TypeOf(new(T)).Elem(),

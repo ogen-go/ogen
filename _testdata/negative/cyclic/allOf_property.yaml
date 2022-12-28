@@ -1,0 +1,121 @@
+openapi: 3.0.1
+info:
+  title: API
+  description: Simplified copy of https://github.com/rd-alliance/metadata-catalog-v2/blob/2ead7cbe28dc68ceece81cddeec209b94866cb5d/openapi.yaml
+  version: 2.0.0
+paths:
+  /api2/thesaurus/concepts:
+    get:
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePageThesaurusConcept'
+components:
+  schemas:
+    ThesaurusBase:
+      type: object
+      properties:
+        "@context":
+          type: object
+          properties:
+            skos:
+              type: string
+        "@id":
+          type: string
+        "@type":
+          type: string
+        "skos:prefLabel":
+          type: array
+          items:
+            type: object
+            properties:
+              "@value":
+                type: string
+              "@language":
+                type: string
+    ThesaurusConceptBroader:
+      type: object
+      properties:
+        "skos:broader":
+          type: array
+          items:
+            allOf:
+            - properties:
+                "@id":
+                  type: string
+                "@type":
+                  type: string
+            - $ref: '#/components/schemas/ThesaurusConceptBroader'
+        "skos:topConceptOf":
+          type: array
+          items:
+            type: object
+            properties:
+              "@id":
+                type: string
+    ThesaurusConceptNarrower:
+      type: object
+      properties:
+        "skos:narrower":
+          type: array
+          items:
+            allOf:
+            - properties:
+                "@id":
+                  type: string
+                "@type":
+                  type: string
+            - $ref: '#/components/schemas/ThesaurusConceptNarrower'
+    ThesaurusConcept:
+      allOf:
+      - $ref: '#/components/schemas/ThesaurusBase'
+      - $ref: '#/components/schemas/ThesaurusConceptBroader'
+      - $ref: '#/components/schemas/ThesaurusConceptNarrower'
+    Response:
+      type: object
+      properties:
+        apiVersion:
+          type: string
+    Page:
+      type: object
+      properties:
+        itemsPerPage:
+          type: integer
+          description: "Number of items per page of results."
+        currentItemCount:
+          type: integer
+          description: "Number of items in the current page of results."
+        startIndex:
+          type: integer
+          description: "Index of the first item in the current page of results. Items are counted from 1."
+        totalItems:
+          type: integer
+          description: "Total number of items in the result set (equal to the index of the last item)."
+        pageIndex:
+          type: integer
+          description: "Index of the current page of results. Pages are counted from 1."
+        totalPages:
+          type: integer
+          description: "Total number of pages in the result"
+        nextLink:
+          type: string
+          description: "URL from which to obtain the next page of results."
+        previousLink:
+          type: string
+          description: "URL from which to obtain the previous page of results."
+    ResponsePageThesaurusConcept:
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - properties:
+          data:
+            allOf:
+              - $ref: '#/components/schemas/Page'
+              - properties:
+                  items:
+                    type: array
+                    description: "Items in the current page of results."
+                    items:
+                      $ref: '#/components/schemas/ThesaurusConcept'
