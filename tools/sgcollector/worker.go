@@ -1,40 +1,26 @@
 package main
 
 import (
-	"bytes"
 	"context"
 	"crypto/sha256"
 	"fmt"
 	"net/http"
+	"net/url"
+	"regexp"
 	"strings"
 	"time"
 
-	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	yaml "github.com/go-faster/yamlx"
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
-var (
-	errPanic  = errors.New("panic")
-	bomPrefix = []byte{0xEF, 0xBB, 0xBF}
-)
-
-func convertYAMLtoJSON(data []byte) (_ []byte, rErr error) {
-	defer func() {
-		if rr := recover(); rr != nil {
-			rErr = errors.Errorf("panic: %#v", rr)
-		}
-	}()
-	j, err := yaml.YAMLToJSON(data)
-	if err != nil {
-		return nil, err
-	}
-	return j, nil
-}
+var errPanic = errors.New("panic")
 
 func validateJSON(data []byte) error {
 	d := jx.GetDecoder()
@@ -43,8 +29,33 @@ func validateJSON(data []byte) error {
 	return d.Validate()
 }
 
+var gitPathRegex = regexp.MustCompile(`^/(?P<owner>[^/]+)/(?P<repo>[^/]+)/(-/blob|blob)/(?P<ref>[^/]+)/(?P<path>.*)$`)
+
+func getRootURL(m FileMatch) (*url.URL, bool) {
+	for _, external := range m.File.ExternalURLs {
+		u, err := url.Parse(external.URL)
+		if err != nil {
+			continue
+		}
+		if !gitPathRegex.MatchString(u.Path) {
+			continue
+		}
+		switch external.ServiceKind {
+		case "GITHUB":
+			u.Host = "raw.githubusercontent.com"
+			u.Path = gitPathRegex.ReplaceAllString(u.Path, "/$owner/$repo/$ref/$path")
+		case "GITLAB":
+			u.Path = gitPathRegex.ReplaceAllString(u.Path, "/$owner/$repo/raw/$ref/$path")
+		default:
+			continue
+		}
+		return u, true
+	}
+	return nil, false
+}
+
 func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
-	data := bytes.TrimPrefix([]byte(m.File.Content), bomPrefix)
+	data := []byte(m.File.Content)
 	isYAML := strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml")
 	hash := sha256.Sum256(data)
 
@@ -61,7 +72,15 @@ func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
 		}
 	}()
 
-	pse := generate(data, isYAML)
+	rootURL := &url.URL{
+		Scheme: "jsonschema",
+		Host:   "dummy",
+	}
+	if u, ok := getRootURL(m); ok {
+		rootURL = u
+	}
+
+	pse := generate(data, isYAML, m.File.Path, rootURL)
 	if pse != nil {
 		if err := r.report(ctx, pse.stage, Report{
 			File:           m,
@@ -104,17 +123,16 @@ func workerHTTPClient() *http.Client {
 	}
 }
 
-func generate(data []byte, isYAML bool) *GenerateError {
+func generate(data []byte, isYAML bool, fileName string, rootURL *url.URL) *GenerateError {
 	if isYAML {
-		j, err := convertYAMLtoJSON(data)
-		if err != nil {
+		var n *yaml.Node
+		if err := yaml.Unmarshal(data, &n); err != nil {
 			return &GenerateError{stage: InvalidYAML, err: err}
 		}
-		data = j
-	}
-
-	if err := validateJSON(data); err != nil {
-		return &GenerateError{stage: InvalidJSON, err: err}
+	} else {
+		if err := validateJSON(data); err != nil {
+			return &GenerateError{stage: InvalidJSON, err: err}
+		}
 	}
 
 	spec, err := ogen.Parse(data)
@@ -129,6 +147,7 @@ func generate(data []byte, isYAML bool) *GenerateError {
 	g, err := gen.NewGenerator(spec, gen.Options{
 		InferSchemaType: true,
 		AllowRemote:     true,
+		RootURL:         rootURL,
 		Remote: gen.RemoteOptions{
 			HTTPClient: workerHTTPClient(),
 			ReadFile: func(string) ([]byte, error) {
@@ -147,6 +166,7 @@ func generate(data []byte, isYAML bool) *GenerateError {
 			}
 			notImpl = append(notImpl, name)
 		},
+		File: location.NewFile(fileName, rootURL.String(), data),
 	})
 
 	slices.Sort(notImpl)
