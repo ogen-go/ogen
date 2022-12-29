@@ -118,26 +118,23 @@ func run(ctx context.Context) error {
 		defer close(links)
 
 		for _, q := range queries {
-			results, err := search(ctx, q)
-			if err != nil {
+			logger := logger.With(zap.String("query", q))
+
+			logger.Info("Start query")
+			counter := 0
+			if err := search(ctx, q, func(match FileMatch) error {
+				select {
+				case links <- match:
+					total++
+					counter++
+					return nil
+				case <-ctx.Done():
+					return ctx.Err()
+				}
+			}); err != nil {
 				return err
 			}
-			logger.Info("Query complete",
-				zap.String("query", q),
-				zap.Int("total", len(results.Matches)),
-				zap.Int("match_count", results.MatchCount),
-			)
-
-			for i, m := range results.Matches {
-				select {
-				case <-ctx.Done():
-					return nil
-				case links <- m:
-					total++
-				}
-				// Zero element to let GC collect FileMatch's fields.
-				results.Matches[i] = FileMatch{}
-			}
+			logger.Info("Query complete", zap.Int("total", counter))
 		}
 		return nil
 	})
@@ -160,6 +157,7 @@ func run(ctx context.Context) error {
 						return nil
 					}
 
+					logger.Debug("Processing link", zap.Inline(m))
 					err := worker(ctx, m, reporters)
 					if err != nil {
 						logger.Error("Error",
