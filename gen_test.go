@@ -206,12 +206,14 @@ func TestNegative(t *testing.T) {
 
 		f := location.NewFile(name, name, data)
 		_, err = parser.Parse(spec, parser.Settings{
-			File: f,
+			InferTypes: true,
+			File:       f,
 		})
 		a.NoError(err, "If the error is related to parser, move this test to parser package testdata")
 
 		_, err = gen.NewGenerator(spec, gen.Options{
-			File: f,
+			InferSchemaType: true,
+			File:            f,
 		})
 		a.Error(err)
 
