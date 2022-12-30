@@ -30,6 +30,7 @@ func run(ctx context.Context) error {
 		filter       = flag.String("filter", "", "Additional filter to concatenate to the query")
 
 		workers = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+		skipWrite = flag.Bool("skip-write", false, "Skip writing generated files (test only parser and IR)")
 
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
@@ -184,7 +185,7 @@ func run(ctx context.Context) error {
 					}
 
 					logger.Debug("Processing link", zap.Inline(m))
-					err := worker(ctx, m, reporters)
+					err := worker(ctx, m, reporters, *skipWrite)
 					if err != nil {
 						logger.Error("Error",
 							zap.Inline(m),
