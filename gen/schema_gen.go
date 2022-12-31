@@ -314,7 +314,16 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			}
 			if t.Validators.Int.Set() {
 				switch t.Primitive {
-				case ir.String, ir.ByteSlice:
+				case ir.Int,
+					ir.Int8,
+					ir.Int16,
+					ir.Int32,
+					ir.Int64,
+					ir.Uint,
+					ir.Uint8,
+					ir.Uint16,
+					ir.Uint32,
+					ir.Uint64:
 				default:
 					g.log.Warn("Int validator cannot be applied to generated type and will be ignored", fields...)
 				}
@@ -325,7 +334,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			}
 			if t.Validators.Float.Set() {
 				switch t.Primitive {
-				case ir.String, ir.ByteSlice:
+				case ir.Float32, ir.Float64:
 				default:
 					g.log.Warn("Float validator cannot be applied to generated type and will be ignored", fields...)
 				}
