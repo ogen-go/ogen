@@ -39,6 +39,22 @@ paths:
       responses:
         '200':
           description: ok
+  "/stringsNotype":
+    post:
+      operationId: stringsNotype
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - nullable: true
+              # Doesn't work without --infer-types
+              # - maxLength: 15
+              - type: string
+      responses:
+        '200':
+          description: ok
   "/simpleObjects":
     post:
       operationId: simpleObjects
