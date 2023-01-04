@@ -400,3 +400,6 @@ func (s *SimpleObjectsReq) SetFoo(val OptString) {
 func (s *SimpleObjectsReq) SetBar(val OptBool) {
 	s.Bar = val
 }
+
+// StringsNotypeOK is response for StringsNotype operation.
+type StringsNotypeOK struct{}

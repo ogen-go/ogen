@@ -50,6 +50,10 @@ type Handler interface {
 	//
 	// POST /simpleObjects
 	SimpleObjects(ctx context.Context, req *SimpleObjectsReq) error
+	// StringsNotype implements stringsNotype operation.
+	//
+	// POST /stringsNotype
+	StringsNotype(ctx context.Context, req NilString) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

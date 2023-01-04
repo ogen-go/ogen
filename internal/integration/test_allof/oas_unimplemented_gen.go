@@ -75,3 +75,10 @@ func (UnimplementedHandler) SimpleInteger(ctx context.Context, req int) error {
 func (UnimplementedHandler) SimpleObjects(ctx context.Context, req *SimpleObjectsReq) error {
 	return ht.ErrNotImplemented
 }
+
+// StringsNotype implements stringsNotype operation.
+//
+// POST /stringsNotype
+func (UnimplementedHandler) StringsNotype(ctx context.Context, req NilString) error {
+	return ht.ErrNotImplemented
+}

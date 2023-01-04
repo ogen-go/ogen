@@ -155,8 +155,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case 's': // Prefix: "simple"
-				if l := len("simple"); len(elem) >= l && elem[0:l] == "simple" {
+			case 's': // Prefix: "s"
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
@@ -166,26 +166,56 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'I': // Prefix: "Integer"
-					if l := len("Integer"); len(elem) >= l && elem[0:l] == "Integer" {
+				case 'i': // Prefix: "imple"
+					if l := len("imple"); len(elem) >= l && elem[0:l] == "imple" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "POST":
-							s.handleSimpleIntegerRequest([0]string{}, w, r)
-						default:
-							s.notAllowed(w, r, "POST")
+						break
+					}
+					switch elem[0] {
+					case 'I': // Prefix: "Integer"
+						if l := len("Integer"); len(elem) >= l && elem[0:l] == "Integer" {
+							elem = elem[l:]
+						} else {
+							break
 						}
 
-						return
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleSimpleIntegerRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+					case 'O': // Prefix: "Objects"
+						if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleSimpleObjectsRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
 					}
-				case 'O': // Prefix: "Objects"
-					if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
+				case 't': // Prefix: "tringsNotype"
+					if l := len("tringsNotype"); len(elem) >= l && elem[0:l] == "tringsNotype" {
 						elem = elem[l:]
 					} else {
 						break
@@ -195,7 +225,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleSimpleObjectsRequest([0]string{}, w, r)
+							s.handleStringsNotypeRequest([0]string{}, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -391,8 +421,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 				}
-			case 's': // Prefix: "simple"
-				if l := len("simple"); len(elem) >= l && elem[0:l] == "simple" {
+			case 's': // Prefix: "s"
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
@@ -402,28 +432,60 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'I': // Prefix: "Integer"
-					if l := len("Integer"); len(elem) >= l && elem[0:l] == "Integer" {
+				case 'i': // Prefix: "imple"
+					if l := len("imple"); len(elem) >= l && elem[0:l] == "imple" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						switch method {
-						case "POST":
-							// Leaf: SimpleInteger
-							r.name = "SimpleInteger"
-							r.operationID = "simpleInteger"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
+						break
+					}
+					switch elem[0] {
+					case 'I': // Prefix: "Integer"
+						if l := len("Integer"); len(elem) >= l && elem[0:l] == "Integer" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "POST":
+								// Leaf: SimpleInteger
+								r.name = "SimpleInteger"
+								r.operationID = "simpleInteger"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					case 'O': // Prefix: "Objects"
+						if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "POST":
+								// Leaf: SimpleObjects
+								r.name = "SimpleObjects"
+								r.operationID = "simpleObjects"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
 						}
 					}
-				case 'O': // Prefix: "Objects"
-					if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
+				case 't': // Prefix: "tringsNotype"
+					if l := len("tringsNotype"); len(elem) >= l && elem[0:l] == "tringsNotype" {
 						elem = elem[l:]
 					} else {
 						break
@@ -432,9 +494,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "POST":
-							// Leaf: SimpleObjects
-							r.name = "SimpleObjects"
-							r.operationID = "simpleObjects"
+							// Leaf: StringsNotype
+							r.name = "StringsNotype"
+							r.operationID = "stringsNotype"
 							r.args = args
 							r.count = 0
 							return r, true

@@ -57,3 +57,10 @@ func encodeSimpleObjectsResponse(response *SimpleObjectsOK, w http.ResponseWrite
 
 	return nil
 }
+
+func encodeStringsNotypeResponse(response *StringsNotypeOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
