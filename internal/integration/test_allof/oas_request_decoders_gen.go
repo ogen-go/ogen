@@ -803,6 +803,22 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 			}
 			return req, close, err
 		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    15,
+				MaxLengthSet: true,
+				Email:        false,
+				Hostname:     false,
+				Regex:        nil,
+			}).Validate(string(request.Value)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

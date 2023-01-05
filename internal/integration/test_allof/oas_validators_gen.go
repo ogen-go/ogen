@@ -37,6 +37,7 @@ func (s *Location) Validate() error {
 	}
 	return nil
 }
+
 func (s *ObjectsWithConflictingArrayPropertyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

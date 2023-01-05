@@ -670,6 +670,23 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
 	}
+	// Validate request before sending.
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    15,
+			MaxLengthSet: true,
+			Email:        false,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(request.Value)); err != nil {
+			return errors.Wrap(err, "string")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 
 	// Run stopwatch.
 	startTime := time.Now()
