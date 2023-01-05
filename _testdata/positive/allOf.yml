@@ -49,8 +49,7 @@ paths:
             schema:
               allOf:
               - nullable: true
-              # Doesn't work without --infer-types
-              # - maxLength: 15
+              - maxLength: 15
               - type: string
       responses:
         '200':
