@@ -3,6 +3,7 @@ package integration
 import (
 	"context"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -64,6 +65,9 @@ func TestAllof(t *testing.T) {
 
 		err = client.StringsNotype(ctx, api.NewNilString("foo"))
 		require.NoError(t, err)
+
+		err = client.StringsNotype(ctx, api.NewNilString(strings.Repeat("1", 16)))
+		require.EqualError(t, err, "validate: string: len 16 greater than maximum 15")
 	})
 	t.Run("simpleInteger", func(t *testing.T) {
 		err := client.SimpleInteger(ctx, -7)
