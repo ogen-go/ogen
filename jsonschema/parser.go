@@ -134,7 +134,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 	return s, nil
 }
 
-func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (_ *Schema, err error) {
 	if schema == nil {
 		return nil, nil
 	}
@@ -169,110 +169,108 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return s, nil
 	}
 
-	if d := schema.Default; p.inferTypes && schema.Type == "" && len(d) > 0 {
-		typ, err := inferJSONType(json.RawMessage(d))
-		if err != nil {
-			return nil, wrapField("default", err)
-		}
-		schema.Type = typ
-	}
+	if schema.Type == "" && p.inferTypes {
+		switch {
+		case len(schema.Default) > 0:
+			schema.Type, err = inferJSONType(json.RawMessage(schema.Default))
+			if err != nil {
+				return nil, wrapField("default", err)
+			}
 
-	typ := schema.Type
-	switch {
-	case len(schema.Enum) > 0:
-		if p.inferTypes && typ == "" {
-			inferred, err := inferJSONType(schema.Enum[0])
+		case len(schema.Enum) > 0:
+			schema.Type, err = inferJSONType(schema.Enum[0])
 			if err != nil {
 				return nil, errors.Wrap(err, "infer enum type")
 			}
-			typ = inferred
-		}
-	case len(schema.OneOf) > 0:
-		s := hook(&Schema{})
+		default:
+			// Try to infer schema type from properties.
+			switch {
+			case len(schema.Properties) > 0 ||
+				schema.AdditionalProperties != nil ||
+				schema.PatternProperties != nil ||
+				schema.MaxProperties != nil ||
+				schema.MinProperties != nil:
+				schema.Type = "object"
 
-		schemas, err := p.parseMany(schema.OneOf, schema.Common.Locator, ctx)
+			case schema.Items != nil ||
+				schema.UniqueItems ||
+				schema.MaxItems != nil ||
+				schema.MinItems != nil:
+				schema.Type = "array"
+
+			case schema.Maximum != nil ||
+				schema.Minimum != nil ||
+				schema.ExclusiveMinimum ||
+				schema.ExclusiveMaximum || // FIXME(tdakkota): check for existence instead of true?
+				schema.MultipleOf != nil:
+				schema.Type = "number"
+
+			case schema.MaxLength != nil ||
+				schema.MinLength != nil ||
+				schema.Pattern != "":
+				schema.Type = "string"
+			}
+		}
+	}
+
+	typ, ok := map[string]SchemaType{
+		"object":  Object,
+		"array":   Array,
+		"number":  Number,
+		"integer": Integer,
+		"boolean": Boolean,
+		"string":  String,
+		"null":    Null,
+		"":        Empty,
+	}[schema.Type]
+	if !ok {
+		err := errors.Errorf("unexpected schema type: %q", schema.Type)
+		return nil, wrapField("type", err)
+	}
+
+	s := hook(&Schema{
+		Type:     typ,
+		Format:   schema.Format,
+		Nullable: typ == Null,
+		// Object validators
+		MaxProperties: schema.MaxProperties,
+		MinProperties: schema.MinProperties,
+		// Array validators
+		MinItems:    schema.MinItems,
+		MaxItems:    schema.MaxItems,
+		UniqueItems: schema.UniqueItems,
+		// Number validators
+		Minimum:          schema.Minimum,
+		Maximum:          schema.Maximum,
+		ExclusiveMinimum: schema.ExclusiveMinimum,
+		ExclusiveMaximum: schema.ExclusiveMaximum,
+		MultipleOf:       schema.MultipleOf,
+		// String validators
+		MaxLength: schema.MaxLength,
+		MinLength: schema.MinLength,
+		Pattern:   schema.Pattern,
+	})
+
+	switch {
+	case len(schema.OneOf) > 0:
+		s.OneOf, err = p.parseMany(schema.OneOf, schema.Common.Locator, ctx)
 		if err != nil {
 			return nil, wrapField("oneOf", err)
 		}
-		s.OneOf = schemas
-
-		return s, nil
 	case len(schema.AnyOf) > 0:
-		s := hook(&Schema{
-			// Object validators
-			MaxProperties: schema.MaxProperties,
-			MinProperties: schema.MinProperties,
-			// Array validators
-			MinItems:    schema.MinItems,
-			MaxItems:    schema.MaxItems,
-			UniqueItems: schema.UniqueItems,
-			// Number validators
-			Minimum:          schema.Minimum,
-			Maximum:          schema.Maximum,
-			ExclusiveMinimum: schema.ExclusiveMinimum,
-			ExclusiveMaximum: schema.ExclusiveMaximum,
-			MultipleOf:       schema.MultipleOf,
-			// String validators
-			MaxLength: schema.MaxLength,
-			MinLength: schema.MinLength,
-			Pattern:   schema.Pattern,
-		})
-
-		schemas, err := p.parseMany(schema.AnyOf, schema.Common.Locator, ctx)
+		s.AnyOf, err = p.parseMany(schema.AnyOf, schema.Common.Locator, ctx)
 		if err != nil {
 			return nil, wrapField("anyOf", err)
 		}
-		s.AnyOf = schemas
-
-		return s, nil
 	case len(schema.AllOf) > 0:
-		s := hook(&Schema{})
-
-		schemas, err := p.parseMany(schema.AllOf, schema.Common.Locator, ctx)
+		s.AllOf, err = p.parseMany(schema.AllOf, schema.Common.Locator, ctx)
 		if err != nil {
 			return nil, wrapField("allOf", err)
 		}
-		s.AllOf = schemas
-
-		return s, nil
 	}
 
-	// Try to infer schema type from properties.
-	if p.inferTypes && typ == "" {
-		switch {
-		case len(schema.Properties) > 0 ||
-			schema.AdditionalProperties != nil ||
-			schema.PatternProperties != nil ||
-			schema.MaxProperties != nil ||
-			schema.MinProperties != nil:
-			typ = "object"
-
-		case schema.Items != nil ||
-			schema.UniqueItems ||
-			schema.MaxItems != nil ||
-			schema.MinItems != nil:
-			typ = "array"
-
-		case schema.Maximum != nil ||
-			schema.Minimum != nil ||
-			schema.ExclusiveMinimum ||
-			schema.ExclusiveMaximum || // FIXME(tdakkota): check for existence instead of true?
-			schema.MultipleOf != nil:
-			typ = "number"
-
-		case schema.MaxLength != nil ||
-			schema.MinLength != nil ||
-			schema.Pattern != "":
-			typ = "string"
-		}
-	}
-
-	switch typ {
-	case "object":
-		if schema.Items != nil {
-			err := errors.New("object cannot contain 'items' field")
-			return nil, wrapField("items", err)
-		}
+	// Object properties
+	{
 		if err := validateMinMax(
 			"Properties",
 			schema.MinProperties,
@@ -281,27 +279,21 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			return nil, err
 		}
 
-		required := func(name string) bool {
-			return slices.Contains(schema.Required, name)
-		}
-
-		s := hook(&Schema{
-			Type:          Object,
-			MaxProperties: schema.MaxProperties,
-			MinProperties: schema.MinProperties,
-		})
-
 		if ap := schema.AdditionalProperties; ap != nil {
 			var additional bool
 			if val := ap.Bool; val != nil {
 				additional = *val
 			} else {
 				additional = true
-				item, err := p.parse(&ap.Schema, ctx)
+				if schema.Items != nil {
+					err := errors.New("both additionalProperties and items fields are set")
+					return nil, wrapField("additionalProperties", err)
+				}
+
+				s.Item, err = p.parse(&ap.Schema, ctx)
 				if err != nil {
 					return nil, wrapField("additionalProperties", err)
 				}
-				s.Item = item
 			}
 			s.AdditionalProperties = &additional
 		}
@@ -344,16 +336,18 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				description = s.Description
 			}
 
+			required := slices.Contains(schema.Required, propSpec.Name)
 			s.Properties = append(s.Properties, Property{
 				Name:        propSpec.Name,
 				Description: description,
 				Schema:      prop,
-				Required:    required(propSpec.Name),
+				Required:    required,
 			})
 		}
-		return s, nil
+	}
 
-	case "array":
+	// Array properties
+	{
 		if err := validateMinMax(
 			"Items",
 			schema.MinItems,
@@ -362,31 +356,16 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			return nil, err
 		}
 
-		array := hook(&Schema{
-			Type:        Array,
-			MinItems:    schema.MinItems,
-			MaxItems:    schema.MaxItems,
-			UniqueItems: schema.UniqueItems,
-		})
-
-		if schema.Items == nil {
-			// Keep items nil, we will use ir.Any for it.
-			return array, nil
+		if schema.Items != nil {
+			s.Item, err = p.parse(schema.Items, ctx)
+			if err != nil {
+				return nil, wrapField("items", err)
+			}
 		}
-		if len(schema.Properties) > 0 {
-			err := errors.New("array cannot contain properties")
-			return nil, wrapField("properties", err)
-		}
+	}
 
-		item, err := p.parse(schema.Items, ctx)
-		if err != nil {
-			return nil, wrapField("items", err)
-		}
-
-		array.Item = item
-		return array, nil
-
-	case "number", "integer":
+	// Integer, Number properties
+	{
 		if mul := schema.MultipleOf; len(mul) > 0 {
 			if err := func() error {
 				rat := new(big.Rat)
@@ -402,24 +381,10 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				return nil, wrapField("multipleOf", err)
 			}
 		}
+	}
 
-		return hook(&Schema{
-			Type:             SchemaType(schema.Type),
-			Format:           schema.Format,
-			Minimum:          schema.Minimum,
-			Maximum:          schema.Maximum,
-			ExclusiveMinimum: schema.ExclusiveMinimum,
-			ExclusiveMaximum: schema.ExclusiveMaximum,
-			MultipleOf:       schema.MultipleOf,
-		}), nil
-
-	case "boolean":
-		return hook(&Schema{
-			Type:   Boolean,
-			Format: schema.Format,
-		}), nil
-
-	case "string":
+	// String properties
+	{
 		if err := validateMinMax(
 			"Length",
 			schema.MinLength,
@@ -427,30 +392,9 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		); err != nil {
 			return nil, err
 		}
-
-		return hook(&Schema{
-			Type:      String,
-			Format:    schema.Format,
-			MaxLength: schema.MaxLength,
-			MinLength: schema.MinLength,
-			Pattern:   schema.Pattern,
-		}), nil
-
-	case "null":
-		return hook(&Schema{
-			Type:     Null,
-			Nullable: true,
-		}), nil
-
-	case "":
-		return hook(&Schema{
-			Format: schema.Format,
-		}), nil
-
-	default:
-		err := errors.Errorf("unexpected schema type: %q", schema.Type)
-		return nil, wrapField("type", err)
 	}
+
+	return s, nil
 }
 
 func (p *Parser) parseMany(schemas []*RawSchema, loc location.Locator, ctx *jsonpointer.ResolveCtx) ([]*Schema, error) {

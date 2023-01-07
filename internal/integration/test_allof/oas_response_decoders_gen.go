@@ -70,3 +70,12 @@ func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, err
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
+
+func decodeStringsNotypeResponse(resp *http.Response) (res *StringsNotypeOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &StringsNotypeOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}

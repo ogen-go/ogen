@@ -481,102 +481,6 @@ func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 }
 
 func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
-	if s1 == nil || s2 == nil {
-		return nil, errors.Errorf("schema is null or empty")
-	}
-
-	containsValidators := func(s *jsonschema.Schema) bool {
-		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet {
-			return true
-		}
-		if s.Item != nil ||
-			s.AdditionalProperties != nil ||
-			len(s.PatternProperties) > 0 ||
-			len(s.Properties) > 0 {
-			return true
-		}
-		if len(s.OneOf) > 0 || len(s.AnyOf) > 0 || len(s.AllOf) > 0 {
-			return true
-		}
-		if s.Discriminator != nil || s.XML != nil {
-			return true
-		}
-		if len(s.Maximum) > 0 || len(s.Minimum) > 0 || len(s.MultipleOf) > 0 ||
-			s.ExclusiveMinimum || s.ExclusiveMaximum {
-			return true
-		}
-		if s.MaxLength != nil || s.MinLength != nil || len(s.Pattern) > 0 {
-			return true
-		}
-		if s.MaxItems != nil || s.MinItems != nil || s.UniqueItems {
-			return true
-		}
-		if s.MaxProperties != nil || s.MinProperties != nil {
-			return true
-		}
-		return false
-	}
-
-	switch a, b := containsValidators(s1), containsValidators(s2); [2]bool{a, b} {
-	case [2]bool{true, true}, [2]bool{false, false}:
-	case [2]bool{true, false}:
-		return shallowSchemaCopy(s1), nil
-	case [2]bool{false, true}:
-		return shallowSchemaCopy(s2), nil
-	}
-
-	if a, b := s1.Type, s2.Type; a != "" && b != "" && a != b {
-		return nil, errors.Errorf("schema type mismatch: %s and %s", a, b)
-	}
-	typ := s1.Type
-	if typ == "" {
-		typ = s2.Type
-	}
-
-	if s1.Format != s2.Format {
-		return nil, errors.Errorf("schema format mismatch: %s and %s", s1.Format, s2.Format)
-	}
-
-	enum, err := mergeEnums(s1, s2)
-	if err != nil {
-		return nil, errors.Wrap(err, "enum")
-	}
-
-	r := &jsonschema.Schema{
-		Type:        typ,
-		Format:      s1.Format,
-		Enum:        enum,
-		Nullable:    s1.Nullable || s2.Nullable,
-		Description: "Merged schema", // TODO(tdakkota): handle in a better way.
-	}
-
-	switch {
-	case !s1.DefaultSet && !s2.DefaultSet:
-		// Nothing to do.
-	case s1.DefaultSet && !s2.DefaultSet:
-		r.Default = s1.Default
-		r.DefaultSet = true
-	case !s1.DefaultSet && s2.DefaultSet:
-		r.Default = s2.Default
-		r.DefaultSet = true
-	case s1.DefaultSet && s2.DefaultSet:
-		if !reflect.DeepEqual(s1.Default, s2.Default) {
-			return nil, errors.Errorf("schemes have different defaults")
-		}
-
-		r.Default = s1.Default
-		r.DefaultSet = true
-	}
-
-	switch d1, d2 := s1.Discriminator, s2.Discriminator; {
-	case d1 != nil && d2 != nil:
-		return nil, &ErrNotImplemented{"merge discriminator"} // TODO(tdakkota): implement
-	case d1 != nil:
-		r.Discriminator = d1
-	case d2 != nil:
-		r.Discriminator = d2
-	}
-
 	// Helper functions for comparing validation fields.
 	var (
 		someU64 = func(n1, n2 *uint64, both func(n1, n2 uint64) uint64) *uint64 {
@@ -667,16 +571,128 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		}
 	)
 
-	// JSONSchema says:
-	//   To validate against allOf, the given data
-	//   must be valid against all of the given subschemas.
-	//
-	// Current implementation simply select the strictest constraints from both schemes.
-	//
-	// Note that this approach will not work with different 'pattern' or 'multipleOf' constraints
-	// because they cannot be merged.
-	switch s1.Type {
-	case jsonschema.String:
+	switch {
+	case s1 == nil && s2 == nil:
+		return nil, nil
+	case s1 != nil && s2 == nil:
+		return s1, nil
+	case s1 == nil && s2 != nil:
+		return s2, nil
+	}
+
+	containsValidators := func(s *jsonschema.Schema) bool {
+		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet {
+			return true
+		}
+		if s.Item != nil ||
+			s.AdditionalProperties != nil ||
+			len(s.PatternProperties) > 0 ||
+			len(s.Properties) > 0 {
+			return true
+		}
+		if len(s.OneOf) > 0 || len(s.AnyOf) > 0 || len(s.AllOf) > 0 {
+			return true
+		}
+		if s.Discriminator != nil || s.XML != nil {
+			return true
+		}
+		if len(s.Maximum) > 0 || len(s.Minimum) > 0 || len(s.MultipleOf) > 0 ||
+			s.ExclusiveMinimum || s.ExclusiveMaximum {
+			return true
+		}
+		if s.MaxLength != nil || s.MinLength != nil || len(s.Pattern) > 0 {
+			return true
+		}
+		if s.MaxItems != nil || s.MinItems != nil || s.UniqueItems {
+			return true
+		}
+		if s.MaxProperties != nil || s.MinProperties != nil {
+			return true
+		}
+		return false
+	}
+
+	switch a, b := containsValidators(s1), containsValidators(s2); [2]bool{a, b} {
+	case [2]bool{true, true}, [2]bool{false, false}:
+	case [2]bool{true, false}:
+		return shallowSchemaCopy(s1), nil
+	case [2]bool{false, true}:
+		return shallowSchemaCopy(s2), nil
+	}
+
+	r := &jsonschema.Schema{
+		Format:      s1.Format,
+		Nullable:    s1.Nullable || s2.Nullable,
+		Description: "Merged schema", // TODO(tdakkota): handle in a better way.
+	}
+
+	// Type
+	{
+		typ, err := someStr(string(s1.Type), string(s2.Type), func(s1, s2 string) (string, error) {
+			if s1 == s2 {
+				return s1, nil
+			}
+			return "", errors.Errorf("schema type mismatch: %s and %s", s1, s2)
+		})
+		if err != nil {
+			return nil, err
+		}
+
+		r.Type = jsonschema.SchemaType(typ)
+	}
+
+	// Format
+	{
+		format, err := someStr(s1.Format, s2.Format, func(s1, s2 string) (string, error) {
+			if s1 == s2 {
+				return s1, nil
+			}
+			return "", errors.Errorf("schema format mismatch: %s and %s", s1, s2)
+		})
+		if err != nil {
+			return nil, err
+		}
+
+		r.Format = format
+	}
+
+	// Enum
+	r.Enum, err = mergeEnums(s1, s2)
+	if err != nil {
+		return nil, errors.Wrap(err, "enum")
+	}
+
+	// Default
+	switch {
+	case !s1.DefaultSet && !s2.DefaultSet:
+		// Nothing to do.
+	case s1.DefaultSet && !s2.DefaultSet:
+		r.Default = s1.Default
+		r.DefaultSet = true
+	case !s1.DefaultSet && s2.DefaultSet:
+		r.Default = s2.Default
+		r.DefaultSet = true
+	case s1.DefaultSet && s2.DefaultSet:
+		if !reflect.DeepEqual(s1.Default, s2.Default) {
+			return nil, errors.Errorf("schemes have different defaults")
+		}
+
+		r.Default = s1.Default
+		r.DefaultSet = true
+	}
+
+	// Discriminator
+	switch d1, d2 := s1.Discriminator, s2.Discriminator; {
+	case d1 != nil && d2 != nil:
+		return nil, &ErrNotImplemented{"merge discriminator"} // TODO(tdakkota): implement
+	case d1 != nil:
+		r.Discriminator = d1
+	case d2 != nil:
+		r.Discriminator = d2
+	}
+
+	// String validation
+	{
 		r.MaxLength = someU64(s1.MaxLength, s2.MaxLength, selectMinU64)
 		r.MinLength = someU64(s1.MinLength, s2.MinLength, selectMaxU64)
 		r.Pattern, err = someStr(s1.Pattern, s2.Pattern, func(s1, s2 string) (string, error) {
@@ -688,9 +704,10 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "pattern")
 		}
+	}
 
-		return r, nil
-	case jsonschema.Integer, jsonschema.Number:
+	// Integer, Number validation
+	{
 		r.Maximum = someNum(s1.Maximum, s2.Maximum, minNum)
 		s1.ExclusiveMaximum = s1.ExclusiveMaximum || s2.ExclusiveMaximum
 
@@ -704,12 +721,13 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		// We need to generate ir.Type for each schema in 'allOf' and then merge
 		// them into single *ir.Type with all the validation.
 		if !bytes.Equal(s1.MultipleOf, s2.MultipleOf) {
-			return nil, errors.Errorf("multipleOf is different")
+			return nil, errors.Errorf("multipleOf is different: %s and %s", s1.MultipleOf, s2.MultipleOf)
 		}
 		r.MultipleOf = s1.MultipleOf
-		return r, nil
+	}
 
-	case jsonschema.Array:
+	// Array validation
+	{
 		r.Item, err = mergeSchemes(s1.Item, s2.Item)
 		if err != nil {
 			return nil, errors.Wrap(err, "merge item schema")
@@ -718,12 +736,10 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		r.MinItems = someU64(s1.MinItems, s2.MinItems, selectMaxU64)
 		r.MaxItems = someU64(s1.MaxItems, s2.MaxItems, selectMinU64)
 		r.UniqueItems = s1.UniqueItems || s2.UniqueItems
-		return r, nil
+	}
 
-	case jsonschema.Null, jsonschema.Boolean:
-		return r, nil
-
-	case jsonschema.Object:
+	// Object validation
+	{
 		if len(s1.PatternProperties) > 0 || len(s2.PatternProperties) > 0 {
 			return nil, &ErrNotImplemented{Name: "allOf with patternProperties"}
 		}
@@ -747,12 +763,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "merge properties")
 		}
-
-		return r, nil
-
-	default:
-		return nil, &ErrNotImplemented{Name: "complex schema merging"}
 	}
+
+	return r, nil
 }
 
 // mergeProperties finds properties with identical names

@@ -33,6 +33,7 @@ func BenchmarkGenerator(b *testing.B) {
 				IgnoreNotImplemented: []string{
 					"all",
 				},
+				InferSchemaType: true,
 			}
 			dir := b.TempDir()
 			fs := genfs.FormattedSource{

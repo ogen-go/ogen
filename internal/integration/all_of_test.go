@@ -3,6 +3,7 @@ package integration
 import (
 	"context"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -30,6 +31,10 @@ func (s *allofTestServer) ObjectsWithConflictingArrayProperty(ctx context.Contex
 	return nil
 }
 
+func (s *allofTestServer) StringsNotype(ctx context.Context, req api.NilString) error {
+	return nil
+}
+
 func TestAllof(t *testing.T) {
 	var client *api.Client
 	{
@@ -53,6 +58,16 @@ func TestAllof(t *testing.T) {
 
 		err = client.NullableStrings(ctx, api.NewNilString("127.0.0.1"))
 		require.NoError(t, err)
+	})
+	t.Run("stringsNotype", func(t *testing.T) {
+		err := client.StringsNotype(ctx, api.NilString{})
+		require.NoError(t, err)
+
+		err = client.StringsNotype(ctx, api.NewNilString("foo"))
+		require.NoError(t, err)
+
+		err = client.StringsNotype(ctx, api.NewNilString(strings.Repeat("1", 16)))
+		require.EqualError(t, err, "validate: string: len 16 greater than maximum 15")
 	})
 	t.Run("simpleInteger", func(t *testing.T) {
 		err := client.SimpleInteger(ctx, -7)
