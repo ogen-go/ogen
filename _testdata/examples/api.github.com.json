@@ -47232,7 +47232,7 @@
                         "items": {
                           "type": "string",
                           "example": "username@example.com",
-                          "minItems": 1
+                          "minLength": 1
                         },
                         "example": [
 
@@ -47254,7 +47254,7 @@
                     "items": {
                       "type": "string",
                       "example": "username@example.com",
-                      "minItems": 1
+                      "minLength": 1
                     }
                   },
                   {
@@ -47339,7 +47339,7 @@
                         "items": {
                           "type": "string",
                           "example": "username@example.com",
-                          "minItems": 1
+                          "minLength": 1
                         }
                       }
                     },
@@ -47358,7 +47358,7 @@
                     "items": {
                       "type": "string",
                       "example": "username@example.com",
-                      "minItems": 1
+                      "minLength": 1
                     }
                   },
                   {

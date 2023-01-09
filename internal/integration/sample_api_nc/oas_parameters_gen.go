@@ -153,6 +153,22 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 			}(); err != nil {
 				return err
 			}
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    1,
+					MinLengthSet: true,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(params.Foo)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		} else {
 			return validate.ErrFieldRequired
 		}
@@ -190,6 +206,22 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				}
 
 				params.Bar = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    1,
+					MinLengthSet: true,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(params.Bar)); err != nil {
+					return errors.Wrap(err, "string")
+				}
 				return nil
 			}(); err != nil {
 				return err
@@ -235,6 +267,22 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 			}(); err != nil {
 				return err
 			}
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    1,
+					MinLengthSet: true,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(params.Baz)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		} else {
 			return validate.ErrFieldRequired
 		}
@@ -272,6 +320,22 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				}
 
 				params.Kek = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    1,
+					MinLengthSet: true,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(params.Kek)); err != nil {
+					return errors.Wrap(err, "string")
+				}
 				return nil
 			}(); err != nil {
 				return err
