@@ -437,7 +437,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "minimum": 1,
+              "minLength": 1,
               "type": "string"
             }
           },
@@ -446,7 +446,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "minimum": 1,
+              "minLength": 1,
               "type": "string"
             }
           },
@@ -455,7 +455,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "minimum": 1,
+              "minLength": 1,
               "type": "string"
             }
           },
@@ -464,7 +464,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "minimum": 1,
+              "minLength": 1,
               "type": "string"
             }
           }
