@@ -128,6 +128,22 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 			}(); err != nil {
 				return err
 			}
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    1,
+					MinLengthSet: true,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(params.Key)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
 		} else {
 			return validate.ErrFieldRequired
 		}
