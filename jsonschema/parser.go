@@ -285,6 +285,11 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			}
 
 			for _, field := range fields {
+				// Allow extra fields.
+				if strings.HasPrefix(strings.ToLower(field), "x-") {
+					continue
+				}
+
 				if _, ok := allowedFields[field]; !ok {
 					return nil, wrapField(field, errors.Errorf("unexpected field for type %q", schema.Type))
 				}
