@@ -216,16 +216,80 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	typ, ok := map[string]SchemaType{
 		"object":  Object,
 		"array":   Array,
-		"number":  Number,
-		"integer": Integer,
-		"boolean": Boolean,
 		"string":  String,
+		"integer": Integer,
+		"number":  Number,
+		"boolean": Boolean,
 		"null":    Null,
 		"":        Empty,
 	}[schema.Type]
 	if !ok {
 		err := errors.Errorf("unexpected schema type: %q", schema.Type)
 		return nil, wrapField("type", err)
+	}
+
+	if schema.Type != "" {
+		allowed := map[string]map[string]struct{}{
+			"object": {
+				"required":          {},
+				"properties":        {},
+				"patternProperties": {},
+				"minProperties":     {},
+				"maxProperties":     {},
+			},
+			"array": {
+				"items":       {},
+				"maxItems":    {},
+				"minItems":    {},
+				"uniqueItems": {},
+			},
+			"string": {
+				"maxLength": {},
+				"minLength": {},
+				"pattern":   {},
+			},
+			"integer": {
+				"multipleOf":       {},
+				"maximum":          {},
+				"minimum":          {},
+				"exclusiveMaximum": {},
+				"exclusiveMinimum": {},
+			},
+			"number": {
+				"multipleOf":       {},
+				"maximum":          {},
+				"minimum":          {},
+				"exclusiveMaximum": {},
+				"exclusiveMinimum": {},
+			},
+			"boolean": {},
+			"null":    {},
+		}
+
+		for _, fset := range allowed {
+			// Generic fields.
+			for _, f := range []string{
+				"type", "enum", "nullable", "format", "default",
+				"oneOf", "anyOf", "allOf", "discriminator",
+				"description", "example", "examples", "deprecated",
+				"additionalProperties",
+			} {
+				fset[f] = struct{}{}
+			}
+		}
+
+		if allowedFields, ok := allowed[schema.Type]; ok {
+			fields, err := getRawSchemaFields(schema)
+			if err != nil {
+				return nil, err
+			}
+
+			for _, field := range fields {
+				if _, ok := allowedFields[field]; !ok {
+					return nil, wrapField(field, errors.Errorf("unexpected field for type %q", schema.Type))
+				}
+			}
+		}
 	}
 
 	s := hook(&Schema{
