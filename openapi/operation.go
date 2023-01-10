@@ -21,7 +21,7 @@ type Operation struct {
 	RequestBody *RequestBody // optional
 
 	// Security requirements.
-	Security []SecurityRequirement
+	Security SecurityRequirements
 
 	// Operation responses.
 	Responses Responses

@@ -185,13 +185,14 @@ func (p *parser) parseSecurityRequirements(
 	requirements ogen.SecurityRequirements,
 	locator location.Locator,
 	ctx *jsonpointer.ResolveCtx,
-) ([]openapi.SecurityRequirement, error) {
-	result := make([]openapi.SecurityRequirement, 0, len(requirements))
+) (openapi.SecurityRequirements, error) {
+	result := make(openapi.SecurityRequirements, 0, len(requirements))
 	securitySchemesLoc := p.rootLoc.Field("components").Field("securitySchemes")
 
 	for idx, req := range requirements {
 		locator := locator.Index(idx)
 
+		var schemes []openapi.SecurityScheme
 		for name, scopes := range req {
 			v, ok := p.securitySchemes[name]
 			if !ok {
@@ -222,7 +223,7 @@ func (p *parser) parseSecurityRequirements(
 				flows = *spec.Flows
 			}
 
-			result = append(result, openapi.SecurityRequirement{
+			schemes = append(schemes, openapi.SecurityScheme{
 				Scopes: scopes,
 				Name:   name,
 				Security: openapi.Security{
@@ -238,6 +239,10 @@ func (p *parser) parseSecurityRequirements(
 				},
 			})
 		}
+		result = append(result, openapi.SecurityRequirement{
+			Schemes: schemes,
+			Pointer: locator.Pointer(p.file(ctx)),
+		})
 	}
 
 	return result, nil
