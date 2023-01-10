@@ -79,7 +79,8 @@ func (s *Security) GoDoc() []string {
 	return prettyDoc(s.Description, "")
 }
 
-type SecurityRequirement struct {
-	Security *Security
-	Spec     openapi.SecurityRequirement
+type SecurityRequirements struct {
+	Securities   map[string]*Security
+	Requirements []map[string]struct{}
+	Spec         openapi.SecurityRequirements
 }

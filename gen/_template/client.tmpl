@@ -223,11 +223,32 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- end }}
 
 	{{- template "encode_cookie_params" $op }}
-	{{- range $s := $op.Security }}
-	{{- $securityName := $s.Security.Type.Name }}
-	stage = {{ printf "Security:%s" $securityName | quote }}
-	if err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err != nil {
-		return res, errors.Wrap(err, {{ printf "security %q" $securityName | quote }})
+
+	{{- with $securities := $op.Security.Securities }}
+	{
+		satisfied := make(map[string]struct{}, {{ len $securities }})
+		{{- range $key, $s := $op.Security.Securities }}
+		{
+			{{- $securityName := $s.Type.Name }}
+			stage = {{ printf "Security:%s" $securityName | quote }}
+			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err {
+			case nil:
+				satisfied[{{ quote $key }}] = struct{}{}
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, {{ printf "security %q" $securityName | quote }})
+			}
+		}
+		{{- end }}
+
+		if ok := anyRequirementSatisfied(satisfied, [][]string{
+			{{- range $req := $op.Security.Requirements }}
+			{ {{- range $key, $_ := $req }}{{ quote $key }},{{- end }} },
+			{{- end }}
+		}); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 	{{- end }}
 

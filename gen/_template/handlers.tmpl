@@ -62,28 +62,53 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			s.errors.Add(ctx, 1, otelAttrs...)
 		}
 		err error
-		{{- if or $op.Request $op.Params $op.Security }}
+		{{- if or $op.Request $op.Params $op.Security.Securities }}
 		opErrContext = ogenerrors.OperationContext{
 			Name: {{ quote $op.Name }},
 			ID: {{ quote $op.Spec.OperationID }},
 		}
 		{{- end }}
 	)
-	{{- range $s := $op.Security }}
-	{{- $securityName := $s.Security.Type.Name }}
-	if sctx, err := s.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security: {{ quote $securityName }},
-			Err: err,
+
+	{{- with $securities := $op.Security.Securities }}
+	{
+		satisfied := make(map[string]struct{}, {{ len $securities }})
+		{{- range $key, $s := $securities }}
+		{{- $securityName := $s.Type.Name }}
+		{
+			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security: {{ quote $securityName }},
+					Err: err,
+				}
+				recordError({{ printf "Security:%s" $securityName | quote }}, err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[{{ quote $key }}] = struct{}{}
+				ctx = sctx
+			}
 		}
-		recordError({{ printf "Security:%s" $securityName | quote }}, err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+		{{- end }}
+
+		if ok := anyRequirementSatisfied(satisfied, [][]string{
+			{{- range $req := $op.Security.Requirements }}
+			{ {{- range $key, $_ := $req }}{{ quote $key }},{{- end }} },
+			{{- end }}
+		}); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err: ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError({{ quote "Security" }}, err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
-	{{- end }}
+    {{- end }}
 
 	{{- if $op.Params }}
 	params, err := decode{{ $op.Name }}Params(args, r)

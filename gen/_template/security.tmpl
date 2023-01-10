@@ -4,6 +4,24 @@
 {{ template "header" $ }}
 {{- if $.Securities }}
 
+func anyRequirementSatisfied(satisfied map[string]struct{}, requirement [][]string) bool {
+	isRequirementSatisfied := func(satisfied map[string]struct{}, requirement []string) bool {
+		for _, r := range requirement {
+			if _, ok := satisfied[r]; !ok {
+				return false
+			}
+		}
+		return true
+	}
+
+	for _, r := range requirement {
+		if isRequirementSatisfied(satisfied, r) {
+			return true
+		}
+	}
+	return false
+}
+
 {{- if $.PathsServerEnabled }}
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
@@ -14,38 +32,65 @@ type SecurityHandler interface {
 {{- end }}
 }
 
-{{- range $s := $.Securities }}
-func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, error) {
+func findAuthorization(h http.Header, prefix string) (string, bool) {
+	v, ok := h["Authorization"]
+	if !ok {
+		return "", false
+	}
+	for _, vv := range v {
+		scheme, value, ok := strings.Cut(vv, " ")
+		if !ok || !strings.EqualFold(scheme, prefix) {
+			continue
+		}
+		return value, true
+	}
+	return "", false
+}
+
+{{ range $s := $.Securities }}
+func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t {{ $s.Type.Name }}
 	{{- if $s.Format.IsAPIKeySecurity }}
+        const parameterName = {{ quote $s.ParameterName }}
 		{{- if $s.Kind.IsHeader }}
-		value := req.Header.Get({{ quote $s.ParameterName }})
+		value := req.Header.Get(parameterName)
+		if value == "" {
+			return ctx, false, nil
+		}
 		{{- else if $s.Kind.IsQuery }}
-		value := req.URL.Query().Get({{ quote $s.ParameterName }})
+		q := req.URL.Query()
+		if !q.Has(parameterName) {
+			return ctx, false, nil
+		}
+		value := q.Get(parameterName)
 		{{- else }}
             {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 		{{- end }}
 		t.APIKey = value
     {{- else if $s.Format.IsBasicHTTPSecurity }}
+		if _, ok := findAuthorization(req.Header, "Basic"); !ok {
+			return ctx, false, nil
+		}
 		username, password, ok := req.BasicAuth()
 		if !ok {
-			return nil, errors.New("invalid basic auth")
+			return nil, false, errors.New("invalid basic auth")
 		}
 		t.Username = username
 		t.Password = password
 	{{- else if $s.Format.IsBearerSecurity }}
-		scheme, token, ok := strings.Cut(req.Header.Get("Authorization"), " ")
+		token, ok := findAuthorization(req.Header, "Bearer")
 		if !ok {
-			return nil, errors.New("invalid bearer auth")
-		}
-		if !strings.EqualFold(scheme, "Bearer") {
-			return nil, errors.Errorf("invalid auth scheme: %q", scheme)
+			return ctx, false, nil
 		}
 		t.Token = token
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
-	return s.sec.Handle{{ $s.Type.Name }}(ctx, operationName, t)
+	rctx, err := s.sec.Handle{{ $s.Type.Name }}(ctx, operationName, t)
+	if err != nil {
+		return nil, false, err
+	}
+	return rctx, true, err
 }
 {{- end }}
 {{- end }}
@@ -64,6 +109,9 @@ type SecuritySource interface {
 func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
 	if err != nil {
+		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
+			return ogenerrors.ErrSkipClientSecurity
+		}
 		return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
 	}
 	{{- if $s.Format.IsAPIKeySecurity }}
