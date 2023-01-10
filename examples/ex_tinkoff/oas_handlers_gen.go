@@ -50,17 +50,49 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketBondsGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketBondsGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 
 	var response MarketBondsGetRes
@@ -144,17 +176,49 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketCandlesGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketCandlesGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeMarketCandlesGetParams(args, r)
 	if err != nil {
@@ -265,17 +329,49 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketCurrenciesGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 
 	var response MarketCurrenciesGetRes
@@ -359,17 +455,49 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketEtfsGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketEtfsGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 
 	var response MarketEtfsGetRes
@@ -453,17 +581,49 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketOrderbookGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketOrderbookGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeMarketOrderbookGetParams(args, r)
 	if err != nil {
@@ -566,17 +726,49 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeMarketSearchByFigiGetParams(args, r)
 	if err != nil {
@@ -675,17 +867,49 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeMarketSearchByTickerGetParams(args, r)
 	if err != nil {
@@ -784,17 +1008,49 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "MarketStocksGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "MarketStocksGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 
 	var response MarketStocksGetRes
@@ -878,17 +1134,49 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "OperationsGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "OperationsGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeOperationsGetParams(args, r)
 	if err != nil {
@@ -999,17 +1287,49 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "OrdersCancelPost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "OrdersCancelPost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeOrdersCancelPostParams(args, r)
 	if err != nil {
@@ -1112,17 +1432,49 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "OrdersGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "OrdersGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeOrdersGetParams(args, r)
 	if err != nil {
@@ -1221,17 +1573,49 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeOrdersLimitOrderPostParams(args, r)
 	if err != nil {
@@ -1349,17 +1733,49 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeOrdersMarketOrderPostParams(args, r)
 	if err != nil {
@@ -1477,17 +1893,49 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodePortfolioCurrenciesGetParams(args, r)
 	if err != nil {
@@ -1586,17 +2034,49 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "PortfolioGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "PortfolioGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodePortfolioGetParams(args, r)
 	if err != nil {
@@ -1695,17 +2175,49 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "SandboxClearPost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "SandboxClearPost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeSandboxClearPostParams(args, r)
 	if err != nil {
@@ -1804,17 +2316,49 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
 	if err != nil {
@@ -1928,17 +2472,49 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeSandboxPositionsBalancePostParams(args, r)
 	if err != nil {
@@ -2052,17 +2628,49 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "SandboxRegisterPost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "SandboxRegisterPost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	request, close, err := s.decodeSandboxRegisterPostRequest(r)
 	if err != nil {
@@ -2161,17 +2769,49 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "SandboxRemovePost", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "SandboxRemovePost", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 	params, err := decodeSandboxRemovePostParams(args, r)
 	if err != nil {
@@ -2270,17 +2910,49 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			ID:   "",
 		}
 	)
-	if sctx, err := s.securitySSOAuth(ctx, "UserAccountsGet", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "SSOAuth",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securitySSOAuth(ctx, "UserAccountsGet", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "SSOAuth",
+					Err:              err,
+				}
+				recordError("Security:SSOAuth", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:SSOAuth", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 
 	var response UserAccountsGetRes

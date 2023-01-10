@@ -14,6 +14,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 )
@@ -164,9 +165,37 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -302,9 +331,37 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -426,9 +483,37 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -564,9 +649,37 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -673,9 +786,37 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -796,9 +937,37 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -988,9 +1157,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodAttach", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodAttach", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1197,9 +1394,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodExec", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodExec", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1321,9 +1546,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodPortforward", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodPortforward", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1445,9 +1698,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1583,9 +1864,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1707,9 +2016,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1845,9 +2182,37 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1954,9 +2319,37 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2077,9 +2470,37 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2201,9 +2622,37 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2339,9 +2788,37 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2463,9 +2940,37 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2601,9 +3106,37 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2710,9 +3243,37 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2833,9 +3394,37 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2957,9 +3546,37 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3095,9 +3712,37 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3219,9 +3864,37 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3357,9 +4030,37 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3466,9 +4167,37 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3589,9 +4318,37 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3713,9 +4470,37 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3851,9 +4636,37 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -3975,9 +4788,37 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4113,9 +4954,37 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4222,9 +5091,37 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4345,9 +5242,37 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4537,9 +5462,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodAttach", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodAttach", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4746,9 +5699,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodExec", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodExec", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4870,9 +5851,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodPortforward", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodPortforward", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -4994,9 +6003,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5132,9 +6169,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5256,9 +6321,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5394,9 +6487,37 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5503,9 +6624,37 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5626,9 +6775,37 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5750,9 +6927,37 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -5888,9 +7093,37 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6012,9 +7245,37 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6150,9 +7411,37 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6259,9 +7548,37 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6382,9 +7699,37 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxyWithPath", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxyWithPath", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6455,9 +7800,37 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAPIVersions", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAPIVersions", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6528,9 +7901,37 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6601,9 +8002,37 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6674,9 +8103,37 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6747,9 +8204,37 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6820,9 +8305,37 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6893,9 +8406,37 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -6966,9 +8507,37 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAppsAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAppsAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7039,9 +8608,37 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAppsV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAppsV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7112,9 +8709,37 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7185,9 +8810,37 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7258,9 +8911,37 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7331,9 +9012,37 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7404,9 +9113,37 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7477,9 +9214,37 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7550,9 +9315,37 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7623,9 +9416,37 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7696,9 +9517,37 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetBatchAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetBatchAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7769,9 +9618,37 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetBatchV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetBatchV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7842,9 +9719,37 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7915,9 +9820,37 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCertificatesAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCertificatesAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -7988,9 +9921,37 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCertificatesV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCertificatesV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8061,9 +10022,37 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCodeVersion", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCodeVersion", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8134,9 +10123,37 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCoordinationAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCoordinationAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8207,9 +10224,37 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCoordinationV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCoordinationV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8280,9 +10325,37 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCoreAPIVersions", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCoreAPIVersions", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8353,9 +10426,37 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetCoreV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetCoreV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8426,9 +10527,37 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8499,9 +10628,37 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8572,9 +10729,37 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8645,9 +10830,37 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetEventsAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetEventsAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8718,9 +10931,37 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetEventsV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetEventsV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8791,9 +11032,37 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8864,9 +11133,37 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -8937,9 +11234,37 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9010,9 +11335,37 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9083,9 +11436,37 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9156,9 +11537,37 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9229,9 +11638,37 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetNetworkingAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetNetworkingAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9302,9 +11739,37 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetNetworkingV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetNetworkingV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9375,9 +11840,37 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetNodeAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetNodeAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9448,9 +11941,37 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetNodeV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetNodeV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9521,9 +12042,37 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9594,9 +12143,37 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9667,9 +12244,37 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetPolicyAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetPolicyAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9740,9 +12345,37 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetPolicyV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetPolicyV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9813,9 +12446,37 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9886,9 +12547,37 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -9959,9 +12648,37 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10032,9 +12749,37 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetSchedulingAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetSchedulingAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10105,9 +12850,37 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetSchedulingV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetSchedulingV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10178,9 +12951,37 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10251,9 +13052,37 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDKeyset", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDKeyset", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10324,9 +13153,37 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetStorageAPIGroup", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetStorageAPIGroup", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10397,9 +13254,37 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetStorageV1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetStorageV1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10470,9 +13355,37 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10543,9 +13456,37 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -10790,9 +13731,37 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -11037,9 +14006,37 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -11284,9 +14281,37 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -11531,9 +14556,37 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListApiregistrationV1APIService", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListApiregistrationV1APIService", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -11778,9 +14831,37 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -12025,9 +15106,37 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -12272,9 +15381,37 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -12534,9 +15671,37 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -12796,9 +15961,37 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -13058,9 +16251,37 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -13320,9 +16541,37 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -13582,9 +16831,37 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -13829,9 +17106,37 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -14076,9 +17381,37 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -14323,9 +17656,37 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -14585,9 +17946,37 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -14832,9 +18221,37 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -15094,9 +18511,37 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -15341,9 +18786,37 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -15603,9 +19076,37 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -15850,9 +19351,37 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -16097,9 +19626,37 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -16359,9 +19916,37 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -16621,9 +20206,37 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -16868,9 +20481,37 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -17130,9 +20771,37 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -17377,9 +21046,37 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -17624,9 +21321,37 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -17886,9 +21611,37 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -18133,9 +21886,37 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -18380,9 +22161,37 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -18627,9 +22436,37 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -18874,9 +22711,37 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -19121,9 +22986,37 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -19368,9 +23261,37 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1Namespace", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1Namespace", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -19630,9 +23551,37 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -19892,9 +23841,37 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -20154,9 +24131,37 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -20416,9 +24421,37 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -20678,9 +24711,37 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -20940,9 +25001,37 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -21202,9 +25291,37 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -21464,9 +25581,37 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -21726,9 +25871,37 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -21988,9 +26161,37 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -22250,9 +26451,37 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedService", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedService", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -22512,9 +26741,37 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -22759,9 +27016,37 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1Node", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1Node", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -23006,9 +27291,37 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -23253,9 +27566,37 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -23500,9 +27841,37 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -23747,9 +28116,37 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -23994,9 +28391,37 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -24241,9 +28666,37 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -24488,9 +28941,37 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -24735,9 +29216,37 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -24982,9 +29491,37 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -25229,9 +29766,37 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -25491,9 +30056,37 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -25738,9 +30331,37 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -26000,9 +30621,37 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -26247,9 +30896,37 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -26509,9 +31186,37 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -26756,9 +31461,37 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -27018,9 +31751,37 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -27265,9 +32026,37 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -27512,9 +32301,37 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -27759,9 +32576,37 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -28006,9 +32851,37 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -28253,9 +33126,37 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -28500,9 +33401,37 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -28747,9 +33676,37 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -29009,9 +33966,37 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -29271,9 +34256,37 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -29518,9 +34531,37 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -29765,9 +34806,37 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -30012,9 +35081,37 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -30259,9 +35356,37 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -30521,9 +35646,37 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -30768,9 +35921,37 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -31030,9 +36211,37 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -31277,9 +36486,37 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -31524,9 +36761,37 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -31771,9 +37036,37 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -32018,9 +37311,37 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -32280,9 +37601,37 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -32542,9 +37891,37 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -32789,9 +38166,37 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -33036,9 +38441,37 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -33283,9 +38716,37 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -33530,9 +38991,37 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1CSIDriver", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1CSIDriver", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -33777,9 +39266,37 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1CSINode", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1CSINode", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -34024,9 +39541,37 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1StorageClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1StorageClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -34271,9 +39816,37 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -34518,9 +40091,37 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -34780,9 +40381,37 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35027,9 +40656,37 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35289,9 +40946,37 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35374,9 +41059,37 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "LogFileHandler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "LogFileHandler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35445,9 +41158,37 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "LogFileListHandler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "LogFileListHandler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35553,9 +41294,37 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35661,9 +41430,37 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35769,9 +41566,37 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35878,9 +41703,37 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -35986,9 +41839,37 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36095,9 +41976,37 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36218,9 +42127,37 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36341,9 +42278,37 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36465,9 +42430,37 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36588,9 +42581,37 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36712,9 +42733,37 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36836,9 +42885,37 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -36959,9 +43036,37 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37083,9 +43188,37 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37207,9 +43340,37 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37330,9 +43491,37 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37454,9 +43643,37 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37578,9 +43795,37 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37701,9 +43946,37 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37825,9 +44098,37 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -37948,9 +44249,37 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38072,9 +44401,37 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38195,9 +44552,37 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38319,9 +44704,37 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38442,9 +44855,37 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38566,9 +45007,37 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38689,9 +45158,37 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38813,9 +45310,37 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -38936,9 +45461,37 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39060,9 +45613,37 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39168,9 +45749,37 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39277,9 +45886,37 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39386,9 +46023,37 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39509,9 +46174,37 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39617,9 +46310,37 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39725,9 +46446,37 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1Namespace", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1Namespace", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39834,9 +46583,37 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -39957,9 +46734,37 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40080,9 +46885,37 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40203,9 +47036,37 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40326,9 +47187,37 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40449,9 +47338,37 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40573,9 +47490,37 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40696,9 +47641,37 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -40820,9 +47793,37 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41080,9 +48081,37 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41204,9 +48233,37 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41327,9 +48384,37 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41450,9 +48535,37 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41574,9 +48687,37 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41698,9 +48839,37 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41821,9 +48990,37 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -41945,9 +49142,37 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42068,9 +49293,37 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42191,9 +49444,37 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42314,9 +49595,37 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42438,9 +49747,37 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42546,9 +49883,37 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1Node", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1Node", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42655,9 +50020,37 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42763,9 +50156,37 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42872,9 +50293,37 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -42995,9 +50444,37 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43118,9 +50595,37 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43241,9 +50746,37 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43364,9 +50897,37 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43472,9 +51033,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43581,9 +51170,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43689,9 +51306,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43798,9 +51443,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -43906,9 +51579,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44015,9 +51716,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44123,9 +51852,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44232,9 +51989,37 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44340,9 +52125,37 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44449,9 +52262,37 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44557,9 +52398,37 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44680,9 +52549,37 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44804,9 +52701,37 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -44927,9 +52852,37 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45035,9 +52988,37 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45143,9 +53124,37 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45251,9 +53260,37 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45374,9 +53411,37 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45498,9 +53563,37 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45621,9 +53714,37 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45745,9 +53866,37 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45853,9 +54002,37 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -45961,9 +54138,37 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46069,9 +54274,37 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46192,9 +54425,37 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46315,9 +54576,37 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46423,9 +54712,37 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46531,9 +54848,37 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46639,9 +54984,37 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1CSINode", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1CSINode", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46747,9 +55120,37 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1StorageClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1StorageClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46855,9 +55256,37 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -46964,9 +55393,37 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -47087,9 +55544,37 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -47210,9 +55695,37 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -47473,9 +55986,37 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -47721,9 +56262,37 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -47984,9 +56553,37 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -48232,9 +56829,37 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -48494,9 +57119,37 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -48742,9 +57395,37 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -49004,9 +57685,37 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -49252,9 +57961,37 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -49500,9 +58237,37 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -49748,9 +58513,37 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -49996,9 +58789,37 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -50273,9 +59094,37 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -50536,9 +59385,37 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -50813,9 +59690,37 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -51076,9 +59981,37 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -51353,9 +60286,37 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -51616,9 +60577,37 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -51893,9 +60882,37 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -52156,9 +61173,37 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -52433,9 +61478,37 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -52696,9 +61769,37 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -52944,9 +62045,37 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -53192,9 +62321,37 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -53440,9 +62597,37 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -53717,9 +62902,37 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -53980,9 +63193,37 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -54228,9 +63469,37 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -54505,9 +63774,37 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -54768,9 +64065,37 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -55016,9 +64341,37 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -55293,9 +64646,37 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -55556,9 +64937,37 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -55804,9 +65213,37 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -56052,9 +65489,37 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -56329,9 +65794,37 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -56592,9 +66085,37 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -56869,9 +66390,37 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -57132,9 +66681,37 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -57380,9 +66957,37 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -57657,9 +67262,37 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -57920,9 +67553,37 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -58183,9 +67844,37 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -58431,9 +68120,37 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -58679,9 +68396,37 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -58956,9 +68701,37 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -59219,9 +68992,37 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -59467,9 +69268,37 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -59715,9 +69544,37 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -59963,9 +69820,37 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -60211,9 +70096,37 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -60473,9 +70386,37 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1Namespace", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1Namespace", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -60721,9 +70662,37 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -60998,9 +70967,37 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -61261,9 +71258,37 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -61538,9 +71563,37 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -61801,9 +71854,37 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -62078,9 +72159,37 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -62341,9 +72450,37 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -62618,9 +72755,37 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -62881,9 +73046,37 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -63158,9 +73351,37 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -63421,9 +73642,37 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -63698,9 +73947,37 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -63961,9 +74238,37 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -64238,9 +74543,37 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -64501,9 +74834,37 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -64778,9 +75139,37 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -65041,9 +75430,37 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -65318,9 +75735,37 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -65581,9 +76026,37 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -65858,9 +76331,37 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -66121,9 +76622,37 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -66398,9 +76927,37 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -66675,9 +77232,37 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -66938,9 +77523,37 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -67201,9 +77814,37 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -67463,9 +78104,37 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1Node", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1Node", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -67711,9 +78380,37 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1NodeList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1NodeList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -67973,9 +78670,37 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -68221,9 +78946,37 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -68469,9 +79222,37 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -68717,9 +79498,37 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -68965,9 +79774,37 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -69213,9 +80050,37 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -69461,9 +80326,37 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -69709,9 +80602,37 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -69957,9 +80878,37 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -70205,9 +81154,37 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -70453,9 +81430,37 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -70730,9 +81735,37 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -70993,9 +82026,37 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -71241,9 +82302,37 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -71518,9 +82607,37 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -71781,9 +82898,37 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -72029,9 +83174,37 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -72306,9 +83479,37 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -72569,9 +83770,37 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -72817,9 +84046,37 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -73094,9 +84351,37 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -73357,9 +84642,37 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -73619,9 +84932,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -73867,9 +85208,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -74130,9 +85499,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -74378,9 +85775,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -74640,9 +86065,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -74888,9 +86341,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -75151,9 +86632,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -75399,9 +86908,37 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -75661,9 +87198,37 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -75909,9 +87474,37 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -76171,9 +87764,37 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -76419,9 +88040,37 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -76667,9 +88316,37 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -76944,9 +88621,37 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -77207,9 +88912,37 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -77484,9 +89217,37 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -77747,9 +89508,37 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -77995,9 +89784,37 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -78257,9 +90074,37 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -78505,9 +90350,37 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -78767,9 +90640,37 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -79015,9 +90916,37 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -79277,9 +91206,37 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -79525,9 +91482,37 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -79802,9 +91787,37 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -80065,9 +92078,37 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -80313,9 +92354,37 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -80590,9 +92659,37 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -80853,9 +92950,37 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -81101,9 +93226,37 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -81363,9 +93516,37 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -81611,9 +93792,37 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -81873,9 +94082,37 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -82135,9 +94372,37 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -82383,9 +94648,37 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -82631,9 +94924,37 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -82908,9 +95229,37 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -83185,9 +95534,37 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -83448,9 +95825,37 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -83711,9 +96116,37 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -83959,9 +96392,37 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -84207,9 +96668,37 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -84469,9 +96958,37 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -84717,9 +97234,37 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -84979,9 +97524,37 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -85227,9 +97800,37 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -85489,9 +98090,37 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1CSINode", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSINode", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -85737,9 +98366,37 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -85999,9 +98656,37 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1StorageClass", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1StorageClass", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -86247,9 +98932,37 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -86509,9 +99222,37 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -86757,9 +99498,37 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -87005,9 +99774,37 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -87282,9 +100079,37 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -87545,9 +100370,37 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -87793,9 +100646,37 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -88070,9 +100951,37 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -88333,9 +101242,37 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:BearerToken"
-	if err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r); err != nil {
-		return res, errors.Wrap(err, "security \"BearerToken\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BearerToken"
+			switch err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BearerToken\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"

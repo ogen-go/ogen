@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -16,17 +18,33 @@ type SecurityHandler interface {
 	HandleSSOAuth(ctx context.Context, operationName string, t SSOAuth) (context.Context, error)
 }
 
-func (s *Server) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) (context.Context, error) {
-	var t SSOAuth
-	scheme, token, ok := strings.Cut(req.Header.Get("Authorization"), " ")
+func findAuthorization(h http.Header, prefix string) (string, bool) {
+	v, ok := h["Authorization"]
 	if !ok {
-		return nil, errors.New("invalid bearer auth")
+		return "", false
 	}
-	if !strings.EqualFold(scheme, "Bearer") {
-		return nil, errors.Errorf("invalid auth scheme: %q", scheme)
+	for _, vv := range v {
+		scheme, value, ok := strings.Cut(vv, " ")
+		if !ok || !strings.EqualFold(scheme, prefix) {
+			continue
+		}
+		return value, true
+	}
+	return "", false
+}
+
+func (s *Server) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+	var t SSOAuth
+	token, ok := findAuthorization(req.Header, "Bearer")
+	if !ok {
+		return ctx, false, nil
 	}
 	t.Token = token
-	return s.sec.HandleSSOAuth(ctx, operationName, t)
+	rctx, err := s.sec.HandleSSOAuth(ctx, operationName, t)
+	if err != nil {
+		return nil, false, err
+	}
+	return rctx, true, err
 }
 
 // SecuritySource is provider of security values (tokens, passwords, etc.).
@@ -38,6 +56,9 @@ type SecuritySource interface {
 func (s *Client) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.SSOAuth(ctx, operationName)
 	if err != nil {
+		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
+			return ogenerrors.ErrSkipClientSecurity
+		}
 		return errors.Wrap(err, "security source \"SSOAuth\"")
 	}
 	req.Header.Set("Authorization", "Bearer "+t.Token)
