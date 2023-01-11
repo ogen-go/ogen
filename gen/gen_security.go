@@ -6,6 +6,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/bitset"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -104,30 +105,36 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityScheme) (
 }
 
 func (g *Generator) generateSecurities(ctx *genctx, spec openapi.SecurityRequirements) (r ir.SecurityRequirements, _ error) {
-	r.Securities = map[string]*ir.Security{}
+	indexes := map[string]int{}
 	for idx, requirement := range spec {
-		set, err := func() (map[string]struct{}, error) {
-			set := map[string]struct{}{}
+		var set bitset.Bitset
+
+		if err := func() error {
 			for _, scheme := range requirement.Schemes {
 				s, err := g.generateSecurity(ctx, scheme)
 				if err != nil {
-					return nil, errors.Wrapf(err, "security scheme %q", scheme.Name)
+					return errors.Wrapf(err, "security scheme %q", scheme.Name)
 				}
 				g.securities[scheme.Name] = s
 
-				r.Securities[scheme.Name] = s
-				set[scheme.Name] = struct{}{}
+				idx, ok := indexes[scheme.Name]
+				if !ok {
+					r.Securities = append(r.Securities, s)
+					idx = len(r.Securities) - 1
+					indexes[scheme.Name] = idx
+				}
+				set.Set(idx, true)
 			}
-
-			return set, nil
-		}()
-		if err != nil {
+			return nil
+		}(); err != nil {
+			// Skip entire requirement if at least one security is not implemented.
 			err = errors.Wrapf(err, "security requirement %d", idx)
 			if err := g.trySkip(err, "Skipping security", requirement); err != nil {
 				return r, err
 			}
 			continue
 		}
+
 		r.Requirements = append(r.Requirements, set)
 	}
 	return r, nil

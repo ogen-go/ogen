@@ -4,24 +4,6 @@
 {{ template "header" $ }}
 {{- if $.Securities }}
 
-func anyRequirementSatisfied(satisfied map[string]struct{}, requirement [][]string) bool {
-	isRequirementSatisfied := func(satisfied map[string]struct{}, requirement []string) bool {
-		for _, r := range requirement {
-			if _, ok := satisfied[r]; !ok {
-				return false
-			}
-		}
-		return true
-	}
-
-	for _, r := range requirement {
-		if isRequirementSatisfied(satisfied, r) {
-			return true
-		}
-	}
-	return false
-}
-
 {{- if $.PathsServerEnabled }}
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {

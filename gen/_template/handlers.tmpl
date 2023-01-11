@@ -72,8 +72,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 
 	{{- with $securities := $op.Security.Securities }}
 	{
-		satisfied := make(map[string]struct{}, {{ len $securities }})
-		{{- range $key, $s := $securities }}
+		type bitset = [{{ $op.Security.BitArrayLen }}]uint8
+		var satisfied bitset
+		{{- range $idx, $s := $securities }}
 		{{- $securityName := $s.Type.Name }}
 		{
 			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r)
@@ -88,17 +89,30 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				return
 			}
 			if ok {
-				satisfied[{{ quote $key }}] = struct{}{}
+				satisfied[{{ div $idx 8 }}] |= 1 << {{ mod $idx 8 }}
 				ctx = sctx
 			}
 		}
 		{{- end }}
 
-		if ok := anyRequirementSatisfied(satisfied, [][]string{
-			{{- range $req := $op.Security.Requirements }}
-			{ {{- range $key, $_ := $req }}{{ quote $key }},{{- end }} },
-			{{- end }}
-		}); !ok {
+		if ok := func() bool {
+			nextRequirement:
+			for _, requirement := range []bitset{
+				{{- range $req := $op.Security.Requirements }}
+				{
+                	{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end }}
+				},
+				{{- end }}
+			} {
+				for i, mask := range requirement {
+					if result := (satisfied[i] & mask) ^ mask; result != 0 {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
 			err = &ogenerrors.SecurityError{
 				OperationContext: opErrContext,
 				Err: ogenerrors.ErrSecurityRequirementIsNotSatisfied,
