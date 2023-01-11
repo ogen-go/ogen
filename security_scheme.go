@@ -64,7 +64,11 @@ type OAuthFlow struct {
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
-// SecurityRequirements lists the required security schemes to execute this operation.
-//
-// See https://spec.openapis.org/oas/v3.1.0#security-requirement-object.
-type SecurityRequirements []map[string][]string
+type (
+	// SecurityRequirement lists the required security schemes to execute this operation.
+	//
+	// See https://spec.openapis.org/oas/v3.1.0#security-requirement-object.
+	SecurityRequirement = map[string][]string
+	// SecurityRequirements lists the security requirements of the operation.
+	SecurityRequirements []SecurityRequirement
+)

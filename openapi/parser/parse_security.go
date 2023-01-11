@@ -10,6 +10,7 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -185,14 +186,17 @@ func (p *parser) parseSecurityRequirements(
 	requirements ogen.SecurityRequirements,
 	locator location.Locator,
 	ctx *jsonpointer.ResolveCtx,
-) ([]openapi.SecurityRequirement, error) {
-	result := make([]openapi.SecurityRequirement, 0, len(requirements))
+) (openapi.SecurityRequirements, error) {
+	result := make(openapi.SecurityRequirements, 0, len(requirements))
 	securitySchemesLoc := p.rootLoc.Field("components").Field("securitySchemes")
 
 	for idx, req := range requirements {
 		locator := locator.Index(idx)
 
-		for name, scopes := range req {
+		var schemes []openapi.SecurityScheme
+		for _, name := range xmaps.SortedKeys(req) {
+			scopes := req[name]
+
 			v, ok := p.securitySchemes[name]
 			if !ok {
 				err := errors.Errorf("unknown security scheme %q", name)
@@ -222,7 +226,7 @@ func (p *parser) parseSecurityRequirements(
 				flows = *spec.Flows
 			}
 
-			result = append(result, openapi.SecurityRequirement{
+			schemes = append(schemes, openapi.SecurityScheme{
 				Scopes: scopes,
 				Name:   name,
 				Security: openapi.Security{
@@ -238,6 +242,10 @@ func (p *parser) parseSecurityRequirements(
 				},
 			})
 		}
+		result = append(result, openapi.SecurityRequirement{
+			Schemes: schemes,
+			Pointer: locator.Pointer(p.file(ctx)),
+		})
 	}
 
 	return result, nil

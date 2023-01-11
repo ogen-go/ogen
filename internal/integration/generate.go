@@ -19,6 +19,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_http_requests    ../../_testdata/positive/http_requests.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_form             ../../_testdata/positive/form.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_parameters       ../../_testdata/positive/parameters.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_security         ../../_testdata/positive/security.json
 //
 //go:generate go run ./cmd/customformats ../../_testdata/positive/custom_formats.json test_customformats
 //

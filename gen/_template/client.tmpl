@@ -223,11 +223,46 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- end }}
 
 	{{- template "encode_cookie_params" $op }}
-	{{- range $s := $op.Security }}
-	{{- $securityName := $s.Security.Type.Name }}
-	stage = {{ printf "Security:%s" $securityName | quote }}
-	if err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err != nil {
-		return res, errors.Wrap(err, {{ printf "security %q" $securityName | quote }})
+
+	{{- with $securities := $op.Security.Securities }}
+	{
+		type bitset = [{{ $op.Security.BitArrayLen }}]uint8
+		var satisfied bitset
+		{{- range $idx, $s := $op.Security.Securities }}
+		{
+			{{- $securityName := $s.Type.Name }}
+			stage = {{ printf "Security:%s" $securityName | quote }}
+			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err {
+			case nil:
+				satisfied[{{ div $idx 8 }}] |= 1 << {{ mod $idx 8 }}
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, {{ printf "security %q" $securityName | quote }})
+			}
+		}
+		{{- end }}
+
+		if ok := func() bool {
+			nextRequirement:
+			for _, requirement := range []bitset{
+				{{- range $req := $op.Security.Requirements }}
+				{
+                	{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end -}}
+				},
+				{{- end }}
+			} {
+				for i, mask := range requirement {
+					if satisfied[i] & mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 	{{- end }}
 

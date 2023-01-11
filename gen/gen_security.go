@@ -6,10 +6,11 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/bitset"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.SecurityRequirement) (*ir.Security, error) {
+func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.SecurityScheme) (*ir.Security, error) {
 	security := spec.Security
 	if name := security.Name; name == "" {
 		return nil, errors.Errorf(`invalid "apiKey" name %q`, name)
@@ -34,7 +35,7 @@ func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.Security
 	return s, nil
 }
 
-func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityRequirement) (*ir.Security, error) {
+func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityScheme) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
 	switch scheme := security.Scheme; scheme {
@@ -64,7 +65,7 @@ func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityRe
 	return s, nil
 }
 
-func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequirement) (r *ir.Security, rErr error) {
+func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
 		return sec, nil
 	}
@@ -103,25 +104,38 @@ func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequireme
 	}
 }
 
-func (g *Generator) generateSecurities(ctx *genctx, spec []openapi.SecurityRequirement) (r []*ir.SecurityRequirement, _ error) {
-	for idx, sr := range spec {
-		s, err := g.generateSecurity(ctx, sr)
-		if err != nil {
-			err = errors.Wrapf(err,
-				"security %q [%d]",
-				sr.Name, idx,
-			)
-			if err := g.trySkip(err, "Skipping security", sr.Security); err != nil {
-				return nil, err
+func (g *Generator) generateSecurities(ctx *genctx, spec openapi.SecurityRequirements) (r ir.SecurityRequirements, _ error) {
+	indexes := map[string]int{}
+	for idx, requirement := range spec {
+		var set bitset.Bitset
+
+		if err := func() error {
+			for _, scheme := range requirement.Schemes {
+				s, err := g.generateSecurity(ctx, scheme)
+				if err != nil {
+					return errors.Wrapf(err, "security scheme %q", scheme.Name)
+				}
+				g.securities[scheme.Name] = s
+
+				idx, ok := indexes[scheme.Name]
+				if !ok {
+					r.Securities = append(r.Securities, s)
+					idx = len(r.Securities) - 1
+					indexes[scheme.Name] = idx
+				}
+				set.Set(idx, true)
+			}
+			return nil
+		}(); err != nil {
+			// Skip entire requirement if at least one security is not implemented.
+			err = errors.Wrapf(err, "security requirement %d", idx)
+			if err := g.trySkip(err, "Skipping security", requirement); err != nil {
+				return r, err
 			}
 			continue
 		}
-		g.securities[sr.Name] = s
 
-		r = append(r, &ir.SecurityRequirement{
-			Security: s,
-			Spec:     sr,
-		})
+		r.Requirements = append(r.Requirements, set)
 	}
 	return r, nil
 }

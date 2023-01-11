@@ -185,6 +185,25 @@ func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (*api.NilI
 
 var _ api.Handler = (*sampleAPIServer)(nil)
 
+type securityKey struct{}
+
+func (s sampleAPIServer) HandleAPIKey(ctx context.Context, operationID string, t api.APIKey) (context.Context, error) {
+	return context.WithValue(ctx, securityKey{}, t.APIKey), nil
+}
+
+func (s sampleAPIServer) APIKey(ctx context.Context, operationID string) (api.APIKey, error) {
+	return api.APIKey{APIKey: "десять"}, nil
+}
+
+func (s sampleAPIServer) SecurityTest(ctx context.Context) (string, error) {
+	return ctx.Value(securityKey{}).(string), nil
+}
+
+var _ interface {
+	api.SecuritySource
+	api.SecurityHandler
+} = (*sampleAPIServer)(nil)
+
 //go:embed _testdata/payloads/pet.json
 var petTestData string
 

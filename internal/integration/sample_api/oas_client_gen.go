@@ -14,6 +14,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -1976,9 +1977,37 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:APIKey"
-	if err := c.securityAPIKey(ctx, "SecurityTest", r); err != nil {
-		return res, errors.Wrap(err, "security \"APIKey\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:APIKey"
+			switch err := c.securityAPIKey(ctx, "SecurityTest", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"APIKey\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"

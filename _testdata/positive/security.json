@@ -1,0 +1,86 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/optionalSecurity": {
+      "get": {
+        "operationId": "optionalSecurity",
+        "security": [
+          {},
+          {
+            "queryKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/disjointSecurity": {
+      "get": {
+        "operationId": "disjointSecurity",
+        "security": [
+          {
+            "basicAuth": [],
+            "queryKey": []
+          },
+          {
+            "headerKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/intersectSecurity": {
+      "get": {
+        "operationId": "intersectSecurity",
+        "security": [
+          {
+            "basicAuth": [],
+            "headerKey": []
+          },
+          {
+            "bearerToken": [],
+            "headerKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "queryKey": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key"
+      },
+      "headerKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      },
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "bearerToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

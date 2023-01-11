@@ -1,6 +1,8 @@
 package ir
 
-import "github.com/ogen-go/ogen/openapi"
+import (
+	"github.com/ogen-go/ogen/internal/bitset"
+)
 
 // SecurityKind defines security kind.
 type SecurityKind string
@@ -79,7 +81,17 @@ func (s *Security) GoDoc() []string {
 	return prettyDoc(s.Description, "")
 }
 
-type SecurityRequirement struct {
-	Security *Security
-	Spec     openapi.SecurityRequirement
+type SecurityRequirements struct {
+	Securities   []*Security
+	Requirements []bitset.Bitset
+}
+
+// BitArrayLen returns the length for bitset's underlying array.
+func (s SecurityRequirements) BitArrayLen() (r int) {
+	for _, req := range s.Requirements {
+		if len(req) > r {
+			r = len(req)
+		}
+	}
+	return r
 }

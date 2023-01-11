@@ -2144,17 +2144,49 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			ID:   "securityTest",
 		}
 	)
-	if sctx, err := s.securityAPIKey(ctx, "SecurityTest", r); err != nil {
-		err = &ogenerrors.SecurityError{
-			OperationContext: opErrContext,
-			Security:         "APIKey",
-			Err:              err,
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securityAPIKey(ctx, "SecurityTest", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "APIKey",
+					Err:              err,
+				}
+				recordError("Security:APIKey", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
 		}
-		recordError("Security:APIKey", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	} else {
-		ctx = sctx
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
 	}
 
 	var response string

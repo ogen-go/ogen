@@ -24,7 +24,7 @@ type Operation struct {
 	Params      []*Parameter
 	Request     *Request
 	Responses   *Responses
-	Security    []*SecurityRequirement
+	Security    SecurityRequirements
 	Spec        *openapi.Operation
 }
 

@@ -5,8 +5,11 @@ package api
 import (
 	"context"
 	"net/http"
+	"strings"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
@@ -16,11 +19,34 @@ type SecurityHandler interface {
 	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
 }
 
-func (s *Server) securityBearerToken(ctx context.Context, operationName string, req *http.Request) (context.Context, error) {
+func findAuthorization(h http.Header, prefix string) (string, bool) {
+	v, ok := h["Authorization"]
+	if !ok {
+		return "", false
+	}
+	for _, vv := range v {
+		scheme, value, ok := strings.Cut(vv, " ")
+		if !ok || !strings.EqualFold(scheme, prefix) {
+			continue
+		}
+		return value, true
+	}
+	return "", false
+}
+
+func (s *Server) securityBearerToken(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t BearerToken
-	value := req.Header.Get("authorization")
+	const parameterName = "authorization"
+	value := req.Header.Get(parameterName)
+	if value == "" {
+		return ctx, false, nil
+	}
 	t.APIKey = value
-	return s.sec.HandleBearerToken(ctx, operationName, t)
+	rctx, err := s.sec.HandleBearerToken(ctx, operationName, t)
+	if err != nil {
+		return nil, false, err
+	}
+	return rctx, true, err
 }
 
 // SecuritySource is provider of security values (tokens, passwords, etc.).
@@ -33,6 +59,9 @@ type SecuritySource interface {
 func (s *Client) securityBearerToken(ctx context.Context, operationName string, req *http.Request) error {
 	t, err := s.sec.BearerToken(ctx, operationName)
 	if err != nil {
+		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
+			return ogenerrors.ErrSkipClientSecurity
+		}
 		return errors.Wrap(err, "security source \"BearerToken\"")
 	}
 	req.Header.Set("authorization", t.APIKey)

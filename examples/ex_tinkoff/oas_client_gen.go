@@ -13,6 +13,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -108,9 +109,37 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketBondsGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketBondsGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -238,9 +267,37 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -308,9 +365,37 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -378,9 +463,37 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -480,9 +593,37 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -568,9 +709,37 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -656,9 +825,37 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -726,9 +923,37 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "MarketStocksGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "MarketStocksGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -862,9 +1087,37 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "OperationsGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "OperationsGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -967,9 +1220,37 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1058,9 +1339,37 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "OrdersGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "OrdersGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1175,9 +1484,37 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 		return res, errors.Wrap(err, "encode request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1292,9 +1629,37 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 		return res, errors.Wrap(err, "encode request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1383,9 +1748,37 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1474,9 +1867,37 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "PortfolioGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "PortfolioGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1565,9 +1986,37 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "SandboxClearPost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "SandboxClearPost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1668,9 +2117,37 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 		return res, errors.Wrap(err, "encode request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1771,9 +2248,37 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 		return res, errors.Wrap(err, "encode request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1860,9 +2365,37 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 		return res, errors.Wrap(err, "encode request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -1951,9 +2484,37 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
@@ -2021,9 +2582,37 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 		return res, errors.Wrap(err, "create request")
 	}
 
-	stage = "Security:SSOAuth"
-	if err := c.securitySSOAuth(ctx, "UserAccountsGet", r); err != nil {
-		return res, errors.Wrap(err, "security \"SSOAuth\"")
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:SSOAuth"
+			switch err := c.securitySSOAuth(ctx, "UserAccountsGet", r); err {
+			case nil:
+				satisfied[0] |= 1 << 0
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"SSOAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, errors.New("no security requirement satisfied")
+		}
 	}
 
 	stage = "SendRequest"
