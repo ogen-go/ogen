@@ -5,6 +5,7 @@ import (
 
 	"golang.org/x/exp/slices"
 
+	"github.com/ogen-go/ogen/internal/bitset"
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -60,24 +61,10 @@ func (j JSONFields) HasRequired() bool {
 }
 
 // RequiredMask returns array of 64-bit bitmasks for required fields.
-func (j JSONFields) RequiredMask() (r []uint8) {
-	i := 0
-	r = append(r, 0)
-	for _, f := range j {
-		maskIdx := i / 8
-		if len(r) <= maskIdx {
-			r = append(r, 0)
-		}
-		bitIdx := i % 8
-
-		set := uint8(0)
-		if f.Spec != nil && f.Spec.Required {
-			set = 1
-		}
-		r[maskIdx] |= set << uint8(bitIdx)
-		i++
-	}
-	return r
+func (j JSONFields) RequiredMask() []uint8 {
+	return bitset.Build(j, func(_ int, f *Field) bool {
+		return f.Spec != nil && f.Spec.Required
+	})
 }
 
 // Fields return all fields of Type that should be encoded via json.
