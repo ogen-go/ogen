@@ -248,12 +248,12 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 			for _, requirement := range []bitset{
 				{{- range $req := $op.Security.Requirements }}
 				{
-                	{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end }}
+                	{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end -}}
 				},
 				{{- end }}
 			} {
 				for i, mask := range requirement {
-					if result := (satisfied[i] & mask) ^ mask; result != 0 {
+					if satisfied[i] & mask != mask {
 						continue nextRequirement
 					}
 				}

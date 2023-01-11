@@ -105,7 +105,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				{{- end }}
 			} {
 				for i, mask := range requirement {
-					if result := (satisfied[i] & mask) ^ mask; result != 0 {
+					if satisfied[i] & mask != mask {
 						continue nextRequirement
 					}
 				}
