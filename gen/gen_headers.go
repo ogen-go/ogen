@@ -1,8 +1,6 @@
 package gen
 
 import (
-	"net/http"
-
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -18,11 +16,7 @@ func (g *Generator) generateHeaders(
 
 	result := make(map[string]*ir.Parameter, len(headers))
 	for hname, header := range headers {
-		if http.CanonicalHeaderKey(hname) == "Content-Type" {
-			g.log.Warn(
-				"Content-Type is described separately and will be ignored in this section.",
-				zapPosition(header),
-			)
+		if vetHeaderParameterName(g.log, hname, header, "Content-Type") {
 			continue
 		}
 

@@ -1,16 +1,49 @@
 package gen
 
 import (
+	"fmt"
+	"net/http"
+
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
+func vetHeaderParameterName(log *zap.Logger, name string, loc position, ignore ...string) (skip bool) {
+	canonical := http.CanonicalHeaderKey(name)
+	if canonical != name {
+		log.Warn(
+			"Header name is not canonical, canonical name will be used",
+			zapPosition(loc),
+			zap.String("original_name", name),
+			zap.String("canonical_name", canonical),
+		)
+	}
+	for _, ign := range ignore {
+		if ign == canonical {
+			skip = true
+			log.Warn(
+				fmt.Sprintf("%s is described separately and will be ignored in this section", ign),
+				zapPosition(loc),
+			)
+			break
+		}
+	}
+	return skip
+}
+
 func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for _, p := range params {
+		if p.In == openapi.LocationHeader {
+			if vetHeaderParameterName(g.log, p.Name, p, "Content-Type", "Accept", "Authorization") {
+				continue
+			}
+		}
+
 		param, err := g.generateParameter(ctx, opName, p)
 		if err != nil {
 			if err := g.trySkip(err, "Skipping parameter", p); err != nil {
