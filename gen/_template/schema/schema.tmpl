@@ -31,7 +31,7 @@
 
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
-func ({{ $.ImplReceiverType }}) {{ $method }}() {}
+func (*{{ $.Go }}) {{ $method }}() {}
 {{- end }}
 
 {{ end }}
