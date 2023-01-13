@@ -25,6 +25,6 @@ func (s *Client) securityAPIKey(ctx context.Context, operationName string, req *
 		}
 		return errors.Wrap(err, "security source \"APIKey\"")
 	}
-	req.Header.Set("api_key", t.APIKey)
+	req.Header.Set("Api_key", t.APIKey)
 	return nil
 }

@@ -140,16 +140,16 @@ func encodeHeaders200Response(response *Headers200OK, w http.ResponseWriter, spa
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode "TestHeader" header.
+		// Encode "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-				return e.EncodeValue(conv.StringToString(response.TestHeader))
+				return e.EncodeValue(conv.StringToString(response.XTestHeader))
 			}); err != nil {
-				return errors.Wrap(err, "encode TestHeader header")
+				return errors.Wrap(err, "encode X-Test-Header header")
 			}
 		}
 	}
@@ -165,16 +165,16 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode "TestHeader" header.
+			// Encode "X-Test-Header" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
-					Name:    "TestHeader",
+					Name:    "X-Test-Header",
 					Explode: false,
 				}
 				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-					return e.EncodeValue(conv.StringToString(response.TestHeader))
+					return e.EncodeValue(conv.StringToString(response.XTestHeader))
 				}); err != nil {
-					return errors.Wrap(err, "encode TestHeader header")
+					return errors.Wrap(err, "encode X-Test-Header header")
 				}
 			}
 		}
@@ -187,16 +187,16 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode "TestHeader" header.
+			// Encode "X-Test-Header" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
-					Name:    "TestHeader",
+					Name:    "X-Test-Header",
 					Explode: false,
 				}
 				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-					return e.EncodeValue(conv.StringToString(response.TestHeader))
+					return e.EncodeValue(conv.StringToString(response.XTestHeader))
 				}); err != nil {
-					return errors.Wrap(err, "encode TestHeader header")
+					return errors.Wrap(err, "encode X-Test-Header header")
 				}
 			}
 		}
@@ -219,16 +219,16 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode "TestHeader" header.
+			// Encode "X-Test-Header" header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
-					Name:    "TestHeader",
+					Name:    "X-Test-Header",
 					Explode: false,
 				}
 				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-					return e.EncodeValue(conv.StringToString(response.TestHeader))
+					return e.EncodeValue(conv.StringToString(response.XTestHeader))
 				}); err != nil {
-					return errors.Wrap(err, "encode TestHeader header")
+					return errors.Wrap(err, "encode X-Test-Header header")
 				}
 			}
 		}
@@ -256,16 +256,16 @@ func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWr
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode "TestHeader" header.
+		// Encode "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-				return e.EncodeValue(conv.StringToString(response.TestHeader))
+				return e.EncodeValue(conv.StringToString(response.XTestHeader))
 			}); err != nil {
-				return errors.Wrap(err, "encode TestHeader header")
+				return errors.Wrap(err, "encode X-Test-Header header")
 			}
 		}
 	}
@@ -289,10 +289,10 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode "X-JSON-Custom-Header" header.
+		// Encode "X-Json-Custom-Header" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
-				Name:    "X-JSON-Custom-Header",
+				Name:    "X-Json-Custom-Header",
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
@@ -305,13 +305,13 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 				}(enc)
 				return e.EncodeValue(string(enc.Bytes()))
 			}); err != nil {
-				return errors.Wrap(err, "encode X-JSON-Custom-Header header")
+				return errors.Wrap(err, "encode X-Json-Custom-Header header")
 			}
 		}
-		// Encode "X-JSON-Header" header.
+		// Encode "X-Json-Header" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
-				Name:    "X-JSON-Header",
+				Name:    "X-Json-Header",
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
@@ -322,7 +322,7 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 				}(enc)
 				return e.EncodeValue(string(enc.Bytes()))
 			}); err != nil {
-				return errors.Wrap(err, "encode X-JSON-Header header")
+				return errors.Wrap(err, "encode X-Json-Header header")
 			}
 		}
 	}
@@ -336,16 +336,16 @@ func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWr
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
-		// Encode "TestHeader" header.
+		// Encode "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterEncodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-				return e.EncodeValue(conv.StringToString(response.TestHeader))
+				return e.EncodeValue(conv.StringToString(response.XTestHeader))
 			}); err != nil {
-				return errors.Wrap(err, "encode TestHeader header")
+				return errors.Wrap(err, "encode X-Test-Header header")
 			}
 		}
 	}

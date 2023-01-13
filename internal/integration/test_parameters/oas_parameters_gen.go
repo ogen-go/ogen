@@ -316,7 +316,7 @@ type HeaderParameterParams struct {
 func unpackHeaderParameterParams(packed middleware.Parameters) (params HeaderParameterParams) {
 	{
 		key := middleware.ParameterKey{
-			Name: "x-auth-token",
+			Name: "X-Auth-Token",
 			In:   "header",
 		}
 		params.XAuthToken = packed[key].(string)
@@ -326,10 +326,10 @@ func unpackHeaderParameterParams(packed middleware.Parameters) (params HeaderPar
 
 func decodeHeaderParameterParams(args [0]string, r *http.Request) (params HeaderParameterParams, _ error) {
 	h := uri.NewHeaderDecoder(r.Header)
-	// Decode header: x-auth-token.
+	// Decode header: X-Auth-Token.
 	if err := func() error {
 		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "x-auth-token",
+			Name:    "X-Auth-Token",
 			Explode: false,
 		}
 		if err := h.HasParam(cfg); err == nil {
@@ -355,7 +355,7 @@ func decodeHeaderParameterParams(args [0]string, r *http.Request) (params Header
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "x-auth-token",
+			Name: "X-Auth-Token",
 			In:   "header",
 			Err:  err,
 		}

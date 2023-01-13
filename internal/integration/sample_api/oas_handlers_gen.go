@@ -1201,11 +1201,11 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 					In:   "query",
 				}: params.PetID,
 				{
-					Name: "x-tags",
+					Name: "X-Tags",
 					In:   "header",
 				}: params.XTags,
 				{
-					Name: "x-scope",
+					Name: "X-Scope",
 					In:   "header",
 				}: params.XScope,
 				{

@@ -284,7 +284,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
-					Name: "x-auth-token",
+					Name: "X-Auth-Token",
 					In:   "header",
 				}: params.XAuthToken,
 			},

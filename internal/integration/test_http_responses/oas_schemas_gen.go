@@ -204,28 +204,28 @@ func (s *CombinedType) UnmarshalText(data []byte) error {
 
 // Headers200OK is response for Headers200 operation.
 type Headers200OK struct {
-	TestHeader string
+	XTestHeader string
 }
 
-// GetTestHeader returns the value of TestHeader.
-func (s *Headers200OK) GetTestHeader() string {
-	return s.TestHeader
+// GetXTestHeader returns the value of XTestHeader.
+func (s *Headers200OK) GetXTestHeader() string {
+	return s.XTestHeader
 }
 
-// SetTestHeader sets the value of TestHeader.
-func (s *Headers200OK) SetTestHeader(val string) {
-	s.TestHeader = val
+// SetXTestHeader sets the value of XTestHeader.
+func (s *Headers200OK) SetXTestHeader(val string) {
+	s.XTestHeader = val
 }
 
 // HeadersCombined4XX is 4XX pattern response for HeadersCombined operation.
 type HeadersCombined4XX struct {
-	TestHeader string
-	StatusCode int
+	XTestHeader string
+	StatusCode  int
 }
 
-// GetTestHeader returns the value of TestHeader.
-func (s *HeadersCombined4XX) GetTestHeader() string {
-	return s.TestHeader
+// GetXTestHeader returns the value of XTestHeader.
+func (s *HeadersCombined4XX) GetXTestHeader() string {
+	return s.XTestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
@@ -233,9 +233,9 @@ func (s *HeadersCombined4XX) GetStatusCode() int {
 	return s.StatusCode
 }
 
-// SetTestHeader sets the value of TestHeader.
-func (s *HeadersCombined4XX) SetTestHeader(val string) {
-	s.TestHeader = val
+// SetXTestHeader sets the value of XTestHeader.
+func (s *HeadersCombined4XX) SetXTestHeader(val string) {
+	s.XTestHeader = val
 }
 
 // SetStatusCode sets the value of StatusCode.
@@ -247,13 +247,13 @@ func (*HeadersCombined4XX) headersCombinedRes() {}
 
 // HeadersCombinedDef is default response for HeadersCombined operation.
 type HeadersCombinedDef struct {
-	TestHeader string
-	StatusCode int
+	XTestHeader string
+	StatusCode  int
 }
 
-// GetTestHeader returns the value of TestHeader.
-func (s *HeadersCombinedDef) GetTestHeader() string {
-	return s.TestHeader
+// GetXTestHeader returns the value of XTestHeader.
+func (s *HeadersCombinedDef) GetXTestHeader() string {
+	return s.XTestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
@@ -261,9 +261,9 @@ func (s *HeadersCombinedDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
-// SetTestHeader sets the value of TestHeader.
-func (s *HeadersCombinedDef) SetTestHeader(val string) {
-	s.TestHeader = val
+// SetXTestHeader sets the value of XTestHeader.
+func (s *HeadersCombinedDef) SetXTestHeader(val string) {
+	s.XTestHeader = val
 }
 
 // SetStatusCode sets the value of StatusCode.
@@ -275,17 +275,17 @@ func (*HeadersCombinedDef) headersCombinedRes() {}
 
 // HeadersCombinedOK is response for HeadersCombined operation.
 type HeadersCombinedOK struct {
-	TestHeader string
+	XTestHeader string
 }
 
-// GetTestHeader returns the value of TestHeader.
-func (s *HeadersCombinedOK) GetTestHeader() string {
-	return s.TestHeader
+// GetXTestHeader returns the value of XTestHeader.
+func (s *HeadersCombinedOK) GetXTestHeader() string {
+	return s.XTestHeader
 }
 
-// SetTestHeader sets the value of TestHeader.
-func (s *HeadersCombinedOK) SetTestHeader(val string) {
-	s.TestHeader = val
+// SetXTestHeader sets the value of XTestHeader.
+func (s *HeadersCombinedOK) SetXTestHeader(val string) {
+	s.XTestHeader = val
 }
 
 func (*HeadersCombinedOK) headersCombinedRes() {}
@@ -331,13 +331,13 @@ func (s *HeadersCombinedType) UnmarshalText(data []byte) error {
 
 // HeadersDefaultDef is default response for HeadersDefault operation.
 type HeadersDefaultDef struct {
-	TestHeader string
-	StatusCode int
+	XTestHeader string
+	StatusCode  int
 }
 
-// GetTestHeader returns the value of TestHeader.
-func (s *HeadersDefaultDef) GetTestHeader() string {
-	return s.TestHeader
+// GetXTestHeader returns the value of XTestHeader.
+func (s *HeadersDefaultDef) GetXTestHeader() string {
+	return s.XTestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
@@ -345,9 +345,9 @@ func (s *HeadersDefaultDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
-// SetTestHeader sets the value of TestHeader.
-func (s *HeadersDefaultDef) SetTestHeader(val string) {
-	s.TestHeader = val
+// SetXTestHeader sets the value of XTestHeader.
+func (s *HeadersDefaultDef) SetXTestHeader(val string) {
+	s.XTestHeader = val
 }
 
 // SetStatusCode sets the value of StatusCode.
@@ -383,13 +383,13 @@ func (s *HeadersJSONOK) SetXJSONHeader(val User) {
 
 // HeadersPattern4XX is 4XX pattern response for HeadersPattern operation.
 type HeadersPattern4XX struct {
-	TestHeader string
-	StatusCode int
+	XTestHeader string
+	StatusCode  int
 }
 
-// GetTestHeader returns the value of TestHeader.
-func (s *HeadersPattern4XX) GetTestHeader() string {
-	return s.TestHeader
+// GetXTestHeader returns the value of XTestHeader.
+func (s *HeadersPattern4XX) GetXTestHeader() string {
+	return s.XTestHeader
 }
 
 // GetStatusCode returns the value of StatusCode.
@@ -397,9 +397,9 @@ func (s *HeadersPattern4XX) GetStatusCode() int {
 	return s.StatusCode
 }
 
-// SetTestHeader sets the value of TestHeader.
-func (s *HeadersPattern4XX) SetTestHeader(val string) {
-	s.TestHeader = val
+// SetXTestHeader sets the value of XTestHeader.
+func (s *HeadersPattern4XX) SetXTestHeader(val string) {
+	s.XTestHeader = val
 }
 
 // SetStatusCode sets the value of StatusCode.
