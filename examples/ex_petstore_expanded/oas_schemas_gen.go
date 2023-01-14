@@ -66,7 +66,7 @@ func (*ErrorStatusCode) findPetsRes()    {}
 
 type FindPetsOKApplicationJSON []Pet
 
-func (FindPetsOKApplicationJSON) findPetsRes() {}
+func (*FindPetsOKApplicationJSON) findPetsRes() {}
 
 // Ref: #/components/schemas/NewPet
 type NewPet struct {

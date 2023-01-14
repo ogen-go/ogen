@@ -130,26 +130,6 @@ func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
 
-// ImplReceiverType returns type that should be used as receiver type for
-// interface implementation.
-func (t *Type) ImplReceiverType() string {
-	if t.needsPointerReceiverType() {
-		return "*" + t.Name
-	}
-	return t.Name
-}
-
-func (t *Type) needsPointerReceiverType() bool {
-	switch t.Kind {
-	case KindPointer, KindArray, KindMap:
-		return false
-	case KindAlias:
-		return t.AliasTo.needsPointerReceiverType()
-	default:
-		return true
-	}
-}
-
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {
 		return t.AliasTo.MustField(name)

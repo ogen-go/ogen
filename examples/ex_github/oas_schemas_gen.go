@@ -2133,12 +2133,12 @@ func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityLi
 
 type ActivityListPublicEventsForRepoNetworkOKApplicationJSON []Event
 
-func (ActivityListPublicEventsForRepoNetworkOKApplicationJSON) activityListPublicEventsForRepoNetworkRes() {
+func (*ActivityListPublicEventsForRepoNetworkOKApplicationJSON) activityListPublicEventsForRepoNetworkRes() {
 }
 
 type ActivityListPublicEventsOKApplicationJSON []Event
 
-func (ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {}
+func (*ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {}
 
 // ActivityListRepoNotificationsForAuthenticatedUserOKHeaders wraps []Thread with response headers.
 type ActivityListRepoNotificationsForAuthenticatedUserOKHeaders struct {
@@ -5271,7 +5271,7 @@ func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) appsListSubscr
 
 type AppsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
-func (AppsListWebhookDeliveriesOKApplicationJSON) appsListWebhookDeliveriesRes() {}
+func (*AppsListWebhookDeliveriesOKApplicationJSON) appsListWebhookDeliveriesRes() {}
 
 type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
 
@@ -11271,7 +11271,7 @@ func (*CodeScanningListAlertInstancesApplicationJSONNotFound) codeScanningListAl
 
 type CodeScanningListAlertInstancesOKApplicationJSON []CodeScanningAlertInstance
 
-func (CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
+func (*CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertsForRepoApplicationJSONForbidden BasicError
 
@@ -11283,7 +11283,7 @@ func (*CodeScanningListAlertsForRepoApplicationJSONNotFound) codeScanningListAle
 
 type CodeScanningListAlertsForRepoOKApplicationJSON []CodeScanningAlertItems
 
-func (CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
+func (*CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
 
 type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
 
@@ -11295,7 +11295,7 @@ func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRe
 
 type CodeScanningListRecentAnalysesOKApplicationJSON []CodeScanningAnalysis
 
-func (CodeScanningListRecentAnalysesOKApplicationJSON) codeScanningListRecentAnalysesRes() {}
+func (*CodeScanningListRecentAnalysesOKApplicationJSON) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningRef string
 
@@ -11673,7 +11673,7 @@ func (s *CodeSearchResultItem) SetTextMatches(val *SearchResultTextMatches) {
 
 type CodesOfConductGetAllCodesOfConductOKApplicationJSON []CodeOfConduct
 
-func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) codesOfConductGetAllCodesOfConductRes() {}
+func (*CodesOfConductGetAllCodesOfConductOKApplicationJSON) codesOfConductGetAllCodesOfConductRes() {}
 
 // Collaborator.
 // Ref: #/components/schemas/collaborator
@@ -15259,7 +15259,7 @@ func (s *EmojisGetOK) init() EmojisGetOK {
 	return m
 }
 
-func (EmojisGetOK) emojisGetRes() {}
+func (*EmojisGetOK) emojisGetRes() {}
 
 // An object without any properties.
 // Ref: #/components/schemas/empty-object
@@ -21907,7 +21907,7 @@ func (s *GitUpdateRefReq) SetForce(val OptBool) {
 
 type GitignoreGetAllTemplatesOKApplicationJSON []string
 
-func (GitignoreGetAllTemplatesOKApplicationJSON) gitignoreGetAllTemplatesRes() {}
+func (*GitignoreGetAllTemplatesOKApplicationJSON) gitignoreGetAllTemplatesRes() {}
 
 // Gitignore Template.
 // Ref: #/components/schemas/gitignore-template
@@ -28117,7 +28117,7 @@ func (*IssuesRemoveLabelApplicationJSONNotFound) issuesRemoveLabelRes() {}
 
 type IssuesRemoveLabelOKApplicationJSON []Label
 
-func (IssuesRemoveLabelOKApplicationJSON) issuesRemoveLabelRes() {}
+func (*IssuesRemoveLabelOKApplicationJSON) issuesRemoveLabelRes() {}
 
 type IssuesUnlockApplicationJSONForbidden BasicError
 
@@ -29732,7 +29732,7 @@ func (s *LicenseSimple) SetHTMLURL(val OptURI) {
 
 type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
 
-func (LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
+func (*LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
 
 type LicensesGetApplicationJSONForbidden BasicError
 
@@ -31166,7 +31166,7 @@ func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAut
 
 type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
 
-func (MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
+func (*MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
 
 type MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -61953,7 +61953,7 @@ func (*OrgsGetMembershipForUserApplicationJSONNotFound) orgsGetMembershipForUser
 
 type OrgsListBlockedUsersOKApplicationJSON []SimpleUser
 
-func (OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
+func (*OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
 
 // OrgsListFailedInvitationsOKHeaders wraps []OrganizationInvitation with response headers.
 type OrgsListFailedInvitationsOKHeaders struct {
@@ -62405,7 +62405,7 @@ func (s *OrgsListPublicMembersOKHeaders) SetResponse(val []SimpleUser) {
 
 type OrgsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
-func (OrgsListWebhookDeliveriesOKApplicationJSON) orgsListWebhookDeliveriesRes() {}
+func (*OrgsListWebhookDeliveriesOKApplicationJSON) orgsListWebhookDeliveriesRes() {}
 
 // OrgsListWebhooksOKHeaders wraps []OrgHook with response headers.
 type OrgsListWebhooksOKHeaders struct {
@@ -63745,7 +63745,7 @@ func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicatio
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON []PackageVersion
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType string
@@ -63855,7 +63855,7 @@ func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthori
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON []PackageVersion
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType string
@@ -63965,7 +63965,7 @@ func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthor
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON []PackageVersion
 
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType string
@@ -64475,7 +64475,7 @@ func (*PackagesListPackagesForOrganizationApplicationJSONUnauthorized) packagesL
 
 type PackagesListPackagesForOrganizationOKApplicationJSON []Package
 
-func (PackagesListPackagesForOrganizationOKApplicationJSON) packagesListPackagesForOrganizationRes() {
+func (*PackagesListPackagesForOrganizationOKApplicationJSON) packagesListPackagesForOrganizationRes() {
 }
 
 type PackagesListPackagesForOrganizationPackageType string
@@ -64584,7 +64584,7 @@ func (*PackagesListPackagesForUserApplicationJSONUnauthorized) packagesListPacka
 
 type PackagesListPackagesForUserOKApplicationJSON []Package
 
-func (PackagesListPackagesForUserOKApplicationJSON) packagesListPackagesForUserRes() {}
+func (*PackagesListPackagesForUserOKApplicationJSON) packagesListPackagesForUserRes() {}
 
 type PackagesListPackagesForUserPackageType string
 
@@ -80183,7 +80183,7 @@ func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
 
 type ReposAddAppAccessRestrictionsOKApplicationJSON []Integration
 
-func (ReposAddAppAccessRestrictionsOKApplicationJSON) reposAddAppAccessRestrictionsRes() {}
+func (*ReposAddAppAccessRestrictionsOKApplicationJSON) reposAddAppAccessRestrictionsRes() {}
 
 // ReposAddAppAccessRestrictionsReq represents sum type.
 type ReposAddAppAccessRestrictionsReq struct {
@@ -80381,7 +80381,7 @@ func (*ReposAddStatusCheckContextsApplicationJSONNotFound) reposAddStatusCheckCo
 
 type ReposAddStatusCheckContextsOKApplicationJSON []string
 
-func (ReposAddStatusCheckContextsOKApplicationJSON) reposAddStatusCheckContextsRes() {}
+func (*ReposAddStatusCheckContextsOKApplicationJSON) reposAddStatusCheckContextsRes() {}
 
 // ReposAddStatusCheckContextsReq represents sum type.
 type ReposAddStatusCheckContextsReq struct {
@@ -80468,7 +80468,7 @@ func (s *ReposAddStatusCheckContextsReq0) SetContexts(val []string) {
 
 type ReposAddTeamAccessRestrictionsOKApplicationJSON []Team
 
-func (ReposAddTeamAccessRestrictionsOKApplicationJSON) reposAddTeamAccessRestrictionsRes() {}
+func (*ReposAddTeamAccessRestrictionsOKApplicationJSON) reposAddTeamAccessRestrictionsRes() {}
 
 // ReposAddTeamAccessRestrictionsReq represents sum type.
 type ReposAddTeamAccessRestrictionsReq struct {
@@ -80555,7 +80555,7 @@ func (s *ReposAddTeamAccessRestrictionsReq0) SetTeams(val []string) {
 
 type ReposAddUserAccessRestrictionsOKApplicationJSON []SimpleUser
 
-func (ReposAddUserAccessRestrictionsOKApplicationJSON) reposAddUserAccessRestrictionsRes() {}
+func (*ReposAddUserAccessRestrictionsOKApplicationJSON) reposAddUserAccessRestrictionsRes() {}
 
 // ReposAddUserAccessRestrictionsReq represents sum type.
 type ReposAddUserAccessRestrictionsReq struct {
@@ -82786,7 +82786,7 @@ type ReposEnableVulnerabilityAlertsNoContent struct{}
 
 type ReposGetAllStatusCheckContextsOKApplicationJSON []string
 
-func (ReposGetAllStatusCheckContextsOKApplicationJSON) reposGetAllStatusCheckContextsRes() {}
+func (*ReposGetAllStatusCheckContextsOKApplicationJSON) reposGetAllStatusCheckContextsRes() {}
 
 type ReposGetApplicationJSONForbidden BasicError
 
@@ -82802,7 +82802,7 @@ func (*ReposGetApplicationJSONNotFound) reposGetRes() {}
 
 type ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON []Integration
 
-func (ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) reposGetAppsWithAccessToProtectedBranchRes() {
+func (*ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) reposGetAppsWithAccessToProtectedBranchRes() {
 }
 
 type ReposGetBranchApplicationJSONMovedPermanently BasicError
@@ -82854,11 +82854,11 @@ func (s *ReposGetClonesPer) UnmarshalText(data []byte) error {
 
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
-func (ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
+func (*ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
 
 type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
-func (ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
+func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
 type ReposGetCommitApplicationJSONInternalServerError BasicError
 
@@ -82870,7 +82870,7 @@ func (*ReposGetCommitApplicationJSONNotFound) reposGetCommitRes() {}
 
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
-func (ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
+func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
 
 // ReposGetPagesHealthCheckBadRequest is response for ReposGetPagesHealthCheck operation.
 type ReposGetPagesHealthCheckBadRequest struct{}
@@ -82884,24 +82884,24 @@ func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckRes(
 
 type ReposGetPunchCardStatsOKApplicationJSON []CodeFrequencyStat
 
-func (ReposGetPunchCardStatsOKApplicationJSON) reposGetPunchCardStatsRes() {}
+func (*ReposGetPunchCardStatsOKApplicationJSON) reposGetPunchCardStatsRes() {}
 
 type ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON []Team
 
-func (ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) reposGetTeamsWithAccessToProtectedBranchRes() {
+func (*ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) reposGetTeamsWithAccessToProtectedBranchRes() {
 }
 
 type ReposGetTopPathsOKApplicationJSON []ContentTraffic
 
-func (ReposGetTopPathsOKApplicationJSON) reposGetTopPathsRes() {}
+func (*ReposGetTopPathsOKApplicationJSON) reposGetTopPathsRes() {}
 
 type ReposGetTopReferrersOKApplicationJSON []ReferrerTraffic
 
-func (ReposGetTopReferrersOKApplicationJSON) reposGetTopReferrersRes() {}
+func (*ReposGetTopReferrersOKApplicationJSON) reposGetTopReferrersRes() {}
 
 type ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON []SimpleUser
 
-func (ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) reposGetUsersWithAccessToProtectedBranchRes() {
+func (*ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) reposGetUsersWithAccessToProtectedBranchRes() {
 }
 
 type ReposGetViewsPer string
@@ -82945,7 +82945,7 @@ func (s *ReposGetViewsPer) UnmarshalText(data []byte) error {
 
 type ReposListBranchesForHeadCommitOKApplicationJSON []BranchShort
 
-func (ReposListBranchesForHeadCommitOKApplicationJSON) reposListBranchesForHeadCommitRes() {}
+func (*ReposListBranchesForHeadCommitOKApplicationJSON) reposListBranchesForHeadCommitRes() {}
 
 // ReposListBranchesOKHeaders wraps []ShortBranch with response headers.
 type ReposListBranchesOKHeaders struct {
@@ -83330,7 +83330,7 @@ func (s *ReposListForAuthenticatedUserDirection) UnmarshalText(data []byte) erro
 
 type ReposListForAuthenticatedUserOKApplicationJSON []Repository
 
-func (ReposListForAuthenticatedUserOKApplicationJSON) reposListForAuthenticatedUserRes() {}
+func (*ReposListForAuthenticatedUserOKApplicationJSON) reposListForAuthenticatedUserRes() {}
 
 type ReposListForAuthenticatedUserSort string
 
@@ -84108,7 +84108,7 @@ func (s *ReposListTeamsOKHeaders) SetResponse(val []Team) {
 
 type ReposListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
-func (ReposListWebhookDeliveriesOKApplicationJSON) reposListWebhookDeliveriesRes() {}
+func (*ReposListWebhookDeliveriesOKApplicationJSON) reposListWebhookDeliveriesRes() {}
 
 // ReposListWebhooksOKHeaders wraps []Hook with response headers.
 type ReposListWebhooksOKHeaders struct {
@@ -84224,7 +84224,7 @@ func (*ReposPingWebhookNoContent) reposPingWebhookRes() {}
 
 type ReposRemoveAppAccessRestrictionsOKApplicationJSON []Integration
 
-func (ReposRemoveAppAccessRestrictionsOKApplicationJSON) reposRemoveAppAccessRestrictionsRes() {}
+func (*ReposRemoveAppAccessRestrictionsOKApplicationJSON) reposRemoveAppAccessRestrictionsRes() {}
 
 // ReposRemoveAppAccessRestrictionsReq represents sum type.
 type ReposRemoveAppAccessRestrictionsReq struct {
@@ -84314,7 +84314,7 @@ type ReposRemoveCollaboratorNoContent struct{}
 
 type ReposRemoveStatusCheckContextsOKApplicationJSON []string
 
-func (ReposRemoveStatusCheckContextsOKApplicationJSON) reposRemoveStatusCheckContextsRes() {}
+func (*ReposRemoveStatusCheckContextsOKApplicationJSON) reposRemoveStatusCheckContextsRes() {}
 
 // ReposRemoveStatusCheckContextsReq represents sum type.
 type ReposRemoveStatusCheckContextsReq struct {
@@ -84404,7 +84404,7 @@ type ReposRemoveStatusCheckProtectionNoContent struct{}
 
 type ReposRemoveTeamAccessRestrictionsOKApplicationJSON []Team
 
-func (ReposRemoveTeamAccessRestrictionsOKApplicationJSON) reposRemoveTeamAccessRestrictionsRes() {}
+func (*ReposRemoveTeamAccessRestrictionsOKApplicationJSON) reposRemoveTeamAccessRestrictionsRes() {}
 
 // ReposRemoveTeamAccessRestrictionsReq represents sum type.
 type ReposRemoveTeamAccessRestrictionsReq struct {
@@ -84491,7 +84491,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) SetTeams(val []string) {
 
 type ReposRemoveUserAccessRestrictionsOKApplicationJSON []SimpleUser
 
-func (ReposRemoveUserAccessRestrictionsOKApplicationJSON) reposRemoveUserAccessRestrictionsRes() {}
+func (*ReposRemoveUserAccessRestrictionsOKApplicationJSON) reposRemoveUserAccessRestrictionsRes() {}
 
 // ReposRemoveUserAccessRestrictionsReq represents sum type.
 type ReposRemoveUserAccessRestrictionsReq struct {
@@ -84618,7 +84618,7 @@ func (s *ReposReplaceAllTopicsReq) SetNames(val []string) {
 
 type ReposSetAppAccessRestrictionsOKApplicationJSON []Integration
 
-func (ReposSetAppAccessRestrictionsOKApplicationJSON) reposSetAppAccessRestrictionsRes() {}
+func (*ReposSetAppAccessRestrictionsOKApplicationJSON) reposSetAppAccessRestrictionsRes() {}
 
 // ReposSetAppAccessRestrictionsReq represents sum type.
 type ReposSetAppAccessRestrictionsReq struct {
@@ -84705,7 +84705,7 @@ func (s *ReposSetAppAccessRestrictionsReq0) SetApps(val []string) {
 
 type ReposSetStatusCheckContextsOKApplicationJSON []string
 
-func (ReposSetStatusCheckContextsOKApplicationJSON) reposSetStatusCheckContextsRes() {}
+func (*ReposSetStatusCheckContextsOKApplicationJSON) reposSetStatusCheckContextsRes() {}
 
 // ReposSetStatusCheckContextsReq represents sum type.
 type ReposSetStatusCheckContextsReq struct {
@@ -84792,7 +84792,7 @@ func (s *ReposSetStatusCheckContextsReq0) SetContexts(val []string) {
 
 type ReposSetTeamAccessRestrictionsOKApplicationJSON []Team
 
-func (ReposSetTeamAccessRestrictionsOKApplicationJSON) reposSetTeamAccessRestrictionsRes() {}
+func (*ReposSetTeamAccessRestrictionsOKApplicationJSON) reposSetTeamAccessRestrictionsRes() {}
 
 // ReposSetTeamAccessRestrictionsReq represents sum type.
 type ReposSetTeamAccessRestrictionsReq struct {
@@ -84879,7 +84879,7 @@ func (s *ReposSetTeamAccessRestrictionsReq0) SetTeams(val []string) {
 
 type ReposSetUserAccessRestrictionsOKApplicationJSON []SimpleUser
 
-func (ReposSetUserAccessRestrictionsOKApplicationJSON) reposSetUserAccessRestrictionsRes() {}
+func (*ReposSetUserAccessRestrictionsOKApplicationJSON) reposSetUserAccessRestrictionsRes() {}
 
 // ReposSetUserAccessRestrictionsReq represents sum type.
 type ReposSetUserAccessRestrictionsReq struct {
@@ -91617,7 +91617,7 @@ func (*SecretScanningListAlertsForRepoNotFound) secretScanningListAlertsForRepoR
 
 type SecretScanningListAlertsForRepoOKApplicationJSON []SecretScanningAlert
 
-func (SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
+func (*SecretScanningListAlertsForRepoOKApplicationJSON) secretScanningListAlertsForRepoRes() {}
 
 type SecretScanningListAlertsForRepoState string
 
@@ -98279,7 +98279,7 @@ func (*UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) usersAddEmailFo
 
 type UsersAddEmailForAuthenticatedCreatedApplicationJSON []Email
 
-func (UsersAddEmailForAuthenticatedCreatedApplicationJSON) usersAddEmailForAuthenticatedRes() {}
+func (*UsersAddEmailForAuthenticatedCreatedApplicationJSON) usersAddEmailForAuthenticatedRes() {}
 
 // UsersAddEmailForAuthenticatedReq represents sum type.
 type UsersAddEmailForAuthenticatedReq struct {
@@ -98956,7 +98956,7 @@ func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBloc
 
 type UsersListBlockedByAuthenticatedOKApplicationJSON []SimpleUser
 
-func (UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
+func (*UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -99354,7 +99354,7 @@ func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON []Email
 
-func (UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
 }
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedReq struct {
