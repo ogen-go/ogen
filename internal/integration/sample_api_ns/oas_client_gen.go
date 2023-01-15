@@ -1148,7 +1148,7 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 	h := uri.NewHeaderEncoder(r.Header)
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
-			Name:    "x-tags",
+			Name:    "X-Tags",
 			Explode: false,
 		}
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
@@ -1168,7 +1168,7 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 	}
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
-			Name:    "x-scope",
+			Name:    "X-Scope",
 			Explode: false,
 		}
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {

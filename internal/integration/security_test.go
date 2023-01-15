@@ -170,7 +170,7 @@ func TestSecurity(t *testing.T) {
 		require.Equal(t, http.StatusOK, resp.StatusCode)
 
 		resp = sendReq(t, "/disjointSecurity", func(r *http.Request) {
-			r.Header.Set("X-API-Key", h.headerKey.APIKey)
+			r.Header.Set("X-Api-Key", h.headerKey.APIKey)
 		})
 		require.Equal(t, http.StatusOK, resp.StatusCode)
 
@@ -181,19 +181,19 @@ func TestSecurity(t *testing.T) {
 		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
 
 		resp = sendReq(t, "/intersectSecurity", func(r *http.Request) {
-			r.Header.Set("X-API-Key", h.headerKey.APIKey)
+			r.Header.Set("X-Api-Key", h.headerKey.APIKey)
 		})
 		require.Equal(t, http.StatusBadRequest, resp.StatusCode)
 
 		resp = sendReq(t, "/intersectSecurity", func(r *http.Request) {
 			r.SetBasicAuth(h.basicAuth.Username, h.basicAuth.Password)
-			r.Header.Set("X-API-Key", h.headerKey.APIKey)
+			r.Header.Set("X-Api-Key", h.headerKey.APIKey)
 		})
 		require.Equal(t, http.StatusOK, resp.StatusCode)
 
 		resp = sendReq(t, "/intersectSecurity", func(r *http.Request) {
 			r.Header.Set("Authorization", fmt.Sprintf("Bearer %s", h.bearerToken.Token))
-			r.Header.Set("X-API-Key", h.headerKey.APIKey)
+			r.Header.Set("X-Api-Key", h.headerKey.APIKey)
 		})
 		require.Equal(t, http.StatusOK, resp.StatusCode)
 

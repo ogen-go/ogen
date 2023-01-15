@@ -237,7 +237,7 @@
           "200": {
             "description": "test",
             "headers": {
-              "TestHeader": {
+              "X-Test-Header": {
                 "required": true,
                 "schema": {
                   "type": "string"
@@ -255,7 +255,7 @@
           "default": {
             "description": "test",
             "headers": {
-              "TestHeader": {
+              "X-Test-Header": {
                 "required": true,
                 "schema": {
                   "type": "string"
@@ -273,7 +273,7 @@
           "4XX": {
             "description": "test",
             "headers": {
-              "TestHeader": {
+              "X-Test-Header": {
                 "required": true,
                 "schema": {
                   "type": "string"
@@ -306,7 +306,7 @@
           "200": {
             "description": "test",
             "headers": {
-              "TestHeader": {
+              "X-Test-Header": {
                 "required": true,
                 "schema": {
                   "type": "string"
@@ -317,7 +317,7 @@
           "4XX": {
             "description": "test",
             "headers": {
-              "TestHeader": {
+              "X-Test-Header": {
                 "required": true,
                 "schema": {
                   "type": "string"
@@ -328,7 +328,7 @@
           "default": {
             "description": "test",
             "headers": {
-              "TestHeader": {
+              "X-Test-Header": {
                 "required": true,
                 "schema": {
                   "type": "string"
@@ -346,7 +346,7 @@
           "200": {
             "description": "test",
             "headers": {
-              "X-JSON-Header": {
+              "X-Json-Header": {
                 "required": true,
                 "content": {
                   "application/json": {
@@ -356,7 +356,7 @@
                   }
                 }
               },
-              "X-JSON-Custom-Header": {
+              "X-Json-Custom-Header": {
                 "required": true,
                 "content": {
                   "application/json": {

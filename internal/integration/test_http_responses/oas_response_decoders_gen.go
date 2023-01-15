@@ -242,10 +242,10 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error
 		// Code 200.
 		var wrapper Headers200OK
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse "TestHeader" header.
+		// Parse "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := func() error {
@@ -260,14 +260,14 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, err error
 						return err
 					}
 
-					wrapper.TestHeader = c
+					wrapper.XTestHeader = c
 					return nil
 				}); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "parse TestHeader header")
+				return res, errors.Wrap(err, "parse X-Test-Header header")
 			}
 		}
 		return &wrapper, nil
@@ -281,10 +281,10 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 		// Code 200.
 		var wrapper HeadersCombinedOK
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse "TestHeader" header.
+		// Parse "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := func() error {
@@ -299,14 +299,14 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 						return err
 					}
 
-					wrapper.TestHeader = c
+					wrapper.XTestHeader = c
 					return nil
 				}); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "parse TestHeader header")
+				return res, errors.Wrap(err, "parse X-Test-Header header")
 			}
 		}
 		return &wrapper, nil
@@ -317,10 +317,10 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 		var wrapper HeadersCombined4XX
 		wrapper.StatusCode = resp.StatusCode
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse "TestHeader" header.
+		// Parse "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := func() error {
@@ -335,14 +335,14 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 						return err
 					}
 
-					wrapper.TestHeader = c
+					wrapper.XTestHeader = c
 					return nil
 				}); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "parse TestHeader header")
+				return res, errors.Wrap(err, "parse X-Test-Header header")
 			}
 		}
 		return &wrapper, nil
@@ -351,10 +351,10 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 	var wrapper HeadersCombinedDef
 	wrapper.StatusCode = resp.StatusCode
 	h := uri.NewHeaderDecoder(resp.Header)
-	// Parse "TestHeader" header.
+	// Parse "X-Test-Header" header.
 	{
 		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "TestHeader",
+			Name:    "X-Test-Header",
 			Explode: false,
 		}
 		if err := func() error {
@@ -369,14 +369,14 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 					return err
 				}
 
-				wrapper.TestHeader = c
+				wrapper.XTestHeader = c
 				return nil
 			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "parse TestHeader header")
+			return res, errors.Wrap(err, "parse X-Test-Header header")
 		}
 	}
 	return &wrapper, nil
@@ -387,10 +387,10 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, 
 	var wrapper HeadersDefaultDef
 	wrapper.StatusCode = resp.StatusCode
 	h := uri.NewHeaderDecoder(resp.Header)
-	// Parse "TestHeader" header.
+	// Parse "X-Test-Header" header.
 	{
 		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "TestHeader",
+			Name:    "X-Test-Header",
 			Explode: false,
 		}
 		if err := func() error {
@@ -405,14 +405,14 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, 
 					return err
 				}
 
-				wrapper.TestHeader = c
+				wrapper.XTestHeader = c
 				return nil
 			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "parse TestHeader header")
+			return res, errors.Wrap(err, "parse X-Test-Header header")
 		}
 	}
 	return &wrapper, nil
@@ -424,10 +424,10 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err err
 		// Code 200.
 		var wrapper HeadersJSONOK
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse "X-JSON-Custom-Header" header.
+		// Parse "X-Json-Custom-Header" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "X-JSON-Custom-Header",
+				Name:    "X-Json-Custom-Header",
 				Explode: false,
 			}
 			if err := func() error {
@@ -452,13 +452,13 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "parse X-JSON-Custom-Header header")
+				return res, errors.Wrap(err, "parse X-Json-Custom-Header header")
 			}
 		}
-		// Parse "X-JSON-Header" header.
+		// Parse "X-Json-Header" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "X-JSON-Header",
+				Name:    "X-Json-Header",
 				Explode: false,
 			}
 			if err := func() error {
@@ -489,7 +489,7 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "parse X-JSON-Header header")
+				return res, errors.Wrap(err, "parse X-Json-Header header")
 			}
 		}
 		return &wrapper, nil
@@ -504,10 +504,10 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 		var wrapper HeadersPattern4XX
 		wrapper.StatusCode = resp.StatusCode
 		h := uri.NewHeaderDecoder(resp.Header)
-		// Parse "TestHeader" header.
+		// Parse "X-Test-Header" header.
 		{
 			cfg := uri.HeaderParameterDecodingConfig{
-				Name:    "TestHeader",
+				Name:    "X-Test-Header",
 				Explode: false,
 			}
 			if err := func() error {
@@ -522,14 +522,14 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 						return err
 					}
 
-					wrapper.TestHeader = c
+					wrapper.XTestHeader = c
 					return nil
 				}); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "parse TestHeader header")
+				return res, errors.Wrap(err, "parse X-Test-Header header")
 			}
 		}
 		return &wrapper, nil

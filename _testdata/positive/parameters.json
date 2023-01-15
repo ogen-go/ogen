@@ -232,7 +232,7 @@
           {
             "in": "header",
             "required": true,
-            "name": "x-auth-token",
+            "name": "X-Auth-Token",
             "schema": {
               "type": "string"
             }

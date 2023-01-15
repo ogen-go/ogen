@@ -94,7 +94,7 @@
             }
           },
           {
-            "name": "x-tags",
+            "name": "X-Tags",
             "in": "header",
             "description": "tags of pets",
             "required": true,
@@ -107,7 +107,7 @@
             }
           },
           {
-            "name": "x-scope",
+            "name": "X-Scope",
             "in": "header",
             "description": "pet scopes",
             "required": true,
@@ -1675,7 +1675,7 @@
     "securitySchemes": {
       "api_key": {
         "type": "apiKey",
-        "name": "api_key",
+        "name": "Api_key",
         "in": "header"
       },
       "petstore_auth": {

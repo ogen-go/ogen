@@ -71,7 +71,7 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 }
 func (s *Server) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t HeaderKey
-	const parameterName = "X-API-Key"
+	const parameterName = "X-Api-Key"
 	value := req.Header.Get(parameterName)
 	if value == "" {
 		return ctx, false, nil
@@ -141,7 +141,7 @@ func (s *Client) securityHeaderKey(ctx context.Context, operationName string, re
 		}
 		return errors.Wrap(err, "security source \"HeaderKey\"")
 	}
-	req.Header.Set("X-API-Key", t.APIKey)
+	req.Header.Set("X-Api-Key", t.APIKey)
 	return nil
 }
 func (s *Client) securityQueryKey(ctx context.Context, operationName string, req *http.Request) error {

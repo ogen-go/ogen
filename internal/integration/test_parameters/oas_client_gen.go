@@ -343,7 +343,7 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 	h := uri.NewHeaderEncoder(r.Header)
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
-			Name:    "x-auth-token",
+			Name:    "X-Auth-Token",
 			Explode: false,
 		}
 		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {

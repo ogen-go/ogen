@@ -31,7 +31,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 
 func (s *Server) securityAPIKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t APIKey
-	const parameterName = "api_key"
+	const parameterName = "Api_key"
 	value := req.Header.Get(parameterName)
 	if value == "" {
 		return ctx, false, nil

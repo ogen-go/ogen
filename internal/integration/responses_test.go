@@ -101,21 +101,21 @@ func (t testHTTPResponses) Combined(ctx context.Context, params api.CombinedPara
 
 func (t testHTTPResponses) Headers200(ctx context.Context) (*api.Headers200OK, error) {
 	return &api.Headers200OK{
-		TestHeader: "foo",
+		XTestHeader: "foo",
 	}, nil
 }
 
 func (t testHTTPResponses) HeadersDefault(ctx context.Context) (*api.HeadersDefaultDef, error) {
 	return &api.HeadersDefaultDef{
-		TestHeader: "202",
-		StatusCode: 202,
+		XTestHeader: "202",
+		StatusCode:  202,
 	}, nil
 }
 
 func (t testHTTPResponses) HeadersPattern(ctx context.Context) (*api.HeadersPattern4XX, error) {
 	return &api.HeadersPattern4XX{
-		TestHeader: "404",
-		StatusCode: 404,
+		XTestHeader: "404",
+		StatusCode:  404,
 	}, nil
 }
 
@@ -123,17 +123,17 @@ func (t testHTTPResponses) HeadersCombined(ctx context.Context, params api.Heade
 	switch params.Type {
 	case api.HeadersCombinedType200:
 		return &api.HeadersCombinedOK{
-			TestHeader: "200",
+			XTestHeader: "200",
 		}, nil
 	case api.HeadersCombinedTypeDefault:
 		return &api.HeadersCombinedDef{
-			TestHeader: "default",
-			StatusCode: 202,
+			XTestHeader: "default",
+			StatusCode:  202,
 		}, nil
 	case api.HeadersCombinedType4XX:
 		return &api.HeadersCombined4XX{
-			TestHeader: "4XX",
-			StatusCode: 404,
+			XTestHeader: "4XX",
+			StatusCode:  404,
 		}, nil
 	default:
 		panic(fmt.Sprintf("unknown type %q", params.Type))
@@ -242,7 +242,7 @@ func TestResponsesHeaders(t *testing.T) {
 
 		r, err := client.Headers200(ctx)
 		a.NoError(err)
-		a.Equal(r.TestHeader, "foo")
+		a.Equal(r.XTestHeader, "foo")
 	})
 	t.Run("HeadersDefault", func(t *testing.T) {
 		ctx, a, client := create(t)
@@ -250,7 +250,7 @@ func TestResponsesHeaders(t *testing.T) {
 		r, err := client.HeadersDefault(ctx)
 		a.NoError(err)
 		a.Equal(r.StatusCode, 202)
-		a.Equal(r.TestHeader, "202")
+		a.Equal(r.XTestHeader, "202")
 	})
 	t.Run("HeadersPattern", func(t *testing.T) {
 		ctx, a, client := create(t)
@@ -258,7 +258,7 @@ func TestResponsesHeaders(t *testing.T) {
 		r, err := client.HeadersPattern(ctx)
 		a.NoError(err)
 		a.Equal(r.StatusCode, 404)
-		a.Equal(r.TestHeader, "404")
+		a.Equal(r.XTestHeader, "404")
 	})
 	t.Run("HeadersCombined", func(t *testing.T) {
 		tests := []struct {
@@ -267,15 +267,15 @@ func TestResponsesHeaders(t *testing.T) {
 		}{
 			{
 				api.HeadersCombinedType200,
-				&api.HeadersCombinedOK{TestHeader: "200"},
+				&api.HeadersCombinedOK{XTestHeader: "200"},
 			},
 			{
 				api.HeadersCombinedTypeDefault,
-				&api.HeadersCombinedDef{TestHeader: "default", StatusCode: 202},
+				&api.HeadersCombinedDef{XTestHeader: "default", StatusCode: 202},
 			},
 			{
 				api.HeadersCombinedType4XX,
-				&api.HeadersCombined4XX{TestHeader: "4XX", StatusCode: 404},
+				&api.HeadersCombined4XX{XTestHeader: "4XX", StatusCode: 404},
 			},
 		}
 		for _, tt := range tests {

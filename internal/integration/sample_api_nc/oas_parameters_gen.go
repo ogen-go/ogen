@@ -610,14 +610,14 @@ func unpackPetGetParams(packed middleware.Parameters) (params PetGetParams) {
 	}
 	{
 		key := middleware.ParameterKey{
-			Name: "x-tags",
+			Name: "X-Tags",
 			In:   "header",
 		}
 		params.XTags = packed[key].([]uuid.UUID)
 	}
 	{
 		key := middleware.ParameterKey{
-			Name: "x-scope",
+			Name: "X-Scope",
 			In:   "header",
 		}
 		params.XScope = packed[key].([]string)
@@ -688,10 +688,10 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 			Err:  err,
 		}
 	}
-	// Decode header: x-tags.
+	// Decode header: X-Tags.
 	if err := func() error {
 		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "x-tags",
+			Name:    "X-Tags",
 			Explode: false,
 		}
 		if err := h.HasParam(cfg); err == nil {
@@ -734,15 +734,15 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "x-tags",
+			Name: "X-Tags",
 			In:   "header",
 			Err:  err,
 		}
 	}
-	// Decode header: x-scope.
+	// Decode header: X-Scope.
 	if err := func() error {
 		cfg := uri.HeaderParameterDecodingConfig{
-			Name:    "x-scope",
+			Name:    "X-Scope",
 			Explode: false,
 		}
 		if err := h.HasParam(cfg); err == nil {
@@ -785,7 +785,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "x-scope",
+			Name: "X-Scope",
 			In:   "header",
 			Err:  err,
 		}
