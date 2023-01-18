@@ -7,7 +7,7 @@ require (
 	github.com/fatih/color v1.13.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
-	github.com/go-faster/jx v0.40.0
+	github.com/go-faster/jx v0.40.1
 	github.com/go-faster/yamlx v0.4.1
 	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.8.1
@@ -17,7 +17,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.11.2
 	go.uber.org/multierr v1.9.0
 	go.uber.org/zap v1.24.0
-	golang.org/x/exp v0.0.0-20221205204356-47842c84f3db
+	golang.org/x/exp v0.0.0-20230116083435-1de6713980de
 	golang.org/x/net v0.5.0
 	golang.org/x/sync v0.1.0
 	golang.org/x/text v0.6.0
