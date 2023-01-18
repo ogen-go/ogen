@@ -21,9 +21,10 @@ func DefaultColorFlag() bool {
 
 // Options is options for Create.
 type Options struct {
-	Level   zapcore.Level
-	Verbose bool
-	Color   bool
+	Level     zapcore.Level
+	Verbose   bool
+	Color     bool
+	FnOptions []zap.Option
 }
 
 // RegisterFlags registers fields of Options as flags.
@@ -54,7 +55,7 @@ func Create(opts Options) (*zap.Logger, error) {
 		cfg.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 	}
 
-	logger, err := cfg.Build()
+	logger, err := cfg.Build(opts.FnOptions...)
 	if err != nil {
 		return nil, errors.Wrap(err, "create logger")
 	}

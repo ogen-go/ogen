@@ -54,7 +54,7 @@ func getRootURL(m FileMatch) (*url.URL, bool) {
 	return nil, false
 }
 
-func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
+func worker(ctx context.Context, m FileMatch, r *Reporters, skipWrite bool) (rErr error) {
 	data := []byte(m.File.Content)
 	isYAML := strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml")
 	hash := sha256.Sum256(data)
@@ -72,15 +72,20 @@ func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
 		}
 	}()
 
-	rootURL := &url.URL{
-		Scheme: "jsonschema",
-		Host:   "dummy",
+	f := file{
+		data:   data,
+		isYAML: isYAML,
+		name:   m.File.Path,
+		rootURL: &url.URL{
+			Scheme: "jsonschema",
+			Host:   "dummy",
+		},
 	}
 	if u, ok := getRootURL(m); ok {
-		rootURL = u
+		f.rootURL = u
 	}
 
-	pse := generate(data, isYAML, m.File.Path, rootURL)
+	pse := generate(f, skipWrite)
 	if pse != nil {
 		if err := r.report(ctx, pse.stage, Report{
 			File:           m,
@@ -123,19 +128,30 @@ func workerHTTPClient() *http.Client {
 	}
 }
 
-func generate(data []byte, isYAML bool, fileName string, rootURL *url.URL) *GenerateError {
-	if isYAML {
+type file struct {
+	data    []byte
+	isYAML  bool
+	name    string
+	rootURL *url.URL
+}
+
+func (f file) location() location.File {
+	return location.NewFile(f.name, f.rootURL.String(), f.data)
+}
+
+func generate(f file, skipWrite bool) *GenerateError {
+	if f.isYAML {
 		var n *yaml.Node
-		if err := yaml.Unmarshal(data, &n); err != nil {
+		if err := yaml.Unmarshal(f.data, &n); err != nil {
 			return &GenerateError{stage: InvalidYAML, err: err}
 		}
 	} else {
-		if err := validateJSON(data); err != nil {
+		if err := validateJSON(f.data); err != nil {
 			return &GenerateError{stage: InvalidJSON, err: err}
 		}
 	}
 
-	spec, err := ogen.Parse(data)
+	spec, err := ogen.Parse(f.data)
 	if err != nil {
 		return &GenerateError{stage: Unmarshal, err: err}
 	}
@@ -147,7 +163,7 @@ func generate(data []byte, isYAML bool, fileName string, rootURL *url.URL) *Gene
 	g, err := gen.NewGenerator(spec, gen.Options{
 		InferSchemaType: true,
 		AllowRemote:     true,
-		RootURL:         rootURL,
+		RootURL:         f.rootURL,
 		Remote: gen.RemoteOptions{
 			HTTPClient: workerHTTPClient(),
 			ReadFile: func(string) ([]byte, error) {
@@ -166,7 +182,7 @@ func generate(data []byte, isYAML bool, fileName string, rootURL *url.URL) *Gene
 			}
 			notImpl = append(notImpl, name)
 		},
-		File: location.NewFile(fileName, rootURL.String(), data),
+		File: f.location(),
 	})
 
 	slices.Sort(notImpl)
@@ -180,11 +196,13 @@ func generate(data []byte, isYAML bool, fileName string, rootURL *url.URL) *Gene
 		return &GenerateError{stage: BuildIR, notImpl: notImpl, err: err}
 	}
 
-	if err := g.WriteSource(nopFs{}, "api"); err != nil {
-		if _, ok := errors.Into[*gen.ErrGoFormat](err); ok {
-			return &GenerateError{stage: Format, notImpl: notImpl, err: err}
+	if !skipWrite {
+		if err := g.WriteSource(nopFs{}, "api"); err != nil {
+			if _, ok := errors.Into[*gen.ErrGoFormat](err); ok {
+				return &GenerateError{stage: Format, notImpl: notImpl, err: err}
+			}
+			return &GenerateError{stage: Template, notImpl: notImpl, err: err}
 		}
-		return &GenerateError{stage: Template, notImpl: notImpl, err: err}
 	}
 
 	if len(notImpl) > 0 {

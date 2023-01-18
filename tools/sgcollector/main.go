@@ -13,6 +13,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 	"golang.org/x/sync/errgroup"
 
 	"github.com/ogen-go/ogen/internal/ogenzap"
@@ -29,12 +30,14 @@ func run(ctx context.Context) error {
 		filter       = flag.String("filter", "", "Additional filter to concatenate to the query")
 
 		workers = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
+		skipWrite = flag.Bool("skip-write", false, "Skip writing generated files (test only parser and IR)")
 
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
 		memProfileRate = flag.Int64("memprofilerate", 0, "Set runtime.MemProfileRate")
 
 		logOptions ogenzap.Options
+		logFile    = flag.String("logfile", "", "If set, tee logs to this file")
 	)
 	logOptions.RegisterFlags(flag.CommandLine)
 	flag.Parse()
@@ -70,6 +73,30 @@ func run(ctx context.Context) error {
 			runtime.GC() // get up-to-date statistics
 			_ = pprof.WriteHeapProfile(f)
 		}()
+	}
+
+	if logFile := *logFile; logFile != "" {
+		f, err := os.Create(logFile)
+		if err != nil {
+			return errors.Wrap(err, "create log file")
+		}
+		defer func() {
+			_ = f.Close()
+		}()
+
+		logOptions.FnOptions = append(logOptions.FnOptions, zap.WrapCore(func(core zapcore.Core) zapcore.Core {
+			level := zap.DebugLevel
+			if coreLevel := zapcore.LevelOf(core); coreLevel != zapcore.InvalidLevel {
+				level = coreLevel
+			}
+
+			pe := zap.NewProductionEncoderConfig()
+			fileEncoder := zapcore.NewJSONEncoder(pe)
+			return zapcore.NewTee(
+				core,
+				zapcore.NewCore(fileEncoder, zapcore.AddSync(f), level),
+			)
+		}))
 	}
 
 	logger, err := ogenzap.Create(logOptions)
@@ -158,7 +185,7 @@ func run(ctx context.Context) error {
 					}
 
 					logger.Debug("Processing link", zap.Inline(m))
-					err := worker(ctx, m, reporters)
+					err := worker(ctx, m, reporters, *skipWrite)
 					if err != nil {
 						logger.Error("Error",
 							zap.Inline(m),
