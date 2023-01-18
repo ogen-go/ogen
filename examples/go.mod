@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/go-faster/errors v0.6.1
-	github.com/go-faster/jx v0.40.0
+	github.com/go-faster/jx v0.40.1
 	github.com/google/uuid v1.3.0
 	github.com/ogen-go/ogen v0.0.0
 	github.com/stretchr/testify v1.8.1
@@ -13,7 +13,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.11.2
 	go.uber.org/multierr v1.9.0
 	go.uber.org/zap v1.24.0
-	golang.org/x/exp v0.0.0-20230105202349-8879d0199aa3
+	golang.org/x/exp v0.0.0-20230116083435-1de6713980de
 )
 
 require (
