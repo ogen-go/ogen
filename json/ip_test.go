@@ -69,9 +69,9 @@ func TestIPv4(t *testing.T) {
 		{`"2001:db8::1"`, netip.Addr{}, "wrong ip version"},
 
 		// Wrong type.
-		{`1`, netip.Addr{}, "start: unexpected byte"},
-		{`true`, netip.Addr{}, "start: unexpected byte"},
-		{`null`, netip.Addr{}, "start: unexpected byte"},
+		{`1`, netip.Addr{}, "unexpected byte 49 '1'"},
+		{`true`, netip.Addr{}, "unexpected byte 116 't'"},
+		{`null`, netip.Addr{}, "unexpected byte 110 'n'"},
 	}
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
@@ -116,9 +116,9 @@ func TestIPv6(t *testing.T) {
 		{`"1.1.1.1"`, netip.Addr{}, "wrong ip version"},
 
 		// Wrong type.
-		{`1`, netip.Addr{}, "start: unexpected byte"},
-		{`true`, netip.Addr{}, "start: unexpected byte"},
-		{`null`, netip.Addr{}, "start: unexpected byte"},
+		{`1`, netip.Addr{}, "unexpected byte 49 '1'"},
+		{`true`, netip.Addr{}, "unexpected byte 116 't'"},
+		{`null`, netip.Addr{}, "unexpected byte 110 'n'"},
 	}
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
