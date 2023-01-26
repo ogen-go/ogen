@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/dlclark/regexp2 v1.8.0
-	github.com/fatih/color v1.14.0
+	github.com/fatih/color v1.14.1
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
 	github.com/go-faster/jx v0.41.0
