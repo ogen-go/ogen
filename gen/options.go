@@ -1,9 +1,14 @@
 package gen
 
 import (
+	"context"
 	"net/url"
+	"os"
+	"path"
+	"path/filepath"
 	"reflect"
 	"regexp"
+	"runtime"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -13,6 +18,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/internal/urlpath"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -70,6 +76,75 @@ type Options struct {
 	File location.File
 	// Logger to use.
 	Logger *zap.Logger
+}
+
+// SetLocation sets File, RootURL and RemoteOptions using given path or URL
+// and returns file data.
+func (o *Options) SetLocation(p string, opts RemoteOptions) ([]byte, error) {
+	o.Remote = opts
+	r := jsonschema.NewExternalResolver(opts)
+
+	containsDrive := runtime.GOOS == "windows" && filepath.VolumeName(p) != ""
+	if u, _ := url.Parse(p); u != nil && !containsDrive && u.Scheme != "" {
+		switch u.Scheme {
+		case "http", "https":
+			_, fileName := path.Split(u.Path)
+
+			// FIXME(tdakkota): pass context.
+			data, err := r.Get(context.Background(), p)
+			if err != nil {
+				return nil, err
+			}
+
+			o.RootURL = u
+			o.File = location.NewFile(fileName, p, data)
+			// Guard against reading local files in remote mode.
+			o.Remote.ReadFile = func(p string) ([]byte, error) {
+				return nil, errors.New("local files are not supported in remote mode")
+			}
+
+			return data, nil
+		case "file":
+			toPath := opts.URLToFilePath
+			if toPath == nil {
+				toPath = urlpath.URLToFilePath
+			}
+
+			converted, err := toPath(u)
+			if err != nil {
+				return nil, errors.Wrap(err, "convert url to file path")
+			}
+			p = converted
+		default:
+			return nil, errors.Errorf("unsupported scheme %q", u.Scheme)
+		}
+	}
+	p = filepath.Clean(p)
+
+	abs, err := filepath.Abs(p)
+	if err != nil {
+		return nil, err
+	}
+	_, fileName := filepath.Split(p)
+
+	readFile := o.Remote.ReadFile
+	if readFile == nil {
+		readFile = os.ReadFile
+	}
+
+	data, err := readFile(p)
+	if err != nil {
+		return nil, err
+	}
+
+	u, err := urlpath.URLFromFilePath(abs)
+	if err != nil {
+		return nil, errors.Wrap(err, "convert file path to url")
+	}
+
+	o.RootURL = u
+	o.File = location.NewFile(fileName, p, data)
+	return data, nil
 }
 
 func (o *Options) setDefaults() {
@@ -146,19 +221,19 @@ type CustomFormatDef struct {
 
 // CustomFormat returns custom format definition.
 func CustomFormat[
-	T any,
-	JSON interface {
-		~struct{} // Enforce implementation without state.
+T any,
+JSON interface {
+	~struct{} // Enforce implementation without state.
 
-		EncodeJSON(*jx.Encoder, T)
-		DecodeJSON(*jx.Decoder) (T, error)
-	},
-	Text interface {
-		~struct{} // Enforce implementation without state.
+	EncodeJSON(*jx.Encoder, T)
+	DecodeJSON(*jx.Decoder) (T, error)
+},
+Text interface {
+	~struct{} // Enforce implementation without state.
 
-		EncodeText(T) string
-		DecodeText(string) (T, error)
-	},
+	EncodeText(T) string
+	DecodeText(string) (T, error)
+},
 ]() CustomFormatDef {
 	return CustomFormatDef{
 		typ:  reflect.TypeOf(new(T)).Elem(),
