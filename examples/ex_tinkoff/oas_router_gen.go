@@ -550,6 +550,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -564,6 +565,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -639,6 +645,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: MarketBondsGet
 							r.name = "MarketBondsGet"
 							r.operationID = ""
+							r.pathPattern = "/market/bonds"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -670,6 +677,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: MarketCandlesGet
 								r.name = "MarketCandlesGet"
 								r.operationID = ""
+								r.pathPattern = "/market/candles"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -690,6 +698,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: MarketCurrenciesGet
 								r.name = "MarketCurrenciesGet"
 								r.operationID = ""
+								r.pathPattern = "/market/currencies"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -711,6 +720,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: MarketEtfsGet
 							r.name = "MarketEtfsGet"
 							r.operationID = ""
+							r.pathPattern = "/market/etfs"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -731,6 +741,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: MarketOrderbookGet
 							r.name = "MarketOrderbookGet"
 							r.operationID = ""
+							r.pathPattern = "/market/orderbook"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -773,6 +784,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: MarketSearchByFigiGet
 									r.name = "MarketSearchByFigiGet"
 									r.operationID = ""
+									r.pathPattern = "/market/search/by-figi"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -793,6 +805,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: MarketSearchByTickerGet
 									r.name = "MarketSearchByTickerGet"
 									r.operationID = ""
+									r.pathPattern = "/market/search/by-ticker"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -814,6 +827,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: MarketStocksGet
 								r.name = "MarketStocksGet"
 								r.operationID = ""
+								r.pathPattern = "/market/stocks"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -847,6 +861,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: OperationsGet
 							r.name = "OperationsGet"
 							r.operationID = ""
+							r.pathPattern = "/operations"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -866,6 +881,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							r.name = "OrdersGet"
 							r.operationID = ""
+							r.pathPattern = "/orders"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -898,6 +914,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: OrdersCancelPost
 									r.name = "OrdersCancelPost"
 									r.operationID = ""
+									r.pathPattern = "/orders/cancel"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -918,6 +935,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: OrdersLimitOrderPost
 									r.name = "OrdersLimitOrderPost"
 									r.operationID = ""
+									r.pathPattern = "/orders/limit-order"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -938,6 +956,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: OrdersMarketOrderPost
 									r.name = "OrdersMarketOrderPost"
 									r.operationID = ""
+									r.pathPattern = "/orders/market-order"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -960,6 +979,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						r.name = "PortfolioGet"
 						r.operationID = ""
+						r.pathPattern = "/portfolio"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -981,6 +1001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PortfolioCurrenciesGet
 							r.name = "PortfolioCurrenciesGet"
 							r.operationID = ""
+							r.pathPattern = "/portfolio/currencies"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1024,6 +1045,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: SandboxClearPost
 								r.name = "SandboxClearPost"
 								r.operationID = ""
+								r.pathPattern = "/sandbox/clear"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1044,6 +1066,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: SandboxCurrenciesBalancePost
 								r.name = "SandboxCurrenciesBalancePost"
 								r.operationID = ""
+								r.pathPattern = "/sandbox/currencies/balance"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1065,6 +1088,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: SandboxPositionsBalancePost
 							r.name = "SandboxPositionsBalancePost"
 							r.operationID = ""
+							r.pathPattern = "/sandbox/positions/balance"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1096,6 +1120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: SandboxRegisterPost
 								r.name = "SandboxRegisterPost"
 								r.operationID = ""
+								r.pathPattern = "/sandbox/register"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1116,6 +1141,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: SandboxRemovePost
 								r.name = "SandboxRemovePost"
 								r.operationID = ""
+								r.pathPattern = "/sandbox/remove"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1138,6 +1164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: UserAccountsGet
 						r.name = "UserAccountsGet"
 						r.operationID = ""
+						r.pathPattern = "/user/accounts"
 						r.args = args
 						r.count = 0
 						return r, true

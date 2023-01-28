@@ -97,6 +97,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [1]string
 }
@@ -111,6 +112,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -163,12 +169,14 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				case "GET":
 					r.name = "ListPets"
 					r.operationID = "listPets"
+					r.pathPattern = "/pets"
 					r.args = args
 					r.count = 0
 					return r, true
 				case "POST":
 					r.name = "CreatePets"
 					r.operationID = "createPets"
+					r.pathPattern = "/pets"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -195,6 +203,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: ShowPetById
 						r.name = "ShowPetById"
 						r.operationID = "showPetById"
+						r.pathPattern = "/pets/{petId}"
 						r.args = args
 						r.count = 1
 						return r, true

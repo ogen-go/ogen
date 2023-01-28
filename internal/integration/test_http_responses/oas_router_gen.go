@@ -321,6 +321,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -335,6 +336,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -398,6 +404,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "GET":
 						r.name = "AnyContentTypeBinaryStringSchema"
 						r.operationID = "anyContentTypeBinaryStringSchema"
+						r.pathPattern = "/anyContentTypeBinaryStringSchema"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -419,6 +426,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: AnyContentTypeBinaryStringSchemaDefault
 							r.name = "AnyContentTypeBinaryStringSchemaDefault"
 							r.operationID = "anyContentTypeBinaryStringSchemaDefault"
+							r.pathPattern = "/anyContentTypeBinaryStringSchemaDefault"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -440,6 +448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: Combined
 						r.name = "Combined"
 						r.operationID = "combined"
+						r.pathPattern = "/combined"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -471,6 +480,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: Headers200
 							r.name = "Headers200"
 							r.operationID = "headers200"
+							r.pathPattern = "/headers200"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -491,6 +501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: HeadersCombined
 							r.name = "HeadersCombined"
 							r.operationID = "headersCombined"
+							r.pathPattern = "/headersCombined"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -511,6 +522,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: HeadersDefault
 							r.name = "HeadersDefault"
 							r.operationID = "headersDefault"
+							r.pathPattern = "/headersDefault"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -531,6 +543,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: HeadersJSON
 							r.name = "HeadersJSON"
 							r.operationID = "headersJSON"
+							r.pathPattern = "/headersJSON"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -551,6 +564,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: HeadersPattern
 							r.name = "HeadersPattern"
 							r.operationID = "headersPattern"
+							r.pathPattern = "/headersPattern"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -572,6 +586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: IntersectPatternCode
 						r.name = "IntersectPatternCode"
 						r.operationID = "intersectPatternCode"
+						r.pathPattern = "/intersectPatternCode"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -592,6 +607,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: MultipleGenericResponses
 						r.name = "MultipleGenericResponses"
 						r.operationID = "multipleGenericResponses"
+						r.pathPattern = "/multipleGenericResponses"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -623,6 +639,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: OctetStreamBinaryStringSchema
 							r.name = "OctetStreamBinaryStringSchema"
 							r.operationID = "octetStreamBinaryStringSchema"
+							r.pathPattern = "/octetStreamBinaryStringSchema"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -643,6 +660,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: OctetStreamEmptySchema
 							r.name = "OctetStreamEmptySchema"
 							r.operationID = "octetStreamEmptySchema"
+							r.pathPattern = "/octetStreamEmptySchema"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -664,6 +682,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: TextPlainBinaryStringSchema
 						r.name = "TextPlainBinaryStringSchema"
 						r.operationID = "textPlainBinaryStringSchema"
+						r.pathPattern = "/textPlainBinaryStringSchema"
 						r.args = args
 						r.count = 0
 						return r, true

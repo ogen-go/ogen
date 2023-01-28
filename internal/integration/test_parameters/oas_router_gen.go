@@ -197,6 +197,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [1]string
 }
@@ -211,6 +212,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -286,6 +292,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ComplicatedParameterNameGet
 							r.name = "ComplicatedParameterNameGet"
 							r.operationID = ""
+							r.pathPattern = "/complicatedParameterName"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -306,6 +313,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ContentQueryParameter
 							r.name = "ContentQueryParameter"
 							r.operationID = "contentQueryParameter"
+							r.pathPattern = "/contentQueryParameter"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -327,6 +335,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: HeaderParameter
 						r.name = "HeaderParameter"
 						r.operationID = "headerParameter"
+						r.pathPattern = "/headerParameter"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -347,6 +356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: ObjectQueryParameter
 						r.name = "ObjectQueryParameter"
 						r.operationID = "objectQueryParameter"
+						r.pathPattern = "/objectQueryParameter"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -372,6 +382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: PathObjectParameter
 						r.name = "PathObjectParameter"
 						r.operationID = "pathObjectParameter"
+						r.pathPattern = "/pathObjectParameter/{param}"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -397,6 +408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: SameName
 						r.name = "SameName"
 						r.operationID = "sameName"
+						r.pathPattern = "/same_name/{path}"
 						r.args = args
 						r.count = 1
 						return r, true
