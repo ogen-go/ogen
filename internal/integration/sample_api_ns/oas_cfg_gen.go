@@ -111,13 +111,13 @@ type baseClient struct {
 
 func (cfg clientConfig) baseClient() (c baseClient, err error) {
 	c = baseClient{cfg: cfg}
-	if c.requests, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientRequestCount); err != nil {
+	if c.requests, err = c.cfg.Meter.Int64Counter(otelogen.ClientRequestCount); err != nil {
 		return c, err
 	}
-	if c.errors, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientErrorsCount); err != nil {
+	if c.errors, err = c.cfg.Meter.Int64Counter(otelogen.ClientErrorsCount); err != nil {
 		return c, err
 	}
-	if c.duration, err = c.cfg.Meter.SyncInt64().Histogram(otelogen.ClientDuration); err != nil {
+	if c.duration, err = c.cfg.Meter.Int64Histogram(otelogen.ClientDuration); err != nil {
 		return c, err
 	}
 	return c, nil

@@ -13,7 +13,7 @@ require (
 	github.com/stretchr/testify v1.8.1
 	github.com/valyala/fasthttp v1.44.0
 	go.opentelemetry.io/otel v1.12.0
-	go.opentelemetry.io/otel/metric v0.34.0
+	go.opentelemetry.io/otel/metric v0.35.0
 	go.opentelemetry.io/otel/trace v1.12.0
 	go.uber.org/multierr v1.9.0
 	go.uber.org/zap v1.24.0
