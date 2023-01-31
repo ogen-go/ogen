@@ -243,6 +243,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -257,6 +258,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -321,6 +327,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: NullableStrings
 						r.name = "NullableStrings"
 						r.operationID = "nullableStrings"
+						r.pathPattern = "/nullableStrings"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -352,6 +359,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ObjectsWithConflictingArrayProperty
 							r.name = "ObjectsWithConflictingArrayProperty"
 							r.operationID = "objectsWithConflictingArrayProperty"
+							r.pathPattern = "/objectsWithConflictingArrayProperty"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -372,6 +380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ObjectsWithConflictingProperties
 							r.name = "ObjectsWithConflictingProperties"
 							r.operationID = "objectsWithConflictingProperties"
+							r.pathPattern = "/objectsWithConflictingProperties"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -392,6 +401,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "POST":
 						r.name = "ReferencedAllof"
 						r.operationID = "referencedAllof"
+						r.pathPattern = "/referencedAllof"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -413,6 +423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ReferencedAllofOptional
 							r.name = "ReferencedAllofOptional"
 							r.operationID = "referencedAllofOptional"
+							r.pathPattern = "/referencedAllofOptional"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -456,6 +467,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: SimpleInteger
 								r.name = "SimpleInteger"
 								r.operationID = "simpleInteger"
+								r.pathPattern = "/simpleInteger"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -476,6 +488,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: SimpleObjects
 								r.name = "SimpleObjects"
 								r.operationID = "simpleObjects"
+								r.pathPattern = "/simpleObjects"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -497,6 +510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: StringsNotype
 							r.name = "StringsNotype"
 							r.operationID = "stringsNotype"
+							r.pathPattern = "/stringsNotype"
 							r.args = args
 							r.count = 0
 							return r, true

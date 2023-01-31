@@ -46,6 +46,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name string
 	operationID string
+	pathPattern string
 	count int
 	args [{{ $router.MaxParametersCount }}]string
 }
@@ -60,6 +61,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -240,6 +246,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			// Leaf: {{ $op.Name }}
 			r.name = {{ quote $op.Name }}
 			r.operationID = {{ quote $op.Spec.OperationID }}
+			r.pathPattern = {{ quote $route.Path }}
 			r.args = args
 			r.count = {{ $.ParameterIndex }}
 			return r, true
@@ -257,6 +264,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			case {{ quote $route.Method }}:
 				r.name = {{ quote $op.Name }}
 				r.operationID = {{ quote $op.Spec.OperationID }}
+				r.pathPattern = {{ quote $route.Path }}
 				r.args = args
 				r.count = {{ $.ParameterIndex }}
 				return r, true

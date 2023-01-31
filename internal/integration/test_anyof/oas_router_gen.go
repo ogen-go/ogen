@@ -116,6 +116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -130,6 +131,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -194,6 +200,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: IntegerNumber
 						r.name = "IntegerNumber"
 						r.operationID = "integerNumber"
+						r.pathPattern = "/integerNumber"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -214,6 +221,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: JaegerAnyOf
 						r.name = "JaegerAnyOf"
 						r.operationID = "jaegerAnyOf"
+						r.pathPattern = "/jaegerAnyOf"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -234,6 +242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: OneUUID
 						r.name = "OneUUID"
 						r.operationID = "oneUUID"
+						r.pathPattern = "/oneUUID"
 						r.args = args
 						r.count = 0
 						return r, true

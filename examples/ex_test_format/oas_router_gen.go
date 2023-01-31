@@ -16046,6 +16046,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -16060,6 +16061,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -16124,6 +16130,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: TestQueryParameter
 						r.name = "TestQueryParameter"
 						r.operationID = "test_query_parameter"
+						r.pathPattern = "/test_query_parameter"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -16166,6 +16173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: TestRequestAny
 								r.name = "TestRequestAny"
 								r.operationID = "test_request_Any"
+								r.pathPattern = "/test_request_Any"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16186,6 +16194,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: TestRequestEmptyStruct
 								r.name = "TestRequestEmptyStruct"
 								r.operationID = "test_request_EmptyStruct"
+								r.pathPattern = "/test_request_EmptyStruct"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16206,6 +16215,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: TestRequestFormatTest
 								r.name = "TestRequestFormatTest"
 								r.operationID = "test_request_FormatTest"
+								r.pathPattern = "/test_request_FormatTest"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16225,6 +16235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "TestRequestBoolean"
 								r.operationID = "test_request_boolean"
+								r.pathPattern = "/test_request_boolean"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16256,6 +16267,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestBooleanArray"
 										r.operationID = "test_request_boolean_array"
+										r.pathPattern = "/test_request_boolean_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16277,6 +16289,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: TestRequestBooleanArrayArray
 											r.name = "TestRequestBooleanArrayArray"
 											r.operationID = "test_request_boolean_array_array"
+											r.pathPattern = "/test_request_boolean_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16297,6 +16310,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestBooleanNullable"
 										r.operationID = "test_request_boolean_nullable"
+										r.pathPattern = "/test_request_boolean_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16317,6 +16331,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestBooleanNullableArray"
 											r.operationID = "test_request_boolean_nullable_array"
+											r.pathPattern = "/test_request_boolean_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16338,6 +16353,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestBooleanNullableArrayArray
 												r.name = "TestRequestBooleanNullableArrayArray"
 												r.operationID = "test_request_boolean_nullable_array_array"
+												r.pathPattern = "/test_request_boolean_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16361,6 +16377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "TestRequestInteger"
 								r.operationID = "test_request_integer"
+								r.pathPattern = "/test_request_integer"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16392,6 +16409,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestIntegerArray"
 										r.operationID = "test_request_integer_array"
+										r.pathPattern = "/test_request_integer_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16413,6 +16431,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: TestRequestIntegerArrayArray
 											r.name = "TestRequestIntegerArrayArray"
 											r.operationID = "test_request_integer_array_array"
+											r.pathPattern = "/test_request_integer_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16444,6 +16463,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestIntegerInt32"
 											r.operationID = "test_request_integer_int32"
+											r.pathPattern = "/test_request_integer_int32"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16475,6 +16495,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerInt32Array"
 													r.operationID = "test_request_integer_int32_array"
+													r.pathPattern = "/test_request_integer_int32_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16496,6 +16517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestIntegerInt32ArrayArray
 														r.name = "TestRequestIntegerInt32ArrayArray"
 														r.operationID = "test_request_integer_int32_array_array"
+														r.pathPattern = "/test_request_integer_int32_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16516,6 +16538,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerInt32Nullable"
 													r.operationID = "test_request_integer_int32_nullable"
+													r.pathPattern = "/test_request_integer_int32_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16536,6 +16559,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerInt32NullableArray"
 														r.operationID = "test_request_integer_int32_nullable_array"
+														r.pathPattern = "/test_request_integer_int32_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16557,6 +16581,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestIntegerInt32NullableArrayArray
 															r.name = "TestRequestIntegerInt32NullableArrayArray"
 															r.operationID = "test_request_integer_int32_nullable_array_array"
+															r.pathPattern = "/test_request_integer_int32_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16580,6 +16605,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestIntegerInt64"
 											r.operationID = "test_request_integer_int64"
+											r.pathPattern = "/test_request_integer_int64"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16611,6 +16637,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerInt64Array"
 													r.operationID = "test_request_integer_int64_array"
+													r.pathPattern = "/test_request_integer_int64_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16632,6 +16659,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestIntegerInt64ArrayArray
 														r.name = "TestRequestIntegerInt64ArrayArray"
 														r.operationID = "test_request_integer_int64_array_array"
+														r.pathPattern = "/test_request_integer_int64_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16652,6 +16680,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerInt64Nullable"
 													r.operationID = "test_request_integer_int64_nullable"
+													r.pathPattern = "/test_request_integer_int64_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16672,6 +16701,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerInt64NullableArray"
 														r.operationID = "test_request_integer_int64_nullable_array"
+														r.pathPattern = "/test_request_integer_int64_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16693,6 +16723,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestIntegerInt64NullableArrayArray
 															r.name = "TestRequestIntegerInt64NullableArrayArray"
 															r.operationID = "test_request_integer_int64_nullable_array_array"
+															r.pathPattern = "/test_request_integer_int64_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16717,6 +16748,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestIntegerNullable"
 										r.operationID = "test_request_integer_nullable"
+										r.pathPattern = "/test_request_integer_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16737,6 +16769,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestIntegerNullableArray"
 											r.operationID = "test_request_integer_nullable_array"
+											r.pathPattern = "/test_request_integer_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16758,6 +16791,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestIntegerNullableArrayArray
 												r.name = "TestRequestIntegerNullableArrayArray"
 												r.operationID = "test_request_integer_nullable_array_array"
+												r.pathPattern = "/test_request_integer_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16790,6 +16824,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestIntegerUint"
 											r.operationID = "test_request_integer_uint"
+											r.pathPattern = "/test_request_integer_uint"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16810,6 +16845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestIntegerUint32"
 												r.operationID = "test_request_integer_uint32"
+												r.pathPattern = "/test_request_integer_uint32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16841,6 +16877,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUint32Array"
 														r.operationID = "test_request_integer_uint32_array"
+														r.pathPattern = "/test_request_integer_uint32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16862,6 +16899,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestIntegerUint32ArrayArray
 															r.name = "TestRequestIntegerUint32ArrayArray"
 															r.operationID = "test_request_integer_uint32_array_array"
+															r.pathPattern = "/test_request_integer_uint32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16882,6 +16920,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUint32Nullable"
 														r.operationID = "test_request_integer_uint32_nullable"
+														r.pathPattern = "/test_request_integer_uint32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16902,6 +16941,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestIntegerUint32NullableArray"
 															r.operationID = "test_request_integer_uint32_nullable_array"
+															r.pathPattern = "/test_request_integer_uint32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16923,6 +16963,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestIntegerUint32NullableArrayArray
 																r.name = "TestRequestIntegerUint32NullableArrayArray"
 																r.operationID = "test_request_integer_uint32_nullable_array_array"
+																r.pathPattern = "/test_request_integer_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16946,6 +16987,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestIntegerUint64"
 												r.operationID = "test_request_integer_uint64"
+												r.pathPattern = "/test_request_integer_uint64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16977,6 +17019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUint64Array"
 														r.operationID = "test_request_integer_uint64_array"
+														r.pathPattern = "/test_request_integer_uint64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16998,6 +17041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestIntegerUint64ArrayArray
 															r.name = "TestRequestIntegerUint64ArrayArray"
 															r.operationID = "test_request_integer_uint64_array_array"
+															r.pathPattern = "/test_request_integer_uint64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17018,6 +17062,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUint64Nullable"
 														r.operationID = "test_request_integer_uint64_nullable"
+														r.pathPattern = "/test_request_integer_uint64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17038,6 +17083,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestIntegerUint64NullableArray"
 															r.operationID = "test_request_integer_uint64_nullable_array"
+															r.pathPattern = "/test_request_integer_uint64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17059,6 +17105,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestIntegerUint64NullableArrayArray
 																r.name = "TestRequestIntegerUint64NullableArrayArray"
 																r.operationID = "test_request_integer_uint64_nullable_array_array"
+																r.pathPattern = "/test_request_integer_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17093,6 +17140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerUintArray"
 													r.operationID = "test_request_integer_uint_array"
+													r.pathPattern = "/test_request_integer_uint_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17114,6 +17162,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestIntegerUintArrayArray
 														r.name = "TestRequestIntegerUintArrayArray"
 														r.operationID = "test_request_integer_uint_array_array"
+														r.pathPattern = "/test_request_integer_uint_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17134,6 +17183,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerUintNullable"
 													r.operationID = "test_request_integer_uint_nullable"
+													r.pathPattern = "/test_request_integer_uint_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17154,6 +17204,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUintNullableArray"
 														r.operationID = "test_request_integer_uint_nullable_array"
+														r.pathPattern = "/test_request_integer_uint_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17175,6 +17226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestIntegerUintNullableArrayArray
 															r.name = "TestRequestIntegerUintNullableArrayArray"
 															r.operationID = "test_request_integer_uint_nullable_array_array"
+															r.pathPattern = "/test_request_integer_uint_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17198,6 +17250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestIntegerUnix"
 											r.operationID = "test_request_integer_unix"
+											r.pathPattern = "/test_request_integer_unix"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17240,6 +17293,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUnixMicro"
 														r.operationID = "test_request_integer_unix-micro"
+														r.pathPattern = "/test_request_integer_unix-micro"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17271,6 +17325,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestIntegerUnixMicroArray"
 																r.operationID = "test_request_integer_unix-micro_array"
+																r.pathPattern = "/test_request_integer_unix-micro_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17292,6 +17347,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestIntegerUnixMicroArrayArray
 																	r.name = "TestRequestIntegerUnixMicroArrayArray"
 																	r.operationID = "test_request_integer_unix-micro_array_array"
+																	r.pathPattern = "/test_request_integer_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17312,6 +17368,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestIntegerUnixMicroNullable"
 																r.operationID = "test_request_integer_unix-micro_nullable"
+																r.pathPattern = "/test_request_integer_unix-micro_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17332,6 +17389,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestIntegerUnixMicroNullableArray"
 																	r.operationID = "test_request_integer_unix-micro_nullable_array"
+																	r.pathPattern = "/test_request_integer_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17353,6 +17411,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestIntegerUnixMicroNullableArrayArray
 																		r.name = "TestRequestIntegerUnixMicroNullableArrayArray"
 																		r.operationID = "test_request_integer_unix-micro_nullable_array_array"
+																		r.pathPattern = "/test_request_integer_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17376,6 +17435,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUnixMilli"
 														r.operationID = "test_request_integer_unix-milli"
+														r.pathPattern = "/test_request_integer_unix-milli"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17407,6 +17467,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestIntegerUnixMilliArray"
 																r.operationID = "test_request_integer_unix-milli_array"
+																r.pathPattern = "/test_request_integer_unix-milli_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17428,6 +17489,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestIntegerUnixMilliArrayArray
 																	r.name = "TestRequestIntegerUnixMilliArrayArray"
 																	r.operationID = "test_request_integer_unix-milli_array_array"
+																	r.pathPattern = "/test_request_integer_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17448,6 +17510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestIntegerUnixMilliNullable"
 																r.operationID = "test_request_integer_unix-milli_nullable"
+																r.pathPattern = "/test_request_integer_unix-milli_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17468,6 +17531,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestIntegerUnixMilliNullableArray"
 																	r.operationID = "test_request_integer_unix-milli_nullable_array"
+																	r.pathPattern = "/test_request_integer_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17489,6 +17553,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestIntegerUnixMilliNullableArrayArray
 																		r.name = "TestRequestIntegerUnixMilliNullableArrayArray"
 																		r.operationID = "test_request_integer_unix-milli_nullable_array_array"
+																		r.pathPattern = "/test_request_integer_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17513,6 +17578,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerUnixNano"
 													r.operationID = "test_request_integer_unix-nano"
+													r.pathPattern = "/test_request_integer_unix-nano"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17544,6 +17610,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestIntegerUnixNanoArray"
 															r.operationID = "test_request_integer_unix-nano_array"
+															r.pathPattern = "/test_request_integer_unix-nano_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17565,6 +17632,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestIntegerUnixNanoArrayArray
 																r.name = "TestRequestIntegerUnixNanoArrayArray"
 																r.operationID = "test_request_integer_unix-nano_array_array"
+																r.pathPattern = "/test_request_integer_unix-nano_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17585,6 +17653,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestIntegerUnixNanoNullable"
 															r.operationID = "test_request_integer_unix-nano_nullable"
+															r.pathPattern = "/test_request_integer_unix-nano_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17605,6 +17674,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestIntegerUnixNanoNullableArray"
 																r.operationID = "test_request_integer_unix-nano_nullable_array"
+																r.pathPattern = "/test_request_integer_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17626,6 +17696,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestIntegerUnixNanoNullableArrayArray
 																	r.name = "TestRequestIntegerUnixNanoNullableArrayArray"
 																	r.operationID = "test_request_integer_unix-nano_nullable_array_array"
+																	r.pathPattern = "/test_request_integer_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17649,6 +17720,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerUnixSeconds"
 													r.operationID = "test_request_integer_unix-seconds"
+													r.pathPattern = "/test_request_integer_unix-seconds"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17680,6 +17752,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestIntegerUnixSecondsArray"
 															r.operationID = "test_request_integer_unix-seconds_array"
+															r.pathPattern = "/test_request_integer_unix-seconds_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17701,6 +17774,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestIntegerUnixSecondsArrayArray
 																r.name = "TestRequestIntegerUnixSecondsArrayArray"
 																r.operationID = "test_request_integer_unix-seconds_array_array"
+																r.pathPattern = "/test_request_integer_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17721,6 +17795,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestIntegerUnixSecondsNullable"
 															r.operationID = "test_request_integer_unix-seconds_nullable"
+															r.pathPattern = "/test_request_integer_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17741,6 +17816,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestIntegerUnixSecondsNullableArray"
 																r.operationID = "test_request_integer_unix-seconds_nullable_array"
+																r.pathPattern = "/test_request_integer_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17762,6 +17838,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestIntegerUnixSecondsNullableArrayArray
 																	r.name = "TestRequestIntegerUnixSecondsNullableArrayArray"
 																	r.operationID = "test_request_integer_unix-seconds_nullable_array_array"
+																	r.pathPattern = "/test_request_integer_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17797,6 +17874,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerUnixArray"
 													r.operationID = "test_request_integer_unix_array"
+													r.pathPattern = "/test_request_integer_unix_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17818,6 +17896,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestIntegerUnixArrayArray
 														r.name = "TestRequestIntegerUnixArrayArray"
 														r.operationID = "test_request_integer_unix_array_array"
+														r.pathPattern = "/test_request_integer_unix_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17838,6 +17917,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestIntegerUnixNullable"
 													r.operationID = "test_request_integer_unix_nullable"
+													r.pathPattern = "/test_request_integer_unix_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17858,6 +17938,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestIntegerUnixNullableArray"
 														r.operationID = "test_request_integer_unix_nullable_array"
+														r.pathPattern = "/test_request_integer_unix_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17879,6 +17960,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestIntegerUnixNullableArrayArray
 															r.name = "TestRequestIntegerUnixNullableArrayArray"
 															r.operationID = "test_request_integer_unix_nullable_array_array"
+															r.pathPattern = "/test_request_integer_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17916,6 +17998,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestRequestNull"
 									r.operationID = "test_request_null"
+									r.pathPattern = "/test_request_null"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -17947,6 +18030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestNullArray"
 											r.operationID = "test_request_null_array"
+											r.pathPattern = "/test_request_null_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17968,6 +18052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestNullArrayArray
 												r.name = "TestRequestNullArrayArray"
 												r.operationID = "test_request_null_array_array"
+												r.pathPattern = "/test_request_null_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17988,6 +18073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestNullNullable"
 											r.operationID = "test_request_null_nullable"
+											r.pathPattern = "/test_request_null_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18008,6 +18094,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestNullNullableArray"
 												r.operationID = "test_request_null_nullable_array"
+												r.pathPattern = "/test_request_null_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18029,6 +18116,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestNullNullableArrayArray
 													r.name = "TestRequestNullNullableArrayArray"
 													r.operationID = "test_request_null_nullable_array_array"
+													r.pathPattern = "/test_request_null_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18052,6 +18140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestRequestNumber"
 									r.operationID = "test_request_number"
+									r.pathPattern = "/test_request_number"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18083,6 +18172,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestNumberArray"
 											r.operationID = "test_request_number_array"
+											r.pathPattern = "/test_request_number_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18104,6 +18194,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestNumberArrayArray
 												r.name = "TestRequestNumberArrayArray"
 												r.operationID = "test_request_number_array_array"
+												r.pathPattern = "/test_request_number_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18124,6 +18215,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestNumberDouble"
 											r.operationID = "test_request_number_double"
+											r.pathPattern = "/test_request_number_double"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18155,6 +18247,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestNumberDoubleArray"
 													r.operationID = "test_request_number_double_array"
+													r.pathPattern = "/test_request_number_double_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18176,6 +18269,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestNumberDoubleArrayArray
 														r.name = "TestRequestNumberDoubleArrayArray"
 														r.operationID = "test_request_number_double_array_array"
+														r.pathPattern = "/test_request_number_double_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18196,6 +18290,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestNumberDoubleNullable"
 													r.operationID = "test_request_number_double_nullable"
+													r.pathPattern = "/test_request_number_double_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18216,6 +18311,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestNumberDoubleNullableArray"
 														r.operationID = "test_request_number_double_nullable_array"
+														r.pathPattern = "/test_request_number_double_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18237,6 +18333,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestNumberDoubleNullableArrayArray
 															r.name = "TestRequestNumberDoubleNullableArrayArray"
 															r.operationID = "test_request_number_double_nullable_array_array"
+															r.pathPattern = "/test_request_number_double_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18260,6 +18357,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestNumberFloat"
 											r.operationID = "test_request_number_float"
+											r.pathPattern = "/test_request_number_float"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18291,6 +18389,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestNumberFloatArray"
 													r.operationID = "test_request_number_float_array"
+													r.pathPattern = "/test_request_number_float_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18312,6 +18411,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestNumberFloatArrayArray
 														r.name = "TestRequestNumberFloatArrayArray"
 														r.operationID = "test_request_number_float_array_array"
+														r.pathPattern = "/test_request_number_float_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18332,6 +18432,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestNumberFloatNullable"
 													r.operationID = "test_request_number_float_nullable"
+													r.pathPattern = "/test_request_number_float_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18352,6 +18453,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestNumberFloatNullableArray"
 														r.operationID = "test_request_number_float_nullable_array"
+														r.pathPattern = "/test_request_number_float_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18373,6 +18475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestNumberFloatNullableArrayArray
 															r.name = "TestRequestNumberFloatNullableArrayArray"
 															r.operationID = "test_request_number_float_nullable_array_array"
+															r.pathPattern = "/test_request_number_float_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18407,6 +18510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestNumberInt32"
 												r.operationID = "test_request_number_int32"
+												r.pathPattern = "/test_request_number_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18438,6 +18542,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestNumberInt32Array"
 														r.operationID = "test_request_number_int32_array"
+														r.pathPattern = "/test_request_number_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18459,6 +18564,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestNumberInt32ArrayArray
 															r.name = "TestRequestNumberInt32ArrayArray"
 															r.operationID = "test_request_number_int32_array_array"
+															r.pathPattern = "/test_request_number_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18479,6 +18585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestNumberInt32Nullable"
 														r.operationID = "test_request_number_int32_nullable"
+														r.pathPattern = "/test_request_number_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18499,6 +18606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestNumberInt32NullableArray"
 															r.operationID = "test_request_number_int32_nullable_array"
+															r.pathPattern = "/test_request_number_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18520,6 +18628,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestNumberInt32NullableArrayArray
 																r.name = "TestRequestNumberInt32NullableArrayArray"
 																r.operationID = "test_request_number_int32_nullable_array_array"
+																r.pathPattern = "/test_request_number_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18543,6 +18652,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestNumberInt64"
 												r.operationID = "test_request_number_int64"
+												r.pathPattern = "/test_request_number_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18574,6 +18684,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestNumberInt64Array"
 														r.operationID = "test_request_number_int64_array"
+														r.pathPattern = "/test_request_number_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18595,6 +18706,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestNumberInt64ArrayArray
 															r.name = "TestRequestNumberInt64ArrayArray"
 															r.operationID = "test_request_number_int64_array_array"
+															r.pathPattern = "/test_request_number_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18615,6 +18727,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestNumberInt64Nullable"
 														r.operationID = "test_request_number_int64_nullable"
+														r.pathPattern = "/test_request_number_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18635,6 +18748,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestNumberInt64NullableArray"
 															r.operationID = "test_request_number_int64_nullable_array"
+															r.pathPattern = "/test_request_number_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18656,6 +18770,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestNumberInt64NullableArrayArray
 																r.name = "TestRequestNumberInt64NullableArrayArray"
 																r.operationID = "test_request_number_int64_nullable_array_array"
+																r.pathPattern = "/test_request_number_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18680,6 +18795,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestNumberNullable"
 											r.operationID = "test_request_number_nullable"
+											r.pathPattern = "/test_request_number_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18700,6 +18816,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestNumberNullableArray"
 												r.operationID = "test_request_number_nullable_array"
+												r.pathPattern = "/test_request_number_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18721,6 +18838,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestNumberNullableArrayArray
 													r.name = "TestRequestNumberNullableArrayArray"
 													r.operationID = "test_request_number_nullable_array_array"
+													r.pathPattern = "/test_request_number_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18757,6 +18875,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: TestRequestRequiredAny
 									r.name = "TestRequestRequiredAny"
 									r.operationID = "test_request_required_Any"
+									r.pathPattern = "/test_request_required_Any"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18777,6 +18896,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: TestRequestRequiredEmptyStruct
 									r.name = "TestRequestRequiredEmptyStruct"
 									r.operationID = "test_request_required_EmptyStruct"
+									r.pathPattern = "/test_request_required_EmptyStruct"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18797,6 +18917,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: TestRequestRequiredFormatTest
 									r.name = "TestRequestRequiredFormatTest"
 									r.operationID = "test_request_required_FormatTest"
+									r.pathPattern = "/test_request_required_FormatTest"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18816,6 +18937,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestRequestRequiredBoolean"
 									r.operationID = "test_request_required_boolean"
+									r.pathPattern = "/test_request_required_boolean"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18847,6 +18969,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredBooleanArray"
 											r.operationID = "test_request_required_boolean_array"
+											r.pathPattern = "/test_request_required_boolean_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18868,6 +18991,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestRequiredBooleanArrayArray
 												r.name = "TestRequestRequiredBooleanArrayArray"
 												r.operationID = "test_request_required_boolean_array_array"
+												r.pathPattern = "/test_request_required_boolean_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18888,6 +19012,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredBooleanNullable"
 											r.operationID = "test_request_required_boolean_nullable"
+											r.pathPattern = "/test_request_required_boolean_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18908,6 +19033,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredBooleanNullableArray"
 												r.operationID = "test_request_required_boolean_nullable_array"
+												r.pathPattern = "/test_request_required_boolean_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18929,6 +19055,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestRequiredBooleanNullableArrayArray
 													r.name = "TestRequestRequiredBooleanNullableArrayArray"
 													r.operationID = "test_request_required_boolean_nullable_array_array"
+													r.pathPattern = "/test_request_required_boolean_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18952,6 +19079,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestRequestRequiredInteger"
 									r.operationID = "test_request_required_integer"
+									r.pathPattern = "/test_request_required_integer"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18983,6 +19111,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredIntegerArray"
 											r.operationID = "test_request_required_integer_array"
+											r.pathPattern = "/test_request_required_integer_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19004,6 +19133,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestRequiredIntegerArrayArray
 												r.name = "TestRequestRequiredIntegerArrayArray"
 												r.operationID = "test_request_required_integer_array_array"
+												r.pathPattern = "/test_request_required_integer_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19035,6 +19165,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerInt32"
 												r.operationID = "test_request_required_integer_int32"
+												r.pathPattern = "/test_request_required_integer_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19066,6 +19197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt32Array"
 														r.operationID = "test_request_required_integer_int32_array"
+														r.pathPattern = "/test_request_required_integer_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19087,6 +19219,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredIntegerInt32ArrayArray
 															r.name = "TestRequestRequiredIntegerInt32ArrayArray"
 															r.operationID = "test_request_required_integer_int32_array_array"
+															r.pathPattern = "/test_request_required_integer_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19107,6 +19240,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt32Nullable"
 														r.operationID = "test_request_required_integer_int32_nullable"
+														r.pathPattern = "/test_request_required_integer_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19127,6 +19261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerInt32NullableArray"
 															r.operationID = "test_request_required_integer_int32_nullable_array"
+															r.pathPattern = "/test_request_required_integer_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19148,6 +19283,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredIntegerInt32NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt32NullableArrayArray"
 																r.operationID = "test_request_required_integer_int32_nullable_array_array"
+																r.pathPattern = "/test_request_required_integer_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19171,6 +19307,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerInt64"
 												r.operationID = "test_request_required_integer_int64"
+												r.pathPattern = "/test_request_required_integer_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19202,6 +19339,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt64Array"
 														r.operationID = "test_request_required_integer_int64_array"
+														r.pathPattern = "/test_request_required_integer_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19223,6 +19361,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredIntegerInt64ArrayArray
 															r.name = "TestRequestRequiredIntegerInt64ArrayArray"
 															r.operationID = "test_request_required_integer_int64_array_array"
+															r.pathPattern = "/test_request_required_integer_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19243,6 +19382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt64Nullable"
 														r.operationID = "test_request_required_integer_int64_nullable"
+														r.pathPattern = "/test_request_required_integer_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19263,6 +19403,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerInt64NullableArray"
 															r.operationID = "test_request_required_integer_int64_nullable_array"
+															r.pathPattern = "/test_request_required_integer_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19284,6 +19425,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredIntegerInt64NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt64NullableArrayArray"
 																r.operationID = "test_request_required_integer_int64_nullable_array_array"
+																r.pathPattern = "/test_request_required_integer_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19308,6 +19450,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredIntegerNullable"
 											r.operationID = "test_request_required_integer_nullable"
+											r.pathPattern = "/test_request_required_integer_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19328,6 +19471,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerNullableArray"
 												r.operationID = "test_request_required_integer_nullable_array"
+												r.pathPattern = "/test_request_required_integer_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19349,6 +19493,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestRequiredIntegerNullableArrayArray
 													r.name = "TestRequestRequiredIntegerNullableArrayArray"
 													r.operationID = "test_request_required_integer_nullable_array_array"
+													r.pathPattern = "/test_request_required_integer_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19381,6 +19526,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerUint"
 												r.operationID = "test_request_required_integer_uint"
+												r.pathPattern = "/test_request_required_integer_uint"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19401,6 +19547,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredIntegerUint32"
 													r.operationID = "test_request_required_integer_uint32"
+													r.pathPattern = "/test_request_required_integer_uint32"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19432,6 +19579,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUint32Array"
 															r.operationID = "test_request_required_integer_uint32_array"
+															r.pathPattern = "/test_request_required_integer_uint32_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19453,6 +19601,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredIntegerUint32ArrayArray
 																r.name = "TestRequestRequiredIntegerUint32ArrayArray"
 																r.operationID = "test_request_required_integer_uint32_array_array"
+																r.pathPattern = "/test_request_required_integer_uint32_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19473,6 +19622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUint32Nullable"
 															r.operationID = "test_request_required_integer_uint32_nullable"
+															r.pathPattern = "/test_request_required_integer_uint32_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19493,6 +19643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredIntegerUint32NullableArray"
 																r.operationID = "test_request_required_integer_uint32_nullable_array"
+																r.pathPattern = "/test_request_required_integer_uint32_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19514,6 +19665,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredIntegerUint32NullableArrayArray
 																	r.name = "TestRequestRequiredIntegerUint32NullableArrayArray"
 																	r.operationID = "test_request_required_integer_uint32_nullable_array_array"
+																	r.pathPattern = "/test_request_required_integer_uint32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -19537,6 +19689,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredIntegerUint64"
 													r.operationID = "test_request_required_integer_uint64"
+													r.pathPattern = "/test_request_required_integer_uint64"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19568,6 +19721,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUint64Array"
 															r.operationID = "test_request_required_integer_uint64_array"
+															r.pathPattern = "/test_request_required_integer_uint64_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19589,6 +19743,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredIntegerUint64ArrayArray
 																r.name = "TestRequestRequiredIntegerUint64ArrayArray"
 																r.operationID = "test_request_required_integer_uint64_array_array"
+																r.pathPattern = "/test_request_required_integer_uint64_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19609,6 +19764,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUint64Nullable"
 															r.operationID = "test_request_required_integer_uint64_nullable"
+															r.pathPattern = "/test_request_required_integer_uint64_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19629,6 +19785,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredIntegerUint64NullableArray"
 																r.operationID = "test_request_required_integer_uint64_nullable_array"
+																r.pathPattern = "/test_request_required_integer_uint64_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19650,6 +19807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredIntegerUint64NullableArrayArray
 																	r.name = "TestRequestRequiredIntegerUint64NullableArrayArray"
 																	r.operationID = "test_request_required_integer_uint64_nullable_array_array"
+																	r.pathPattern = "/test_request_required_integer_uint64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -19684,6 +19842,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerUintArray"
 														r.operationID = "test_request_required_integer_uint_array"
+														r.pathPattern = "/test_request_required_integer_uint_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19705,6 +19864,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredIntegerUintArrayArray
 															r.name = "TestRequestRequiredIntegerUintArrayArray"
 															r.operationID = "test_request_required_integer_uint_array_array"
+															r.pathPattern = "/test_request_required_integer_uint_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19725,6 +19885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerUintNullable"
 														r.operationID = "test_request_required_integer_uint_nullable"
+														r.pathPattern = "/test_request_required_integer_uint_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19745,6 +19906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUintNullableArray"
 															r.operationID = "test_request_required_integer_uint_nullable_array"
+															r.pathPattern = "/test_request_required_integer_uint_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19766,6 +19928,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredIntegerUintNullableArrayArray
 																r.name = "TestRequestRequiredIntegerUintNullableArrayArray"
 																r.operationID = "test_request_required_integer_uint_nullable_array_array"
+																r.pathPattern = "/test_request_required_integer_uint_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19789,6 +19952,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerUnix"
 												r.operationID = "test_request_required_integer_unix"
+												r.pathPattern = "/test_request_required_integer_unix"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19831,6 +19995,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUnixMicro"
 															r.operationID = "test_request_required_integer_unix-micro"
+															r.pathPattern = "/test_request_required_integer_unix-micro"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19862,6 +20027,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredIntegerUnixMicroArray"
 																	r.operationID = "test_request_required_integer_unix-micro_array"
+																	r.pathPattern = "/test_request_required_integer_unix-micro_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -19883,6 +20049,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredIntegerUnixMicroArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixMicroArrayArray"
 																		r.operationID = "test_request_required_integer_unix-micro_array_array"
+																		r.pathPattern = "/test_request_required_integer_unix-micro_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -19903,6 +20070,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredIntegerUnixMicroNullable"
 																	r.operationID = "test_request_required_integer_unix-micro_nullable"
+																	r.pathPattern = "/test_request_required_integer_unix-micro_nullable"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -19923,6 +20091,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		r.name = "TestRequestRequiredIntegerUnixMicroNullableArray"
 																		r.operationID = "test_request_required_integer_unix-micro_nullable_array"
+																		r.pathPattern = "/test_request_required_integer_unix-micro_nullable_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -19944,6 +20113,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			// Leaf: TestRequestRequiredIntegerUnixMicroNullableArrayArray
 																			r.name = "TestRequestRequiredIntegerUnixMicroNullableArrayArray"
 																			r.operationID = "test_request_required_integer_unix-micro_nullable_array_array"
+																			r.pathPattern = "/test_request_required_integer_unix-micro_nullable_array_array"
 																			r.args = args
 																			r.count = 0
 																			return r, true
@@ -19967,6 +20137,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUnixMilli"
 															r.operationID = "test_request_required_integer_unix-milli"
+															r.pathPattern = "/test_request_required_integer_unix-milli"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19998,6 +20169,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredIntegerUnixMilliArray"
 																	r.operationID = "test_request_required_integer_unix-milli_array"
+																	r.pathPattern = "/test_request_required_integer_unix-milli_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20019,6 +20191,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredIntegerUnixMilliArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixMilliArrayArray"
 																		r.operationID = "test_request_required_integer_unix-milli_array_array"
+																		r.pathPattern = "/test_request_required_integer_unix-milli_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -20039,6 +20212,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredIntegerUnixMilliNullable"
 																	r.operationID = "test_request_required_integer_unix-milli_nullable"
+																	r.pathPattern = "/test_request_required_integer_unix-milli_nullable"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20059,6 +20233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		r.name = "TestRequestRequiredIntegerUnixMilliNullableArray"
 																		r.operationID = "test_request_required_integer_unix-milli_nullable_array"
+																		r.pathPattern = "/test_request_required_integer_unix-milli_nullable_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -20080,6 +20255,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			// Leaf: TestRequestRequiredIntegerUnixMilliNullableArrayArray
 																			r.name = "TestRequestRequiredIntegerUnixMilliNullableArrayArray"
 																			r.operationID = "test_request_required_integer_unix-milli_nullable_array_array"
+																			r.pathPattern = "/test_request_required_integer_unix-milli_nullable_array_array"
 																			r.args = args
 																			r.count = 0
 																			return r, true
@@ -20104,6 +20280,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerUnixNano"
 														r.operationID = "test_request_required_integer_unix-nano"
+														r.pathPattern = "/test_request_required_integer_unix-nano"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20135,6 +20312,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredIntegerUnixNanoArray"
 																r.operationID = "test_request_required_integer_unix-nano_array"
+																r.pathPattern = "/test_request_required_integer_unix-nano_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20156,6 +20334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredIntegerUnixNanoArrayArray
 																	r.name = "TestRequestRequiredIntegerUnixNanoArrayArray"
 																	r.operationID = "test_request_required_integer_unix-nano_array_array"
+																	r.pathPattern = "/test_request_required_integer_unix-nano_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20176,6 +20355,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredIntegerUnixNanoNullable"
 																r.operationID = "test_request_required_integer_unix-nano_nullable"
+																r.pathPattern = "/test_request_required_integer_unix-nano_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20196,6 +20376,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredIntegerUnixNanoNullableArray"
 																	r.operationID = "test_request_required_integer_unix-nano_nullable_array"
+																	r.pathPattern = "/test_request_required_integer_unix-nano_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20217,6 +20398,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredIntegerUnixNanoNullableArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixNanoNullableArrayArray"
 																		r.operationID = "test_request_required_integer_unix-nano_nullable_array_array"
+																		r.pathPattern = "/test_request_required_integer_unix-nano_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -20240,6 +20422,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerUnixSeconds"
 														r.operationID = "test_request_required_integer_unix-seconds"
+														r.pathPattern = "/test_request_required_integer_unix-seconds"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20271,6 +20454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredIntegerUnixSecondsArray"
 																r.operationID = "test_request_required_integer_unix-seconds_array"
+																r.pathPattern = "/test_request_required_integer_unix-seconds_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20292,6 +20476,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredIntegerUnixSecondsArrayArray
 																	r.name = "TestRequestRequiredIntegerUnixSecondsArrayArray"
 																	r.operationID = "test_request_required_integer_unix-seconds_array_array"
+																	r.pathPattern = "/test_request_required_integer_unix-seconds_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20312,6 +20497,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredIntegerUnixSecondsNullable"
 																r.operationID = "test_request_required_integer_unix-seconds_nullable"
+																r.pathPattern = "/test_request_required_integer_unix-seconds_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20332,6 +20518,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredIntegerUnixSecondsNullableArray"
 																	r.operationID = "test_request_required_integer_unix-seconds_nullable_array"
+																	r.pathPattern = "/test_request_required_integer_unix-seconds_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20353,6 +20540,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredIntegerUnixSecondsNullableArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixSecondsNullableArrayArray"
 																		r.operationID = "test_request_required_integer_unix-seconds_nullable_array_array"
+																		r.pathPattern = "/test_request_required_integer_unix-seconds_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -20388,6 +20576,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerUnixArray"
 														r.operationID = "test_request_required_integer_unix_array"
+														r.pathPattern = "/test_request_required_integer_unix_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20409,6 +20598,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredIntegerUnixArrayArray
 															r.name = "TestRequestRequiredIntegerUnixArrayArray"
 															r.operationID = "test_request_required_integer_unix_array_array"
+															r.pathPattern = "/test_request_required_integer_unix_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20429,6 +20619,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerUnixNullable"
 														r.operationID = "test_request_required_integer_unix_nullable"
+														r.pathPattern = "/test_request_required_integer_unix_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20449,6 +20640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerUnixNullableArray"
 															r.operationID = "test_request_required_integer_unix_nullable_array"
+															r.pathPattern = "/test_request_required_integer_unix_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20470,6 +20662,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredIntegerUnixNullableArrayArray
 																r.name = "TestRequestRequiredIntegerUnixNullableArrayArray"
 																r.operationID = "test_request_required_integer_unix_nullable_array_array"
+																r.pathPattern = "/test_request_required_integer_unix_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20507,6 +20700,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestRequiredNull"
 										r.operationID = "test_request_required_null"
+										r.pathPattern = "/test_request_required_null"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -20538,6 +20732,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredNullArray"
 												r.operationID = "test_request_required_null_array"
+												r.pathPattern = "/test_request_required_null_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20559,6 +20754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestRequiredNullArrayArray
 													r.name = "TestRequestRequiredNullArrayArray"
 													r.operationID = "test_request_required_null_array_array"
+													r.pathPattern = "/test_request_required_null_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20579,6 +20775,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredNullNullable"
 												r.operationID = "test_request_required_null_nullable"
+												r.pathPattern = "/test_request_required_null_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20599,6 +20796,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredNullNullableArray"
 													r.operationID = "test_request_required_null_nullable_array"
+													r.pathPattern = "/test_request_required_null_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20620,6 +20818,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestRequiredNullNullableArrayArray
 														r.name = "TestRequestRequiredNullNullableArrayArray"
 														r.operationID = "test_request_required_null_nullable_array_array"
+														r.pathPattern = "/test_request_required_null_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20643,6 +20842,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestRequiredNumber"
 										r.operationID = "test_request_required_number"
+										r.pathPattern = "/test_request_required_number"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -20674,6 +20874,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredNumberArray"
 												r.operationID = "test_request_required_number_array"
+												r.pathPattern = "/test_request_required_number_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20695,6 +20896,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestRequiredNumberArrayArray
 													r.name = "TestRequestRequiredNumberArrayArray"
 													r.operationID = "test_request_required_number_array_array"
+													r.pathPattern = "/test_request_required_number_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20715,6 +20917,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredNumberDouble"
 												r.operationID = "test_request_required_number_double"
+												r.pathPattern = "/test_request_required_number_double"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20746,6 +20949,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredNumberDoubleArray"
 														r.operationID = "test_request_required_number_double_array"
+														r.pathPattern = "/test_request_required_number_double_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20767,6 +20971,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredNumberDoubleArrayArray
 															r.name = "TestRequestRequiredNumberDoubleArrayArray"
 															r.operationID = "test_request_required_number_double_array_array"
+															r.pathPattern = "/test_request_required_number_double_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20787,6 +20992,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredNumberDoubleNullable"
 														r.operationID = "test_request_required_number_double_nullable"
+														r.pathPattern = "/test_request_required_number_double_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20807,6 +21013,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredNumberDoubleNullableArray"
 															r.operationID = "test_request_required_number_double_nullable_array"
+															r.pathPattern = "/test_request_required_number_double_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20828,6 +21035,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
 																r.name = "TestRequestRequiredNumberDoubleNullableArrayArray"
 																r.operationID = "test_request_required_number_double_nullable_array_array"
+																r.pathPattern = "/test_request_required_number_double_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20851,6 +21059,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredNumberFloat"
 												r.operationID = "test_request_required_number_float"
+												r.pathPattern = "/test_request_required_number_float"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20882,6 +21091,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredNumberFloatArray"
 														r.operationID = "test_request_required_number_float_array"
+														r.pathPattern = "/test_request_required_number_float_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20903,6 +21113,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredNumberFloatArrayArray
 															r.name = "TestRequestRequiredNumberFloatArrayArray"
 															r.operationID = "test_request_required_number_float_array_array"
+															r.pathPattern = "/test_request_required_number_float_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20923,6 +21134,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredNumberFloatNullable"
 														r.operationID = "test_request_required_number_float_nullable"
+														r.pathPattern = "/test_request_required_number_float_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20943,6 +21155,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredNumberFloatNullableArray"
 															r.operationID = "test_request_required_number_float_nullable_array"
+															r.pathPattern = "/test_request_required_number_float_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20964,6 +21177,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
 																r.name = "TestRequestRequiredNumberFloatNullableArrayArray"
 																r.operationID = "test_request_required_number_float_nullable_array_array"
+																r.pathPattern = "/test_request_required_number_float_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20998,6 +21212,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredNumberInt32"
 													r.operationID = "test_request_required_number_int32"
+													r.pathPattern = "/test_request_required_number_int32"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21029,6 +21244,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt32Array"
 															r.operationID = "test_request_required_number_int32_array"
+															r.pathPattern = "/test_request_required_number_int32_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21050,6 +21266,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredNumberInt32ArrayArray
 																r.name = "TestRequestRequiredNumberInt32ArrayArray"
 																r.operationID = "test_request_required_number_int32_array_array"
+																r.pathPattern = "/test_request_required_number_int32_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21070,6 +21287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt32Nullable"
 															r.operationID = "test_request_required_number_int32_nullable"
+															r.pathPattern = "/test_request_required_number_int32_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21090,6 +21308,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredNumberInt32NullableArray"
 																r.operationID = "test_request_required_number_int32_nullable_array"
+																r.pathPattern = "/test_request_required_number_int32_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21111,6 +21330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
 																	r.name = "TestRequestRequiredNumberInt32NullableArrayArray"
 																	r.operationID = "test_request_required_number_int32_nullable_array_array"
+																	r.pathPattern = "/test_request_required_number_int32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -21134,6 +21354,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredNumberInt64"
 													r.operationID = "test_request_required_number_int64"
+													r.pathPattern = "/test_request_required_number_int64"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21165,6 +21386,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt64Array"
 															r.operationID = "test_request_required_number_int64_array"
+															r.pathPattern = "/test_request_required_number_int64_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21186,6 +21408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredNumberInt64ArrayArray
 																r.name = "TestRequestRequiredNumberInt64ArrayArray"
 																r.operationID = "test_request_required_number_int64_array_array"
+																r.pathPattern = "/test_request_required_number_int64_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21206,6 +21429,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt64Nullable"
 															r.operationID = "test_request_required_number_int64_nullable"
+															r.pathPattern = "/test_request_required_number_int64_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21226,6 +21450,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredNumberInt64NullableArray"
 																r.operationID = "test_request_required_number_int64_nullable_array"
+																r.pathPattern = "/test_request_required_number_int64_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21247,6 +21472,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
 																	r.name = "TestRequestRequiredNumberInt64NullableArrayArray"
 																	r.operationID = "test_request_required_number_int64_nullable_array_array"
+																	r.pathPattern = "/test_request_required_number_int64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -21271,6 +21497,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredNumberNullable"
 												r.operationID = "test_request_required_number_nullable"
+												r.pathPattern = "/test_request_required_number_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21291,6 +21518,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredNumberNullableArray"
 													r.operationID = "test_request_required_number_nullable_array"
+													r.pathPattern = "/test_request_required_number_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21312,6 +21540,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestRequiredNumberNullableArrayArray
 														r.name = "TestRequestRequiredNumberNullableArrayArray"
 														r.operationID = "test_request_required_number_nullable_array_array"
+														r.pathPattern = "/test_request_required_number_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21336,6 +21565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestRequestRequiredString"
 									r.operationID = "test_request_required_string"
+									r.pathPattern = "/test_request_required_string"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -21367,6 +21597,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredStringArray"
 											r.operationID = "test_request_required_string_array"
+											r.pathPattern = "/test_request_required_string_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21388,6 +21619,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestRequiredStringArrayArray
 												r.name = "TestRequestRequiredStringArrayArray"
 												r.operationID = "test_request_required_string_array_array"
+												r.pathPattern = "/test_request_required_string_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21419,6 +21651,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringBase64"
 												r.operationID = "test_request_required_string_base64"
+												r.pathPattern = "/test_request_required_string_base64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21450,6 +21683,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringBase64Array"
 														r.operationID = "test_request_required_string_base64_array"
+														r.pathPattern = "/test_request_required_string_base64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21471,6 +21705,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringBase64ArrayArray
 															r.name = "TestRequestRequiredStringBase64ArrayArray"
 															r.operationID = "test_request_required_string_base64_array_array"
+															r.pathPattern = "/test_request_required_string_base64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21491,6 +21726,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringBase64Nullable"
 														r.operationID = "test_request_required_string_base64_nullable"
+														r.pathPattern = "/test_request_required_string_base64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21511,6 +21747,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringBase64NullableArray"
 															r.operationID = "test_request_required_string_base64_nullable_array"
+															r.pathPattern = "/test_request_required_string_base64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21532,6 +21769,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringBase64NullableArrayArray
 																r.name = "TestRequestRequiredStringBase64NullableArrayArray"
 																r.operationID = "test_request_required_string_base64_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_base64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21555,6 +21793,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringBinary"
 												r.operationID = "test_request_required_string_binary"
+												r.pathPattern = "/test_request_required_string_binary"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21586,6 +21825,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringBinaryArray"
 														r.operationID = "test_request_required_string_binary_array"
+														r.pathPattern = "/test_request_required_string_binary_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21607,6 +21847,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringBinaryArrayArray
 															r.name = "TestRequestRequiredStringBinaryArrayArray"
 															r.operationID = "test_request_required_string_binary_array_array"
+															r.pathPattern = "/test_request_required_string_binary_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21627,6 +21868,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringBinaryNullable"
 														r.operationID = "test_request_required_string_binary_nullable"
+														r.pathPattern = "/test_request_required_string_binary_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21647,6 +21889,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringBinaryNullableArray"
 															r.operationID = "test_request_required_string_binary_nullable_array"
+															r.pathPattern = "/test_request_required_string_binary_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21668,6 +21911,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringBinaryNullableArrayArray
 																r.name = "TestRequestRequiredStringBinaryNullableArrayArray"
 																r.operationID = "test_request_required_string_binary_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_binary_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21691,6 +21935,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringByte"
 												r.operationID = "test_request_required_string_byte"
+												r.pathPattern = "/test_request_required_string_byte"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21722,6 +21967,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringByteArray"
 														r.operationID = "test_request_required_string_byte_array"
+														r.pathPattern = "/test_request_required_string_byte_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21743,6 +21989,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringByteArrayArray
 															r.name = "TestRequestRequiredStringByteArrayArray"
 															r.operationID = "test_request_required_string_byte_array_array"
+															r.pathPattern = "/test_request_required_string_byte_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21763,6 +22010,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringByteNullable"
 														r.operationID = "test_request_required_string_byte_nullable"
+														r.pathPattern = "/test_request_required_string_byte_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21783,6 +22031,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringByteNullableArray"
 															r.operationID = "test_request_required_string_byte_nullable_array"
+															r.pathPattern = "/test_request_required_string_byte_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21804,6 +22053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringByteNullableArrayArray
 																r.name = "TestRequestRequiredStringByteNullableArrayArray"
 																r.operationID = "test_request_required_string_byte_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_byte_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21839,6 +22089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringDate"
 												r.operationID = "test_request_required_string_date"
+												r.pathPattern = "/test_request_required_string_date"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21859,6 +22110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringDateTime"
 													r.operationID = "test_request_required_string_date-time"
+													r.pathPattern = "/test_request_required_string_date-time"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21890,6 +22142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringDateTimeArray"
 															r.operationID = "test_request_required_string_date-time_array"
+															r.pathPattern = "/test_request_required_string_date-time_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21911,6 +22164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringDateTimeArrayArray
 																r.name = "TestRequestRequiredStringDateTimeArrayArray"
 																r.operationID = "test_request_required_string_date-time_array_array"
+																r.pathPattern = "/test_request_required_string_date-time_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21931,6 +22185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringDateTimeNullable"
 															r.operationID = "test_request_required_string_date-time_nullable"
+															r.pathPattern = "/test_request_required_string_date-time_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21951,6 +22206,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringDateTimeNullableArray"
 																r.operationID = "test_request_required_string_date-time_nullable_array"
+																r.pathPattern = "/test_request_required_string_date-time_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -21972,6 +22228,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringDateTimeNullableArrayArray
 																	r.name = "TestRequestRequiredStringDateTimeNullableArrayArray"
 																	r.operationID = "test_request_required_string_date-time_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_date-time_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -22006,6 +22263,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringDateArray"
 														r.operationID = "test_request_required_string_date_array"
+														r.pathPattern = "/test_request_required_string_date_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22027,6 +22285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringDateArrayArray
 															r.name = "TestRequestRequiredStringDateArrayArray"
 															r.operationID = "test_request_required_string_date_array_array"
+															r.pathPattern = "/test_request_required_string_date_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22047,6 +22306,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringDateNullable"
 														r.operationID = "test_request_required_string_date_nullable"
+														r.pathPattern = "/test_request_required_string_date_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22067,6 +22327,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringDateNullableArray"
 															r.operationID = "test_request_required_string_date_nullable_array"
+															r.pathPattern = "/test_request_required_string_date_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22088,6 +22349,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringDateNullableArrayArray
 																r.name = "TestRequestRequiredStringDateNullableArrayArray"
 																r.operationID = "test_request_required_string_date_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_date_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22111,6 +22373,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringDuration"
 												r.operationID = "test_request_required_string_duration"
+												r.pathPattern = "/test_request_required_string_duration"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22142,6 +22405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringDurationArray"
 														r.operationID = "test_request_required_string_duration_array"
+														r.pathPattern = "/test_request_required_string_duration_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22163,6 +22427,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringDurationArrayArray
 															r.name = "TestRequestRequiredStringDurationArrayArray"
 															r.operationID = "test_request_required_string_duration_array_array"
+															r.pathPattern = "/test_request_required_string_duration_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22183,6 +22448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringDurationNullable"
 														r.operationID = "test_request_required_string_duration_nullable"
+														r.pathPattern = "/test_request_required_string_duration_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22203,6 +22469,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringDurationNullableArray"
 															r.operationID = "test_request_required_string_duration_nullable_array"
+															r.pathPattern = "/test_request_required_string_duration_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22224,6 +22491,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringDurationNullableArrayArray
 																r.name = "TestRequestRequiredStringDurationNullableArrayArray"
 																r.operationID = "test_request_required_string_duration_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_duration_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22248,6 +22516,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredStringEmail"
 											r.operationID = "test_request_required_string_email"
+											r.pathPattern = "/test_request_required_string_email"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22279,6 +22548,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringEmailArray"
 													r.operationID = "test_request_required_string_email_array"
+													r.pathPattern = "/test_request_required_string_email_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22300,6 +22570,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestRequiredStringEmailArrayArray
 														r.name = "TestRequestRequiredStringEmailArrayArray"
 														r.operationID = "test_request_required_string_email_array_array"
+														r.pathPattern = "/test_request_required_string_email_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22320,6 +22591,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringEmailNullable"
 													r.operationID = "test_request_required_string_email_nullable"
+													r.pathPattern = "/test_request_required_string_email_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22340,6 +22612,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringEmailNullableArray"
 														r.operationID = "test_request_required_string_email_nullable_array"
+														r.pathPattern = "/test_request_required_string_email_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22361,6 +22634,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringEmailNullableArrayArray
 															r.name = "TestRequestRequiredStringEmailNullableArrayArray"
 															r.operationID = "test_request_required_string_email_nullable_array_array"
+															r.pathPattern = "/test_request_required_string_email_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22384,6 +22658,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredStringHostname"
 											r.operationID = "test_request_required_string_hostname"
+											r.pathPattern = "/test_request_required_string_hostname"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22415,6 +22690,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringHostnameArray"
 													r.operationID = "test_request_required_string_hostname_array"
+													r.pathPattern = "/test_request_required_string_hostname_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22436,6 +22712,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestRequiredStringHostnameArrayArray
 														r.name = "TestRequestRequiredStringHostnameArrayArray"
 														r.operationID = "test_request_required_string_hostname_array_array"
+														r.pathPattern = "/test_request_required_string_hostname_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22456,6 +22733,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringHostnameNullable"
 													r.operationID = "test_request_required_string_hostname_nullable"
+													r.pathPattern = "/test_request_required_string_hostname_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22476,6 +22754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringHostnameNullableArray"
 														r.operationID = "test_request_required_string_hostname_nullable_array"
+														r.pathPattern = "/test_request_required_string_hostname_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22497,6 +22776,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringHostnameNullableArrayArray
 															r.name = "TestRequestRequiredStringHostnameNullableArrayArray"
 															r.operationID = "test_request_required_string_hostname_nullable_array_array"
+															r.pathPattern = "/test_request_required_string_hostname_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22542,6 +22822,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringInt32"
 													r.operationID = "test_request_required_string_int32"
+													r.pathPattern = "/test_request_required_string_int32"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22573,6 +22854,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt32Array"
 															r.operationID = "test_request_required_string_int32_array"
+															r.pathPattern = "/test_request_required_string_int32_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22594,6 +22876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringInt32ArrayArray
 																r.name = "TestRequestRequiredStringInt32ArrayArray"
 																r.operationID = "test_request_required_string_int32_array_array"
+																r.pathPattern = "/test_request_required_string_int32_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22614,6 +22897,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt32Nullable"
 															r.operationID = "test_request_required_string_int32_nullable"
+															r.pathPattern = "/test_request_required_string_int32_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22634,6 +22918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringInt32NullableArray"
 																r.operationID = "test_request_required_string_int32_nullable_array"
+																r.pathPattern = "/test_request_required_string_int32_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22655,6 +22940,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringInt32NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt32NullableArrayArray"
 																	r.operationID = "test_request_required_string_int32_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_int32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -22678,6 +22964,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringInt64"
 													r.operationID = "test_request_required_string_int64"
+													r.pathPattern = "/test_request_required_string_int64"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22709,6 +22996,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt64Array"
 															r.operationID = "test_request_required_string_int64_array"
+															r.pathPattern = "/test_request_required_string_int64_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22730,6 +23018,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringInt64ArrayArray
 																r.name = "TestRequestRequiredStringInt64ArrayArray"
 																r.operationID = "test_request_required_string_int64_array_array"
+																r.pathPattern = "/test_request_required_string_int64_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22750,6 +23039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt64Nullable"
 															r.operationID = "test_request_required_string_int64_nullable"
+															r.pathPattern = "/test_request_required_string_int64_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22770,6 +23060,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringInt64NullableArray"
 																r.operationID = "test_request_required_string_int64_nullable_array"
+																r.pathPattern = "/test_request_required_string_int64_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22791,6 +23082,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringInt64NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt64NullableArrayArray"
 																	r.operationID = "test_request_required_string_int64_nullable_array_array"
+																	r.pathPattern = "/test_request_required_string_int64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -22815,6 +23107,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringIP"
 												r.operationID = "test_request_required_string_ip"
+												r.pathPattern = "/test_request_required_string_ip"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22846,6 +23139,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringIPArray"
 														r.operationID = "test_request_required_string_ip_array"
+														r.pathPattern = "/test_request_required_string_ip_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22867,6 +23161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringIPArrayArray
 															r.name = "TestRequestRequiredStringIPArrayArray"
 															r.operationID = "test_request_required_string_ip_array_array"
+															r.pathPattern = "/test_request_required_string_ip_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22887,6 +23182,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringIPNullable"
 														r.operationID = "test_request_required_string_ip_nullable"
+														r.pathPattern = "/test_request_required_string_ip_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22907,6 +23203,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringIPNullableArray"
 															r.operationID = "test_request_required_string_ip_nullable_array"
+															r.pathPattern = "/test_request_required_string_ip_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22928,6 +23225,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringIPNullableArrayArray
 																r.name = "TestRequestRequiredStringIPNullableArrayArray"
 																r.operationID = "test_request_required_string_ip_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_ip_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22961,6 +23259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringIpv4"
 														r.operationID = "test_request_required_string_ipv4"
+														r.pathPattern = "/test_request_required_string_ipv4"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22992,6 +23291,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv4Array"
 																r.operationID = "test_request_required_string_ipv4_array"
+																r.pathPattern = "/test_request_required_string_ipv4_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23013,6 +23313,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringIpv4ArrayArray
 																	r.name = "TestRequestRequiredStringIpv4ArrayArray"
 																	r.operationID = "test_request_required_string_ipv4_array_array"
+																	r.pathPattern = "/test_request_required_string_ipv4_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23033,6 +23334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv4Nullable"
 																r.operationID = "test_request_required_string_ipv4_nullable"
+																r.pathPattern = "/test_request_required_string_ipv4_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23053,6 +23355,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringIpv4NullableArray"
 																	r.operationID = "test_request_required_string_ipv4_nullable_array"
+																	r.pathPattern = "/test_request_required_string_ipv4_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23074,6 +23377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredStringIpv4NullableArrayArray
 																		r.name = "TestRequestRequiredStringIpv4NullableArrayArray"
 																		r.operationID = "test_request_required_string_ipv4_nullable_array_array"
+																		r.pathPattern = "/test_request_required_string_ipv4_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -23097,6 +23401,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringIpv6"
 														r.operationID = "test_request_required_string_ipv6"
+														r.pathPattern = "/test_request_required_string_ipv6"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23128,6 +23433,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv6Array"
 																r.operationID = "test_request_required_string_ipv6_array"
+																r.pathPattern = "/test_request_required_string_ipv6_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23149,6 +23455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringIpv6ArrayArray
 																	r.name = "TestRequestRequiredStringIpv6ArrayArray"
 																	r.operationID = "test_request_required_string_ipv6_array_array"
+																	r.pathPattern = "/test_request_required_string_ipv6_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23169,6 +23476,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv6Nullable"
 																r.operationID = "test_request_required_string_ipv6_nullable"
+																r.pathPattern = "/test_request_required_string_ipv6_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23189,6 +23497,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringIpv6NullableArray"
 																	r.operationID = "test_request_required_string_ipv6_nullable_array"
+																	r.pathPattern = "/test_request_required_string_ipv6_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23210,6 +23519,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredStringIpv6NullableArrayArray
 																		r.name = "TestRequestRequiredStringIpv6NullableArrayArray"
 																		r.operationID = "test_request_required_string_ipv6_nullable_array_array"
+																		r.pathPattern = "/test_request_required_string_ipv6_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -23236,6 +23546,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredStringNullable"
 											r.operationID = "test_request_required_string_nullable"
+											r.pathPattern = "/test_request_required_string_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -23256,6 +23567,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringNullableArray"
 												r.operationID = "test_request_required_string_nullable_array"
+												r.pathPattern = "/test_request_required_string_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23277,6 +23589,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestRequiredStringNullableArrayArray
 													r.name = "TestRequestRequiredStringNullableArrayArray"
 													r.operationID = "test_request_required_string_nullable_array_array"
+													r.pathPattern = "/test_request_required_string_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23298,6 +23611,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredStringPassword"
 											r.operationID = "test_request_required_string_password"
+											r.pathPattern = "/test_request_required_string_password"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -23329,6 +23643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringPasswordArray"
 													r.operationID = "test_request_required_string_password_array"
+													r.pathPattern = "/test_request_required_string_password_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23350,6 +23665,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestRequiredStringPasswordArrayArray
 														r.name = "TestRequestRequiredStringPasswordArrayArray"
 														r.operationID = "test_request_required_string_password_array_array"
+														r.pathPattern = "/test_request_required_string_password_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23370,6 +23686,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringPasswordNullable"
 													r.operationID = "test_request_required_string_password_nullable"
+													r.pathPattern = "/test_request_required_string_password_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23390,6 +23707,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringPasswordNullableArray"
 														r.operationID = "test_request_required_string_password_nullable_array"
+														r.pathPattern = "/test_request_required_string_password_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23411,6 +23729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringPasswordNullableArrayArray
 															r.name = "TestRequestRequiredStringPasswordNullableArrayArray"
 															r.operationID = "test_request_required_string_password_nullable_array_array"
+															r.pathPattern = "/test_request_required_string_password_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23434,6 +23753,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestRequiredStringTime"
 											r.operationID = "test_request_required_string_time"
+											r.pathPattern = "/test_request_required_string_time"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -23465,6 +23785,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringTimeArray"
 													r.operationID = "test_request_required_string_time_array"
+													r.pathPattern = "/test_request_required_string_time_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23486,6 +23807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestRequiredStringTimeArrayArray
 														r.name = "TestRequestRequiredStringTimeArrayArray"
 														r.operationID = "test_request_required_string_time_array_array"
+														r.pathPattern = "/test_request_required_string_time_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23506,6 +23828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestRequiredStringTimeNullable"
 													r.operationID = "test_request_required_string_time_nullable"
+													r.pathPattern = "/test_request_required_string_time_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23526,6 +23849,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringTimeNullableArray"
 														r.operationID = "test_request_required_string_time_nullable_array"
+														r.pathPattern = "/test_request_required_string_time_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23547,6 +23871,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringTimeNullableArrayArray
 															r.name = "TestRequestRequiredStringTimeNullableArrayArray"
 															r.operationID = "test_request_required_string_time_nullable_array_array"
+															r.pathPattern = "/test_request_required_string_time_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23581,6 +23906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringUnix"
 												r.operationID = "test_request_required_string_unix"
+												r.pathPattern = "/test_request_required_string_unix"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23623,6 +23949,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringUnixMicro"
 															r.operationID = "test_request_required_string_unix-micro"
+															r.pathPattern = "/test_request_required_string_unix-micro"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23654,6 +23981,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMicroArray"
 																	r.operationID = "test_request_required_string_unix-micro_array"
+																	r.pathPattern = "/test_request_required_string_unix-micro_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23675,6 +24003,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredStringUnixMicroArrayArray
 																		r.name = "TestRequestRequiredStringUnixMicroArrayArray"
 																		r.operationID = "test_request_required_string_unix-micro_array_array"
+																		r.pathPattern = "/test_request_required_string_unix-micro_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -23695,6 +24024,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMicroNullable"
 																	r.operationID = "test_request_required_string_unix-micro_nullable"
+																	r.pathPattern = "/test_request_required_string_unix-micro_nullable"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23715,6 +24045,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		r.name = "TestRequestRequiredStringUnixMicroNullableArray"
 																		r.operationID = "test_request_required_string_unix-micro_nullable_array"
+																		r.pathPattern = "/test_request_required_string_unix-micro_nullable_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -23736,6 +24067,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			// Leaf: TestRequestRequiredStringUnixMicroNullableArrayArray
 																			r.name = "TestRequestRequiredStringUnixMicroNullableArrayArray"
 																			r.operationID = "test_request_required_string_unix-micro_nullable_array_array"
+																			r.pathPattern = "/test_request_required_string_unix-micro_nullable_array_array"
 																			r.args = args
 																			r.count = 0
 																			return r, true
@@ -23759,6 +24091,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringUnixMilli"
 															r.operationID = "test_request_required_string_unix-milli"
+															r.pathPattern = "/test_request_required_string_unix-milli"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23790,6 +24123,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMilliArray"
 																	r.operationID = "test_request_required_string_unix-milli_array"
+																	r.pathPattern = "/test_request_required_string_unix-milli_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23811,6 +24145,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredStringUnixMilliArrayArray
 																		r.name = "TestRequestRequiredStringUnixMilliArrayArray"
 																		r.operationID = "test_request_required_string_unix-milli_array_array"
+																		r.pathPattern = "/test_request_required_string_unix-milli_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -23831,6 +24166,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMilliNullable"
 																	r.operationID = "test_request_required_string_unix-milli_nullable"
+																	r.pathPattern = "/test_request_required_string_unix-milli_nullable"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23851,6 +24187,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	case "POST":
 																		r.name = "TestRequestRequiredStringUnixMilliNullableArray"
 																		r.operationID = "test_request_required_string_unix-milli_nullable_array"
+																		r.pathPattern = "/test_request_required_string_unix-milli_nullable_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -23872,6 +24209,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			// Leaf: TestRequestRequiredStringUnixMilliNullableArrayArray
 																			r.name = "TestRequestRequiredStringUnixMilliNullableArrayArray"
 																			r.operationID = "test_request_required_string_unix-milli_nullable_array_array"
+																			r.pathPattern = "/test_request_required_string_unix-milli_nullable_array_array"
 																			r.args = args
 																			r.count = 0
 																			return r, true
@@ -23896,6 +24234,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixNano"
 														r.operationID = "test_request_required_string_unix-nano"
+														r.pathPattern = "/test_request_required_string_unix-nano"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23927,6 +24266,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixNanoArray"
 																r.operationID = "test_request_required_string_unix-nano_array"
+																r.pathPattern = "/test_request_required_string_unix-nano_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23948,6 +24288,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringUnixNanoArrayArray
 																	r.name = "TestRequestRequiredStringUnixNanoArrayArray"
 																	r.operationID = "test_request_required_string_unix-nano_array_array"
+																	r.pathPattern = "/test_request_required_string_unix-nano_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -23968,6 +24309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixNanoNullable"
 																r.operationID = "test_request_required_string_unix-nano_nullable"
+																r.pathPattern = "/test_request_required_string_unix-nano_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23988,6 +24330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixNanoNullableArray"
 																	r.operationID = "test_request_required_string_unix-nano_nullable_array"
+																	r.pathPattern = "/test_request_required_string_unix-nano_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24009,6 +24352,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredStringUnixNanoNullableArrayArray
 																		r.name = "TestRequestRequiredStringUnixNanoNullableArrayArray"
 																		r.operationID = "test_request_required_string_unix-nano_nullable_array_array"
+																		r.pathPattern = "/test_request_required_string_unix-nano_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -24032,6 +24376,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixSeconds"
 														r.operationID = "test_request_required_string_unix-seconds"
+														r.pathPattern = "/test_request_required_string_unix-seconds"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24063,6 +24408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixSecondsArray"
 																r.operationID = "test_request_required_string_unix-seconds_array"
+																r.pathPattern = "/test_request_required_string_unix-seconds_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24084,6 +24430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestRequiredStringUnixSecondsArrayArray
 																	r.name = "TestRequestRequiredStringUnixSecondsArrayArray"
 																	r.operationID = "test_request_required_string_unix-seconds_array_array"
+																	r.pathPattern = "/test_request_required_string_unix-seconds_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24104,6 +24451,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixSecondsNullable"
 																r.operationID = "test_request_required_string_unix-seconds_nullable"
+																r.pathPattern = "/test_request_required_string_unix-seconds_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24124,6 +24472,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixSecondsNullableArray"
 																	r.operationID = "test_request_required_string_unix-seconds_nullable_array"
+																	r.pathPattern = "/test_request_required_string_unix-seconds_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24145,6 +24494,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestRequiredStringUnixSecondsNullableArrayArray
 																		r.name = "TestRequestRequiredStringUnixSecondsNullableArrayArray"
 																		r.operationID = "test_request_required_string_unix-seconds_nullable_array_array"
+																		r.pathPattern = "/test_request_required_string_unix-seconds_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -24180,6 +24530,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixArray"
 														r.operationID = "test_request_required_string_unix_array"
+														r.pathPattern = "/test_request_required_string_unix_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24201,6 +24552,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringUnixArrayArray
 															r.name = "TestRequestRequiredStringUnixArrayArray"
 															r.operationID = "test_request_required_string_unix_array_array"
+															r.pathPattern = "/test_request_required_string_unix_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24221,6 +24573,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixNullable"
 														r.operationID = "test_request_required_string_unix_nullable"
+														r.pathPattern = "/test_request_required_string_unix_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24241,6 +24594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringUnixNullableArray"
 															r.operationID = "test_request_required_string_unix_nullable_array"
+															r.pathPattern = "/test_request_required_string_unix_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24262,6 +24616,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringUnixNullableArrayArray
 																r.name = "TestRequestRequiredStringUnixNullableArrayArray"
 																r.operationID = "test_request_required_string_unix_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_unix_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24285,6 +24640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringURI"
 												r.operationID = "test_request_required_string_uri"
+												r.pathPattern = "/test_request_required_string_uri"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24316,6 +24672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringURIArray"
 														r.operationID = "test_request_required_string_uri_array"
+														r.pathPattern = "/test_request_required_string_uri_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24337,6 +24694,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringURIArrayArray
 															r.name = "TestRequestRequiredStringURIArrayArray"
 															r.operationID = "test_request_required_string_uri_array_array"
+															r.pathPattern = "/test_request_required_string_uri_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24357,6 +24715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringURINullable"
 														r.operationID = "test_request_required_string_uri_nullable"
+														r.pathPattern = "/test_request_required_string_uri_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24377,6 +24736,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringURINullableArray"
 															r.operationID = "test_request_required_string_uri_nullable_array"
+															r.pathPattern = "/test_request_required_string_uri_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24398,6 +24758,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringURINullableArrayArray
 																r.name = "TestRequestRequiredStringURINullableArrayArray"
 																r.operationID = "test_request_required_string_uri_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_uri_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24421,6 +24782,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestRequiredStringUUID"
 												r.operationID = "test_request_required_string_uuid"
+												r.pathPattern = "/test_request_required_string_uuid"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24452,6 +24814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringUUIDArray"
 														r.operationID = "test_request_required_string_uuid_array"
+														r.pathPattern = "/test_request_required_string_uuid_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24473,6 +24836,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestRequiredStringUUIDArrayArray
 															r.name = "TestRequestRequiredStringUUIDArrayArray"
 															r.operationID = "test_request_required_string_uuid_array_array"
+															r.pathPattern = "/test_request_required_string_uuid_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24493,6 +24857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestRequiredStringUUIDNullable"
 														r.operationID = "test_request_required_string_uuid_nullable"
+														r.pathPattern = "/test_request_required_string_uuid_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24513,6 +24878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestRequiredStringUUIDNullableArray"
 															r.operationID = "test_request_required_string_uuid_nullable_array"
+															r.pathPattern = "/test_request_required_string_uuid_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24534,6 +24900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestRequiredStringUUIDNullableArrayArray
 																r.name = "TestRequestRequiredStringUUIDNullableArrayArray"
 																r.operationID = "test_request_required_string_uuid_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_uuid_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24561,6 +24928,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "TestRequestString"
 								r.operationID = "test_request_string"
+								r.pathPattern = "/test_request_string"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -24592,6 +24960,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestStringArray"
 										r.operationID = "test_request_string_array"
+										r.pathPattern = "/test_request_string_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -24613,6 +24982,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: TestRequestStringArrayArray
 											r.name = "TestRequestStringArrayArray"
 											r.operationID = "test_request_string_array_array"
+											r.pathPattern = "/test_request_string_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24644,6 +25014,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringBase64"
 											r.operationID = "test_request_string_base64"
+											r.pathPattern = "/test_request_string_base64"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24675,6 +25046,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringBase64Array"
 													r.operationID = "test_request_string_base64_array"
+													r.pathPattern = "/test_request_string_base64_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24696,6 +25068,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringBase64ArrayArray
 														r.name = "TestRequestStringBase64ArrayArray"
 														r.operationID = "test_request_string_base64_array_array"
+														r.pathPattern = "/test_request_string_base64_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24716,6 +25089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringBase64Nullable"
 													r.operationID = "test_request_string_base64_nullable"
+													r.pathPattern = "/test_request_string_base64_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24736,6 +25110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringBase64NullableArray"
 														r.operationID = "test_request_string_base64_nullable_array"
+														r.pathPattern = "/test_request_string_base64_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24757,6 +25132,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringBase64NullableArrayArray
 															r.name = "TestRequestStringBase64NullableArrayArray"
 															r.operationID = "test_request_string_base64_nullable_array_array"
+															r.pathPattern = "/test_request_string_base64_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24780,6 +25156,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringBinary"
 											r.operationID = "test_request_string_binary"
+											r.pathPattern = "/test_request_string_binary"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24811,6 +25188,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringBinaryArray"
 													r.operationID = "test_request_string_binary_array"
+													r.pathPattern = "/test_request_string_binary_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24832,6 +25210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringBinaryArrayArray
 														r.name = "TestRequestStringBinaryArrayArray"
 														r.operationID = "test_request_string_binary_array_array"
+														r.pathPattern = "/test_request_string_binary_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24852,6 +25231,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringBinaryNullable"
 													r.operationID = "test_request_string_binary_nullable"
+													r.pathPattern = "/test_request_string_binary_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24872,6 +25252,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringBinaryNullableArray"
 														r.operationID = "test_request_string_binary_nullable_array"
+														r.pathPattern = "/test_request_string_binary_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24893,6 +25274,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringBinaryNullableArrayArray
 															r.name = "TestRequestStringBinaryNullableArrayArray"
 															r.operationID = "test_request_string_binary_nullable_array_array"
+															r.pathPattern = "/test_request_string_binary_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24916,6 +25298,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringByte"
 											r.operationID = "test_request_string_byte"
+											r.pathPattern = "/test_request_string_byte"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24947,6 +25330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringByteArray"
 													r.operationID = "test_request_string_byte_array"
+													r.pathPattern = "/test_request_string_byte_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24968,6 +25352,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringByteArrayArray
 														r.name = "TestRequestStringByteArrayArray"
 														r.operationID = "test_request_string_byte_array_array"
+														r.pathPattern = "/test_request_string_byte_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24988,6 +25373,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringByteNullable"
 													r.operationID = "test_request_string_byte_nullable"
+													r.pathPattern = "/test_request_string_byte_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25008,6 +25394,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringByteNullableArray"
 														r.operationID = "test_request_string_byte_nullable_array"
+														r.pathPattern = "/test_request_string_byte_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25029,6 +25416,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringByteNullableArrayArray
 															r.name = "TestRequestStringByteNullableArrayArray"
 															r.operationID = "test_request_string_byte_nullable_array_array"
+															r.pathPattern = "/test_request_string_byte_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25064,6 +25452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringDate"
 											r.operationID = "test_request_string_date"
+											r.pathPattern = "/test_request_string_date"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -25084,6 +25473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringDateTime"
 												r.operationID = "test_request_string_date-time"
+												r.pathPattern = "/test_request_string_date-time"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25115,6 +25505,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringDateTimeArray"
 														r.operationID = "test_request_string_date-time_array"
+														r.pathPattern = "/test_request_string_date-time_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25136,6 +25527,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringDateTimeArrayArray
 															r.name = "TestRequestStringDateTimeArrayArray"
 															r.operationID = "test_request_string_date-time_array_array"
+															r.pathPattern = "/test_request_string_date-time_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25156,6 +25548,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringDateTimeNullable"
 														r.operationID = "test_request_string_date-time_nullable"
+														r.pathPattern = "/test_request_string_date-time_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25176,6 +25569,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringDateTimeNullableArray"
 															r.operationID = "test_request_string_date-time_nullable_array"
+															r.pathPattern = "/test_request_string_date-time_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25197,6 +25591,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringDateTimeNullableArrayArray
 																r.name = "TestRequestStringDateTimeNullableArrayArray"
 																r.operationID = "test_request_string_date-time_nullable_array_array"
+																r.pathPattern = "/test_request_string_date-time_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25231,6 +25626,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringDateArray"
 													r.operationID = "test_request_string_date_array"
+													r.pathPattern = "/test_request_string_date_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25252,6 +25648,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringDateArrayArray
 														r.name = "TestRequestStringDateArrayArray"
 														r.operationID = "test_request_string_date_array_array"
+														r.pathPattern = "/test_request_string_date_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25272,6 +25669,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringDateNullable"
 													r.operationID = "test_request_string_date_nullable"
+													r.pathPattern = "/test_request_string_date_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25292,6 +25690,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringDateNullableArray"
 														r.operationID = "test_request_string_date_nullable_array"
+														r.pathPattern = "/test_request_string_date_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25313,6 +25712,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringDateNullableArrayArray
 															r.name = "TestRequestStringDateNullableArrayArray"
 															r.operationID = "test_request_string_date_nullable_array_array"
+															r.pathPattern = "/test_request_string_date_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25336,6 +25736,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringDuration"
 											r.operationID = "test_request_string_duration"
+											r.pathPattern = "/test_request_string_duration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -25367,6 +25768,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringDurationArray"
 													r.operationID = "test_request_string_duration_array"
+													r.pathPattern = "/test_request_string_duration_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25388,6 +25790,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringDurationArrayArray
 														r.name = "TestRequestStringDurationArrayArray"
 														r.operationID = "test_request_string_duration_array_array"
+														r.pathPattern = "/test_request_string_duration_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25408,6 +25811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringDurationNullable"
 													r.operationID = "test_request_string_duration_nullable"
+													r.pathPattern = "/test_request_string_duration_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25428,6 +25832,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringDurationNullableArray"
 														r.operationID = "test_request_string_duration_nullable_array"
+														r.pathPattern = "/test_request_string_duration_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25449,6 +25854,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringDurationNullableArrayArray
 															r.name = "TestRequestStringDurationNullableArrayArray"
 															r.operationID = "test_request_string_duration_nullable_array_array"
+															r.pathPattern = "/test_request_string_duration_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25473,6 +25879,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestStringEmail"
 										r.operationID = "test_request_string_email"
+										r.pathPattern = "/test_request_string_email"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -25504,6 +25911,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringEmailArray"
 												r.operationID = "test_request_string_email_array"
+												r.pathPattern = "/test_request_string_email_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25525,6 +25933,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestStringEmailArrayArray
 													r.name = "TestRequestStringEmailArrayArray"
 													r.operationID = "test_request_string_email_array_array"
+													r.pathPattern = "/test_request_string_email_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25545,6 +25954,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringEmailNullable"
 												r.operationID = "test_request_string_email_nullable"
+												r.pathPattern = "/test_request_string_email_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25565,6 +25975,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringEmailNullableArray"
 													r.operationID = "test_request_string_email_nullable_array"
+													r.pathPattern = "/test_request_string_email_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25586,6 +25997,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringEmailNullableArrayArray
 														r.name = "TestRequestStringEmailNullableArrayArray"
 														r.operationID = "test_request_string_email_nullable_array_array"
+														r.pathPattern = "/test_request_string_email_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25609,6 +26021,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestStringHostname"
 										r.operationID = "test_request_string_hostname"
+										r.pathPattern = "/test_request_string_hostname"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -25640,6 +26053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringHostnameArray"
 												r.operationID = "test_request_string_hostname_array"
+												r.pathPattern = "/test_request_string_hostname_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25661,6 +26075,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestStringHostnameArrayArray
 													r.name = "TestRequestStringHostnameArrayArray"
 													r.operationID = "test_request_string_hostname_array_array"
+													r.pathPattern = "/test_request_string_hostname_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25681,6 +26096,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringHostnameNullable"
 												r.operationID = "test_request_string_hostname_nullable"
+												r.pathPattern = "/test_request_string_hostname_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25701,6 +26117,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringHostnameNullableArray"
 													r.operationID = "test_request_string_hostname_nullable_array"
+													r.pathPattern = "/test_request_string_hostname_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25722,6 +26139,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringHostnameNullableArrayArray
 														r.name = "TestRequestStringHostnameNullableArrayArray"
 														r.operationID = "test_request_string_hostname_nullable_array_array"
+														r.pathPattern = "/test_request_string_hostname_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25767,6 +26185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringInt32"
 												r.operationID = "test_request_string_int32"
+												r.pathPattern = "/test_request_string_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25798,6 +26217,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringInt32Array"
 														r.operationID = "test_request_string_int32_array"
+														r.pathPattern = "/test_request_string_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25819,6 +26239,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringInt32ArrayArray
 															r.name = "TestRequestStringInt32ArrayArray"
 															r.operationID = "test_request_string_int32_array_array"
+															r.pathPattern = "/test_request_string_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25839,6 +26260,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringInt32Nullable"
 														r.operationID = "test_request_string_int32_nullable"
+														r.pathPattern = "/test_request_string_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25859,6 +26281,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringInt32NullableArray"
 															r.operationID = "test_request_string_int32_nullable_array"
+															r.pathPattern = "/test_request_string_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25880,6 +26303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringInt32NullableArrayArray
 																r.name = "TestRequestStringInt32NullableArrayArray"
 																r.operationID = "test_request_string_int32_nullable_array_array"
+																r.pathPattern = "/test_request_string_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25903,6 +26327,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringInt64"
 												r.operationID = "test_request_string_int64"
+												r.pathPattern = "/test_request_string_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -25934,6 +26359,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringInt64Array"
 														r.operationID = "test_request_string_int64_array"
+														r.pathPattern = "/test_request_string_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25955,6 +26381,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringInt64ArrayArray
 															r.name = "TestRequestStringInt64ArrayArray"
 															r.operationID = "test_request_string_int64_array_array"
+															r.pathPattern = "/test_request_string_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25975,6 +26402,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringInt64Nullable"
 														r.operationID = "test_request_string_int64_nullable"
+														r.pathPattern = "/test_request_string_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25995,6 +26423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringInt64NullableArray"
 															r.operationID = "test_request_string_int64_nullable_array"
+															r.pathPattern = "/test_request_string_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26016,6 +26445,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringInt64NullableArrayArray
 																r.name = "TestRequestStringInt64NullableArrayArray"
 																r.operationID = "test_request_string_int64_nullable_array_array"
+																r.pathPattern = "/test_request_string_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26040,6 +26470,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringIP"
 											r.operationID = "test_request_string_ip"
+											r.pathPattern = "/test_request_string_ip"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -26071,6 +26502,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringIPArray"
 													r.operationID = "test_request_string_ip_array"
+													r.pathPattern = "/test_request_string_ip_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26092,6 +26524,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringIPArrayArray
 														r.name = "TestRequestStringIPArrayArray"
 														r.operationID = "test_request_string_ip_array_array"
+														r.pathPattern = "/test_request_string_ip_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26112,6 +26545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringIPNullable"
 													r.operationID = "test_request_string_ip_nullable"
+													r.pathPattern = "/test_request_string_ip_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26132,6 +26566,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringIPNullableArray"
 														r.operationID = "test_request_string_ip_nullable_array"
+														r.pathPattern = "/test_request_string_ip_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26153,6 +26588,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringIPNullableArrayArray
 															r.name = "TestRequestStringIPNullableArrayArray"
 															r.operationID = "test_request_string_ip_nullable_array_array"
+															r.pathPattern = "/test_request_string_ip_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26186,6 +26622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringIpv4"
 													r.operationID = "test_request_string_ipv4"
+													r.pathPattern = "/test_request_string_ipv4"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26217,6 +26654,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringIpv4Array"
 															r.operationID = "test_request_string_ipv4_array"
+															r.pathPattern = "/test_request_string_ipv4_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26238,6 +26676,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringIpv4ArrayArray
 																r.name = "TestRequestStringIpv4ArrayArray"
 																r.operationID = "test_request_string_ipv4_array_array"
+																r.pathPattern = "/test_request_string_ipv4_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26258,6 +26697,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringIpv4Nullable"
 															r.operationID = "test_request_string_ipv4_nullable"
+															r.pathPattern = "/test_request_string_ipv4_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26278,6 +26718,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringIpv4NullableArray"
 																r.operationID = "test_request_string_ipv4_nullable_array"
+																r.pathPattern = "/test_request_string_ipv4_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26299,6 +26740,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestStringIpv4NullableArrayArray
 																	r.name = "TestRequestStringIpv4NullableArrayArray"
 																	r.operationID = "test_request_string_ipv4_nullable_array_array"
+																	r.pathPattern = "/test_request_string_ipv4_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -26322,6 +26764,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringIpv6"
 													r.operationID = "test_request_string_ipv6"
+													r.pathPattern = "/test_request_string_ipv6"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26353,6 +26796,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringIpv6Array"
 															r.operationID = "test_request_string_ipv6_array"
+															r.pathPattern = "/test_request_string_ipv6_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26374,6 +26818,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringIpv6ArrayArray
 																r.name = "TestRequestStringIpv6ArrayArray"
 																r.operationID = "test_request_string_ipv6_array_array"
+																r.pathPattern = "/test_request_string_ipv6_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26394,6 +26839,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringIpv6Nullable"
 															r.operationID = "test_request_string_ipv6_nullable"
+															r.pathPattern = "/test_request_string_ipv6_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26414,6 +26860,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringIpv6NullableArray"
 																r.operationID = "test_request_string_ipv6_nullable_array"
+																r.pathPattern = "/test_request_string_ipv6_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26435,6 +26882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestStringIpv6NullableArrayArray
 																	r.name = "TestRequestStringIpv6NullableArrayArray"
 																	r.operationID = "test_request_string_ipv6_nullable_array_array"
+																	r.pathPattern = "/test_request_string_ipv6_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -26461,6 +26909,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestStringNullable"
 										r.operationID = "test_request_string_nullable"
+										r.pathPattern = "/test_request_string_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -26481,6 +26930,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringNullableArray"
 											r.operationID = "test_request_string_nullable_array"
+											r.pathPattern = "/test_request_string_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -26502,6 +26952,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestRequestStringNullableArrayArray
 												r.name = "TestRequestStringNullableArrayArray"
 												r.operationID = "test_request_string_nullable_array_array"
+												r.pathPattern = "/test_request_string_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26523,6 +26974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestStringPassword"
 										r.operationID = "test_request_string_password"
+										r.pathPattern = "/test_request_string_password"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -26554,6 +27006,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringPasswordArray"
 												r.operationID = "test_request_string_password_array"
+												r.pathPattern = "/test_request_string_password_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26575,6 +27028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestStringPasswordArrayArray
 													r.name = "TestRequestStringPasswordArrayArray"
 													r.operationID = "test_request_string_password_array_array"
+													r.pathPattern = "/test_request_string_password_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26595,6 +27049,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringPasswordNullable"
 												r.operationID = "test_request_string_password_nullable"
+												r.pathPattern = "/test_request_string_password_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26615,6 +27070,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringPasswordNullableArray"
 													r.operationID = "test_request_string_password_nullable_array"
+													r.pathPattern = "/test_request_string_password_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26636,6 +27092,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringPasswordNullableArrayArray
 														r.name = "TestRequestStringPasswordNullableArrayArray"
 														r.operationID = "test_request_string_password_nullable_array_array"
+														r.pathPattern = "/test_request_string_password_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26659,6 +27116,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestRequestStringTime"
 										r.operationID = "test_request_string_time"
+										r.pathPattern = "/test_request_string_time"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -26690,6 +27148,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringTimeArray"
 												r.operationID = "test_request_string_time_array"
+												r.pathPattern = "/test_request_string_time_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26711,6 +27170,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestRequestStringTimeArrayArray
 													r.name = "TestRequestStringTimeArrayArray"
 													r.operationID = "test_request_string_time_array_array"
+													r.pathPattern = "/test_request_string_time_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26731,6 +27191,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestRequestStringTimeNullable"
 												r.operationID = "test_request_string_time_nullable"
+												r.pathPattern = "/test_request_string_time_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26751,6 +27212,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringTimeNullableArray"
 													r.operationID = "test_request_string_time_nullable_array"
+													r.pathPattern = "/test_request_string_time_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26772,6 +27234,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringTimeNullableArrayArray
 														r.name = "TestRequestStringTimeNullableArrayArray"
 														r.operationID = "test_request_string_time_nullable_array_array"
+														r.pathPattern = "/test_request_string_time_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26806,6 +27269,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringUnix"
 											r.operationID = "test_request_string_unix"
+											r.pathPattern = "/test_request_string_unix"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -26848,6 +27312,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringUnixMicro"
 														r.operationID = "test_request_string_unix-micro"
+														r.pathPattern = "/test_request_string_unix-micro"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26879,6 +27344,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringUnixMicroArray"
 																r.operationID = "test_request_string_unix-micro_array"
+																r.pathPattern = "/test_request_string_unix-micro_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26900,6 +27366,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestStringUnixMicroArrayArray
 																	r.name = "TestRequestStringUnixMicroArrayArray"
 																	r.operationID = "test_request_string_unix-micro_array_array"
+																	r.pathPattern = "/test_request_string_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -26920,6 +27387,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringUnixMicroNullable"
 																r.operationID = "test_request_string_unix-micro_nullable"
+																r.pathPattern = "/test_request_string_unix-micro_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26940,6 +27408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestStringUnixMicroNullableArray"
 																	r.operationID = "test_request_string_unix-micro_nullable_array"
+																	r.pathPattern = "/test_request_string_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -26961,6 +27430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestStringUnixMicroNullableArrayArray
 																		r.name = "TestRequestStringUnixMicroNullableArrayArray"
 																		r.operationID = "test_request_string_unix-micro_nullable_array_array"
+																		r.pathPattern = "/test_request_string_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -26984,6 +27454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringUnixMilli"
 														r.operationID = "test_request_string_unix-milli"
+														r.pathPattern = "/test_request_string_unix-milli"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27015,6 +27486,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringUnixMilliArray"
 																r.operationID = "test_request_string_unix-milli_array"
+																r.pathPattern = "/test_request_string_unix-milli_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -27036,6 +27508,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestStringUnixMilliArrayArray
 																	r.name = "TestRequestStringUnixMilliArrayArray"
 																	r.operationID = "test_request_string_unix-milli_array_array"
+																	r.pathPattern = "/test_request_string_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -27056,6 +27529,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringUnixMilliNullable"
 																r.operationID = "test_request_string_unix-milli_nullable"
+																r.pathPattern = "/test_request_string_unix-milli_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -27076,6 +27550,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestRequestStringUnixMilliNullableArray"
 																	r.operationID = "test_request_string_unix-milli_nullable_array"
+																	r.pathPattern = "/test_request_string_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -27097,6 +27572,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestRequestStringUnixMilliNullableArrayArray
 																		r.name = "TestRequestStringUnixMilliNullableArrayArray"
 																		r.operationID = "test_request_string_unix-milli_nullable_array_array"
+																		r.pathPattern = "/test_request_string_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -27121,6 +27597,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringUnixNano"
 													r.operationID = "test_request_string_unix-nano"
+													r.pathPattern = "/test_request_string_unix-nano"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27152,6 +27629,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringUnixNanoArray"
 															r.operationID = "test_request_string_unix-nano_array"
+															r.pathPattern = "/test_request_string_unix-nano_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27173,6 +27651,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringUnixNanoArrayArray
 																r.name = "TestRequestStringUnixNanoArrayArray"
 																r.operationID = "test_request_string_unix-nano_array_array"
+																r.pathPattern = "/test_request_string_unix-nano_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -27193,6 +27672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringUnixNanoNullable"
 															r.operationID = "test_request_string_unix-nano_nullable"
+															r.pathPattern = "/test_request_string_unix-nano_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27213,6 +27693,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringUnixNanoNullableArray"
 																r.operationID = "test_request_string_unix-nano_nullable_array"
+																r.pathPattern = "/test_request_string_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -27234,6 +27715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestStringUnixNanoNullableArrayArray
 																	r.name = "TestRequestStringUnixNanoNullableArrayArray"
 																	r.operationID = "test_request_string_unix-nano_nullable_array_array"
+																	r.pathPattern = "/test_request_string_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -27257,6 +27739,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringUnixSeconds"
 													r.operationID = "test_request_string_unix-seconds"
+													r.pathPattern = "/test_request_string_unix-seconds"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27288,6 +27771,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringUnixSecondsArray"
 															r.operationID = "test_request_string_unix-seconds_array"
+															r.pathPattern = "/test_request_string_unix-seconds_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27309,6 +27793,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestRequestStringUnixSecondsArrayArray
 																r.name = "TestRequestStringUnixSecondsArrayArray"
 																r.operationID = "test_request_string_unix-seconds_array_array"
+																r.pathPattern = "/test_request_string_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -27329,6 +27814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestRequestStringUnixSecondsNullable"
 															r.operationID = "test_request_string_unix-seconds_nullable"
+															r.pathPattern = "/test_request_string_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27349,6 +27835,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestRequestStringUnixSecondsNullableArray"
 																r.operationID = "test_request_string_unix-seconds_nullable_array"
+																r.pathPattern = "/test_request_string_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -27370,6 +27857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestRequestStringUnixSecondsNullableArrayArray
 																	r.name = "TestRequestStringUnixSecondsNullableArrayArray"
 																	r.operationID = "test_request_string_unix-seconds_nullable_array_array"
+																	r.pathPattern = "/test_request_string_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -27405,6 +27893,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringUnixArray"
 													r.operationID = "test_request_string_unix_array"
+													r.pathPattern = "/test_request_string_unix_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27426,6 +27915,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringUnixArrayArray
 														r.name = "TestRequestStringUnixArrayArray"
 														r.operationID = "test_request_string_unix_array_array"
+														r.pathPattern = "/test_request_string_unix_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27446,6 +27936,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringUnixNullable"
 													r.operationID = "test_request_string_unix_nullable"
+													r.pathPattern = "/test_request_string_unix_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27466,6 +27957,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringUnixNullableArray"
 														r.operationID = "test_request_string_unix_nullable_array"
+														r.pathPattern = "/test_request_string_unix_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27487,6 +27979,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringUnixNullableArrayArray
 															r.name = "TestRequestStringUnixNullableArrayArray"
 															r.operationID = "test_request_string_unix_nullable_array_array"
+															r.pathPattern = "/test_request_string_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27510,6 +28003,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringURI"
 											r.operationID = "test_request_string_uri"
+											r.pathPattern = "/test_request_string_uri"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -27541,6 +28035,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringURIArray"
 													r.operationID = "test_request_string_uri_array"
+													r.pathPattern = "/test_request_string_uri_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27562,6 +28057,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringURIArrayArray
 														r.name = "TestRequestStringURIArrayArray"
 														r.operationID = "test_request_string_uri_array_array"
+														r.pathPattern = "/test_request_string_uri_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27582,6 +28078,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringURINullable"
 													r.operationID = "test_request_string_uri_nullable"
+													r.pathPattern = "/test_request_string_uri_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27602,6 +28099,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringURINullableArray"
 														r.operationID = "test_request_string_uri_nullable_array"
+														r.pathPattern = "/test_request_string_uri_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27623,6 +28121,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringURINullableArrayArray
 															r.name = "TestRequestStringURINullableArrayArray"
 															r.operationID = "test_request_string_uri_nullable_array_array"
+															r.pathPattern = "/test_request_string_uri_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27646,6 +28145,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestRequestStringUUID"
 											r.operationID = "test_request_string_uuid"
+											r.pathPattern = "/test_request_string_uuid"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -27677,6 +28177,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringUUIDArray"
 													r.operationID = "test_request_string_uuid_array"
+													r.pathPattern = "/test_request_string_uuid_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27698,6 +28199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestRequestStringUUIDArrayArray
 														r.name = "TestRequestStringUUIDArrayArray"
 														r.operationID = "test_request_string_uuid_array_array"
+														r.pathPattern = "/test_request_string_uuid_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27718,6 +28220,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestRequestStringUUIDNullable"
 													r.operationID = "test_request_string_uuid_nullable"
+													r.pathPattern = "/test_request_string_uuid_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -27738,6 +28241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestRequestStringUUIDNullableArray"
 														r.operationID = "test_request_string_uuid_nullable_array"
+														r.pathPattern = "/test_request_string_uuid_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27759,6 +28263,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestRequestStringUUIDNullableArrayArray
 															r.name = "TestRequestStringUUIDNullableArrayArray"
 															r.operationID = "test_request_string_uuid_nullable_array_array"
+															r.pathPattern = "/test_request_string_uuid_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -27798,6 +28303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: TestResponseAny
 								r.name = "TestResponseAny"
 								r.operationID = "test_response_Any"
+								r.pathPattern = "/test_response_Any"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27818,6 +28324,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: TestResponseEmptyStruct
 								r.name = "TestResponseEmptyStruct"
 								r.operationID = "test_response_EmptyStruct"
+								r.pathPattern = "/test_response_EmptyStruct"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27838,6 +28345,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: TestResponseFormatTest
 								r.name = "TestResponseFormatTest"
 								r.operationID = "test_response_FormatTest"
+								r.pathPattern = "/test_response_FormatTest"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27857,6 +28365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "TestResponseBoolean"
 								r.operationID = "test_response_boolean"
+								r.pathPattern = "/test_response_boolean"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27888,6 +28397,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseBooleanArray"
 										r.operationID = "test_response_boolean_array"
+										r.pathPattern = "/test_response_boolean_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -27909,6 +28419,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: TestResponseBooleanArrayArray
 											r.name = "TestResponseBooleanArrayArray"
 											r.operationID = "test_response_boolean_array_array"
+											r.pathPattern = "/test_response_boolean_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -27929,6 +28440,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseBooleanNullable"
 										r.operationID = "test_response_boolean_nullable"
+										r.pathPattern = "/test_response_boolean_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -27949,6 +28461,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseBooleanNullableArray"
 											r.operationID = "test_response_boolean_nullable_array"
+											r.pathPattern = "/test_response_boolean_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -27970,6 +28483,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestResponseBooleanNullableArrayArray
 												r.name = "TestResponseBooleanNullableArrayArray"
 												r.operationID = "test_response_boolean_nullable_array_array"
+												r.pathPattern = "/test_response_boolean_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -27993,6 +28507,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "TestResponseInteger"
 								r.operationID = "test_response_integer"
+								r.pathPattern = "/test_response_integer"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -28024,6 +28539,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseIntegerArray"
 										r.operationID = "test_response_integer_array"
+										r.pathPattern = "/test_response_integer_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -28045,6 +28561,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: TestResponseIntegerArrayArray
 											r.name = "TestResponseIntegerArrayArray"
 											r.operationID = "test_response_integer_array_array"
+											r.pathPattern = "/test_response_integer_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -28076,6 +28593,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseIntegerInt32"
 											r.operationID = "test_response_integer_int32"
+											r.pathPattern = "/test_response_integer_int32"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -28107,6 +28625,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerInt32Array"
 													r.operationID = "test_response_integer_int32_array"
+													r.pathPattern = "/test_response_integer_int32_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -28128,6 +28647,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseIntegerInt32ArrayArray
 														r.name = "TestResponseIntegerInt32ArrayArray"
 														r.operationID = "test_response_integer_int32_array_array"
+														r.pathPattern = "/test_response_integer_int32_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28148,6 +28668,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerInt32Nullable"
 													r.operationID = "test_response_integer_int32_nullable"
+													r.pathPattern = "/test_response_integer_int32_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -28168,6 +28689,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerInt32NullableArray"
 														r.operationID = "test_response_integer_int32_nullable_array"
+														r.pathPattern = "/test_response_integer_int32_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28189,6 +28711,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseIntegerInt32NullableArrayArray
 															r.name = "TestResponseIntegerInt32NullableArrayArray"
 															r.operationID = "test_response_integer_int32_nullable_array_array"
+															r.pathPattern = "/test_response_integer_int32_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28212,6 +28735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseIntegerInt64"
 											r.operationID = "test_response_integer_int64"
+											r.pathPattern = "/test_response_integer_int64"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -28243,6 +28767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerInt64Array"
 													r.operationID = "test_response_integer_int64_array"
+													r.pathPattern = "/test_response_integer_int64_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -28264,6 +28789,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseIntegerInt64ArrayArray
 														r.name = "TestResponseIntegerInt64ArrayArray"
 														r.operationID = "test_response_integer_int64_array_array"
+														r.pathPattern = "/test_response_integer_int64_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28284,6 +28810,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerInt64Nullable"
 													r.operationID = "test_response_integer_int64_nullable"
+													r.pathPattern = "/test_response_integer_int64_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -28304,6 +28831,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerInt64NullableArray"
 														r.operationID = "test_response_integer_int64_nullable_array"
+														r.pathPattern = "/test_response_integer_int64_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28325,6 +28853,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseIntegerInt64NullableArrayArray
 															r.name = "TestResponseIntegerInt64NullableArrayArray"
 															r.operationID = "test_response_integer_int64_nullable_array_array"
+															r.pathPattern = "/test_response_integer_int64_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28349,6 +28878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseIntegerNullable"
 										r.operationID = "test_response_integer_nullable"
+										r.pathPattern = "/test_response_integer_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -28369,6 +28899,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseIntegerNullableArray"
 											r.operationID = "test_response_integer_nullable_array"
+											r.pathPattern = "/test_response_integer_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -28390,6 +28921,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestResponseIntegerNullableArrayArray
 												r.name = "TestResponseIntegerNullableArrayArray"
 												r.operationID = "test_response_integer_nullable_array_array"
+												r.pathPattern = "/test_response_integer_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -28422,6 +28954,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseIntegerUint"
 											r.operationID = "test_response_integer_uint"
+											r.pathPattern = "/test_response_integer_uint"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -28442,6 +28975,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseIntegerUint32"
 												r.operationID = "test_response_integer_uint32"
+												r.pathPattern = "/test_response_integer_uint32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -28473,6 +29007,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUint32Array"
 														r.operationID = "test_response_integer_uint32_array"
+														r.pathPattern = "/test_response_integer_uint32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28494,6 +29029,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseIntegerUint32ArrayArray
 															r.name = "TestResponseIntegerUint32ArrayArray"
 															r.operationID = "test_response_integer_uint32_array_array"
+															r.pathPattern = "/test_response_integer_uint32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28514,6 +29050,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUint32Nullable"
 														r.operationID = "test_response_integer_uint32_nullable"
+														r.pathPattern = "/test_response_integer_uint32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28534,6 +29071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseIntegerUint32NullableArray"
 															r.operationID = "test_response_integer_uint32_nullable_array"
+															r.pathPattern = "/test_response_integer_uint32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28555,6 +29093,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseIntegerUint32NullableArrayArray
 																r.name = "TestResponseIntegerUint32NullableArrayArray"
 																r.operationID = "test_response_integer_uint32_nullable_array_array"
+																r.pathPattern = "/test_response_integer_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -28578,6 +29117,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseIntegerUint64"
 												r.operationID = "test_response_integer_uint64"
+												r.pathPattern = "/test_response_integer_uint64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -28609,6 +29149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUint64Array"
 														r.operationID = "test_response_integer_uint64_array"
+														r.pathPattern = "/test_response_integer_uint64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28630,6 +29171,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseIntegerUint64ArrayArray
 															r.name = "TestResponseIntegerUint64ArrayArray"
 															r.operationID = "test_response_integer_uint64_array_array"
+															r.pathPattern = "/test_response_integer_uint64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28650,6 +29192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUint64Nullable"
 														r.operationID = "test_response_integer_uint64_nullable"
+														r.pathPattern = "/test_response_integer_uint64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28670,6 +29213,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseIntegerUint64NullableArray"
 															r.operationID = "test_response_integer_uint64_nullable_array"
+															r.pathPattern = "/test_response_integer_uint64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28691,6 +29235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseIntegerUint64NullableArrayArray
 																r.name = "TestResponseIntegerUint64NullableArrayArray"
 																r.operationID = "test_response_integer_uint64_nullable_array_array"
+																r.pathPattern = "/test_response_integer_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -28725,6 +29270,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerUintArray"
 													r.operationID = "test_response_integer_uint_array"
+													r.pathPattern = "/test_response_integer_uint_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -28746,6 +29292,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseIntegerUintArrayArray
 														r.name = "TestResponseIntegerUintArrayArray"
 														r.operationID = "test_response_integer_uint_array_array"
+														r.pathPattern = "/test_response_integer_uint_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28766,6 +29313,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerUintNullable"
 													r.operationID = "test_response_integer_uint_nullable"
+													r.pathPattern = "/test_response_integer_uint_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -28786,6 +29334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUintNullableArray"
 														r.operationID = "test_response_integer_uint_nullable_array"
+														r.pathPattern = "/test_response_integer_uint_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28807,6 +29356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseIntegerUintNullableArrayArray
 															r.name = "TestResponseIntegerUintNullableArrayArray"
 															r.operationID = "test_response_integer_uint_nullable_array_array"
+															r.pathPattern = "/test_response_integer_uint_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -28830,6 +29380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseIntegerUnix"
 											r.operationID = "test_response_integer_unix"
+											r.pathPattern = "/test_response_integer_unix"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -28872,6 +29423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUnixMicro"
 														r.operationID = "test_response_integer_unix-micro"
+														r.pathPattern = "/test_response_integer_unix-micro"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -28903,6 +29455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseIntegerUnixMicroArray"
 																r.operationID = "test_response_integer_unix-micro_array"
+																r.pathPattern = "/test_response_integer_unix-micro_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -28924,6 +29477,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseIntegerUnixMicroArrayArray
 																	r.name = "TestResponseIntegerUnixMicroArrayArray"
 																	r.operationID = "test_response_integer_unix-micro_array_array"
+																	r.pathPattern = "/test_response_integer_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -28944,6 +29498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseIntegerUnixMicroNullable"
 																r.operationID = "test_response_integer_unix-micro_nullable"
+																r.pathPattern = "/test_response_integer_unix-micro_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -28964,6 +29519,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestResponseIntegerUnixMicroNullableArray"
 																	r.operationID = "test_response_integer_unix-micro_nullable_array"
+																	r.pathPattern = "/test_response_integer_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -28985,6 +29541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestResponseIntegerUnixMicroNullableArrayArray
 																		r.name = "TestResponseIntegerUnixMicroNullableArrayArray"
 																		r.operationID = "test_response_integer_unix-micro_nullable_array_array"
+																		r.pathPattern = "/test_response_integer_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -29008,6 +29565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUnixMilli"
 														r.operationID = "test_response_integer_unix-milli"
+														r.pathPattern = "/test_response_integer_unix-milli"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -29039,6 +29597,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseIntegerUnixMilliArray"
 																r.operationID = "test_response_integer_unix-milli_array"
+																r.pathPattern = "/test_response_integer_unix-milli_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -29060,6 +29619,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseIntegerUnixMilliArrayArray
 																	r.name = "TestResponseIntegerUnixMilliArrayArray"
 																	r.operationID = "test_response_integer_unix-milli_array_array"
+																	r.pathPattern = "/test_response_integer_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -29080,6 +29640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseIntegerUnixMilliNullable"
 																r.operationID = "test_response_integer_unix-milli_nullable"
+																r.pathPattern = "/test_response_integer_unix-milli_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -29100,6 +29661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestResponseIntegerUnixMilliNullableArray"
 																	r.operationID = "test_response_integer_unix-milli_nullable_array"
+																	r.pathPattern = "/test_response_integer_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -29121,6 +29683,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestResponseIntegerUnixMilliNullableArrayArray
 																		r.name = "TestResponseIntegerUnixMilliNullableArrayArray"
 																		r.operationID = "test_response_integer_unix-milli_nullable_array_array"
+																		r.pathPattern = "/test_response_integer_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -29145,6 +29708,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerUnixNano"
 													r.operationID = "test_response_integer_unix-nano"
+													r.pathPattern = "/test_response_integer_unix-nano"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29176,6 +29740,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseIntegerUnixNanoArray"
 															r.operationID = "test_response_integer_unix-nano_array"
+															r.pathPattern = "/test_response_integer_unix-nano_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -29197,6 +29762,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseIntegerUnixNanoArrayArray
 																r.name = "TestResponseIntegerUnixNanoArrayArray"
 																r.operationID = "test_response_integer_unix-nano_array_array"
+																r.pathPattern = "/test_response_integer_unix-nano_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -29217,6 +29783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseIntegerUnixNanoNullable"
 															r.operationID = "test_response_integer_unix-nano_nullable"
+															r.pathPattern = "/test_response_integer_unix-nano_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -29237,6 +29804,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseIntegerUnixNanoNullableArray"
 																r.operationID = "test_response_integer_unix-nano_nullable_array"
+																r.pathPattern = "/test_response_integer_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -29258,6 +29826,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseIntegerUnixNanoNullableArrayArray
 																	r.name = "TestResponseIntegerUnixNanoNullableArrayArray"
 																	r.operationID = "test_response_integer_unix-nano_nullable_array_array"
+																	r.pathPattern = "/test_response_integer_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -29281,6 +29850,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerUnixSeconds"
 													r.operationID = "test_response_integer_unix-seconds"
+													r.pathPattern = "/test_response_integer_unix-seconds"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29312,6 +29882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseIntegerUnixSecondsArray"
 															r.operationID = "test_response_integer_unix-seconds_array"
+															r.pathPattern = "/test_response_integer_unix-seconds_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -29333,6 +29904,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseIntegerUnixSecondsArrayArray
 																r.name = "TestResponseIntegerUnixSecondsArrayArray"
 																r.operationID = "test_response_integer_unix-seconds_array_array"
+																r.pathPattern = "/test_response_integer_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -29353,6 +29925,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseIntegerUnixSecondsNullable"
 															r.operationID = "test_response_integer_unix-seconds_nullable"
+															r.pathPattern = "/test_response_integer_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -29373,6 +29946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseIntegerUnixSecondsNullableArray"
 																r.operationID = "test_response_integer_unix-seconds_nullable_array"
+																r.pathPattern = "/test_response_integer_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -29394,6 +29968,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseIntegerUnixSecondsNullableArrayArray
 																	r.name = "TestResponseIntegerUnixSecondsNullableArrayArray"
 																	r.operationID = "test_response_integer_unix-seconds_nullable_array_array"
+																	r.pathPattern = "/test_response_integer_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -29429,6 +30004,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerUnixArray"
 													r.operationID = "test_response_integer_unix_array"
+													r.pathPattern = "/test_response_integer_unix_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29450,6 +30026,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseIntegerUnixArrayArray
 														r.name = "TestResponseIntegerUnixArrayArray"
 														r.operationID = "test_response_integer_unix_array_array"
+														r.pathPattern = "/test_response_integer_unix_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -29470,6 +30047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseIntegerUnixNullable"
 													r.operationID = "test_response_integer_unix_nullable"
+													r.pathPattern = "/test_response_integer_unix_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29490,6 +30068,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseIntegerUnixNullableArray"
 														r.operationID = "test_response_integer_unix_nullable_array"
+														r.pathPattern = "/test_response_integer_unix_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -29511,6 +30090,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseIntegerUnixNullableArrayArray
 															r.name = "TestResponseIntegerUnixNullableArrayArray"
 															r.operationID = "test_response_integer_unix_nullable_array_array"
+															r.pathPattern = "/test_response_integer_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -29548,6 +30128,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestResponseNull"
 									r.operationID = "test_response_null"
+									r.pathPattern = "/test_response_null"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -29579,6 +30160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseNullArray"
 											r.operationID = "test_response_null_array"
+											r.pathPattern = "/test_response_null_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -29600,6 +30182,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestResponseNullArrayArray
 												r.name = "TestResponseNullArrayArray"
 												r.operationID = "test_response_null_array_array"
+												r.pathPattern = "/test_response_null_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -29620,6 +30203,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseNullNullable"
 											r.operationID = "test_response_null_nullable"
+											r.pathPattern = "/test_response_null_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -29640,6 +30224,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseNullNullableArray"
 												r.operationID = "test_response_null_nullable_array"
+												r.pathPattern = "/test_response_null_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -29661,6 +30246,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestResponseNullNullableArrayArray
 													r.name = "TestResponseNullNullableArrayArray"
 													r.operationID = "test_response_null_nullable_array_array"
+													r.pathPattern = "/test_response_null_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29684,6 +30270,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "TestResponseNumber"
 									r.operationID = "test_response_number"
+									r.pathPattern = "/test_response_number"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -29715,6 +30302,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseNumberArray"
 											r.operationID = "test_response_number_array"
+											r.pathPattern = "/test_response_number_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -29736,6 +30324,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestResponseNumberArrayArray
 												r.name = "TestResponseNumberArrayArray"
 												r.operationID = "test_response_number_array_array"
+												r.pathPattern = "/test_response_number_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -29756,6 +30345,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseNumberDouble"
 											r.operationID = "test_response_number_double"
+											r.pathPattern = "/test_response_number_double"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -29787,6 +30377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseNumberDoubleArray"
 													r.operationID = "test_response_number_double_array"
+													r.pathPattern = "/test_response_number_double_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29808,6 +30399,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseNumberDoubleArrayArray
 														r.name = "TestResponseNumberDoubleArrayArray"
 														r.operationID = "test_response_number_double_array_array"
+														r.pathPattern = "/test_response_number_double_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -29828,6 +30420,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseNumberDoubleNullable"
 													r.operationID = "test_response_number_double_nullable"
+													r.pathPattern = "/test_response_number_double_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29848,6 +30441,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseNumberDoubleNullableArray"
 														r.operationID = "test_response_number_double_nullable_array"
+														r.pathPattern = "/test_response_number_double_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -29869,6 +30463,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseNumberDoubleNullableArrayArray
 															r.name = "TestResponseNumberDoubleNullableArrayArray"
 															r.operationID = "test_response_number_double_nullable_array_array"
+															r.pathPattern = "/test_response_number_double_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -29892,6 +30487,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseNumberFloat"
 											r.operationID = "test_response_number_float"
+											r.pathPattern = "/test_response_number_float"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -29923,6 +30519,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseNumberFloatArray"
 													r.operationID = "test_response_number_float_array"
+													r.pathPattern = "/test_response_number_float_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29944,6 +30541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseNumberFloatArrayArray
 														r.name = "TestResponseNumberFloatArrayArray"
 														r.operationID = "test_response_number_float_array_array"
+														r.pathPattern = "/test_response_number_float_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -29964,6 +30562,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseNumberFloatNullable"
 													r.operationID = "test_response_number_float_nullable"
+													r.pathPattern = "/test_response_number_float_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -29984,6 +30583,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseNumberFloatNullableArray"
 														r.operationID = "test_response_number_float_nullable_array"
+														r.pathPattern = "/test_response_number_float_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30005,6 +30605,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseNumberFloatNullableArrayArray
 															r.name = "TestResponseNumberFloatNullableArrayArray"
 															r.operationID = "test_response_number_float_nullable_array_array"
+															r.pathPattern = "/test_response_number_float_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30039,6 +30640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseNumberInt32"
 												r.operationID = "test_response_number_int32"
+												r.pathPattern = "/test_response_number_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -30070,6 +30672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseNumberInt32Array"
 														r.operationID = "test_response_number_int32_array"
+														r.pathPattern = "/test_response_number_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30091,6 +30694,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseNumberInt32ArrayArray
 															r.name = "TestResponseNumberInt32ArrayArray"
 															r.operationID = "test_response_number_int32_array_array"
+															r.pathPattern = "/test_response_number_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30111,6 +30715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseNumberInt32Nullable"
 														r.operationID = "test_response_number_int32_nullable"
+														r.pathPattern = "/test_response_number_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30131,6 +30736,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseNumberInt32NullableArray"
 															r.operationID = "test_response_number_int32_nullable_array"
+															r.pathPattern = "/test_response_number_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30152,6 +30758,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseNumberInt32NullableArrayArray
 																r.name = "TestResponseNumberInt32NullableArrayArray"
 																r.operationID = "test_response_number_int32_nullable_array_array"
+																r.pathPattern = "/test_response_number_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -30175,6 +30782,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseNumberInt64"
 												r.operationID = "test_response_number_int64"
+												r.pathPattern = "/test_response_number_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -30206,6 +30814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseNumberInt64Array"
 														r.operationID = "test_response_number_int64_array"
+														r.pathPattern = "/test_response_number_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30227,6 +30836,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseNumberInt64ArrayArray
 															r.name = "TestResponseNumberInt64ArrayArray"
 															r.operationID = "test_response_number_int64_array_array"
+															r.pathPattern = "/test_response_number_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30247,6 +30857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseNumberInt64Nullable"
 														r.operationID = "test_response_number_int64_nullable"
+														r.pathPattern = "/test_response_number_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30267,6 +30878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseNumberInt64NullableArray"
 															r.operationID = "test_response_number_int64_nullable_array"
+															r.pathPattern = "/test_response_number_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30288,6 +30900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseNumberInt64NullableArrayArray
 																r.name = "TestResponseNumberInt64NullableArrayArray"
 																r.operationID = "test_response_number_int64_nullable_array_array"
+																r.pathPattern = "/test_response_number_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -30312,6 +30925,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseNumberNullable"
 											r.operationID = "test_response_number_nullable"
+											r.pathPattern = "/test_response_number_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -30332,6 +30946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseNumberNullableArray"
 												r.operationID = "test_response_number_nullable_array"
+												r.pathPattern = "/test_response_number_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -30353,6 +30968,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestResponseNumberNullableArrayArray
 													r.name = "TestResponseNumberNullableArrayArray"
 													r.operationID = "test_response_number_nullable_array_array"
+													r.pathPattern = "/test_response_number_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30377,6 +30993,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "TestResponseString"
 								r.operationID = "test_response_string"
+								r.pathPattern = "/test_response_string"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -30408,6 +31025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseStringArray"
 										r.operationID = "test_response_string_array"
+										r.pathPattern = "/test_response_string_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -30429,6 +31047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: TestResponseStringArrayArray
 											r.name = "TestResponseStringArrayArray"
 											r.operationID = "test_response_string_array_array"
+											r.pathPattern = "/test_response_string_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -30460,6 +31079,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringBase64"
 											r.operationID = "test_response_string_base64"
+											r.pathPattern = "/test_response_string_base64"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -30491,6 +31111,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringBase64Array"
 													r.operationID = "test_response_string_base64_array"
+													r.pathPattern = "/test_response_string_base64_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30512,6 +31133,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringBase64ArrayArray
 														r.name = "TestResponseStringBase64ArrayArray"
 														r.operationID = "test_response_string_base64_array_array"
+														r.pathPattern = "/test_response_string_base64_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30532,6 +31154,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringBase64Nullable"
 													r.operationID = "test_response_string_base64_nullable"
+													r.pathPattern = "/test_response_string_base64_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30552,6 +31175,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringBase64NullableArray"
 														r.operationID = "test_response_string_base64_nullable_array"
+														r.pathPattern = "/test_response_string_base64_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30573,6 +31197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringBase64NullableArrayArray
 															r.name = "TestResponseStringBase64NullableArrayArray"
 															r.operationID = "test_response_string_base64_nullable_array_array"
+															r.pathPattern = "/test_response_string_base64_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30596,6 +31221,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringBinary"
 											r.operationID = "test_response_string_binary"
+											r.pathPattern = "/test_response_string_binary"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -30627,6 +31253,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringBinaryArray"
 													r.operationID = "test_response_string_binary_array"
+													r.pathPattern = "/test_response_string_binary_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30648,6 +31275,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringBinaryArrayArray
 														r.name = "TestResponseStringBinaryArrayArray"
 														r.operationID = "test_response_string_binary_array_array"
+														r.pathPattern = "/test_response_string_binary_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30668,6 +31296,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringBinaryNullable"
 													r.operationID = "test_response_string_binary_nullable"
+													r.pathPattern = "/test_response_string_binary_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30688,6 +31317,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringBinaryNullableArray"
 														r.operationID = "test_response_string_binary_nullable_array"
+														r.pathPattern = "/test_response_string_binary_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30709,6 +31339,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringBinaryNullableArrayArray
 															r.name = "TestResponseStringBinaryNullableArrayArray"
 															r.operationID = "test_response_string_binary_nullable_array_array"
+															r.pathPattern = "/test_response_string_binary_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30732,6 +31363,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringByte"
 											r.operationID = "test_response_string_byte"
+											r.pathPattern = "/test_response_string_byte"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -30763,6 +31395,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringByteArray"
 													r.operationID = "test_response_string_byte_array"
+													r.pathPattern = "/test_response_string_byte_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30784,6 +31417,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringByteArrayArray
 														r.name = "TestResponseStringByteArrayArray"
 														r.operationID = "test_response_string_byte_array_array"
+														r.pathPattern = "/test_response_string_byte_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30804,6 +31438,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringByteNullable"
 													r.operationID = "test_response_string_byte_nullable"
+													r.pathPattern = "/test_response_string_byte_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -30824,6 +31459,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringByteNullableArray"
 														r.operationID = "test_response_string_byte_nullable_array"
+														r.pathPattern = "/test_response_string_byte_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30845,6 +31481,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringByteNullableArrayArray
 															r.name = "TestResponseStringByteNullableArrayArray"
 															r.operationID = "test_response_string_byte_nullable_array_array"
+															r.pathPattern = "/test_response_string_byte_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30880,6 +31517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringDate"
 											r.operationID = "test_response_string_date"
+											r.pathPattern = "/test_response_string_date"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -30900,6 +31538,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringDateTime"
 												r.operationID = "test_response_string_date-time"
+												r.pathPattern = "/test_response_string_date-time"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -30931,6 +31570,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringDateTimeArray"
 														r.operationID = "test_response_string_date-time_array"
+														r.pathPattern = "/test_response_string_date-time_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30952,6 +31592,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringDateTimeArrayArray
 															r.name = "TestResponseStringDateTimeArrayArray"
 															r.operationID = "test_response_string_date-time_array_array"
+															r.pathPattern = "/test_response_string_date-time_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -30972,6 +31613,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringDateTimeNullable"
 														r.operationID = "test_response_string_date-time_nullable"
+														r.pathPattern = "/test_response_string_date-time_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -30992,6 +31634,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringDateTimeNullableArray"
 															r.operationID = "test_response_string_date-time_nullable_array"
+															r.pathPattern = "/test_response_string_date-time_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31013,6 +31656,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringDateTimeNullableArrayArray
 																r.name = "TestResponseStringDateTimeNullableArrayArray"
 																r.operationID = "test_response_string_date-time_nullable_array_array"
+																r.pathPattern = "/test_response_string_date-time_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -31047,6 +31691,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringDateArray"
 													r.operationID = "test_response_string_date_array"
+													r.pathPattern = "/test_response_string_date_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31068,6 +31713,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringDateArrayArray
 														r.name = "TestResponseStringDateArrayArray"
 														r.operationID = "test_response_string_date_array_array"
+														r.pathPattern = "/test_response_string_date_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31088,6 +31734,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringDateNullable"
 													r.operationID = "test_response_string_date_nullable"
+													r.pathPattern = "/test_response_string_date_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31108,6 +31755,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringDateNullableArray"
 														r.operationID = "test_response_string_date_nullable_array"
+														r.pathPattern = "/test_response_string_date_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31129,6 +31777,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringDateNullableArrayArray
 															r.name = "TestResponseStringDateNullableArrayArray"
 															r.operationID = "test_response_string_date_nullable_array_array"
+															r.pathPattern = "/test_response_string_date_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31152,6 +31801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringDuration"
 											r.operationID = "test_response_string_duration"
+											r.pathPattern = "/test_response_string_duration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -31183,6 +31833,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringDurationArray"
 													r.operationID = "test_response_string_duration_array"
+													r.pathPattern = "/test_response_string_duration_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31204,6 +31855,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringDurationArrayArray
 														r.name = "TestResponseStringDurationArrayArray"
 														r.operationID = "test_response_string_duration_array_array"
+														r.pathPattern = "/test_response_string_duration_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31224,6 +31876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringDurationNullable"
 													r.operationID = "test_response_string_duration_nullable"
+													r.pathPattern = "/test_response_string_duration_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31244,6 +31897,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringDurationNullableArray"
 														r.operationID = "test_response_string_duration_nullable_array"
+														r.pathPattern = "/test_response_string_duration_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31265,6 +31919,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringDurationNullableArrayArray
 															r.name = "TestResponseStringDurationNullableArrayArray"
 															r.operationID = "test_response_string_duration_nullable_array_array"
+															r.pathPattern = "/test_response_string_duration_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31289,6 +31944,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseStringEmail"
 										r.operationID = "test_response_string_email"
+										r.pathPattern = "/test_response_string_email"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -31320,6 +31976,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringEmailArray"
 												r.operationID = "test_response_string_email_array"
+												r.pathPattern = "/test_response_string_email_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -31341,6 +31998,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestResponseStringEmailArrayArray
 													r.name = "TestResponseStringEmailArrayArray"
 													r.operationID = "test_response_string_email_array_array"
+													r.pathPattern = "/test_response_string_email_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31361,6 +32019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringEmailNullable"
 												r.operationID = "test_response_string_email_nullable"
+												r.pathPattern = "/test_response_string_email_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -31381,6 +32040,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringEmailNullableArray"
 													r.operationID = "test_response_string_email_nullable_array"
+													r.pathPattern = "/test_response_string_email_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31402,6 +32062,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringEmailNullableArrayArray
 														r.name = "TestResponseStringEmailNullableArrayArray"
 														r.operationID = "test_response_string_email_nullable_array_array"
+														r.pathPattern = "/test_response_string_email_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31425,6 +32086,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseStringHostname"
 										r.operationID = "test_response_string_hostname"
+										r.pathPattern = "/test_response_string_hostname"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -31456,6 +32118,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringHostnameArray"
 												r.operationID = "test_response_string_hostname_array"
+												r.pathPattern = "/test_response_string_hostname_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -31477,6 +32140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestResponseStringHostnameArrayArray
 													r.name = "TestResponseStringHostnameArrayArray"
 													r.operationID = "test_response_string_hostname_array_array"
+													r.pathPattern = "/test_response_string_hostname_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31497,6 +32161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringHostnameNullable"
 												r.operationID = "test_response_string_hostname_nullable"
+												r.pathPattern = "/test_response_string_hostname_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -31517,6 +32182,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringHostnameNullableArray"
 													r.operationID = "test_response_string_hostname_nullable_array"
+													r.pathPattern = "/test_response_string_hostname_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31538,6 +32204,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringHostnameNullableArrayArray
 														r.name = "TestResponseStringHostnameNullableArrayArray"
 														r.operationID = "test_response_string_hostname_nullable_array_array"
+														r.pathPattern = "/test_response_string_hostname_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31583,6 +32250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringInt32"
 												r.operationID = "test_response_string_int32"
+												r.pathPattern = "/test_response_string_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -31614,6 +32282,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringInt32Array"
 														r.operationID = "test_response_string_int32_array"
+														r.pathPattern = "/test_response_string_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31635,6 +32304,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringInt32ArrayArray
 															r.name = "TestResponseStringInt32ArrayArray"
 															r.operationID = "test_response_string_int32_array_array"
+															r.pathPattern = "/test_response_string_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31655,6 +32325,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringInt32Nullable"
 														r.operationID = "test_response_string_int32_nullable"
+														r.pathPattern = "/test_response_string_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31675,6 +32346,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringInt32NullableArray"
 															r.operationID = "test_response_string_int32_nullable_array"
+															r.pathPattern = "/test_response_string_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31696,6 +32368,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringInt32NullableArrayArray
 																r.name = "TestResponseStringInt32NullableArrayArray"
 																r.operationID = "test_response_string_int32_nullable_array_array"
+																r.pathPattern = "/test_response_string_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -31719,6 +32392,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringInt64"
 												r.operationID = "test_response_string_int64"
+												r.pathPattern = "/test_response_string_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -31750,6 +32424,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringInt64Array"
 														r.operationID = "test_response_string_int64_array"
+														r.pathPattern = "/test_response_string_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31771,6 +32446,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringInt64ArrayArray
 															r.name = "TestResponseStringInt64ArrayArray"
 															r.operationID = "test_response_string_int64_array_array"
+															r.pathPattern = "/test_response_string_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31791,6 +32467,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringInt64Nullable"
 														r.operationID = "test_response_string_int64_nullable"
+														r.pathPattern = "/test_response_string_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31811,6 +32488,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringInt64NullableArray"
 															r.operationID = "test_response_string_int64_nullable_array"
+															r.pathPattern = "/test_response_string_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31832,6 +32510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringInt64NullableArrayArray
 																r.name = "TestResponseStringInt64NullableArrayArray"
 																r.operationID = "test_response_string_int64_nullable_array_array"
+																r.pathPattern = "/test_response_string_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -31856,6 +32535,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringIP"
 											r.operationID = "test_response_string_ip"
+											r.pathPattern = "/test_response_string_ip"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -31887,6 +32567,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringIPArray"
 													r.operationID = "test_response_string_ip_array"
+													r.pathPattern = "/test_response_string_ip_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31908,6 +32589,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringIPArrayArray
 														r.name = "TestResponseStringIPArrayArray"
 														r.operationID = "test_response_string_ip_array_array"
+														r.pathPattern = "/test_response_string_ip_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31928,6 +32610,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringIPNullable"
 													r.operationID = "test_response_string_ip_nullable"
+													r.pathPattern = "/test_response_string_ip_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -31948,6 +32631,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringIPNullableArray"
 														r.operationID = "test_response_string_ip_nullable_array"
+														r.pathPattern = "/test_response_string_ip_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -31969,6 +32653,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringIPNullableArrayArray
 															r.name = "TestResponseStringIPNullableArrayArray"
 															r.operationID = "test_response_string_ip_nullable_array_array"
+															r.pathPattern = "/test_response_string_ip_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -32002,6 +32687,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringIpv4"
 													r.operationID = "test_response_string_ipv4"
+													r.pathPattern = "/test_response_string_ipv4"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32033,6 +32719,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringIpv4Array"
 															r.operationID = "test_response_string_ipv4_array"
+															r.pathPattern = "/test_response_string_ipv4_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -32054,6 +32741,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringIpv4ArrayArray
 																r.name = "TestResponseStringIpv4ArrayArray"
 																r.operationID = "test_response_string_ipv4_array_array"
+																r.pathPattern = "/test_response_string_ipv4_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32074,6 +32762,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringIpv4Nullable"
 															r.operationID = "test_response_string_ipv4_nullable"
+															r.pathPattern = "/test_response_string_ipv4_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -32094,6 +32783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringIpv4NullableArray"
 																r.operationID = "test_response_string_ipv4_nullable_array"
+																r.pathPattern = "/test_response_string_ipv4_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32115,6 +32805,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseStringIpv4NullableArrayArray
 																	r.name = "TestResponseStringIpv4NullableArrayArray"
 																	r.operationID = "test_response_string_ipv4_nullable_array_array"
+																	r.pathPattern = "/test_response_string_ipv4_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -32138,6 +32829,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringIpv6"
 													r.operationID = "test_response_string_ipv6"
+													r.pathPattern = "/test_response_string_ipv6"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32169,6 +32861,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringIpv6Array"
 															r.operationID = "test_response_string_ipv6_array"
+															r.pathPattern = "/test_response_string_ipv6_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -32190,6 +32883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringIpv6ArrayArray
 																r.name = "TestResponseStringIpv6ArrayArray"
 																r.operationID = "test_response_string_ipv6_array_array"
+																r.pathPattern = "/test_response_string_ipv6_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32210,6 +32904,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringIpv6Nullable"
 															r.operationID = "test_response_string_ipv6_nullable"
+															r.pathPattern = "/test_response_string_ipv6_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -32230,6 +32925,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringIpv6NullableArray"
 																r.operationID = "test_response_string_ipv6_nullable_array"
+																r.pathPattern = "/test_response_string_ipv6_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32251,6 +32947,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseStringIpv6NullableArrayArray
 																	r.name = "TestResponseStringIpv6NullableArrayArray"
 																	r.operationID = "test_response_string_ipv6_nullable_array_array"
+																	r.pathPattern = "/test_response_string_ipv6_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -32277,6 +32974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseStringNullable"
 										r.operationID = "test_response_string_nullable"
+										r.pathPattern = "/test_response_string_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -32297,6 +32995,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringNullableArray"
 											r.operationID = "test_response_string_nullable_array"
+											r.pathPattern = "/test_response_string_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -32318,6 +33017,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf: TestResponseStringNullableArrayArray
 												r.name = "TestResponseStringNullableArrayArray"
 												r.operationID = "test_response_string_nullable_array_array"
+												r.pathPattern = "/test_response_string_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -32339,6 +33039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseStringPassword"
 										r.operationID = "test_response_string_password"
+										r.pathPattern = "/test_response_string_password"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -32370,6 +33071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringPasswordArray"
 												r.operationID = "test_response_string_password_array"
+												r.pathPattern = "/test_response_string_password_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -32391,6 +33093,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestResponseStringPasswordArrayArray
 													r.name = "TestResponseStringPasswordArrayArray"
 													r.operationID = "test_response_string_password_array_array"
+													r.pathPattern = "/test_response_string_password_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32411,6 +33114,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringPasswordNullable"
 												r.operationID = "test_response_string_password_nullable"
+												r.pathPattern = "/test_response_string_password_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -32431,6 +33135,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringPasswordNullableArray"
 													r.operationID = "test_response_string_password_nullable_array"
+													r.pathPattern = "/test_response_string_password_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32452,6 +33157,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringPasswordNullableArrayArray
 														r.name = "TestResponseStringPasswordNullableArrayArray"
 														r.operationID = "test_response_string_password_nullable_array_array"
+														r.pathPattern = "/test_response_string_password_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -32475,6 +33181,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "TestResponseStringTime"
 										r.operationID = "test_response_string_time"
+										r.pathPattern = "/test_response_string_time"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -32506,6 +33213,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringTimeArray"
 												r.operationID = "test_response_string_time_array"
+												r.pathPattern = "/test_response_string_time_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -32527,6 +33235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf: TestResponseStringTimeArrayArray
 													r.name = "TestResponseStringTimeArrayArray"
 													r.operationID = "test_response_string_time_array_array"
+													r.pathPattern = "/test_response_string_time_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32547,6 +33256,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											case "POST":
 												r.name = "TestResponseStringTimeNullable"
 												r.operationID = "test_response_string_time_nullable"
+												r.pathPattern = "/test_response_string_time_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -32567,6 +33277,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringTimeNullableArray"
 													r.operationID = "test_response_string_time_nullable_array"
+													r.pathPattern = "/test_response_string_time_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32588,6 +33299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringTimeNullableArrayArray
 														r.name = "TestResponseStringTimeNullableArrayArray"
 														r.operationID = "test_response_string_time_nullable_array_array"
+														r.pathPattern = "/test_response_string_time_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -32622,6 +33334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringUnix"
 											r.operationID = "test_response_string_unix"
+											r.pathPattern = "/test_response_string_unix"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -32664,6 +33377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringUnixMicro"
 														r.operationID = "test_response_string_unix-micro"
+														r.pathPattern = "/test_response_string_unix-micro"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -32695,6 +33409,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringUnixMicroArray"
 																r.operationID = "test_response_string_unix-micro_array"
+																r.pathPattern = "/test_response_string_unix-micro_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32716,6 +33431,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseStringUnixMicroArrayArray
 																	r.name = "TestResponseStringUnixMicroArrayArray"
 																	r.operationID = "test_response_string_unix-micro_array_array"
+																	r.pathPattern = "/test_response_string_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -32736,6 +33452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringUnixMicroNullable"
 																r.operationID = "test_response_string_unix-micro_nullable"
+																r.pathPattern = "/test_response_string_unix-micro_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32756,6 +33473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestResponseStringUnixMicroNullableArray"
 																	r.operationID = "test_response_string_unix-micro_nullable_array"
+																	r.pathPattern = "/test_response_string_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -32777,6 +33495,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestResponseStringUnixMicroNullableArrayArray
 																		r.name = "TestResponseStringUnixMicroNullableArrayArray"
 																		r.operationID = "test_response_string_unix-micro_nullable_array_array"
+																		r.pathPattern = "/test_response_string_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -32800,6 +33519,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringUnixMilli"
 														r.operationID = "test_response_string_unix-milli"
+														r.pathPattern = "/test_response_string_unix-milli"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -32831,6 +33551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringUnixMilliArray"
 																r.operationID = "test_response_string_unix-milli_array"
+																r.pathPattern = "/test_response_string_unix-milli_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32852,6 +33573,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseStringUnixMilliArrayArray
 																	r.name = "TestResponseStringUnixMilliArrayArray"
 																	r.operationID = "test_response_string_unix-milli_array_array"
+																	r.pathPattern = "/test_response_string_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -32872,6 +33594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringUnixMilliNullable"
 																r.operationID = "test_response_string_unix-milli_nullable"
+																r.pathPattern = "/test_response_string_unix-milli_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -32892,6 +33615,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																case "POST":
 																	r.name = "TestResponseStringUnixMilliNullableArray"
 																	r.operationID = "test_response_string_unix-milli_nullable_array"
+																	r.pathPattern = "/test_response_string_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -32913,6 +33637,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf: TestResponseStringUnixMilliNullableArrayArray
 																		r.name = "TestResponseStringUnixMilliNullableArrayArray"
 																		r.operationID = "test_response_string_unix-milli_nullable_array_array"
+																		r.pathPattern = "/test_response_string_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -32937,6 +33662,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringUnixNano"
 													r.operationID = "test_response_string_unix-nano"
+													r.pathPattern = "/test_response_string_unix-nano"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -32968,6 +33694,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringUnixNanoArray"
 															r.operationID = "test_response_string_unix-nano_array"
+															r.pathPattern = "/test_response_string_unix-nano_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -32989,6 +33716,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringUnixNanoArrayArray
 																r.name = "TestResponseStringUnixNanoArrayArray"
 																r.operationID = "test_response_string_unix-nano_array_array"
+																r.pathPattern = "/test_response_string_unix-nano_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -33009,6 +33737,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringUnixNanoNullable"
 															r.operationID = "test_response_string_unix-nano_nullable"
+															r.pathPattern = "/test_response_string_unix-nano_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -33029,6 +33758,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringUnixNanoNullableArray"
 																r.operationID = "test_response_string_unix-nano_nullable_array"
+																r.pathPattern = "/test_response_string_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -33050,6 +33780,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseStringUnixNanoNullableArrayArray
 																	r.name = "TestResponseStringUnixNanoNullableArrayArray"
 																	r.operationID = "test_response_string_unix-nano_nullable_array_array"
+																	r.pathPattern = "/test_response_string_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -33073,6 +33804,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringUnixSeconds"
 													r.operationID = "test_response_string_unix-seconds"
+													r.pathPattern = "/test_response_string_unix-seconds"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33104,6 +33836,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringUnixSecondsArray"
 															r.operationID = "test_response_string_unix-seconds_array"
+															r.pathPattern = "/test_response_string_unix-seconds_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -33125,6 +33858,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf: TestResponseStringUnixSecondsArrayArray
 																r.name = "TestResponseStringUnixSecondsArrayArray"
 																r.operationID = "test_response_string_unix-seconds_array_array"
+																r.pathPattern = "/test_response_string_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -33145,6 +33879,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														case "POST":
 															r.name = "TestResponseStringUnixSecondsNullable"
 															r.operationID = "test_response_string_unix-seconds_nullable"
+															r.pathPattern = "/test_response_string_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -33165,6 +33900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															case "POST":
 																r.name = "TestResponseStringUnixSecondsNullableArray"
 																r.operationID = "test_response_string_unix-seconds_nullable_array"
+																r.pathPattern = "/test_response_string_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -33186,6 +33922,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf: TestResponseStringUnixSecondsNullableArrayArray
 																	r.name = "TestResponseStringUnixSecondsNullableArrayArray"
 																	r.operationID = "test_response_string_unix-seconds_nullable_array_array"
+																	r.pathPattern = "/test_response_string_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -33221,6 +33958,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringUnixArray"
 													r.operationID = "test_response_string_unix_array"
+													r.pathPattern = "/test_response_string_unix_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33242,6 +33980,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringUnixArrayArray
 														r.name = "TestResponseStringUnixArrayArray"
 														r.operationID = "test_response_string_unix_array_array"
+														r.pathPattern = "/test_response_string_unix_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -33262,6 +34001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringUnixNullable"
 													r.operationID = "test_response_string_unix_nullable"
+													r.pathPattern = "/test_response_string_unix_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33282,6 +34022,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringUnixNullableArray"
 														r.operationID = "test_response_string_unix_nullable_array"
+														r.pathPattern = "/test_response_string_unix_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -33303,6 +34044,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringUnixNullableArrayArray
 															r.name = "TestResponseStringUnixNullableArrayArray"
 															r.operationID = "test_response_string_unix_nullable_array_array"
+															r.pathPattern = "/test_response_string_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -33326,6 +34068,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringURI"
 											r.operationID = "test_response_string_uri"
+											r.pathPattern = "/test_response_string_uri"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -33357,6 +34100,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringURIArray"
 													r.operationID = "test_response_string_uri_array"
+													r.pathPattern = "/test_response_string_uri_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33378,6 +34122,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringURIArrayArray
 														r.name = "TestResponseStringURIArrayArray"
 														r.operationID = "test_response_string_uri_array_array"
+														r.pathPattern = "/test_response_string_uri_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -33398,6 +34143,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringURINullable"
 													r.operationID = "test_response_string_uri_nullable"
+													r.pathPattern = "/test_response_string_uri_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33418,6 +34164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringURINullableArray"
 														r.operationID = "test_response_string_uri_nullable_array"
+														r.pathPattern = "/test_response_string_uri_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -33439,6 +34186,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringURINullableArrayArray
 															r.name = "TestResponseStringURINullableArrayArray"
 															r.operationID = "test_response_string_uri_nullable_array_array"
+															r.pathPattern = "/test_response_string_uri_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -33462,6 +34210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										case "POST":
 											r.name = "TestResponseStringUUID"
 											r.operationID = "test_response_string_uuid"
+											r.pathPattern = "/test_response_string_uuid"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -33493,6 +34242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringUUIDArray"
 													r.operationID = "test_response_string_uuid_array"
+													r.pathPattern = "/test_response_string_uuid_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33514,6 +34264,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf: TestResponseStringUUIDArrayArray
 														r.name = "TestResponseStringUUIDArrayArray"
 														r.operationID = "test_response_string_uuid_array_array"
+														r.pathPattern = "/test_response_string_uuid_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -33534,6 +34285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												case "POST":
 													r.name = "TestResponseStringUUIDNullable"
 													r.operationID = "test_response_string_uuid_nullable"
+													r.pathPattern = "/test_response_string_uuid_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -33554,6 +34306,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													case "POST":
 														r.name = "TestResponseStringUUIDNullableArray"
 														r.operationID = "test_response_string_uuid_nullable_array"
+														r.pathPattern = "/test_response_string_uuid_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -33575,6 +34328,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf: TestResponseStringUUIDNullableArrayArray
 															r.name = "TestResponseStringUUIDNullableArrayArray"
 															r.operationID = "test_response_string_uuid_nullable_array_array"
+															r.pathPattern = "/test_response_string_uuid_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true

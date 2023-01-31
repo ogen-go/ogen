@@ -1973,6 +1973,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -1987,6 +1988,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -2062,6 +2068,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: AddStickerToSet
 							r.name = "AddStickerToSet"
 							r.operationID = "addStickerToSet"
+							r.pathPattern = "/addStickerToSet"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2093,6 +2100,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: AnswerCallbackQuery
 								r.name = "AnswerCallbackQuery"
 								r.operationID = "answerCallbackQuery"
+								r.pathPattern = "/answerCallbackQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2113,6 +2121,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: AnswerInlineQuery
 								r.name = "AnswerInlineQuery"
 								r.operationID = "answerInlineQuery"
+								r.pathPattern = "/answerInlineQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2133,6 +2142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: AnswerPreCheckoutQuery
 								r.name = "AnswerPreCheckoutQuery"
 								r.operationID = "answerPreCheckoutQuery"
+								r.pathPattern = "/answerPreCheckoutQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2153,6 +2163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: AnswerShippingQuery
 								r.name = "AnswerShippingQuery"
 								r.operationID = "answerShippingQuery"
+								r.pathPattern = "/answerShippingQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2174,6 +2185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ApproveChatJoinRequest
 							r.name = "ApproveChatJoinRequest"
 							r.operationID = "approveChatJoinRequest"
+							r.pathPattern = "/approveChatJoinRequest"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2206,6 +2218,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: BanChatMember
 							r.name = "BanChatMember"
 							r.operationID = "banChatMember"
+							r.pathPattern = "/banChatMember"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2226,6 +2239,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: BanChatSenderChat
 							r.name = "BanChatSenderChat"
 							r.operationID = "banChatSenderChat"
+							r.pathPattern = "/banChatSenderChat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2258,6 +2272,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: Close
 							r.name = "Close"
 							r.operationID = "close"
+							r.pathPattern = "/close"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2278,6 +2293,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: CopyMessage
 							r.name = "CopyMessage"
 							r.operationID = "copyMessage"
+							r.pathPattern = "/copyMessage"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2309,6 +2325,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: CreateChatInviteLink
 								r.name = "CreateChatInviteLink"
 								r.operationID = "createChatInviteLink"
+								r.pathPattern = "/createChatInviteLink"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2329,6 +2346,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: CreateNewStickerSet
 								r.name = "CreateNewStickerSet"
 								r.operationID = "createNewStickerSet"
+								r.pathPattern = "/createNewStickerSet"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2362,6 +2380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: DeclineChatJoinRequest
 							r.name = "DeclineChatJoinRequest"
 							r.operationID = "declineChatJoinRequest"
+							r.pathPattern = "/declineChatJoinRequest"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2404,6 +2423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: DeleteChatPhoto
 									r.name = "DeleteChatPhoto"
 									r.operationID = "deleteChatPhoto"
+									r.pathPattern = "/deleteChatPhoto"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2424,6 +2444,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: DeleteChatStickerSet
 									r.name = "DeleteChatStickerSet"
 									r.operationID = "deleteChatStickerSet"
+									r.pathPattern = "/deleteChatStickerSet"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2456,6 +2477,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: DeleteMessage
 									r.name = "DeleteMessage"
 									r.operationID = "deleteMessage"
+									r.pathPattern = "/deleteMessage"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2476,6 +2498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: DeleteMyCommands
 									r.name = "DeleteMyCommands"
 									r.operationID = "deleteMyCommands"
+									r.pathPattern = "/deleteMyCommands"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2497,6 +2520,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: DeleteStickerFromSet
 								r.name = "DeleteStickerFromSet"
 								r.operationID = "deleteStickerFromSet"
+								r.pathPattern = "/deleteStickerFromSet"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2517,6 +2541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: DeleteWebhook
 								r.name = "DeleteWebhook"
 								r.operationID = "deleteWebhook"
+								r.pathPattern = "/deleteWebhook"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2561,6 +2586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: EditChatInviteLink
 								r.name = "EditChatInviteLink"
 								r.operationID = "editChatInviteLink"
+								r.pathPattern = "/editChatInviteLink"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2592,6 +2618,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: EditMessageCaption
 									r.name = "EditMessageCaption"
 									r.operationID = "editMessageCaption"
+									r.pathPattern = "/editMessageCaption"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2612,6 +2639,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: EditMessageLiveLocation
 									r.name = "EditMessageLiveLocation"
 									r.operationID = "editMessageLiveLocation"
+									r.pathPattern = "/editMessageLiveLocation"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2632,6 +2660,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: EditMessageMedia
 									r.name = "EditMessageMedia"
 									r.operationID = "editMessageMedia"
+									r.pathPattern = "/editMessageMedia"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2652,6 +2681,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: EditMessageReplyMarkup
 									r.name = "EditMessageReplyMarkup"
 									r.operationID = "editMessageReplyMarkup"
+									r.pathPattern = "/editMessageReplyMarkup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2672,6 +2702,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: EditMessageText
 									r.name = "EditMessageText"
 									r.operationID = "editMessageText"
+									r.pathPattern = "/editMessageText"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2694,6 +2725,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: ExportChatInviteLink
 							r.name = "ExportChatInviteLink"
 							r.operationID = "exportChatInviteLink"
+							r.pathPattern = "/exportChatInviteLink"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2715,6 +2747,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: ForwardMessage
 						r.name = "ForwardMessage"
 						r.operationID = "forwardMessage"
+						r.pathPattern = "/forwardMessage"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -2745,6 +2778,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "POST":
 							r.name = "GetChat"
 							r.operationID = "getChat"
+							r.pathPattern = "/getChat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2766,6 +2800,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: GetChatAdministrators
 								r.name = "GetChatAdministrators"
 								r.operationID = "getChatAdministrators"
+								r.pathPattern = "/getChatAdministrators"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2785,6 +2820,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "POST":
 								r.name = "GetChatMember"
 								r.operationID = "getChatMember"
+								r.pathPattern = "/getChatMember"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2806,6 +2842,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: GetChatMemberCount
 									r.name = "GetChatMemberCount"
 									r.operationID = "getChatMemberCount"
+									r.pathPattern = "/getChatMemberCount"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2828,6 +2865,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: GetFile
 							r.name = "GetFile"
 							r.operationID = "getFile"
+							r.pathPattern = "/getFile"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2848,6 +2886,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: GetGameHighScores
 							r.name = "GetGameHighScores"
 							r.operationID = "getGameHighScores"
+							r.pathPattern = "/getGameHighScores"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2879,6 +2918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: GetMe
 								r.name = "GetMe"
 								r.operationID = "getMe"
+								r.pathPattern = "/getMe"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2899,6 +2939,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: GetMyCommands
 								r.name = "GetMyCommands"
 								r.operationID = "getMyCommands"
+								r.pathPattern = "/getMyCommands"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2920,6 +2961,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: GetStickerSet
 							r.name = "GetStickerSet"
 							r.operationID = "getStickerSet"
+							r.pathPattern = "/getStickerSet"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2951,6 +2993,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: GetUpdates
 								r.name = "GetUpdates"
 								r.operationID = "getUpdates"
+								r.pathPattern = "/getUpdates"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2971,6 +3014,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: GetUserProfilePhotos
 								r.name = "GetUserProfilePhotos"
 								r.operationID = "getUserProfilePhotos"
+								r.pathPattern = "/getUserProfilePhotos"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2992,6 +3036,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: GetWebhookInfo
 							r.name = "GetWebhookInfo"
 							r.operationID = "getWebhookInfo"
+							r.pathPattern = "/getWebhookInfo"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3024,6 +3069,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: LeaveChat
 							r.name = "LeaveChat"
 							r.operationID = "leaveChat"
+							r.pathPattern = "/leaveChat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3044,6 +3090,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: LogOut
 							r.name = "LogOut"
 							r.operationID = "logOut"
+							r.pathPattern = "/logOut"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3076,6 +3123,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PinChatMessage
 							r.name = "PinChatMessage"
 							r.operationID = "pinChatMessage"
+							r.pathPattern = "/pinChatMessage"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3096,6 +3144,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PromoteChatMember
 							r.name = "PromoteChatMember"
 							r.operationID = "promoteChatMember"
+							r.pathPattern = "/promoteChatMember"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3128,6 +3177,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: RestrictChatMember
 							r.name = "RestrictChatMember"
 							r.operationID = "restrictChatMember"
+							r.pathPattern = "/restrictChatMember"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3148,6 +3198,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: RevokeChatInviteLink
 							r.name = "RevokeChatInviteLink"
 							r.operationID = "revokeChatInviteLink"
+							r.pathPattern = "/revokeChatInviteLink"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3213,6 +3264,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendAnimation
 										r.name = "SendAnimation"
 										r.operationID = "sendAnimation"
+										r.pathPattern = "/sendAnimation"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3233,6 +3285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendAudio
 										r.name = "SendAudio"
 										r.operationID = "sendAudio"
+										r.pathPattern = "/sendAudio"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3265,6 +3318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendChatAction
 										r.name = "SendChatAction"
 										r.operationID = "sendChatAction"
+										r.pathPattern = "/sendChatAction"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3285,6 +3339,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendContact
 										r.name = "SendContact"
 										r.operationID = "sendContact"
+										r.pathPattern = "/sendContact"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3317,6 +3372,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendDice
 										r.name = "SendDice"
 										r.operationID = "sendDice"
+										r.pathPattern = "/sendDice"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3337,6 +3393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendDocument
 										r.name = "SendDocument"
 										r.operationID = "sendDocument"
+										r.pathPattern = "/sendDocument"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3358,6 +3415,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SendGame
 									r.name = "SendGame"
 									r.operationID = "sendGame"
+									r.pathPattern = "/sendGame"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3378,6 +3436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SendInvoice
 									r.name = "SendInvoice"
 									r.operationID = "sendInvoice"
+									r.pathPattern = "/sendInvoice"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3398,6 +3457,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SendLocation
 									r.name = "SendLocation"
 									r.operationID = "sendLocation"
+									r.pathPattern = "/sendLocation"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3429,6 +3489,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendMediaGroup
 										r.name = "SendMediaGroup"
 										r.operationID = "sendMediaGroup"
+										r.pathPattern = "/sendMediaGroup"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3449,6 +3510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendMessage
 										r.name = "SendMessage"
 										r.operationID = "sendMessage"
+										r.pathPattern = "/sendMessage"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3481,6 +3543,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendPhoto
 										r.name = "SendPhoto"
 										r.operationID = "sendPhoto"
+										r.pathPattern = "/sendPhoto"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3501,6 +3564,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendPoll
 										r.name = "SendPoll"
 										r.operationID = "sendPoll"
+										r.pathPattern = "/sendPoll"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3522,6 +3586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SendSticker
 									r.name = "SendSticker"
 									r.operationID = "sendSticker"
+									r.pathPattern = "/sendSticker"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3553,6 +3618,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendVenue
 										r.name = "SendVenue"
 										r.operationID = "sendVenue"
+										r.pathPattern = "/sendVenue"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3572,6 +3638,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									case "POST":
 										r.name = "SendVideo"
 										r.operationID = "sendVideo"
+										r.pathPattern = "/sendVideo"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3593,6 +3660,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: SendVideoNote
 											r.name = "SendVideoNote"
 											r.operationID = "sendVideoNote"
+											r.pathPattern = "/sendVideoNote"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -3614,6 +3682,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SendVoice
 										r.name = "SendVoice"
 										r.operationID = "sendVoice"
+										r.pathPattern = "/sendVoice"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3658,6 +3727,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SetChatAdministratorCustomTitle
 										r.name = "SetChatAdministratorCustomTitle"
 										r.operationID = "setChatAdministratorCustomTitle"
+										r.pathPattern = "/setChatAdministratorCustomTitle"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3678,6 +3748,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SetChatDescription
 										r.name = "SetChatDescription"
 										r.operationID = "setChatDescription"
+										r.pathPattern = "/setChatDescription"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3709,6 +3780,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: SetChatPermissions
 											r.name = "SetChatPermissions"
 											r.operationID = "setChatPermissions"
+											r.pathPattern = "/setChatPermissions"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -3729,6 +3801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: SetChatPhoto
 											r.name = "SetChatPhoto"
 											r.operationID = "setChatPhoto"
+											r.pathPattern = "/setChatPhoto"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -3750,6 +3823,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SetChatStickerSet
 										r.name = "SetChatStickerSet"
 										r.operationID = "setChatStickerSet"
+										r.pathPattern = "/setChatStickerSet"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3770,6 +3844,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SetChatTitle
 										r.name = "SetChatTitle"
 										r.operationID = "setChatTitle"
+										r.pathPattern = "/setChatTitle"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3791,6 +3866,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SetGameScore
 									r.name = "SetGameScore"
 									r.operationID = "setGameScore"
+									r.pathPattern = "/setGameScore"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3811,6 +3887,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SetMyCommands
 									r.name = "SetMyCommands"
 									r.operationID = "setMyCommands"
+									r.pathPattern = "/setMyCommands"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3831,6 +3908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SetPassportDataErrors
 									r.name = "SetPassportDataErrors"
 									r.operationID = "setPassportDataErrors"
+									r.pathPattern = "/setPassportDataErrors"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3862,6 +3940,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SetStickerPositionInSet
 										r.name = "SetStickerPositionInSet"
 										r.operationID = "setStickerPositionInSet"
+										r.pathPattern = "/setStickerPositionInSet"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3882,6 +3961,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: SetStickerSetThumb
 										r.name = "SetStickerSetThumb"
 										r.operationID = "setStickerSetThumb"
+										r.pathPattern = "/setStickerSetThumb"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3903,6 +3983,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: SetWebhook
 									r.name = "SetWebhook"
 									r.operationID = "setWebhook"
+									r.pathPattern = "/setWebhook"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3936,6 +4017,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: StopMessageLiveLocation
 								r.name = "StopMessageLiveLocation"
 								r.operationID = "stopMessageLiveLocation"
+								r.pathPattern = "/stopMessageLiveLocation"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -3956,6 +4038,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: StopPoll
 								r.name = "StopPoll"
 								r.operationID = "stopPoll"
+								r.pathPattern = "/stopPoll"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -4011,6 +4094,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: UnbanChatMember
 									r.name = "UnbanChatMember"
 									r.operationID = "unbanChatMember"
+									r.pathPattern = "/unbanChatMember"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4031,6 +4115,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: UnbanChatSenderChat
 									r.name = "UnbanChatSenderChat"
 									r.operationID = "unbanChatSenderChat"
+									r.pathPattern = "/unbanChatSenderChat"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4063,6 +4148,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: UnpinAllChatMessages
 									r.name = "UnpinAllChatMessages"
 									r.operationID = "unpinAllChatMessages"
+									r.pathPattern = "/unpinAllChatMessages"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4083,6 +4169,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: UnpinChatMessage
 									r.name = "UnpinChatMessage"
 									r.operationID = "unpinChatMessage"
+									r.pathPattern = "/unpinChatMessage"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4105,6 +4192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: UploadStickerFile
 							r.name = "UploadStickerFile"
 							r.operationID = "uploadStickerFile"
+							r.pathPattern = "/uploadStickerFile"
 							r.args = args
 							r.count = 0
 							return r, true

@@ -152,6 +152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -166,6 +167,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -230,6 +236,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: Caching
 						r.name = "Caching"
 						r.operationID = "Caching"
+						r.pathPattern = "/cached-worlds"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -250,6 +257,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: DB
 						r.name = "DB"
 						r.operationID = "DB"
+						r.pathPattern = "/db"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -270,6 +278,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: JSON
 						r.name = "JSON"
 						r.operationID = "json"
+						r.pathPattern = "/json"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -290,6 +299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: Queries
 						r.name = "Queries"
 						r.operationID = "Queries"
+						r.pathPattern = "/queries"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -310,6 +320,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: Updates
 						r.name = "Updates"
 						r.operationID = "Updates"
+						r.pathPattern = "/updates"
 						r.args = args
 						r.count = 0
 						return r, true

@@ -445,6 +445,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [1]string
 }
@@ -459,6 +460,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -511,6 +517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				case "GET":
 					r.name = "DescribeInstance"
 					r.operationID = "describeInstance"
+					r.pathPattern = "/"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -532,6 +539,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: CreateSyncAction
 						r.name = "CreateSyncAction"
 						r.operationID = "createSyncAction"
+						r.pathPattern = "/actions"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -562,18 +570,21 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							r.name = "DescribeBalloonConfig"
 							r.operationID = "describeBalloonConfig"
+							r.pathPattern = "/balloon"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PATCH":
 							r.name = "PatchBalloon"
 							r.operationID = "patchBalloon"
+							r.pathPattern = "/balloon"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PUT":
 							r.name = "PutBalloon"
 							r.operationID = "putBalloon"
+							r.pathPattern = "/balloon"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -595,6 +606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: DescribeBalloonStats
 								r.name = "DescribeBalloonStats"
 								r.operationID = "describeBalloonStats"
+								r.pathPattern = "/balloon/statistics"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -602,6 +614,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: PatchBalloonStatsInterval
 								r.name = "PatchBalloonStatsInterval"
 								r.operationID = "patchBalloonStatsInterval"
+								r.pathPattern = "/balloon/statistics"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -623,6 +636,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PutGuestBootSource
 							r.name = "PutGuestBootSource"
 							r.operationID = "putGuestBootSource"
+							r.pathPattern = "/boot-source"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -649,6 +663,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: PatchGuestDriveByID
 						r.name = "PatchGuestDriveByID"
 						r.operationID = "patchGuestDriveByID"
+						r.pathPattern = "/drives/{drive_id}"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -656,6 +671,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: PutGuestDriveByID
 						r.name = "PutGuestDriveByID"
 						r.operationID = "putGuestDriveByID"
+						r.pathPattern = "/drives/{drive_id}"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -676,6 +692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: PutLogger
 						r.name = "PutLogger"
 						r.operationID = "putLogger"
+						r.pathPattern = "/logger"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -707,6 +724,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: GetMachineConfiguration
 							r.name = "GetMachineConfiguration"
 							r.operationID = "getMachineConfiguration"
+							r.pathPattern = "/machine-config"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -714,6 +732,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PatchMachineConfiguration
 							r.name = "PatchMachineConfiguration"
 							r.operationID = "patchMachineConfiguration"
+							r.pathPattern = "/machine-config"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -721,6 +740,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PutMachineConfiguration
 							r.name = "PutMachineConfiguration"
 							r.operationID = "putMachineConfiguration"
+							r.pathPattern = "/machine-config"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -741,6 +761,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PutMetrics
 							r.name = "PutMetrics"
 							r.operationID = "putMetrics"
+							r.pathPattern = "/metrics"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -760,18 +781,21 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							r.name = "MmdsGet"
 							r.operationID = ""
+							r.pathPattern = "/mmds"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PATCH":
 							r.name = "MmdsPatch"
 							r.operationID = ""
+							r.pathPattern = "/mmds"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PUT":
 							r.name = "MmdsPut"
 							r.operationID = ""
+							r.pathPattern = "/mmds"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -793,6 +817,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: MmdsConfigPut
 								r.name = "MmdsConfigPut"
 								r.operationID = ""
+								r.pathPattern = "/mmds/config"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -820,6 +845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: PatchGuestNetworkInterfaceByID
 						r.name = "PatchGuestNetworkInterfaceByID"
 						r.operationID = "patchGuestNetworkInterfaceByID"
+						r.pathPattern = "/network-interfaces/{iface_id}"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -827,6 +853,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: PutGuestNetworkInterfaceByID
 						r.name = "PutGuestNetworkInterfaceByID"
 						r.operationID = "putGuestNetworkInterfaceByID"
+						r.pathPattern = "/network-interfaces/{iface_id}"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -858,6 +885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: CreateSnapshot
 							r.name = "CreateSnapshot"
 							r.operationID = "createSnapshot"
+							r.pathPattern = "/snapshot/create"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -878,6 +906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: LoadSnapshot
 							r.name = "LoadSnapshot"
 							r.operationID = "loadSnapshot"
+							r.pathPattern = "/snapshot/load"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -909,6 +938,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "PATCH":
 							r.name = "PatchVm"
 							r.operationID = "patchVm"
+							r.pathPattern = "/vm"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -930,6 +960,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: GetExportVmConfig
 								r.name = "GetExportVmConfig"
 								r.operationID = "getExportVmConfig"
+								r.pathPattern = "/vm/config"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -951,6 +982,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PutGuestVsock
 							r.name = "PutGuestVsock"
 							r.operationID = "putGuestVsock"
+							r.pathPattern = "/vsock"
 							r.args = args
 							r.count = 0
 							return r, true

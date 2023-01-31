@@ -154,6 +154,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [0]string
 }
@@ -168,6 +169,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -231,6 +237,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "POST":
 						r.name = "AllRequestBodies"
 						r.operationID = "allRequestBodies"
+						r.pathPattern = "/allRequestBodies"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -252,6 +259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: AllRequestBodiesOptional
 							r.name = "AllRequestBodiesOptional"
 							r.operationID = "allRequestBodiesOptional"
+							r.pathPattern = "/allRequestBodiesOptional"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -273,6 +281,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: Base64Request
 						r.name = "Base64Request"
 						r.operationID = "base64Request"
+						r.pathPattern = "/base64Request"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -292,6 +301,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					case "POST":
 						r.name = "MaskContentType"
 						r.operationID = "maskContentType"
+						r.pathPattern = "/maskContentType"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -313,6 +323,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: MaskContentTypeOptional
 							r.name = "MaskContentTypeOptional"
 							r.operationID = "maskContentTypeOptional"
+							r.pathPattern = "/maskContentTypeOptional"
 							r.args = args
 							r.count = 0
 							return r, true

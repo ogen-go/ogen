@@ -563,6 +563,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [3]string
 }
@@ -577,6 +578,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -674,6 +680,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APICaptcha2chcaptchaIDGet
 									r.name = "APICaptcha2chcaptchaIDGet"
 									r.operationID = ""
+									r.pathPattern = "/api/captcha/2chcaptcha/id"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -694,6 +701,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APICaptcha2chcaptchaShowGet
 									r.name = "APICaptcha2chcaptchaShowGet"
 									r.operationID = ""
+									r.pathPattern = "/api/captcha/2chcaptcha/show"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -720,6 +728,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: APICaptchaAppIDPublicKeyGet
 								r.name = "APICaptchaAppIDPublicKeyGet"
 								r.operationID = ""
+								r.pathPattern = "/api/captcha/app/id/{public_key}"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -751,6 +760,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APICaptchaInvisibleRecaptchaIDGet
 									r.name = "APICaptchaInvisibleRecaptchaIDGet"
 									r.operationID = ""
+									r.pathPattern = "/api/captcha/invisible_recaptcha/id"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -771,6 +781,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APICaptchaInvisibleRecaptchaMobileGet
 									r.name = "APICaptchaInvisibleRecaptchaMobileGet"
 									r.operationID = ""
+									r.pathPattern = "/api/captcha/invisible_recaptcha/mobile"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -803,6 +814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APICaptchaRecaptchaIDGet
 									r.name = "APICaptchaRecaptchaIDGet"
 									r.operationID = ""
+									r.pathPattern = "/api/captcha/recaptcha/id"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -823,6 +835,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APICaptchaRecaptchaMobileGet
 									r.name = "APICaptchaRecaptchaMobileGet"
 									r.operationID = ""
+									r.pathPattern = "/api/captcha/recaptcha/mobile"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -845,6 +858,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: APIDislikeGet
 							r.name = "APIDislikeGet"
 							r.operationID = ""
+							r.pathPattern = "/api/dislike"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -865,6 +879,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: APILikeGet
 							r.name = "APILikeGet"
 							r.operationID = ""
+							r.pathPattern = "/api/like"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -941,6 +956,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: APIMobileV2AfterBoardThreadNumGet
 										r.name = "APIMobileV2AfterBoardThreadNumGet"
 										r.operationID = ""
+										r.pathPattern = "/api/mobile/v2/after/{board}/{thread}/{num}"
 										r.args = args
 										r.count = 3
 										return r, true
@@ -963,6 +979,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: APIMobileV2BoardsGet
 								r.name = "APIMobileV2BoardsGet"
 								r.operationID = ""
+								r.pathPattern = "/api/mobile/v2/boards"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1008,6 +1025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APIMobileV2InfoBoardThreadGet
 									r.name = "APIMobileV2InfoBoardThreadGet"
 									r.operationID = ""
+									r.pathPattern = "/api/mobile/v2/info/{board}/{thread}"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -1054,6 +1072,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: APIMobileV2PostBoardNumGet
 									r.name = "APIMobileV2PostBoardNumGet"
 									r.operationID = ""
+									r.pathPattern = "/api/mobile/v2/post/{board}/{num}"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -1099,6 +1118,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: UserPassloginPost
 								r.name = "UserPassloginPost"
 								r.operationID = ""
+								r.pathPattern = "/user/passlogin"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1119,6 +1139,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf: UserPostingPost
 								r.name = "UserPostingPost"
 								r.operationID = ""
+								r.pathPattern = "/user/posting"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1140,6 +1161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: UserReportPost
 							r.name = "UserReportPost"
 							r.operationID = ""
+							r.pathPattern = "/user/report"
 							r.args = args
 							r.count = 0
 							return r, true

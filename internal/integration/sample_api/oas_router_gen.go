@@ -657,6 +657,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Route struct {
 	name        string
 	operationID string
+	pathPattern string
 	count       int
 	args        [5]string
 }
@@ -671,6 +672,11 @@ func (r Route) Name() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// PathPattern returns OpenAPI path.
+func (r Route) PathPattern() string {
+	return r.pathPattern
 }
 
 // Args returns parsed arguments.
@@ -735,6 +741,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: DefaultTest
 						r.name = "DefaultTest"
 						r.operationID = "defaultTest"
+						r.pathPattern = "/defaultTest"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -755,6 +762,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: ErrorGet
 						r.name = "ErrorGet"
 						r.operationID = "errorGet"
+						r.pathPattern = "/error"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -775,6 +783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: FoobarGet
 						r.name = "FoobarGet"
 						r.operationID = "foobarGet"
+						r.pathPattern = "/foobar"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -782,6 +791,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: FoobarPost
 						r.name = "FoobarPost"
 						r.operationID = "foobarPost"
+						r.pathPattern = "/foobar"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -789,6 +799,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: FoobarPut
 						r.name = "FoobarPut"
 						r.operationID = ""
+						r.pathPattern = "/foobar"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -905,6 +916,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf: DataGetFormat
 											r.name = "DataGetFormat"
 											r.operationID = "dataGetFormat"
+											r.pathPattern = "/name/{id}/{foo}1234{bar}-{baz}!{kek}"
 											r.args = args
 											r.count = 5
 											return r, true
@@ -929,6 +941,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: NoAdditionalPropertiesTest
 							r.name = "NoAdditionalPropertiesTest"
 							r.operationID = "noAdditionalPropertiesTest"
+							r.pathPattern = "/noAdditionalPropertiesTest"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -949,6 +962,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: NullableDefaultResponse
 							r.name = "NullableDefaultResponse"
 							r.operationID = "nullableDefaultResponse"
+							r.pathPattern = "/nullableDefaultResponse"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -970,6 +984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf: OneofBug
 						r.name = "OneofBug"
 						r.operationID = "oneofBug"
+						r.pathPattern = "/oneofBug"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -1001,6 +1016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: PatternRecursiveMapGet
 							r.name = "PatternRecursiveMapGet"
 							r.operationID = ""
+							r.pathPattern = "/patternRecursiveMap"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1020,12 +1036,14 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						case "GET":
 							r.name = "PetGet"
 							r.operationID = "petGet"
+							r.pathPattern = "/pet"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "POST":
 							r.name = "PetCreate"
 							r.operationID = "petCreate"
+							r.pathPattern = "/pet"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1058,6 +1076,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: PetGetAvatarByID
 									r.name = "PetGetAvatarByID"
 									r.operationID = "petGetAvatarByID"
+									r.pathPattern = "/pet/avatar"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -1065,6 +1084,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: PetUploadAvatarByID
 									r.name = "PetUploadAvatarByID"
 									r.operationID = "petUploadAvatarByID"
+									r.pathPattern = "/pet/avatar"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -1090,6 +1110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: PetFriendsNamesByID
 									r.name = "PetFriendsNamesByID"
 									r.operationID = "petFriendsNamesByID"
+									r.pathPattern = "/pet/friendNames/{id}"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -1115,6 +1136,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: PetNameByID
 									r.name = "PetNameByID"
 									r.operationID = "petNameByID"
+									r.pathPattern = "/pet/name/{id}"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -1134,6 +1156,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								case "POST":
 									r.name = "PetUpdateNamePost"
 									r.operationID = ""
+									r.pathPattern = "/pet/updateName"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -1155,6 +1178,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf: PetUpdateNameAliasPost
 										r.name = "PetUpdateNameAliasPost"
 										r.operationID = ""
+										r.pathPattern = "/pet/updateNameAlias"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -1178,6 +1202,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							case "GET":
 								r.name = "PetGetByName"
 								r.operationID = "petGetByName"
+								r.pathPattern = "/pet/{name}"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -1199,6 +1224,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf: PetGetAvatarByName
 									r.name = "PetGetAvatarByName"
 									r.operationID = "petGetAvatarByName"
+									r.pathPattern = "/pet/{name}/avatar"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -1233,6 +1259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: RecursiveArrayGet
 							r.name = "RecursiveArrayGet"
 							r.operationID = ""
+							r.pathPattern = "/recursiveArray"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1253,6 +1280,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: RecursiveMapGet
 							r.name = "RecursiveMapGet"
 							r.operationID = ""
+							r.pathPattern = "/recursiveMap"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1285,6 +1313,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: SecurityTest
 							r.name = "SecurityTest"
 							r.operationID = "securityTest"
+							r.pathPattern = "/securityTest"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1305,6 +1334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: StringIntMapGet
 							r.name = "StringIntMapGet"
 							r.operationID = ""
+							r.pathPattern = "/stringIntMap"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1337,6 +1367,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: TestFloatValidation
 							r.name = "TestFloatValidation"
 							r.operationID = "testFloatValidation"
+							r.pathPattern = "/testFloatValidation"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1357,6 +1388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf: TestNullableOneofs
 							r.name = "TestNullableOneofs"
 							r.operationID = "testNullableOneofs"
+							r.pathPattern = "/testNullableOneofs"
 							r.args = args
 							r.count = 0
 							return r, true
