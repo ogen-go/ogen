@@ -101,6 +101,13 @@ func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req *api.
 	}, nil
 }
 
+func (t testHTTPRequests) StreamJSON(ctx context.Context, req []float64) (v float64, _ error) {
+	for _, f := range req {
+		v += f
+	}
+	return v, nil
+}
+
 func TestRequests(t *testing.T) {
 	ctx := context.Background()
 
@@ -348,4 +355,22 @@ func TestServerURLOverride(t *testing.T) {
 	a.NoError(err)
 	a.Equal("application/json", resp.ContentType)
 	a.Equal(testData, resp.Content)
+}
+
+func TestRequestJSONStreaming(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	srv, err := api.NewServer(testHTTPRequests{})
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+	a.NoError(err)
+
+	r, err := client.StreamJSON(ctx, []float64{1, 2, 3})
+	a.NoError(err)
+	a.Equal(int(6), int(r))
 }

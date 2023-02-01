@@ -368,10 +368,65 @@
           }
         }
       }
+    },
+    "/streamJSON": {
+      "post": {
+        "operationId": "streamJSON",
+        "parameters": [
+          {
+            "name": "count",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "x-ogen-json-streaming": true,
+                "schema": {
+                  "$ref": "#/components/schemas/QueryData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "QueryData": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
       "User": {
         "type": "object",
         "required": [

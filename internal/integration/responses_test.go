@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"math/rand"
 	"net/http"
 	"net/http/httptest"
 	"sync/atomic"
@@ -145,6 +146,14 @@ func (t testHTTPResponses) HeadersJSON(ctx context.Context) (*api.HeadersJSONOK,
 		XJSONCustomHeader: t.headerJSONRaw,
 		XJSONHeader:       t.headerUser,
 	}, nil
+}
+
+func (t testHTTPResponses) StreamJSON(ctx context.Context, params api.StreamJSONParams) (api.StreamJSONRes, error) {
+	n := make(api.QueryData, params.Count)
+	for i := range n {
+		n[i] = rand.NormFloat64()
+	}
+	return &n, nil
 }
 
 func testResponsesInit(t *testing.T, h testHTTPResponses) (*require.Assertions, *api.Client) {
@@ -426,4 +435,24 @@ func TestResponseJSONTrailingData(t *testing.T) {
 	resp, err := client.Combined(ctx, api.CombinedParams{Type: api.CombinedType200})
 	a.NoError(err)
 	a.Equal(&api.CombinedOK{Ok: "yes"}, resp)
+}
+
+func TestResponseJSONStreaming(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	srv, err := api.NewServer(testHTTPResponses{})
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+	a.NoError(err)
+
+	r, err := client.StreamJSON(ctx, api.StreamJSONParams{Count: 10})
+	a.NoError(err)
+	a.IsType(new(api.QueryData), r)
+	data := r.(*api.QueryData)
+	a.Len(*data, 10)
 }
