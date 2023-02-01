@@ -50,8 +50,6 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -62,6 +60,8 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -118,8 +118,6 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request jx.Raw
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -130,6 +128,8 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request jx.Raw
 		if err := func() error {
 			v, err := d.RawAppend(nil)
 			request = jx.Raw(v)
@@ -186,8 +186,6 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -198,6 +196,8 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptBool
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -253,8 +253,6 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []bool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -265,6 +263,8 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []bool
 		if err := func() error {
 			request = make([]bool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -329,8 +329,6 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]bool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -341,6 +339,8 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]bool
 		if err := func() error {
 			request = make([][]bool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -435,8 +435,6 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -447,6 +445,8 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilBool
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -502,8 +502,6 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -514,6 +512,8 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilBool
 		if err := func() error {
 			request = make([]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -576,8 +576,6 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -588,6 +586,8 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilBool
 		if err := func() error {
 			request = make([][]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -680,8 +680,6 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request *TestRequestEmptyStructReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -692,6 +690,8 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request *TestRequestEmptyStructReq
 		if err := func() error {
 			request = nil
 			var elem TestRequestEmptyStructReq
@@ -749,8 +749,6 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTestRequestFormatTestReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -761,6 +759,8 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTestRequestFormatTestReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -831,8 +831,6 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -843,6 +841,8 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptInt
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -898,8 +898,6 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -910,6 +908,8 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int
 		if err := func() error {
 			request = make([]int, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -974,8 +974,6 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -986,6 +984,8 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int
 		if err := func() error {
 			request = make([][]int, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1080,8 +1080,6 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1092,6 +1090,8 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptInt32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1147,8 +1147,6 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1159,6 +1157,8 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int32
 		if err := func() error {
 			request = make([]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1223,8 +1223,6 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1235,6 +1233,8 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int32
 		if err := func() error {
 			request = make([][]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1329,8 +1329,6 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1341,6 +1339,8 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilInt32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1396,8 +1396,6 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1408,6 +1406,8 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt32
 		if err := func() error {
 			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1470,8 +1470,6 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1482,6 +1480,8 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt32
 		if err := func() error {
 			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1574,8 +1574,6 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1586,6 +1584,8 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptInt64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1641,8 +1641,6 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1653,6 +1651,8 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int64
 		if err := func() error {
 			request = make([]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1717,8 +1717,6 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1729,6 +1727,8 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int64
 		if err := func() error {
 			request = make([][]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1823,8 +1823,6 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1835,6 +1833,8 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilInt64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1890,8 +1890,6 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1902,6 +1900,8 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt64
 		if err := func() error {
 			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -1964,8 +1964,6 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1976,6 +1974,8 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt64
 		if err := func() error {
 			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2068,8 +2068,6 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2080,6 +2078,8 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilInt
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -2135,8 +2135,6 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2147,6 +2145,8 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt
 		if err := func() error {
 			request = make([]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2209,8 +2209,6 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2221,6 +2219,8 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt
 		if err := func() error {
 			request = make([][]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2313,8 +2313,6 @@ func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2325,6 +2323,8 @@ func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUint
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -2380,8 +2380,6 @@ func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2392,6 +2390,8 @@ func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUint32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -2447,8 +2447,6 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []uint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2459,6 +2457,8 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uint32
 		if err := func() error {
 			request = make([]uint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2523,8 +2523,6 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]uint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2535,6 +2533,8 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uint32
 		if err := func() error {
 			request = make([][]uint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2629,8 +2629,6 @@ func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2641,6 +2639,8 @@ func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUint32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -2696,8 +2696,6 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2708,6 +2706,8 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUint32
 		if err := func() error {
 			request = make([]NilUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2770,8 +2770,6 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2782,6 +2780,8 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUint32
 		if err := func() error {
 			request = make([][]NilUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -2874,8 +2874,6 @@ func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2886,6 +2884,8 @@ func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUint64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -2941,8 +2941,6 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []uint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2953,6 +2951,8 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uint64
 		if err := func() error {
 			request = make([]uint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3017,8 +3017,6 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]uint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3029,6 +3027,8 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uint64
 		if err := func() error {
 			request = make([][]uint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3123,8 +3123,6 @@ func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3135,6 +3133,8 @@ func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUint64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -3190,8 +3190,6 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3202,6 +3200,8 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUint64
 		if err := func() error {
 			request = make([]NilUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3264,8 +3264,6 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3276,6 +3274,8 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUint64
 		if err := func() error {
 			request = make([][]NilUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3368,8 +3368,6 @@ func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []uint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3380,6 +3378,8 @@ func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uint
 		if err := func() error {
 			request = make([]uint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3444,8 +3444,6 @@ func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]uint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3456,6 +3454,8 @@ func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uint
 		if err := func() error {
 			request = make([][]uint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3550,8 +3550,6 @@ func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3562,6 +3560,8 @@ func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUint
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -3617,8 +3617,6 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3629,6 +3627,8 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUint
 		if err := func() error {
 			request = make([]NilUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3691,8 +3691,6 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3703,6 +3701,8 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUint
 		if err := func() error {
 			request = make([][]NilUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3795,8 +3795,6 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3807,6 +3805,8 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
@@ -3862,8 +3862,6 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3874,6 +3872,8 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -3938,8 +3938,6 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3950,6 +3948,8 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4044,8 +4044,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4056,6 +4054,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUnixMicro
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
@@ -4111,8 +4111,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4123,6 +4121,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4187,8 +4187,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4199,6 +4197,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4293,8 +4293,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4305,6 +4303,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUnixMicro
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
@@ -4360,8 +4360,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4372,6 +4370,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixMicro
 		if err := func() error {
 			request = make([]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4434,8 +4434,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4446,6 +4444,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixMicro
 		if err := func() error {
 			request = make([][]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4538,8 +4538,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4550,6 +4548,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUnixMilli
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
@@ -4605,8 +4605,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4617,6 +4615,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4681,8 +4681,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4693,6 +4691,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4787,8 +4787,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4799,6 +4797,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUnixMilli
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
@@ -4854,8 +4854,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4866,6 +4864,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixMilli
 		if err := func() error {
 			request = make([]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -4928,8 +4928,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4940,6 +4938,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixMilli
 		if err := func() error {
 			request = make([][]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5032,8 +5032,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5044,6 +5042,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUnixNano
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
@@ -5099,8 +5099,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5111,6 +5109,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5175,8 +5175,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5187,6 +5185,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5281,8 +5281,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5293,6 +5291,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUnixNano
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
@@ -5348,8 +5348,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5360,6 +5358,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixNano
 		if err := func() error {
 			request = make([]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5422,8 +5422,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5434,6 +5432,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixNano
 		if err := func() error {
 			request = make([][]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5526,8 +5526,6 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5538,6 +5536,8 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
@@ -5593,8 +5593,6 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5605,6 +5603,8 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixSeconds
 		if err := func() error {
 			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5667,8 +5667,6 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5679,6 +5677,8 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixSeconds
 		if err := func() error {
 			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5771,8 +5771,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5783,6 +5781,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
@@ -5838,8 +5838,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5850,6 +5848,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -5914,8 +5914,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5926,6 +5924,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6020,8 +6020,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6032,6 +6030,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
@@ -6087,8 +6087,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6099,6 +6097,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixSeconds
 		if err := func() error {
 			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6161,8 +6161,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6173,6 +6171,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixSeconds
 		if err := func() error {
 			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6265,8 +6265,6 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNull
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6277,6 +6275,8 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNull
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6332,8 +6332,6 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6344,6 +6342,8 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []struct{}
 		if err := func() error {
 			request = make([]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6406,8 +6406,6 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6418,6 +6416,8 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]struct{}
 		if err := func() error {
 			request = make([][]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6510,8 +6510,6 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNull
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6522,6 +6520,8 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNull
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6577,8 +6577,6 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6589,6 +6587,8 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []struct{}
 		if err := func() error {
 			request = make([]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6651,8 +6651,6 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6663,6 +6661,8 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]struct{}
 		if err := func() error {
 			request = make([][]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6755,8 +6755,6 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6767,6 +6765,8 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptFloat64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6837,8 +6837,6 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6849,6 +6847,8 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []float64
 		if err := func() error {
 			request = make([]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -6935,8 +6935,6 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6947,6 +6945,8 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]float64
 		if err := func() error {
 			request = make([][]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7058,8 +7058,6 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7070,6 +7068,8 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptFloat64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -7140,8 +7140,6 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7152,6 +7150,8 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []float64
 		if err := func() error {
 			request = make([]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7238,8 +7238,6 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7250,6 +7248,8 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]float64
 		if err := func() error {
 			request = make([][]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7361,8 +7361,6 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7373,6 +7371,8 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilFloat64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -7443,8 +7443,6 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7455,6 +7453,8 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilFloat64
 		if err := func() error {
 			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7539,8 +7539,6 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7551,6 +7549,8 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilFloat64
 		if err := func() error {
 			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7660,8 +7660,6 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7672,6 +7670,8 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptFloat32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -7742,8 +7742,6 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []float32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7754,6 +7752,8 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []float32
 		if err := func() error {
 			request = make([]float32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7840,8 +7840,6 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]float32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7852,6 +7850,8 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]float32
 		if err := func() error {
 			request = make([][]float32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -7963,8 +7963,6 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7975,6 +7973,8 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilFloat32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8045,8 +8045,6 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8057,6 +8055,8 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilFloat32
 		if err := func() error {
 			request = make([]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8141,8 +8141,6 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8153,6 +8151,8 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilFloat32
 		if err := func() error {
 			request = make([][]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8262,8 +8262,6 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8274,6 +8272,8 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptInt32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8329,8 +8329,6 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8341,6 +8339,8 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int32
 		if err := func() error {
 			request = make([]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8405,8 +8405,6 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8417,6 +8415,8 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int32
 		if err := func() error {
 			request = make([][]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8511,8 +8511,6 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8523,6 +8521,8 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilInt32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8578,8 +8578,6 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8590,6 +8588,8 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt32
 		if err := func() error {
 			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8652,8 +8652,6 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8664,6 +8662,8 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt32
 		if err := func() error {
 			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8756,8 +8756,6 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8768,6 +8766,8 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptInt64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8823,8 +8823,6 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8835,6 +8833,8 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int64
 		if err := func() error {
 			request = make([]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -8899,8 +8899,6 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8911,6 +8909,8 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int64
 		if err := func() error {
 			request = make([][]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9005,8 +9005,6 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9017,6 +9015,8 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilInt64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -9072,8 +9072,6 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9084,6 +9082,8 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt64
 		if err := func() error {
 			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9146,8 +9146,6 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9158,6 +9156,8 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt64
 		if err := func() error {
 			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9250,8 +9250,6 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9262,6 +9260,8 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilFloat64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -9332,8 +9332,6 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9344,6 +9342,8 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilFloat64
 		if err := func() error {
 			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9428,8 +9428,6 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9440,6 +9438,8 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilFloat64
 		if err := func() error {
 			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9546,8 +9546,6 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request jx.Raw
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9558,6 +9556,8 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request jx.Raw
 		if err := func() error {
 			v, err := d.RawAppend(nil)
 			request = jx.Raw(v)
@@ -9611,8 +9611,6 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request bool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9623,6 +9621,8 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request bool
 		if err := func() error {
 			v, err := d.Bool()
 			request = bool(v)
@@ -9676,8 +9676,6 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []bool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9688,6 +9686,8 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []bool
 		if err := func() error {
 			request = make([]bool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9757,8 +9757,6 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]bool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9769,6 +9767,8 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]bool
 		if err := func() error {
 			request = make([][]bool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -9863,8 +9863,6 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9875,6 +9873,8 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilBool
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9926,8 +9926,6 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9938,6 +9936,8 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilBool
 		if err := func() error {
 			request = make([]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10005,8 +10005,6 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilBool
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10017,6 +10015,8 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilBool
 		if err := func() error {
 			request = make([][]NilBool, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10109,8 +10109,6 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TestRequestRequiredEmptyStructReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10121,6 +10119,8 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TestRequestRequiredEmptyStructReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10172,8 +10172,6 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TestRequestRequiredFormatTestReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10184,6 +10182,8 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TestRequestRequiredFormatTestReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10243,8 +10243,6 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10255,6 +10253,8 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int
 		if err := func() error {
 			v, err := d.Int()
 			request = int(v)
@@ -10308,8 +10308,6 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10320,6 +10318,8 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int
 		if err := func() error {
 			request = make([]int, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10389,8 +10389,6 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10401,6 +10399,8 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int
 		if err := func() error {
 			request = make([][]int, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10495,8 +10495,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10507,6 +10505,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int32
 		if err := func() error {
 			v, err := d.Int32()
 			request = int32(v)
@@ -10560,8 +10560,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10572,6 +10570,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int32
 		if err := func() error {
 			request = make([]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10641,8 +10641,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10653,6 +10651,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int32
 		if err := func() error {
 			request = make([][]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10747,8 +10747,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10759,6 +10757,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilInt32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10810,8 +10810,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10822,6 +10820,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt32
 		if err := func() error {
 			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10889,8 +10889,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10901,6 +10899,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt32
 		if err := func() error {
 			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -10993,8 +10993,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11005,6 +11003,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int64
 		if err := func() error {
 			v, err := d.Int64()
 			request = int64(v)
@@ -11058,8 +11058,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11070,6 +11068,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int64
 		if err := func() error {
 			request = make([]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11139,8 +11139,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11151,6 +11149,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int64
 		if err := func() error {
 			request = make([][]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11245,8 +11245,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11257,6 +11255,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilInt64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -11308,8 +11308,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11320,6 +11318,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt64
 		if err := func() error {
 			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11387,8 +11387,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11399,6 +11397,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt64
 		if err := func() error {
 			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11491,8 +11491,6 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11503,6 +11501,8 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilInt
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -11554,8 +11554,6 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11566,6 +11564,8 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt
 		if err := func() error {
 			request = make([]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11633,8 +11633,6 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilInt
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11645,6 +11643,8 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt
 		if err := func() error {
 			request = make([][]NilInt, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11737,8 +11737,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request uint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11749,6 +11747,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request uint
 		if err := func() error {
 			v, err := d.UInt()
 			request = uint(v)
@@ -11802,8 +11802,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request uint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11814,6 +11812,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request uint32
 		if err := func() error {
 			v, err := d.UInt32()
 			request = uint32(v)
@@ -11867,8 +11867,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []uint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11879,6 +11877,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uint32
 		if err := func() error {
 			request = make([]uint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -11948,8 +11948,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]uint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11960,6 +11958,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uint32
 		if err := func() error {
 			request = make([][]uint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12054,8 +12054,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12066,6 +12064,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUint32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12117,8 +12117,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12129,6 +12127,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUint32
 		if err := func() error {
 			request = make([]NilUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12196,8 +12196,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUint32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12208,6 +12206,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUint32
 		if err := func() error {
 			request = make([][]NilUint32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12300,8 +12300,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request uint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12312,6 +12310,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request uint64
 		if err := func() error {
 			v, err := d.UInt64()
 			request = uint64(v)
@@ -12365,8 +12365,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []uint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12377,6 +12375,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uint64
 		if err := func() error {
 			request = make([]uint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12446,8 +12446,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]uint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12458,6 +12456,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uint64
 		if err := func() error {
 			request = make([][]uint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12552,8 +12552,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12564,6 +12562,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUint64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12615,8 +12615,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12627,6 +12625,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUint64
 		if err := func() error {
 			request = make([]NilUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12694,8 +12694,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUint64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12706,6 +12704,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUint64
 		if err := func() error {
 			request = make([][]NilUint64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12798,8 +12798,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []uint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12810,6 +12808,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uint
 		if err := func() error {
 			request = make([]uint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12879,8 +12879,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]uint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12891,6 +12889,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uint
 		if err := func() error {
 			request = make([][]uint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -12985,8 +12985,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12997,6 +12995,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUint
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -13048,8 +13048,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13060,6 +13058,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUint
 		if err := func() error {
 			request = make([]NilUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13127,8 +13127,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUint
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13139,6 +13137,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUint
 		if err := func() error {
 			request = make([][]NilUint, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13231,8 +13231,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13243,6 +13241,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeUnixSeconds(d)
 			request = v
@@ -13296,8 +13296,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13308,6 +13306,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13377,8 +13377,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13389,6 +13387,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13483,8 +13483,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13495,6 +13493,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeUnixMicro(d)
 			request = v
@@ -13548,8 +13548,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13560,6 +13558,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13629,8 +13629,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13641,6 +13639,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13735,8 +13735,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13747,6 +13745,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUnixMicro
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
 				return err
@@ -13798,8 +13798,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13810,6 +13808,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixMicro
 		if err := func() error {
 			request = make([]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13877,8 +13877,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13889,6 +13887,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixMicro
 		if err := func() error {
 			request = make([][]NilUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -13981,8 +13981,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13993,6 +13991,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeUnixMilli(d)
 			request = v
@@ -14046,8 +14046,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14058,6 +14056,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14127,8 +14127,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14139,6 +14137,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14233,8 +14233,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14245,6 +14243,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUnixMilli
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
 				return err
@@ -14296,8 +14296,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14308,6 +14306,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixMilli
 		if err := func() error {
 			request = make([]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14375,8 +14375,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14387,6 +14385,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixMilli
 		if err := func() error {
 			request = make([][]NilUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14479,8 +14479,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14491,6 +14489,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeUnixNano(d)
 			request = v
@@ -14544,8 +14544,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14556,6 +14554,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14625,8 +14625,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14637,6 +14635,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14731,8 +14731,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14743,6 +14741,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUnixNano
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
 				return err
@@ -14794,8 +14794,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14806,6 +14804,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixNano
 		if err := func() error {
 			request = make([]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14873,8 +14873,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14885,6 +14883,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixNano
 		if err := func() error {
 			request = make([][]NilUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -14977,8 +14977,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -14989,6 +14987,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUnixSeconds
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
 				return err
@@ -15040,8 +15040,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15052,6 +15050,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixSeconds
 		if err := func() error {
 			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15119,8 +15119,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15131,6 +15129,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixSeconds
 		if err := func() error {
 			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15223,8 +15223,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15235,6 +15233,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeUnixSeconds(d)
 			request = v
@@ -15288,8 +15288,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15300,6 +15298,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15369,8 +15369,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15381,6 +15379,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15475,8 +15475,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15487,6 +15485,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUnixSeconds
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
 				return err
@@ -15538,8 +15538,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15550,6 +15548,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUnixSeconds
 		if err := func() error {
 			request = make([]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15617,8 +15617,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15629,6 +15627,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUnixSeconds
 		if err := func() error {
 			request = make([][]NilUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15721,8 +15721,6 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15733,6 +15731,8 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request struct{}
 		if err := func() error {
 			if err := d.Null(); err != nil {
 				return err
@@ -15784,8 +15784,6 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15796,6 +15794,8 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []struct{}
 		if err := func() error {
 			request = make([]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15863,8 +15863,6 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15875,6 +15873,8 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]struct{}
 		if err := func() error {
 			request = make([][]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -15967,8 +15967,6 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -15979,6 +15977,8 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request struct{}
 		if err := func() error {
 			if err := d.Null(); err != nil {
 				return err
@@ -16030,8 +16030,6 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16042,6 +16040,8 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []struct{}
 		if err := func() error {
 			request = make([]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16109,8 +16109,6 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]struct{}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16121,6 +16119,8 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]struct{}
 		if err := func() error {
 			request = make([][]struct{}, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16213,8 +16213,6 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16225,6 +16223,8 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request float64
 		if err := func() error {
 			v, err := d.Float64()
 			request = float64(v)
@@ -16286,8 +16286,6 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16298,6 +16296,8 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []float64
 		if err := func() error {
 			request = make([]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16384,8 +16384,6 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16396,6 +16394,8 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]float64
 		if err := func() error {
 			request = make([][]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16507,8 +16507,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16519,6 +16517,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request float64
 		if err := func() error {
 			v, err := d.Float64()
 			request = float64(v)
@@ -16580,8 +16580,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16592,6 +16590,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []float64
 		if err := func() error {
 			request = make([]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16678,8 +16678,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]float64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16690,6 +16688,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]float64
 		if err := func() error {
 			request = make([][]float64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16801,8 +16801,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16813,6 +16811,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilFloat64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -16872,8 +16872,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16884,6 +16882,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilFloat64
 		if err := func() error {
 			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -16968,8 +16968,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -16980,6 +16978,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilFloat64
 		if err := func() error {
 			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17089,8 +17089,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request float32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17101,6 +17099,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request float32
 		if err := func() error {
 			v, err := d.Float32()
 			request = float32(v)
@@ -17162,8 +17162,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []float32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17174,6 +17172,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []float32
 		if err := func() error {
 			request = make([]float32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17260,8 +17260,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]float32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17272,6 +17270,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]float32
 		if err := func() error {
 			request = make([][]float32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17383,8 +17383,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17395,6 +17393,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilFloat32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -17454,8 +17454,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17466,6 +17464,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilFloat32
 		if err := func() error {
 			request = make([]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17550,8 +17550,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilFloat32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17562,6 +17560,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilFloat32
 		if err := func() error {
 			request = make([][]NilFloat32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17671,8 +17671,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17683,6 +17681,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int32
 		if err := func() error {
 			v, err := d.Int32()
 			request = int32(v)
@@ -17736,8 +17736,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17748,6 +17746,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int32
 		if err := func() error {
 			request = make([]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17817,8 +17817,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17829,6 +17827,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int32
 		if err := func() error {
 			request = make([][]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17923,8 +17923,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17935,6 +17933,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilInt32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -17986,8 +17986,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -17998,6 +17996,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt32
 		if err := func() error {
 			request = make([]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18065,8 +18065,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18077,6 +18075,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt32
 		if err := func() error {
 			request = make([][]NilInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18169,8 +18169,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18181,6 +18179,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int64
 		if err := func() error {
 			v, err := d.Int64()
 			request = int64(v)
@@ -18234,8 +18234,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18246,6 +18244,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int64
 		if err := func() error {
 			request = make([]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18315,8 +18315,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18327,6 +18325,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int64
 		if err := func() error {
 			request = make([][]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18421,8 +18421,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18433,6 +18431,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilInt64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -18484,8 +18484,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18496,6 +18494,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilInt64
 		if err := func() error {
 			request = make([]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18563,8 +18563,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18575,6 +18573,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilInt64
 		if err := func() error {
 			request = make([][]NilInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18667,8 +18667,6 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18679,6 +18677,8 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilFloat64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -18738,8 +18738,6 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18750,6 +18748,8 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilFloat64
 		if err := func() error {
 			request = make([]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18834,8 +18834,6 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilFloat64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18846,6 +18844,8 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilFloat64
 		if err := func() error {
 			request = make([][]NilFloat64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -18955,8 +18955,6 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18967,6 +18965,8 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -19020,8 +19020,6 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19032,6 +19030,8 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19101,8 +19101,6 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19113,6 +19111,8 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19207,8 +19207,6 @@ func (s *Server) decodeTestRequestRequiredStringBase64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19219,6 +19217,8 @@ func (s *Server) decodeTestRequestRequiredStringBase64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []byte
 		if err := func() error {
 			v, err := d.Base64()
 			request = []byte(v)
@@ -19272,8 +19272,6 @@ func (s *Server) decodeTestRequestRequiredStringBase64ArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19284,6 +19282,8 @@ func (s *Server) decodeTestRequestRequiredStringBase64ArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19353,8 +19353,6 @@ func (s *Server) decodeTestRequestRequiredStringBase64ArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19365,6 +19363,8 @@ func (s *Server) decodeTestRequestRequiredStringBase64ArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19459,8 +19459,6 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19471,6 +19469,8 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []byte
 		if err := func() error {
 			v, err := d.Base64()
 			request = []byte(v)
@@ -19524,8 +19524,6 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19536,6 +19534,8 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19605,8 +19605,6 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableArrayArrayRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19617,6 +19615,8 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableArrayArrayRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19711,8 +19711,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19723,6 +19721,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -19776,8 +19776,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19788,6 +19786,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19857,8 +19857,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19869,6 +19867,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -19963,8 +19963,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19975,6 +19973,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -20026,8 +20026,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20038,6 +20036,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20105,8 +20105,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20117,6 +20115,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20209,8 +20209,6 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20221,6 +20219,8 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []byte
 		if err := func() error {
 			v, err := d.Base64()
 			request = []byte(v)
@@ -20274,8 +20274,6 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20286,6 +20284,8 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20355,8 +20355,6 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20367,6 +20365,8 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20461,8 +20461,6 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20473,6 +20471,8 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []byte
 		if err := func() error {
 			v, err := d.Base64()
 			request = []byte(v)
@@ -20526,8 +20526,6 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20538,6 +20536,8 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20607,8 +20607,6 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20619,6 +20617,8 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20713,8 +20713,6 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20725,6 +20723,8 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeDate(d)
 			request = v
@@ -20778,8 +20778,6 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20790,6 +20788,8 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20859,8 +20859,6 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20871,6 +20869,8 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -20965,8 +20965,6 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -20977,6 +20975,8 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilDate
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeDate); err != nil {
 				return err
@@ -21028,8 +21028,6 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21040,6 +21038,8 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilDate
 		if err := func() error {
 			request = make([]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21107,8 +21107,6 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21119,6 +21117,8 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilDate
 		if err := func() error {
 			request = make([][]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21211,8 +21211,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21223,6 +21221,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeDateTime(d)
 			request = v
@@ -21276,8 +21276,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21288,6 +21286,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21357,8 +21357,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21369,6 +21367,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21463,8 +21463,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21475,6 +21473,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilDateTime
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeDateTime); err != nil {
 				return err
@@ -21526,8 +21526,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21538,6 +21536,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilDateTime
 		if err := func() error {
 			request = make([]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21605,8 +21605,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21617,6 +21615,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilDateTime
 		if err := func() error {
 			request = make([][]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21709,8 +21709,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Duration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21721,6 +21719,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Duration
 		if err := func() error {
 			v, err := json.DecodeDuration(d)
 			request = v
@@ -21774,8 +21774,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Duration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21786,6 +21784,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Duration
 		if err := func() error {
 			request = make([]time.Duration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21855,8 +21855,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Duration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21867,6 +21865,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Duration
 		if err := func() error {
 			request = make([][]time.Duration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -21961,8 +21961,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -21973,6 +21971,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilDuration
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -22024,8 +22024,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22036,6 +22034,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilDuration
 		if err := func() error {
 			request = make([]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -22103,8 +22103,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22115,6 +22113,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilDuration
 		if err := func() error {
 			request = make([][]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -22207,8 +22207,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22219,6 +22217,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -22288,8 +22288,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22300,6 +22298,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -22394,8 +22394,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22406,6 +22404,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -22525,8 +22525,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22537,6 +22535,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -22604,8 +22604,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22616,6 +22614,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -22708,8 +22708,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22720,6 +22718,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -22837,8 +22837,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22849,6 +22847,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -22918,8 +22918,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -22930,6 +22928,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23024,8 +23024,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23036,6 +23034,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23155,8 +23155,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23167,6 +23165,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -23234,8 +23234,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23246,6 +23244,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23338,8 +23338,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23350,6 +23348,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23467,8 +23467,6 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23479,6 +23477,8 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request netip.Addr
 		if err := func() error {
 			v, err := json.DecodeIP(d)
 			request = v
@@ -23532,8 +23532,6 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23544,6 +23542,8 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []netip.Addr
 		if err := func() error {
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23613,8 +23613,6 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23625,6 +23623,8 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]netip.Addr
 		if err := func() error {
 			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23719,8 +23719,6 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23731,6 +23729,8 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilIP
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -23782,8 +23782,6 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23794,6 +23792,8 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilIP
 		if err := func() error {
 			request = make([]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23861,8 +23861,6 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23873,6 +23871,8 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilIP
 		if err := func() error {
 			request = make([][]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -23965,8 +23965,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -23977,6 +23975,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int32
 		if err := func() error {
 			v, err := json.DecodeStringInt32(d)
 			request = v
@@ -24030,8 +24030,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24042,6 +24040,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int32
 		if err := func() error {
 			request = make([]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24111,8 +24111,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24123,6 +24121,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int32
 		if err := func() error {
 			request = make([][]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24217,8 +24217,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24229,6 +24227,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringInt32
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -24280,8 +24280,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24292,6 +24290,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringInt32
 		if err := func() error {
 			request = make([]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24359,8 +24359,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24371,6 +24369,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringInt32
 		if err := func() error {
 			request = make([][]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24463,8 +24463,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24475,6 +24473,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int64
 		if err := func() error {
 			v, err := json.DecodeStringInt64(d)
 			request = v
@@ -24528,8 +24528,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24540,6 +24538,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int64
 		if err := func() error {
 			request = make([]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24609,8 +24609,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24621,6 +24619,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int64
 		if err := func() error {
 			request = make([][]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24715,8 +24715,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24727,6 +24725,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringInt64
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -24778,8 +24778,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24790,6 +24788,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringInt64
 		if err := func() error {
 			request = make([]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24857,8 +24857,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24869,6 +24867,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringInt64
 		if err := func() error {
 			request = make([][]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -24961,8 +24961,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -24973,6 +24971,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request netip.Addr
 		if err := func() error {
 			v, err := json.DecodeIPv4(d)
 			request = v
@@ -25026,8 +25026,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25038,6 +25036,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []netip.Addr
 		if err := func() error {
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25107,8 +25107,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25119,6 +25117,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]netip.Addr
 		if err := func() error {
 			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25213,8 +25213,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25225,6 +25223,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilIPv4
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -25276,8 +25276,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25288,6 +25286,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilIPv4
 		if err := func() error {
 			request = make([]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25355,8 +25355,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25367,6 +25365,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilIPv4
 		if err := func() error {
 			request = make([][]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25459,8 +25459,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25471,6 +25469,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request netip.Addr
 		if err := func() error {
 			v, err := json.DecodeIPv6(d)
 			request = v
@@ -25524,8 +25524,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25536,6 +25534,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []netip.Addr
 		if err := func() error {
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25605,8 +25605,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25617,6 +25615,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]netip.Addr
 		if err := func() error {
 			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25711,8 +25711,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25723,6 +25721,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilIPv6
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -25774,8 +25774,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25786,6 +25784,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilIPv6
 		if err := func() error {
 			request = make([]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25853,8 +25853,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25865,6 +25863,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilIPv6
 		if err := func() error {
 			request = make([][]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -25957,8 +25957,6 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -25969,6 +25967,8 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -26020,8 +26020,6 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26032,6 +26030,8 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26099,8 +26099,6 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26111,6 +26109,8 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26203,8 +26203,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26215,6 +26213,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -26268,8 +26268,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26280,6 +26278,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26349,8 +26349,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26361,6 +26359,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26455,8 +26455,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26467,6 +26465,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -26518,8 +26518,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26530,6 +26528,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26597,8 +26597,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26609,6 +26607,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26701,8 +26701,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26713,6 +26711,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeTime(d)
 			request = v
@@ -26766,8 +26766,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26778,6 +26776,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26847,8 +26847,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26859,6 +26857,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -26953,8 +26953,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -26965,6 +26963,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilTime
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeTime); err != nil {
 				return err
@@ -27016,8 +27016,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27028,6 +27026,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilTime
 		if err := func() error {
 			request = make([]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27095,8 +27095,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27107,6 +27105,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilTime
 		if err := func() error {
 			request = make([][]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27199,8 +27199,6 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request url.URL
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27211,6 +27209,8 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request url.URL
 		if err := func() error {
 			v, err := json.DecodeURI(d)
 			request = v
@@ -27264,8 +27264,6 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []url.URL
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27276,6 +27274,8 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []url.URL
 		if err := func() error {
 			request = make([]url.URL, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27345,8 +27345,6 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]url.URL
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27357,6 +27355,8 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]url.URL
 		if err := func() error {
 			request = make([][]url.URL, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27451,8 +27451,6 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27463,6 +27461,8 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilURI
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -27514,8 +27514,6 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27526,6 +27524,8 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilURI
 		if err := func() error {
 			request = make([]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27593,8 +27593,6 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27605,6 +27603,8 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilURI
 		if err := func() error {
 			request = make([][]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27697,8 +27697,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request uuid.UUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27709,6 +27707,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request uuid.UUID
 		if err := func() error {
 			v, err := json.DecodeUUID(d)
 			request = v
@@ -27762,8 +27762,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []uuid.UUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27774,6 +27772,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uuid.UUID
 		if err := func() error {
 			request = make([]uuid.UUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27843,8 +27843,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]uuid.UUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27855,6 +27853,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uuid.UUID
 		if err := func() error {
 			request = make([][]uuid.UUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -27949,8 +27949,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27961,6 +27959,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilUUID
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -28012,8 +28012,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28024,6 +28022,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUUID
 		if err := func() error {
 			request = make([]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28091,8 +28091,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28103,6 +28101,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUUID
 		if err := func() error {
 			request = make([][]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28195,8 +28195,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28207,6 +28205,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeStringUnixSeconds(d)
 			request = v
@@ -28260,8 +28260,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28272,6 +28270,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28341,8 +28341,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28353,6 +28351,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28447,8 +28447,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28459,6 +28457,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeStringUnixMicro(d)
 			request = v
@@ -28512,8 +28512,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28524,6 +28522,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28593,8 +28593,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28605,6 +28603,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28699,8 +28699,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28711,6 +28709,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringUnixMicro
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeStringUnixMicro); err != nil {
 				return err
@@ -28762,8 +28762,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28774,6 +28772,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixMicro
 		if err := func() error {
 			request = make([]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28841,8 +28841,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28853,6 +28851,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixMicro
 		if err := func() error {
 			request = make([][]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -28945,8 +28945,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28957,6 +28955,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeStringUnixMilli(d)
 			request = v
@@ -29010,8 +29010,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29022,6 +29020,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29091,8 +29091,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29103,6 +29101,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29197,8 +29197,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29209,6 +29207,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringUnixMilli
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeStringUnixMilli); err != nil {
 				return err
@@ -29260,8 +29260,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29272,6 +29270,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixMilli
 		if err := func() error {
 			request = make([]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29339,8 +29339,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29351,6 +29349,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixMilli
 		if err := func() error {
 			request = make([][]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29443,8 +29443,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29455,6 +29453,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeStringUnixNano(d)
 			request = v
@@ -29508,8 +29508,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29520,6 +29518,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29589,8 +29589,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29601,6 +29599,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29695,8 +29695,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29707,6 +29705,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringUnixNano
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeStringUnixNano); err != nil {
 				return err
@@ -29758,8 +29758,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29770,6 +29768,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixNano
 		if err := func() error {
 			request = make([]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29837,8 +29837,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29849,6 +29847,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixNano
 		if err := func() error {
 			request = make([][]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -29941,8 +29941,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29953,6 +29951,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringUnixSeconds
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
@@ -30004,8 +30004,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30016,6 +30014,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixSeconds
 		if err := func() error {
 			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30083,8 +30083,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30095,6 +30093,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixSeconds
 		if err := func() error {
 			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30187,8 +30187,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30199,6 +30197,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request time.Time
 		if err := func() error {
 			v, err := json.DecodeStringUnixSeconds(d)
 			request = v
@@ -30252,8 +30252,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30264,6 +30262,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30333,8 +30333,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30345,6 +30343,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30439,8 +30439,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30451,6 +30449,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilStringUnixSeconds
 		if err := func() error {
 			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
@@ -30502,8 +30502,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30514,6 +30512,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixSeconds
 		if err := func() error {
 			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30581,8 +30581,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30593,6 +30591,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixSeconds
 		if err := func() error {
 			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30688,8 +30688,6 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30700,6 +30698,8 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -30755,8 +30755,6 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30767,6 +30765,8 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30831,8 +30831,6 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30843,6 +30841,8 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30937,8 +30937,6 @@ func (s *Server) decodeTestRequestStringBase64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -30949,6 +30947,8 @@ func (s *Server) decodeTestRequestStringBase64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []byte
 		if err := func() error {
 			v, err := d.Base64()
 			request = []byte(v)
@@ -31005,8 +31005,6 @@ func (s *Server) decodeTestRequestStringBase64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31017,6 +31015,8 @@ func (s *Server) decodeTestRequestStringBase64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31081,8 +31081,6 @@ func (s *Server) decodeTestRequestStringBase64ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31093,6 +31091,8 @@ func (s *Server) decodeTestRequestStringBase64ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31187,8 +31187,6 @@ func (s *Server) decodeTestRequestStringBase64NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilByte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31199,6 +31197,8 @@ func (s *Server) decodeTestRequestStringBase64NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilByte
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -31254,8 +31254,6 @@ func (s *Server) decodeTestRequestStringBase64NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31266,6 +31264,8 @@ func (s *Server) decodeTestRequestStringBase64NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31330,8 +31330,6 @@ func (s *Server) decodeTestRequestStringBase64NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31342,6 +31340,8 @@ func (s *Server) decodeTestRequestStringBase64NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31436,8 +31436,6 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31448,6 +31446,8 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -31503,8 +31503,6 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31515,6 +31513,8 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31579,8 +31579,6 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31591,6 +31589,8 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31685,8 +31685,6 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31697,6 +31695,8 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -31752,8 +31752,6 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31764,6 +31762,8 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31826,8 +31826,6 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31838,6 +31836,8 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31930,8 +31930,6 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -31942,6 +31940,8 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []byte
 		if err := func() error {
 			v, err := d.Base64()
 			request = []byte(v)
@@ -31998,8 +31998,6 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32010,6 +32008,8 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32074,8 +32074,6 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32086,6 +32084,8 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32180,8 +32180,6 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilByte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32192,6 +32190,8 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilByte
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -32247,8 +32247,6 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32259,6 +32257,8 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]byte
 		if err := func() error {
 			request = make([][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32323,8 +32323,6 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][][]byte
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32335,6 +32333,8 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][][]byte
 		if err := func() error {
 			request = make([][][]byte, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32429,8 +32429,6 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32441,6 +32439,8 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptDate
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeDate); err != nil {
@@ -32496,8 +32496,6 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32508,6 +32506,8 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32572,8 +32572,6 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32584,6 +32582,8 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32678,8 +32678,6 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32690,6 +32688,8 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilDate
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeDate); err != nil {
@@ -32745,8 +32745,6 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32757,6 +32755,8 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilDate
 		if err := func() error {
 			request = make([]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32819,8 +32819,6 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilDate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32831,6 +32829,8 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilDate
 		if err := func() error {
 			request = make([][]NilDate, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -32923,8 +32923,6 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -32935,6 +32933,8 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptDateTime
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeDateTime); err != nil {
@@ -32990,8 +32990,6 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33002,6 +33000,8 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33066,8 +33066,6 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33078,6 +33076,8 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33172,8 +33172,6 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33184,6 +33182,8 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilDateTime
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeDateTime); err != nil {
@@ -33239,8 +33239,6 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33251,6 +33249,8 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilDateTime
 		if err := func() error {
 			request = make([]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33313,8 +33313,6 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilDateTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33325,6 +33323,8 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilDateTime
 		if err := func() error {
 			request = make([][]NilDateTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33417,8 +33417,6 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33429,6 +33427,8 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptDuration
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -33484,8 +33484,6 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Duration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33496,6 +33494,8 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Duration
 		if err := func() error {
 			request = make([]time.Duration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33560,8 +33560,6 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Duration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33572,6 +33570,8 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Duration
 		if err := func() error {
 			request = make([][]time.Duration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33666,8 +33666,6 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33678,6 +33676,8 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilDuration
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -33733,8 +33733,6 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33745,6 +33743,8 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilDuration
 		if err := func() error {
 			request = make([]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33807,8 +33807,6 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilDuration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33819,6 +33817,8 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilDuration
 		if err := func() error {
 			request = make([][]NilDuration, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -33911,8 +33911,6 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -33923,6 +33921,8 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -34001,8 +34001,6 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34013,6 +34011,8 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -34107,8 +34107,6 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34119,6 +34117,8 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -34238,8 +34238,6 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34250,6 +34248,8 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -34328,8 +34328,6 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34340,6 +34338,8 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -34432,8 +34432,6 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34444,6 +34442,8 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -34561,8 +34561,6 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34573,6 +34571,8 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -34651,8 +34651,6 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34663,6 +34661,8 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -34757,8 +34757,6 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34769,6 +34767,8 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -34888,8 +34888,6 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34900,6 +34898,8 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -34978,8 +34978,6 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -34990,6 +34988,8 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35082,8 +35082,6 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35094,6 +35092,8 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35211,8 +35211,6 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35223,6 +35221,8 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIP
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -35278,8 +35278,6 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35290,6 +35288,8 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []netip.Addr
 		if err := func() error {
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35354,8 +35354,6 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35366,6 +35364,8 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]netip.Addr
 		if err := func() error {
 			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35460,8 +35460,6 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35472,6 +35470,8 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilIP
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -35527,8 +35527,6 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35539,6 +35537,8 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilIP
 		if err := func() error {
 			request = make([]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35601,8 +35601,6 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilIP
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35613,6 +35611,8 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilIP
 		if err := func() error {
 			request = make([][]NilIP, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35705,8 +35705,6 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35717,6 +35715,8 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringInt32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -35772,8 +35772,6 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35784,6 +35782,8 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int32
 		if err := func() error {
 			request = make([]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35848,8 +35848,6 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35860,6 +35858,8 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int32
 		if err := func() error {
 			request = make([][]int32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -35954,8 +35954,6 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -35966,6 +35964,8 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringInt32
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -36021,8 +36021,6 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36033,6 +36031,8 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringInt32
 		if err := func() error {
 			request = make([]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36095,8 +36095,6 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringInt32
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36107,6 +36105,8 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringInt32
 		if err := func() error {
 			request = make([][]NilStringInt32, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36199,8 +36199,6 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36211,6 +36209,8 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringInt64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -36266,8 +36266,6 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36278,6 +36276,8 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []int64
 		if err := func() error {
 			request = make([]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36342,8 +36342,6 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]int64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36354,6 +36352,8 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]int64
 		if err := func() error {
 			request = make([][]int64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36448,8 +36448,6 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36460,6 +36458,8 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringInt64
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -36515,8 +36515,6 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36527,6 +36525,8 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringInt64
 		if err := func() error {
 			request = make([]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36589,8 +36589,6 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringInt64
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36601,6 +36599,8 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringInt64
 		if err := func() error {
 			request = make([][]NilStringInt64, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36693,8 +36693,6 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36705,6 +36703,8 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIPv4
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -36760,8 +36760,6 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36772,6 +36770,8 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []netip.Addr
 		if err := func() error {
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36836,8 +36836,6 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36848,6 +36846,8 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]netip.Addr
 		if err := func() error {
 			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -36942,8 +36942,6 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -36954,6 +36952,8 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilIPv4
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -37009,8 +37009,6 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37021,6 +37019,8 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilIPv4
 		if err := func() error {
 			request = make([]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37083,8 +37083,6 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilIPv4
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37095,6 +37093,8 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilIPv4
 		if err := func() error {
 			request = make([][]NilIPv4, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37187,8 +37187,6 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37199,6 +37197,8 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIPv6
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -37254,8 +37254,6 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37266,6 +37264,8 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []netip.Addr
 		if err := func() error {
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37330,8 +37330,6 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]netip.Addr
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37342,6 +37340,8 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]netip.Addr
 		if err := func() error {
 			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37436,8 +37436,6 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37448,6 +37446,8 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilIPv6
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -37503,8 +37503,6 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37515,6 +37513,8 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilIPv6
 		if err := func() error {
 			request = make([]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37577,8 +37577,6 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilIPv6
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37589,6 +37587,8 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilIPv6
 		if err := func() error {
 			request = make([][]NilIPv6, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37681,8 +37681,6 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37693,6 +37691,8 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -37748,8 +37748,6 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37760,6 +37758,8 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37822,8 +37822,6 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37834,6 +37832,8 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -37926,8 +37926,6 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -37938,6 +37936,8 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -37993,8 +37993,6 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38005,6 +38003,8 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []string
 		if err := func() error {
 			request = make([]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38069,8 +38069,6 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38081,6 +38079,8 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]string
 		if err := func() error {
 			request = make([][]string, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38175,8 +38175,6 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38187,6 +38185,8 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -38242,8 +38242,6 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38254,6 +38252,8 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilString
 		if err := func() error {
 			request = make([]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38316,8 +38316,6 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38328,6 +38326,8 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilString
 		if err := func() error {
 			request = make([][]NilString, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38420,8 +38420,6 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38432,6 +38430,8 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTime
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeTime); err != nil {
@@ -38487,8 +38487,6 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38499,6 +38497,8 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38563,8 +38563,6 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38575,6 +38573,8 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38669,8 +38669,6 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38681,6 +38679,8 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilTime
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeTime); err != nil {
@@ -38736,8 +38736,6 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38748,6 +38746,8 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilTime
 		if err := func() error {
 			request = make([]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38810,8 +38810,6 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilTime
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38822,6 +38820,8 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilTime
 		if err := func() error {
 			request = make([][]NilTime, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -38914,8 +38914,6 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38926,6 +38924,8 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptURI
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -38981,8 +38981,6 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []url.URL
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -38993,6 +38991,8 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []url.URL
 		if err := func() error {
 			request = make([]url.URL, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39057,8 +39057,6 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]url.URL
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39069,6 +39067,8 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]url.URL
 		if err := func() error {
 			request = make([][]url.URL, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39163,8 +39163,6 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39175,6 +39173,8 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilURI
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -39230,8 +39230,6 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39242,6 +39240,8 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilURI
 		if err := func() error {
 			request = make([]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39304,8 +39304,6 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilURI
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39316,6 +39314,8 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilURI
 		if err := func() error {
 			request = make([][]NilURI, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39408,8 +39408,6 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39420,6 +39418,8 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUUID
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -39475,8 +39475,6 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []uuid.UUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39487,6 +39485,8 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []uuid.UUID
 		if err := func() error {
 			request = make([]uuid.UUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39551,8 +39551,6 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]uuid.UUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39563,6 +39561,8 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]uuid.UUID
 		if err := func() error {
 			request = make([][]uuid.UUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39657,8 +39657,6 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39669,6 +39667,8 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilUUID
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -39724,8 +39724,6 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39736,6 +39734,8 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilUUID
 		if err := func() error {
 			request = make([]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39798,8 +39798,6 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilUUID
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39810,6 +39808,8 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilUUID
 		if err := func() error {
 			request = make([][]NilUUID, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -39902,8 +39902,6 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39914,6 +39912,8 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
@@ -39969,8 +39969,6 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -39981,6 +39979,8 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40045,8 +40045,6 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40057,6 +40055,8 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40151,8 +40151,6 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40163,6 +40161,8 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringUnixMicro
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixMicro); err != nil {
@@ -40218,8 +40218,6 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40230,6 +40228,8 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40294,8 +40294,6 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40306,6 +40304,8 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40400,8 +40400,6 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40412,6 +40410,8 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringUnixMicro
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixMicro); err != nil {
@@ -40467,8 +40467,6 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40479,6 +40477,8 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixMicro
 		if err := func() error {
 			request = make([]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40541,8 +40541,6 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40553,6 +40551,8 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixMicro
 		if err := func() error {
 			request = make([][]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40645,8 +40645,6 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40657,6 +40655,8 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringUnixMilli
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixMilli); err != nil {
@@ -40712,8 +40712,6 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40724,6 +40722,8 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40788,8 +40788,6 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40800,6 +40798,8 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -40894,8 +40894,6 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40906,6 +40904,8 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringUnixMilli
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixMilli); err != nil {
@@ -40961,8 +40961,6 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -40973,6 +40971,8 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixMilli
 		if err := func() error {
 			request = make([]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41035,8 +41035,6 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41047,6 +41045,8 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixMilli
 		if err := func() error {
 			request = make([][]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41139,8 +41139,6 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41151,6 +41149,8 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringUnixNano
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixNano); err != nil {
@@ -41206,8 +41206,6 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41218,6 +41216,8 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41282,8 +41282,6 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41294,6 +41292,8 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41388,8 +41388,6 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41400,6 +41398,8 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringUnixNano
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixNano); err != nil {
@@ -41455,8 +41455,6 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41467,6 +41465,8 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixNano
 		if err := func() error {
 			request = make([]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41529,8 +41529,6 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41541,6 +41539,8 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixNano
 		if err := func() error {
 			request = make([][]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41633,8 +41633,6 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41645,6 +41643,8 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
@@ -41700,8 +41700,6 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41712,6 +41710,8 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixSeconds
 		if err := func() error {
 			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41774,8 +41774,6 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41786,6 +41784,8 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixSeconds
 		if err := func() error {
 			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -41878,8 +41878,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41890,6 +41888,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptStringUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
@@ -41945,8 +41945,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -41957,6 +41955,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []time.Time
 		if err := func() error {
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -42021,8 +42021,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]time.Time
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42033,6 +42031,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]time.Time
 		if err := func() error {
 			request = make([][]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -42127,8 +42127,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42139,6 +42137,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilStringUnixSeconds
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
@@ -42194,8 +42194,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42206,6 +42204,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request []NilStringUnixSeconds
 		if err := func() error {
 			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -42268,8 +42268,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42280,6 +42278,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request [][]NilStringUnixSeconds
 		if err := func() error {
 			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -42369,8 +42369,6 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42381,6 +42379,8 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42434,8 +42434,6 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42446,6 +42444,8 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42499,8 +42499,6 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42511,6 +42509,8 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42564,8 +42564,6 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42576,6 +42574,8 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42629,8 +42629,6 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42641,6 +42639,8 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42694,8 +42694,6 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42706,6 +42704,8 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42759,8 +42759,6 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42771,6 +42769,8 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42824,8 +42824,6 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42836,6 +42834,8 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42889,8 +42889,6 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42901,6 +42899,8 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -42954,8 +42954,6 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -42966,6 +42964,8 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43019,8 +43019,6 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43031,6 +43029,8 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43084,8 +43084,6 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43096,6 +43094,8 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43149,8 +43149,6 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43161,6 +43159,8 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43214,8 +43214,6 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43226,6 +43224,8 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43279,8 +43279,6 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43291,6 +43289,8 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43344,8 +43344,6 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43356,6 +43354,8 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43409,8 +43409,6 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43421,6 +43419,8 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43474,8 +43474,6 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43486,6 +43484,8 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43539,8 +43539,6 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43551,6 +43549,8 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43604,8 +43604,6 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43616,6 +43614,8 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43669,8 +43669,6 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43681,6 +43679,8 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43734,8 +43734,6 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43746,6 +43744,8 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43799,8 +43799,6 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43811,6 +43809,8 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43864,8 +43864,6 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43876,6 +43874,8 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43929,8 +43929,6 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -43941,6 +43939,8 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -43994,8 +43994,6 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44006,6 +44004,8 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44059,8 +44059,6 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44071,6 +44069,8 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44124,8 +44124,6 @@ func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44136,6 +44134,8 @@ func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44189,8 +44189,6 @@ func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44201,6 +44199,8 @@ func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44254,8 +44254,6 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44266,6 +44264,8 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44319,8 +44319,6 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44331,6 +44329,8 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44384,8 +44384,6 @@ func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44396,6 +44394,8 @@ func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44449,8 +44449,6 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44461,6 +44459,8 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44514,8 +44514,6 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44526,6 +44524,8 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44579,8 +44579,6 @@ func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44591,6 +44589,8 @@ func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44644,8 +44644,6 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44656,6 +44654,8 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44709,8 +44709,6 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44721,6 +44719,8 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44774,8 +44774,6 @@ func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44786,6 +44784,8 @@ func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44839,8 +44839,6 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44851,6 +44849,8 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44904,8 +44904,6 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44916,6 +44914,8 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -44969,8 +44969,6 @@ func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -44981,6 +44979,8 @@ func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45034,8 +45034,6 @@ func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45046,6 +45044,8 @@ func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45099,8 +45099,6 @@ func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45111,6 +45109,8 @@ func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45164,8 +45164,6 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45176,6 +45174,8 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45229,8 +45229,6 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45241,6 +45239,8 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45294,8 +45294,6 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45306,6 +45304,8 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45359,8 +45359,6 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45371,6 +45369,8 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45424,8 +45424,6 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45436,6 +45434,8 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45489,8 +45489,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45501,6 +45499,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45554,8 +45554,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45566,6 +45564,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45619,8 +45619,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45631,6 +45629,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45684,8 +45684,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45696,6 +45694,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45749,8 +45749,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45761,6 +45759,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45814,8 +45814,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45826,6 +45824,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45879,8 +45879,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45891,6 +45889,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -45944,8 +45944,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -45956,6 +45954,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46009,8 +46009,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46021,6 +46019,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46074,8 +46074,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46086,6 +46084,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46139,8 +46139,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46151,6 +46149,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46204,8 +46204,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46216,6 +46214,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46269,8 +46269,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46281,6 +46279,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46334,8 +46334,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46346,6 +46344,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46399,8 +46399,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46411,6 +46409,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46464,8 +46464,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46476,6 +46474,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46529,8 +46529,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46541,6 +46539,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46594,8 +46594,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46606,6 +46604,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46659,8 +46659,6 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46671,6 +46669,8 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46724,8 +46724,6 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46736,6 +46734,8 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46789,8 +46789,6 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46801,6 +46799,8 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46854,8 +46854,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46866,6 +46864,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46919,8 +46919,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46931,6 +46929,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -46984,8 +46984,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -46996,6 +46994,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47049,8 +47049,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47061,6 +47059,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47114,8 +47114,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47126,6 +47124,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47179,8 +47179,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47191,6 +47189,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47244,8 +47244,6 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47256,6 +47254,8 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47309,8 +47309,6 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47321,6 +47319,8 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47374,8 +47374,6 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47386,6 +47384,8 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47439,8 +47439,6 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47451,6 +47449,8 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47504,8 +47504,6 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47516,6 +47514,8 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47569,8 +47569,6 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47581,6 +47579,8 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47634,8 +47634,6 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47646,6 +47644,8 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47699,8 +47699,6 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47711,6 +47709,8 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47764,8 +47764,6 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47776,6 +47774,8 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47829,8 +47829,6 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47841,6 +47839,8 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47894,8 +47894,6 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47906,6 +47904,8 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -47959,8 +47959,6 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -47971,6 +47969,8 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48024,8 +48024,6 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48036,6 +48034,8 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48089,8 +48089,6 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48101,6 +48099,8 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48154,8 +48154,6 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48166,6 +48164,8 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48219,8 +48219,6 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48231,6 +48229,8 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48284,8 +48284,6 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48296,6 +48294,8 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48349,8 +48349,6 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48361,6 +48359,8 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48414,8 +48414,6 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48426,6 +48424,8 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48479,8 +48479,6 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48491,6 +48489,8 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48544,8 +48544,6 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48556,6 +48554,8 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48609,8 +48609,6 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48621,6 +48619,8 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48674,8 +48674,6 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48686,6 +48684,8 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48739,8 +48739,6 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48751,6 +48749,8 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48804,8 +48804,6 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48816,6 +48814,8 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48869,8 +48869,6 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48881,6 +48879,8 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48934,8 +48934,6 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -48946,6 +48944,8 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -48999,8 +48999,6 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49011,6 +49009,8 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49064,8 +49064,6 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49076,6 +49074,8 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49129,8 +49129,6 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49141,6 +49139,8 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49194,8 +49194,6 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49206,6 +49204,8 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49259,8 +49259,6 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49271,6 +49269,8 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49324,8 +49324,6 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49336,6 +49334,8 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49389,8 +49389,6 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49401,6 +49399,8 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49454,8 +49454,6 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49466,6 +49464,8 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49519,8 +49519,6 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49531,6 +49529,8 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49584,8 +49584,6 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49596,6 +49594,8 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49649,8 +49649,6 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49661,6 +49659,8 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49714,8 +49714,6 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49726,6 +49724,8 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49779,8 +49779,6 @@ func (s *Server) decodeTestResponseStringBase64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49791,6 +49789,8 @@ func (s *Server) decodeTestResponseStringBase64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49844,8 +49844,6 @@ func (s *Server) decodeTestResponseStringBase64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49856,6 +49854,8 @@ func (s *Server) decodeTestResponseStringBase64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49909,8 +49909,6 @@ func (s *Server) decodeTestResponseStringBase64ArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49921,6 +49919,8 @@ func (s *Server) decodeTestResponseStringBase64ArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -49974,8 +49974,6 @@ func (s *Server) decodeTestResponseStringBase64NullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -49986,6 +49984,8 @@ func (s *Server) decodeTestResponseStringBase64NullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50039,8 +50039,6 @@ func (s *Server) decodeTestResponseStringBase64NullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50051,6 +50049,8 @@ func (s *Server) decodeTestResponseStringBase64NullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50104,8 +50104,6 @@ func (s *Server) decodeTestResponseStringBase64NullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50116,6 +50114,8 @@ func (s *Server) decodeTestResponseStringBase64NullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50169,8 +50169,6 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50181,6 +50179,8 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50234,8 +50234,6 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50246,6 +50244,8 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50299,8 +50299,6 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50311,6 +50309,8 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50364,8 +50364,6 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50376,6 +50374,8 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50429,8 +50429,6 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50441,6 +50439,8 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50494,8 +50494,6 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50506,6 +50504,8 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50559,8 +50559,6 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50571,6 +50569,8 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50624,8 +50624,6 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50636,6 +50634,8 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50689,8 +50689,6 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50701,6 +50699,8 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50754,8 +50754,6 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50766,6 +50764,8 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50819,8 +50819,6 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50831,6 +50829,8 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50884,8 +50884,6 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50896,6 +50894,8 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -50949,8 +50949,6 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -50961,6 +50959,8 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51014,8 +51014,6 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51026,6 +51024,8 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51079,8 +51079,6 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51091,6 +51089,8 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51144,8 +51144,6 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51156,6 +51154,8 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51209,8 +51209,6 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51221,6 +51219,8 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51274,8 +51274,6 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51286,6 +51284,8 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51339,8 +51339,6 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51351,6 +51349,8 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51404,8 +51404,6 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51416,6 +51414,8 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51469,8 +51469,6 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51481,6 +51479,8 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51534,8 +51534,6 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51546,6 +51544,8 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51599,8 +51599,6 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51611,6 +51609,8 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51664,8 +51664,6 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51676,6 +51674,8 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51729,8 +51729,6 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51741,6 +51739,8 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51794,8 +51794,6 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51806,6 +51804,8 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51859,8 +51859,6 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51871,6 +51869,8 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51924,8 +51924,6 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -51936,6 +51934,8 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -51989,8 +51989,6 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52001,6 +51999,8 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52054,8 +52054,6 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52066,6 +52064,8 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52119,8 +52119,6 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52131,6 +52129,8 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52184,8 +52184,6 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52196,6 +52194,8 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52249,8 +52249,6 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52261,6 +52259,8 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52314,8 +52314,6 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52326,6 +52324,8 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52379,8 +52379,6 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52391,6 +52389,8 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52444,8 +52444,6 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52456,6 +52454,8 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52509,8 +52509,6 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52521,6 +52519,8 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52574,8 +52574,6 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52586,6 +52584,8 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52639,8 +52639,6 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52651,6 +52649,8 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52704,8 +52704,6 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52716,6 +52714,8 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52769,8 +52769,6 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52781,6 +52779,8 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52834,8 +52834,6 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52846,6 +52844,8 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52899,8 +52899,6 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52911,6 +52909,8 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -52964,8 +52964,6 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -52976,6 +52974,8 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53029,8 +53029,6 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53041,6 +53039,8 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53094,8 +53094,6 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53106,6 +53104,8 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53159,8 +53159,6 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53171,6 +53169,8 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53224,8 +53224,6 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53236,6 +53234,8 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53289,8 +53289,6 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53301,6 +53299,8 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53354,8 +53354,6 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53366,6 +53364,8 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53419,8 +53419,6 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53431,6 +53429,8 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53484,8 +53484,6 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53496,6 +53494,8 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53549,8 +53549,6 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53561,6 +53559,8 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53614,8 +53614,6 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53626,6 +53624,8 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53679,8 +53679,6 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53691,6 +53689,8 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53744,8 +53744,6 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53756,6 +53754,8 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53809,8 +53809,6 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53821,6 +53819,8 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53874,8 +53874,6 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53886,6 +53884,8 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -53939,8 +53939,6 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -53951,6 +53949,8 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54004,8 +54004,6 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54016,6 +54014,8 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54069,8 +54069,6 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54081,6 +54079,8 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54134,8 +54134,6 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54146,6 +54144,8 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54199,8 +54199,6 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54211,6 +54209,8 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54264,8 +54264,6 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54276,6 +54274,8 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54329,8 +54329,6 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54341,6 +54339,8 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54394,8 +54394,6 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54406,6 +54404,8 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54459,8 +54459,6 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54471,6 +54469,8 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54524,8 +54524,6 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54536,6 +54534,8 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54589,8 +54589,6 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54601,6 +54599,8 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54654,8 +54654,6 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54666,6 +54664,8 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54719,8 +54719,6 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54731,6 +54729,8 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54784,8 +54784,6 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54796,6 +54794,8 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54849,8 +54849,6 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54861,6 +54859,8 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54914,8 +54914,6 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54926,6 +54924,8 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -54979,8 +54979,6 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -54991,6 +54989,8 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55044,8 +55044,6 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55056,6 +55054,8 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55109,8 +55109,6 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55121,6 +55119,8 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55174,8 +55174,6 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55186,6 +55184,8 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55239,8 +55239,6 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55251,6 +55249,8 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55304,8 +55304,6 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55316,6 +55314,8 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55369,8 +55369,6 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55381,6 +55379,8 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55434,8 +55434,6 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55446,6 +55444,8 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55499,8 +55499,6 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55511,6 +55509,8 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55564,8 +55564,6 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55576,6 +55574,8 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55629,8 +55629,6 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55641,6 +55639,8 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55694,8 +55694,6 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55706,6 +55704,8 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55759,8 +55759,6 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55771,6 +55769,8 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55824,8 +55824,6 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55836,6 +55834,8 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55889,8 +55889,6 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55901,6 +55899,8 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -55954,8 +55954,6 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -55966,6 +55964,8 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56019,8 +56019,6 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56031,6 +56029,8 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56084,8 +56084,6 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56096,6 +56094,8 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56149,8 +56149,6 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56161,6 +56159,8 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56214,8 +56214,6 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56226,6 +56224,8 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56279,8 +56279,6 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56291,6 +56289,8 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56344,8 +56344,6 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56356,6 +56354,8 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56409,8 +56409,6 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56421,6 +56419,8 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56474,8 +56474,6 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56486,6 +56484,8 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56539,8 +56539,6 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56551,6 +56549,8 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56604,8 +56604,6 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56616,6 +56614,8 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56669,8 +56669,6 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56681,6 +56679,8 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56734,8 +56734,6 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56746,6 +56744,8 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56799,8 +56799,6 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56811,6 +56809,8 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56864,8 +56864,6 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56876,6 +56874,8 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56929,8 +56929,6 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56941,6 +56939,8 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -56994,8 +56994,6 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57006,6 +57004,8 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57059,8 +57059,6 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57071,6 +57069,8 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57124,8 +57124,6 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57136,6 +57134,8 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57189,8 +57189,6 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57201,6 +57199,8 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57254,8 +57254,6 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57266,6 +57264,8 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57319,8 +57319,6 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57331,6 +57329,8 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57384,8 +57384,6 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57396,6 +57394,8 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57449,8 +57449,6 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57461,6 +57459,8 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57514,8 +57514,6 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57526,6 +57524,8 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57579,8 +57579,6 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57591,6 +57589,8 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57644,8 +57644,6 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57656,6 +57654,8 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57709,8 +57709,6 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57721,6 +57719,8 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57774,8 +57774,6 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57786,6 +57784,8 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57839,8 +57839,6 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57851,6 +57849,8 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57904,8 +57904,6 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57916,6 +57914,8 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -57969,8 +57969,6 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57981,6 +57979,8 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58034,8 +58034,6 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58046,6 +58044,8 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58099,8 +58099,6 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58111,6 +58109,8 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58164,8 +58164,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58176,6 +58174,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58229,8 +58229,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58241,6 +58239,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58294,8 +58294,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58306,6 +58304,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58359,8 +58359,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58371,6 +58369,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58424,8 +58424,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58436,6 +58434,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)
@@ -58489,8 +58489,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request string
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -58501,6 +58499,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request string
 		if err := func() error {
 			v, err := d.Str()
 			request = string(v)

@@ -908,6 +908,90 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	return result, nil
 }
 
+// StreamJSON invokes streamJSON operation.
+//
+// POST /streamJSON
+func (c *Client) StreamJSON(ctx context.Context, params StreamJSONParams) (StreamJSONRes, error) {
+	res, err := c.sendStreamJSON(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (res StreamJSONRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("streamJSON"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "StreamJSON",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/streamJSON"
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "count" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.IntToString(params.Count))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeStreamJSONResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TextPlainBinaryStringSchema invokes textPlainBinaryStringSchema operation.
 //
 // GET /textPlainBinaryStringSchema

@@ -28,8 +28,8 @@ func decodeDataGetResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -71,8 +71,8 @@ func decodeDataGetAnyResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -114,8 +114,8 @@ func decodeDataGetIDResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()

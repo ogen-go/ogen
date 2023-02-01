@@ -16,3 +16,7 @@ type IntersectPatternCodeRes interface {
 type MultipleGenericResponsesRes interface {
 	multipleGenericResponsesRes()
 }
+
+type StreamJSONRes interface {
+	streamJSONRes()
+}

@@ -44,8 +44,6 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request LimitOrderRequest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56,6 +54,8 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request LimitOrderRequest
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -115,8 +115,6 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MarketOrderRequest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -127,6 +125,8 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MarketOrderRequest
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -186,8 +186,6 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SandboxSetCurrencyBalanceRequest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -198,6 +196,8 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SandboxSetCurrencyBalanceRequest
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -257,8 +257,6 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SandboxSetPositionBalanceRequest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -269,6 +267,8 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SandboxSetPositionBalanceRequest
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -331,8 +331,6 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptSandboxRegisterRequest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -343,6 +341,8 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptSandboxRegisterRequest
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {

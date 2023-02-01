@@ -28,8 +28,8 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -66,8 +66,8 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

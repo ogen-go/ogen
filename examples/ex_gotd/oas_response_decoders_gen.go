@@ -28,8 +28,8 @@ func decodeAddStickerToSetResponse(resp *http.Response) (res *Result, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -64,8 +64,8 @@ func decodeAddStickerToSetResponse(resp *http.Response) (res *Result, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -111,8 +111,8 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -147,8 +147,8 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -194,8 +194,8 @@ func decodeAnswerInlineQueryResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -230,8 +230,8 @@ func decodeAnswerInlineQueryResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -277,8 +277,8 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res *Result, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -313,8 +313,8 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res *Result, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -360,8 +360,8 @@ func decodeAnswerShippingQueryResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -396,8 +396,8 @@ func decodeAnswerShippingQueryResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -443,8 +443,8 @@ func decodeAnswerWebAppQueryResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -479,8 +479,8 @@ func decodeAnswerWebAppQueryResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -526,8 +526,8 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response) (res *Result, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -562,8 +562,8 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response) (res *Result, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -609,8 +609,8 @@ func decodeBanChatMemberResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -645,8 +645,8 @@ func decodeBanChatMemberResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -692,8 +692,8 @@ func decodeBanChatSenderChatResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -728,8 +728,8 @@ func decodeBanChatSenderChatResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -775,8 +775,8 @@ func decodeCloseResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -811,8 +811,8 @@ func decodeCloseResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -858,8 +858,8 @@ func decodeCopyMessageResponse(resp *http.Response) (res *ResultMessageId, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageId
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -894,8 +894,8 @@ func decodeCopyMessageResponse(resp *http.Response) (res *ResultMessageId, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -941,8 +941,8 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response) (res *ResultChatInv
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultChatInviteLink
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -977,8 +977,8 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response) (res *ResultChatInv
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1024,8 +1024,8 @@ func decodeCreateNewStickerSetResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1060,8 +1060,8 @@ func decodeCreateNewStickerSetResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1107,8 +1107,8 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response) (res *Result, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1143,8 +1143,8 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response) (res *Result, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1190,8 +1190,8 @@ func decodeDeleteChatPhotoResponse(resp *http.Response) (res *Result, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1226,8 +1226,8 @@ func decodeDeleteChatPhotoResponse(resp *http.Response) (res *Result, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1273,8 +1273,8 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response) (res *Result, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1309,8 +1309,8 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response) (res *Result, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1356,8 +1356,8 @@ func decodeDeleteMessageResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1392,8 +1392,8 @@ func decodeDeleteMessageResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1439,8 +1439,8 @@ func decodeDeleteMyCommandsResponse(resp *http.Response) (res *Result, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1475,8 +1475,8 @@ func decodeDeleteMyCommandsResponse(resp *http.Response) (res *Result, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1522,8 +1522,8 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response) (res *Result, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1558,8 +1558,8 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response) (res *Result, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1605,8 +1605,8 @@ func decodeDeleteWebhookResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1641,8 +1641,8 @@ func decodeDeleteWebhookResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1688,8 +1688,8 @@ func decodeEditChatInviteLinkResponse(resp *http.Response) (res *ResultChatInvit
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultChatInviteLink
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1724,8 +1724,8 @@ func decodeEditChatInviteLinkResponse(resp *http.Response) (res *ResultChatInvit
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1771,8 +1771,8 @@ func decodeEditMessageCaptionResponse(resp *http.Response) (res *ResultMessageOr
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageOrBoolean
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1807,8 +1807,8 @@ func decodeEditMessageCaptionResponse(resp *http.Response) (res *ResultMessageOr
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1854,8 +1854,8 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response) (res *ResultMess
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageOrBoolean
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1890,8 +1890,8 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response) (res *ResultMess
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1937,8 +1937,8 @@ func decodeEditMessageMediaResponse(resp *http.Response) (res *ResultMessageOrBo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageOrBoolean
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1973,8 +1973,8 @@ func decodeEditMessageMediaResponse(resp *http.Response) (res *ResultMessageOrBo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2020,8 +2020,8 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res *ResultMessa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageOrBoolean
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2056,8 +2056,8 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res *ResultMessa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2103,8 +2103,8 @@ func decodeEditMessageTextResponse(resp *http.Response) (res *ResultMessageOrBoo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageOrBoolean
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2139,8 +2139,8 @@ func decodeEditMessageTextResponse(resp *http.Response) (res *ResultMessageOrBoo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2186,8 +2186,8 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res *ResultString,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultString
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2222,8 +2222,8 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res *ResultString,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2269,8 +2269,8 @@ func decodeForwardMessageResponse(resp *http.Response) (res *ResultMessage, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2305,8 +2305,8 @@ func decodeForwardMessageResponse(resp *http.Response) (res *ResultMessage, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2352,8 +2352,8 @@ func decodeGetChatResponse(resp *http.Response) (res *ResultChat, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultChat
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2388,8 +2388,8 @@ func decodeGetChatResponse(resp *http.Response) (res *ResultChat, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2435,8 +2435,8 @@ func decodeGetChatAdministratorsResponse(resp *http.Response) (res *ResultArrayO
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultArrayOfChatMember
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2471,8 +2471,8 @@ func decodeGetChatAdministratorsResponse(resp *http.Response) (res *ResultArrayO
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2518,8 +2518,8 @@ func decodeGetChatMemberResponse(resp *http.Response) (res *ResultChatMember, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultChatMember
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2554,8 +2554,8 @@ func decodeGetChatMemberResponse(resp *http.Response) (res *ResultChatMember, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2601,8 +2601,8 @@ func decodeGetChatMemberCountResponse(resp *http.Response) (res *ResultInt, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultInt
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2637,8 +2637,8 @@ func decodeGetChatMemberCountResponse(resp *http.Response) (res *ResultInt, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2684,8 +2684,8 @@ func decodeGetChatMenuButtonResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2720,8 +2720,8 @@ func decodeGetChatMenuButtonResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2767,8 +2767,8 @@ func decodeGetFileResponse(resp *http.Response) (res *ResultFile, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultFile
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2803,8 +2803,8 @@ func decodeGetFileResponse(resp *http.Response) (res *ResultFile, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2850,8 +2850,8 @@ func decodeGetGameHighScoresResponse(resp *http.Response) (res *ResultArrayOfGam
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultArrayOfGameHighScore
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2886,8 +2886,8 @@ func decodeGetGameHighScoresResponse(resp *http.Response) (res *ResultArrayOfGam
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2933,8 +2933,8 @@ func decodeGetMeResponse(resp *http.Response) (res *ResultUser, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultUser
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2969,8 +2969,8 @@ func decodeGetMeResponse(resp *http.Response) (res *ResultUser, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3016,8 +3016,8 @@ func decodeGetMyCommandsResponse(resp *http.Response) (res *ResultArrayOfBotComm
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultArrayOfBotCommand
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3052,8 +3052,8 @@ func decodeGetMyCommandsResponse(resp *http.Response) (res *ResultArrayOfBotComm
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3099,8 +3099,8 @@ func decodeGetMyDefaultAdministratorRightsResponse(resp *http.Response) (res *Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3135,8 +3135,8 @@ func decodeGetMyDefaultAdministratorRightsResponse(resp *http.Response) (res *Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3182,8 +3182,8 @@ func decodeGetStickerSetResponse(resp *http.Response) (res *ResultStickerSet, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultStickerSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3218,8 +3218,8 @@ func decodeGetStickerSetResponse(resp *http.Response) (res *ResultStickerSet, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3265,8 +3265,8 @@ func decodeGetUpdatesResponse(resp *http.Response) (res *ResultArrayOfUpdate, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultArrayOfUpdate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3301,8 +3301,8 @@ func decodeGetUpdatesResponse(resp *http.Response) (res *ResultArrayOfUpdate, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3348,8 +3348,8 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response) (res *ResultUserPro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultUserProfilePhotos
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3384,8 +3384,8 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response) (res *ResultUserPro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3431,8 +3431,8 @@ func decodeGetWebhookInfoResponse(resp *http.Response) (res *ResultWebhookInfo, 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultWebhookInfo
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3467,8 +3467,8 @@ func decodeGetWebhookInfoResponse(resp *http.Response) (res *ResultWebhookInfo, 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3514,8 +3514,8 @@ func decodeLeaveChatResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3550,8 +3550,8 @@ func decodeLeaveChatResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3597,8 +3597,8 @@ func decodeLogOutResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3633,8 +3633,8 @@ func decodeLogOutResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3680,8 +3680,8 @@ func decodePinChatMessageResponse(resp *http.Response) (res *Result, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3716,8 +3716,8 @@ func decodePinChatMessageResponse(resp *http.Response) (res *Result, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3763,8 +3763,8 @@ func decodePromoteChatMemberResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3799,8 +3799,8 @@ func decodePromoteChatMemberResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3846,8 +3846,8 @@ func decodeRestrictChatMemberResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3882,8 +3882,8 @@ func decodeRestrictChatMemberResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3929,8 +3929,8 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res *ResultChatInv
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultChatInviteLink
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3965,8 +3965,8 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res *ResultChatInv
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4012,8 +4012,8 @@ func decodeSendAnimationResponse(resp *http.Response) (res *ResultMessage, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4048,8 +4048,8 @@ func decodeSendAnimationResponse(resp *http.Response) (res *ResultMessage, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4095,8 +4095,8 @@ func decodeSendAudioResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4131,8 +4131,8 @@ func decodeSendAudioResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4178,8 +4178,8 @@ func decodeSendChatActionResponse(resp *http.Response) (res *Result, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4214,8 +4214,8 @@ func decodeSendChatActionResponse(resp *http.Response) (res *Result, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4261,8 +4261,8 @@ func decodeSendContactResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4297,8 +4297,8 @@ func decodeSendContactResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4344,8 +4344,8 @@ func decodeSendDiceResponse(resp *http.Response) (res *ResultMessage, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4380,8 +4380,8 @@ func decodeSendDiceResponse(resp *http.Response) (res *ResultMessage, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4427,8 +4427,8 @@ func decodeSendDocumentResponse(resp *http.Response) (res *ResultMessage, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4463,8 +4463,8 @@ func decodeSendDocumentResponse(resp *http.Response) (res *ResultMessage, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4510,8 +4510,8 @@ func decodeSendGameResponse(resp *http.Response) (res *ResultMessage, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4546,8 +4546,8 @@ func decodeSendGameResponse(resp *http.Response) (res *ResultMessage, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4593,8 +4593,8 @@ func decodeSendInvoiceResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4629,8 +4629,8 @@ func decodeSendInvoiceResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4676,8 +4676,8 @@ func decodeSendLocationResponse(resp *http.Response) (res *ResultMessage, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4712,8 +4712,8 @@ func decodeSendLocationResponse(resp *http.Response) (res *ResultMessage, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4759,8 +4759,8 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res *ResultArrayOfMessag
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultArrayOfMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4795,8 +4795,8 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res *ResultArrayOfMessag
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4842,8 +4842,8 @@ func decodeSendMessageResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4878,8 +4878,8 @@ func decodeSendMessageResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4925,8 +4925,8 @@ func decodeSendPhotoResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4961,8 +4961,8 @@ func decodeSendPhotoResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5008,8 +5008,8 @@ func decodeSendPollResponse(resp *http.Response) (res *ResultMessage, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5044,8 +5044,8 @@ func decodeSendPollResponse(resp *http.Response) (res *ResultMessage, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5091,8 +5091,8 @@ func decodeSendStickerResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5127,8 +5127,8 @@ func decodeSendStickerResponse(resp *http.Response) (res *ResultMessage, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5174,8 +5174,8 @@ func decodeSendVenueResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5210,8 +5210,8 @@ func decodeSendVenueResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5257,8 +5257,8 @@ func decodeSendVideoResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5293,8 +5293,8 @@ func decodeSendVideoResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5340,8 +5340,8 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res *ResultMessage, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5376,8 +5376,8 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res *ResultMessage, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5423,8 +5423,8 @@ func decodeSendVoiceResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5459,8 +5459,8 @@ func decodeSendVoiceResponse(resp *http.Response) (res *ResultMessage, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5506,8 +5506,8 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res *Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5542,8 +5542,8 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res *Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5589,8 +5589,8 @@ func decodeSetChatDescriptionResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5625,8 +5625,8 @@ func decodeSetChatDescriptionResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5672,8 +5672,8 @@ func decodeSetChatMenuButtonResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5708,8 +5708,8 @@ func decodeSetChatMenuButtonResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5755,8 +5755,8 @@ func decodeSetChatPermissionsResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5791,8 +5791,8 @@ func decodeSetChatPermissionsResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5838,8 +5838,8 @@ func decodeSetChatPhotoResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5874,8 +5874,8 @@ func decodeSetChatPhotoResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5921,8 +5921,8 @@ func decodeSetChatStickerSetResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5957,8 +5957,8 @@ func decodeSetChatStickerSetResponse(resp *http.Response) (res *Result, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6004,8 +6004,8 @@ func decodeSetChatTitleResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6040,8 +6040,8 @@ func decodeSetChatTitleResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6087,8 +6087,8 @@ func decodeSetGameScoreResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6123,8 +6123,8 @@ func decodeSetGameScoreResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6170,8 +6170,8 @@ func decodeSetMyCommandsResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6206,8 +6206,8 @@ func decodeSetMyCommandsResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6253,8 +6253,8 @@ func decodeSetMyDefaultAdministratorRightsResponse(resp *http.Response) (res *Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6289,8 +6289,8 @@ func decodeSetMyDefaultAdministratorRightsResponse(resp *http.Response) (res *Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6336,8 +6336,8 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response) (res *Result, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6372,8 +6372,8 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response) (res *Result, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6419,8 +6419,8 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response) (res *Result, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6455,8 +6455,8 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response) (res *Result, er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6502,8 +6502,8 @@ func decodeSetStickerSetThumbResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6538,8 +6538,8 @@ func decodeSetStickerSetThumbResponse(resp *http.Response) (res *Result, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6585,8 +6585,8 @@ func decodeSetWebhookResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6621,8 +6621,8 @@ func decodeSetWebhookResponse(resp *http.Response) (res *Result, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6668,8 +6668,8 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response) (res *ResultMess
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultMessageOrBoolean
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6704,8 +6704,8 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response) (res *ResultMess
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6751,8 +6751,8 @@ func decodeStopPollResponse(resp *http.Response) (res *ResultPoll, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultPoll
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6787,8 +6787,8 @@ func decodeStopPollResponse(resp *http.Response) (res *ResultPoll, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6834,8 +6834,8 @@ func decodeUnbanChatMemberResponse(resp *http.Response) (res *Result, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6870,8 +6870,8 @@ func decodeUnbanChatMemberResponse(resp *http.Response) (res *Result, err error)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6917,8 +6917,8 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6953,8 +6953,8 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response) (res *Result, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7000,8 +7000,8 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res *Result, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7036,8 +7036,8 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res *Result, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7083,8 +7083,8 @@ func decodeUnpinChatMessageResponse(resp *http.Response) (res *Result, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Result
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7119,8 +7119,8 @@ func decodeUnpinChatMessageResponse(resp *http.Response) (res *Result, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7166,8 +7166,8 @@ func decodeUploadStickerFileResponse(resp *http.Response) (res *ResultFile, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ResultFile
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7202,8 +7202,8 @@ func decodeUploadStickerFileResponse(resp *http.Response) (res *ResultFile, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

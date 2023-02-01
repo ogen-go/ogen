@@ -46,8 +46,8 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response TestMultipartUploadOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

@@ -202,6 +202,23 @@ func (s *CombinedType) UnmarshalText(data []byte) error {
 	}
 }
 
+// Ref: #/components/schemas/Error
+type Error struct {
+	Error string `json:"error"`
+}
+
+// GetError returns the value of Error.
+func (s *Error) GetError() string {
+	return s.Error
+}
+
+// SetError sets the value of Error.
+func (s *Error) SetError(val string) {
+	s.Error = val
+}
+
+func (*Error) streamJSONRes() {}
+
 // Headers200OK is response for Headers200 operation.
 type Headers200OK struct {
 	XTestHeader string
@@ -540,6 +557,10 @@ type OctetStreamEmptySchemaOK struct {
 func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
+
+type QueryData []float64
+
+func (*QueryData) streamJSONRes() {}
 
 type TextPlainBinaryStringSchemaOK struct {
 	Data io.Reader

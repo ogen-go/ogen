@@ -28,8 +28,8 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -69,8 +69,8 @@ func decodeDBResponse(resp *http.Response) (res *WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response WorldObject
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -110,8 +110,8 @@ func decodeJSONResponse(resp *http.Response) (res *HelloWorld, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response HelloWorld
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -151,8 +151,8 @@ func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -192,8 +192,8 @@ func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response WorldObjects
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

@@ -669,8 +669,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SharedRequest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -681,6 +679,8 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SharedRequest
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

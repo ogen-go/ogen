@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"fmt"
 	"net/url"
 	"time"
 
@@ -15,6 +16,7 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // Client implements OAS client.
@@ -428,6 +430,101 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 
 	stage = "DecodeResponse"
 	result, err := decodeMaskContentTypeOptionalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// StreamJSON invokes streamJSON operation.
+//
+// POST /streamJSON
+func (c *Client) StreamJSON(ctx context.Context, request []float64) (float64, error) {
+	res, err := c.sendStreamJSON(ctx, request)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res float64, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("streamJSON"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "StreamJSON",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/streamJSON"
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeStreamJSONRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeStreamJSONResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

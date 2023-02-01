@@ -28,8 +28,8 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -81,8 +81,8 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captch
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -122,8 +122,8 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -172,8 +172,8 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Captcha
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -222,8 +222,8 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Like
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -263,8 +263,8 @@ func decodeAPILikeGetResponse(resp *http.Response) (res *Like, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Like
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -304,8 +304,8 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MobileThreadPostsAfter
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -345,8 +345,8 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Boards
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -386,8 +386,8 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *Mobi
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MobileThreadLastInfo
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -427,8 +427,8 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobileP
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MobilePost
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -468,8 +468,8 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, err er
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Passcode
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -509,8 +509,8 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response UserPostingPostOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -550,8 +550,8 @@ func decodeUserReportPostResponse(resp *http.Response) (res *Report, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Report
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

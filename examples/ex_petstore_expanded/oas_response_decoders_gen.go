@@ -28,8 +28,8 @@ func decodeAddPetResponse(resp *http.Response) (res AddPetRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -63,8 +63,8 @@ func decodeAddPetResponse(resp *http.Response) (res AddPetRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -108,8 +108,8 @@ func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, err error) 
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -150,8 +150,8 @@ func decodeFindPetByIDResponse(resp *http.Response) (res FindPetByIDRes, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -185,8 +185,8 @@ func decodeFindPetByIDResponse(resp *http.Response) (res FindPetByIDRes, err err
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -227,8 +227,8 @@ func decodeFindPetsResponse(resp *http.Response) (res FindPetsRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response FindPetsOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -262,8 +262,8 @@ func decodeFindPetsResponse(resp *http.Response) (res FindPetsRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {

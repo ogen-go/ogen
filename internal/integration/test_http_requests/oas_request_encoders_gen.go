@@ -243,9 +243,13 @@ func encodeBase64RequestRequest(
 	r *http.Request,
 ) error {
 	const contentType = "text/plain"
-	body := ht.CreateBodyWriter(func(w io.Writer) error {
+	body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
 		writer := base64.NewEncoder(base64.StdEncoding, w)
-		defer writer.Close()
+		defer func() {
+			if rerr == nil {
+				rerr = writer.Close()
+			}
+		}()
 
 		_, err := io.Copy(writer, req)
 		return err
@@ -284,4 +288,29 @@ func encodeMaskContentTypeOptionalRequest(
 		ht.SetBody(r, body, contentType)
 		return nil
 	}
+}
+
+func encodeStreamJSONRequest(
+	req []float64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
+		e := jx.NewStreamingEncoder(w, -1)
+		defer func() {
+			if rerr == nil {
+				rerr = e.Close()
+			}
+		}()
+		{
+			e.ArrStart()
+			for _, elem := range req {
+				e.Float64(elem)
+			}
+			e.ArrEnd()
+		}
+		return nil
+	})
+	ht.SetCloserBody(r, body, contentType)
+	return nil
 }

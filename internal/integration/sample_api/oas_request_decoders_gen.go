@@ -44,8 +44,6 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request DefaultTest
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56,6 +54,8 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request DefaultTest
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -118,8 +118,6 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptPet
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -130,6 +128,8 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptPet
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -197,8 +197,6 @@ func (s *Server) decodeOneofBugRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request OneOfBugs
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -209,6 +207,8 @@ func (s *Server) decodeOneofBugRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OneOfBugs
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -271,8 +271,6 @@ func (s *Server) decodePetCreateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptPet
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -283,6 +281,8 @@ func (s *Server) decodePetCreateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptPet
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -353,8 +353,6 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptPetName
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -365,6 +363,8 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptPetName
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -435,8 +435,6 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -447,6 +445,8 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptString
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -559,8 +559,6 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TestFloatValidation
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -571,6 +569,8 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TestFloatValidation
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

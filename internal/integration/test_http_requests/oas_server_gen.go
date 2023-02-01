@@ -28,6 +28,10 @@ type Handler interface {
 	//
 	// POST /maskContentTypeOptional
 	MaskContentTypeOptional(ctx context.Context, req *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error)
+	// StreamJSON implements streamJSON operation.
+	//
+	// POST /streamJSON
+	StreamJSON(ctx context.Context, req []float64) (float64, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

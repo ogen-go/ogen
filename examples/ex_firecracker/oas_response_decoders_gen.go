@@ -31,8 +31,8 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -66,8 +66,8 @@ func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, e
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -111,8 +111,8 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -146,8 +146,8 @@ func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRe
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -188,8 +188,8 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Balloon
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -223,8 +223,8 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -258,8 +258,8 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBallo
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -300,8 +300,8 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response BalloonStats
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -335,8 +335,8 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -370,8 +370,8 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloo
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -412,8 +412,8 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response InstanceInfo
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -447,8 +447,8 @@ func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRe
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -489,8 +489,8 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfig
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response FullVmConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -524,8 +524,8 @@ func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfig
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -566,8 +566,8 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MachineConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -601,8 +601,8 @@ func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineC
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -646,8 +646,8 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -681,8 +681,8 @@ func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err e
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -726,8 +726,8 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -761,8 +761,8 @@ func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -803,8 +803,8 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MmdsGetOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -838,8 +838,8 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -873,8 +873,8 @@ func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -918,8 +918,8 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -953,8 +953,8 @@ func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) 
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -998,8 +998,8 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1033,8 +1033,8 @@ func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1078,8 +1078,8 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1113,8 +1113,8 @@ func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err e
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1158,8 +1158,8 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1193,8 +1193,8 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBall
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1238,8 +1238,8 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1273,8 +1273,8 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDrive
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1318,8 +1318,8 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1353,8 +1353,8 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res Patc
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1398,8 +1398,8 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1433,8 +1433,8 @@ func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMach
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1478,8 +1478,8 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1513,8 +1513,8 @@ func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1558,8 +1558,8 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1593,8 +1593,8 @@ func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1638,8 +1638,8 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1673,8 +1673,8 @@ func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSour
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1718,8 +1718,8 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1753,8 +1753,8 @@ func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByID
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1798,8 +1798,8 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1833,8 +1833,8 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGue
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1878,8 +1878,8 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1913,8 +1913,8 @@ func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -1958,8 +1958,8 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1993,8 +1993,8 @@ func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) 
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -2038,8 +2038,8 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2073,8 +2073,8 @@ func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineC
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -2118,8 +2118,8 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2153,8 +2153,8 @@ func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {

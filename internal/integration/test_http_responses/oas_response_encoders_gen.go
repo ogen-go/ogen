@@ -461,6 +461,37 @@ func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w h
 	return nil
 }
 
+func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *QueryData:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
+
+		e := jx.NewStreamingEncoder(w, -1)
+		response.Encode(e)
+		if err := e.Close(); err != nil {
+			return errors.Wrap(err, "flush streaming")
+		}
+		return nil
+
+	case *Error:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
+
+		e := jx.GetEncoder()
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+
+	default:
+		return errors.Errorf("unexpected response type: %T", response)
+	}
+}
+
 func encodeTextPlainBinaryStringSchemaResponse(response TextPlainBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(200)

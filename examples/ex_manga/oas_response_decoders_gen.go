@@ -30,8 +30,8 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Book
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -158,8 +158,8 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response SearchOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -202,8 +202,8 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response SearchByTagIDOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

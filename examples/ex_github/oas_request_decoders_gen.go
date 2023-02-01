@@ -45,8 +45,6 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsCreateOrUpdateEnvironmentSecretReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -57,6 +55,8 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsCreateOrUpdateEnvironmentSecretReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -116,8 +116,6 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsCreateOrUpdateOrgSecretReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -128,6 +126,8 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsCreateOrUpdateOrgSecretReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -187,8 +187,6 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsCreateOrUpdateRepoSecretReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -199,6 +197,8 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsCreateOrUpdateRepoSecretReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -258,8 +258,6 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsCreateSelfHostedRunnerGroupForOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -270,6 +268,8 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsCreateSelfHostedRunnerGroupForOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -329,8 +329,6 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsReviewPendingDeploymentsForRunReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -341,6 +339,8 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsReviewPendingDeploymentsForRunReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -403,8 +403,6 @@ func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptSelectedActions
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -415,6 +413,8 @@ func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptSelectedActions
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -470,8 +470,6 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptSelectedActions
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -482,6 +480,8 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptSelectedActions
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -534,8 +534,6 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsSetGithubActionsPermissionsOrganizationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -546,6 +544,8 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsSetGithubActionsPermissionsOrganizationReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -605,8 +605,6 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsSetGithubActionsPermissionsRepositoryReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -617,6 +615,8 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsSetGithubActionsPermissionsRepositoryReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -676,8 +676,6 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -688,6 +686,8 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -747,8 +747,6 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsSetSelectedReposForOrgSecretReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -759,6 +757,8 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsSetSelectedReposForOrgSecretReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -818,8 +818,6 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -830,6 +828,8 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -889,8 +889,6 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsSetSelfHostedRunnersInGroupForOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -901,6 +899,8 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsSetSelfHostedRunnersInGroupForOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -960,8 +960,6 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ActionsUpdateSelfHostedRunnerGroupForOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -972,6 +970,8 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ActionsUpdateSelfHostedRunnerGroupForOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1034,8 +1034,6 @@ func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptActivityMarkNotificationsAsReadReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1046,6 +1044,8 @@ func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptActivityMarkNotificationsAsReadReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1101,8 +1101,6 @@ func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptActivityMarkRepoNotificationsAsReadReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1113,6 +1111,8 @@ func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptActivityMarkRepoNotificationsAsReadReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1168,8 +1168,6 @@ func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptActivitySetRepoSubscriptionReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1180,6 +1178,8 @@ func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptActivitySetRepoSubscriptionReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1235,8 +1235,6 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptActivitySetThreadSubscriptionReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1247,6 +1245,8 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptActivitySetThreadSubscriptionReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1299,8 +1299,6 @@ func (s *Server) decodeAppsCheckTokenRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request AppsCheckTokenReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1311,6 +1309,8 @@ func (s *Server) decodeAppsCheckTokenRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request AppsCheckTokenReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1362,8 +1362,6 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request AppsCreateContentAttachmentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1374,6 +1372,8 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request AppsCreateContentAttachmentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1436,8 +1436,6 @@ func (s *Server) decodeAppsCreateFromManifestRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request *AppsCreateFromManifestReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1448,6 +1446,8 @@ func (s *Server) decodeAppsCreateFromManifestRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request *AppsCreateFromManifestReq
 		if err := func() error {
 			request = nil
 			var elem AppsCreateFromManifestReq
@@ -1505,8 +1505,6 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptAppsCreateInstallationAccessTokenReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1517,6 +1515,8 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptAppsCreateInstallationAccessTokenReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1584,8 +1584,6 @@ func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request AppsDeleteAuthorizationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1596,6 +1594,8 @@ func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request AppsDeleteAuthorizationReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1647,8 +1647,6 @@ func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request AppsDeleteTokenReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1659,6 +1657,8 @@ func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request AppsDeleteTokenReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1710,8 +1710,6 @@ func (s *Server) decodeAppsResetTokenRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request AppsResetTokenReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1722,6 +1720,8 @@ func (s *Server) decodeAppsResetTokenRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request AppsResetTokenReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1773,8 +1773,6 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request AppsScopeTokenReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1785,6 +1783,8 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request AppsScopeTokenReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1847,8 +1847,6 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptAppsUpdateWebhookConfigForAppReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1859,6 +1857,8 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptAppsUpdateWebhookConfigForAppReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1926,8 +1926,6 @@ func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ChecksCreateSuiteReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1938,6 +1936,8 @@ func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ChecksCreateSuiteReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1989,8 +1989,6 @@ func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ChecksSetSuitesPreferencesReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2001,6 +1999,8 @@ func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ChecksSetSuitesPreferencesReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2052,8 +2052,6 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request CodeScanningUpdateAlertReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2064,6 +2062,8 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request CodeScanningUpdateAlertReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2123,8 +2123,6 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request CodeScanningUploadSarifReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2135,6 +2133,8 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request CodeScanningUploadSarifReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2194,8 +2194,6 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2206,6 +2204,8 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2265,8 +2265,6 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2277,6 +2275,8 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2336,8 +2336,6 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminProvisionAndInviteEnterpriseUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2348,6 +2346,8 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminProvisionAndInviteEnterpriseUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2407,8 +2407,6 @@ func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SelectedActions
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2419,6 +2417,8 @@ func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SelectedActions
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2470,8 +2470,6 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2482,6 +2480,8 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2541,8 +2541,6 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2553,6 +2551,8 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2612,8 +2612,6 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2624,6 +2622,8 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2683,8 +2683,6 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2695,6 +2693,8 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2754,8 +2754,6 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2766,6 +2764,8 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2825,8 +2825,6 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2837,6 +2835,8 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2896,8 +2896,6 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2908,6 +2906,8 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -2967,8 +2967,6 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request EnterpriseAdminUpdateAttributeForEnterpriseUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -2979,6 +2977,8 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request EnterpriseAdminUpdateAttributeForEnterpriseUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3041,8 +3041,6 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3053,6 +3051,8 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -3120,8 +3120,6 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GistsCreateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3132,6 +3130,8 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GistsCreateReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3191,8 +3191,6 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GistsCreateCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3203,6 +3201,8 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GistsCreateCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3262,8 +3262,6 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GistsUpdateCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3274,6 +3272,8 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GistsUpdateCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3333,8 +3333,6 @@ func (s *Server) decodeGitCreateBlobRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GitCreateBlobReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3345,6 +3343,8 @@ func (s *Server) decodeGitCreateBlobRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GitCreateBlobReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3396,8 +3396,6 @@ func (s *Server) decodeGitCreateCommitRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GitCreateCommitReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3408,6 +3406,8 @@ func (s *Server) decodeGitCreateCommitRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GitCreateCommitReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3459,8 +3459,6 @@ func (s *Server) decodeGitCreateRefRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GitCreateRefReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3471,6 +3469,8 @@ func (s *Server) decodeGitCreateRefRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GitCreateRefReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3522,8 +3522,6 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GitCreateTagReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3534,6 +3532,8 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GitCreateTagReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3593,8 +3593,6 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GitCreateTreeReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3605,6 +3603,8 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GitCreateTreeReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3664,8 +3664,6 @@ func (s *Server) decodeGitUpdateRefRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request GitUpdateRefReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3676,6 +3674,8 @@ func (s *Server) decodeGitUpdateRefRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request GitUpdateRefReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3727,8 +3727,6 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request InteractionLimit
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3739,6 +3737,8 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request InteractionLimit
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3798,8 +3798,6 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request InteractionLimit
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3810,6 +3808,8 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request InteractionLimit
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3869,8 +3869,6 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request InteractionLimit
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3881,6 +3879,8 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request InteractionLimit
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -3943,8 +3943,6 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIssuesAddAssigneesReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -3955,6 +3953,8 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIssuesAddAssigneesReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4007,8 +4007,6 @@ func (s *Server) decodeIssuesCreateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request IssuesCreateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4019,6 +4017,8 @@ func (s *Server) decodeIssuesCreateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request IssuesCreateReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4070,8 +4070,6 @@ func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request IssuesCreateCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4082,6 +4080,8 @@ func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request IssuesCreateCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4133,8 +4133,6 @@ func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request IssuesCreateLabelReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4145,6 +4143,8 @@ func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request IssuesCreateLabelReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4196,8 +4196,6 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request IssuesCreateMilestoneReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4208,6 +4206,8 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request IssuesCreateMilestoneReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4270,8 +4270,6 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilIssuesLockReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4282,6 +4280,8 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilIssuesLockReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4352,8 +4352,6 @@ func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIssuesRemoveAssigneesReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4364,6 +4362,8 @@ func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIssuesRemoveAssigneesReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4419,8 +4419,6 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIssuesUpdateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4431,6 +4429,8 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIssuesUpdateReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4498,8 +4498,6 @@ func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request IssuesUpdateCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4510,6 +4508,8 @@ func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request IssuesUpdateCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4564,8 +4564,6 @@ func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIssuesUpdateLabelReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4576,6 +4574,8 @@ func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIssuesUpdateLabelReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4631,8 +4631,6 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptIssuesUpdateMilestoneReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4643,6 +4641,8 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptIssuesUpdateMilestoneReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4710,8 +4710,6 @@ func (s *Server) decodeMarkdownRenderRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MarkdownRenderReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4722,6 +4720,8 @@ func (s *Server) decodeMarkdownRenderRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MarkdownRenderReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4826,8 +4826,6 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptMigrationsMapCommitAuthorReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4838,6 +4836,8 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptMigrationsMapCommitAuthorReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -4890,8 +4890,6 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MigrationsSetLfsPreferenceReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4902,6 +4900,8 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MigrationsSetLfsPreferenceReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -4961,8 +4961,6 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MigrationsStartForAuthenticatedUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -4973,6 +4971,8 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MigrationsStartForAuthenticatedUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5032,8 +5032,6 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MigrationsStartForOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5044,6 +5042,8 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MigrationsStartForOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5103,8 +5103,6 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MigrationsStartImportReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5115,6 +5113,8 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MigrationsStartImportReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5177,8 +5177,6 @@ func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilMigrationsUpdateImportReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5189,6 +5187,8 @@ func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilMigrationsUpdateImportReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -5244,8 +5244,6 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptOAuthAuthorizationsCreateAuthorizationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5256,6 +5254,8 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptOAuthAuthorizationsCreateAuthorizationReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -5323,8 +5323,6 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5335,6 +5333,8 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5394,8 +5394,6 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5406,6 +5404,8 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5468,8 +5468,6 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptOAuthAuthorizationsUpdateAuthorizationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5480,6 +5478,8 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptOAuthAuthorizationsUpdateAuthorizationReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -5550,8 +5550,6 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptOrgsCreateInvitationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5562,6 +5560,8 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptOrgsCreateInvitationReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -5629,8 +5629,6 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request OrgsCreateWebhookReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5641,6 +5639,8 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OrgsCreateWebhookReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5703,8 +5703,6 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptOrgsSetMembershipForUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5715,6 +5713,8 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptOrgsSetMembershipForUserReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -5782,8 +5782,6 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request OrgsUpdateMembershipForAuthenticatedUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5794,6 +5792,8 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OrgsUpdateMembershipForAuthenticatedUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -5856,8 +5856,6 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptOrgsUpdateWebhookReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5868,6 +5866,8 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptOrgsUpdateWebhookReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -5938,8 +5938,6 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptOrgsUpdateWebhookConfigForOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -5950,6 +5948,8 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptOrgsUpdateWebhookConfigForOrgReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6020,8 +6020,6 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilProjectsAddCollaboratorReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6032,6 +6030,8 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilProjectsAddCollaboratorReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6099,8 +6099,6 @@ func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsCreateColumnReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6111,6 +6109,8 @@ func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsCreateColumnReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6162,8 +6162,6 @@ func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsCreateForAuthenticatedUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6174,6 +6172,8 @@ func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsCreateForAuthenticatedUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6225,8 +6225,6 @@ func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsCreateForOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6237,6 +6235,8 @@ func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsCreateForOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6288,8 +6288,6 @@ func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsCreateForRepoReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6300,6 +6298,8 @@ func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsCreateForRepoReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6351,8 +6351,6 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsMoveCardReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6363,6 +6361,8 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsMoveCardReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6422,8 +6422,6 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsMoveColumnReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6434,6 +6432,8 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsMoveColumnReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6496,8 +6496,6 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptProjectsUpdateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6508,6 +6506,8 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptProjectsUpdateReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6578,8 +6578,6 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptProjectsUpdateCardReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6590,6 +6588,8 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptProjectsUpdateCardReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6642,8 +6642,6 @@ func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ProjectsUpdateColumnReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6654,6 +6652,8 @@ func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ProjectsUpdateColumnReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6705,8 +6705,6 @@ func (s *Server) decodePullsCreateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsCreateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6717,6 +6715,8 @@ func (s *Server) decodePullsCreateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsCreateReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6768,8 +6768,6 @@ func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsCreateReplyForReviewCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6780,6 +6778,8 @@ func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsCreateReplyForReviewCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6834,8 +6834,6 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptPullsCreateReviewReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6846,6 +6844,8 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptPullsCreateReviewReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -6913,8 +6913,6 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsCreateReviewCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6925,6 +6923,8 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsCreateReviewCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -6984,8 +6984,6 @@ func (s *Server) decodePullsDismissReviewRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsDismissReviewReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -6996,6 +6994,8 @@ func (s *Server) decodePullsDismissReviewRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsDismissReviewReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7050,8 +7050,6 @@ func (s *Server) decodePullsMergeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilPullsMergeReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7062,6 +7060,8 @@ func (s *Server) decodePullsMergeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilPullsMergeReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -7129,8 +7129,6 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsRemoveRequestedReviewersReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7141,6 +7139,8 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsRemoveRequestedReviewersReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7200,8 +7200,6 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsSubmitReviewReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7212,6 +7210,8 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsSubmitReviewReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7274,8 +7274,6 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptPullsUpdateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7286,6 +7284,8 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptPullsUpdateReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -7356,8 +7356,6 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilPullsUpdateBranchReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7368,6 +7366,8 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilPullsUpdateBranchReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -7420,8 +7420,6 @@ func (s *Server) decodePullsUpdateReviewRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsUpdateReviewReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7432,6 +7430,8 @@ func (s *Server) decodePullsUpdateReviewRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsUpdateReviewReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7483,8 +7483,6 @@ func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PullsUpdateReviewCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7495,6 +7493,8 @@ func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PullsUpdateReviewCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7546,8 +7546,6 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForCommitCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7558,6 +7556,8 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForCommitCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7617,8 +7617,6 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForIssueReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7629,6 +7627,8 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForIssueReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7688,8 +7688,6 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForIssueCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7700,6 +7698,8 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForIssueCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7759,8 +7759,6 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForPullRequestReviewCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7771,6 +7769,8 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForPullRequestReviewCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7830,8 +7830,6 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForReleaseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7842,6 +7840,8 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForReleaseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7901,8 +7901,6 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForTeamDiscussionCommentInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7913,6 +7911,8 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForTeamDiscussionCommentInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -7972,8 +7972,6 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForTeamDiscussionCommentLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -7984,6 +7982,8 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForTeamDiscussionCommentLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8043,8 +8043,6 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForTeamDiscussionInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8055,6 +8053,8 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForTeamDiscussionInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8114,8 +8114,6 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReactionsCreateForTeamDiscussionLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8126,6 +8124,8 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReactionsCreateForTeamDiscussionLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8188,8 +8188,6 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposAddAppAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8200,6 +8198,8 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposAddAppAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8270,8 +8270,6 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposAddCollaboratorReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8282,6 +8280,8 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposAddCollaboratorReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8352,8 +8352,6 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposAddStatusCheckContextsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8364,6 +8362,8 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposAddStatusCheckContextsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8434,8 +8434,6 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposAddTeamAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8446,6 +8444,8 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposAddTeamAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8516,8 +8516,6 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposAddUserAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8528,6 +8526,8 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposAddUserAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -8595,8 +8595,6 @@ func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateAutolinkReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8607,6 +8605,8 @@ func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateAutolinkReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8658,8 +8658,6 @@ func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateCommitCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8670,6 +8668,8 @@ func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateCommitCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8721,8 +8721,6 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateCommitStatusReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8733,6 +8731,8 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateCommitStatusReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8792,8 +8792,6 @@ func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateDeployKeyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8804,6 +8802,8 @@ func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateDeployKeyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8855,8 +8855,6 @@ func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateDeploymentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8867,6 +8865,8 @@ func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateDeploymentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8918,8 +8918,6 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateDeploymentStatusReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -8930,6 +8928,8 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateDeploymentStatusReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -8989,8 +8989,6 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateDispatchEventReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9001,6 +8999,8 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateDispatchEventReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9060,8 +9060,6 @@ func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateForAuthenticatedUserReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9072,6 +9070,8 @@ func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateForAuthenticatedUserReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9126,8 +9126,6 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilReposCreateForkReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9138,6 +9136,8 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilReposCreateForkReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -9190,8 +9190,6 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9202,6 +9200,8 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9261,8 +9261,6 @@ func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateOrUpdateFileContentsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9273,6 +9271,8 @@ func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateOrUpdateFileContentsReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9324,8 +9324,6 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilReposCreatePagesSiteReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9336,6 +9334,8 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilReposCreatePagesSiteReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9395,8 +9395,6 @@ func (s *Server) decodeReposCreateReleaseRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateReleaseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9407,6 +9405,8 @@ func (s *Server) decodeReposCreateReleaseRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateReleaseReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9458,8 +9458,6 @@ func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposCreateUsingTemplateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9470,6 +9468,8 @@ func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposCreateUsingTemplateReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9524,8 +9524,6 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilReposCreateWebhookReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9536,6 +9534,8 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilReposCreateWebhookReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -9603,8 +9603,6 @@ func (s *Server) decodeReposDeleteFileRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposDeleteFileReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9615,6 +9613,8 @@ func (s *Server) decodeReposDeleteFileRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposDeleteFileReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9666,8 +9666,6 @@ func (s *Server) decodeReposMergeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposMergeReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9678,6 +9676,8 @@ func (s *Server) decodeReposMergeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposMergeReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9729,8 +9729,6 @@ func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposMergeUpstreamReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9741,6 +9739,8 @@ func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposMergeUpstreamReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -9795,8 +9795,6 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposRemoveAppAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9807,6 +9805,8 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposRemoveAppAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -9877,8 +9877,6 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposRemoveStatusCheckContextsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9889,6 +9887,8 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposRemoveStatusCheckContextsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -9959,8 +9959,6 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposRemoveTeamAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -9971,6 +9969,8 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposRemoveTeamAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10041,8 +10041,6 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposRemoveUserAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10053,6 +10051,8 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposRemoveUserAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10123,8 +10123,6 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposRenameBranchReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10135,6 +10133,8 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposRenameBranchReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10187,8 +10187,6 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposReplaceAllTopicsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10199,6 +10197,8 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposReplaceAllTopicsReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10261,8 +10261,6 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposSetAppAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10273,6 +10271,8 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposSetAppAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10343,8 +10343,6 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposSetStatusCheckContextsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10355,6 +10353,8 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposSetStatusCheckContextsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10425,8 +10425,6 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposSetTeamAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10437,6 +10435,8 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposSetTeamAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10507,8 +10507,6 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposSetUserAccessRestrictionsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10519,6 +10517,8 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposSetUserAccessRestrictionsReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10586,8 +10586,6 @@ func (s *Server) decodeReposTransferRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposTransferReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10598,6 +10596,8 @@ func (s *Server) decodeReposTransferRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposTransferReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10652,8 +10652,6 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10664,6 +10662,8 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10731,8 +10731,6 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposUpdateBranchProtectionReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10743,6 +10741,8 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposUpdateBranchProtectionReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10802,8 +10802,6 @@ func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReposUpdateCommitCommentReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10814,6 +10812,8 @@ func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReposUpdateCommitCommentReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -10868,8 +10868,6 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateInvitationReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10880,6 +10878,8 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateInvitationReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -10950,8 +10950,6 @@ func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdatePullRequestReviewProtectionReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -10962,6 +10960,8 @@ func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdatePullRequestReviewProtectionReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11017,8 +11017,6 @@ func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateReleaseReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11029,6 +11027,8 @@ func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateReleaseReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11084,8 +11084,6 @@ func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateReleaseAssetReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11096,6 +11094,8 @@ func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateReleaseAssetReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11151,8 +11151,6 @@ func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateStatusCheckProtectionReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11163,6 +11161,8 @@ func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateStatusCheckProtectionReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11218,8 +11218,6 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateWebhookReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11230,6 +11228,8 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateWebhookReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11300,8 +11300,6 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptReposUpdateWebhookConfigForRepoReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11312,6 +11310,8 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptReposUpdateWebhookConfigForRepoReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11420,8 +11420,6 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SecretScanningUpdateAlertReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11432,6 +11430,8 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SecretScanningUpdateAlertReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -11494,8 +11494,6 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsAddOrUpdateMembershipForUserInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11506,6 +11504,8 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsAddOrUpdateMembershipForUserInOrgReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11576,8 +11576,6 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsAddOrUpdateMembershipForUserLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11588,6 +11586,8 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsAddOrUpdateMembershipForUserLegacyReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11658,8 +11658,6 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11670,6 +11668,8 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11740,8 +11740,6 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsAddOrUpdateProjectPermissionsLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11752,6 +11750,8 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsAddOrUpdateProjectPermissionsLegacyReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11822,8 +11822,6 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsAddOrUpdateRepoPermissionsInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11834,6 +11832,8 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsAddOrUpdateRepoPermissionsInOrgReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11904,8 +11904,6 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsAddOrUpdateRepoPermissionsLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11916,6 +11914,8 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsAddOrUpdateRepoPermissionsLegacyReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -11983,8 +11983,6 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -11995,6 +11993,8 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12054,8 +12054,6 @@ func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateDiscussionCommentInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12066,6 +12064,8 @@ func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateDiscussionCommentInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12117,8 +12117,6 @@ func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateDiscussionCommentLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12129,6 +12127,8 @@ func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateDiscussionCommentLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12180,8 +12180,6 @@ func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateDiscussionInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12192,6 +12190,8 @@ func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateDiscussionInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12243,8 +12243,6 @@ func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateDiscussionLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12255,6 +12253,8 @@ func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateDiscussionLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12306,8 +12306,6 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *htt
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12318,6 +12316,8 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *htt
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12369,8 +12369,6 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12381,6 +12379,8 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12440,8 +12440,6 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsUpdateDiscussionCommentInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12452,6 +12450,8 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsUpdateDiscussionCommentInOrgReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12503,8 +12503,6 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsUpdateDiscussionCommentLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12515,6 +12513,8 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsUpdateDiscussionCommentLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12569,8 +12569,6 @@ func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsUpdateDiscussionInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12581,6 +12579,8 @@ func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsUpdateDiscussionInOrgReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -12636,8 +12636,6 @@ func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsUpdateDiscussionLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12648,6 +12646,8 @@ func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsUpdateDiscussionLegacyReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -12703,8 +12703,6 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptTeamsUpdateInOrgReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12715,6 +12713,8 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptTeamsUpdateInOrgReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -12782,8 +12782,6 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request TeamsUpdateLegacyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12794,6 +12792,8 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request TeamsUpdateLegacyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12856,8 +12856,6 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUsersAddEmailForAuthenticatedReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12868,6 +12866,8 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUsersAddEmailForAuthenticatedReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -12935,8 +12935,6 @@ func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request)
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request UsersCreateGpgKeyForAuthenticatedReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -12947,6 +12945,8 @@ func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request)
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request UsersCreateGpgKeyForAuthenticatedReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -12998,8 +12998,6 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request UsersCreatePublicSSHKeyForAuthenticatedReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13010,6 +13008,8 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request UsersCreatePublicSSHKeyForAuthenticatedReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -13072,8 +13072,6 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUsersDeleteEmailForAuthenticatedReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13084,6 +13082,8 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUsersDeleteEmailForAuthenticatedReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -13151,8 +13151,6 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request UsersSetPrimaryEmailVisibilityForAuthenticatedReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13163,6 +13161,8 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request UsersSetPrimaryEmailVisibilityForAuthenticatedReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -13225,8 +13225,6 @@ func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptUsersUpdateAuthenticatedReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -13237,6 +13235,8 @@ func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptUsersUpdateAuthenticatedReq
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
