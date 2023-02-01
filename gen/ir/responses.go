@@ -12,6 +12,7 @@ type ResponseInfo struct {
 	NoContent      bool
 	WithStatusCode bool
 	WithHeaders    bool
+	JSONStreaming  bool
 	Headers        map[string]*Parameter
 }
 
@@ -53,6 +54,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				StatusCode:     statusCode,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
+				JSONStreaming:  media.JSONStreaming,
 				Headers:        resp.Headers,
 			})
 		}
@@ -80,6 +82,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				ContentType:    contentType,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
+				JSONStreaming:  media.JSONStreaming,
 				Headers:        resp.Headers,
 			})
 		}
@@ -102,6 +105,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				ContentType:    contentType,
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,
+				JSONStreaming:  media.JSONStreaming,
 				Headers:        def.Headers,
 			})
 		}

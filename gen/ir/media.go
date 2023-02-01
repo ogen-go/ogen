@@ -42,4 +42,7 @@ type Media struct {
 	Encoding Encoding
 	// Type is response or request type.
 	Type *Type
+
+	// JSONStreaming indicates that the JSON media should be streamed.
+	JSONStreaming bool
 }

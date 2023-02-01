@@ -221,6 +221,13 @@ func (g *Generator) generateContents(
 				encoding = r
 			}
 
+			if encoding != ir.EncodingJSON && media.XOgenJSONStreaming {
+				g.log.Warn(`Extension "x-ogen-json-streaming" will be ignored for non-JSON encoding`,
+					zapPosition(media),
+					zap.String("contentType", contentType),
+				)
+			}
+
 			switch encoding {
 			case ir.EncodingJSON:
 				t, err := g.generateSchema(ctx, typeName, media.Schema, optional)
@@ -230,8 +237,9 @@ func (g *Generator) generateContents(
 
 				t.AddFeature("json")
 				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
 				}
 				return nil
 

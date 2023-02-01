@@ -89,26 +89,46 @@ func encode{{ $op.Name }}Request(
 
 {{- if $type.IsStream }}
 	{{- if $type.IsBase64Stream }}
-	body := ht.CreateBodyWriter(func(w io.Writer) error {
-		writer := base64.NewEncoder(base64.StdEncoding, w)
-		defer writer.Close()
+		body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
+			writer := base64.NewEncoder(base64.StdEncoding, w)
+			defer func() {
+				if rerr == nil {
+					rerr = writer.Close()
+				}
+			}()
 
-		_, err := io.Copy(writer, req)
-		return err
-	})
-	ht.SetCloserBody(r, body, contentType)
+			_, err := io.Copy(writer, req)
+			return err
+		})
+		ht.SetCloserBody(r, body, contentType)
 	{{- else }}
-	body := req
-	ht.SetBody(r, body, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 	{{- end }}
 	return nil
 {{- else if $encoding.JSON }}
-	e := jx.GetEncoder()
-	{
-	   {{- template "json/enc" elem $type "req" }}
-	}
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	{{- if $.JSONStreaming }}
+		body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
+			e := jx.NewStreamingEncoder(w, 512)
+			defer func() {
+				if rerr == nil {
+					rerr = e.Close()
+				}
+			}()
+			{
+				{{- template "json/enc" elem $type "req" }}
+			}
+			return nil
+		})
+		ht.SetCloserBody(r, body, contentType)
+	{{- else }}
+		e := jx.GetEncoder()
+		{
+		   {{- template "json/enc" elem $type "req" }}
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	{{- end }}
 	return nil
 {{- else if or $encoding.FormURLEncoded $encoding.MultipartForm }}
 	{{- if $unaliased.IsGeneric }}
