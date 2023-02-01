@@ -172,11 +172,23 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		s.AddExample(ex.Value)
 	}
 
+	var streaming bool
+	{
+		const extensionName = "x-ogen-json-streaming"
+		if ex, ok := m.Common.Extensions[extensionName]; ok {
+			if err := ex.Decode(&streaming); err != nil {
+				err := errors.Wrap(err, "unmarshal value")
+				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
+			}
+		}
+	}
+
 	return &openapi.MediaType{
-		Schema:   s,
-		Example:  json.RawMessage(m.Example),
-		Examples: examples,
-		Encoding: encodings,
-		Pointer:  locator.Pointer(p.file(ctx)),
+		Schema:             s,
+		Example:            json.RawMessage(m.Example),
+		Examples:           examples,
+		Encoding:           encodings,
+		XOgenJSONStreaming: streaming,
+		Pointer:            locator.Pointer(p.file(ctx)),
 	}, nil
 }
