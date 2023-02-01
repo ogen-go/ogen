@@ -22,7 +22,12 @@ func DecodeDate(i *jx.Decoder) (v time.Time, err error) {
 
 // EncodeDate encodes date to json.
 func EncodeDate(s *jx.Encoder, v time.Time) {
-	b := make([]byte, 64)
+	const (
+		roundTo  = 8
+		length   = len(dateLayout)
+		allocate = ((length + roundTo - 1) / roundTo) * roundTo
+	)
+	b := make([]byte, allocate)
 	b = v.AppendFormat(b[:0], dateLayout)
 	s.ByteStr(b)
 }
@@ -38,7 +43,12 @@ func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
 
 // EncodeTime encodes time to json.
 func EncodeTime(s *jx.Encoder, v time.Time) {
-	b := make([]byte, 64)
+	const (
+		roundTo  = 8
+		length   = len(timeLayout)
+		allocate = ((length + roundTo - 1) / roundTo) * roundTo
+	)
+	b := make([]byte, allocate)
 	b = v.AppendFormat(b[:0], timeLayout)
 	s.ByteStr(b)
 }
@@ -54,7 +64,12 @@ func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
 
 // EncodeDateTime encodes date-time to json.
 func EncodeDateTime(s *jx.Encoder, v time.Time) {
-	b := make([]byte, 64)
+	const (
+		roundTo  = 8
+		length   = len(time.RFC3339)
+		allocate = ((length + roundTo - 1) / roundTo) * roundTo
+	)
+	b := make([]byte, allocate)
 	b = v.AppendFormat(b[:0], time.RFC3339)
 	s.ByteStr(b)
 }
