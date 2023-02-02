@@ -221,19 +221,19 @@ type CustomFormatDef struct {
 
 // CustomFormat returns custom format definition.
 func CustomFormat[
-T any,
-JSON interface {
-	~struct{} // Enforce implementation without state.
+	T any,
+	JSON interface {
+		~struct{} // Enforce implementation without state.
 
-	EncodeJSON(*jx.Encoder, T)
-	DecodeJSON(*jx.Decoder) (T, error)
-},
-Text interface {
-	~struct{} // Enforce implementation without state.
+		EncodeJSON(*jx.Encoder, T)
+		DecodeJSON(*jx.Decoder) (T, error)
+	},
+	Text interface {
+		~struct{} // Enforce implementation without state.
 
-	EncodeText(T) string
-	DecodeText(string) (T, error)
-},
+		EncodeText(T) string
+		DecodeText(string) (T, error)
+	},
 ]() CustomFormatDef {
 	return CustomFormatDef{
 		typ:  reflect.TypeOf(new(T)).Elem(),

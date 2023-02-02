@@ -51,8 +51,9 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 				}
 				t = ir.Alias(requestName, t)
 				contents[contentType] = ir.Media{
-					Encoding: content.Encoding,
-					Type:     t,
+					Encoding:      content.Encoding,
+					Type:          t,
+					JSONStreaming: content.JSONStreaming,
 				}
 				if err := ctx.saveType(t); err != nil {
 					return nil, errors.Wrap(err, "save alias type")

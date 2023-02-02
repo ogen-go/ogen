@@ -388,8 +388,9 @@ func (g *Generator) generateContents(
 				return nil, err
 			}
 			result[ct] = ir.Media{
-				Type:     t,
-				Encoding: m.Encoding,
+				Type:          t,
+				Encoding:      m.Encoding,
+				JSONStreaming: m.JSONStreaming,
 			}
 		}
 	}

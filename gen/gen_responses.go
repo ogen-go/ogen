@@ -202,8 +202,9 @@ func (g *Generator) responseToIR(
 			return nil, errors.Wrapf(err, "content: %q: wrap response type", contentType)
 		}
 		contents[contentType] = ir.Media{
-			Encoding: media.Encoding,
-			Type:     t,
+			Encoding:      media.Encoding,
+			Type:          t,
+			JSONStreaming: media.JSONStreaming,
 		}
 	}
 
