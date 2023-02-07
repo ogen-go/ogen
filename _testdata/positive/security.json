@@ -30,6 +30,7 @@
             "queryKey": []
           },
           {
+            "cookieKey": [],
             "headerKey": []
           }
         ],
@@ -72,6 +73,11 @@
         "type": "apiKey",
         "in": "header",
         "name": "X-Api-Key"
+      },
+      "cookieKey": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "api_key"
       },
       "basicAuth": {
         "type": "http",

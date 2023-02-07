@@ -19,6 +19,7 @@ type testSecurity struct {
 	bearerToken api.BearerToken
 	headerKey   api.HeaderKey
 	queryKey    api.QueryKey
+	cookieKey   api.CookieKey
 }
 
 func (t *testSecurity) OptionalSecurity(ctx context.Context) error {
@@ -63,11 +64,19 @@ func (t *testSecurity) HandleQueryKey(ctx context.Context, operationName string,
 	return context.WithValue(ctx, tokenKey("QueryKey"), v), nil
 }
 
+func (t *testSecurity) HandleCookieKey(ctx context.Context, operationName string, v api.CookieKey) (context.Context, error) {
+	if v != t.cookieKey {
+		return nil, errors.Errorf("invalid api key: %q", v.APIKey)
+	}
+	return context.WithValue(ctx, tokenKey("CookieKey"), v), nil
+}
+
 type testSecuritySource struct {
 	basicAuth   *api.BasicAuth
 	bearerToken *api.BearerToken
 	headerKey   *api.HeaderKey
 	queryKey    *api.QueryKey
+	cookieKey   *api.CookieKey
 }
 
 func (t *testSecuritySource) BasicAuth(ctx context.Context, operationName string) (r api.BasicAuth, _ error) {
@@ -98,12 +107,20 @@ func (t *testSecuritySource) QueryKey(ctx context.Context, operationName string)
 	return r, ogenerrors.ErrSkipClientSecurity
 }
 
+func (t *testSecuritySource) CookieKey(ctx context.Context, operationName string) (r api.CookieKey, _ error) {
+	if v := t.cookieKey; v != nil {
+		return *v, nil
+	}
+	return r, ogenerrors.ErrSkipClientSecurity
+}
+
 func TestSecurity(t *testing.T) {
 	h := &testSecurity{
 		basicAuth:   api.BasicAuth{Username: "username", Password: "password"},
 		bearerToken: api.BearerToken{Token: "BearerToken"},
 		headerKey:   api.HeaderKey{APIKey: "HeaderKey"},
 		queryKey:    api.QueryKey{APIKey: "QueryKey"},
+		cookieKey:   api.CookieKey{APIKey: "CookieKey"},
 	}
 	srv, err := api.NewServer(h, h)
 	require.NoError(t, err)
@@ -171,6 +188,7 @@ func TestSecurity(t *testing.T) {
 
 		resp = sendReq(t, "/disjointSecurity", func(r *http.Request) {
 			r.Header.Set("X-Api-Key", h.headerKey.APIKey)
+			r.AddCookie(&http.Cookie{Name: "api_key", Value: h.cookieKey.APIKey})
 		})
 		require.Equal(t, http.StatusOK, resp.StatusCode)
 
@@ -207,6 +225,7 @@ func TestSecurityClientCheck(t *testing.T) {
 		bearerToken: api.BearerToken{Token: "BearerToken"},
 		headerKey:   api.HeaderKey{APIKey: "HeaderKey"},
 		queryKey:    api.QueryKey{APIKey: "QueryKey"},
+		cookieKey:   api.CookieKey{APIKey: "CookieKey"},
 	}
 	srv, err := api.NewServer(h, h)
 	require.NoError(t, err)
@@ -247,9 +266,10 @@ func TestSecurityClientCheck(t *testing.T) {
 	t.Run("DisjointSecurity", test((*api.Client).DisjointSecurity, []testCase{
 		{wantErr: true},
 		{source: testSecuritySource{queryKey: &h.queryKey}, wantErr: true},
+		{source: testSecuritySource{headerKey: &h.headerKey}, wantErr: true},
 
 		{source: testSecuritySource{queryKey: &h.queryKey, basicAuth: &h.basicAuth}, wantErr: false},
-		{source: testSecuritySource{headerKey: &h.headerKey}, wantErr: false},
+		{source: testSecuritySource{headerKey: &h.headerKey, cookieKey: &h.cookieKey}, wantErr: false},
 	}))
 	t.Run("IntersectSecurity", test((*api.Client).IntersectSecurity, []testCase{
 		{wantErr: true},
