@@ -45,6 +45,16 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 			return ctx, false, nil
 		}
 		value := q.Get(parameterName)
+        {{- else if $s.Kind.IsCookie }}
+	    var value string
+		switch cookie, err := req.Cookie(parameterName); err {
+		case nil:
+			value = cookie.Value
+		case http.ErrNoCookie:
+			return ctx, false, nil
+		default:
+			return nil, false, err
+		}
 		{{- else }}
             {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 		{{- end }}
@@ -103,6 +113,11 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 		q := req.URL.Query()
 		q.Set({{ quote $s.ParameterName }}, t.APIKey)
 		req.URL.RawQuery = q.Encode()
+        {{- else if $s.Kind.IsCookie }}
+		req.AddCookie(&http.Cookie{
+			Name: {{ quote $s.ParameterName }},
+			Value: t.APIKey,
+		})
 		{{- else }}
             {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 		{{- end }}

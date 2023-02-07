@@ -29,7 +29,7 @@ func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.Security
 		s.Kind = ir.HeaderSecurity
 		vetHeaderParameterName(g.log, s.ParameterName, spec.Security)
 	case "cookie":
-		return nil, &ErrNotImplemented{Name: "cookie security"}
+		s.Kind = ir.CookieSecurity
 	default:
 		return nil, errors.Errorf(`unknown "in" value %q`, in)
 	}

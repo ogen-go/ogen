@@ -12,6 +12,8 @@ const (
 	QuerySecurity SecurityKind = "query"
 	// HeaderSecurity is HTTP header security parameter. Matches some "http" schemes and "apiKey" with "in" = "header".
 	HeaderSecurity SecurityKind = "header"
+	// CookieSecurity is HTTP cookie security parameter. Matches some "http" schemes and "apiKey" with "in" = "cookie".
+	CookieSecurity SecurityKind = "cookie"
 	// OAuth2Security is special type for OAuth2-based authentication. Matches "oauth2" and "openIdConnect".
 	OAuth2Security SecurityKind = "oauth2"
 )
@@ -24,6 +26,11 @@ func (s SecurityKind) IsQuery() bool {
 // IsHeader whether s is HeaderSecurity.
 func (s SecurityKind) IsHeader() bool {
 	return s == HeaderSecurity
+}
+
+// IsCookie whether s is CookieSecurity.
+func (s SecurityKind) IsCookie() bool {
+	return s == CookieSecurity
 }
 
 // IsOAuth2 whether s is OAuth2Security.
