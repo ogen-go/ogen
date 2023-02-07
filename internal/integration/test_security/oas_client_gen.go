@@ -137,10 +137,21 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 			}
 		}
 		{
+			stage = "Security:CookieKey"
+			switch err := c.securityCookieKey(ctx, "DisjointSecurity", r); err {
+			case nil:
+				satisfied[0] |= 1 << 2
+			case ogenerrors.ErrSkipClientSecurity:
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"CookieKey\"")
+			}
+		}
+		{
 			stage = "Security:HeaderKey"
 			switch err := c.securityHeaderKey(ctx, "DisjointSecurity", r); err {
 			case nil:
-				satisfied[0] |= 1 << 2
+				satisfied[0] |= 1 << 3
 			case ogenerrors.ErrSkipClientSecurity:
 				// Skip this security.
 			default:
@@ -152,7 +163,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 		nextRequirement:
 			for _, requirement := range []bitset{
 				{0b00000011},
-				{0b00000100},
+				{0b00001100},
 			} {
 				for i, mask := range requirement {
 					if satisfied[i]&mask != mask {

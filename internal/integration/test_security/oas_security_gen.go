@@ -18,6 +18,8 @@ type SecurityHandler interface {
 	HandleBasicAuth(ctx context.Context, operationName string, t BasicAuth) (context.Context, error)
 	// HandleBearerToken handles bearerToken security.
 	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
+	// HandleCookieKey handles cookieKey security.
+	HandleCookieKey(ctx context.Context, operationName string, t CookieKey) (context.Context, error)
 	// HandleHeaderKey handles headerKey security.
 	HandleHeaderKey(ctx context.Context, operationName string, t HeaderKey) (context.Context, error)
 	// HandleQueryKey handles queryKey security.
@@ -69,6 +71,25 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 	}
 	return rctx, true, err
 }
+func (s *Server) securityCookieKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+	var t CookieKey
+	const parameterName = "api_key"
+	var value string
+	switch cookie, err := req.Cookie(parameterName); err {
+	case nil:
+		value = cookie.Value
+	case http.ErrNoCookie:
+		return ctx, false, nil
+	default:
+		return nil, false, err
+	}
+	t.APIKey = value
+	rctx, err := s.sec.HandleCookieKey(ctx, operationName, t)
+	if err != nil {
+		return nil, false, err
+	}
+	return rctx, true, err
+}
 func (s *Server) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
 	var t HeaderKey
 	const parameterName = "X-Api-Key"
@@ -105,6 +126,8 @@ type SecuritySource interface {
 	BasicAuth(ctx context.Context, operationName string) (BasicAuth, error)
 	// BearerToken provides bearerToken security value.
 	BearerToken(ctx context.Context, operationName string) (BearerToken, error)
+	// CookieKey provides cookieKey security value.
+	CookieKey(ctx context.Context, operationName string) (CookieKey, error)
 	// HeaderKey provides headerKey security value.
 	HeaderKey(ctx context.Context, operationName string) (HeaderKey, error)
 	// QueryKey provides queryKey security value.
@@ -131,6 +154,20 @@ func (s *Client) securityBearerToken(ctx context.Context, operationName string, 
 		return errors.Wrap(err, "security source \"BearerToken\"")
 	}
 	req.Header.Set("Authorization", "Bearer "+t.Token)
+	return nil
+}
+func (s *Client) securityCookieKey(ctx context.Context, operationName string, req *http.Request) error {
+	t, err := s.sec.CookieKey(ctx, operationName)
+	if err != nil {
+		if errors.Is(err, ogenerrors.ErrSkipClientSecurity) {
+			return ogenerrors.ErrSkipClientSecurity
+		}
+		return errors.Wrap(err, "security source \"CookieKey\"")
+	}
+	req.AddCookie(&http.Cookie{
+		Name:  "api_key",
+		Value: t.APIKey,
+	})
 	return nil
 }
 func (s *Client) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) error {

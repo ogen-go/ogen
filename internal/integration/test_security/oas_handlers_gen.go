@@ -91,6 +91,23 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, w http.ResponseWr
 			}
 		}
 		{
+			sctx, ok, err := s.securityCookieKey(ctx, "DisjointSecurity", r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "CookieKey",
+					Err:              err,
+				}
+				recordError("Security:CookieKey", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 2
+				ctx = sctx
+			}
+		}
+		{
 			sctx, ok, err := s.securityHeaderKey(ctx, "DisjointSecurity", r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
@@ -103,7 +120,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, w http.ResponseWr
 				return
 			}
 			if ok {
-				satisfied[0] |= 1 << 2
+				satisfied[0] |= 1 << 3
 				ctx = sctx
 			}
 		}
@@ -112,7 +129,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, w http.ResponseWr
 		nextRequirement:
 			for _, requirement := range []bitset{
 				{0b00000011},
-				{0b00000100},
+				{0b00001100},
 			} {
 				for i, mask := range requirement {
 					if satisfied[i]&mask != mask {
