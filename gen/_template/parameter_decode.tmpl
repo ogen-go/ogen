@@ -27,6 +27,9 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 	{{- if $.HasHeaderParams }}
 		h := uri.NewHeaderDecoder(r.Header)
 	{{- end }}
+	{{- if $.HasCookieParams }}
+		c := uri.NewCookieDecoder(r)
+	{{- end }}
 
 	{{- range $p := $.Params }}{{/* Range params */}}
     {{- $loc             := printf "%s: %s" $p.Spec.In $p.Spec.Name }}
@@ -109,6 +112,28 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 		}
 		if err := h.HasParam(cfg); err == nil {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+        		{{- template "decode_parameter" $p -}}
+			}); err != nil {
+				return err
+			}
+
+			{{- if $p.Type.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" $el }}
+			}(); err != nil {
+				return err
+			}
+			{{- end }}
+		} {{ if $p.Spec.Required }} else {
+			return validate.ErrFieldRequired
+		} {{ end }}
+	{{- else if $p.Spec.In.Cookie }}
+		cfg := uri.CookieParameterDecodingConfig{
+			Name:   {{ quote $p.Spec.Name }},
+			Explode:{{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+		}
+		if err := c.HasParam(cfg); err == nil {
+			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
         		{{- template "decode_parameter" $p -}}
 			}); err != nil {
 				return err
