@@ -95,10 +95,6 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 }
 
 func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Parameter) (*ir.Parameter, error) {
-	if p.In == openapi.LocationCookie {
-		return nil, &ErrNotImplemented{"cookie params"}
-	}
-
 	if err := isSupportedParamStyle(p); err != nil {
 		return nil, err
 	}
@@ -217,6 +213,16 @@ func isSupportedParamStyle(param *openapi.Parameter) error {
 		if s := param.Schema; s != nil && s.Type == jsonschema.Object {
 			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
 		}
+	}
+
+	if param.In == openapi.LocationCookie && !param.Explode {
+		// The OpenAPI specification is not clear about how to exactly we should
+		// encode non-explode parameters.
+		//
+		// See:
+		// https://github.com/OAI/OpenAPI-Specification/issues/1528
+		// https://github.com/OAI/OpenAPI-Specification/issues/2940
+		return &ErrNotImplemented{Name: "non-explode cookie parameter style"}
 	}
 
 	return nil

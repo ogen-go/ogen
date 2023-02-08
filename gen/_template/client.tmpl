@@ -222,7 +222,10 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- template "encode_header_parameters" $op }}
 	{{- end }}
 
-	{{- template "encode_cookie_params" $op }}
+	{{ if $op.HasCookieParams }}
+	stage = "EncodeCookieParams"
+	{{- template "encode_cookie_parameters" $op }}
+    {{- end }}
 
 	{{- with $securities := $op.Security.Securities }}
 	{
@@ -281,25 +284,4 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 
 	return result, nil
 }
-{{ end }}
-
-{{ define "encode_cookie_params" }}
-{{- range $param := $.CookieParams }}{{/* Range over params */}}
-{
-value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
-{{- if $param.Type.IsArray }}
-r.AddCookie(&http.Cookie{
-	Name: {{ quote $param.Spec.Name }},
-	Value: strings.Join(value, "/"),
-	MaxAge: 1337,
-})
-{{- else }}
-r.AddCookie(&http.Cookie{
-	Name: {{ quote $param.Spec.Name }},
-	Value: value,
-	MaxAge: 1337,
-})
-{{- end }}
-}
-{{- end }}{{/* Range over params */}}
 {{ end }}
