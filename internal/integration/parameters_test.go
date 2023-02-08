@@ -4,9 +4,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
-	"net/http"
 	"net/http/httptest"
-	"net/url"
 	"testing"
 
 	"github.com/go-faster/errors"
@@ -17,23 +15,6 @@ import (
 )
 
 type testParameters struct {
-}
-
-func (s *testParameters) ComplicatedParameterNameGet(ctx context.Context, params api.ComplicatedParameterNameGetParams) error {
-	panic("implement me")
-}
-
-func (s *testParameters) ContentQueryParameter(ctx context.Context, params api.ContentQueryParameterParams) (string, error) {
-	val, _ := params.Param.Get()
-	return val.Style, nil
-}
-
-func (s *testParameters) HeaderParameter(ctx context.Context, params api.HeaderParameterParams) (*api.Hash, error) {
-	h := sha256.Sum256([]byte(params.XAuthToken))
-	return &api.Hash{
-		Raw: h[:],
-		Hex: hex.EncodeToString(h[:]),
-	}, nil
 }
 
 func (s *testParameters) ObjectQueryParameter(ctx context.Context, params api.ObjectQueryParameterParams) (*api.ObjectQueryParameterOK, error) {
@@ -56,8 +37,33 @@ func (s *testParameters) ObjectQueryParameter(ctx context.Context, params api.Ob
 	return &api.ObjectQueryParameterOK{}, errors.New("invalid input")
 }
 
-func (s *testParameters) PathObjectParameter(ctx context.Context, params api.PathObjectParameterParams) (*api.User, error) {
-	return &params.Param, nil
+func (s *testParameters) ContentParameters(ctx context.Context, params api.ContentParametersParams) (*api.ContentParameters, error) {
+	return &api.ContentParameters{
+		Query:  params.Query,
+		Path:   params.Path,
+		Header: params.XHeader,
+		Cookie: params.Cookie,
+	}, nil
+}
+
+func (s *testParameters) HeaderParameter(ctx context.Context, params api.HeaderParameterParams) (*api.Hash, error) {
+	h := sha256.Sum256([]byte(params.XAuthToken))
+	return &api.Hash{
+		Raw: h[:],
+		Hex: hex.EncodeToString(h[:]),
+	}, nil
+}
+
+func (s *testParameters) CookieParameter(ctx context.Context, params api.CookieParameterParams) (*api.Hash, error) {
+	h := sha256.Sum256([]byte(params.Value))
+	return &api.Hash{
+		Raw: h[:],
+		Hex: hex.EncodeToString(h[:]),
+	}, nil
+}
+
+func (s *testParameters) ComplicatedParameterNameGet(ctx context.Context, params api.ComplicatedParameterNameGetParams) error {
+	panic("implement me")
 }
 
 func (s *testParameters) SameName(ctx context.Context, params api.SameNameParams) error {
@@ -112,6 +118,7 @@ func TestParameters(t *testing.T) {
 			require.Equal(t, resp.Filter, filter)
 		})
 	})
+
 	t.Run("HeaderParameter", func(t *testing.T) {
 		h, err := client.HeaderParameter(ctx, api.HeaderParameterParams{XAuthToken: "hello, world"})
 		require.NoError(t, err)
@@ -119,12 +126,15 @@ func TestParameters(t *testing.T) {
 		assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
 		assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
 	})
-	t.Run("ContentQueryParameter", func(t *testing.T) {
-		require.HTTPBodyContains(t, h.ServeHTTP, http.MethodGet, s.URL+"/contentQueryParameter", url.Values{
-			"param": {`{"filter":"bar","style":"foo","min":10,"max":10}`},
-		}, "foo")
+	t.Run("CookieParameter", func(t *testing.T) {
+		h, err := client.CookieParameter(ctx, api.CookieParameterParams{Value: "hello, world"})
+		require.NoError(t, err)
+		assert.NotEmpty(t, h.Raw)
+		assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
+		assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
 	})
-	t.Run("PathObjectParameter", func(t *testing.T) {
+
+	t.Run("ContentParameters", func(t *testing.T) {
 		user := api.User{
 			ID:       1,
 			Username: "admin",
@@ -142,8 +152,16 @@ func TestParameters(t *testing.T) {
 				},
 			},
 		}
-		resp, err := client.PathObjectParameter(ctx, api.PathObjectParameterParams{Param: user})
+		resp, err := client.ContentParameters(ctx, api.ContentParametersParams{
+			Query:   user,
+			Path:    user,
+			XHeader: user,
+			Cookie:  user,
+		})
 		require.NoError(t, err)
-		assert.Equal(t, user, *resp)
+		assert.Equal(t, user, resp.Query)
+		assert.Equal(t, user, resp.Path)
+		assert.Equal(t, user, resp.Header)
+		assert.Equal(t, user, resp.Cookie)
 	})
 }
