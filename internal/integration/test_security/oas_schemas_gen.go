@@ -41,6 +41,20 @@ func (s *BearerToken) SetToken(val string) {
 	s.Token = val
 }
 
+type CookieKey struct {
+	APIKey string
+}
+
+// GetAPIKey returns the value of APIKey.
+func (s *CookieKey) GetAPIKey() string {
+	return s.APIKey
+}
+
+// SetAPIKey sets the value of APIKey.
+func (s *CookieKey) SetAPIKey(val string) {
+	s.APIKey = val
+}
+
 // DisjointSecurityOK is response for DisjointSecurity operation.
 type DisjointSecurityOK struct{}
 
