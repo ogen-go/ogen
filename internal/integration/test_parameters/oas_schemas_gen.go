@@ -9,51 +9,51 @@ import (
 // ComplicatedParameterNameGetOK is response for ComplicatedParameterNameGet operation.
 type ComplicatedParameterNameGetOK struct{}
 
-type ContentQueryParameterParam struct {
-	Style  string `json:"style"`
-	Min    int    `json:"min"`
-	Max    int    `json:"max"`
-	Filter string `json:"filter"`
+type ContentParameters struct {
+	Query  User `json:"query"`
+	Path   User `json:"path"`
+	Header User `json:"header"`
+	Cookie User `json:"cookie"`
 }
 
-// GetStyle returns the value of Style.
-func (s *ContentQueryParameterParam) GetStyle() string {
-	return s.Style
+// GetQuery returns the value of Query.
+func (s *ContentParameters) GetQuery() User {
+	return s.Query
 }
 
-// GetMin returns the value of Min.
-func (s *ContentQueryParameterParam) GetMin() int {
-	return s.Min
+// GetPath returns the value of Path.
+func (s *ContentParameters) GetPath() User {
+	return s.Path
 }
 
-// GetMax returns the value of Max.
-func (s *ContentQueryParameterParam) GetMax() int {
-	return s.Max
+// GetHeader returns the value of Header.
+func (s *ContentParameters) GetHeader() User {
+	return s.Header
 }
 
-// GetFilter returns the value of Filter.
-func (s *ContentQueryParameterParam) GetFilter() string {
-	return s.Filter
+// GetCookie returns the value of Cookie.
+func (s *ContentParameters) GetCookie() User {
+	return s.Cookie
 }
 
-// SetStyle sets the value of Style.
-func (s *ContentQueryParameterParam) SetStyle(val string) {
-	s.Style = val
+// SetQuery sets the value of Query.
+func (s *ContentParameters) SetQuery(val User) {
+	s.Query = val
 }
 
-// SetMin sets the value of Min.
-func (s *ContentQueryParameterParam) SetMin(val int) {
-	s.Min = val
+// SetPath sets the value of Path.
+func (s *ContentParameters) SetPath(val User) {
+	s.Path = val
 }
 
-// SetMax sets the value of Max.
-func (s *ContentQueryParameterParam) SetMax(val int) {
-	s.Max = val
+// SetHeader sets the value of Header.
+func (s *ContentParameters) SetHeader(val User) {
+	s.Header = val
 }
 
-// SetFilter sets the value of Filter.
-func (s *ContentQueryParameterParam) SetFilter(val string) {
-	s.Filter = val
+// SetCookie sets the value of Cookie.
+func (s *ContentParameters) SetCookie(val User) {
+	s.Cookie = val
 }
 
 // Ref: #/components/schemas/Hash
@@ -82,83 +82,9 @@ func (s *Hash) SetHex(val string) {
 	s.Hex = val
 }
 
-type ObjectQueryParameterDeepObject struct {
-	Min    int    `json:"min"`
-	Max    int    `json:"max"`
-	Filter string `json:"filter"`
-}
-
-// GetMin returns the value of Min.
-func (s *ObjectQueryParameterDeepObject) GetMin() int {
-	return s.Min
-}
-
-// GetMax returns the value of Max.
-func (s *ObjectQueryParameterDeepObject) GetMax() int {
-	return s.Max
-}
-
-// GetFilter returns the value of Filter.
-func (s *ObjectQueryParameterDeepObject) GetFilter() string {
-	return s.Filter
-}
-
-// SetMin sets the value of Min.
-func (s *ObjectQueryParameterDeepObject) SetMin(val int) {
-	s.Min = val
-}
-
-// SetMax sets the value of Max.
-func (s *ObjectQueryParameterDeepObject) SetMax(val int) {
-	s.Max = val
-}
-
-// SetFilter sets the value of Filter.
-func (s *ObjectQueryParameterDeepObject) SetFilter(val string) {
-	s.Filter = val
-}
-
-type ObjectQueryParameterFormObject struct {
-	Min    int    `json:"min"`
-	Max    int    `json:"max"`
-	Filter string `json:"filter"`
-}
-
-// GetMin returns the value of Min.
-func (s *ObjectQueryParameterFormObject) GetMin() int {
-	return s.Min
-}
-
-// GetMax returns the value of Max.
-func (s *ObjectQueryParameterFormObject) GetMax() int {
-	return s.Max
-}
-
-// GetFilter returns the value of Filter.
-func (s *ObjectQueryParameterFormObject) GetFilter() string {
-	return s.Filter
-}
-
-// SetMin sets the value of Min.
-func (s *ObjectQueryParameterFormObject) SetMin(val int) {
-	s.Min = val
-}
-
-// SetMax sets the value of Max.
-func (s *ObjectQueryParameterFormObject) SetMax(val int) {
-	s.Max = val
-}
-
-// SetFilter sets the value of Filter.
-func (s *ObjectQueryParameterFormObject) SetFilter(val string) {
-	s.Filter = val
-}
-
 type ObjectQueryParameterOK struct {
-	Style  string `json:"style"`
-	Min    int    `json:"min"`
-	Max    int    `json:"max"`
-	Filter string `json:"filter"`
+	Style string         `json:"style"`
+	Value OneLevelObject `json:"value"`
 }
 
 // GetStyle returns the value of Style.
@@ -166,19 +92,9 @@ func (s *ObjectQueryParameterOK) GetStyle() string {
 	return s.Style
 }
 
-// GetMin returns the value of Min.
-func (s *ObjectQueryParameterOK) GetMin() int {
-	return s.Min
-}
-
-// GetMax returns the value of Max.
-func (s *ObjectQueryParameterOK) GetMax() int {
-	return s.Max
-}
-
-// GetFilter returns the value of Filter.
-func (s *ObjectQueryParameterOK) GetFilter() string {
-	return s.Filter
+// GetValue returns the value of Value.
+func (s *ObjectQueryParameterOK) GetValue() OneLevelObject {
+	return s.Value
 }
 
 // SetStyle sets the value of Style.
@@ -186,53 +102,80 @@ func (s *ObjectQueryParameterOK) SetStyle(val string) {
 	s.Style = val
 }
 
+// SetValue sets the value of Value.
+func (s *ObjectQueryParameterOK) SetValue(val OneLevelObject) {
+	s.Value = val
+}
+
+// Ref: #/components/schemas/OneLevelObject
+type OneLevelObject struct {
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
+}
+
+// GetMin returns the value of Min.
+func (s *OneLevelObject) GetMin() int {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s *OneLevelObject) GetMax() int {
+	return s.Max
+}
+
+// GetFilter returns the value of Filter.
+func (s *OneLevelObject) GetFilter() string {
+	return s.Filter
+}
+
 // SetMin sets the value of Min.
-func (s *ObjectQueryParameterOK) SetMin(val int) {
+func (s *OneLevelObject) SetMin(val int) {
 	s.Min = val
 }
 
 // SetMax sets the value of Max.
-func (s *ObjectQueryParameterOK) SetMax(val int) {
+func (s *OneLevelObject) SetMax(val int) {
 	s.Max = val
 }
 
 // SetFilter sets the value of Filter.
-func (s *ObjectQueryParameterOK) SetFilter(val string) {
+func (s *OneLevelObject) SetFilter(val string) {
 	s.Filter = val
 }
 
-// NewOptContentQueryParameterParam returns new OptContentQueryParameterParam with value set to v.
-func NewOptContentQueryParameterParam(v ContentQueryParameterParam) OptContentQueryParameterParam {
-	return OptContentQueryParameterParam{
+// NewOptOneLevelObject returns new OptOneLevelObject with value set to v.
+func NewOptOneLevelObject(v OneLevelObject) OptOneLevelObject {
+	return OptOneLevelObject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptContentQueryParameterParam is optional ContentQueryParameterParam.
-type OptContentQueryParameterParam struct {
-	Value ContentQueryParameterParam
+// OptOneLevelObject is optional OneLevelObject.
+type OptOneLevelObject struct {
+	Value OneLevelObject
 	Set   bool
 }
 
-// IsSet returns true if OptContentQueryParameterParam was set.
-func (o OptContentQueryParameterParam) IsSet() bool { return o.Set }
+// IsSet returns true if OptOneLevelObject was set.
+func (o OptOneLevelObject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptContentQueryParameterParam) Reset() {
-	var v ContentQueryParameterParam
+func (o *OptOneLevelObject) Reset() {
+	var v OneLevelObject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptContentQueryParameterParam) SetTo(v ContentQueryParameterParam) {
+func (o *OptOneLevelObject) SetTo(v OneLevelObject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptContentQueryParameterParam) Get() (v ContentQueryParameterParam, ok bool) {
+func (o OptOneLevelObject) Get() (v OneLevelObject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -240,99 +183,7 @@ func (o OptContentQueryParameterParam) Get() (v ContentQueryParameterParam, ok b
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptContentQueryParameterParam) Or(d ContentQueryParameterParam) ContentQueryParameterParam {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptObjectQueryParameterDeepObject returns new OptObjectQueryParameterDeepObject with value set to v.
-func NewOptObjectQueryParameterDeepObject(v ObjectQueryParameterDeepObject) OptObjectQueryParameterDeepObject {
-	return OptObjectQueryParameterDeepObject{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptObjectQueryParameterDeepObject is optional ObjectQueryParameterDeepObject.
-type OptObjectQueryParameterDeepObject struct {
-	Value ObjectQueryParameterDeepObject
-	Set   bool
-}
-
-// IsSet returns true if OptObjectQueryParameterDeepObject was set.
-func (o OptObjectQueryParameterDeepObject) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptObjectQueryParameterDeepObject) Reset() {
-	var v ObjectQueryParameterDeepObject
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptObjectQueryParameterDeepObject) SetTo(v ObjectQueryParameterDeepObject) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptObjectQueryParameterDeepObject) Get() (v ObjectQueryParameterDeepObject, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptObjectQueryParameterDeepObject) Or(d ObjectQueryParameterDeepObject) ObjectQueryParameterDeepObject {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptObjectQueryParameterFormObject returns new OptObjectQueryParameterFormObject with value set to v.
-func NewOptObjectQueryParameterFormObject(v ObjectQueryParameterFormObject) OptObjectQueryParameterFormObject {
-	return OptObjectQueryParameterFormObject{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptObjectQueryParameterFormObject is optional ObjectQueryParameterFormObject.
-type OptObjectQueryParameterFormObject struct {
-	Value ObjectQueryParameterFormObject
-	Set   bool
-}
-
-// IsSet returns true if OptObjectQueryParameterFormObject was set.
-func (o OptObjectQueryParameterFormObject) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptObjectQueryParameterFormObject) Reset() {
-	var v ObjectQueryParameterFormObject
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptObjectQueryParameterFormObject) SetTo(v ObjectQueryParameterFormObject) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptObjectQueryParameterFormObject) Get() (v ObjectQueryParameterFormObject, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptObjectQueryParameterFormObject) Or(d ObjectQueryParameterFormObject) ObjectQueryParameterFormObject {
+func (o OptOneLevelObject) Or(d OneLevelObject) OneLevelObject {
 	if v, ok := o.Get(); ok {
 		return v
 	}

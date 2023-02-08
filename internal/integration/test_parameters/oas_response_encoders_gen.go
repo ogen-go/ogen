@@ -18,13 +18,26 @@ func encodeComplicatedParameterNameGetResponse(response *ComplicatedParameterNam
 	return nil
 }
 
-func encodeContentQueryParameterResponse(response string, w http.ResponseWriter, span trace.Span) error {
+func encodeContentParametersResponse(response *ContentParameters, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := jx.GetEncoder()
-	e.Str(response)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+}
+
+func encodeCookieParameterResponse(response *Hash, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	e := jx.GetEncoder()
+	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -44,7 +57,7 @@ func encodeHeaderParameterResponse(response *Hash, w http.ResponseWriter, span t
 	return nil
 }
 
-func encodeObjectQueryParameterResponse(response *ObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
+func encodeObjectCookieParameterResponse(response *OneLevelObject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -57,7 +70,7 @@ func encodeObjectQueryParameterResponse(response *ObjectQueryParameterOK, w http
 	return nil
 }
 
-func encodePathObjectParameterResponse(response *User, w http.ResponseWriter, span trace.Span) error {
+func encodeObjectQueryParameterResponse(response *ObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

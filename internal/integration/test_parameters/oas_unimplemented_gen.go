@@ -20,10 +20,19 @@ func (UnimplementedHandler) ComplicatedParameterNameGet(ctx context.Context, par
 	return ht.ErrNotImplemented
 }
 
-// ContentQueryParameter implements contentQueryParameter operation.
+// ContentParameters implements contentParameters operation.
 //
-// GET /contentQueryParameter
-func (UnimplementedHandler) ContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (r string, _ error) {
+// GET /contentParameters/{path}
+func (UnimplementedHandler) ContentParameters(ctx context.Context, params ContentParametersParams) (r *ContentParameters, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// CookieParameter implements cookieParameter operation.
+//
+// Test for cookie param.
+//
+// GET /cookieParameter
+func (UnimplementedHandler) CookieParameter(ctx context.Context, params CookieParameterParams) (r *Hash, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -36,17 +45,17 @@ func (UnimplementedHandler) HeaderParameter(ctx context.Context, params HeaderPa
 	return r, ht.ErrNotImplemented
 }
 
+// ObjectCookieParameter implements objectCookieParameter operation.
+//
+// GET /objectCookieParameter
+func (UnimplementedHandler) ObjectCookieParameter(ctx context.Context, params ObjectCookieParameterParams) (r *OneLevelObject, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ObjectQueryParameter implements objectQueryParameter operation.
 //
 // GET /objectQueryParameter
 func (UnimplementedHandler) ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (r *ObjectQueryParameterOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// PathObjectParameter implements pathObjectParameter operation.
-//
-// GET /pathObjectParameter/{param}
-func (UnimplementedHandler) PathObjectParameter(ctx context.Context, params PathObjectParameterParams) (r *User, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

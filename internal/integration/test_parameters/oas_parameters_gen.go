@@ -249,30 +249,54 @@ func decodeComplicatedParameterNameGetParams(args [0]string, r *http.Request) (p
 	return params, nil
 }
 
-// ContentQueryParameterParams is parameters of contentQueryParameter operation.
-type ContentQueryParameterParams struct {
-	Param OptContentQueryParameterParam
+// ContentParametersParams is parameters of contentParameters operation.
+type ContentParametersParams struct {
+	Query   User
+	Path    User
+	XHeader User
+	Cookie  User
 }
 
-func unpackContentQueryParameterParams(packed middleware.Parameters) (params ContentQueryParameterParams) {
+func unpackContentParametersParams(packed middleware.Parameters) (params ContentParametersParams) {
 	{
 		key := middleware.ParameterKey{
-			Name: "param",
+			Name: "query",
 			In:   "query",
 		}
-		if v, ok := packed[key]; ok {
-			params.Param = v.(OptContentQueryParameterParam)
+		params.Query = packed[key].(User)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
 		}
+		params.Path = packed[key].(User)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "X-Header",
+			In:   "header",
+		}
+		params.XHeader = packed[key].(User)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "cookie",
+			In:   "cookie",
+		}
+		params.Cookie = packed[key].(User)
 	}
 	return params
 }
 
-func decodeContentQueryParameterParams(args [0]string, r *http.Request) (params ContentQueryParameterParams, _ error) {
+func decodeContentParametersParams(args [1]string, r *http.Request) (params ContentParametersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
-	// Decode query: param.
+	h := uri.NewHeaderDecoder(r.Header)
+	c := uri.NewCookieDecoder(r)
+	// Decode query: query.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "param",
+			Name:    "query",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
@@ -284,8 +308,7 @@ func decodeContentQueryParameterParams(args [0]string, r *http.Request) (params 
 					return err
 				}
 				if err := func(d *jx.Decoder) error {
-					params.Param.Reset()
-					if err := params.Param.Decode(d); err != nil {
+					if err := params.Query.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -296,12 +319,213 @@ func decodeContentQueryParameterParams(args [0]string, r *http.Request) (params 
 			}); err != nil {
 				return err
 			}
+			if err := func() error {
+				if err := params.Query.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
 		}
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "param",
+			Name: "query",
 			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode path: path.
+	if err := func() error {
+		param, err := url.PathUnescape(args[0])
+		if err != nil {
+			return errors.Wrap(err, "unescape path")
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					if err := params.Path.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := params.Path.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "path",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode header: X-Header.
+	if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "X-Header",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					if err := params.XHeader.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := params.XHeader.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "X-Header",
+			In:   "header",
+			Err:  err,
+		}
+	}
+	// Decode cookie: cookie.
+	if err := func() error {
+		cfg := uri.CookieParameterDecodingConfig{
+			Name:    "cookie",
+			Explode: true,
+		}
+		if err := c.HasParam(cfg); err == nil {
+			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					if err := params.Cookie.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := params.Cookie.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "cookie",
+			In:   "cookie",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// CookieParameterParams is parameters of cookieParameter operation.
+type CookieParameterParams struct {
+	Value string
+}
+
+func unpackCookieParameterParams(packed middleware.Parameters) (params CookieParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "value",
+			In:   "cookie",
+		}
+		params.Value = packed[key].(string)
+	}
+	return params
+}
+
+func decodeCookieParameterParams(args [0]string, r *http.Request) (params CookieParameterParams, _ error) {
+	c := uri.NewCookieDecoder(r)
+	// Decode cookie: value.
+	if err := func() error {
+		cfg := uri.CookieParameterDecodingConfig{
+			Name:    "value",
+			Explode: true,
+		}
+		if err := c.HasParam(cfg); err == nil {
+			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Value = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "value",
+			In:   "cookie",
 			Err:  err,
 		}
 	}
@@ -363,10 +587,54 @@ func decodeHeaderParameterParams(args [0]string, r *http.Request) (params Header
 	return params, nil
 }
 
+// ObjectCookieParameterParams is parameters of objectCookieParameter operation.
+type ObjectCookieParameterParams struct {
+	Value OneLevelObject
+}
+
+func unpackObjectCookieParameterParams(packed middleware.Parameters) (params ObjectCookieParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "value",
+			In:   "cookie",
+		}
+		params.Value = packed[key].(OneLevelObject)
+	}
+	return params
+}
+
+func decodeObjectCookieParameterParams(args [0]string, r *http.Request) (params ObjectCookieParameterParams, _ error) {
+	c := uri.NewCookieDecoder(r)
+	// Decode cookie: value.
+	if err := func() error {
+		cfg := uri.CookieParameterDecodingConfig{
+			Name:    "value",
+			Explode: false,
+		}
+		if err := c.HasParam(cfg); err == nil {
+			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
+				return params.Value.DecodeURI(d)
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "value",
+			In:   "cookie",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // ObjectQueryParameterParams is parameters of objectQueryParameter operation.
 type ObjectQueryParameterParams struct {
-	FormObject OptObjectQueryParameterFormObject
-	DeepObject OptObjectQueryParameterDeepObject
+	FormObject OptOneLevelObject
+	DeepObject OptOneLevelObject
 }
 
 func unpackObjectQueryParameterParams(packed middleware.Parameters) (params ObjectQueryParameterParams) {
@@ -376,7 +644,7 @@ func unpackObjectQueryParameterParams(packed middleware.Parameters) (params Obje
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.FormObject = v.(OptObjectQueryParameterFormObject)
+			params.FormObject = v.(OptOneLevelObject)
 		}
 	}
 	{
@@ -385,7 +653,7 @@ func unpackObjectQueryParameterParams(packed middleware.Parameters) (params Obje
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.DeepObject = v.(OptObjectQueryParameterDeepObject)
+			params.DeepObject = v.(OptOneLevelObject)
 		}
 	}
 	return params
@@ -404,7 +672,7 @@ func decodeObjectQueryParameterParams(args [0]string, r *http.Request) (params O
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotFormObjectVal ObjectQueryParameterFormObject
+				var paramsDotFormObjectVal OneLevelObject
 				if err := func() error {
 					return paramsDotFormObjectVal.DecodeURI(d)
 				}(); err != nil {
@@ -435,7 +703,7 @@ func decodeObjectQueryParameterParams(args [0]string, r *http.Request) (params O
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDeepObjectVal ObjectQueryParameterDeepObject
+				var paramsDotDeepObjectVal OneLevelObject
 				if err := func() error {
 					return paramsDotDeepObjectVal.DecodeURI(d)
 				}(); err != nil {
@@ -452,76 +720,6 @@ func decodeObjectQueryParameterParams(args [0]string, r *http.Request) (params O
 		return params, &ogenerrors.DecodeParamError{
 			Name: "deepObject",
 			In:   "query",
-			Err:  err,
-		}
-	}
-	return params, nil
-}
-
-// PathObjectParameterParams is parameters of pathObjectParameter operation.
-type PathObjectParameterParams struct {
-	Param User
-}
-
-func unpackPathObjectParameterParams(packed middleware.Parameters) (params PathObjectParameterParams) {
-	{
-		key := middleware.ParameterKey{
-			Name: "param",
-			In:   "path",
-		}
-		params.Param = packed[key].(User)
-	}
-	return params
-}
-
-func decodePathObjectParameterParams(args [1]string, r *http.Request) (params PathObjectParameterParams, _ error) {
-	// Decode path: param.
-	if err := func() error {
-		param, err := url.PathUnescape(args[0])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
-		}
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "param",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-				if err := func(d *jx.Decoder) error {
-					if err := params.Param.Decode(d); err != nil {
-						return err
-					}
-					return nil
-				}(jx.DecodeStr(val)); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-			if err := func() error {
-				if err := params.Param.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		} else {
-			return validate.ErrFieldRequired
-		}
-		return nil
-	}(); err != nil {
-		return params, &ogenerrors.DecodeParamError{
-			Name: "param",
-			In:   "path",
 			Err:  err,
 		}
 	}
