@@ -9,51 +9,51 @@ import (
 // ComplicatedParameterNameGetOK is response for ComplicatedParameterNameGet operation.
 type ComplicatedParameterNameGetOK struct{}
 
-type ContentQueryParameterParam struct {
-	Style  string `json:"style"`
-	Min    int    `json:"min"`
-	Max    int    `json:"max"`
-	Filter string `json:"filter"`
+type ContentParameters struct {
+	Query  User `json:"query"`
+	Path   User `json:"path"`
+	Header User `json:"header"`
+	Cookie User `json:"cookie"`
 }
 
-// GetStyle returns the value of Style.
-func (s *ContentQueryParameterParam) GetStyle() string {
-	return s.Style
+// GetQuery returns the value of Query.
+func (s *ContentParameters) GetQuery() User {
+	return s.Query
 }
 
-// GetMin returns the value of Min.
-func (s *ContentQueryParameterParam) GetMin() int {
-	return s.Min
+// GetPath returns the value of Path.
+func (s *ContentParameters) GetPath() User {
+	return s.Path
 }
 
-// GetMax returns the value of Max.
-func (s *ContentQueryParameterParam) GetMax() int {
-	return s.Max
+// GetHeader returns the value of Header.
+func (s *ContentParameters) GetHeader() User {
+	return s.Header
 }
 
-// GetFilter returns the value of Filter.
-func (s *ContentQueryParameterParam) GetFilter() string {
-	return s.Filter
+// GetCookie returns the value of Cookie.
+func (s *ContentParameters) GetCookie() User {
+	return s.Cookie
 }
 
-// SetStyle sets the value of Style.
-func (s *ContentQueryParameterParam) SetStyle(val string) {
-	s.Style = val
+// SetQuery sets the value of Query.
+func (s *ContentParameters) SetQuery(val User) {
+	s.Query = val
 }
 
-// SetMin sets the value of Min.
-func (s *ContentQueryParameterParam) SetMin(val int) {
-	s.Min = val
+// SetPath sets the value of Path.
+func (s *ContentParameters) SetPath(val User) {
+	s.Path = val
 }
 
-// SetMax sets the value of Max.
-func (s *ContentQueryParameterParam) SetMax(val int) {
-	s.Max = val
+// SetHeader sets the value of Header.
+func (s *ContentParameters) SetHeader(val User) {
+	s.Header = val
 }
 
-// SetFilter sets the value of Filter.
-func (s *ContentQueryParameterParam) SetFilter(val string) {
-	s.Filter = val
+// SetCookie sets the value of Cookie.
+func (s *ContentParameters) SetCookie(val User) {
+	s.Cookie = val
 }
 
 // Ref: #/components/schemas/Hash
@@ -199,52 +199,6 @@ func (s *ObjectQueryParameterOK) SetMax(val int) {
 // SetFilter sets the value of Filter.
 func (s *ObjectQueryParameterOK) SetFilter(val string) {
 	s.Filter = val
-}
-
-// NewOptContentQueryParameterParam returns new OptContentQueryParameterParam with value set to v.
-func NewOptContentQueryParameterParam(v ContentQueryParameterParam) OptContentQueryParameterParam {
-	return OptContentQueryParameterParam{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptContentQueryParameterParam is optional ContentQueryParameterParam.
-type OptContentQueryParameterParam struct {
-	Value ContentQueryParameterParam
-	Set   bool
-}
-
-// IsSet returns true if OptContentQueryParameterParam was set.
-func (o OptContentQueryParameterParam) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptContentQueryParameterParam) Reset() {
-	var v ContentQueryParameterParam
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptContentQueryParameterParam) SetTo(v ContentQueryParameterParam) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptContentQueryParameterParam) Get() (v ContentQueryParameterParam, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptContentQueryParameterParam) Or(d ContentQueryParameterParam) ContentQueryParameterParam {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
 }
 
 // NewOptObjectQueryParameterDeepObject returns new OptObjectQueryParameterDeepObject with value set to v.

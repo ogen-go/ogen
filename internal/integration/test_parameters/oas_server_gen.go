@@ -12,10 +12,16 @@ type Handler interface {
 	//
 	// GET /complicatedParameterName
 	ComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) error
-	// ContentQueryParameter implements contentQueryParameter operation.
+	// ContentParameters implements contentParameters operation.
 	//
-	// GET /contentQueryParameter
-	ContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (string, error)
+	// GET /contentParameters/{path}
+	ContentParameters(ctx context.Context, params ContentParametersParams) (*ContentParameters, error)
+	// CookieParameter implements cookieParameter operation.
+	//
+	// Test for cookie param.
+	//
+	// GET /cookieParameter
+	CookieParameter(ctx context.Context, params CookieParameterParams) (*Hash, error)
 	// HeaderParameter implements headerParameter operation.
 	//
 	// Test for header param.
@@ -26,10 +32,6 @@ type Handler interface {
 	//
 	// GET /objectQueryParameter
 	ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (*ObjectQueryParameterOK, error)
-	// PathObjectParameter implements pathObjectParameter operation.
-	//
-	// GET /pathObjectParameter/{param}
-	PathObjectParameter(ctx context.Context, params PathObjectParameterParams) (*User, error)
 	// SameName implements sameName operation.
 	//
 	// Parameter with different location, but the same name.

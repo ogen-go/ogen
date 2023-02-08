@@ -13,106 +13,98 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s *ContentQueryParameterParam) Encode(e *jx.Encoder) {
+func (s *ContentParameters) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s *ContentQueryParameterParam) encodeFields(e *jx.Encoder) {
+func (s *ContentParameters) encodeFields(e *jx.Encoder) {
 	{
 
-		e.FieldStart("style")
-		e.Str(s.Style)
+		e.FieldStart("query")
+		s.Query.Encode(e)
 	}
 	{
 
-		e.FieldStart("min")
-		e.Int(s.Min)
+		e.FieldStart("path")
+		s.Path.Encode(e)
 	}
 	{
 
-		e.FieldStart("max")
-		e.Int(s.Max)
+		e.FieldStart("header")
+		s.Header.Encode(e)
 	}
 	{
 
-		e.FieldStart("filter")
-		e.Str(s.Filter)
+		e.FieldStart("cookie")
+		s.Cookie.Encode(e)
 	}
 }
 
-var jsonFieldsNameOfContentQueryParameterParam = [4]string{
-	0: "style",
-	1: "min",
-	2: "max",
-	3: "filter",
+var jsonFieldsNameOfContentParameters = [4]string{
+	0: "query",
+	1: "path",
+	2: "header",
+	3: "cookie",
 }
 
-// Decode decodes ContentQueryParameterParam from json.
-func (s *ContentQueryParameterParam) Decode(d *jx.Decoder) error {
+// Decode decodes ContentParameters from json.
+func (s *ContentParameters) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode ContentQueryParameterParam to nil")
+		return errors.New("invalid: unable to decode ContentParameters to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "style":
+		case "query":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				v, err := d.Str()
-				s.Style = string(v)
-				if err != nil {
+				if err := s.Query.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"style\"")
+				return errors.Wrap(err, "decode field \"query\"")
 			}
-		case "min":
+		case "path":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				v, err := d.Int()
-				s.Min = int(v)
-				if err != nil {
+				if err := s.Path.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"min\"")
+				return errors.Wrap(err, "decode field \"path\"")
 			}
-		case "max":
+		case "header":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				v, err := d.Int()
-				s.Max = int(v)
-				if err != nil {
+				if err := s.Header.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"max\"")
+				return errors.Wrap(err, "decode field \"header\"")
 			}
-		case "filter":
+		case "cookie":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				v, err := d.Str()
-				s.Filter = string(v)
-				if err != nil {
+				if err := s.Cookie.Decode(d); err != nil {
 					return err
 				}
 				return nil
 			}(); err != nil {
-				return errors.Wrap(err, "decode field \"filter\"")
+				return errors.Wrap(err, "decode field \"cookie\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode ContentQueryParameterParam")
+		return errors.Wrap(err, "decode ContentParameters")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -129,8 +121,8 @@ func (s *ContentQueryParameterParam) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfContentQueryParameterParam) {
-					name = jsonFieldsNameOfContentQueryParameterParam[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfContentParameters) {
+					name = jsonFieldsNameOfContentParameters[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -151,14 +143,14 @@ func (s *ContentQueryParameterParam) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *ContentQueryParameterParam) MarshalJSON() ([]byte, error) {
+func (s *ContentParameters) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ContentQueryParameterParam) UnmarshalJSON(data []byte) error {
+func (s *ContentParameters) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -425,39 +417,6 @@ func (s *ObjectQueryParameterOK) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *ObjectQueryParameterOK) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes ContentQueryParameterParam as json.
-func (o OptContentQueryParameterParam) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes ContentQueryParameterParam from json.
-func (o *OptContentQueryParameterParam) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptContentQueryParameterParam to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptContentQueryParameterParam) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptContentQueryParameterParam) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

@@ -197,18 +197,18 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 	return result, nil
 }
 
-// ContentQueryParameter invokes contentQueryParameter operation.
+// ContentParameters invokes contentParameters operation.
 //
-// GET /contentQueryParameter
-func (c *Client) ContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (string, error) {
-	res, err := c.sendContentQueryParameter(ctx, params)
+// GET /contentParameters/{path}
+func (c *Client) ContentParameters(ctx context.Context, params ContentParametersParams) (*ContentParameters, error) {
+	res, err := c.sendContentParameters(ctx, params)
 	_ = res
 	return res, err
 }
 
-func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQueryParameterParams) (res string, err error) {
+func (c *Client) sendContentParameters(ctx context.Context, params ContentParametersParams) (res *ContentParameters, err error) {
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("contentQueryParameter"),
+		otelogen.OperationID("contentParameters"),
 	}
 
 	// Run stopwatch.
@@ -222,7 +222,7 @@ func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQu
 	c.requests.Add(ctx, 1, otelAttrs...)
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ContentQueryParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, "ContentParameters",
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -239,14 +239,32 @@ func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQu
 
 	stage = "BuildURL"
 	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/contentQueryParameter"
+	u.Path += "/contentParameters/"
+	{
+		// Encode "path" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "path",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			enc := jx.GetEncoder()
+			func(e *jx.Encoder) {
+				params.Path.Encode(e)
+			}(enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "param" parameter.
+		// Encode "query" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "param",
+			Name:    "query",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
@@ -254,9 +272,7 @@ func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQu
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			enc := jx.GetEncoder()
 			func(e *jx.Encoder) {
-				if params.Param.Set {
-					params.Param.Encode(e)
-				}
+				params.Query.Encode(e)
 			}(enc)
 			return e.EncodeValue(string(enc.Bytes()))
 		}); err != nil {
@@ -271,6 +287,44 @@ func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQu
 		return res, errors.Wrap(err, "create request")
 	}
 
+	stage = "EncodeHeaderParams"
+	h := uri.NewHeaderEncoder(r.Header)
+	{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "X-Header",
+			Explode: false,
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+			enc := jx.GetEncoder()
+			func(e *jx.Encoder) {
+				params.XHeader.Encode(e)
+			}(enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode header")
+		}
+	}
+
+	stage = "EncodeCookieParams"
+	cookie := uri.NewCookieEncoder(r)
+	{
+		// Encode "cookie" parameter.
+		cfg := uri.CookieParameterEncodingConfig{
+			Name:    "cookie",
+			Explode: true,
+		}
+
+		if err := cookie.EncodeParam(cfg, func(e uri.Encoder) error {
+			enc := jx.GetEncoder()
+			func(e *jx.Encoder) {
+				params.Cookie.Encode(e)
+			}(enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode cookie")
+		}
+	}
+
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -279,7 +333,91 @@ func (c *Client) sendContentQueryParameter(ctx context.Context, params ContentQu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeContentQueryParameterResponse(resp)
+	result, err := decodeContentParametersResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// CookieParameter invokes cookieParameter operation.
+//
+// Test for cookie param.
+//
+// GET /cookieParameter
+func (c *Client) CookieParameter(ctx context.Context, params CookieParameterParams) (*Hash, error) {
+	res, err := c.sendCookieParameter(ctx, params)
+	_ = res
+	return res, err
+}
+
+func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameterParams) (res *Hash, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("cookieParameter"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "CookieParameter",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/cookieParameter"
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "EncodeCookieParams"
+	cookie := uri.NewCookieEncoder(r)
+	{
+		// Encode "value" parameter.
+		cfg := uri.CookieParameterEncodingConfig{
+			Name:    "value",
+			Explode: true,
+		}
+
+		if err := cookie.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(params.Value))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode cookie")
+		}
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeCookieParameterResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -466,91 +604,6 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectQueryParameterResponse(resp)
-	if err != nil {
-		return res, errors.Wrap(err, "decode response")
-	}
-
-	return result, nil
-}
-
-// PathObjectParameter invokes pathObjectParameter operation.
-//
-// GET /pathObjectParameter/{param}
-func (c *Client) PathObjectParameter(ctx context.Context, params PathObjectParameterParams) (*User, error) {
-	res, err := c.sendPathObjectParameter(ctx, params)
-	_ = res
-	return res, err
-}
-
-func (c *Client) sendPathObjectParameter(ctx context.Context, params PathObjectParameterParams) (res *User, err error) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pathObjectParameter"),
-	}
-
-	// Run stopwatch.
-	startTime := time.Now()
-	defer func() {
-		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-	}()
-
-	// Increment request counter.
-	c.requests.Add(ctx, 1, otelAttrs...)
-
-	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PathObjectParameter",
-		trace.WithAttributes(otelAttrs...),
-		clientSpanKind,
-	)
-	// Track stage for error reporting.
-	var stage string
-	defer func() {
-		if err != nil {
-			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			c.errors.Add(ctx, 1, otelAttrs...)
-		}
-		span.End()
-	}()
-
-	stage = "BuildURL"
-	u := uri.Clone(c.requestURL(ctx))
-	u.Path += "/pathObjectParameter/"
-	{
-		// Encode "param" parameter.
-		e := uri.NewPathEncoder(uri.PathEncoderConfig{
-			Param:   "param",
-			Style:   uri.PathStyleSimple,
-			Explode: false,
-		})
-		if err := func() error {
-			enc := jx.GetEncoder()
-			func(e *jx.Encoder) {
-
-				params.Param.Encode(e)
-			}(enc)
-			return e.EncodeValue(string(enc.Bytes()))
-		}(); err != nil {
-			return res, errors.Wrap(err, "encode path")
-		}
-		u.Path += e.Result()
-	}
-
-	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u, nil)
-	if err != nil {
-		return res, errors.Wrap(err, "create request")
-	}
-
-	stage = "SendRequest"
-	resp, err := c.cfg.Client.Do(r)
-	if err != nil {
-		return res, errors.Wrap(err, "do request")
-	}
-	defer resp.Body.Close()
-
-	stage = "DecodeResponse"
-	result, err := decodePathObjectParameterResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

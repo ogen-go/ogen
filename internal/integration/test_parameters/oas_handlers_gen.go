@@ -127,16 +127,16 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 	}
 }
 
-// handleContentQueryParameterRequest handles contentQueryParameter operation.
+// handleContentParametersRequest handles contentParameters operation.
 //
-// GET /contentQueryParameter
-func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+// GET /contentParameters/{path}
+func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("contentQueryParameter"),
+		otelogen.OperationID("contentParameters"),
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ContentQueryParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ContentParameters",
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -160,11 +160,11 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ContentQueryParameter",
-			ID:   "contentQueryParameter",
+			Name: "ContentParameters",
+			ID:   "contentParameters",
 		}
 	)
-	params, err := decodeContentQueryParameterParams(args, r)
+	params, err := decodeContentParametersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -175,26 +175,38 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 		return
 	}
 
-	var response string
+	var response *ContentParameters
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
-			OperationName: "ContentQueryParameter",
-			OperationID:   "contentQueryParameter",
+			OperationName: "ContentParameters",
+			OperationID:   "contentParameters",
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
-					Name: "param",
+					Name: "query",
 					In:   "query",
-				}: params.Param,
+				}: params.Query,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.Path,
+				{
+					Name: "X-Header",
+					In:   "header",
+				}: params.XHeader,
+				{
+					Name: "cookie",
+					In:   "cookie",
+				}: params.Cookie,
 			},
 			Raw: r,
 		}
 
 		type (
 			Request  = struct{}
-			Params   = ContentQueryParameterParams
-			Response = string
+			Params   = ContentParametersParams
+			Response = *ContentParameters
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -203,14 +215,14 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 		](
 			m,
 			mreq,
-			unpackContentQueryParameterParams,
+			unpackContentParametersParams,
 			func(ctx context.Context, request Request, params Params) (response Response, err error) {
-				response, err = s.h.ContentQueryParameter(ctx, params)
+				response, err = s.h.ContentParameters(ctx, params)
 				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.ContentQueryParameter(ctx, params)
+		response, err = s.h.ContentParameters(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -218,7 +230,107 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 		return
 	}
 
-	if err := encodeContentQueryParameterResponse(response, w, span); err != nil {
+	if err := encodeContentParametersResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleCookieParameterRequest handles cookieParameter operation.
+//
+// Test for cookie param.
+//
+// GET /cookieParameter
+func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("cookieParameter"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "CookieParameter",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CookieParameter",
+			ID:   "cookieParameter",
+		}
+	)
+	params, err := decodeCookieParameterParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response *Hash
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "CookieParameter",
+			OperationID:   "cookieParameter",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "value",
+					In:   "cookie",
+				}: params.Value,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CookieParameterParams
+			Response = *Hash
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackCookieParameterParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.CookieParameter(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.CookieParameter(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeCookieParameterResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -421,104 +533,6 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 	}
 
 	if err := encodeObjectQueryParameterResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	}
-}
-
-// handlePathObjectParameterRequest handles pathObjectParameter operation.
-//
-// GET /pathObjectParameter/{param}
-func (s *Server) handlePathObjectParameterRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("pathObjectParameter"),
-	}
-
-	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PathObjectParameter",
-		trace.WithAttributes(otelAttrs...),
-		serverSpanKind,
-	)
-	defer span.End()
-
-	// Run stopwatch.
-	startTime := time.Now()
-	defer func() {
-		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-	}()
-
-	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
-
-	var (
-		recordError = func(stage string, err error) {
-			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
-		}
-		err          error
-		opErrContext = ogenerrors.OperationContext{
-			Name: "PathObjectParameter",
-			ID:   "pathObjectParameter",
-		}
-	)
-	params, err := decodePathObjectParameterParams(args, r)
-	if err != nil {
-		err = &ogenerrors.DecodeParamsError{
-			OperationContext: opErrContext,
-			Err:              err,
-		}
-		recordError("DecodeParams", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	}
-
-	var response *User
-	if m := s.cfg.Middleware; m != nil {
-		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "PathObjectParameter",
-			OperationID:   "pathObjectParameter",
-			Body:          nil,
-			Params: middleware.Parameters{
-				{
-					Name: "param",
-					In:   "path",
-				}: params.Param,
-			},
-			Raw: r,
-		}
-
-		type (
-			Request  = struct{}
-			Params   = PathObjectParameterParams
-			Response = *User
-		)
-		response, err = middleware.HookMiddleware[
-			Request,
-			Params,
-			Response,
-		](
-			m,
-			mreq,
-			unpackPathObjectParameterParams,
-			func(ctx context.Context, request Request, params Params) (response Response, err error) {
-				response, err = s.h.PathObjectParameter(ctx, params)
-				return response, err
-			},
-		)
-	} else {
-		response, err = s.h.PathObjectParameter(ctx, params)
-	}
-	if err != nil {
-		recordError("Internal", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	}
-
-	if err := encodePathObjectParameterResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
