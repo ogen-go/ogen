@@ -47,8 +47,6 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -59,6 +57,8 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -126,8 +126,6 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ObjectsWithConflictingArrayPropertyReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -138,6 +136,8 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ObjectsWithConflictingArrayPropertyReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -197,8 +197,6 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ObjectsWithConflictingPropertiesReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -209,6 +207,8 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ObjectsWithConflictingPropertiesReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -268,8 +268,6 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request ReferencedAllofApplicationJSON
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -280,6 +278,8 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReferencedAllofApplicationJSON
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -451,8 +451,6 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request ReferencedAllofOptionalApplicationJSON
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -463,6 +461,8 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request ReferencedAllofOptionalApplicationJSON
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -630,8 +630,6 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request int
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -642,6 +640,8 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request int
 		if err := func() error {
 			v, err := d.Int()
 			request = int(v)
@@ -712,8 +712,6 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SimpleObjectsReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -724,6 +722,8 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SimpleObjectsReq
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -775,8 +775,6 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -787,6 +785,8 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NilString
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

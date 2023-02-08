@@ -29,8 +29,8 @@ func decodeDataGetFormatResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -72,8 +72,8 @@ func decodeDefaultTestResponse(resp *http.Response) (res int32, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response int32
 			if err := func() error {
 				v, err := d.Int32()
@@ -113,8 +113,8 @@ func decodeErrorGetResponse(resp *http.Response) (res *ErrorStatusCode, err erro
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -155,8 +155,8 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -199,8 +199,8 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -237,8 +237,8 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -286,8 +286,8 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res *NoAddit
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response NoAdditionalPropertiesTest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -325,8 +325,8 @@ func decodeNullableDefaultResponseResponse(resp *http.Response) (res *NilIntStat
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response NilInt
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -376,8 +376,8 @@ func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecur
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response PatternRecursiveMap
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -417,8 +417,8 @@ func decodePetCreateResponse(resp *http.Response) (res *Pet, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -458,8 +458,8 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response []string
 			if err := func() error {
 				response = make([]string, 0)
@@ -509,8 +509,8 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -544,8 +544,8 @@ func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response PetGetDef
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -608,8 +608,8 @@ func decodePetGetAvatarByIDResponse(resp *http.Response) (res PetGetAvatarByIDRe
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -672,8 +672,8 @@ func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNa
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -714,8 +714,8 @@ func decodePetGetByNameResponse(resp *http.Response) (res *Pet, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -755,8 +755,8 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -818,8 +818,8 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response) (res PetUploadAvatar
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -860,8 +860,8 @@ func decodeRecursiveArrayGetResponse(resp *http.Response) (res RecursiveArray, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response RecursiveArray
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -901,8 +901,8 @@ func decodeRecursiveMapGetResponse(resp *http.Response) (res *RecursiveMap, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response RecursiveMap
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -942,8 +942,8 @@ func decodeSecurityTestResponse(resp *http.Response) (res string, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -985,8 +985,8 @@ func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, err 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response StringIntMap
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1035,8 +1035,8 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response TestNullableOneofsApplicationJSONOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1070,8 +1070,8 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response TestNullableOneofsApplicationJSONCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1105,8 +1105,8 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response OneOfBooleanSumNullables
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

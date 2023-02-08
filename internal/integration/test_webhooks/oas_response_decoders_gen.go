@@ -28,8 +28,8 @@ func decodePublishEventResponse(resp *http.Response) (res *Event, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Event
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -64,8 +64,8 @@ func decodePublishEventResponse(resp *http.Response) (res *Event, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -111,8 +111,8 @@ func decodeStatusWebhookResponse(resp *http.Response) (res *StatusWebhookOK, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response StatusWebhookOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -155,8 +155,8 @@ func decodeUpdateDeleteResponse(resp *http.Response) (res UpdateDeleteRes, err e
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -197,8 +197,8 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response WebhookResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -232,8 +232,8 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, err
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {

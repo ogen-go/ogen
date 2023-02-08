@@ -198,3 +198,60 @@ func decodeIntersectPatternCodeParams(args [0]string, r *http.Request) (params I
 	}
 	return params, nil
 }
+
+// StreamJSONParams is parameters of streamJSON operation.
+type StreamJSONParams struct {
+	Count int
+}
+
+func unpackStreamJSONParams(packed middleware.Parameters) (params StreamJSONParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "count",
+			In:   "query",
+		}
+		params.Count = packed[key].(int)
+	}
+	return params
+}
+
+func decodeStreamJSONParams(args [0]string, r *http.Request) (params StreamJSONParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: count.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.Count = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "count",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	return params, nil
+}

@@ -47,3 +47,10 @@ func (UnimplementedHandler) MaskContentType(ctx context.Context, req *MaskConten
 func (UnimplementedHandler) MaskContentTypeOptional(ctx context.Context, req *MaskContentTypeOptionalReqWithContentType) (r *MaskResponse, _ error) {
 	return r, ht.ErrNotImplemented
 }
+
+// StreamJSON implements streamJSON operation.
+//
+// POST /streamJSON
+func (UnimplementedHandler) StreamJSON(ctx context.Context, req []float64) (r float64, _ error) {
+	return r, ht.ErrNotImplemented
+}

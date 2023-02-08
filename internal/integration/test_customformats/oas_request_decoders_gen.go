@@ -44,8 +44,6 @@ func (s *Server) decodeEventPostRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request any
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56,6 +54,8 @@ func (s *Server) decodeEventPostRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request any
 		if err := func() error {
 			v, err := formatXMyEvent().DecodeJSON(d)
 			request = v
@@ -109,8 +109,6 @@ func (s *Server) decodePhoneGetRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request User
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -121,6 +119,8 @@ func (s *Server) decodePhoneGetRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request User
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

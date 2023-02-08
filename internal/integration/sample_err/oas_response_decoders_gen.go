@@ -28,8 +28,8 @@ func decodeDataCreateResponse(resp *http.Response) (res *Data, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Data
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -64,8 +64,8 @@ func decodeDataCreateResponse(resp *http.Response) (res *Data, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -111,8 +111,8 @@ func decodeDataGetResponse(resp *http.Response) (res *Data, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Data
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -147,8 +147,8 @@ func decodeDataGetResponse(resp *http.Response) (res *Data, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

@@ -79,7 +79,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		{{- end }}
 		}
 
-		var request {{ $t.Go }}
+		{{- if $media.JSONStreaming }}
+		d := jx.Decode(r.Body, -1)
+        {{- else }}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -94,6 +96,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		}
 
 		d := jx.DecodeBytes(buf)
+		{{- end }}
+
+		var request {{ $t.Go }}
 		if err := func() error {
 			{{- template "json/dec" elem $t "request" }}
 			if err := d.Skip(); err != io.EOF {
@@ -101,11 +106,13 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 			}
 			return nil
 		}(); err != nil {
+        	{{- if not $media.JSONStreaming }}
 			err = &ogenerrors.DecodeBodyError{
 				ContentType: ct,
 				Body: buf,
 				Err: err,
 			}
+			{{- end }}
 			return req, close, err
 		}
 		{{- if $t.NeedValidation }}

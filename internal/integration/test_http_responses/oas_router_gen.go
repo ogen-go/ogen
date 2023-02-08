@@ -293,6 +293,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 's': // Prefix: "streamJSON"
+				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleStreamJSONRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
+
+					return
+				}
 			case 't': // Prefix: "textPlainBinaryStringSchema"
 				if l := len("textPlainBinaryStringSchema"); len(elem) >= l && elem[0:l] == "textPlainBinaryStringSchema" {
 					elem = elem[l:]
@@ -667,6 +685,27 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						default:
 							return
 						}
+					}
+				}
+			case 's': // Prefix: "streamJSON"
+				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "POST":
+						// Leaf: StreamJSON
+						r.name = "StreamJSON"
+						r.operationID = "streamJSON"
+						r.pathPattern = "/streamJSON"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
 					}
 				}
 			case 't': // Prefix: "textPlainBinaryStringSchema"

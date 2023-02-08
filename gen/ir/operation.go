@@ -262,6 +262,7 @@ func (s Response) ResponseInfo() []ResponseInfo {
 			ContentType:    contentType,
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,
+			JSONStreaming:  media.JSONStreaming,
 			Headers:        s.Headers,
 		})
 	}

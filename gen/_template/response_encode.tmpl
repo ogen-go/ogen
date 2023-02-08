@@ -126,11 +126,19 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 	{{- end }}
 
 	{{- if $.Encoding.JSON }}
+		{{- if $.JSONStreaming }}
+		e := jx.NewStreamingEncoder(w, -1)
+		{{- template "json/enc" elem $type $var }}
+		if err := e.Close(); err != nil {
+			return errors.Wrap(err, "flush streaming")
+		}
+		{{- else }}
 		e := jx.GetEncoder()
 		{{- template "json/enc" elem $type $var }}
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
+		{{- end }}
 		return nil
 	{{- else if $type.IsStream }}
 		{{- if $type.IsBase64Stream }}

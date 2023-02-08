@@ -187,6 +187,37 @@
           }
         }
       }
+    },
+    "/streamJSON": {
+      "post": {
+        "operationId": "streamJSON",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "x-ogen-json-streaming": true,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

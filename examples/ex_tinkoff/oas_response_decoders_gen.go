@@ -28,8 +28,8 @@ func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MarketInstrumentListResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -63,8 +63,8 @@ func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -104,8 +104,8 @@ func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response CandlesResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -139,8 +139,8 @@ func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -180,8 +180,8 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrencie
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MarketInstrumentListResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -215,8 +215,8 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrencie
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -256,8 +256,8 @@ func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MarketInstrumentListResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -291,8 +291,8 @@ func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -332,8 +332,8 @@ func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookG
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response OrderbookResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -367,8 +367,8 @@ func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookG
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -408,8 +408,8 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchB
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response SearchMarketInstrumentResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -443,8 +443,8 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchB
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -484,8 +484,8 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MarketInstrumentListResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -519,8 +519,8 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -560,8 +560,8 @@ func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MarketInstrumentListResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -595,8 +595,8 @@ func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -636,8 +636,8 @@ func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response OperationsResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -671,8 +671,8 @@ func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -712,8 +712,8 @@ func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Empty
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -747,8 +747,8 @@ func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -788,8 +788,8 @@ func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response OrdersResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -823,8 +823,8 @@ func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, err error) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -864,8 +864,8 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrd
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response LimitOrderResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -899,8 +899,8 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrd
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -940,8 +940,8 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketO
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response MarketOrderResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -975,8 +975,8 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketO
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1016,8 +1016,8 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCur
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response PortfolioCurrenciesResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1051,8 +1051,8 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCur
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1092,8 +1092,8 @@ func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response PortfolioResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1127,8 +1127,8 @@ func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1168,8 +1168,8 @@ func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Empty
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1203,8 +1203,8 @@ func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1244,8 +1244,8 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res Sandbo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Empty
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1279,8 +1279,8 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res Sandbo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1320,8 +1320,8 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res Sandbox
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Empty
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1355,8 +1355,8 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res Sandbox
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1396,8 +1396,8 @@ func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegister
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response SandboxRegisterResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1431,8 +1431,8 @@ func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegister
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1472,8 +1472,8 @@ func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePost
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Empty
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1507,8 +1507,8 @@ func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePost
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1548,8 +1548,8 @@ func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response UserAccountsResponse
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1583,8 +1583,8 @@ func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Error
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

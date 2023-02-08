@@ -47,8 +47,6 @@ func (s *Server) decodeDataCreateRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptData
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -59,6 +57,8 @@ func (s *Server) decodeDataCreateRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptData
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {

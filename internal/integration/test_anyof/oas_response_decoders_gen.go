@@ -28,8 +28,8 @@ func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IntegerNumber
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -69,8 +69,8 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, err error
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response JaegerAnyOf
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -110,8 +110,8 @@ func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response OneUUID
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

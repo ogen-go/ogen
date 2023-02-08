@@ -81,8 +81,8 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response CombinedOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -118,8 +118,8 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response int
 			if err := func() error {
 				v, err := d.Int()
@@ -158,8 +158,8 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response bool
 			if err := func() error {
 				v, err := d.Bool()
@@ -198,8 +198,8 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response []string
 		if err := func() error {
 			response = make([]string, 0)
@@ -551,8 +551,8 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IntersectPatternCodeOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -588,8 +588,8 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response int
 			if err := func() error {
 				v, err := d.Int()
@@ -634,8 +634,8 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response NilInt
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -669,8 +669,8 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response NilString
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -739,6 +739,73 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 
 			response := OctetStreamEmptySchemaOK{Data: bytes.NewReader(b)}
 			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			d := jx.Decode(resp.Body, -1)
+
+			var response QueryData
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+			return &response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 400:
+		// Code 400.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			buf, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			d := jx.DecodeBytes(buf)
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
+				return nil
+			}(); err != nil {
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
+			}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

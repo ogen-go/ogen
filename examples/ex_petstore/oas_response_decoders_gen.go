@@ -33,8 +33,8 @@ func decodeCreatePetsResponse(resp *http.Response) (res CreatePetsRes, err error
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -75,8 +75,8 @@ func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pets
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -148,8 +148,8 @@ func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {
@@ -190,8 +190,8 @@ func decodeShowPetByIdResponse(resp *http.Response) (res ShowPetByIdRes, err err
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Pet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -225,8 +225,8 @@ func decodeShowPetByIdResponse(resp *http.Response) (res ShowPetByIdRes, err err
 		if err != nil {
 			return res, err
 		}
-
 		d := jx.DecodeBytes(buf)
+
 		var response Error
 		if err := func() error {
 			if err := response.Decode(d); err != nil {

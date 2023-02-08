@@ -28,8 +28,8 @@ func decodeEventPostResponse(resp *http.Response) (res any, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response any
 			if err := func() error {
 				v, err := formatXMyEvent().DecodeJSON(d)
@@ -71,8 +71,8 @@ func decodePhoneGetResponse(resp *http.Response) (res *User, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response User
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

@@ -37,8 +37,8 @@ func decodeContentQueryParameterResponse(resp *http.Response) (res string, err e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response string
 			if err := func() error {
 				v, err := d.Str()
@@ -80,8 +80,8 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Hash, err error) {
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response Hash
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -121,8 +121,8 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ObjectQueryParameterOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -162,8 +162,8 @@ func decodePathObjectParameterResponse(resp *http.Response) (res *User, err erro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response User
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

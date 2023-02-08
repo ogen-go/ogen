@@ -1374,8 +1374,8 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (res GetAPIVersionsRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroupList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1418,8 +1418,8 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (res Ge
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1462,8 +1462,8 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1506,8 +1506,8 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (res GetApiexte
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1550,8 +1550,8 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (res GetA
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1594,8 +1594,8 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (res GetApire
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1638,8 +1638,8 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (res Ge
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1682,8 +1682,8 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (res GetAppsAPIGroupRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1726,8 +1726,8 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (res GetAppsV1APIR
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1770,8 +1770,8 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (res GetAuthen
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1814,8 +1814,8 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (res Get
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1858,8 +1858,8 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (res GetAuthori
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1902,8 +1902,8 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (res GetA
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1946,8 +1946,8 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (res GetAutoscali
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -1990,8 +1990,8 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (res GetAut
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2034,8 +2034,8 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (res G
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2078,8 +2078,8 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (res G
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2122,8 +2122,8 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (res GetBatchAPIGroupRe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2166,8 +2166,8 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (res GetBatchV1AP
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2210,8 +2210,8 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (res GetBatc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2254,8 +2254,8 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (res GetCertific
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2298,8 +2298,8 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (res GetCe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2342,8 +2342,8 @@ func decodeGetCodeVersionResponse(resp *http.Response) (res GetCodeVersionRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgVersionInfo
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2386,8 +2386,8 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (res GetCoordina
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2430,8 +2430,8 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (res GetCo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2474,8 +2474,8 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (res GetCoreAPIVersio
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIVersions
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2518,8 +2518,8 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (res GetCoreV1APIR
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2562,8 +2562,8 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (res GetDiscoveryAP
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2606,8 +2606,8 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (res GetDisco
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2650,8 +2650,8 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (res Get
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2694,8 +2694,8 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (res GetEventsAPIGroup
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2738,8 +2738,8 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (res GetEventsV1
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2782,8 +2782,8 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (res GetEve
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2826,8 +2826,8 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (res Get
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2870,8 +2870,8 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2914,8 +2914,8 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -2958,8 +2958,8 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (res GetInt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3002,8 +3002,8 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3046,8 +3046,8 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (res GetNetworking
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3090,8 +3090,8 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (res GetNetw
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3134,8 +3134,8 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (res GetNodeAPIGroupRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3178,8 +3178,8 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (res GetNodeV1APIR
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3222,8 +3222,8 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (res GetNode
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3266,8 +3266,8 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (res GetNodeV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3310,8 +3310,8 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (res GetPolicyAPIGroup
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3354,8 +3354,8 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (res GetPolicyV1
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3398,8 +3398,8 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (res GetPol
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3442,8 +3442,8 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (res GetRba
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3486,8 +3486,8 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3530,8 +3530,8 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (res GetScheduling
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3574,8 +3574,8 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (res GetSche
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3618,8 +3618,8 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3690,8 +3690,8 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (res GetStorageAPIGro
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIGroup
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3734,8 +3734,8 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (res GetStorage
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3778,8 +3778,8 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (res GetS
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3822,8 +3822,8 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (res GetSt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3866,8 +3866,8 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3910,8 +3910,8 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3954,8 +3954,8 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -3998,8 +3998,8 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (res Lis
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4042,8 +4042,8 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ControllerRevisionList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4086,8 +4086,8 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1DaemonSetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4130,8 +4130,8 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1DeploymentList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4174,8 +4174,8 @@ func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ControllerRevisionList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4218,8 +4218,8 @@ func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ListA
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1DaemonSetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4262,8 +4262,8 @@ func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response) (res List
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1DeploymentList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4306,8 +4306,8 @@ func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res List
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ReplicaSetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4350,8 +4350,8 @@ func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Lis
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1StatefulSetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4394,8 +4394,8 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ReplicaSetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4438,8 +4438,8 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1StatefulSetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4482,8 +4482,8 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4526,8 +4526,8 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4570,8 +4570,8 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4614,8 +4614,8 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4658,8 +4658,8 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4702,8 +4702,8 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4746,8 +4746,8 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1CronJobList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4790,8 +4790,8 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (res List
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1JobList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4834,8 +4834,8 @@ func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response) (res ListBa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1CronJobList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4878,8 +4878,8 @@ func decodeListBatchV1NamespacedJobResponse(resp *http.Response) (res ListBatchV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1JobList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4922,8 +4922,8 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1beta1CronJobList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -4966,8 +4966,8 @@ func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res L
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1beta1CronJobList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5010,8 +5010,8 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICertificatesV1CertificateSigningRequestList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5054,8 +5054,8 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoordinationV1LeaseList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5098,8 +5098,8 @@ func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res L
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoordinationV1LeaseList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5142,8 +5142,8 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (res ListCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ComponentStatusList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5186,8 +5186,8 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ConfigMapList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5230,8 +5230,8 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1EndpointsList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5274,8 +5274,8 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (res Lis
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1EventList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5318,8 +5318,8 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1LimitRangeList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5362,8 +5362,8 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (res ListCoreV1Names
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1NamespaceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5406,8 +5406,8 @@ func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ListC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ConfigMapList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5450,8 +5450,8 @@ func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ListC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1EndpointsList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5494,8 +5494,8 @@ func decodeListCoreV1NamespacedEventResponse(resp *http.Response) (res ListCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1EventList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5538,8 +5538,8 @@ func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res List
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1LimitRangeList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5582,8 +5582,8 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolumeClaimList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5626,8 +5626,8 @@ func decodeListCoreV1NamespacedPodResponse(resp *http.Response) (res ListCoreV1N
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PodList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5670,8 +5670,8 @@ func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Lis
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PodTemplateList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5714,8 +5714,8 @@ func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ReplicationControllerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5758,8 +5758,8 @@ func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res L
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ResourceQuotaList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5802,8 +5802,8 @@ func decodeListCoreV1NamespacedSecretResponse(resp *http.Response) (res ListCore
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1SecretList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5846,8 +5846,8 @@ func decodeListCoreV1NamespacedServiceResponse(resp *http.Response) (res ListCor
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ServiceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5890,8 +5890,8 @@ func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ServiceAccountList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5934,8 +5934,8 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (res ListCoreV1NodeRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1NodeList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -5978,8 +5978,8 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (res ListCore
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolumeList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6022,8 +6022,8 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolumeClaimList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6066,8 +6066,8 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (res ListC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PodList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6110,8 +6110,8 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PodTemplateList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6154,8 +6154,8 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ReplicationControllerList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6198,8 +6198,8 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ResourceQuotaList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6242,8 +6242,8 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (res Li
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1SecretList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6286,8 +6286,8 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ServiceAccountList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6330,8 +6330,8 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (res L
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ServiceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6374,8 +6374,8 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIDiscoveryV1EndpointSliceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6418,8 +6418,8 @@ func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIDiscoveryV1EndpointSliceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6462,8 +6462,8 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIDiscoveryV1beta1EndpointSliceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6506,8 +6506,8 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIDiscoveryV1beta1EndpointSliceList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6550,8 +6550,8 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (res L
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIEventsV1EventList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6594,8 +6594,8 @@ func decodeListEventsV1NamespacedEventResponse(resp *http.Response) (res ListEve
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIEventsV1EventList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6638,8 +6638,8 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIEventsV1beta1EventList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6682,8 +6682,8 @@ func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Li
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIEventsV1beta1EventList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6726,8 +6726,8 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta1FlowSchemaList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6770,8 +6770,8 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6814,8 +6814,8 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta2FlowSchemaList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6858,8 +6858,8 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6902,8 +6902,8 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIApiserverinternalV1alpha1StorageVersionList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6946,8 +6946,8 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (res ListNe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1IngressClassList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -6990,8 +6990,8 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1IngressList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7034,8 +7034,8 @@ func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response) (res L
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1IngressList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7078,8 +7078,8 @@ func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1NetworkPolicyList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7122,8 +7122,8 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1NetworkPolicyList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7166,8 +7166,8 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (res ListNodeV1Ru
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINodeV1RuntimeClassList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7210,8 +7210,8 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ListNo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINodeV1alpha1RuntimeClassList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7254,8 +7254,8 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ListNod
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINodeV1beta1RuntimeClassList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7298,8 +7298,8 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1PodDisruptionBudgetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7342,8 +7342,8 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1PodDisruptionBudgetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7386,8 +7386,8 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1beta1PodDisruptionBudgetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7430,8 +7430,8 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1beta1PodDisruptionBudgetList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7474,8 +7474,8 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1beta1PodSecurityPolicyList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7518,8 +7518,8 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1ClusterRoleList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7562,8 +7562,8 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1ClusterRoleBindingList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7606,8 +7606,8 @@ func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1RoleList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7650,8 +7650,8 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1RoleBindingList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7694,8 +7694,8 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1RoleBindingList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7738,8 +7738,8 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1RoleList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7782,8 +7782,8 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (res ListS
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPISchedulingV1PriorityClassList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7826,8 +7826,8 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (res ListStorageV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1CSIDriverList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7870,8 +7870,8 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (res ListStorageV1C
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1CSINodeList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7914,8 +7914,8 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (res ListStora
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1StorageClassList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -7958,8 +7958,8 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (res ListS
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1VolumeAttachmentList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8002,8 +8002,8 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1alpha1CSIStorageCapacityList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8046,8 +8046,8 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1alpha1CSIStorageCapacityList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8090,8 +8090,8 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1beta1CSIStorageCapacityList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8134,8 +8134,8 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1beta1CSIStorageCapacityList
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8196,8 +8196,8 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8240,8 +8240,8 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8284,8 +8284,8 @@ func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8328,8 +8328,8 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8372,8 +8372,8 @@ func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response) (res Rea
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8416,8 +8416,8 @@ func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8460,8 +8460,8 @@ func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ControllerRevision
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8504,8 +8504,8 @@ func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res ReadA
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1DaemonSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8548,8 +8548,8 @@ func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1DaemonSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8592,8 +8592,8 @@ func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Read
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1Deployment
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8636,8 +8636,8 @@ func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1Scale
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8680,8 +8680,8 @@ func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1Deployment
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8724,8 +8724,8 @@ func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Read
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ReplicaSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8768,8 +8768,8 @@ func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1Scale
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8812,8 +8812,8 @@ func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1ReplicaSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8856,8 +8856,8 @@ func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Rea
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1StatefulSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8900,8 +8900,8 @@ func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1Scale
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8944,8 +8944,8 @@ func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAppsV1StatefulSet
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -8988,8 +8988,8 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9032,8 +9032,8 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9076,8 +9076,8 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9120,8 +9120,8 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9164,8 +9164,8 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9208,8 +9208,8 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9252,8 +9252,8 @@ func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response) (res ReadBa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1CronJob
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9296,8 +9296,8 @@ func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1CronJob
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9340,8 +9340,8 @@ func decodeReadBatchV1NamespacedJobResponse(resp *http.Response) (res ReadBatchV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1Job
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9384,8 +9384,8 @@ func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response) (res Read
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1Job
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9428,8 +9428,8 @@ func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1beta1CronJob
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9472,8 +9472,8 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIBatchV1beta1CronJob
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9516,8 +9516,8 @@ func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICertificatesV1CertificateSigningRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9560,8 +9560,8 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *htt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICertificatesV1CertificateSigningRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9604,8 +9604,8 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICertificatesV1CertificateSigningRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9648,8 +9648,8 @@ func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoordinationV1Lease
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9692,8 +9692,8 @@ func decodeReadCoreV1ComponentStatusResponse(resp *http.Response) (res ReadCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ComponentStatus
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9736,8 +9736,8 @@ func decodeReadCoreV1NamespaceResponse(resp *http.Response) (res ReadCoreV1Names
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Namespace
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9780,8 +9780,8 @@ func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response) (res ReadCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Namespace
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9824,8 +9824,8 @@ func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response) (res ReadC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ConfigMap
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9868,8 +9868,8 @@ func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response) (res ReadC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Endpoints
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9912,8 +9912,8 @@ func decodeReadCoreV1NamespacedEventResponse(resp *http.Response) (res ReadCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Event
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -9956,8 +9956,8 @@ func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Read
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1LimitRange
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10000,8 +10000,8 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolumeClaim
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10044,8 +10044,8 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolumeClaim
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10088,8 +10088,8 @@ func decodeReadCoreV1NamespacedPodResponse(resp *http.Response) (res ReadCoreV1N
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Pod
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10132,8 +10132,8 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Pod
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10176,8 +10176,8 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response) (res ReadCore
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response ReadCoreV1NamespacedPodLogOKApplicationJSON
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10247,8 +10247,8 @@ func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response) (res ReadC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Pod
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10291,8 +10291,8 @@ func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Rea
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PodTemplate
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10335,8 +10335,8 @@ func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ReplicationController
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10379,8 +10379,8 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIAutoscalingV1Scale
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10423,8 +10423,8 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ReplicationController
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10467,8 +10467,8 @@ func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ResourceQuota
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10511,8 +10511,8 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ResourceQuota
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10555,8 +10555,8 @@ func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response) (res ReadCore
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Secret
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10599,8 +10599,8 @@ func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response) (res ReadCor
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Service
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10643,8 +10643,8 @@ func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1ServiceAccount
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10687,8 +10687,8 @@ func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response) (res R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Service
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10731,8 +10731,8 @@ func decodeReadCoreV1NodeResponse(resp *http.Response) (res ReadCoreV1NodeRes, e
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Node
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10775,8 +10775,8 @@ func decodeReadCoreV1NodeStatusResponse(resp *http.Response) (res ReadCoreV1Node
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1Node
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10819,8 +10819,8 @@ func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response) (res ReadCore
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolume
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10863,8 +10863,8 @@ func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response) (res Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPICoreV1PersistentVolume
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10907,8 +10907,8 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIDiscoveryV1EndpointSlice
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10951,8 +10951,8 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIDiscoveryV1beta1EndpointSlice
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -10995,8 +10995,8 @@ func decodeReadEventsV1NamespacedEventResponse(resp *http.Response) (res ReadEve
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIEventsV1Event
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11039,8 +11039,8 @@ func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response) (res Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIEventsV1beta1Event
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11083,8 +11083,8 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta1FlowSchema
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11127,8 +11127,8 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta1FlowSchema
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11171,8 +11171,8 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11215,8 +11215,8 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11259,8 +11259,8 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta2FlowSchema
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11303,8 +11303,8 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta2FlowSchema
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11347,8 +11347,8 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11391,8 +11391,8 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11435,8 +11435,8 @@ func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIApiserverinternalV1alpha1StorageVersion
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11479,8 +11479,8 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIApiserverinternalV1alpha1StorageVersion
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11523,8 +11523,8 @@ func decodeReadNetworkingV1IngressClassResponse(resp *http.Response) (res ReadNe
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1IngressClass
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11567,8 +11567,8 @@ func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response) (res R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1Ingress
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11611,8 +11611,8 @@ func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1Ingress
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11655,8 +11655,8 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINetworkingV1NetworkPolicy
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11699,8 +11699,8 @@ func decodeReadNodeV1RuntimeClassResponse(resp *http.Response) (res ReadNodeV1Ru
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINodeV1RuntimeClass
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11743,8 +11743,8 @@ func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res ReadNo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINodeV1alpha1RuntimeClass
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11787,8 +11787,8 @@ func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response) (res ReadNod
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPINodeV1beta1RuntimeClass
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11831,8 +11831,8 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1PodDisruptionBudget
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11875,8 +11875,8 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1PodDisruptionBudget
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11919,8 +11919,8 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1beta1PodDisruptionBudget
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -11963,8 +11963,8 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1beta1PodDisruptionBudget
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12007,8 +12007,8 @@ func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIPolicyV1beta1PodSecurityPolicy
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12051,8 +12051,8 @@ func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1ClusterRole
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12095,8 +12095,8 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1ClusterRoleBinding
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12139,8 +12139,8 @@ func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1Role
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12183,8 +12183,8 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIRbacV1RoleBinding
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12227,8 +12227,8 @@ func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response) (res ReadS
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPISchedulingV1PriorityClass
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12271,8 +12271,8 @@ func decodeReadStorageV1CSIDriverResponse(resp *http.Response) (res ReadStorageV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1CSIDriver
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12315,8 +12315,8 @@ func decodeReadStorageV1CSINodeResponse(resp *http.Response) (res ReadStorageV1C
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1CSINode
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12359,8 +12359,8 @@ func decodeReadStorageV1StorageClassResponse(resp *http.Response) (res ReadStora
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1StorageClass
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12403,8 +12403,8 @@ func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response) (res ReadS
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1VolumeAttachment
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12447,8 +12447,8 @@ func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1VolumeAttachment
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12491,8 +12491,8 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1alpha1CSIStorageCapacity
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12535,8 +12535,8 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sAPIStorageV1beta1CSIStorageCapacity
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12579,8 +12579,8 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12623,8 +12623,8 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12667,8 +12667,8 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12711,8 +12711,8 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12755,8 +12755,8 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12799,8 +12799,8 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12843,8 +12843,8 @@ func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response) (res Wa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12887,8 +12887,8 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12931,8 +12931,8 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -12975,8 +12975,8 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13019,8 +13019,8 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13063,8 +13063,8 @@ func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13107,8 +13107,8 @@ func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13151,8 +13151,8 @@ func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13195,8 +13195,8 @@ func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13239,8 +13239,8 @@ func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response) (res Wat
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13283,8 +13283,8 @@ func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13327,8 +13327,8 @@ func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response) (res Wat
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13371,8 +13371,8 @@ func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13415,8 +13415,8 @@ func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response) (res Wa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13459,8 +13459,8 @@ func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13503,8 +13503,8 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13547,8 +13547,8 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13591,8 +13591,8 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13635,8 +13635,8 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *htt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13679,8 +13679,8 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13723,8 +13723,8 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13767,8 +13767,8 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13811,8 +13811,8 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13855,8 +13855,8 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13899,8 +13899,8 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13943,8 +13943,8 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -13987,8 +13987,8 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14031,8 +14031,8 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14075,8 +14075,8 @@ func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response) (res Watch
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14119,8 +14119,8 @@ func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response) (res W
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14163,8 +14163,8 @@ func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response) (res WatchBatc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14207,8 +14207,8 @@ func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response) (res Watch
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14251,8 +14251,8 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14295,8 +14295,8 @@ func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14339,8 +14339,8 @@ func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14383,8 +14383,8 @@ func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14427,8 +14427,8 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14471,8 +14471,8 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14515,8 +14515,8 @@ func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14559,8 +14559,8 @@ func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14603,8 +14603,8 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14647,8 +14647,8 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14691,8 +14691,8 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14735,8 +14735,8 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14779,8 +14779,8 @@ func decodeWatchCoreV1NamespaceResponse(resp *http.Response) (res WatchCoreV1Nam
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14823,8 +14823,8 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (res WatchCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14867,8 +14867,8 @@ func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14911,8 +14911,8 @@ func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14955,8 +14955,8 @@ func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -14999,8 +14999,8 @@ func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15043,8 +15043,8 @@ func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response) (res WatchCor
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15087,8 +15087,8 @@ func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15131,8 +15131,8 @@ func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response) (res Wat
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15175,8 +15175,8 @@ func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15219,8 +15219,8 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15263,8 +15263,8 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15307,8 +15307,8 @@ func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response) (res WatchCoreV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15351,8 +15351,8 @@ func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response) (res WatchC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15395,8 +15395,8 @@ func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response) (res Wa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15439,8 +15439,8 @@ func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response) (re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15483,8 +15483,8 @@ func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15527,8 +15527,8 @@ func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15571,8 +15571,8 @@ func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15615,8 +15615,8 @@ func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15659,8 +15659,8 @@ func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response) (res WatchCo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15703,8 +15703,8 @@ func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response) (res Wat
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15747,8 +15747,8 @@ func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response) (res WatchC
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15791,8 +15791,8 @@ func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15835,8 +15835,8 @@ func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15879,8 +15879,8 @@ func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response) (res Wa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15923,8 +15923,8 @@ func decodeWatchCoreV1NodeResponse(resp *http.Response) (res WatchCoreV1NodeRes,
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -15967,8 +15967,8 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (res WatchCoreV1Node
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16011,8 +16011,8 @@ func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response) (res WatchCo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16055,8 +16055,8 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16099,8 +16099,8 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (res Wat
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16143,8 +16143,8 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16187,8 +16187,8 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16231,8 +16231,8 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16275,8 +16275,8 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16319,8 +16319,8 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16363,8 +16363,8 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16407,8 +16407,8 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16451,8 +16451,8 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16495,8 +16495,8 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16539,8 +16539,8 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16583,8 +16583,8 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16627,8 +16627,8 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16671,8 +16671,8 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16715,8 +16715,8 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16759,8 +16759,8 @@ func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response) (res WatchE
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16803,8 +16803,8 @@ func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response) (res Wa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16847,8 +16847,8 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16891,8 +16891,8 @@ func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response) (res W
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16935,8 +16935,8 @@ func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response) (r
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -16979,8 +16979,8 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17023,8 +17023,8 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17067,8 +17067,8 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17111,8 +17111,8 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17155,8 +17155,8 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17199,8 +17199,8 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17243,8 +17243,8 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17287,8 +17287,8 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17331,8 +17331,8 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17375,8 +17375,8 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17419,8 +17419,8 @@ func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response) (res Watch
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17463,8 +17463,8 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (res W
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17507,8 +17507,8 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17551,8 +17551,8 @@ func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17595,8 +17595,8 @@ func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17639,8 +17639,8 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17683,8 +17683,8 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Respo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17727,8 +17727,8 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17771,8 +17771,8 @@ func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response) (res WatchNodeV1
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17815,8 +17815,8 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (res WatchNo
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17859,8 +17859,8 @@ func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response) (res Watch
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17903,8 +17903,8 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (res W
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17947,8 +17947,8 @@ func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response) (res WatchN
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -17991,8 +17991,8 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (res Wa
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18035,8 +18035,8 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18079,8 +18079,8 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18123,8 +18123,8 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18167,8 +18167,8 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18211,8 +18211,8 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *htt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18255,8 +18255,8 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18299,8 +18299,8 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18343,8 +18343,8 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18387,8 +18387,8 @@ func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18431,8 +18431,8 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18475,8 +18475,8 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18519,8 +18519,8 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18563,8 +18563,8 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response) (
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18607,8 +18607,8 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Resp
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18651,8 +18651,8 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18695,8 +18695,8 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Respons
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18739,8 +18739,8 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18783,8 +18783,8 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18827,8 +18827,8 @@ func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18871,8 +18871,8 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18915,8 +18915,8 @@ func decodeWatchStorageV1CSIDriverResponse(resp *http.Response) (res WatchStorag
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -18959,8 +18959,8 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (res WatchSt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19003,8 +19003,8 @@ func decodeWatchStorageV1CSINodeResponse(resp *http.Response) (res WatchStorageV
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19047,8 +19047,8 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (res WatchStor
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19091,8 +19091,8 @@ func decodeWatchStorageV1StorageClassResponse(resp *http.Response) (res WatchSto
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19135,8 +19135,8 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19179,8 +19179,8 @@ func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response) (res Watc
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19223,8 +19223,8 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (res 
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19267,8 +19267,8 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19311,8 +19311,8 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.R
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19355,8 +19355,8 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *ht
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19399,8 +19399,8 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19443,8 +19443,8 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
@@ -19487,8 +19487,8 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp *htt
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+
 			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
 			if err := func() error {
 				if err := response.Decode(d); err != nil {

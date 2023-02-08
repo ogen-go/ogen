@@ -44,8 +44,6 @@ func (s *Server) decodeCreateSnapshotRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SnapshotCreateParams
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -56,6 +54,8 @@ func (s *Server) decodeCreateSnapshotRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SnapshotCreateParams
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -115,8 +115,6 @@ func (s *Server) decodeCreateSyncActionRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request InstanceActionInfo
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -127,6 +125,8 @@ func (s *Server) decodeCreateSyncActionRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request InstanceActionInfo
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -186,8 +186,6 @@ func (s *Server) decodeLoadSnapshotRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request SnapshotLoadParams
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -198,6 +196,8 @@ func (s *Server) decodeLoadSnapshotRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request SnapshotLoadParams
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -249,8 +249,6 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request MmdsConfig
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -261,6 +259,8 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request MmdsConfig
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -315,8 +315,6 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request *MmdsPatchReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -327,6 +325,8 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request *MmdsPatchReq
 		if err := func() error {
 			request = nil
 			var elem MmdsPatchReq
@@ -384,8 +384,6 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request *MmdsPutReq
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -396,6 +394,8 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request *MmdsPutReq
 		if err := func() error {
 			request = nil
 			var elem MmdsPutReq
@@ -450,8 +450,6 @@ func (s *Server) decodePatchBalloonRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request BalloonUpdate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -462,6 +460,8 @@ func (s *Server) decodePatchBalloonRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request BalloonUpdate
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -513,8 +513,6 @@ func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request BalloonStatsUpdate
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -525,6 +523,8 @@ func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request BalloonStatsUpdate
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -576,8 +576,6 @@ func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PartialDrive
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -588,6 +586,8 @@ func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PartialDrive
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -647,8 +647,6 @@ func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request PartialNetworkInterface
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -659,6 +657,8 @@ func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request PartialNetworkInterface
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -721,8 +721,6 @@ func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptMachineConfiguration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -733,6 +731,8 @@ func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptMachineConfiguration
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -800,8 +800,6 @@ func (s *Server) decodePatchVmRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request VM
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -812,6 +810,8 @@ func (s *Server) decodePatchVmRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request VM
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -871,8 +871,6 @@ func (s *Server) decodePutBalloonRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request Balloon
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -883,6 +881,8 @@ func (s *Server) decodePutBalloonRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request Balloon
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -934,8 +934,6 @@ func (s *Server) decodePutGuestBootSourceRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request BootSource
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -946,6 +944,8 @@ func (s *Server) decodePutGuestBootSourceRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request BootSource
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -997,8 +997,6 @@ func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request Drive
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1009,6 +1007,8 @@ func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request Drive
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1068,8 +1068,6 @@ func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request NetworkInterface
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1080,6 +1078,8 @@ func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request NetworkInterface
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1139,8 +1139,6 @@ func (s *Server) decodePutGuestVsockRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request Vsock
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1151,6 +1149,8 @@ func (s *Server) decodePutGuestVsockRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request Vsock
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1210,8 +1210,6 @@ func (s *Server) decodePutLoggerRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request Logger
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1222,6 +1220,8 @@ func (s *Server) decodePutLoggerRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request Logger
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
@@ -1284,8 +1284,6 @@ func (s *Server) decodePutMachineConfigurationRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-
-		var request OptMachineConfiguration
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1296,6 +1294,8 @@ func (s *Server) decodePutMachineConfigurationRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request OptMachineConfiguration
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
@@ -1363,8 +1363,6 @@ func (s *Server) decodePutMetricsRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-
-		var request Metrics
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -1375,6 +1373,8 @@ func (s *Server) decodePutMetricsRequest(r *http.Request) (
 		}
 
 		d := jx.DecodeBytes(buf)
+
+		var request Metrics
 		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err

@@ -14,6 +14,8 @@ type MediaType struct {
 	Examples map[string]*Example
 	Encoding map[string]*Encoding
 
+	XOgenJSONStreaming bool
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 

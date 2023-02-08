@@ -59,6 +59,10 @@ type Handler interface {
 	//
 	// GET /octetStreamEmptySchema
 	OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error)
+	// StreamJSON implements streamJSON operation.
+	//
+	// POST /streamJSON
+	StreamJSON(ctx context.Context, params StreamJSONParams) (StreamJSONRes, error)
 	// TextPlainBinaryStringSchema implements textPlainBinaryStringSchema operation.
 	//
 	// GET /textPlainBinaryStringSchema

@@ -97,12 +97,16 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- end }}
 
 		{{- if $encoding.JSON }}
+			{{- if $media.JSONStreaming }}
+			d := jx.Decode(resp.Body, -1)
+			{{- else }}
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
 			}
-
 			d := jx.DecodeBytes(buf)
+			{{- end }}
+
 			var response {{ $type.Go }}
 			if err := func() error {
 				{{- template "json/dec" elem $type "response" }}
@@ -111,11 +115,13 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 				}
 				return nil
 			}(); err != nil {
+        		{{- if not $media.JSONStreaming }}
 				err = &ogenerrors.DecodeBodyError{
 					ContentType: ct,
 					Body: buf,
 					Err: err,
 				}
+				{{- end }}
 				return res, err
 			}
 		{{- else if $type.IsStream }}

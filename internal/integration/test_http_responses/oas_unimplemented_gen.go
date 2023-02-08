@@ -100,6 +100,13 @@ func (UnimplementedHandler) OctetStreamEmptySchema(ctx context.Context) (r Octet
 	return r, ht.ErrNotImplemented
 }
 
+// StreamJSON implements streamJSON operation.
+//
+// POST /streamJSON
+func (UnimplementedHandler) StreamJSON(ctx context.Context, params StreamJSONParams) (r StreamJSONRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TextPlainBinaryStringSchema implements textPlainBinaryStringSchema operation.
 //
 // GET /textPlainBinaryStringSchema
