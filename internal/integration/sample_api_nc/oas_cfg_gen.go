@@ -9,7 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/instrument/syncint64"
+	"go.opentelemetry.io/otel/metric/instrument"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -120,9 +120,9 @@ func newServerConfig(opts ...ServerOption) serverConfig {
 
 type baseServer struct {
 	cfg      serverConfig
-	requests syncint64.Counter
-	errors   syncint64.Counter
-	duration syncint64.Histogram
+	requests instrument.Int64Counter
+	errors   instrument.Int64Counter
+	duration instrument.Int64Histogram
 }
 
 func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
