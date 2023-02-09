@@ -59,9 +59,10 @@ func shouldEscapePath(c byte) bool {
 
 // NormalizeEscapedPath normalizes escaped path.
 //
-// All percent-encoded characters are upper-cased.
+// All percent-encoded characters are upper-cased. If s contains unnecessarily escaped
+// characters, they are unescaped.
 //
-// If the escaping
+// If s contains invalid escape sequence, it returns empty string and false.
 func NormalizeEscapedPath(s string) (string, bool) {
 	// Search % with lower case octets.
 	iter := s

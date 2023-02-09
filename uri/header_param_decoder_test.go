@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestHeaderDecoder(t *testing.T) {
+func TestHeaderParamDecoder(t *testing.T) {
 	t.Run("primitive", func(t *testing.T) {
 		tests := []struct {
 			HeaderName string

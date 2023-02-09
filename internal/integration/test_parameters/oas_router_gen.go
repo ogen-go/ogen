@@ -82,8 +82,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						return
 					}
-				case 'n': // Prefix: "ntentQueryParameter"
-					if l := len("ntentQueryParameter"); len(elem) >= l && elem[0:l] == "ntentQueryParameter" {
+				case 'n': // Prefix: "ntentParameters/"
+					if l := len("ntentParameters/"); len(elem) >= l && elem[0:l] == "ntentParameters/" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					// Param: "path"
+					// Leaf parameter
+					args[0] = elem
+					elem = ""
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleContentParametersRequest([1]string{
+								args[0],
+							}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+				case 'o': // Prefix: "okieParameter"
+					if l := len("okieParameter"); len(elem) >= l && elem[0:l] == "okieParameter" {
 						elem = elem[l:]
 					} else {
 						break
@@ -93,7 +118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleContentQueryParameterRequest([0]string{}, w, r)
+							s.handleCookieParameterRequest([0]string{}, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -119,48 +144,53 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
-			case 'o': // Prefix: "objectQueryParameter"
-				if l := len("objectQueryParameter"); len(elem) >= l && elem[0:l] == "objectQueryParameter" {
+			case 'o': // Prefix: "object"
+				if l := len("object"); len(elem) >= l && elem[0:l] == "object" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
-					switch r.Method {
-					case "GET":
-						s.handleObjectQueryParameterRequest([0]string{}, w, r)
-					default:
-						s.notAllowed(w, r, "GET")
-					}
-
-					return
-				}
-			case 'p': // Prefix: "pathObjectParameter/"
-				if l := len("pathObjectParameter/"); len(elem) >= l && elem[0:l] == "pathObjectParameter/" {
-					elem = elem[l:]
-				} else {
 					break
 				}
-
-				// Param: "param"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					// Leaf node.
-					switch r.Method {
-					case "GET":
-						s.handlePathObjectParameterRequest([1]string{
-							args[0],
-						}, w, r)
-					default:
-						s.notAllowed(w, r, "GET")
+				switch elem[0] {
+				case 'C': // Prefix: "CookieParameter"
+					if l := len("CookieParameter"); len(elem) >= l && elem[0:l] == "CookieParameter" {
+						elem = elem[l:]
+					} else {
+						break
 					}
 
-					return
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleObjectCookieParameterRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+				case 'Q': // Prefix: "QueryParameter"
+					if l := len("QueryParameter"); len(elem) >= l && elem[0:l] == "QueryParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleObjectQueryParameterRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
 				}
 			case 's': // Prefix: "same_name/"
 				if l := len("same_name/"); len(elem) >= l && elem[0:l] == "same_name/" {
@@ -300,8 +330,34 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							return
 						}
 					}
-				case 'n': // Prefix: "ntentQueryParameter"
-					if l := len("ntentQueryParameter"); len(elem) >= l && elem[0:l] == "ntentQueryParameter" {
+				case 'n': // Prefix: "ntentParameters/"
+					if l := len("ntentParameters/"); len(elem) >= l && elem[0:l] == "ntentParameters/" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					// Param: "path"
+					// Leaf parameter
+					args[0] = elem
+					elem = ""
+
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: ContentParameters
+							r.name = "ContentParameters"
+							r.operationID = "contentParameters"
+							r.pathPattern = "/contentParameters/{path}"
+							r.args = args
+							r.count = 1
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'o': // Prefix: "okieParameter"
+					if l := len("okieParameter"); len(elem) >= l && elem[0:l] == "okieParameter" {
 						elem = elem[l:]
 					} else {
 						break
@@ -310,10 +366,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							// Leaf: ContentQueryParameter
-							r.name = "ContentQueryParameter"
-							r.operationID = "contentQueryParameter"
-							r.pathPattern = "/contentQueryParameter"
+							// Leaf: CookieParameter
+							r.name = "CookieParameter"
+							r.operationID = "cookieParameter"
+							r.pathPattern = "/cookieParameter"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -343,51 +399,58 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						return
 					}
 				}
-			case 'o': // Prefix: "objectQueryParameter"
-				if l := len("objectQueryParameter"); len(elem) >= l && elem[0:l] == "objectQueryParameter" {
+			case 'o': // Prefix: "object"
+				if l := len("object"); len(elem) >= l && elem[0:l] == "object" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch method {
-					case "GET":
-						// Leaf: ObjectQueryParameter
-						r.name = "ObjectQueryParameter"
-						r.operationID = "objectQueryParameter"
-						r.pathPattern = "/objectQueryParameter"
-						r.args = args
-						r.count = 0
-						return r, true
-					default:
-						return
+					break
+				}
+				switch elem[0] {
+				case 'C': // Prefix: "CookieParameter"
+					if l := len("CookieParameter"); len(elem) >= l && elem[0:l] == "CookieParameter" {
+						elem = elem[l:]
+					} else {
+						break
 					}
-				}
-			case 'p': // Prefix: "pathObjectParameter/"
-				if l := len("pathObjectParameter/"); len(elem) >= l && elem[0:l] == "pathObjectParameter/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
 
-				// Param: "param"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: ObjectCookieParameter
+							r.name = "ObjectCookieParameter"
+							r.operationID = "objectCookieParameter"
+							r.pathPattern = "/objectCookieParameter"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				case 'Q': // Prefix: "QueryParameter"
+					if l := len("QueryParameter"); len(elem) >= l && elem[0:l] == "QueryParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
 
-				if len(elem) == 0 {
-					switch method {
-					case "GET":
-						// Leaf: PathObjectParameter
-						r.name = "PathObjectParameter"
-						r.operationID = "pathObjectParameter"
-						r.pathPattern = "/pathObjectParameter/{param}"
-						r.args = args
-						r.count = 1
-						return r, true
-					default:
-						return
+					if len(elem) == 0 {
+						switch method {
+						case "GET":
+							// Leaf: ObjectQueryParameter
+							r.name = "ObjectQueryParameter"
+							r.operationID = "objectQueryParameter"
+							r.pathPattern = "/objectQueryParameter"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			case 's': // Prefix: "same_name/"

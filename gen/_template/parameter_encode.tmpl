@@ -61,13 +61,32 @@ h := uri.NewHeaderEncoder(r.Header)
 {{- end }}
 {{ end }}
 
+{{ define "encode_cookie_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+cookie := uri.NewCookieEncoder(r)
+{{- range $p := $.CookieParams }}
+{
+	// Encode {{ quote $p.Spec.Name }} parameter.
+	cfg := uri.CookieParameterEncodingConfig{
+		Name:    {{ quote $p.Spec.Name }},
+		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+	}
+
+	if err := cookie.EncodeParam(cfg, func(e uri.Encoder) error {
+		{{- template "encode_parameter" $p -}}
+	}); err != nil {
+		return res, errors.Wrap(err, "encode cookie")
+	}
+}
+{{- end }}
+{{ end }}
+
 {{ define "encode_parameter" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Parameter*/}}
 {{- $param := $ }}
 {{- $el := elem $param.Type (printf "params.%s" $param.Name) }}
 {{- if $param.Spec.Content }}
 	enc := jx.GetEncoder()
 	func(e *jx.Encoder) {
-    	{{ template "json/enc" $el }}
+    	{{- template "json/enc" $el }}
 	}(enc)
 	return e.EncodeValue(string(enc.Bytes()))
 {{- else }}

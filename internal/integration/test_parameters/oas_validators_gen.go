@@ -10,6 +10,57 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func (s *ContentParameters) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Query.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "query",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Path.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "path",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "header",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Cookie.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "cookie",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s *Hash) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

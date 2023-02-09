@@ -13,8 +13,8 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-// EncodeURI encodes ObjectQueryParameterDeepObject as URI form.
-func (s *ObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
+// EncodeURI encodes OneLevelObject as URI form.
+func (s *OneLevelObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(s.Min))
 	}); err != nil {
@@ -33,16 +33,16 @@ func (s *ObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
 	return nil
 }
 
-var uriFieldsNameOfObjectQueryParameterDeepObject = [3]string{
+var uriFieldsNameOfOneLevelObject = [3]string{
 	0: "min",
 	1: "max",
 	2: "filter",
 }
 
-// DecodeURI decodes ObjectQueryParameterDeepObject from URI form.
-func (s *ObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
+// DecodeURI decodes OneLevelObject from URI form.
+func (s *OneLevelObject) DecodeURI(d uri.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode ObjectQueryParameterDeepObject to nil")
+		return errors.New("invalid: unable to decode OneLevelObject to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -107,7 +107,7 @@ func (s *ObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode ObjectQueryParameterDeepObject")
+		return errors.Wrap(err, "decode OneLevelObject")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -124,140 +124,8 @@ func (s *ObjectQueryParameterDeepObject) DecodeURI(d uri.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(uriFieldsNameOfObjectQueryParameterDeepObject) {
-					name = uriFieldsNameOfObjectQueryParameterDeepObject[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// EncodeURI encodes ObjectQueryParameterFormObject as URI form.
-func (s *ObjectQueryParameterFormObject) EncodeURI(e uri.Encoder) error {
-	if err := e.EncodeField("min", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.IntToString(s.Min))
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"min\"")
-	}
-	if err := e.EncodeField("max", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.IntToString(s.Max))
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"max\"")
-	}
-	if err := e.EncodeField("filter", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.StringToString(s.Filter))
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"filter\"")
-	}
-	return nil
-}
-
-var uriFieldsNameOfObjectQueryParameterFormObject = [3]string{
-	0: "min",
-	1: "max",
-	2: "filter",
-}
-
-// DecodeURI decodes ObjectQueryParameterFormObject from URI form.
-func (s *ObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ObjectQueryParameterFormObject to nil")
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
-		switch k {
-		case "min":
-			requiredBitSet[0] |= 1 << 0
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(val)
-				if err != nil {
-					return err
-				}
-
-				s.Min = c
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"min\"")
-			}
-		case "max":
-			requiredBitSet[0] |= 1 << 1
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(val)
-				if err != nil {
-					return err
-				}
-
-				s.Max = c
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"max\"")
-			}
-		case "filter":
-			requiredBitSet[0] |= 1 << 2
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				s.Filter = c
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"filter\"")
-			}
-		default:
-			return nil
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ObjectQueryParameterFormObject")
-	}
-	// Validate required fields.
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000111,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(uriFieldsNameOfObjectQueryParameterFormObject) {
-					name = uriFieldsNameOfObjectQueryParameterFormObject[fieldIdx]
+				if fieldIdx < len(uriFieldsNameOfOneLevelObject) {
+					name = uriFieldsNameOfOneLevelObject[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}

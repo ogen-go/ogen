@@ -23,7 +23,7 @@ func decodeComplicatedParameterNameGetResponse(resp *http.Response) (res *Compli
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeContentQueryParameterResponse(resp *http.Response) (res string, err error) {
+func decodeContentParametersResponse(resp *http.Response) (res *ContentParameters, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39,11 +39,9 @@ func decodeContentQueryParameterResponse(resp *http.Response) (res string, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response string
+			var response ContentParameters
 			if err := func() error {
-				v, err := d.Str()
-				response = string(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				if err := d.Skip(); err != io.EOF {
@@ -58,7 +56,48 @@ func decodeContentQueryParameterResponse(resp *http.Response) (res string, err e
 				}
 				return res, err
 			}
-			return response, nil
+			return &response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeCookieParameterResponse(resp *http.Response) (res *Hash, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			buf, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			d := jx.DecodeBytes(buf)
+
+			var response Hash
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
+				return nil
+			}(); err != nil {
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
+			}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -107,7 +146,7 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Hash, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryParameterOK, err error) {
+func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObject, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -123,7 +162,7 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ObjectQueryParameterOK
+			var response OneLevelObject
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -148,7 +187,7 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePathObjectParameterResponse(resp *http.Response) (res *User, err error) {
+func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryParameterOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -164,7 +203,7 @@ func decodePathObjectParameterResponse(resp *http.Response) (res *User, err erro
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response User
+			var response ObjectQueryParameterOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

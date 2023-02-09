@@ -14,23 +14,7 @@
             "in": "query",
             "style": "form",
             "schema": {
-              "type": "object",
-              "required": [
-                "min",
-                "max",
-                "filter"
-              ],
-              "properties": {
-                "min": {
-                  "type": "integer"
-                },
-                "max": {
-                  "type": "integer"
-                },
-                "filter": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/components/schemas/OneLevelObject"
             }
           },
           {
@@ -38,23 +22,7 @@
             "in": "query",
             "style": "deepObject",
             "schema": {
-              "type": "object",
-              "required": [
-                "min",
-                "max",
-                "filter"
-              ],
-              "properties": {
-                "min": {
-                  "type": "integer"
-                },
-                "max": {
-                  "type": "integer"
-                },
-                "filter": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/components/schemas/OneLevelObject"
             }
           }
         ],
@@ -67,22 +35,14 @@
                   "type": "object",
                   "required": [
                     "style",
-                    "min",
-                    "max",
-                    "filter"
+                    "value"
                   ],
                   "properties": {
                     "style": {
                       "type": "string"
                     },
-                    "min": {
-                      "type": "integer"
-                    },
-                    "max": {
-                      "type": "integer"
-                    },
-                    "filter": {
-                      "type": "string"
+                    "value": {
+                      "$ref": "#/components/schemas/OneLevelObject"
                     }
                   }
                 }
@@ -92,63 +52,78 @@
         }
       }
     },
-    "/contentQueryParameter": {
+    "/objectCookieParameter": {
       "get": {
-        "operationId": "contentQueryParameter",
+        "operationId": "objectCookieParameter",
         "parameters": [
           {
-            "name": "param",
+            "name": "value",
+            "in": "cookie",
+            "style": "form",
+            "explode": false,
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/OneLevelObject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OneLevelObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contentParameters/{path}": {
+      "get": {
+        "operationId": "contentParameters",
+        "parameters": [
+          {
+            "name": "query",
             "in": "query",
+            "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "style",
-                    "min",
-                    "max",
-                    "filter"
-                  ],
-                  "properties": {
-                    "style": {
-                      "type": "string"
-                    },
-                    "min": {
-                      "type": "integer"
-                    },
-                    "max": {
-                      "type": "integer"
-                    },
-                    "filter": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/pathObjectParameter/{param}": {
-      "get": {
-        "operationId": "pathObjectParameter",
-        "parameters": [
+          },
           {
-            "name": "param",
+            "name": "path",
             "in": "path",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          {
+            "name": "X-Header",
+            "in": "header",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          {
+            "name": "cookie",
+            "in": "cookie",
             "required": true,
             "content": {
               "application/json": {
@@ -161,11 +136,60 @@
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "$ref": "#/components/responses/ContentParameters"
+          }
+        }
+      }
+    },
+    "/headerParameter": {
+      "get": {
+        "description": "Test for header param",
+        "operationId": "headerParameter",
+        "parameters": [
+          {
+            "in": "header",
+            "required": true,
+            "name": "X-Auth-Token",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns sha256 of header value",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Hash"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cookieParameter": {
+      "get": {
+        "description": "Test for cookie param",
+        "operationId": "cookieParameter",
+        "parameters": [
+          {
+            "in": "cookie",
+            "required": true,
+            "name": "value",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns sha256 of cookie value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hash"
                 }
               }
             }
@@ -224,35 +248,7 @@
         }
       }
     },
-    "/headerParameter": {
-      "get": {
-        "description": "Test for header param",
-        "operationId": "headerParameter",
-        "parameters": [
-          {
-            "in": "header",
-            "required": true,
-            "name": "X-Auth-Token",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns sha256 of header value",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Hash"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/same_name/{path}" : {
+    "/same_name/{path}": {
       "get": {
         "operationId": "sameName",
         "summary": "parameter with different location, but the same name",
@@ -328,6 +324,57 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "OneLevelObject": {
+        "type": "object",
+        "required": [
+          "min",
+          "max",
+          "filter"
+        ],
+        "properties": {
+          "min": {
+            "type": "integer"
+          },
+          "max": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "ContentParameters": {
+        "description": "Ok",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "query",
+                "path",
+                "header",
+                "cookie"
+              ],
+              "properties": {
+                "query": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "path": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "header": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "cookie": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
             }
           }
         }

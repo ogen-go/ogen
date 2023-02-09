@@ -23,6 +23,12 @@ func (op Operation) HasHeaderParams() bool {
 	})
 }
 
+func (op Operation) HasCookieParams() bool {
+	return slices.ContainsFunc(op.Params, func(p *Parameter) bool {
+		return p.Spec != nil && p.Spec.In.Cookie()
+	})
+}
+
 func (op Operation) PathParamsCount() (r int) {
 	for _, p := range op.PathParts {
 		if p.Param != nil {
