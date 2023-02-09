@@ -20,7 +20,7 @@ require (
 	golang.org/x/exp v0.0.0-20230116083435-1de6713980de
 	golang.org/x/net v0.5.0
 	golang.org/x/sync v0.1.0
-	golang.org/x/text v0.6.0
+	golang.org/x/text v0.7.0
 	golang.org/x/tools v0.5.0
 )
 
