@@ -20,21 +20,21 @@ type testParameters struct {
 func (s *testParameters) ObjectQueryParameter(ctx context.Context, params api.ObjectQueryParameterParams) (*api.ObjectQueryParameterOK, error) {
 	if param, ok := params.FormObject.Get(); ok {
 		return &api.ObjectQueryParameterOK{
-			Style:  "form",
-			Min:    param.Min,
-			Max:    param.Max,
-			Filter: param.Filter,
+			Style: "form",
+			Value: param,
 		}, nil
 	}
 	if param, ok := params.DeepObject.Get(); ok {
 		return &api.ObjectQueryParameterOK{
-			Style:  "deepObject",
-			Min:    param.Min,
-			Max:    param.Max,
-			Filter: param.Filter,
+			Style: "deepObject",
+			Value: param,
 		}, nil
 	}
 	return &api.ObjectQueryParameterOK{}, errors.New("invalid input")
+}
+
+func (s *testParameters) ObjectCookieParameter(ctx context.Context, params api.ObjectCookieParameterParams) (*api.OneLevelObject, error) {
+	return &params.Value, nil
 }
 
 func (s *testParameters) ContentParameters(ctx context.Context, params api.ContentParametersParams) (*api.ContentParameters, error) {
@@ -82,41 +82,34 @@ func TestParameters(t *testing.T) {
 	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
 	require.NoError(t, err)
 
-	t.Run("ObjectQueryParameter", func(t *testing.T) {
-		const (
-			min    = 1
-			max    = 5
-			filter = "abc"
-		)
+	oneLevel := api.OneLevelObject{
+		Min:    1,
+		Max:    5,
+		Filter: "abc",
+	}
 
+	t.Run("ObjectQueryParameter", func(t *testing.T) {
 		t.Run("formStyle", func(t *testing.T) {
 			resp, err := client.ObjectQueryParameter(ctx, api.ObjectQueryParameterParams{
-				FormObject: api.NewOptObjectQueryParameterFormObject(api.ObjectQueryParameterFormObject{
-					Min:    min,
-					Max:    max,
-					Filter: filter,
-				}),
+				FormObject: api.NewOptOneLevelObject(oneLevel),
 			})
 			require.NoError(t, err)
 			require.Equal(t, resp.Style, "form")
-			require.Equal(t, resp.Min, min)
-			require.Equal(t, resp.Max, max)
-			require.Equal(t, resp.Filter, filter)
+			require.Equal(t, oneLevel, resp.Value)
 		})
 		t.Run("deepObjectStyle", func(t *testing.T) {
 			resp, err := client.ObjectQueryParameter(ctx, api.ObjectQueryParameterParams{
-				DeepObject: api.NewOptObjectQueryParameterDeepObject(api.ObjectQueryParameterDeepObject{
-					Min:    min,
-					Max:    max,
-					Filter: filter,
-				}),
+				DeepObject: api.NewOptOneLevelObject(oneLevel),
 			})
 			require.NoError(t, err)
 			require.Equal(t, resp.Style, "deepObject")
-			require.Equal(t, resp.Min, min)
-			require.Equal(t, resp.Max, max)
-			require.Equal(t, resp.Filter, filter)
+			require.Equal(t, oneLevel, resp.Value)
 		})
+	})
+	t.Run("ObjectCookieParameter", func(t *testing.T) {
+		resp, err := client.ObjectCookieParameter(ctx, api.ObjectCookieParameterParams{Value: oneLevel})
+		require.NoError(t, err)
+		require.Equal(t, oneLevel, *resp)
 	})
 
 	t.Run("HeaderParameter", func(t *testing.T) {

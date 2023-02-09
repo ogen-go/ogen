@@ -14,23 +14,7 @@
             "in": "query",
             "style": "form",
             "schema": {
-              "type": "object",
-              "required": [
-                "min",
-                "max",
-                "filter"
-              ],
-              "properties": {
-                "min": {
-                  "type": "integer"
-                },
-                "max": {
-                  "type": "integer"
-                },
-                "filter": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/components/schemas/OneLevelObject"
             }
           },
           {
@@ -38,23 +22,7 @@
             "in": "query",
             "style": "deepObject",
             "schema": {
-              "type": "object",
-              "required": [
-                "min",
-                "max",
-                "filter"
-              ],
-              "properties": {
-                "min": {
-                  "type": "integer"
-                },
-                "max": {
-                  "type": "integer"
-                },
-                "filter": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/components/schemas/OneLevelObject"
             }
           }
         ],
@@ -67,24 +35,45 @@
                   "type": "object",
                   "required": [
                     "style",
-                    "min",
-                    "max",
-                    "filter"
+                    "value"
                   ],
                   "properties": {
                     "style": {
                       "type": "string"
                     },
-                    "min": {
-                      "type": "integer"
-                    },
-                    "max": {
-                      "type": "integer"
-                    },
-                    "filter": {
-                      "type": "string"
+                    "value": {
+                      "$ref": "#/components/schemas/OneLevelObject"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/objectCookieParameter": {
+      "get": {
+        "operationId": "objectCookieParameter",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "cookie",
+            "style": "form",
+            "explode": false,
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/OneLevelObject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OneLevelObject"
                 }
               }
             }
@@ -336,6 +325,25 @@
             "items": {
               "$ref": "#/components/schemas/User"
             }
+          }
+        }
+      },
+      "OneLevelObject": {
+        "type": "object",
+        "required": [
+          "min",
+          "max",
+          "filter"
+        ],
+        "properties": {
+          "min": {
+            "type": "integer"
+          },
+          "max": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
           }
         }
       }
