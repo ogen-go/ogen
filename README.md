@@ -215,6 +215,23 @@ components:
             valid: customIdValidator
 ```
 
+### Streaming JSON encoding
+
+By default, ogen loads the entire JSON body into memory before decoding it.
+Optionally, streaming JSON encoding can be enabled by `x-ogen-json-streaming`, for example:
+
+```yaml
+requestBody:
+  required: true
+  content:
+    application/json:
+      x-ogen-json-streaming: true
+      schema:
+        type: array
+        items:
+          type: number
+```
+
 The generated source code looks like:
 
 ```go
