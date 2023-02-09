@@ -2,6 +2,7 @@ package uri
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/go-faster/errors"
 )
@@ -26,9 +27,29 @@ func (d *cookieParamDecoder) DecodeValue() (string, error) {
 }
 
 func (d *cookieParamDecoder) DecodeArray(f func(Decoder) error) error {
-	panic("cookie with array values is not implemented")
+	val, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
+
+	for _, v := range strings.Split(val, ",") {
+		if err := f(constval{v}); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (d *cookieParamDecoder) DecodeFields(f func(field string, d Decoder) error) error {
-	panic("cookie with object values is not implemented")
+	val, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
+
+	pushField := func(field, value string) error { return f(field, constval{value}) }
+	const kvSep, fieldSep = ',', ','
+	return decodeObject(
+		(&cursor{src: val}),
+		kvSep, fieldSep, pushField,
+	)
 }

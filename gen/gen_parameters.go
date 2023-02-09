@@ -214,16 +214,5 @@ func isSupportedParamStyle(param *openapi.Parameter) error {
 			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
 		}
 	}
-
-	if param.In == openapi.LocationCookie && !param.Explode {
-		// The OpenAPI specification is not clear about how to exactly we should
-		// encode non-explode parameters.
-		//
-		// See:
-		// https://github.com/OAI/OpenAPI-Specification/issues/1528
-		// https://github.com/OAI/OpenAPI-Specification/issues/2940
-		return &ErrNotImplemented{Name: "non-explode cookie parameter style"}
-	}
-
 	return nil
 }
