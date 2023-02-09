@@ -3,6 +3,7 @@ module github.com/ogen-go/ogen
 go 1.18
 
 require (
+	github.com/davecgh/go-spew v1.1.1
 	github.com/dlclark/regexp2 v1.8.0
 	github.com/fatih/color v1.14.1
 	github.com/ghodss/yaml v1.0.0
@@ -27,7 +28,6 @@ require (
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/benbjohnson/clock v1.3.0 // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect

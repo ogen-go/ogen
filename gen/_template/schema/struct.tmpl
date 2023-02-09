@@ -6,7 +6,7 @@
 	type {{ $.Name }} struct {
 	{{- range $f := $.Fields }}
 		{{- template "godoc" $f.GoDoc }}
-		{{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}{{ printf "json:%q" $f.Tag.JSON | backquote }}{{ end }}
+		{{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.GetTags }}{{ backquote $f.Tag.GetTags }}{{ end }}
 	{{- end }}
 	}
 {{- end }}

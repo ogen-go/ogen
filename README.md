@@ -47,6 +47,7 @@ go get -d github.com/ogen-go/ogen
   * Primitive types (`string`, `number`) are detected by type
   * Discriminator field is used if defined in schema
   * Type is inferred by unique fields if possible
+* Extra Go struct field tags in the generated types
 * OpenTelemetry tracing and metrics
 
 Example generated structure from schema:
@@ -135,6 +136,92 @@ type ID struct {
 // Also, some helpers:
 func NewStringID(v string) ID
 func NewIntID(v int) ID
+```
+
+## Extension properties
+
+OpenAPI enables [Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specification-extensions),
+which are implemented as patterned fields that are always prefixed by `x-`.
+
+### Server name
+
+Optionally, server name can be specified by `x-ogen-server-name`, for example:
+
+```json
+{
+  "openapi": "3.0.3",
+  "servers": [
+    {
+      "x-ogen-server-name": "production",
+      "url": "https://{region}.example.com/{val}/v1",
+    },
+    {
+      "x-ogen-server-name": "prefix",
+      "url": "/{val}/v1",
+    },
+    {
+      "x-ogen-server-name": "const",
+      "url": "https://cdn.example.com/v1"
+    }
+  ],
+(...)
+```
+
+### Custom type name
+
+Optionally, type name can be specified by `x-ogen-name`, for example:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "x-ogen-name": "Name",
+  "properties": {
+    "foobar": {
+      "$ref": "#/$defs/FooBar"
+    }
+  },
+  "$defs": {
+    "FooBar": {
+      "x-ogen-name": "FooBar",
+      "type": "object",
+      "properties": {
+        "foo": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+```
+
+### Extra struct field tags
+
+Optionally, additional Go struct field tags can be specified by `x-oapi-codegen-extra-tags`, for example:
+
+```yaml
+components:
+  schemas:
+    Pet:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
+            valid: customIdValidator
+```
+
+The generated source code looks like:
+
+```go
+// Ref: #/components/schemas/Pet
+type Pet struct {
+    ID   int64     `gorm:"primaryKey" valid:"customNameValidator" json:"id"`
+}
 ```
 
 ## JSON
