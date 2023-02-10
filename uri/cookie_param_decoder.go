@@ -15,7 +15,11 @@ type cookieParamDecoder struct {
 
 func (d *cookieParamDecoder) DecodeValue() (string, error) {
 	c, err := d.req.Cookie(d.paramName)
-	if err != nil {
+	switch err {
+	case nil:
+	case http.ErrNoCookie:
+		return "", errors.Errorf("cookie parameter %q not set", d.paramName)
+	default:
 		return "", errors.Wrapf(err, "get cookie %q", d.paramName)
 	}
 

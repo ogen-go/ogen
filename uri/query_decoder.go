@@ -45,7 +45,7 @@ func (d *QueryDecoder) HasParam(cfg QueryParameterDecodingConfig) error {
 
 				_, ok := d.values[qparam]
 				if !ok && field.Required {
-					return errors.Errorf("parameter %q not set", qparam)
+					return errors.Errorf("query parameter %q not set", qparam)
 				}
 
 				found = true
@@ -60,7 +60,7 @@ func (d *QueryDecoder) HasParam(cfg QueryParameterDecodingConfig) error {
 	}
 
 	if _, ok := d.values[cfg.Name]; !ok {
-		return errors.Errorf("parameter %q not set", cfg.Name)
+		return errors.Errorf("query parameter %q not set", cfg.Name)
 	}
 	return nil
 }
