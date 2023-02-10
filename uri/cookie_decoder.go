@@ -2,6 +2,8 @@ package uri
 
 import (
 	"net/http"
+
+	"github.com/go-faster/errors"
 )
 
 type CookieDecoder struct {
@@ -21,6 +23,9 @@ type CookieParameterDecodingConfig struct {
 
 func (d *CookieDecoder) HasParam(cfg CookieParameterDecodingConfig) error {
 	_, err := d.req.Cookie(cfg.Name)
+	if err == http.ErrNoCookie {
+		return errors.Errorf("cookie parameter %q not set", cfg.Name)
+	}
 	return err
 }
 
