@@ -30,6 +30,7 @@ type QueryParameterObjectField struct {
 
 func (d *QueryDecoder) HasParam(cfg QueryParameterDecodingConfig) error {
 	if len(cfg.Fields) > 0 {
+		// https://swagger.io/docs/specification/serialization/
 		var (
 			case1 = cfg.Style == QueryStyleForm && cfg.Explode
 			case2 = cfg.Style == QueryStyleDeepObject && cfg.Explode
@@ -43,12 +44,14 @@ func (d *QueryDecoder) HasParam(cfg QueryParameterDecodingConfig) error {
 					qparam = cfg.Name + "[" + field.Name + "]"
 				}
 
-				_, ok := d.values[qparam]
-				if !ok && field.Required {
-					return errors.Errorf("query parameter %q not set", qparam)
+				if _, ok := d.values[qparam]; ok {
+					found = true
+					continue
 				}
 
-				found = true
+				if field.Required {
+					return errors.Errorf("query parameter %q not set", qparam)
+				}
 			}
 
 			if !found {

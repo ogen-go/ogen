@@ -37,6 +37,7 @@ func TestQueryDecoder_HasParam(t *testing.T) {
 					{"foo", false},
 				},
 			},
+			WantErr: "none of parameters ([{Name:foo Required:false}]) are set",
 		},
 		{
 			Input: url.Values{
@@ -75,6 +76,7 @@ func TestQueryDecoder_HasParam(t *testing.T) {
 					{"foo", false},
 				},
 			},
+			WantErr: "none of parameters ([{Name:foo Required:false}]) are set",
 		},
 		{
 			Input: url.Values{
