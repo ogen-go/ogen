@@ -215,6 +215,15 @@ components:
             valid: customIdValidator
 ```
 
+The generated source code looks like:
+
+```go
+// Ref: #/components/schemas/Pet
+type Pet struct {
+    ID   int64     `gorm:"primaryKey" valid:"customNameValidator" json:"id"`
+}
+```
+
 ### Streaming JSON encoding
 
 By default, ogen loads the entire JSON body into memory before decoding it.
@@ -230,15 +239,6 @@ requestBody:
         type: array
         items:
           type: number
-```
-
-The generated source code looks like:
-
-```go
-// Ref: #/components/schemas/Pet
-type Pet struct {
-    ID   int64     `gorm:"primaryKey" valid:"customNameValidator" json:"id"`
-}
 ```
 
 ## JSON
