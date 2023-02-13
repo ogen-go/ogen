@@ -17,7 +17,11 @@ u := uri.Clone(c.requestURL(ctx))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	{{- end }}
 {{- end }}
