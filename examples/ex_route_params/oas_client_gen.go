@@ -116,7 +116,11 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/"
 	{
@@ -131,7 +135,11 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -281,7 +289,11 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
