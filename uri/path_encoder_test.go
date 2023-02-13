@@ -95,7 +95,10 @@ func TestPathEncoder(t *testing.T) {
 				Explode: test.Explode,
 			})
 			require.NoError(t, e.EncodeValue(test.Input))
-			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
+
+			encoded, err := e.Result()
+			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, encoded, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -178,16 +181,18 @@ func TestPathEncoder(t *testing.T) {
 				Style:   test.Style,
 				Explode: test.Explode,
 			})
-			err := e.EncodeArray(func(e Encoder) error {
+			require.NoError(t, e.EncodeArray(func(e Encoder) error {
 				for _, item := range test.Input {
 					if err := e.EncodeValue(item); err != nil {
 						return err
 					}
 				}
 				return nil
-			})
-			require.NoError(t, err)
-			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
+			}))
+
+			encoded, err := e.Result()
+			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, encoded, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -303,7 +308,10 @@ func TestPathEncoder(t *testing.T) {
 				})
 				require.NoError(t, err)
 			}
-			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
+
+			encoded, err := e.Result()
+			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, encoded, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 }
@@ -343,7 +351,7 @@ func BenchmarkPathEncoder(b *testing.B) {
 			}); err != nil {
 				b.Fatal(err)
 			}
-			sink = e.Result()
+			sink, _ = e.Result()
 		}
 		if sink == "" {
 			b.Fatal("sink is empty")
@@ -375,7 +383,7 @@ func BenchmarkPathEncoder(b *testing.B) {
 					b.Fatal(err)
 				}
 			}
-			sink = e.Result()
+			sink, _ = e.Result()
 		}
 		if sink == "" {
 			b.Fatal("sink is empty")
