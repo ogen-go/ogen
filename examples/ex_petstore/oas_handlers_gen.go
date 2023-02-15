@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -24,6 +25,7 @@ import (
 func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -105,6 +107,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -205,6 +208,7 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.

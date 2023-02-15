@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -22,6 +23,7 @@ import (
 func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -101,6 +103,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -180,6 +183,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -278,6 +282,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -357,6 +362,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -455,6 +461,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -534,6 +541,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -613,6 +621,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter,
 func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -695,6 +704,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -793,6 +803,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -872,6 +883,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -951,6 +963,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -1030,6 +1043,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -1128,6 +1142,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.

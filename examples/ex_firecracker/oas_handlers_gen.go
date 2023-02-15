@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -24,6 +25,7 @@ import (
 func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSnapshot"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -124,6 +126,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSyncAction"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -224,6 +227,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonConfig"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -305,6 +309,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonStats"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -386,6 +391,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -467,6 +473,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -550,6 +557,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -632,6 +640,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -1102,6 +1111,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -1203,6 +1213,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -1304,6 +1315,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestDriveByID"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -1419,6 +1431,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -1535,6 +1548,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchMachineConfiguration"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -1635,6 +1649,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchVm"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -1736,6 +1751,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -1837,6 +1853,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -1938,6 +1955,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestDriveByID"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -2053,6 +2071,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestNetworkInterfaceByID"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -2169,6 +2188,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestVsock"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -2269,6 +2289,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putLogger"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -2372,6 +2393,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMachineConfiguration"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -2472,6 +2494,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.

@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -25,6 +26,7 @@ import (
 func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("probeLiveness"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.

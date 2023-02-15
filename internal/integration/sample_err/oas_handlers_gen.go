@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -26,6 +27,7 @@ import (
 func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -134,6 +136,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.

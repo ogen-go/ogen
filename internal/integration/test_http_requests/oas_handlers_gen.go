@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -22,6 +23,7 @@ import (
 func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -120,6 +122,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -218,6 +221,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -316,6 +320,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -414,6 +419,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -512,6 +518,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.

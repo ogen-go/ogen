@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -29,6 +30,7 @@ import (
 func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Caching"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -130,6 +132,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -213,6 +216,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -297,6 +301,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Queries"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -399,6 +404,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Updates"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.

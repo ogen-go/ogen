@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -24,6 +25,7 @@ import (
 func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -124,6 +126,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -224,6 +227,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -324,6 +328,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -424,6 +429,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -524,6 +530,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -624,6 +631,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -722,6 +730,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleStringsNotypeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.

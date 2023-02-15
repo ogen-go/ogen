@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -22,6 +23,7 @@ import (
 func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -120,6 +122,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -218,6 +221,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -316,6 +320,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.

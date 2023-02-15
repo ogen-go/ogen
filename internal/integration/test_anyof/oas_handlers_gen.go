@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -21,6 +22,7 @@ import (
 func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -100,6 +102,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -179,6 +182,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
