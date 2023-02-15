@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -32,6 +33,7 @@ import (
 func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -144,6 +146,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -257,6 +260,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -369,6 +373,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/approve-workflow-run"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -479,6 +484,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/cancel-workflow-run"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -640,6 +646,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-environment-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -816,6 +823,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -988,6 +996,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-repo-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -1118,6 +1127,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -1226,6 +1236,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-repo"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -1339,6 +1350,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -1447,6 +1459,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-repo"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -1555,6 +1568,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -1672,6 +1686,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-artifact"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -1782,6 +1797,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-environment-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -1892,6 +1908,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-org-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -1998,6 +2015,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-repo-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2108,6 +2126,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2215,6 +2234,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2327,6 +2347,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2435,6 +2456,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2545,6 +2567,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2658,6 +2681,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -2768,6 +2792,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-artifact"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -2888,6 +2913,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3002,6 +3028,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-workflow-run-logs"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3115,6 +3142,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -3224,6 +3252,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-organization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3329,6 +3358,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-repository"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3435,6 +3465,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-artifact"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3546,6 +3577,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-public-key"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3652,6 +3684,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-secret"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3762,6 +3795,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3865,6 +3899,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -3971,6 +4006,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-job-for-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4082,6 +4118,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-public-key"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4184,6 +4221,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-secret"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4291,6 +4329,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-public-key"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4397,6 +4436,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-secret"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4507,6 +4547,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-reviews-for-run"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4616,6 +4657,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4722,6 +4764,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4834,6 +4877,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -4940,6 +4984,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5057,6 +5102,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run-usage"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5167,6 +5213,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-artifacts-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5281,6 +5328,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-environment-secrets"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5397,6 +5445,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5519,6 +5568,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-org-secrets"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5631,6 +5681,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5745,6 +5796,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-secrets"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5859,6 +5911,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-workflows"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -5972,6 +6025,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6073,6 +6127,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6180,6 +6235,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6297,6 +6353,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6409,6 +6466,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6518,6 +6576,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6627,6 +6686,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6743,6 +6803,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6857,6 +6918,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-run-artifacts"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -6978,6 +7040,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -7117,6 +7180,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/re-run-workflow"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -7232,6 +7296,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -7344,6 +7409,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -7457,6 +7523,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -7567,6 +7634,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/retry-workflow"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -7676,6 +7744,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/review-pending-deployments-for-run"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -7809,6 +7878,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -7933,6 +8003,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8057,6 +8128,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8178,6 +8250,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8302,6 +8375,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8425,6 +8499,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8549,6 +8624,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8668,6 +8744,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -8791,6 +8868,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -8910,6 +8988,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9016,6 +9095,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-repo-subscription"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -9124,6 +9204,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-thread-subscription"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -9238,6 +9319,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-feeds"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9319,6 +9401,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-repo-subscription"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9423,6 +9506,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9526,6 +9610,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9627,6 +9712,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-events-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9735,6 +9821,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9855,6 +9942,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -9968,6 +10056,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10072,6 +10161,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-repo-network"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10184,6 +10274,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10292,6 +10383,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-org-events"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10402,6 +10494,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-events-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10510,6 +10603,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-public-events-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10618,6 +10712,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-events"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10730,6 +10825,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10860,6 +10956,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -10972,6 +11069,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-watched-by-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -11080,6 +11178,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -11184,6 +11283,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watchers-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -11302,6 +11402,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-notifications-as-read"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -11408,6 +11509,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -11527,6 +11629,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-thread-as-read"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -11630,6 +11733,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-repo-subscription"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -11756,6 +11860,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-thread-subscription"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -11873,6 +11978,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -11977,6 +12083,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -12086,6 +12193,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/add-repo-to-installation"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -12195,6 +12303,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/check-token"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -12319,6 +12428,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-content-attachment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -12445,6 +12555,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-from-manifest"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -12569,6 +12680,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-installation-access-token"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -12693,6 +12805,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-authorization"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -12813,6 +12926,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-installation"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -12916,6 +13030,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-token"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -13038,6 +13153,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13126,6 +13242,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-by-slug"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13233,6 +13350,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13340,6 +13458,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13444,6 +13563,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-config-for-app"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13528,6 +13648,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-delivery"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13636,6 +13757,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13760,6 +13882,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13882,6 +14005,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -13995,6 +14119,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -14104,6 +14229,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -14211,6 +14337,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -14317,6 +14444,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -14423,6 +14551,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -14530,6 +14659,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-webhook-deliveries"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -14637,6 +14767,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/redeliver-webhook-delivery"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -14742,6 +14873,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/remove-repo-from-installation"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -14851,6 +14983,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/reset-token"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -14975,6 +15108,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/revoke-installation-access-token"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -15061,6 +15195,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/scope-token"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -15181,6 +15316,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/suspend-installation"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -15284,6 +15420,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/unsuspend-installation"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -15388,6 +15525,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/update-webhook-config-for-app"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -15495,6 +15633,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -15602,6 +15741,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -15709,6 +15849,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -15813,6 +15954,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -15917,6 +16059,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16021,6 +16164,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16125,6 +16269,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16229,6 +16374,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16333,6 +16479,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16441,6 +16588,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/create-suite"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -16565,6 +16713,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16678,6 +16827,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get-suite"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16789,6 +16939,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-annotations"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -16911,6 +17062,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -17048,6 +17200,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-suite"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -17182,6 +17335,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-suites-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -17311,6 +17465,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/rerequest-suite"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -17423,6 +17578,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/set-suites-preferences"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -17600,6 +17756,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/delete-analysis"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -17718,6 +17875,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-alert"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -17844,6 +18002,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-analysis"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -17957,6 +18116,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-sarif"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -18067,6 +18227,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alert-instances"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -18194,6 +18355,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -18336,6 +18498,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-recent-analyses"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -18466,6 +18629,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/update-alert"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -18615,6 +18779,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/upload-sarif"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -18734,6 +18899,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -18815,6 +18981,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -18915,6 +19082,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("emojis/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -19000,6 +19168,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -19110,6 +19279,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -19225,6 +19395,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -19334,6 +19505,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -19435,6 +19607,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -19551,6 +19724,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -19657,6 +19831,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -19762,6 +19937,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -19867,6 +20043,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -19975,6 +20152,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -20083,6 +20261,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -20191,6 +20370,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20292,6 +20472,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-audit-log"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20421,6 +20602,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20522,6 +20704,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20631,6 +20814,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20736,6 +20920,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20841,6 +21026,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -20946,6 +21132,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21059,6 +21246,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21201,6 +21389,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21314,6 +21503,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21418,6 +21608,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21527,6 +21718,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21636,6 +21828,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21745,6 +21938,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -21861,6 +22055,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -21982,6 +22177,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -22101,6 +22297,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -22211,6 +22408,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -22323,6 +22521,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -22439,6 +22638,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -22560,6 +22760,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -22688,6 +22889,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -22809,6 +23011,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -22932,6 +23135,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -23048,6 +23252,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -23172,6 +23377,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -23313,6 +23519,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -23433,6 +23640,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -23552,6 +23760,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/check-is-starred"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -23654,6 +23863,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -23754,6 +23964,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -23869,6 +24080,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -23969,6 +24181,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -24073,6 +24286,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/fork"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -24173,6 +24387,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24273,6 +24488,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24377,6 +24593,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-revision"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24482,6 +24699,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24590,6 +24808,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-comments"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24698,6 +24917,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-commits"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24806,6 +25026,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -24918,6 +25139,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-forks"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -25029,6 +25251,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-public"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -25137,6 +25360,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-starred"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -25247,6 +25471,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/star"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -25347,6 +25572,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/unstar"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -25447,6 +25673,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/update-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -25566,6 +25793,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-blob"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -25718,6 +25946,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-commit"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -25839,6 +26068,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-ref"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -25994,6 +26224,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tag"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -26119,6 +26350,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tree"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -26238,6 +26470,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/delete-ref"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -26347,6 +26580,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-blob"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -26488,6 +26722,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-commit"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -26603,6 +26838,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-ref"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -26742,6 +26978,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tag"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -26853,6 +27090,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tree"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -26979,6 +27217,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/list-matching-refs"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -27095,6 +27334,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/update-ref"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -27219,6 +27459,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-all-templates"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -27302,6 +27543,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-template"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -27402,6 +27644,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -27484,6 +27727,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -27587,6 +27831,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -27693,6 +27938,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -27796,6 +28042,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -27914,6 +28161,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-repo"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -28033,6 +28281,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/add-assignees"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -28159,6 +28408,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/check-user-can-be-assigned"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -28276,6 +28526,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -28401,6 +28652,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -28524,6 +28776,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-label"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -28643,6 +28896,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-milestone"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -28762,6 +29016,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -28870,6 +29125,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-label"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -28978,6 +29234,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-milestone"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -29104,6 +29361,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29212,6 +29470,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29320,6 +29579,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-event"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29428,6 +29688,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-label"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29536,6 +29797,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-milestone"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29656,6 +29918,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29801,6 +30064,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-assignees"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -29913,6 +30177,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30033,6 +30298,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30157,6 +30423,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-events-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30277,6 +30544,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30413,6 +30681,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30553,6 +30822,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30701,6 +30971,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-milestone"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30817,6 +31088,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -30929,6 +31201,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-on-issue"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -31045,6 +31318,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-milestones"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -31172,6 +31446,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/lock"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -31295,6 +31570,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-all-labels"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -31403,6 +31679,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-assignees"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -31527,6 +31804,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-label"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -31639,6 +31917,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/unlock"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -31747,6 +32026,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -31870,6 +32150,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -31993,6 +32274,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-label"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -32116,6 +32398,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-milestone"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -32239,6 +32522,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -32339,6 +32623,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-all-commonly-used"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -32451,6 +32736,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -32555,6 +32841,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -32658,6 +32945,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWrit
 func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render-raw"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -32762,6 +33050,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseW
 func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -32843,6 +33132,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-octocat"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -32943,6 +33233,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWrit
 func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-zen"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -33024,6 +33315,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/root"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -33105,6 +33397,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/cancel-import"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -33213,6 +33506,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -33314,6 +33608,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -33418,6 +33713,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/download-archive-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -33542,6 +33838,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -33649,6 +33946,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-commit-authors"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -33809,6 +34107,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-import-status"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -33913,6 +34212,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-large-files"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34024,6 +34324,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34133,6 +34434,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34241,6 +34543,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34345,6 +34648,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34457,6 +34761,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34569,6 +34874,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -34678,6 +34984,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/map-commit-author"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -34804,6 +35111,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/set-lfs-preference"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -34923,6 +35231,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -35023,6 +35332,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -35138,6 +35448,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-import"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -35261,6 +35572,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -35367,6 +35679,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -35477,6 +35790,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/update-import"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -35625,6 +35939,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/create-authorization"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -35734,6 +36049,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-authorization"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -35846,6 +36162,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-grant"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -35955,6 +36272,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-authorization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -36064,6 +36382,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-grant"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -36192,6 +36511,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -36330,6 +36650,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -36458,6 +36779,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-authorizations"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -36586,6 +36908,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-grants"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -36707,6 +37030,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/update-authorization"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -36822,6 +37146,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/block-user"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -36929,6 +37254,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/cancel-invitation"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -37033,6 +37359,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-blocked-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -37137,6 +37464,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-membership-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -37241,6 +37569,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-public-membership-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -37349,6 +37678,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -37461,6 +37791,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-invitation"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -37576,6 +37907,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -37691,6 +38023,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/delete-webhook"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -37803,6 +38136,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -37908,6 +38242,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-audit-log"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38036,6 +38371,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38138,6 +38474,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38244,6 +38581,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38352,6 +38690,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-config-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38456,6 +38795,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-delivery"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38567,6 +38907,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38671,6 +39012,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-blocked-users"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38772,6 +39114,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-failed-invitations"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38885,6 +39228,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -38994,6 +39338,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39103,6 +39448,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-invitation-teams"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39216,6 +39562,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-members"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39332,6 +39679,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39440,6 +39788,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-outside-collaborators"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39555,6 +39904,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-pending-invitations"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39663,6 +40013,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-public-members"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39778,6 +40129,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39878,6 +40230,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhook-deliveries"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -39990,6 +40343,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhooks"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -40099,6 +40453,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/ping-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -40203,6 +40558,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -40312,6 +40668,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-member"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -40420,6 +40777,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-membership-for-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -40524,6 +40882,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-outside-collaborator"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -40628,6 +40987,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -40738,6 +41098,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -40855,6 +41216,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-membership-for-user"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -40978,6 +41340,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -41082,6 +41445,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/unblock-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -41186,6 +41550,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -41305,6 +41670,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -41428,6 +41794,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook-config-for-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -41552,6 +41919,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -41663,6 +42031,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -41778,6 +42147,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -41891,6 +42261,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -42006,6 +42377,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -42125,6 +42497,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-user"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -42239,6 +42612,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -42357,6 +42731,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -42479,6 +42854,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -42589,6 +42965,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -42695,6 +43072,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-organization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -42805,6 +43183,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -42915,6 +43294,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -43025,6 +43405,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-organization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -43140,6 +43521,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -43254,6 +43636,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -43360,6 +43743,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-organization"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -43470,6 +43854,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -43587,6 +43972,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -43706,6 +44092,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -43829,6 +44216,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -43950,6 +44338,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44069,6 +44458,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44192,6 +44582,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44305,6 +44696,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/add-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -44424,6 +44816,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-column"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44539,6 +44932,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44641,6 +45035,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44758,6 +45153,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-repo"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -44877,6 +45273,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -44977,6 +45374,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-card"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -45077,6 +45475,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-column"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -45179,6 +45578,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45279,6 +45679,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-card"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45379,6 +45780,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-column"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45481,6 +45883,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-permission-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45585,6 +45988,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-cards"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45701,6 +46105,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-collaborators"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45813,6 +46218,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-columns"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -45923,6 +46329,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -46037,6 +46444,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -46153,6 +46561,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -46265,6 +46674,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-card"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -46380,6 +46790,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-column"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -46496,6 +46907,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/remove-collaborator"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -46602,6 +47014,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -46717,6 +47130,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-card"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -46832,6 +47246,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-column"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -46947,6 +47362,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/check-if-merged"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -47070,6 +47486,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -47198,6 +47615,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -47343,6 +47761,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -47485,6 +47904,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -47608,6 +48028,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-pending-review"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -47720,6 +48141,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-review-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -47830,6 +48252,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/dismiss-review"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -47990,6 +48413,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48098,6 +48522,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48210,6 +48635,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48322,6 +48748,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48454,6 +48881,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-comments-for-review"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48576,6 +49004,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-commits"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48693,6 +49122,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-files"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48809,6 +49239,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-requested-reviewers"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -48926,6 +49357,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -49055,6 +49487,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -49179,6 +49612,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-reviews"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -49301,6 +49735,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/merge"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -49424,6 +49859,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/remove-requested-reviewers"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -49547,6 +49983,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/submit-review"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -49681,6 +50118,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -49805,6 +50243,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-branch"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -49928,6 +50367,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -50055,6 +50495,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -50181,6 +50622,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("rate-limit/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -50264,6 +50706,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-commit-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -50388,6 +50831,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -50513,6 +50957,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -50638,6 +51083,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -50762,6 +51208,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-release"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -50891,6 +51338,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -51028,6 +51476,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -51158,6 +51607,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -51292,6 +51742,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -51413,6 +51864,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -51527,6 +51979,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -51641,6 +52094,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -51756,6 +52210,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -51875,6 +52330,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -51992,6 +52448,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -52117,6 +52574,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -52217,6 +52675,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-commit-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -52337,6 +52796,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -52457,6 +52917,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -52578,6 +53039,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -52702,6 +53164,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -52834,6 +53297,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -52958,6 +53422,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -53086,6 +53551,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -53202,6 +53668,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/accept-invitation"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -53316,6 +53783,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -53458,6 +53926,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-collaborator"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -53585,6 +54054,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-status-check-contexts"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -53722,6 +54192,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -53858,6 +54329,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -53985,6 +54457,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-collaborator"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -54096,6 +54569,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-vulnerability-alerts"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -54254,6 +54728,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/compare-commits"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -54370,6 +54845,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-autolink"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -54496,6 +54972,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-comment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -54625,6 +55102,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-signature-protection"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -54735,6 +55213,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-status"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -54858,6 +55337,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deploy-key"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55032,6 +55512,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55153,6 +55634,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment-status"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55295,6 +55777,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-dispatch-event"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55420,6 +55903,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55523,6 +56007,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-fork"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55649,6 +56134,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -55764,6 +56250,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-or-update-file-contents"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -55888,6 +56375,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-pages-site"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -56014,6 +56502,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-release"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -56144,6 +56633,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-using-template"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -56265,6 +56755,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -56384,6 +56875,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/decline-invitation"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -56487,6 +56979,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -56596,6 +57089,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -56710,6 +57204,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-admin-branch-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -56818,6 +57313,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-an-environment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -56927,6 +57423,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-autolink"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57039,6 +57536,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-branch-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57147,6 +57645,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-comment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57262,6 +57761,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-signature-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57371,6 +57871,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deploy-key"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57487,6 +57988,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deployment"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57602,6 +58104,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-file"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57725,6 +58228,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-invitation"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57833,6 +58337,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pages-site"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -57941,6 +58446,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pull-request-review-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58049,6 +58555,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58157,6 +58664,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release-asset"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58265,6 +58773,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-webhook"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58375,6 +58884,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58479,6 +58989,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58586,6 +59097,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -58695,6 +59207,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-tarball-archive"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -58808,6 +59321,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-zipball-archive"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -58918,6 +59432,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -59022,6 +59537,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-lfs-for-repo"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -59129,6 +59645,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -59234,6 +59751,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -59345,6 +59863,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-access-restrictions"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -59457,6 +59976,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-admin-branch-protection"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -59569,6 +60089,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-status-check-contexts"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -59677,6 +60198,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-topics"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -59796,6 +60318,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -59905,6 +60428,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-autolink"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60013,6 +60537,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60125,6 +60650,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch-protection"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60234,6 +60760,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-clones"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60342,6 +60869,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-code-frequency-stats"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60447,6 +60975,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-collaborator-permission-level"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60563,6 +61092,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-combined-status-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60725,6 +61255,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60842,6 +61373,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-activity-stats"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -60946,6 +61478,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-comment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61063,6 +61596,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-signature-protection"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61180,6 +61714,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-community-profile-metrics"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61289,6 +61824,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-contributors-stats"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61393,6 +61929,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deploy-key"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61501,6 +62038,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61609,6 +62147,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment-status"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61721,6 +62260,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-pages-build"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61828,6 +62368,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-release"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -61932,6 +62473,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62036,6 +62578,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-build"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62150,6 +62693,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-health-check"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62257,6 +62801,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-participation-stats"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62365,6 +62910,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pull-request-review-protection"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62478,6 +63024,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-punch-card-stats"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62584,6 +63131,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62694,6 +63242,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme-in-directory"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62808,6 +63357,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -62919,6 +63469,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-asset"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63027,6 +63578,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-by-tag"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63139,6 +63691,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-status-checks-protection"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63252,6 +63805,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63360,6 +63914,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-paths"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63464,6 +64019,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-referrers"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63573,6 +64129,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63682,6 +64239,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-views"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63792,6 +64350,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -63904,6 +64463,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-config-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64012,6 +64572,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-delivery"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64125,6 +64686,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-autolinks"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64233,6 +64795,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64354,6 +64917,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches-for-head-commit"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64466,6 +65030,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-collaborators"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64582,6 +65147,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-comments-for-commit"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64701,6 +65267,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-comments-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64816,6 +65383,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -64963,6 +65531,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commits"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65101,6 +65670,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 func (s *Server) handleReposListContributorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-contributors"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65217,6 +65787,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deploy-keys"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65329,6 +65900,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployment-statuses"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65445,6 +66017,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployments"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65576,6 +66149,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65708,6 +66282,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65829,6 +66404,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -65949,6 +66525,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-forks"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66066,6 +66643,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66179,6 +66757,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66284,6 +66863,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-languages"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66388,6 +66968,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pages-builds"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66506,6 +67087,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-public"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66611,6 +67193,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66727,6 +67310,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-release-assets"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66847,6 +67431,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-releases"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -66959,6 +67544,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-tags"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -67071,6 +67657,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-teams"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -67183,6 +67770,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhook-deliveries"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -67299,6 +67887,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhooks"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -67411,6 +68000,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -67531,6 +68121,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge-upstream"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -67651,6 +68242,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/ping-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -67759,6 +68351,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/redeliver-webhook-delivery"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -67885,6 +68478,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -68008,6 +68602,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-collaborator"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -68120,6 +68715,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-contexts"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -68247,6 +68843,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-protection"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -68369,6 +68966,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -68505,6 +69103,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -68640,6 +69239,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/rename-branch"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -68763,6 +69363,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/replace-all-topics"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -68887,6 +69488,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/request-pages-build"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -68997,6 +69599,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-admin-branch-protection"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -69121,6 +69724,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-app-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -69248,6 +69852,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-status-check-contexts"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -69386,6 +69991,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-team-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -69523,6 +70129,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-user-access-restrictions"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -69649,6 +70256,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/test-push-webhook"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -69761,6 +70369,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/transfer"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -69881,6 +70490,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70007,6 +70617,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-branch-protection"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -70130,6 +70741,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-commit-comment"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70253,6 +70865,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-invitation"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70383,6 +70996,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70506,6 +71120,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70629,6 +71244,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release-asset"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70758,6 +71374,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-status-check-protection"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -70884,6 +71501,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -71011,6 +71629,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook-config-for-repo"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -71159,6 +71778,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/upload-release-asset"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -71290,6 +71910,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.Res
 func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("scim/delete-user-from-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -71413,6 +72034,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/code"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -71539,6 +72161,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/commits"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -71677,6 +72300,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/issues-and-pull-requests"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -71802,6 +72426,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/labels"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -71937,6 +72562,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/repos"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -72066,6 +72692,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/topics"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -72185,6 +72812,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/users"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -72304,6 +72932,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/get-alert"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -72416,6 +73045,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -72535,6 +73165,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -72658,6 +73289,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/update-alert"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -72802,6 +73434,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-member-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -72927,6 +73560,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -73076,6 +73710,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -73199,6 +73834,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -73330,6 +73966,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -73460,6 +74097,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -73600,6 +74238,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -73726,6 +74365,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -73841,6 +74481,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -73953,6 +74594,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -74074,6 +74716,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -74189,6 +74832,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -74314,6 +74958,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -74450,6 +75095,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -74579,6 +75225,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-in-org"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -74711,6 +75358,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-legacy"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -74833,6 +75481,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -74963,6 +75612,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -75081,6 +75731,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -75199,6 +75850,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -75310,6 +75962,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -75424,6 +76077,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -75532,6 +76186,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -75643,6 +76298,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -75745,6 +76401,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-by-name"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -75852,6 +76509,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -75970,6 +76628,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76081,6 +76740,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76195,6 +76855,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76303,6 +76964,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76409,6 +77071,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-member-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76520,6 +77183,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76638,6 +77302,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76742,6 +77407,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76852,6 +77518,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -76968,6 +77635,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77079,6 +77747,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77205,6 +77874,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77324,6 +77994,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77450,6 +78121,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77565,6 +78237,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77677,6 +78350,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77783,6 +78457,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -77896,6 +78571,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78001,6 +78677,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78122,6 +78799,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78239,6 +78917,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78359,6 +79038,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78469,6 +79149,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78586,6 +79267,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78696,6 +79378,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-in-org"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78812,6 +79495,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-legacy"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -78940,6 +79624,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-member-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79058,6 +79743,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79183,6 +79869,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79292,6 +79979,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79408,6 +80096,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79517,6 +80206,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-in-org"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79637,6 +80327,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-legacy"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -79748,6 +80439,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -79881,6 +80573,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -80008,6 +80701,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -80138,6 +80832,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -80259,6 +80954,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-in-org"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -80384,6 +81080,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-legacy"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -80499,6 +81196,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/add-email-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -80599,6 +81297,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/block"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -80699,6 +81398,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-blocked"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -80799,6 +81499,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-following-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -80903,6 +81604,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -81005,6 +81707,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -81107,6 +81810,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("POST"),
 	}
 
 	// Start a span for this request.
@@ -81207,6 +81911,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-email-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -81309,6 +82014,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -81411,6 +82117,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -81515,6 +82222,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/follow"),
+		semconv.HTTPMethodKey.String("PUT"),
 	}
 
 	// Start a span for this request.
@@ -81618,6 +82326,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -81713,6 +82422,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-by-username"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -81822,6 +82532,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-context-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -81932,6 +82643,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82034,6 +82746,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82138,6 +82851,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82242,6 +82956,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-blocked-by-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82324,6 +83039,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-emails-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82428,6 +83144,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followed-by-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82532,6 +83249,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-authenticated-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82636,6 +83354,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82744,6 +83463,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-following-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82854,6 +83574,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -82958,6 +83679,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -83069,6 +83791,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-emails-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -83173,6 +83896,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-keys-for-user"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -83283,6 +84007,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -83387,6 +84112,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.
@@ -83487,6 +84213,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unblock"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -83588,6 +84315,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unfollow"),
+		semconv.HTTPMethodKey.String("DELETE"),
 	}
 
 	// Start a span for this request.
@@ -83690,6 +84418,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/update-authenticated"),
+		semconv.HTTPMethodKey.String("PATCH"),
 	}
 
 	// Start a span for this request.

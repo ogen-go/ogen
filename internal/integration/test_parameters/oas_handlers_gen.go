@@ -9,6 +9,7 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -133,6 +134,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -245,6 +247,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseW
 func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -345,6 +348,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -443,6 +447,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 func (s *Server) handleObjectCookieParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -541,6 +546,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, w http.Respo
 func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
@@ -645,6 +651,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
+		semconv.HTTPMethodKey.String("GET"),
 	}
 
 	// Start a span for this request.
