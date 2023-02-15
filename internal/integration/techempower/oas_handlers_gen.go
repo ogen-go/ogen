@@ -31,6 +31,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Caching"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/cached-worlds"),
 	}
 
 	// Start a span for this request.
@@ -133,6 +134,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/db"),
 	}
 
 	// Start a span for this request.
@@ -217,6 +219,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/json"),
 	}
 
 	// Start a span for this request.
@@ -302,6 +305,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Queries"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/queries"),
 	}
 
 	// Start a span for this request.
@@ -405,6 +409,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Updates"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/updates"),
 	}
 
 	// Start a span for this request.

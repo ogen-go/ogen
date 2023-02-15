@@ -24,6 +24,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/allRequestBodies"),
 	}
 
 	// Start a span for this request.
@@ -123,6 +124,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
 	}
 
 	// Start a span for this request.
@@ -222,6 +224,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/base64Request"),
 	}
 
 	// Start a span for this request.
@@ -321,6 +324,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/maskContentType"),
 	}
 
 	// Start a span for this request.
@@ -420,6 +424,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
 	}
 
 	// Start a span for this request.
@@ -519,6 +524,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 
 	// Start a span for this request.

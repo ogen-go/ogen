@@ -24,6 +24,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/disjointSecurity"),
 	}
 
 	// Start a span for this request.
@@ -204,6 +205,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/intersectSecurity"),
 	}
 
 	// Start a span for this request.
@@ -367,6 +369,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/optionalSecurity"),
 	}
 
 	// Start a span for this request.

@@ -26,6 +26,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/nullableStrings"),
 	}
 
 	// Start a span for this request.
@@ -127,6 +128,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
 	}
 
 	// Start a span for this request.
@@ -228,6 +230,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
 	}
 
 	// Start a span for this request.
@@ -329,6 +332,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllof"),
 	}
 
 	// Start a span for this request.
@@ -430,6 +434,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
 	}
 
 	// Start a span for this request.
@@ -531,6 +536,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/simpleInteger"),
 	}
 
 	// Start a span for this request.
@@ -632,6 +638,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/simpleObjects"),
 	}
 
 	// Start a span for this request.
@@ -731,6 +738,7 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/stringsNotype"),
 	}
 
 	// Start a span for this request.

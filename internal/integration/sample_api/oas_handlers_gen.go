@@ -26,6 +26,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetFormat"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/name/{id}/{foo}1234{bar}-{baz}!{kek}"),
 	}
 
 	// Start a span for this request.
@@ -141,6 +142,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/defaultTest"),
 	}
 
 	// Start a span for this request.
@@ -257,6 +259,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("errorGet"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/error"),
 	}
 
 	// Start a span for this request.
@@ -339,6 +342,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarGet"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/foobar"),
 	}
 
 	// Start a span for this request.
@@ -444,6 +448,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarPost"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/foobar"),
 	}
 
 	// Start a span for this request.
@@ -619,6 +624,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("noAdditionalPropertiesTest"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/noAdditionalPropertiesTest"),
 	}
 
 	// Start a span for this request.
@@ -699,6 +705,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableDefaultResponse"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/nullableDefaultResponse"),
 	}
 
 	// Start a span for this request.
@@ -779,6 +786,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/oneofBug"),
 	}
 
 	// Start a span for this request.
@@ -956,6 +964,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pet"),
 	}
 
 	// Start a span for this request.
@@ -1057,6 +1066,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petFriendsNamesByID"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/friendNames/{id}"),
 	}
 
 	// Start a span for this request.
@@ -1158,6 +1168,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGet"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet"),
 	}
 
 	// Start a span for this request.
@@ -1271,6 +1282,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByID"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/avatar"),
 	}
 
 	// Start a span for this request.
@@ -1372,6 +1384,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByName"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/{name}/avatar"),
 	}
 
 	// Start a span for this request.
@@ -1473,6 +1486,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetByName"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/{name}"),
 	}
 
 	// Start a span for this request.
@@ -1574,6 +1588,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petNameByID"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pet/name/{id}"),
 	}
 
 	// Start a span for this request.
@@ -1865,6 +1880,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petUploadAvatarByID"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pet/avatar"),
 	}
 
 	// Start a span for this request.
@@ -2131,6 +2147,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("securityTest"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/securityTest"),
 	}
 
 	// Start a span for this request.
@@ -2335,6 +2352,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testFloatValidation"),
 	}
 
 	// Start a span for this request.
@@ -2434,6 +2452,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testNullableOneofs"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/testNullableOneofs"),
 	}
 
 	// Start a span for this request.

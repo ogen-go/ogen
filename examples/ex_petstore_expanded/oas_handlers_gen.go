@@ -26,6 +26,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addPet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pets"),
 	}
 
 	// Start a span for this request.
@@ -127,6 +128,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
 		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
 	// Start a span for this request.
@@ -228,6 +230,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("find pet by id"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
 	// Start a span for this request.
@@ -347,6 +350,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("findPets"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/pets"),
 	}
 
 	// Start a span for this request.

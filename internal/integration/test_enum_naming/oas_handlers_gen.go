@@ -25,6 +25,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("probeLiveness"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/healthz"),
 	}
 
 	// Start a span for this request.

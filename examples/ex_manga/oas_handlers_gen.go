@@ -26,6 +26,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBook"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/gallery/{book_id}"),
 	}
 
 	// Start a span for this request.
@@ -127,6 +128,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageCoverImage"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/galleries/{media_id}/cover.{format}"),
 	}
 
 	// Start a span for this request.
@@ -232,6 +234,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageImage"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}.{format}"),
 	}
 
 	// Start a span for this request.
@@ -341,6 +344,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageThumbnailImage"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}t.{format}"),
 	}
 
 	// Start a span for this request.
@@ -450,6 +454,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/galleries/search"),
 	}
 
 	// Start a span for this request.
@@ -555,6 +560,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("searchByTagID"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/api/galleries/tagged"),
 	}
 
 	// Start a span for this request.
