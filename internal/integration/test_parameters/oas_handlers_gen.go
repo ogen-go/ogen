@@ -135,6 +135,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/contentParameters/{path}"),
 	}
 
 	// Start a span for this request.
@@ -248,6 +249,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/cookieParameter"),
 	}
 
 	// Start a span for this request.
@@ -349,6 +351,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headerParameter"),
 	}
 
 	// Start a span for this request.
@@ -448,6 +451,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, w http.Respo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/objectCookieParameter"),
 	}
 
 	// Start a span for this request.
@@ -547,6 +551,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/objectQueryParameter"),
 	}
 
 	// Start a span for this request.
@@ -652,6 +657,7 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/same_name/{path}"),
 	}
 
 	// Start a span for this request.

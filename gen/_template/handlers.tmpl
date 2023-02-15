@@ -33,7 +33,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- if not $op.WebhookInfo }}
 		semconv.HTTPMethodKey.String("{{ upper $op.Spec.HTTPMethod }}"),
 		semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
-		 {{- end }}
+		{{- end }}
 	}
 	{{- else }}
 	var otelAttrs []attribute.KeyValue

@@ -26,6 +26,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addStickerToSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/addStickerToSet"),
 	}
 
 	// Start a span for this request.
@@ -133,6 +134,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerCallbackQuery"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/answerCallbackQuery"),
 	}
 
 	// Start a span for this request.
@@ -240,6 +242,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerInlineQuery"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/answerInlineQuery"),
 	}
 
 	// Start a span for this request.
@@ -347,6 +350,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerPreCheckoutQuery"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/answerPreCheckoutQuery"),
 	}
 
 	// Start a span for this request.
@@ -454,6 +458,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerShippingQuery"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/answerShippingQuery"),
 	}
 
 	// Start a span for this request.
@@ -561,6 +566,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("approveChatJoinRequest"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/approveChatJoinRequest"),
 	}
 
 	// Start a span for this request.
@@ -668,6 +674,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/banChatMember"),
 	}
 
 	// Start a span for this request.
@@ -775,6 +782,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatSenderChat"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/banChatSenderChat"),
 	}
 
 	// Start a span for this request.
@@ -882,6 +890,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("close"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/close"),
 	}
 
 	// Start a span for this request.
@@ -970,6 +979,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("copyMessage"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/copyMessage"),
 	}
 
 	// Start a span for this request.
@@ -1077,6 +1087,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/createChatInviteLink"),
 	}
 
 	// Start a span for this request.
@@ -1184,6 +1195,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createNewStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/createNewStickerSet"),
 	}
 
 	// Start a span for this request.
@@ -1291,6 +1303,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("declineChatJoinRequest"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/declineChatJoinRequest"),
 	}
 
 	// Start a span for this request.
@@ -1398,6 +1411,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/deleteChatPhoto"),
 	}
 
 	// Start a span for this request.
@@ -1505,6 +1519,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/deleteChatStickerSet"),
 	}
 
 	// Start a span for this request.
@@ -1612,6 +1627,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMessage"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/deleteMessage"),
 	}
 
 	// Start a span for this request.
@@ -1719,6 +1735,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/deleteMyCommands"),
 	}
 
 	// Start a span for this request.
@@ -1826,6 +1843,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteStickerFromSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/deleteStickerFromSet"),
 	}
 
 	// Start a span for this request.
@@ -1933,6 +1951,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteWebhook"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/deleteWebhook"),
 	}
 
 	// Start a span for this request.
@@ -2040,6 +2059,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/editChatInviteLink"),
 	}
 
 	// Start a span for this request.
@@ -2147,6 +2167,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageCaption"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/editMessageCaption"),
 	}
 
 	// Start a span for this request.
@@ -2254,6 +2275,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/editMessageLiveLocation"),
 	}
 
 	// Start a span for this request.
@@ -2361,6 +2383,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageMedia"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/editMessageMedia"),
 	}
 
 	// Start a span for this request.
@@ -2468,6 +2491,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageReplyMarkup"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/editMessageReplyMarkup"),
 	}
 
 	// Start a span for this request.
@@ -2575,6 +2599,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageText"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/editMessageText"),
 	}
 
 	// Start a span for this request.
@@ -2682,6 +2707,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("exportChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/exportChatInviteLink"),
 	}
 
 	// Start a span for this request.
@@ -2789,6 +2815,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("forwardMessage"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/forwardMessage"),
 	}
 
 	// Start a span for this request.
@@ -2896,6 +2923,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChat"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getChat"),
 	}
 
 	// Start a span for this request.
@@ -3003,6 +3031,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatAdministrators"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getChatAdministrators"),
 	}
 
 	// Start a span for this request.
@@ -3110,6 +3139,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getChatMember"),
 	}
 
 	// Start a span for this request.
@@ -3217,6 +3247,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMemberCount"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getChatMemberCount"),
 	}
 
 	// Start a span for this request.
@@ -3324,6 +3355,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFile"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getFile"),
 	}
 
 	// Start a span for this request.
@@ -3431,6 +3463,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getGameHighScores"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getGameHighScores"),
 	}
 
 	// Start a span for this request.
@@ -3538,6 +3571,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMe"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getMe"),
 	}
 
 	// Start a span for this request.
@@ -3626,6 +3660,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getMyCommands"),
 	}
 
 	// Start a span for this request.
@@ -3733,6 +3768,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getStickerSet"),
 	}
 
 	// Start a span for this request.
@@ -3840,6 +3876,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUpdates"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getUpdates"),
 	}
 
 	// Start a span for this request.
@@ -3947,6 +3984,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUserProfilePhotos"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getUserProfilePhotos"),
 	}
 
 	// Start a span for this request.
@@ -4054,6 +4092,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getWebhookInfo"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/getWebhookInfo"),
 	}
 
 	// Start a span for this request.
@@ -4142,6 +4181,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("leaveChat"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/leaveChat"),
 	}
 
 	// Start a span for this request.
@@ -4249,6 +4289,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logOut"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/logOut"),
 	}
 
 	// Start a span for this request.
@@ -4337,6 +4378,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pinChatMessage"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/pinChatMessage"),
 	}
 
 	// Start a span for this request.
@@ -4444,6 +4486,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("promoteChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/promoteChatMember"),
 	}
 
 	// Start a span for this request.
@@ -4551,6 +4594,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("restrictChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/restrictChatMember"),
 	}
 
 	// Start a span for this request.
@@ -4658,6 +4702,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("revokeChatInviteLink"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/revokeChatInviteLink"),
 	}
 
 	// Start a span for this request.
@@ -4765,6 +4810,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAnimation"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendAnimation"),
 	}
 
 	// Start a span for this request.
@@ -4872,6 +4918,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAudio"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendAudio"),
 	}
 
 	// Start a span for this request.
@@ -4979,6 +5026,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendChatAction"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendChatAction"),
 	}
 
 	// Start a span for this request.
@@ -5086,6 +5134,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendContact"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendContact"),
 	}
 
 	// Start a span for this request.
@@ -5193,6 +5242,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDice"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendDice"),
 	}
 
 	// Start a span for this request.
@@ -5300,6 +5350,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDocument"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendDocument"),
 	}
 
 	// Start a span for this request.
@@ -5407,6 +5458,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendGame"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendGame"),
 	}
 
 	// Start a span for this request.
@@ -5514,6 +5566,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendInvoice"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendInvoice"),
 	}
 
 	// Start a span for this request.
@@ -5621,6 +5674,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendLocation"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendLocation"),
 	}
 
 	// Start a span for this request.
@@ -5728,6 +5782,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMediaGroup"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendMediaGroup"),
 	}
 
 	// Start a span for this request.
@@ -5835,6 +5890,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMessage"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendMessage"),
 	}
 
 	// Start a span for this request.
@@ -5942,6 +5998,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendPhoto"),
 	}
 
 	// Start a span for this request.
@@ -6049,6 +6106,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPoll"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendPoll"),
 	}
 
 	// Start a span for this request.
@@ -6156,6 +6214,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendSticker"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendSticker"),
 	}
 
 	// Start a span for this request.
@@ -6263,6 +6322,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVenue"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendVenue"),
 	}
 
 	// Start a span for this request.
@@ -6370,6 +6430,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideo"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendVideo"),
 	}
 
 	// Start a span for this request.
@@ -6477,6 +6538,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideoNote"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendVideoNote"),
 	}
 
 	// Start a span for this request.
@@ -6584,6 +6646,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVoice"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/sendVoice"),
 	}
 
 	// Start a span for this request.
@@ -6691,6 +6754,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatAdministratorCustomTitle"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setChatAdministratorCustomTitle"),
 	}
 
 	// Start a span for this request.
@@ -6798,6 +6862,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatDescription"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setChatDescription"),
 	}
 
 	// Start a span for this request.
@@ -6905,6 +6970,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPermissions"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setChatPermissions"),
 	}
 
 	// Start a span for this request.
@@ -7012,6 +7078,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPhoto"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setChatPhoto"),
 	}
 
 	// Start a span for this request.
@@ -7119,6 +7186,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatStickerSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setChatStickerSet"),
 	}
 
 	// Start a span for this request.
@@ -7226,6 +7294,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatTitle"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setChatTitle"),
 	}
 
 	// Start a span for this request.
@@ -7333,6 +7402,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setGameScore"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setGameScore"),
 	}
 
 	// Start a span for this request.
@@ -7440,6 +7510,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setMyCommands"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setMyCommands"),
 	}
 
 	// Start a span for this request.
@@ -7547,6 +7618,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setPassportDataErrors"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setPassportDataErrors"),
 	}
 
 	// Start a span for this request.
@@ -7654,6 +7726,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerPositionInSet"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setStickerPositionInSet"),
 	}
 
 	// Start a span for this request.
@@ -7761,6 +7834,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerSetThumb"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setStickerSetThumb"),
 	}
 
 	// Start a span for this request.
@@ -7868,6 +7942,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setWebhook"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/setWebhook"),
 	}
 
 	// Start a span for this request.
@@ -7975,6 +8050,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopMessageLiveLocation"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/stopMessageLiveLocation"),
 	}
 
 	// Start a span for this request.
@@ -8082,6 +8158,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopPoll"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/stopPoll"),
 	}
 
 	// Start a span for this request.
@@ -8189,6 +8266,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatMember"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/unbanChatMember"),
 	}
 
 	// Start a span for this request.
@@ -8296,6 +8374,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatSenderChat"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/unbanChatSenderChat"),
 	}
 
 	// Start a span for this request.
@@ -8403,6 +8482,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinAllChatMessages"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/unpinAllChatMessages"),
 	}
 
 	// Start a span for this request.
@@ -8510,6 +8590,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinChatMessage"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/unpinChatMessage"),
 	}
 
 	// Start a span for this request.
@@ -8617,6 +8698,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("uploadStickerFile"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/uploadStickerFile"),
 	}
 
 	// Start a span for this request.

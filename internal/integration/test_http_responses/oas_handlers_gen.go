@@ -24,6 +24,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchema"),
 	}
 
 	// Start a span for this request.
@@ -104,6 +105,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchemaDefault"),
 	}
 
 	// Start a span for this request.
@@ -184,6 +186,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/combined"),
 	}
 
 	// Start a span for this request.
@@ -283,6 +286,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headers200"),
 	}
 
 	// Start a span for this request.
@@ -363,6 +367,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersCombined"),
 	}
 
 	// Start a span for this request.
@@ -462,6 +467,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersDefault"),
 	}
 
 	// Start a span for this request.
@@ -542,6 +548,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersJSON"),
 	}
 
 	// Start a span for this request.
@@ -622,6 +629,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/headersPattern"),
 	}
 
 	// Start a span for this request.
@@ -705,6 +713,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/intersectPatternCode"),
 	}
 
 	// Start a span for this request.
@@ -804,6 +813,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/multipleGenericResponses"),
 	}
 
 	// Start a span for this request.
@@ -884,6 +894,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/octetStreamBinaryStringSchema"),
 	}
 
 	// Start a span for this request.
@@ -964,6 +975,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/octetStreamEmptySchema"),
 	}
 
 	// Start a span for this request.
@@ -1044,6 +1056,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 
 	// Start a span for this request.
@@ -1143,6 +1156,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/textPlainBinaryStringSchema"),
 	}
 
 	// Start a span for this request.

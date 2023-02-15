@@ -23,6 +23,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/integerNumber"),
 	}
 
 	// Start a span for this request.
@@ -103,6 +104,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/jaegerAnyOf"),
 	}
 
 	// Start a span for this request.
@@ -183,6 +185,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/oneUUID"),
 	}
 
 	// Start a span for this request.

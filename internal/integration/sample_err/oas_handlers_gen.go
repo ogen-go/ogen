@@ -28,6 +28,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/data"),
 	}
 
 	// Start a span for this request.
@@ -137,6 +138,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/data"),
 	}
 
 	// Start a span for this request.

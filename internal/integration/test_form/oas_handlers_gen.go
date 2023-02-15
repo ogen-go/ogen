@@ -24,6 +24,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testFormURLEncoded"),
 	}
 
 	// Start a span for this request.
@@ -123,6 +124,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testMultipart"),
 	}
 
 	// Start a span for this request.
@@ -222,6 +224,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testMultipartUpload"),
 	}
 
 	// Start a span for this request.
@@ -321,6 +324,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/testShareFormSchema"),
 	}
 
 	// Start a span for this request.

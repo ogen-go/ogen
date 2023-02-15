@@ -26,6 +26,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
 		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/event"),
 	}
 
 	// Start a span for this request.
