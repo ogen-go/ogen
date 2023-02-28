@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/davecgh/go-spew v1.1.1
-	github.com/dlclark/regexp2 v1.8.0
+	github.com/dlclark/regexp2 v1.8.1
 	github.com/fatih/color v1.14.1
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.6.1
