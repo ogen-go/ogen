@@ -41,7 +41,7 @@ func TestHeaderParamEncoder(t *testing.T) {
 				header:    make(http.Header),
 			}
 			require.NoError(t, e.EncodeValue(test.Input))
-			e.serialize()
+			require.NoError(t, e.serialize())
 
 			require.Equal(t, test.Expect, e.header, fmt.Sprintf("Test %d", i+1))
 		}
@@ -86,7 +86,7 @@ func TestHeaderParamEncoder(t *testing.T) {
 				}
 				return nil
 			}))
-			e.serialize()
+			require.NoError(t, e.serialize())
 			require.Equal(t, test.Expect, e.header, fmt.Sprintf("Test %d", i+1))
 		}
 	})
@@ -145,7 +145,7 @@ func TestHeaderParamEncoder(t *testing.T) {
 					return e.EncodeValue(f.Value)
 				}))
 			}
-			e.serialize()
+			require.NoError(t, e.serialize())
 			require.Equal(t, test.Expect, e.header, fmt.Sprintf("Test %d", i+1))
 		}
 	})

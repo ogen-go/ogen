@@ -29,8 +29,8 @@ func (e *HeaderEncoder) EncodeParam(cfg HeaderParameterEncodingConfig, f func(En
 		return err
 	}
 
-	p.serialize()
-	return nil
+	// FIXME(tdakkota): probable we should return the error during encoding
+	return p.serialize()
 }
 
 func (e *HeaderEncoder) Header() http.Header {
