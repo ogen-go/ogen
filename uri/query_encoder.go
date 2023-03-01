@@ -37,8 +37,8 @@ func (e *QueryEncoder) EncodeParam(cfg QueryParameterEncodingConfig, f func(Enco
 		return err
 	}
 
-	p.serialize()
-	return nil
+	// FIXME(tdakkota): probable we should return the error during encoding
+	return p.serialize()
 }
 
 func (e *QueryEncoder) Values() url.Values {
