@@ -1,6 +1,10 @@
 package uri
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/go-faster/errors"
+)
 
 type CookieEncoder struct {
 	req *http.Request
@@ -18,6 +22,9 @@ type CookieParameterEncodingConfig struct {
 }
 
 func (e *CookieEncoder) EncodeParam(cfg CookieParameterEncodingConfig, f func(Encoder) error) error {
+	if !isCookieNameValid(cfg.Name) {
+		return errors.Errorf("invalid cookie name %q", cfg.Name)
+	}
 	p := &cookieParamEncoder{
 		receiver:  newReceiver(),
 		paramName: cfg.Name,
