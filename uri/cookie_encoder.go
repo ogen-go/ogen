@@ -29,6 +29,5 @@ func (e *CookieEncoder) EncodeParam(cfg CookieParameterEncodingConfig, f func(En
 		return err
 	}
 
-	p.serialize()
-	return nil
+	return p.serialize()
 }
