@@ -1,7 +1,8 @@
 // Copyright 2009 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
-package uri
+
+package httpcookie
 
 import (
 	"strings"
@@ -11,7 +12,8 @@ import (
 
 // Copied from https://github.com/golang/go/blob/bb8f9a6ae66d742cb67b4ad444179905a537de00/src/net/http/cookie.go#L463
 
-func isCookieNameValid(raw string) bool {
+// IsCookieNameValid returns true, if cookie name is invalid.
+func IsCookieNameValid(raw string) bool {
 	if raw == "" {
 		return false
 	}
