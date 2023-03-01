@@ -1,0 +1,29 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "get": {
+        "parameters": [
+          {
+            "name": "",
+            "in": "cookie",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  }
+}

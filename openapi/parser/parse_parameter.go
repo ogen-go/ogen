@@ -7,6 +7,7 @@ import (
 	"golang.org/x/net/http/httpguts"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/httpcookie"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -108,6 +109,11 @@ func (p *parser) validateParameter(
 	case openapi.LocationHeader:
 		if !httpguts.ValidHeaderFieldName(name) {
 			err := errors.Errorf("invalid header name %q", name)
+			return p.wrapField("name", file, locator, err)
+		}
+	case openapi.LocationCookie:
+		if !httpcookie.IsCookieNameValid(name) {
+			err := errors.Errorf("invalid cookie name %q", name)
 			return p.wrapField("name", file, locator, err)
 		}
 	}
