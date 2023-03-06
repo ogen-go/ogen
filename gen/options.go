@@ -67,6 +67,15 @@ type Options struct {
 	// NotImplementedHook is hook for ErrNotImplemented errors.
 	NotImplementedHook func(name string, err error)
 
+	// ConvenientErrors control Convenient Errors feature.
+	//
+	// Default value is `auto` (0), NewError handler will be generated if possible.
+	//
+	// If value > 0 forces feature. An error will be returned if generator is unable to find common error pattern.
+	//
+	// If value < 0 disables feature entirely.
+	ConvenientErrors ConvenientErrors
+
 	// ContentTypeAliases contains content type aliases.
 	ContentTypeAliases ContentTypeAliases
 
@@ -153,6 +162,53 @@ func (o *Options) setDefaults() {
 	}
 	if o.Logger == nil {
 		o.Logger = zap.NewNop()
+	}
+}
+
+// ConvenientErrors is an option type to control `Convenient Errors` feature.
+type ConvenientErrors int
+
+// IsDisabled whether Convenient Errors is disabled.
+func (c ConvenientErrors) IsDisabled() bool {
+	return c < 0
+}
+
+// IsForced whether Convenient Errors is forced.
+func (c ConvenientErrors) IsForced() bool {
+	return c > 0
+}
+
+// String implements fmt.Stringer.
+func (c ConvenientErrors) String() string {
+	switch {
+	case c < 0:
+		return "off"
+	case c > 0:
+		return "on"
+	default:
+		return "auto"
+	}
+}
+
+// IsBoolFlag implements flag.boolFlag.
+func (c *ConvenientErrors) IsBoolFlag() bool {
+	return true
+}
+
+// Set implements flag.Value.
+func (c *ConvenientErrors) Set(s string) error {
+	switch s {
+	case "auto":
+		*c = 0
+		return nil
+	case "on", "true":
+		*c = 1
+		return nil
+	case "off", "false":
+		*c = -1
+		return nil
+	default:
+		return errors.Errorf(`expected "on", "off" or "auto", got %q`, s)
 	}
 }
 
