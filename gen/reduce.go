@@ -50,20 +50,27 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 	first := ops[0]
 	d := first.Responses.Default
 	if d == nil {
-		return reduceFailed(`operation has no "default" response`, first)
+		return reduceFailed(`operation has no "default" response`, first.Responses)
 	}
-	// TODO(tdakkota): handle cases when response share same JSON Schema and all
-	// 	other fields are the same.
-	if d.Ref.IsZero() {
-		// Not supported.
+	switch {
+	case d.Ref.IsZero():
+		// TODO(tdakkota): handle cases when response share same JSON Schema and all
+		// 	other fields are the same.
 		return reduceFailed(`response must be a reference`, d)
+	case len(d.Content) < 1:
+		// TODO(tdakkota): point to "content", not to the entire response
+		return reduceFailed(`response is no-content`, d)
+	case len(d.Content) > 1:
+		// TODO(tdakkota): point to "content", not to the entire response
+		return reduceFailed(`response is multi-content`, d)
 	}
+
 	for _, op := range ops[1:] {
 		switch other := op.Responses.Default; {
 		case other == nil:
-			return reduceFailed(`operation has no "default" response`, op)
+			return reduceFailed(`operation has no "default" response`, op.Responses)
 		case !reflect.DeepEqual(other, d):
-			return reduceFailed(`"default" response is different`, other)
+			return reduceFailed(`response is different`, other)
 		}
 	}
 
