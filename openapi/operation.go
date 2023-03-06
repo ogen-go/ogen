@@ -58,6 +58,8 @@ type Responses struct {
 	StatusCode map[int]*Response
 	Pattern    [5]*Response
 	Default    *Response
+
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // Add adds a response to the Responses.
