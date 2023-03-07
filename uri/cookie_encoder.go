@@ -1,6 +1,12 @@
 package uri
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/internal/httpcookie"
+)
 
 type CookieEncoder struct {
 	req *http.Request
@@ -18,6 +24,9 @@ type CookieParameterEncodingConfig struct {
 }
 
 func (e *CookieEncoder) EncodeParam(cfg CookieParameterEncodingConfig, f func(Encoder) error) error {
+	if name := cfg.Name; !httpcookie.IsCookieNameValid(name) {
+		return errors.Errorf("invalid cookie name %q", name)
+	}
 	p := &cookieParamEncoder{
 		receiver:  newReceiver(),
 		paramName: cfg.Name,
@@ -29,6 +38,5 @@ func (e *CookieEncoder) EncodeParam(cfg CookieParameterEncodingConfig, f func(En
 		return err
 	}
 
-	p.serialize()
-	return nil
+	return p.serialize()
 }

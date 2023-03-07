@@ -273,7 +273,11 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"

@@ -256,7 +256,11 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeQueryParams"
@@ -750,7 +754,11 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeQueryParams"

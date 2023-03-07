@@ -1,8 +1,17 @@
 package uri
 
 import (
+	"strings"
+
 	"github.com/go-faster/errors"
 )
+
+func checkNotContains(s, chars string) error {
+	if idx := strings.IndexAny(s, chars); idx >= 0 {
+		return errors.Errorf("invalid value %q: contains %q", s, s[idx])
+	}
+	return nil
+}
 
 type valueType string
 

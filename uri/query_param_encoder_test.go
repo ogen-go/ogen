@@ -42,7 +42,7 @@ func TestQueryParamEncoder(t *testing.T) {
 				values:    make(url.Values),
 			}
 			require.NoError(t, e.EncodeValue(test.Input))
-			e.serialize()
+			require.NoError(t, e.serialize())
 			require.Equal(t, test.Expect, e.values.Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
@@ -115,7 +115,7 @@ func TestQueryParamEncoder(t *testing.T) {
 				return nil
 			})
 			require.NoError(t, err)
-			e.serialize()
+			require.NoError(t, e.serialize())
 			require.Equal(t, test.Expect, e.values.Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
@@ -174,7 +174,7 @@ func TestQueryParamEncoder(t *testing.T) {
 				})
 				require.NoError(t, err)
 			}
-			e.serialize()
+			require.NoError(t, e.serialize())
 			require.Equal(t, test.Expect, e.values.Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})

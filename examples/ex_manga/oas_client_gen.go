@@ -116,7 +116,11 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -198,7 +202,11 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/cover."
 	{
@@ -213,7 +221,11 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -295,7 +307,11 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/"
 	{
@@ -310,7 +326,11 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "."
 	{
@@ -325,7 +345,11 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -407,7 +431,11 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/"
 	{
@@ -422,7 +450,11 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "t."
 	{
@@ -437,7 +469,11 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"

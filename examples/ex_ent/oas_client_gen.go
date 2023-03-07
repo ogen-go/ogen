@@ -187,7 +187,11 @@ func (c *Client) sendCreatePetCategories(ctx context.Context, request *CreatePet
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/categories"
 
@@ -273,7 +277,11 @@ func (c *Client) sendCreatePetFriends(ctx context.Context, request *CreatePetFri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/friends"
 
@@ -359,7 +367,11 @@ func (c *Client) sendCreatePetOwner(ctx context.Context, request *CreatePetOwner
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/owner"
 
@@ -445,7 +457,11 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -527,7 +543,11 @@ func (c *Client) sendDeletePetOwner(ctx context.Context, params DeletePetOwnerPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/owner"
 
@@ -716,7 +736,11 @@ func (c *Client) sendListPetCategories(ctx context.Context, params ListPetCatego
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/categories"
 
@@ -837,7 +861,11 @@ func (c *Client) sendListPetFriends(ctx context.Context, params ListPetFriendsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/friends"
 
@@ -958,7 +986,11 @@ func (c *Client) sendReadPet(ctx context.Context, params ReadPetParams) (res Rea
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -1040,7 +1072,11 @@ func (c *Client) sendReadPetOwner(ctx context.Context, params ReadPetOwnerParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/owner"
 
@@ -1123,7 +1159,11 @@ func (c *Client) sendUpdatePet(ctx context.Context, request *UpdatePetReq, param
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"

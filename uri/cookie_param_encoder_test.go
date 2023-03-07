@@ -64,7 +64,7 @@ func TestCookieParamEncoder(t *testing.T) {
 			}
 
 			require.NoError(t, e.EncodeValue(test.Input))
-			e.serialize()
+			require.NoError(t, e.serialize())
 
 			require.Equal(t, test.Expect, req.Header, fmt.Sprintf("Test %d", i+1))
 		}
@@ -105,7 +105,7 @@ func TestCookieParamEncoder(t *testing.T) {
 				}
 				return nil
 			}))
-			e.serialize()
+			require.NoError(t, e.serialize())
 
 			require.Equal(t, test.Expect, req.Header, fmt.Sprintf("Test %d", i+1))
 		}
@@ -153,7 +153,7 @@ func TestCookieParamEncoder(t *testing.T) {
 					return e.EncodeValue(f.Value)
 				}))
 			}
-			e.serialize()
+			require.NoError(t, e.serialize())
 
 			require.Equal(t, test.Expect, req.Header, fmt.Sprintf("Test %d", i+1))
 		}

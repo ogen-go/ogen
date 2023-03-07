@@ -120,7 +120,11 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/"
 	{
@@ -135,7 +139,11 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "1234"
 	{
@@ -150,7 +158,11 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "-"
 	{
@@ -165,7 +177,11 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "!"
 	{
@@ -180,7 +196,11 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -1039,7 +1059,11 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -1350,7 +1374,11 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 	u.Path += "/avatar"
 
@@ -1433,7 +1461,11 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
@@ -1515,7 +1547,11 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode path")
 		}
-		u.Path += e.Result()
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += encoded
 	}
 
 	stage = "EncodeRequest"
