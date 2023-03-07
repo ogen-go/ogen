@@ -100,6 +100,14 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			var (
 				lcontents = xmaps.SortedKeys(lresp.Contents)
 				rcontents = xmaps.SortedKeys(rresp.Contents)
+
+				// Add `Content-Type` to response name only if needed.
+				trySkipCT = func(s ir.ContentType, contents []ir.ContentType) string {
+					if len(contents) > 1 {
+						return string(s)
+					}
+					return ""
+				}
 			)
 			for _, lct := range lcontents {
 				for _, rct := range rcontents {
@@ -109,11 +117,12 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 					lmedia, rmedia := lresp.Contents[lct], rresp.Contents[rct]
 					ltype, rtype := lmedia.Type, rmedia.Type
 					if reflect.DeepEqual(ltype, rtype) {
-						lname, err := pascal(op.Name, string(lct), statusText(lcode))
+						lname, err := pascal(op.Name, trySkipCT(lct, lcontents), statusText(lcode))
 						if err != nil {
 							return errors.Wrap(err, "lname")
 						}
-						rname, err := pascal(op.Name, string(rct), statusText(rcode))
+
+						rname, err := pascal(op.Name, trySkipCT(rct, rcontents), statusText(rcode))
 						if err != nil {
 							return errors.Wrap(err, "rname")
 						}
