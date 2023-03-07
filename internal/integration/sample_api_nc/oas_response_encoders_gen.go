@@ -531,7 +531,7 @@ func encodeTestFloatValidationResponse(response *TestFloatValidationOK, w http.R
 
 func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TestNullableOneofsApplicationJSONOK:
+	case *TestNullableOneofsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -543,7 +543,7 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		}
 		return nil
 
-	case *TestNullableOneofsApplicationJSONCreated:
+	case *TestNullableOneofsCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))

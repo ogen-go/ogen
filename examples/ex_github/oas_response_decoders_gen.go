@@ -98,7 +98,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActionsApproveWorkflowRunApplicationJSONForbidden
+			var response ActionsApproveWorkflowRunForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -133,7 +133,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActionsApproveWorkflowRunApplicationJSONNotFound
+			var response ActionsApproveWorkflowRunNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2946,7 +2946,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2981,7 +2981,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
+			var response ActivityCheckRepoIsStarredByAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3016,7 +3016,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
+			var response ActivityCheckRepoIsStarredByAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3072,7 +3072,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
+			var response ActivityDeleteThreadSubscriptionUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3107,7 +3107,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityDeleteThreadSubscriptionApplicationJSONForbidden
+			var response ActivityDeleteThreadSubscriptionForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3306,7 +3306,7 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityGetThreadApplicationJSONUnauthorized
+			var response ActivityGetThreadUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3341,7 +3341,7 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityGetThreadApplicationJSONForbidden
+			var response ActivityGetThreadForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3420,7 +3420,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3455,7 +3455,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
+			var response ActivityGetThreadSubscriptionForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3629,7 +3629,7 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityListNotificationsForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3664,7 +3664,7 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden
+			var response ActivityListNotificationsForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3938,7 +3938,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
+			var response ActivityListPublicEventsForRepoNetworkMovedPermanently
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -3976,7 +3976,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
+			var response ActivityListPublicEventsForRepoNetworkForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4011,7 +4011,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
+			var response ActivityListPublicEventsForRepoNetworkNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4468,7 +4468,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityListReposStarredByAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4503,7 +4503,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden
+			var response ActivityListReposStarredByAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4715,7 +4715,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityListWatchedReposForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4750,7 +4750,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
+			var response ActivityListWatchedReposForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4919,7 +4919,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
+			var response ActivityMarkNotificationsAsReadUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -4954,7 +4954,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityMarkNotificationsAsReadApplicationJSONForbidden
+			var response ActivityMarkNotificationsAsReadForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5165,7 +5165,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivitySetThreadSubscriptionApplicationJSONUnauthorized
+			var response ActivitySetThreadSubscriptionUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5200,7 +5200,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivitySetThreadSubscriptionApplicationJSONForbidden
+			var response ActivitySetThreadSubscriptionForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5247,7 +5247,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityStarRepoForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5282,7 +5282,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
+			var response ActivityStarRepoForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5317,7 +5317,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
+			var response ActivityStarRepoForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5364,7 +5364,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
+			var response ActivityUnstarRepoForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5399,7 +5399,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
+			var response ActivityUnstarRepoForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5434,7 +5434,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
+			var response ActivityUnstarRepoForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5481,7 +5481,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsAddRepoToInstallationApplicationJSONForbidden
+			var response AppsAddRepoToInstallationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5516,7 +5516,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsAddRepoToInstallationApplicationJSONNotFound
+			var response AppsAddRepoToInstallationNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5706,7 +5706,7 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsCreateContentAttachmentApplicationJSONForbidden
+			var response AppsCreateContentAttachmentForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5741,7 +5741,7 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsCreateContentAttachmentApplicationJSONNotFound
+			var response AppsCreateContentAttachmentNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -5776,7 +5776,7 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsCreateContentAttachmentApplicationJSONGone
+			var response AppsCreateContentAttachmentGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6033,7 +6033,7 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsCreateInstallationAccessTokenApplicationJSONUnauthorized
+			var response AppsCreateInstallationAccessTokenUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6068,7 +6068,7 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsCreateInstallationAccessTokenApplicationJSONForbidden
+			var response AppsCreateInstallationAccessTokenForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6103,7 +6103,7 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsCreateInstallationAccessTokenApplicationJSONNotFound
+			var response AppsCreateInstallationAccessTokenNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6422,7 +6422,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsGetBySlugApplicationJSONForbidden
+			var response AppsGetBySlugForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6457,7 +6457,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsGetBySlugApplicationJSONNotFound
+			var response AppsGetBySlugNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6568,7 +6568,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
+			var response AppsGetSubscriptionPlanForAccountUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6603,7 +6603,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
+			var response AppsGetSubscriptionPlanForAccountNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6956,7 +6956,7 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListAccountsForPlanApplicationJSONUnauthorized
+			var response AppsListAccountsForPlanUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -6991,7 +6991,7 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListAccountsForPlanApplicationJSONNotFound
+			var response AppsListAccountsForPlanNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7265,7 +7265,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
+			var response AppsListInstallationReposForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7300,7 +7300,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
+			var response AppsListInstallationReposForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7422,7 +7422,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListPlansApplicationJSONUnauthorized
+			var response AppsListPlansUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7457,7 +7457,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListPlansApplicationJSONNotFound
+			var response AppsListPlansNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7696,7 +7696,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
+			var response AppsListReposAccessibleToInstallationUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7731,7 +7731,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListReposAccessibleToInstallationApplicationJSONForbidden
+			var response AppsListReposAccessibleToInstallationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7856,7 +7856,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
+			var response AppsListSubscriptionsForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -7891,7 +7891,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
+			var response AppsListSubscriptionsForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8285,7 +8285,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsRemoveRepoFromInstallationApplicationJSONForbidden
+			var response AppsRemoveRepoFromInstallationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8320,7 +8320,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsRemoveRepoFromInstallationApplicationJSONNotFound
+			var response AppsRemoveRepoFromInstallationNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8481,7 +8481,7 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsScopeTokenApplicationJSONUnauthorized
+			var response AppsScopeTokenUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8516,7 +8516,7 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsScopeTokenApplicationJSONForbidden
+			var response AppsScopeTokenForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -8551,7 +8551,7 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response AppsScopeTokenApplicationJSONNotFound
+			var response AppsScopeTokenNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9125,7 +9125,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ChecksCreateSuiteApplicationJSONOK
+			var response ChecksCreateSuiteOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9160,7 +9160,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ChecksCreateSuiteApplicationJSONCreated
+			var response ChecksCreateSuiteCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9724,7 +9724,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningDeleteAnalysisApplicationJSONBadRequest
+			var response CodeScanningDeleteAnalysisBadRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9759,7 +9759,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningDeleteAnalysisApplicationJSONForbidden
+			var response CodeScanningDeleteAnalysisForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9794,7 +9794,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningDeleteAnalysisApplicationJSONNotFound
+			var response CodeScanningDeleteAnalysisNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9905,7 +9905,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningGetAlertApplicationJSONForbidden
+			var response CodeScanningGetAlertForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -9940,7 +9940,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningGetAlertApplicationJSONNotFound
+			var response CodeScanningGetAlertNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10060,7 +10060,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningGetAnalysisApplicationJSONForbidden
+			var response CodeScanningGetAnalysisForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10095,7 +10095,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningGetAnalysisApplicationJSONNotFound
+			var response CodeScanningGetAnalysisNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10320,7 +10320,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningListAlertInstancesApplicationJSONForbidden
+			var response CodeScanningListAlertInstancesForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10355,7 +10355,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningListAlertInstancesApplicationJSONNotFound
+			var response CodeScanningListAlertInstancesNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10466,7 +10466,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningListAlertsForRepoApplicationJSONForbidden
+			var response CodeScanningListAlertsForRepoForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10501,7 +10501,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningListAlertsForRepoApplicationJSONNotFound
+			var response CodeScanningListAlertsForRepoNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10612,7 +10612,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningListRecentAnalysesApplicationJSONForbidden
+			var response CodeScanningListRecentAnalysesForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10647,7 +10647,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningListRecentAnalysesApplicationJSONNotFound
+			var response CodeScanningListRecentAnalysesNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10758,7 +10758,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningUpdateAlertApplicationJSONForbidden
+			var response CodeScanningUpdateAlertForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10793,7 +10793,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningUpdateAlertApplicationJSONNotFound
+			var response CodeScanningUpdateAlertNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10907,7 +10907,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningUploadSarifApplicationJSONForbidden
+			var response CodeScanningUploadSarifForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -10942,7 +10942,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response CodeScanningUploadSarifApplicationJSONNotFound
+			var response CodeScanningUploadSarifNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12598,7 +12598,7 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsCreateApplicationJSONForbidden
+			var response GistsCreateForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12633,7 +12633,7 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsCreateApplicationJSONNotFound
+			var response GistsCreateNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12785,7 +12785,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsCreateCommentApplicationJSONForbidden
+			var response GistsCreateCommentForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12820,7 +12820,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsCreateCommentApplicationJSONNotFound
+			var response GistsCreateCommentNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12867,7 +12867,7 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsDeleteApplicationJSONForbidden
+			var response GistsDeleteForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12902,7 +12902,7 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsDeleteApplicationJSONNotFound
+			var response GistsDeleteNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12949,7 +12949,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsDeleteCommentApplicationJSONForbidden
+			var response GistsDeleteCommentForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -12984,7 +12984,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsDeleteCommentApplicationJSONNotFound
+			var response GistsDeleteCommentNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13101,7 +13101,7 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsForkApplicationJSONForbidden
+			var response GistsForkForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13136,7 +13136,7 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsForkApplicationJSONNotFound
+			var response GistsForkNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13475,7 +13475,7 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsGetRevisionApplicationJSONForbidden
+			var response GistsGetRevisionForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13510,7 +13510,7 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsGetRevisionApplicationJSONNotFound
+			var response GistsGetRevisionNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13795,7 +13795,7 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListCommentsApplicationJSONForbidden
+			var response GistsListCommentsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13830,7 +13830,7 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListCommentsApplicationJSONNotFound
+			var response GistsListCommentsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13955,7 +13955,7 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListCommitsApplicationJSONForbidden
+			var response GistsListCommitsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -13990,7 +13990,7 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListCommitsApplicationJSONNotFound
+			var response GistsListCommitsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14237,7 +14237,7 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListForksApplicationJSONForbidden
+			var response GistsListForksForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14272,7 +14272,7 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListForksApplicationJSONNotFound
+			var response GistsListForksNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14557,7 +14557,7 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListStarredApplicationJSONUnauthorized
+			var response GistsListStarredUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14592,7 +14592,7 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsListStarredApplicationJSONForbidden
+			var response GistsListStarredForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14639,7 +14639,7 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsStarApplicationJSONForbidden
+			var response GistsStarForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14674,7 +14674,7 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsStarApplicationJSONNotFound
+			var response GistsStarNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14721,7 +14721,7 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsUnstarApplicationJSONForbidden
+			var response GistsUnstarForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14756,7 +14756,7 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GistsUnstarApplicationJSONNotFound
+			var response GistsUnstarNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14946,7 +14946,7 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitCreateBlobApplicationJSONForbidden
+			var response GitCreateBlobForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -14981,7 +14981,7 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitCreateBlobApplicationJSONNotFound
+			var response GitCreateBlobNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -15016,7 +15016,7 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitCreateBlobApplicationJSONConflict
+			var response GitCreateBlobConflict
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -15542,7 +15542,7 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitCreateTreeApplicationJSONForbidden
+			var response GitCreateTreeForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -15577,7 +15577,7 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitCreateTreeApplicationJSONNotFound
+			var response GitCreateTreeNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -15732,7 +15732,7 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitGetBlobApplicationJSONForbidden
+			var response GitGetBlobForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -15767,7 +15767,7 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response GitGetBlobApplicationJSONNotFound
+			var response GitGetBlobNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -16817,7 +16817,7 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesCreateApplicationJSONForbidden
+			var response IssuesCreateForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -16852,7 +16852,7 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesCreateApplicationJSONNotFound
+			var response IssuesCreateNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -16887,7 +16887,7 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesCreateApplicationJSONGone
+			var response IssuesCreateGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17071,7 +17071,7 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesCreateCommentApplicationJSONForbidden
+			var response IssuesCreateCommentForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17106,7 +17106,7 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesCreateCommentApplicationJSONNotFound
+			var response IssuesCreateCommentNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17141,7 +17141,7 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesCreateCommentApplicationJSONGone
+			var response IssuesCreateCommentGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17612,7 +17612,7 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesGetApplicationJSONMovedPermanently
+			var response IssuesGetMovedPermanently
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17650,7 +17650,7 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesGetApplicationJSONNotFound
+			var response IssuesGetNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17685,7 +17685,7 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesGetApplicationJSONGone
+			var response IssuesGetGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17837,7 +17837,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesGetEventApplicationJSONForbidden
+			var response IssuesGetEventForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17872,7 +17872,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesGetEventApplicationJSONNotFound
+			var response IssuesGetEventNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -17907,7 +17907,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesGetEventApplicationJSONGone
+			var response IssuesGetEventGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -18463,7 +18463,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesListCommentsApplicationJSONNotFound
+			var response IssuesListCommentsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -18498,7 +18498,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesListCommentsApplicationJSONGone
+			var response IssuesListCommentsGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19146,7 +19146,7 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesListForRepoApplicationJSONMovedPermanently
+			var response IssuesListForRepoMovedPermanently
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19181,7 +19181,7 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesListForRepoApplicationJSONNotFound
+			var response IssuesListForRepoNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19713,7 +19713,7 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesLockApplicationJSONForbidden
+			var response IssuesLockForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19748,7 +19748,7 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesLockApplicationJSONNotFound
+			var response IssuesLockNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19783,7 +19783,7 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesLockApplicationJSONGone
+			var response IssuesLockGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -19979,7 +19979,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesRemoveLabelApplicationJSONNotFound
+			var response IssuesRemoveLabelNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20014,7 +20014,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesRemoveLabelApplicationJSONGone
+			var response IssuesRemoveLabelGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20058,7 +20058,7 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesUnlockApplicationJSONForbidden
+			var response IssuesUnlockForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20093,7 +20093,7 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesUnlockApplicationJSONNotFound
+			var response IssuesUnlockNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20169,7 +20169,7 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesUpdateApplicationJSONMovedPermanently
+			var response IssuesUpdateMovedPermanently
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20204,7 +20204,7 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesUpdateApplicationJSONForbidden
+			var response IssuesUpdateForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20239,7 +20239,7 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesUpdateApplicationJSONNotFound
+			var response IssuesUpdateNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20274,7 +20274,7 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response IssuesUpdateApplicationJSONGone
+			var response IssuesUpdateGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20581,7 +20581,7 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response LicensesGetApplicationJSONForbidden
+			var response LicensesGetForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -20616,7 +20616,7 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response LicensesGetApplicationJSONNotFound
+			var response LicensesGetNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21059,7 +21059,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
+			var response MigrationsDeleteArchiveForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21094,7 +21094,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
+			var response MigrationsDeleteArchiveForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21129,7 +21129,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
+			var response MigrationsDeleteArchiveForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21264,7 +21264,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
+			var response MigrationsGetArchiveForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21299,7 +21299,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
+			var response MigrationsGetArchiveForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21579,7 +21579,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
+			var response MigrationsGetStatusForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21614,7 +21614,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
+			var response MigrationsGetStatusForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21649,7 +21649,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
+			var response MigrationsGetStatusForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21850,7 +21850,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
+			var response MigrationsListForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -21885,7 +21885,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsListForAuthenticatedUserApplicationJSONForbidden
+			var response MigrationsListForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -22482,7 +22482,7 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized
+			var response MigrationsStartForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -22517,7 +22517,7 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsStartForAuthenticatedUserApplicationJSONForbidden
+			var response MigrationsStartForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -22859,7 +22859,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
+			var response MigrationsUnlockRepoForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -22894,7 +22894,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
+			var response MigrationsUnlockRepoForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -22929,7 +22929,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
+			var response MigrationsUnlockRepoForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23131,7 +23131,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized
+			var response OAuthAuthorizationsCreateAuthorizationUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23166,7 +23166,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden
+			var response OAuthAuthorizationsCreateAuthorizationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23201,7 +23201,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONGone
+			var response OAuthAuthorizationsCreateAuthorizationGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23283,7 +23283,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
+			var response OAuthAuthorizationsDeleteAuthorizationUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23318,7 +23318,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
+			var response OAuthAuthorizationsDeleteAuthorizationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23365,7 +23365,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
+			var response OAuthAuthorizationsDeleteGrantUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23400,7 +23400,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
+			var response OAuthAuthorizationsDeleteGrantForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23479,7 +23479,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
+			var response OAuthAuthorizationsGetAuthorizationUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23514,7 +23514,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
+			var response OAuthAuthorizationsGetAuthorizationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23593,7 +23593,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
+			var response OAuthAuthorizationsGetGrantUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23628,7 +23628,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsGetGrantApplicationJSONForbidden
+			var response OAuthAuthorizationsGetGrantForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23686,7 +23686,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return res, err
 			}
-			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
+			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppOK
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
 			// Parse "Location" header.
@@ -23759,7 +23759,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return res, err
 			}
-			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
+			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
 			// Parse "Location" header.
@@ -23818,7 +23818,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23853,7 +23853,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
+			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -23946,7 +23946,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 				return res, err
 			}
-			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
+			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
 			// Parse "Location" header.
@@ -24019,7 +24019,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 				return res, err
 			}
-			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
+			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
 			// Parse "Location" header.
@@ -24200,7 +24200,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
+			var response OAuthAuthorizationsListAuthorizationsUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -24235,7 +24235,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
+			var response OAuthAuthorizationsListAuthorizationsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -24270,7 +24270,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
+			var response OAuthAuthorizationsListAuthorizationsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -24395,7 +24395,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
+			var response OAuthAuthorizationsListGrantsUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -24430,7 +24430,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsListGrantsApplicationJSONForbidden
+			var response OAuthAuthorizationsListGrantsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -24465,7 +24465,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OAuthAuthorizationsListGrantsApplicationJSONNotFound
+			var response OAuthAuthorizationsListGrantsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -25359,7 +25359,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
+			var response OrgsGetMembershipForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -25394,7 +25394,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
+			var response OrgsGetMembershipForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -25470,7 +25470,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsGetMembershipForUserApplicationJSONForbidden
+			var response OrgsGetMembershipForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -25505,7 +25505,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsGetMembershipForUserApplicationJSONNotFound
+			var response OrgsGetMembershipForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -26146,7 +26146,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsListForAuthenticatedUserApplicationJSONUnauthorized
+			var response OrgsListForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -26181,7 +26181,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsListForAuthenticatedUserApplicationJSONForbidden
+			var response OrgsListForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -26677,7 +26677,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized
+			var response OrgsListMembershipsForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -26712,7 +26712,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden
+			var response OrgsListMembershipsForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -27568,7 +27568,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsRemoveMembershipForUserApplicationJSONForbidden
+			var response OrgsRemoveMembershipForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -27603,7 +27603,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsRemoveMembershipForUserApplicationJSONNotFound
+			var response OrgsRemoveMembershipForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -27940,7 +27940,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden
+			var response OrgsUpdateMembershipForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -27975,7 +27975,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound
+			var response OrgsUpdateMembershipForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28206,7 +28206,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized
+			var response PackagesDeletePackageForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28241,7 +28241,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden
+			var response PackagesDeletePackageForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28276,7 +28276,7 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound
+			var response PackagesDeletePackageForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28320,7 +28320,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForOrgApplicationJSONUnauthorized
+			var response PackagesDeletePackageForOrgUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28355,7 +28355,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForOrgApplicationJSONForbidden
+			var response PackagesDeletePackageForOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28390,7 +28390,7 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForOrgApplicationJSONNotFound
+			var response PackagesDeletePackageForOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28434,7 +28434,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForUserApplicationJSONUnauthorized
+			var response PackagesDeletePackageForUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28469,7 +28469,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForUserApplicationJSONForbidden
+			var response PackagesDeletePackageForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28504,7 +28504,7 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageForUserApplicationJSONNotFound
+			var response PackagesDeletePackageForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28548,7 +28548,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
+			var response PackagesDeletePackageVersionForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28583,7 +28583,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden
+			var response PackagesDeletePackageVersionForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28618,7 +28618,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
+			var response PackagesDeletePackageVersionForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28662,7 +28662,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized
+			var response PackagesDeletePackageVersionForOrgUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28697,7 +28697,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForOrgApplicationJSONForbidden
+			var response PackagesDeletePackageVersionForOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28732,7 +28732,7 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForOrgApplicationJSONNotFound
+			var response PackagesDeletePackageVersionForOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28776,7 +28776,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForUserApplicationJSONUnauthorized
+			var response PackagesDeletePackageVersionForUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28811,7 +28811,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForUserApplicationJSONForbidden
+			var response PackagesDeletePackageVersionForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28846,7 +28846,7 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesDeletePackageVersionForUserApplicationJSONNotFound
+			var response PackagesDeletePackageVersionForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28922,7 +28922,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized
+			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28957,7 +28957,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden
+			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -28992,7 +28992,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound
+			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29068,7 +29068,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized
+			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29103,7 +29103,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden
+			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29138,7 +29138,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound
+			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29214,7 +29214,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized
+			var response PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29249,7 +29249,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden
+			var response PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29284,7 +29284,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound
+			var response PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29655,7 +29655,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesListPackagesForOrganizationApplicationJSONUnauthorized
+			var response PackagesListPackagesForOrganizationUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29690,7 +29690,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesListPackagesForOrganizationApplicationJSONForbidden
+			var response PackagesListPackagesForOrganizationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29766,7 +29766,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response) (res Package
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesListPackagesForUserApplicationJSONUnauthorized
+			var response PackagesListPackagesForUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29801,7 +29801,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response) (res Package
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesListPackagesForUserApplicationJSONForbidden
+			var response PackagesListPackagesForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29845,7 +29845,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized
+			var response PackagesRestorePackageForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29880,7 +29880,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden
+			var response PackagesRestorePackageForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29915,7 +29915,7 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound
+			var response PackagesRestorePackageForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29959,7 +29959,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForOrgApplicationJSONUnauthorized
+			var response PackagesRestorePackageForOrgUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -29994,7 +29994,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForOrgApplicationJSONForbidden
+			var response PackagesRestorePackageForOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30029,7 +30029,7 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForOrgApplicationJSONNotFound
+			var response PackagesRestorePackageForOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30073,7 +30073,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForUserApplicationJSONUnauthorized
+			var response PackagesRestorePackageForUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30108,7 +30108,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForUserApplicationJSONForbidden
+			var response PackagesRestorePackageForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30143,7 +30143,7 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageForUserApplicationJSONNotFound
+			var response PackagesRestorePackageForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30187,7 +30187,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
+			var response PackagesRestorePackageVersionForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30222,7 +30222,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden
+			var response PackagesRestorePackageVersionForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30257,7 +30257,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound
+			var response PackagesRestorePackageVersionForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30301,7 +30301,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized
+			var response PackagesRestorePackageVersionForOrgUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30336,7 +30336,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForOrgApplicationJSONForbidden
+			var response PackagesRestorePackageVersionForOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30371,7 +30371,7 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForOrgApplicationJSONNotFound
+			var response PackagesRestorePackageVersionForOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30415,7 +30415,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForUserApplicationJSONUnauthorized
+			var response PackagesRestorePackageVersionForUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30450,7 +30450,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForUserApplicationJSONForbidden
+			var response PackagesRestorePackageVersionForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30485,7 +30485,7 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PackagesRestorePackageVersionForUserApplicationJSONNotFound
+			var response PackagesRestorePackageVersionForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30532,7 +30532,7 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsAddCollaboratorApplicationJSONUnauthorized
+			var response ProjectsAddCollaboratorUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30567,7 +30567,7 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsAddCollaboratorApplicationJSONForbidden
+			var response ProjectsAddCollaboratorForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30602,7 +30602,7 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsAddCollaboratorApplicationJSONNotFound
+			var response ProjectsAddCollaboratorNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30716,7 +30716,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateColumnApplicationJSONUnauthorized
+			var response ProjectsCreateColumnUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30751,7 +30751,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateColumnApplicationJSONForbidden
+			var response ProjectsCreateColumnForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30865,7 +30865,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
+			var response ProjectsCreateForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -30900,7 +30900,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
+			var response ProjectsCreateForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31046,7 +31046,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForOrgApplicationJSONUnauthorized
+			var response ProjectsCreateForOrgUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31081,7 +31081,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForOrgApplicationJSONForbidden
+			var response ProjectsCreateForOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31116,7 +31116,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForOrgApplicationJSONNotFound
+			var response ProjectsCreateForOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31151,7 +31151,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForOrgApplicationJSONGone
+			var response ProjectsCreateForOrgGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31262,7 +31262,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForRepoApplicationJSONUnauthorized
+			var response ProjectsCreateForRepoUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31297,7 +31297,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForRepoApplicationJSONForbidden
+			var response ProjectsCreateForRepoForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31332,7 +31332,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForRepoApplicationJSONNotFound
+			var response ProjectsCreateForRepoNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31367,7 +31367,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsCreateForRepoApplicationJSONGone
+			var response ProjectsCreateForRepoGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31449,7 +31449,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteApplicationJSONUnauthorized
+			var response ProjectsDeleteUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31519,7 +31519,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteApplicationJSONNotFound
+			var response ProjectsDeleteNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31554,7 +31554,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteApplicationJSONGone
+			var response ProjectsDeleteGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31601,7 +31601,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteCardApplicationJSONUnauthorized
+			var response ProjectsDeleteCardUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31671,7 +31671,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteCardApplicationJSONNotFound
+			var response ProjectsDeleteCardNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31718,7 +31718,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteColumnApplicationJSONUnauthorized
+			var response ProjectsDeleteColumnUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31753,7 +31753,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsDeleteColumnApplicationJSONForbidden
+			var response ProjectsDeleteColumnForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31832,7 +31832,7 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetApplicationJSONUnauthorized
+			var response ProjectsGetUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31867,7 +31867,7 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetApplicationJSONForbidden
+			var response ProjectsGetForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31946,7 +31946,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetCardApplicationJSONUnauthorized
+			var response ProjectsGetCardUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -31981,7 +31981,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetCardApplicationJSONForbidden
+			var response ProjectsGetCardForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32016,7 +32016,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetCardApplicationJSONNotFound
+			var response ProjectsGetCardNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32095,7 +32095,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetColumnApplicationJSONUnauthorized
+			var response ProjectsGetColumnUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32130,7 +32130,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetColumnApplicationJSONForbidden
+			var response ProjectsGetColumnForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32165,7 +32165,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetColumnApplicationJSONNotFound
+			var response ProjectsGetColumnNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32244,7 +32244,7 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetPermissionForUserApplicationJSONUnauthorized
+			var response ProjectsGetPermissionForUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32279,7 +32279,7 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetPermissionForUserApplicationJSONForbidden
+			var response ProjectsGetPermissionForUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32314,7 +32314,7 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsGetPermissionForUserApplicationJSONNotFound
+			var response ProjectsGetPermissionForUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32474,7 +32474,7 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListCardsApplicationJSONUnauthorized
+			var response ProjectsListCardsUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32509,7 +32509,7 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListCardsApplicationJSONForbidden
+			var response ProjectsListCardsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32634,7 +32634,7 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListCollaboratorsApplicationJSONUnauthorized
+			var response ProjectsListCollaboratorsUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32669,7 +32669,7 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListCollaboratorsApplicationJSONForbidden
+			var response ProjectsListCollaboratorsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32704,7 +32704,7 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListCollaboratorsApplicationJSONNotFound
+			var response ProjectsListCollaboratorsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32864,7 +32864,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListColumnsApplicationJSONUnauthorized
+			var response ProjectsListColumnsUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -32899,7 +32899,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListColumnsApplicationJSONForbidden
+			var response ProjectsListColumnsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33143,7 +33143,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListForRepoApplicationJSONUnauthorized
+			var response ProjectsListForRepoUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33178,7 +33178,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListForRepoApplicationJSONForbidden
+			var response ProjectsListForRepoForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33213,7 +33213,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListForRepoApplicationJSONNotFound
+			var response ProjectsListForRepoNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33248,7 +33248,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsListForRepoApplicationJSONGone
+			var response ProjectsListForRepoGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33668,7 +33668,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsMoveColumnApplicationJSONUnauthorized
+			var response ProjectsMoveColumnUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33703,7 +33703,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsMoveColumnApplicationJSONForbidden
+			var response ProjectsMoveColumnForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33785,7 +33785,7 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsRemoveCollaboratorApplicationJSONUnauthorized
+			var response ProjectsRemoveCollaboratorUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33820,7 +33820,7 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsRemoveCollaboratorApplicationJSONForbidden
+			var response ProjectsRemoveCollaboratorForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33855,7 +33855,7 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsRemoveCollaboratorApplicationJSONNotFound
+			var response ProjectsRemoveCollaboratorNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -33969,7 +33969,7 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateApplicationJSONUnauthorized
+			var response ProjectsUpdateUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -34042,7 +34042,7 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateApplicationJSONGone
+			var response ProjectsUpdateGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -34156,7 +34156,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateCardApplicationJSONUnauthorized
+			var response ProjectsUpdateCardUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -34191,7 +34191,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateCardApplicationJSONForbidden
+			var response ProjectsUpdateCardForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -34226,7 +34226,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateCardApplicationJSONNotFound
+			var response ProjectsUpdateCardNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -34340,7 +34340,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateColumnApplicationJSONUnauthorized
+			var response ProjectsUpdateColumnUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -34375,7 +34375,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ProjectsUpdateColumnApplicationJSONForbidden
+			var response ProjectsUpdateColumnForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -35255,7 +35255,7 @@ func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PullsGetApplicationJSONNotFound
+			var response PullsGetNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -35290,7 +35290,7 @@ func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PullsGetApplicationJSONInternalServerError
+			var response PullsGetInternalServerError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -36349,7 +36349,7 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PullsMergeApplicationJSONForbidden
+			var response PullsMergeForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -36384,7 +36384,7 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PullsMergeApplicationJSONNotFound
+			var response PullsMergeNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -36641,7 +36641,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PullsSubmitReviewApplicationJSONForbidden
+			var response PullsSubmitReviewForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -36676,7 +36676,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response PullsSubmitReviewApplicationJSONNotFound
+			var response PullsSubmitReviewNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37278,7 +37278,7 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForCommitCommentApplicationJSONOK
+			var response ReactionsCreateForCommitCommentOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37313,7 +37313,7 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForCommitCommentApplicationJSONCreated
+			var response ReactionsCreateForCommitCommentCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37424,7 +37424,7 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForIssueApplicationJSONOK
+			var response ReactionsCreateForIssueOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37459,7 +37459,7 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForIssueApplicationJSONCreated
+			var response ReactionsCreateForIssueCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37570,7 +37570,7 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForIssueCommentApplicationJSONOK
+			var response ReactionsCreateForIssueCommentOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37605,7 +37605,7 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForIssueCommentApplicationJSONCreated
+			var response ReactionsCreateForIssueCommentCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37716,7 +37716,7 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForPullRequestReviewCommentApplicationJSONOK
+			var response ReactionsCreateForPullRequestReviewCommentOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37751,7 +37751,7 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated
+			var response ReactionsCreateForPullRequestReviewCommentCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37862,7 +37862,7 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForReleaseApplicationJSONOK
+			var response ReactionsCreateForReleaseOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -37897,7 +37897,7 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForReleaseApplicationJSONCreated
+			var response ReactionsCreateForReleaseCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38008,7 +38008,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
+			var response ReactionsCreateForTeamDiscussionCommentInOrgOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38043,7 +38043,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
+			var response ReactionsCreateForTeamDiscussionCommentInOrgCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38125,7 +38125,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
+			var response ReactionsCreateForTeamDiscussionInOrgOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38160,7 +38160,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
+			var response ReactionsCreateForTeamDiscussionInOrgCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38302,7 +38302,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsDeleteLegacyApplicationJSONUnauthorized
+			var response ReactionsDeleteLegacyUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38337,7 +38337,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsDeleteLegacyApplicationJSONForbidden
+			var response ReactionsDeleteLegacyForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38372,7 +38372,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsDeleteLegacyApplicationJSONGone
+			var response ReactionsDeleteLegacyGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38686,7 +38686,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsListForIssueApplicationJSONNotFound
+			var response ReactionsListForIssueNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -38721,7 +38721,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReactionsListForIssueApplicationJSONGone
+			var response ReactionsListForIssueGone
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39465,7 +39465,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposAcceptInvitationApplicationJSONForbidden
+			var response ReposAcceptInvitationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39500,7 +39500,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposAcceptInvitationApplicationJSONNotFound
+			var response ReposAcceptInvitationNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39535,7 +39535,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposAcceptInvitationApplicationJSONConflict
+			var response ReposAcceptInvitationConflict
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39801,7 +39801,7 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposAddStatusCheckContextsApplicationJSONForbidden
+			var response ReposAddStatusCheckContextsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -39836,7 +39836,7 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposAddStatusCheckContextsApplicationJSONNotFound
+			var response ReposAddStatusCheckContextsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -40123,7 +40123,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCompareCommitsApplicationJSONNotFound
+			var response ReposCompareCommitsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -40158,7 +40158,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCompareCommitsApplicationJSONInternalServerError
+			var response ReposCompareCommitsInternalServerError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41079,7 +41079,7 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForAuthenticatedUserApplicationJSONBadRequest
+			var response ReposCreateForAuthenticatedUserBadRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41114,7 +41114,7 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForAuthenticatedUserApplicationJSONUnauthorized
+			var response ReposCreateForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41149,7 +41149,7 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForAuthenticatedUserApplicationJSONForbidden
+			var response ReposCreateForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41184,7 +41184,7 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForAuthenticatedUserApplicationJSONNotFound
+			var response ReposCreateForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41295,7 +41295,7 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForkApplicationJSONBadRequest
+			var response ReposCreateForkBadRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41330,7 +41330,7 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForkApplicationJSONForbidden
+			var response ReposCreateForkForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41365,7 +41365,7 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateForkApplicationJSONNotFound
+			var response ReposCreateForkNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41590,7 +41590,7 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateOrUpdateFileContentsApplicationJSONOK
+			var response ReposCreateOrUpdateFileContentsOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41625,7 +41625,7 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateOrUpdateFileContentsApplicationJSONCreated
+			var response ReposCreateOrUpdateFileContentsCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41660,7 +41660,7 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateOrUpdateFileContentsApplicationJSONNotFound
+			var response ReposCreateOrUpdateFileContentsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -41695,7 +41695,7 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateOrUpdateFileContentsApplicationJSONConflict
+			var response ReposCreateOrUpdateFileContentsConflict
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42218,7 +42218,7 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateWebhookApplicationJSONForbidden
+			var response ReposCreateWebhookForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42253,7 +42253,7 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposCreateWebhookApplicationJSONNotFound
+			var response ReposCreateWebhookNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42335,7 +42335,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeclineInvitationApplicationJSONForbidden
+			var response ReposDeclineInvitationForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42370,7 +42370,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeclineInvitationApplicationJSONNotFound
+			var response ReposDeclineInvitationNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42405,7 +42405,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeclineInvitationApplicationJSONConflict
+			var response ReposDeclineInvitationConflict
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42449,7 +42449,7 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeleteApplicationJSONTemporaryRedirect
+			var response ReposDeleteTemporaryRedirect
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42519,7 +42519,7 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeleteApplicationJSONNotFound
+			var response ReposDeleteNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42921,7 +42921,7 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeleteFileApplicationJSONNotFound
+			var response ReposDeleteFileNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -42956,7 +42956,7 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposDeleteFileApplicationJSONConflict
+			var response ReposDeleteFileConflict
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -43512,7 +43512,7 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetApplicationJSONMovedPermanently
+			var response ReposGetMovedPermanently
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -43547,7 +43547,7 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetApplicationJSONForbidden
+			var response ReposGetForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -43582,7 +43582,7 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetApplicationJSONNotFound
+			var response ReposGetNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -44114,7 +44114,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetBranchApplicationJSONMovedPermanently
+			var response ReposGetBranchMovedPermanently
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -44149,7 +44149,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetBranchApplicationJSONNotFound
+			var response ReposGetBranchNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -44643,7 +44643,7 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetCommitApplicationJSONNotFound
+			var response ReposGetCommitNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -44713,7 +44713,7 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposGetCommitApplicationJSONInternalServerError
+			var response ReposGetCommitInternalServerError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -47763,7 +47763,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListCommitsApplicationJSONBadRequest
+			var response ReposListCommitsBadRequest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -47798,7 +47798,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListCommitsApplicationJSONNotFound
+			var response ReposListCommitsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -47833,7 +47833,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListCommitsApplicationJSONConflict
+			var response ReposListCommitsConflict
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -47868,7 +47868,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListCommitsApplicationJSONInternalServerError
+			var response ReposListCommitsInternalServerError
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -47993,7 +47993,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListContributorsApplicationJSONForbidden
+			var response ReposListContributorsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -48028,7 +48028,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListContributorsApplicationJSONNotFound
+			var response ReposListContributorsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -48403,7 +48403,7 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListForAuthenticatedUserApplicationJSONUnauthorized
+			var response ReposListForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -48438,7 +48438,7 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListForAuthenticatedUserApplicationJSONForbidden
+			var response ReposListForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -48981,7 +48981,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
+			var response ReposListInvitationsForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -49016,7 +49016,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
+			var response ReposListInvitationsForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -49051,7 +49051,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
+			var response ReposListInvitationsForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -50762,7 +50762,7 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposRenameBranchApplicationJSONForbidden
+			var response ReposRenameBranchForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -50797,7 +50797,7 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposRenameBranchApplicationJSONNotFound
+			var response ReposRenameBranchNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -51560,7 +51560,7 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposUpdateApplicationJSONTemporaryRedirect
+			var response ReposUpdateTemporaryRedirect
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -51595,7 +51595,7 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposUpdateApplicationJSONForbidden
+			var response ReposUpdateForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -51630,7 +51630,7 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposUpdateApplicationJSONNotFound
+			var response ReposUpdateNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -51741,7 +51741,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposUpdateBranchProtectionApplicationJSONForbidden
+			var response ReposUpdateBranchProtectionForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -51776,7 +51776,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ReposUpdateBranchProtectionApplicationJSONNotFound
+			var response ReposUpdateBranchProtectionNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -52472,7 +52472,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ScimDeleteUserFromOrgApplicationJSONForbidden
+			var response ScimDeleteUserFromOrgForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -52507,7 +52507,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response ScimDeleteUserFromOrgApplicationJSONNotFound
+			var response ScimDeleteUserFromOrgNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -52963,7 +52963,7 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response SearchLabelsApplicationJSONForbidden
+			var response SearchLabelsForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -52998,7 +52998,7 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response SearchLabelsApplicationJSONNotFound
+			var response SearchLabelsNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -55674,7 +55674,7 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsListChildLegacyApplicationJSONForbidden
+			var response TeamsListChildLegacyForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -55709,7 +55709,7 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsListChildLegacyApplicationJSONNotFound
+			var response TeamsListChildLegacyNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -56217,7 +56217,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsListForAuthenticatedUserApplicationJSONForbidden
+			var response TeamsListForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -56252,7 +56252,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsListForAuthenticatedUserApplicationJSONNotFound
+			var response TeamsListForAuthenticatedUserNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -56328,7 +56328,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsListIdpGroupsForLegacyApplicationJSONForbidden
+			var response TeamsListIdpGroupsForLegacyForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -56363,7 +56363,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsListIdpGroupsForLegacyApplicationJSONNotFound
+			var response TeamsListIdpGroupsForLegacyNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57707,7 +57707,7 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsUpdateLegacyApplicationJSONOK
+			var response TeamsUpdateLegacyOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57742,7 +57742,7 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsUpdateLegacyApplicationJSONCreated
+			var response TeamsUpdateLegacyCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57777,7 +57777,7 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsUpdateLegacyApplicationJSONForbidden
+			var response TeamsUpdateLegacyForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57812,7 +57812,7 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TeamsUpdateLegacyApplicationJSONNotFound
+			var response TeamsUpdateLegacyNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57926,7 +57926,7 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersAddEmailForAuthenticatedApplicationJSONUnauthorized
+			var response UsersAddEmailForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57961,7 +57961,7 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersAddEmailForAuthenticatedApplicationJSONForbidden
+			var response UsersAddEmailForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -57996,7 +57996,7 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersAddEmailForAuthenticatedApplicationJSONNotFound
+			var response UsersAddEmailForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58078,7 +58078,7 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersBlockApplicationJSONUnauthorized
+			var response UsersBlockUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58113,7 +58113,7 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersBlockApplicationJSONForbidden
+			var response UsersBlockForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58148,7 +58148,7 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersBlockApplicationJSONNotFound
+			var response UsersBlockNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58230,7 +58230,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCheckBlockedApplicationJSONUnauthorized
+			var response UsersCheckBlockedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58265,7 +58265,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCheckBlockedApplicationJSONForbidden
+			var response UsersCheckBlockedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58300,7 +58300,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCheckBlockedApplicationJSONNotFound
+			var response UsersCheckBlockedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58359,7 +58359,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
+			var response UsersCheckPersonIsFollowedByAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58394,7 +58394,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
+			var response UsersCheckPersonIsFollowedByAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58429,7 +58429,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
+			var response UsersCheckPersonIsFollowedByAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58508,7 +58508,7 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized
+			var response UsersCreateGpgKeyForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58543,7 +58543,7 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden
+			var response UsersCreateGpgKeyForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58578,7 +58578,7 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound
+			var response UsersCreateGpgKeyForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58692,7 +58692,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+			var response UsersCreatePublicSSHKeyForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58727,7 +58727,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+			var response UsersCreatePublicSSHKeyForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58762,7 +58762,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+			var response UsersCreatePublicSSHKeyForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58844,7 +58844,7 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized
+			var response UsersDeleteEmailForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58879,7 +58879,7 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeleteEmailForAuthenticatedApplicationJSONForbidden
+			var response UsersDeleteEmailForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58914,7 +58914,7 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeleteEmailForAuthenticatedApplicationJSONNotFound
+			var response UsersDeleteEmailForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -58996,7 +58996,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized
+			var response UsersDeleteGpgKeyForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59031,7 +59031,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden
+			var response UsersDeleteGpgKeyForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59066,7 +59066,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound
+			var response UsersDeleteGpgKeyForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59148,7 +59148,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+			var response UsersDeletePublicSSHKeyForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59183,7 +59183,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+			var response UsersDeletePublicSSHKeyForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59218,7 +59218,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+			var response UsersDeletePublicSSHKeyForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59265,7 +59265,7 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersFollowApplicationJSONUnauthorized
+			var response UsersFollowUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59300,7 +59300,7 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersFollowApplicationJSONForbidden
+			var response UsersFollowForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59335,7 +59335,7 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersFollowApplicationJSONNotFound
+			var response UsersFollowNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59414,7 +59414,7 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetAuthenticatedApplicationJSONUnauthorized
+			var response UsersGetAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59449,7 +59449,7 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthe
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetAuthenticatedApplicationJSONForbidden
+			var response UsersGetAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59750,7 +59750,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
+			var response UsersGetGpgKeyForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59785,7 +59785,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
+			var response UsersGetGpgKeyForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59820,7 +59820,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
+			var response UsersGetGpgKeyForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59899,7 +59899,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+			var response UsersGetPublicSSHKeyForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59934,7 +59934,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
+			var response UsersGetPublicSSHKeyForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -59969,7 +59969,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
+			var response UsersGetPublicSSHKeyForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60138,7 +60138,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
+			var response UsersListBlockedByAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60173,7 +60173,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListBlockedByAuthenticatedApplicationJSONForbidden
+			var response UsersListBlockedByAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60208,7 +60208,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListBlockedByAuthenticatedApplicationJSONNotFound
+			var response UsersListBlockedByAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60368,7 +60368,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
+			var response UsersListEmailsForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60403,7 +60403,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListEmailsForAuthenticatedApplicationJSONForbidden
+			var response UsersListEmailsForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60438,7 +60438,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListEmailsForAuthenticatedApplicationJSONNotFound
+			var response UsersListEmailsForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60563,7 +60563,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
+			var response UsersListFollowedByAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60598,7 +60598,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListFollowedByAuthenticatedApplicationJSONForbidden
+			var response UsersListFollowedByAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60723,7 +60723,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
+			var response UsersListFollowersForAuthenticatedUserUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -60758,7 +60758,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
+			var response UsersListFollowersForAuthenticatedUserForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61057,7 +61057,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
+			var response UsersListGpgKeysForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61092,7 +61092,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
+			var response UsersListGpgKeysForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61127,7 +61127,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
+			var response UsersListGpgKeysForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61339,7 +61339,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
+			var response UsersListPublicEmailsForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61374,7 +61374,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
+			var response UsersListPublicEmailsForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61409,7 +61409,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
+			var response UsersListPublicEmailsForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61621,7 +61621,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
+			var response UsersListPublicSSHKeysForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61656,7 +61656,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
+			var response UsersListPublicSSHKeysForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61691,7 +61691,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
+			var response UsersListPublicSSHKeysForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61770,7 +61770,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61805,7 +61805,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61840,7 +61840,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound
+			var response UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61922,7 +61922,7 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUnblockApplicationJSONUnauthorized
+			var response UsersUnblockUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61957,7 +61957,7 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUnblockApplicationJSONForbidden
+			var response UsersUnblockForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -61992,7 +61992,7 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUnblockApplicationJSONNotFound
+			var response UsersUnblockNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -62039,7 +62039,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUnfollowApplicationJSONUnauthorized
+			var response UsersUnfollowUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -62074,7 +62074,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUnfollowApplicationJSONForbidden
+			var response UsersUnfollowForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -62109,7 +62109,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUnfollowApplicationJSONNotFound
+			var response UsersUnfollowNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -62188,7 +62188,7 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUpdateAuthenticatedApplicationJSONUnauthorized
+			var response UsersUpdateAuthenticatedUnauthorized
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -62223,7 +62223,7 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUpdateAuthenticatedApplicationJSONForbidden
+			var response UsersUpdateAuthenticatedForbidden
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -62258,7 +62258,7 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response UsersUpdateAuthenticatedApplicationJSONNotFound
+			var response UsersUpdateAuthenticatedNotFound
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

@@ -4562,13 +4562,13 @@ func (s *TestFloatValidation) SetMultipleOf(val float64) {
 // TestFloatValidationOK is response for TestFloatValidation operation.
 type TestFloatValidationOK struct{}
 
-type TestNullableOneofsApplicationJSONCreated OneOfWithNullable
+type TestNullableOneofsCreated OneOfWithNullable
 
-func (*TestNullableOneofsApplicationJSONCreated) testNullableOneofsRes() {}
+func (*TestNullableOneofsCreated) testNullableOneofsRes() {}
 
-type TestNullableOneofsApplicationJSONOK OneOfWithNullable
+type TestNullableOneofsOK OneOfWithNullable
 
-func (*TestNullableOneofsApplicationJSONOK) testNullableOneofsRes() {}
+func (*TestNullableOneofsOK) testNullableOneofsRes() {}
 
 // Ref: #/components/schemas/ValidationStringMap
 type ValidationStringMap map[string]string

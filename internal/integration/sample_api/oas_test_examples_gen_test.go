@@ -715,8 +715,8 @@ func TestTestFloatValidation_EncodeDecode(t *testing.T) {
 	var typ2 TestFloatValidation
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestTestNullableOneofsApplicationJSONCreated_EncodeDecode(t *testing.T) {
-	var typ TestNullableOneofsApplicationJSONCreated
+func TestTestNullableOneofsCreated_EncodeDecode(t *testing.T) {
+	var typ TestNullableOneofsCreated
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -724,11 +724,11 @@ func TestTestNullableOneofsApplicationJSONCreated_EncodeDecode(t *testing.T) {
 	data := e.Bytes()
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
-	var typ2 TestNullableOneofsApplicationJSONCreated
+	var typ2 TestNullableOneofsCreated
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestTestNullableOneofsApplicationJSONOK_EncodeDecode(t *testing.T) {
-	var typ TestNullableOneofsApplicationJSONOK
+func TestTestNullableOneofsOK_EncodeDecode(t *testing.T) {
+	var typ TestNullableOneofsOK
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -736,7 +736,7 @@ func TestTestNullableOneofsApplicationJSONOK_EncodeDecode(t *testing.T) {
 	data := e.Bytes()
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
-	var typ2 TestNullableOneofsApplicationJSONOK
+	var typ2 TestNullableOneofsOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestValidationStringMap_EncodeDecode(t *testing.T) {

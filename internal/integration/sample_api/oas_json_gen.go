@@ -7253,17 +7253,17 @@ func (s *TestFloatValidation) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes TestNullableOneofsApplicationJSONCreated as json.
-func (s TestNullableOneofsApplicationJSONCreated) Encode(e *jx.Encoder) {
+// Encode encodes TestNullableOneofsCreated as json.
+func (s TestNullableOneofsCreated) Encode(e *jx.Encoder) {
 	unwrapped := OneOfWithNullable(s)
 
 	unwrapped.Encode(e)
 }
 
-// Decode decodes TestNullableOneofsApplicationJSONCreated from json.
-func (s *TestNullableOneofsApplicationJSONCreated) Decode(d *jx.Decoder) error {
+// Decode decodes TestNullableOneofsCreated from json.
+func (s *TestNullableOneofsCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode TestNullableOneofsApplicationJSONCreated to nil")
+		return errors.New("invalid: unable to decode TestNullableOneofsCreated to nil")
 	}
 	var unwrapped OneOfWithNullable
 	if err := func() error {
@@ -7274,34 +7274,34 @@ func (s *TestNullableOneofsApplicationJSONCreated) Decode(d *jx.Decoder) error {
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = TestNullableOneofsApplicationJSONCreated(unwrapped)
+	*s = TestNullableOneofsCreated(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TestNullableOneofsApplicationJSONCreated) MarshalJSON() ([]byte, error) {
+func (s TestNullableOneofsCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *TestNullableOneofsApplicationJSONCreated) UnmarshalJSON(data []byte) error {
+func (s *TestNullableOneofsCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes TestNullableOneofsApplicationJSONOK as json.
-func (s TestNullableOneofsApplicationJSONOK) Encode(e *jx.Encoder) {
+// Encode encodes TestNullableOneofsOK as json.
+func (s TestNullableOneofsOK) Encode(e *jx.Encoder) {
 	unwrapped := OneOfWithNullable(s)
 
 	unwrapped.Encode(e)
 }
 
-// Decode decodes TestNullableOneofsApplicationJSONOK from json.
-func (s *TestNullableOneofsApplicationJSONOK) Decode(d *jx.Decoder) error {
+// Decode decodes TestNullableOneofsOK from json.
+func (s *TestNullableOneofsOK) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode TestNullableOneofsApplicationJSONOK to nil")
+		return errors.New("invalid: unable to decode TestNullableOneofsOK to nil")
 	}
 	var unwrapped OneOfWithNullable
 	if err := func() error {
@@ -7312,19 +7312,19 @@ func (s *TestNullableOneofsApplicationJSONOK) Decode(d *jx.Decoder) error {
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = TestNullableOneofsApplicationJSONOK(unwrapped)
+	*s = TestNullableOneofsOK(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s TestNullableOneofsApplicationJSONOK) MarshalJSON() ([]byte, error) {
+func (s TestNullableOneofsOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *TestNullableOneofsApplicationJSONOK) UnmarshalJSON(data []byte) error {
+func (s *TestNullableOneofsOK) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

@@ -62,7 +62,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		}
 		return nil
 
-	case *ActionsApproveWorkflowRunApplicationJSONForbidden:
+	case *ActionsApproveWorkflowRunForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -74,7 +74,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		}
 		return nil
 
-	case *ActionsApproveWorkflowRunApplicationJSONNotFound:
+	case *ActionsApproveWorkflowRunNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -1234,7 +1234,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 
 		return nil
 
-	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1246,7 +1246,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		}
 		return nil
 
-	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1258,7 +1258,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		}
 		return nil
 
-	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -1296,7 +1296,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 
 		return nil
 
-	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
+	case *ActivityDeleteThreadSubscriptionUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1308,7 +1308,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		}
 		return nil
 
-	case *ActivityDeleteThreadSubscriptionApplicationJSONForbidden:
+	case *ActivityDeleteThreadSubscriptionForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1395,7 +1395,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 
 		return nil
 
-	case *ActivityGetThreadApplicationJSONUnauthorized:
+	case *ActivityGetThreadUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1407,7 +1407,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		}
 		return nil
 
-	case *ActivityGetThreadApplicationJSONForbidden:
+	case *ActivityGetThreadForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1444,7 +1444,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 
 		return nil
 
-	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1456,7 +1456,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		}
 		return nil
 
-	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1533,7 +1533,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 
 		return nil
 
-	case *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityListNotificationsForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1545,7 +1545,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		}
 		return nil
 
-	case *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityListNotificationsForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1654,7 +1654,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		}
 		return nil
 
-	case *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently:
+	case *ActivityListPublicEventsForRepoNetworkMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
@@ -1672,7 +1672,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 
 		return nil
 
-	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
+	case *ActivityListPublicEventsForRepoNetworkForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1684,7 +1684,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		}
 		return nil
 
-	case *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound:
+	case *ActivityListPublicEventsForRepoNetworkNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -1865,7 +1865,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 
 		return nil
 
-	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityListReposStarredByAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1877,7 +1877,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		}
 		return nil
 
-	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityListReposStarredByAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -1973,7 +1973,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 
 		return nil
 
-	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityListWatchedReposForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -1985,7 +1985,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		}
 		return nil
 
-	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityListWatchedReposForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2064,7 +2064,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 
 		return nil
 
-	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
+	case *ActivityMarkNotificationsAsReadUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2076,7 +2076,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		}
 		return nil
 
-	case *ActivityMarkNotificationsAsReadApplicationJSONForbidden:
+	case *ActivityMarkNotificationsAsReadForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2182,7 +2182,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 
 		return nil
 
-	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
+	case *ActivitySetThreadSubscriptionUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2194,7 +2194,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		}
 		return nil
 
-	case *ActivitySetThreadSubscriptionApplicationJSONForbidden:
+	case *ActivitySetThreadSubscriptionForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2225,7 +2225,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 
 		return nil
 
-	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityStarRepoForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2237,7 +2237,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		}
 		return nil
 
-	case *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityStarRepoForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2249,7 +2249,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		}
 		return nil
 
-	case *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound:
+	case *ActivityStarRepoForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2280,7 +2280,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 
 		return nil
 
-	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ActivityUnstarRepoForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2292,7 +2292,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		}
 		return nil
 
-	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden:
+	case *ActivityUnstarRepoForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2304,7 +2304,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		}
 		return nil
 
-	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound:
+	case *ActivityUnstarRepoForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2335,7 +2335,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 
 		return nil
 
-	case *AppsAddRepoToInstallationApplicationJSONForbidden:
+	case *AppsAddRepoToInstallationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2347,7 +2347,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		}
 		return nil
 
-	case *AppsAddRepoToInstallationApplicationJSONNotFound:
+	case *AppsAddRepoToInstallationNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2427,7 +2427,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 
 		return nil
 
-	case *AppsCreateContentAttachmentApplicationJSONForbidden:
+	case *AppsCreateContentAttachmentForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2439,7 +2439,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		}
 		return nil
 
-	case *AppsCreateContentAttachmentApplicationJSONNotFound:
+	case *AppsCreateContentAttachmentNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2451,7 +2451,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		}
 		return nil
 
-	case *AppsCreateContentAttachmentApplicationJSONGone:
+	case *AppsCreateContentAttachmentGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -2549,7 +2549,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		}
 		return nil
 
-	case *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized:
+	case *AppsCreateInstallationAccessTokenUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2561,7 +2561,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		}
 		return nil
 
-	case *AppsCreateInstallationAccessTokenApplicationJSONForbidden:
+	case *AppsCreateInstallationAccessTokenForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2573,7 +2573,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		}
 		return nil
 
-	case *AppsCreateInstallationAccessTokenApplicationJSONNotFound:
+	case *AppsCreateInstallationAccessTokenNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2716,7 +2716,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *AppsGetBySlugApplicationJSONForbidden:
+	case *AppsGetBySlugForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -2728,7 +2728,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *AppsGetBySlugApplicationJSONNotFound:
+	case *AppsGetBySlugNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2771,7 +2771,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		}
 		return nil
 
-	case *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized:
+	case *AppsGetSubscriptionPlanForAccountUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2783,7 +2783,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		}
 		return nil
 
-	case *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound:
+	case *AppsGetSubscriptionPlanForAccountNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -2930,7 +2930,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		}
 		return nil
 
-	case *AppsListAccountsForPlanApplicationJSONUnauthorized:
+	case *AppsListAccountsForPlanUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -2942,7 +2942,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		}
 		return nil
 
-	case *AppsListAccountsForPlanApplicationJSONNotFound:
+	case *AppsListAccountsForPlanNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -3064,7 +3064,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 
 		return nil
 
-	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
+	case *AppsListInstallationReposForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -3076,7 +3076,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		}
 		return nil
 
-	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound:
+	case *AppsListInstallationReposForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -3130,7 +3130,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *AppsListPlansApplicationJSONUnauthorized:
+	case *AppsListPlansUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -3142,7 +3142,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *AppsListPlansApplicationJSONNotFound:
+	case *AppsListPlansNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -3252,7 +3252,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 
 		return nil
 
-	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
+	case *AppsListReposAccessibleToInstallationUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -3264,7 +3264,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		}
 		return nil
 
-	case *AppsListReposAccessibleToInstallationApplicationJSONForbidden:
+	case *AppsListReposAccessibleToInstallationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -3324,7 +3324,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 
 		return nil
 
-	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
+	case *AppsListSubscriptionsForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -3336,7 +3336,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		}
 		return nil
 
-	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound:
+	case *AppsListSubscriptionsForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -3513,7 +3513,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 
 		return nil
 
-	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
+	case *AppsRemoveRepoFromInstallationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -3525,7 +3525,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		}
 		return nil
 
-	case *AppsRemoveRepoFromInstallationApplicationJSONNotFound:
+	case *AppsRemoveRepoFromInstallationNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -3594,7 +3594,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		}
 		return nil
 
-	case *AppsScopeTokenApplicationJSONUnauthorized:
+	case *AppsScopeTokenUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -3606,7 +3606,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		}
 		return nil
 
-	case *AppsScopeTokenApplicationJSONForbidden:
+	case *AppsScopeTokenForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -3618,7 +3618,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		}
 		return nil
 
-	case *AppsScopeTokenApplicationJSONNotFound:
+	case *AppsScopeTokenNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -3829,7 +3829,7 @@ func encodeBillingGetSharedStorageBillingUserResponse(response *CombinedBillingU
 
 func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ChecksCreateSuiteApplicationJSONOK:
+	case *ChecksCreateSuiteOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3841,7 +3841,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		}
 		return nil
 
-	case *ChecksCreateSuiteApplicationJSONCreated:
+	case *ChecksCreateSuiteCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -4056,7 +4056,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		}
 		return nil
 
-	case *CodeScanningDeleteAnalysisApplicationJSONBadRequest:
+	case *CodeScanningDeleteAnalysisBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -4068,7 +4068,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		}
 		return nil
 
-	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
+	case *CodeScanningDeleteAnalysisForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4080,7 +4080,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		}
 		return nil
 
-	case *CodeScanningDeleteAnalysisApplicationJSONNotFound:
+	case *CodeScanningDeleteAnalysisNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4123,7 +4123,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		}
 		return nil
 
-	case *CodeScanningGetAlertApplicationJSONForbidden:
+	case *CodeScanningGetAlertForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4135,7 +4135,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		}
 		return nil
 
-	case *CodeScanningGetAlertApplicationJSONNotFound:
+	case *CodeScanningGetAlertNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4189,7 +4189,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		}
 		return nil
 
-	case *CodeScanningGetAnalysisApplicationJSONForbidden:
+	case *CodeScanningGetAnalysisForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4201,7 +4201,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		}
 		return nil
 
-	case *CodeScanningGetAnalysisApplicationJSONNotFound:
+	case *CodeScanningGetAnalysisNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4293,7 +4293,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		}
 		return nil
 
-	case *CodeScanningListAlertInstancesApplicationJSONForbidden:
+	case *CodeScanningListAlertInstancesForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4305,7 +4305,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		}
 		return nil
 
-	case *CodeScanningListAlertInstancesApplicationJSONNotFound:
+	case *CodeScanningListAlertInstancesNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4348,7 +4348,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		}
 		return nil
 
-	case *CodeScanningListAlertsForRepoApplicationJSONForbidden:
+	case *CodeScanningListAlertsForRepoForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4360,7 +4360,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		}
 		return nil
 
-	case *CodeScanningListAlertsForRepoApplicationJSONNotFound:
+	case *CodeScanningListAlertsForRepoNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4403,7 +4403,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		}
 		return nil
 
-	case *CodeScanningListRecentAnalysesApplicationJSONForbidden:
+	case *CodeScanningListRecentAnalysesForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4415,7 +4415,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		}
 		return nil
 
-	case *CodeScanningListRecentAnalysesApplicationJSONNotFound:
+	case *CodeScanningListRecentAnalysesNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4458,7 +4458,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		}
 		return nil
 
-	case *CodeScanningUpdateAlertApplicationJSONForbidden:
+	case *CodeScanningUpdateAlertForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4470,7 +4470,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		}
 		return nil
 
-	case *CodeScanningUpdateAlertApplicationJSONNotFound:
+	case *CodeScanningUpdateAlertNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -4519,7 +4519,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 
 		return nil
 
-	case *CodeScanningUploadSarifApplicationJSONForbidden:
+	case *CodeScanningUploadSarifForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -4531,7 +4531,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		}
 		return nil
 
-	case *CodeScanningUploadSarifApplicationJSONNotFound:
+	case *CodeScanningUploadSarifNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5211,7 +5211,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *GistsCreateApplicationJSONForbidden:
+	case *GistsCreateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5223,7 +5223,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *GistsCreateApplicationJSONNotFound:
+	case *GistsCreateNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5291,7 +5291,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 
 		return nil
 
-	case *GistsCreateCommentApplicationJSONForbidden:
+	case *GistsCreateCommentForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5303,7 +5303,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		}
 		return nil
 
-	case *GistsCreateCommentApplicationJSONNotFound:
+	case *GistsCreateCommentNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5334,7 +5334,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *GistsDeleteApplicationJSONForbidden:
+	case *GistsDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5346,7 +5346,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *GistsDeleteApplicationJSONNotFound:
+	case *GistsDeleteNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5377,7 +5377,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 
 		return nil
 
-	case *GistsDeleteCommentApplicationJSONForbidden:
+	case *GistsDeleteCommentForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5389,7 +5389,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		}
 		return nil
 
-	case *GistsDeleteCommentApplicationJSONNotFound:
+	case *GistsDeleteCommentNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5445,7 +5445,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 
 		return nil
 
-	case *GistsForkApplicationJSONForbidden:
+	case *GistsForkForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5457,7 +5457,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *GistsForkApplicationJSONNotFound:
+	case *GistsForkNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5598,7 +5598,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		}
 		return nil
 
-	case *GistsGetRevisionApplicationJSONForbidden:
+	case *GistsGetRevisionForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5610,7 +5610,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		}
 		return nil
 
-	case *GistsGetRevisionApplicationJSONNotFound:
+	case *GistsGetRevisionNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5742,7 +5742,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 
 		return nil
 
-	case *GistsListCommentsApplicationJSONForbidden:
+	case *GistsListCommentsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5754,7 +5754,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		}
 		return nil
 
-	case *GistsListCommentsApplicationJSONNotFound:
+	case *GistsListCommentsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5814,7 +5814,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 
 		return nil
 
-	case *GistsListCommitsApplicationJSONForbidden:
+	case *GistsListCommitsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5826,7 +5826,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		}
 		return nil
 
-	case *GistsListCommitsApplicationJSONNotFound:
+	case *GistsListCommitsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -5940,7 +5940,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 
 		return nil
 
-	case *GistsListForksApplicationJSONForbidden:
+	case *GistsListForksForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -5952,7 +5952,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		}
 		return nil
 
-	case *GistsListForksApplicationJSONNotFound:
+	case *GistsListForksNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -6084,7 +6084,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 
 		return nil
 
-	case *GistsListStarredApplicationJSONUnauthorized:
+	case *GistsListStarredUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -6096,7 +6096,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		}
 		return nil
 
-	case *GistsListStarredApplicationJSONForbidden:
+	case *GistsListStarredForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -6127,7 +6127,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 
 		return nil
 
-	case *GistsStarApplicationJSONForbidden:
+	case *GistsStarForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -6139,7 +6139,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *GistsStarApplicationJSONNotFound:
+	case *GistsStarNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -6170,7 +6170,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *GistsUnstarApplicationJSONForbidden:
+	case *GistsUnstarForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -6182,7 +6182,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *GistsUnstarApplicationJSONNotFound:
+	case *GistsUnstarNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -6263,7 +6263,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *GitCreateBlobApplicationJSONForbidden:
+	case *GitCreateBlobForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -6275,7 +6275,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *GitCreateBlobApplicationJSONNotFound:
+	case *GitCreateBlobNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -6287,7 +6287,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *GitCreateBlobApplicationJSONConflict:
+	case *GitCreateBlobConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -6511,7 +6511,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *GitCreateTreeApplicationJSONForbidden:
+	case *GitCreateTreeForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -6523,7 +6523,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *GitCreateTreeApplicationJSONNotFound:
+	case *GitCreateTreeNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -6591,7 +6591,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *GitGetBlobApplicationJSONForbidden:
+	case *GitGetBlobForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -6603,7 +6603,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *GitGetBlobApplicationJSONNotFound:
+	case *GitGetBlobNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -7076,7 +7076,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesCreateApplicationJSONForbidden:
+	case *IssuesCreateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -7088,7 +7088,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesCreateApplicationJSONNotFound:
+	case *IssuesCreateNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -7100,7 +7100,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesCreateApplicationJSONGone:
+	case *IssuesCreateGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -7174,7 +7174,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		}
 		return nil
 
-	case *IssuesCreateCommentApplicationJSONForbidden:
+	case *IssuesCreateCommentForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -7186,7 +7186,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		}
 		return nil
 
-	case *IssuesCreateCommentApplicationJSONNotFound:
+	case *IssuesCreateCommentNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -7198,7 +7198,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		}
 		return nil
 
-	case *IssuesCreateCommentApplicationJSONGone:
+	case *IssuesCreateCommentGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -7404,7 +7404,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *IssuesGetApplicationJSONMovedPermanently:
+	case *IssuesGetMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
@@ -7422,7 +7422,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 
 		return nil
 
-	case *IssuesGetApplicationJSONNotFound:
+	case *IssuesGetNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -7434,7 +7434,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		}
 		return nil
 
-	case *IssuesGetApplicationJSONGone:
+	case *IssuesGetGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -7496,7 +7496,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		}
 		return nil
 
-	case *IssuesGetEventApplicationJSONForbidden:
+	case *IssuesGetEventForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -7508,7 +7508,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		}
 		return nil
 
-	case *IssuesGetEventApplicationJSONNotFound:
+	case *IssuesGetEventNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -7520,7 +7520,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		}
 		return nil
 
-	case *IssuesGetEventApplicationJSONGone:
+	case *IssuesGetEventGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -7762,7 +7762,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		}
 		return nil
 
-	case *IssuesListCommentsApplicationJSONNotFound:
+	case *IssuesListCommentsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -7774,7 +7774,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		}
 		return nil
 
-	case *IssuesListCommentsApplicationJSONGone:
+	case *IssuesListCommentsGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -8062,7 +8062,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		}
 		return nil
 
-	case *IssuesListForRepoApplicationJSONMovedPermanently:
+	case *IssuesListForRepoMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
@@ -8074,7 +8074,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		}
 		return nil
 
-	case *IssuesListForRepoApplicationJSONNotFound:
+	case *IssuesListForRepoNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -8309,7 +8309,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 
 		return nil
 
-	case *IssuesLockApplicationJSONForbidden:
+	case *IssuesLockForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -8321,7 +8321,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *IssuesLockApplicationJSONNotFound:
+	case *IssuesLockNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -8333,7 +8333,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *IssuesLockApplicationJSONGone:
+	case *IssuesLockGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -8414,7 +8414,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		}
 		return nil
 
-	case *IssuesRemoveLabelApplicationJSONNotFound:
+	case *IssuesRemoveLabelNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -8426,7 +8426,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		}
 		return nil
 
-	case *IssuesRemoveLabelApplicationJSONGone:
+	case *IssuesRemoveLabelGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -8451,7 +8451,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 
 		return nil
 
-	case *IssuesUnlockApplicationJSONForbidden:
+	case *IssuesUnlockForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -8463,7 +8463,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesUnlockApplicationJSONNotFound:
+	case *IssuesUnlockNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -8494,7 +8494,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesUpdateApplicationJSONMovedPermanently:
+	case *IssuesUpdateMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
@@ -8506,7 +8506,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesUpdateApplicationJSONForbidden:
+	case *IssuesUpdateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -8518,7 +8518,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesUpdateApplicationJSONNotFound:
+	case *IssuesUpdateNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -8530,7 +8530,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *IssuesUpdateApplicationJSONGone:
+	case *IssuesUpdateGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -8648,7 +8648,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *LicensesGetApplicationJSONForbidden:
+	case *LicensesGetForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -8660,7 +8660,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *LicensesGetApplicationJSONNotFound:
+	case *LicensesGetNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -8899,7 +8899,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 
 		return nil
 
-	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
+	case *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -8911,7 +8911,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		}
 		return nil
 
-	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden:
+	case *MigrationsDeleteArchiveForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -8923,7 +8923,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		}
 		return nil
 
-	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound:
+	case *MigrationsDeleteArchiveForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -9004,7 +9004,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 
 		return nil
 
-	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
+	case *MigrationsGetArchiveForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9016,7 +9016,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		}
 		return nil
 
-	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden:
+	case *MigrationsGetArchiveForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9132,7 +9132,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 
 		return nil
 
-	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
+	case *MigrationsGetStatusForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9144,7 +9144,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		}
 		return nil
 
-	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden:
+	case *MigrationsGetStatusForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9156,7 +9156,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		}
 		return nil
 
-	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound:
+	case *MigrationsGetStatusForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -9247,7 +9247,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 
 		return nil
 
-	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
+	case *MigrationsListForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9259,7 +9259,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		}
 		return nil
 
-	case *MigrationsListForAuthenticatedUserApplicationJSONForbidden:
+	case *MigrationsListForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9514,7 +9514,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 
 		return nil
 
-	case *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized:
+	case *MigrationsStartForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9526,7 +9526,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		}
 		return nil
 
-	case *MigrationsStartForAuthenticatedUserApplicationJSONForbidden:
+	case *MigrationsStartForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9674,7 +9674,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 
 		return nil
 
-	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
+	case *MigrationsUnlockRepoForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9686,7 +9686,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		}
 		return nil
 
-	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden:
+	case *MigrationsUnlockRepoForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9698,7 +9698,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		}
 		return nil
 
-	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound:
+	case *MigrationsUnlockRepoForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -9792,7 +9792,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 
 		return nil
 
-	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsCreateAuthorizationUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9804,7 +9804,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		}
 		return nil
 
-	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden:
+	case *OAuthAuthorizationsCreateAuthorizationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9816,7 +9816,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		}
 		return nil
 
-	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone:
+	case *OAuthAuthorizationsCreateAuthorizationGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -9859,7 +9859,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 
 		return nil
 
-	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsDeleteAuthorizationUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9871,7 +9871,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		}
 		return nil
 
-	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden:
+	case *OAuthAuthorizationsDeleteAuthorizationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9902,7 +9902,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 
 		return nil
 
-	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsDeleteGrantUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9914,7 +9914,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		}
 		return nil
 
-	case *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden:
+	case *OAuthAuthorizationsDeleteGrantForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -9951,7 +9951,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 
 		return nil
 
-	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsGetAuthorizationUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -9963,7 +9963,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		}
 		return nil
 
-	case *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden:
+	case *OAuthAuthorizationsGetAuthorizationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10000,7 +10000,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 
 		return nil
 
-	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsGetGrantUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -10012,7 +10012,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		}
 		return nil
 
-	case *OAuthAuthorizationsGetGrantApplicationJSONForbidden:
+	case *OAuthAuthorizationsGetGrantForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10031,7 +10031,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK:
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppOK:
 		w.Header().Set("Content-Type", "application/json")
 		// Encoding response headers.
 		{
@@ -10062,7 +10062,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		}
 		return nil
 
-	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated:
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated:
 		w.Header().Set("Content-Type", "application/json")
 		// Encoding response headers.
 		{
@@ -10099,7 +10099,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 
 		return nil
 
-	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -10111,7 +10111,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		}
 		return nil
 
-	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden:
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10142,7 +10142,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK:
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK:
 		w.Header().Set("Content-Type", "application/json")
 		// Encoding response headers.
 		{
@@ -10173,7 +10173,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		}
 		return nil
 
-	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated:
+	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated:
 		w.Header().Set("Content-Type", "application/json")
 		// Encoding response headers.
 		{
@@ -10264,7 +10264,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 
 		return nil
 
-	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsListAuthorizationsUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -10276,7 +10276,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		}
 		return nil
 
-	case *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden:
+	case *OAuthAuthorizationsListAuthorizationsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10288,7 +10288,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		}
 		return nil
 
-	case *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound:
+	case *OAuthAuthorizationsListAuthorizationsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -10348,7 +10348,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 
 		return nil
 
-	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
+	case *OAuthAuthorizationsListGrantsUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -10360,7 +10360,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		}
 		return nil
 
-	case *OAuthAuthorizationsListGrantsApplicationJSONForbidden:
+	case *OAuthAuthorizationsListGrantsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10372,7 +10372,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		}
 		return nil
 
-	case *OAuthAuthorizationsListGrantsApplicationJSONNotFound:
+	case *OAuthAuthorizationsListGrantsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -10805,7 +10805,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		}
 		return nil
 
-	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden:
+	case *OrgsGetMembershipForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10817,7 +10817,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		}
 		return nil
 
-	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound:
+	case *OrgsGetMembershipForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -10848,7 +10848,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		}
 		return nil
 
-	case *OrgsGetMembershipForUserApplicationJSONForbidden:
+	case *OrgsGetMembershipForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -10860,7 +10860,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		}
 		return nil
 
-	case *OrgsGetMembershipForUserApplicationJSONNotFound:
+	case *OrgsGetMembershipForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -11140,7 +11140,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 
 		return nil
 
-	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
+	case *OrgsListForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -11152,7 +11152,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		}
 		return nil
 
-	case *OrgsListForAuthenticatedUserApplicationJSONForbidden:
+	case *OrgsListForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -11381,7 +11381,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 
 		return nil
 
-	case *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized:
+	case *OrgsListMembershipsForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -11393,7 +11393,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		}
 		return nil
 
-	case *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden:
+	case *OrgsListMembershipsForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -11763,7 +11763,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 
 		return nil
 
-	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
+	case *OrgsRemoveMembershipForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -11775,7 +11775,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		}
 		return nil
 
-	case *OrgsRemoveMembershipForUserApplicationJSONNotFound:
+	case *OrgsRemoveMembershipForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -11938,7 +11938,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		}
 		return nil
 
-	case *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden:
+	case *OrgsUpdateMembershipForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -11950,7 +11950,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		}
 		return nil
 
-	case *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound:
+	case *OrgsUpdateMembershipForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12043,7 +12043,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 
 		return nil
 
-	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized:
+	case *PackagesDeletePackageForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12055,7 +12055,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		}
 		return nil
 
-	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden:
+	case *PackagesDeletePackageForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12067,7 +12067,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		}
 		return nil
 
-	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound:
+	case *PackagesDeletePackageForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12092,7 +12092,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 
 		return nil
 
-	case *PackagesDeletePackageForOrgApplicationJSONUnauthorized:
+	case *PackagesDeletePackageForOrgUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12104,7 +12104,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		}
 		return nil
 
-	case *PackagesDeletePackageForOrgApplicationJSONForbidden:
+	case *PackagesDeletePackageForOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12116,7 +12116,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		}
 		return nil
 
-	case *PackagesDeletePackageForOrgApplicationJSONNotFound:
+	case *PackagesDeletePackageForOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12141,7 +12141,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 
 		return nil
 
-	case *PackagesDeletePackageForUserApplicationJSONUnauthorized:
+	case *PackagesDeletePackageForUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12153,7 +12153,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		}
 		return nil
 
-	case *PackagesDeletePackageForUserApplicationJSONForbidden:
+	case *PackagesDeletePackageForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12165,7 +12165,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		}
 		return nil
 
-	case *PackagesDeletePackageForUserApplicationJSONNotFound:
+	case *PackagesDeletePackageForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12190,7 +12190,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 
 		return nil
 
-	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
+	case *PackagesDeletePackageVersionForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12202,7 +12202,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		}
 		return nil
 
-	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden:
+	case *PackagesDeletePackageVersionForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12214,7 +12214,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		}
 		return nil
 
-	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound:
+	case *PackagesDeletePackageVersionForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12239,7 +12239,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 
 		return nil
 
-	case *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized:
+	case *PackagesDeletePackageVersionForOrgUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12251,7 +12251,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		}
 		return nil
 
-	case *PackagesDeletePackageVersionForOrgApplicationJSONForbidden:
+	case *PackagesDeletePackageVersionForOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12263,7 +12263,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		}
 		return nil
 
-	case *PackagesDeletePackageVersionForOrgApplicationJSONNotFound:
+	case *PackagesDeletePackageVersionForOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12288,7 +12288,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 
 		return nil
 
-	case *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized:
+	case *PackagesDeletePackageVersionForUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12300,7 +12300,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		}
 		return nil
 
-	case *PackagesDeletePackageVersionForUserApplicationJSONForbidden:
+	case *PackagesDeletePackageVersionForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12312,7 +12312,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		}
 		return nil
 
-	case *PackagesDeletePackageVersionForUserApplicationJSONNotFound:
+	case *PackagesDeletePackageVersionForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12343,7 +12343,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12355,7 +12355,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12367,7 +12367,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12398,7 +12398,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12410,7 +12410,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12422,7 +12422,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12453,7 +12453,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12465,7 +12465,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12477,7 +12477,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		}
 		return nil
 
-	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound:
+	case *PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12603,7 +12603,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		}
 		return nil
 
-	case *PackagesListPackagesForOrganizationApplicationJSONUnauthorized:
+	case *PackagesListPackagesForOrganizationUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12615,7 +12615,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		}
 		return nil
 
-	case *PackagesListPackagesForOrganizationApplicationJSONForbidden:
+	case *PackagesListPackagesForOrganizationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12646,7 +12646,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		}
 		return nil
 
-	case *PackagesListPackagesForUserApplicationJSONUnauthorized:
+	case *PackagesListPackagesForUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12658,7 +12658,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		}
 		return nil
 
-	case *PackagesListPackagesForUserApplicationJSONForbidden:
+	case *PackagesListPackagesForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12683,7 +12683,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 
 		return nil
 
-	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized:
+	case *PackagesRestorePackageForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12695,7 +12695,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		}
 		return nil
 
-	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden:
+	case *PackagesRestorePackageForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12707,7 +12707,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		}
 		return nil
 
-	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound:
+	case *PackagesRestorePackageForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12732,7 +12732,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 
 		return nil
 
-	case *PackagesRestorePackageForOrgApplicationJSONUnauthorized:
+	case *PackagesRestorePackageForOrgUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12744,7 +12744,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		}
 		return nil
 
-	case *PackagesRestorePackageForOrgApplicationJSONForbidden:
+	case *PackagesRestorePackageForOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12756,7 +12756,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		}
 		return nil
 
-	case *PackagesRestorePackageForOrgApplicationJSONNotFound:
+	case *PackagesRestorePackageForOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12781,7 +12781,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 
 		return nil
 
-	case *PackagesRestorePackageForUserApplicationJSONUnauthorized:
+	case *PackagesRestorePackageForUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12793,7 +12793,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		}
 		return nil
 
-	case *PackagesRestorePackageForUserApplicationJSONForbidden:
+	case *PackagesRestorePackageForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12805,7 +12805,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		}
 		return nil
 
-	case *PackagesRestorePackageForUserApplicationJSONNotFound:
+	case *PackagesRestorePackageForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12830,7 +12830,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 
 		return nil
 
-	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
+	case *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12842,7 +12842,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		}
 		return nil
 
-	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden:
+	case *PackagesRestorePackageVersionForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12854,7 +12854,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		}
 		return nil
 
-	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound:
+	case *PackagesRestorePackageVersionForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12879,7 +12879,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 
 		return nil
 
-	case *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized:
+	case *PackagesRestorePackageVersionForOrgUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12891,7 +12891,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		}
 		return nil
 
-	case *PackagesRestorePackageVersionForOrgApplicationJSONForbidden:
+	case *PackagesRestorePackageVersionForOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12903,7 +12903,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		}
 		return nil
 
-	case *PackagesRestorePackageVersionForOrgApplicationJSONNotFound:
+	case *PackagesRestorePackageVersionForOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12928,7 +12928,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 
 		return nil
 
-	case *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized:
+	case *PackagesRestorePackageVersionForUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12940,7 +12940,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		}
 		return nil
 
-	case *PackagesRestorePackageVersionForUserApplicationJSONForbidden:
+	case *PackagesRestorePackageVersionForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -12952,7 +12952,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		}
 		return nil
 
-	case *PackagesRestorePackageVersionForUserApplicationJSONNotFound:
+	case *PackagesRestorePackageVersionForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -12983,7 +12983,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 
 		return nil
 
-	case *ProjectsAddCollaboratorApplicationJSONUnauthorized:
+	case *ProjectsAddCollaboratorUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -12995,7 +12995,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		}
 		return nil
 
-	case *ProjectsAddCollaboratorApplicationJSONForbidden:
+	case *ProjectsAddCollaboratorForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13007,7 +13007,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		}
 		return nil
 
-	case *ProjectsAddCollaboratorApplicationJSONNotFound:
+	case *ProjectsAddCollaboratorNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13056,7 +13056,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 
 		return nil
 
-	case *ProjectsCreateColumnApplicationJSONUnauthorized:
+	case *ProjectsCreateColumnUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13068,7 +13068,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		}
 		return nil
 
-	case *ProjectsCreateColumnApplicationJSONForbidden:
+	case *ProjectsCreateColumnForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13117,7 +13117,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 
 		return nil
 
-	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ProjectsCreateForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13129,7 +13129,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		}
 		return nil
 
-	case *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden:
+	case *ProjectsCreateForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13184,7 +13184,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		}
 		return nil
 
-	case *ProjectsCreateForOrgApplicationJSONUnauthorized:
+	case *ProjectsCreateForOrgUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13196,7 +13196,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		}
 		return nil
 
-	case *ProjectsCreateForOrgApplicationJSONForbidden:
+	case *ProjectsCreateForOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13208,7 +13208,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		}
 		return nil
 
-	case *ProjectsCreateForOrgApplicationJSONNotFound:
+	case *ProjectsCreateForOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13220,7 +13220,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		}
 		return nil
 
-	case *ProjectsCreateForOrgApplicationJSONGone:
+	case *ProjectsCreateForOrgGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -13263,7 +13263,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		}
 		return nil
 
-	case *ProjectsCreateForRepoApplicationJSONUnauthorized:
+	case *ProjectsCreateForRepoUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13275,7 +13275,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		}
 		return nil
 
-	case *ProjectsCreateForRepoApplicationJSONForbidden:
+	case *ProjectsCreateForRepoForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13287,7 +13287,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		}
 		return nil
 
-	case *ProjectsCreateForRepoApplicationJSONNotFound:
+	case *ProjectsCreateForRepoNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13299,7 +13299,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		}
 		return nil
 
-	case *ProjectsCreateForRepoApplicationJSONGone:
+	case *ProjectsCreateForRepoGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -13342,7 +13342,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 
 		return nil
 
-	case *ProjectsDeleteApplicationJSONUnauthorized:
+	case *ProjectsDeleteUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13366,7 +13366,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ProjectsDeleteApplicationJSONNotFound:
+	case *ProjectsDeleteNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13378,7 +13378,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ProjectsDeleteApplicationJSONGone:
+	case *ProjectsDeleteGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -13409,7 +13409,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 
 		return nil
 
-	case *ProjectsDeleteCardApplicationJSONUnauthorized:
+	case *ProjectsDeleteCardUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13433,7 +13433,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		}
 		return nil
 
-	case *ProjectsDeleteCardApplicationJSONNotFound:
+	case *ProjectsDeleteCardNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13464,7 +13464,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 
 		return nil
 
-	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
+	case *ProjectsDeleteColumnUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13476,7 +13476,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		}
 		return nil
 
-	case *ProjectsDeleteColumnApplicationJSONForbidden:
+	case *ProjectsDeleteColumnForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13513,7 +13513,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *ProjectsGetApplicationJSONUnauthorized:
+	case *ProjectsGetUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13525,7 +13525,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *ProjectsGetApplicationJSONForbidden:
+	case *ProjectsGetForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13562,7 +13562,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 
 		return nil
 
-	case *ProjectsGetCardApplicationJSONUnauthorized:
+	case *ProjectsGetCardUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13574,7 +13574,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		}
 		return nil
 
-	case *ProjectsGetCardApplicationJSONForbidden:
+	case *ProjectsGetCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13586,7 +13586,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		}
 		return nil
 
-	case *ProjectsGetCardApplicationJSONNotFound:
+	case *ProjectsGetCardNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13623,7 +13623,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 
 		return nil
 
-	case *ProjectsGetColumnApplicationJSONUnauthorized:
+	case *ProjectsGetColumnUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13635,7 +13635,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		}
 		return nil
 
-	case *ProjectsGetColumnApplicationJSONForbidden:
+	case *ProjectsGetColumnForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13647,7 +13647,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		}
 		return nil
 
-	case *ProjectsGetColumnApplicationJSONNotFound:
+	case *ProjectsGetColumnNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13684,7 +13684,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 
 		return nil
 
-	case *ProjectsGetPermissionForUserApplicationJSONUnauthorized:
+	case *ProjectsGetPermissionForUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13696,7 +13696,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		}
 		return nil
 
-	case *ProjectsGetPermissionForUserApplicationJSONForbidden:
+	case *ProjectsGetPermissionForUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13708,7 +13708,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		}
 		return nil
 
-	case *ProjectsGetPermissionForUserApplicationJSONNotFound:
+	case *ProjectsGetPermissionForUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13780,7 +13780,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 
 		return nil
 
-	case *ProjectsListCardsApplicationJSONUnauthorized:
+	case *ProjectsListCardsUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13792,7 +13792,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		}
 		return nil
 
-	case *ProjectsListCardsApplicationJSONForbidden:
+	case *ProjectsListCardsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13852,7 +13852,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 
 		return nil
 
-	case *ProjectsListCollaboratorsApplicationJSONUnauthorized:
+	case *ProjectsListCollaboratorsUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13864,7 +13864,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		}
 		return nil
 
-	case *ProjectsListCollaboratorsApplicationJSONForbidden:
+	case *ProjectsListCollaboratorsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -13876,7 +13876,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		}
 		return nil
 
-	case *ProjectsListCollaboratorsApplicationJSONNotFound:
+	case *ProjectsListCollaboratorsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -13948,7 +13948,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 
 		return nil
 
-	case *ProjectsListColumnsApplicationJSONUnauthorized:
+	case *ProjectsListColumnsUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -13960,7 +13960,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		}
 		return nil
 
-	case *ProjectsListColumnsApplicationJSONForbidden:
+	case *ProjectsListColumnsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -14068,7 +14068,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		}
 		return nil
 
-	case *ProjectsListForRepoApplicationJSONUnauthorized:
+	case *ProjectsListForRepoUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -14080,7 +14080,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		}
 		return nil
 
-	case *ProjectsListForRepoApplicationJSONForbidden:
+	case *ProjectsListForRepoForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -14092,7 +14092,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		}
 		return nil
 
-	case *ProjectsListForRepoApplicationJSONNotFound:
+	case *ProjectsListForRepoNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -14104,7 +14104,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		}
 		return nil
 
-	case *ProjectsListForRepoApplicationJSONGone:
+	case *ProjectsListForRepoGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -14280,7 +14280,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 
 		return nil
 
-	case *ProjectsMoveColumnApplicationJSONUnauthorized:
+	case *ProjectsMoveColumnUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -14292,7 +14292,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		}
 		return nil
 
-	case *ProjectsMoveColumnApplicationJSONForbidden:
+	case *ProjectsMoveColumnForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -14335,7 +14335,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 
 		return nil
 
-	case *ProjectsRemoveCollaboratorApplicationJSONUnauthorized:
+	case *ProjectsRemoveCollaboratorUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -14347,7 +14347,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		}
 		return nil
 
-	case *ProjectsRemoveCollaboratorApplicationJSONForbidden:
+	case *ProjectsRemoveCollaboratorForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -14359,7 +14359,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		}
 		return nil
 
-	case *ProjectsRemoveCollaboratorApplicationJSONNotFound:
+	case *ProjectsRemoveCollaboratorNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -14408,7 +14408,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 
 		return nil
 
-	case *ProjectsUpdateApplicationJSONUnauthorized:
+	case *ProjectsUpdateUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -14438,7 +14438,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 
 		return nil
 
-	case *ProjectsUpdateApplicationJSONGone:
+	case *ProjectsUpdateGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -14487,7 +14487,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 
 		return nil
 
-	case *ProjectsUpdateCardApplicationJSONUnauthorized:
+	case *ProjectsUpdateCardUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -14499,7 +14499,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		}
 		return nil
 
-	case *ProjectsUpdateCardApplicationJSONForbidden:
+	case *ProjectsUpdateCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -14511,7 +14511,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		}
 		return nil
 
-	case *ProjectsUpdateCardApplicationJSONNotFound:
+	case *ProjectsUpdateCardNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -14560,7 +14560,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 
 		return nil
 
-	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
+	case *ProjectsUpdateColumnUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -14572,7 +14572,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		}
 		return nil
 
-	case *ProjectsUpdateColumnApplicationJSONForbidden:
+	case *ProjectsUpdateColumnForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -14956,7 +14956,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 
 		return nil
 
-	case *PullsGetApplicationJSONNotFound:
+	case *PullsGetNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -14968,7 +14968,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		}
 		return nil
 
-	case *PullsGetApplicationJSONInternalServerError:
+	case *PullsGetInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -15417,7 +15417,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *PullsMergeApplicationJSONForbidden:
+	case *PullsMergeForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -15429,7 +15429,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *PullsMergeApplicationJSONNotFound:
+	case *PullsMergeNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -15527,7 +15527,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		}
 		return nil
 
-	case *PullsSubmitReviewApplicationJSONForbidden:
+	case *PullsSubmitReviewForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -15539,7 +15539,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		}
 		return nil
 
-	case *PullsSubmitReviewApplicationJSONNotFound:
+	case *PullsSubmitReviewNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -15786,7 +15786,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 
 func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForCommitCommentApplicationJSONOK:
+	case *ReactionsCreateForCommitCommentOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -15798,7 +15798,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 		}
 		return nil
 
-	case *ReactionsCreateForCommitCommentApplicationJSONCreated:
+	case *ReactionsCreateForCommitCommentCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -15841,7 +15841,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 
 func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForIssueApplicationJSONOK:
+	case *ReactionsCreateForIssueOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -15853,7 +15853,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 		}
 		return nil
 
-	case *ReactionsCreateForIssueApplicationJSONCreated:
+	case *ReactionsCreateForIssueCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -15896,7 +15896,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 
 func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForIssueCommentApplicationJSONOK:
+	case *ReactionsCreateForIssueCommentOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -15908,7 +15908,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 		}
 		return nil
 
-	case *ReactionsCreateForIssueCommentApplicationJSONCreated:
+	case *ReactionsCreateForIssueCommentCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -15951,7 +15951,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 
 func encodeReactionsCreateForPullRequestReviewCommentResponse(response ReactionsCreateForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK:
+	case *ReactionsCreateForPullRequestReviewCommentOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -15963,7 +15963,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 		}
 		return nil
 
-	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated:
+	case *ReactionsCreateForPullRequestReviewCommentCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -16006,7 +16006,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 
 func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForReleaseApplicationJSONOK:
+	case *ReactionsCreateForReleaseOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -16018,7 +16018,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 		}
 		return nil
 
-	case *ReactionsCreateForReleaseApplicationJSONCreated:
+	case *ReactionsCreateForReleaseCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -16061,7 +16061,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 
 func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
+	case *ReactionsCreateForTeamDiscussionCommentInOrgOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -16073,7 +16073,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		}
 		return nil
 
-	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated:
+	case *ReactionsCreateForTeamDiscussionCommentInOrgCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -16105,7 +16105,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response *React
 
 func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
+	case *ReactionsCreateForTeamDiscussionInOrgOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -16117,7 +16117,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		}
 		return nil
 
-	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated:
+	case *ReactionsCreateForTeamDiscussionInOrgCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -16203,7 +16203,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 
 		return nil
 
-	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
+	case *ReactionsDeleteLegacyUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -16215,7 +16215,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		}
 		return nil
 
-	case *ReactionsDeleteLegacyApplicationJSONForbidden:
+	case *ReactionsDeleteLegacyForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -16227,7 +16227,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		}
 		return nil
 
-	case *ReactionsDeleteLegacyApplicationJSONGone:
+	case *ReactionsDeleteLegacyGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -16359,7 +16359,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		}
 		return nil
 
-	case *ReactionsListForIssueApplicationJSONNotFound:
+	case *ReactionsListForIssueNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -16371,7 +16371,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		}
 		return nil
 
-	case *ReactionsListForIssueApplicationJSONGone:
+	case *ReactionsListForIssueGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		span.SetStatus(codes.Error, http.StatusText(410))
@@ -16690,7 +16690,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 
 		return nil
 
-	case *ReposAcceptInvitationApplicationJSONForbidden:
+	case *ReposAcceptInvitationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -16702,7 +16702,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		}
 		return nil
 
-	case *ReposAcceptInvitationApplicationJSONNotFound:
+	case *ReposAcceptInvitationNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -16714,7 +16714,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		}
 		return nil
 
-	case *ReposAcceptInvitationApplicationJSONConflict:
+	case *ReposAcceptInvitationConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -16825,7 +16825,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		}
 		return nil
 
-	case *ReposAddStatusCheckContextsApplicationJSONForbidden:
+	case *ReposAddStatusCheckContextsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -16837,7 +16837,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		}
 		return nil
 
-	case *ReposAddStatusCheckContextsApplicationJSONNotFound:
+	case *ReposAddStatusCheckContextsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -16980,7 +16980,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		}
 		return nil
 
-	case *ReposCompareCommitsApplicationJSONNotFound:
+	case *ReposCompareCommitsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -16992,7 +16992,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		}
 		return nil
 
-	case *ReposCompareCommitsApplicationJSONInternalServerError:
+	case *ReposCompareCommitsInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -17397,7 +17397,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 
 		return nil
 
-	case *ReposCreateForAuthenticatedUserApplicationJSONBadRequest:
+	case *ReposCreateForAuthenticatedUserBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -17409,7 +17409,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		}
 		return nil
 
-	case *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ReposCreateForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -17421,7 +17421,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		}
 		return nil
 
-	case *ReposCreateForAuthenticatedUserApplicationJSONForbidden:
+	case *ReposCreateForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -17433,7 +17433,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		}
 		return nil
 
-	case *ReposCreateForAuthenticatedUserApplicationJSONNotFound:
+	case *ReposCreateForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -17476,7 +17476,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		}
 		return nil
 
-	case *ReposCreateForkApplicationJSONBadRequest:
+	case *ReposCreateForkBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -17488,7 +17488,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		}
 		return nil
 
-	case *ReposCreateForkApplicationJSONForbidden:
+	case *ReposCreateForkForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -17500,7 +17500,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		}
 		return nil
 
-	case *ReposCreateForkApplicationJSONNotFound:
+	case *ReposCreateForkNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -17593,7 +17593,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 
 func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateFileContentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposCreateOrUpdateFileContentsApplicationJSONOK:
+	case *ReposCreateOrUpdateFileContentsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -17605,7 +17605,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		}
 		return nil
 
-	case *ReposCreateOrUpdateFileContentsApplicationJSONCreated:
+	case *ReposCreateOrUpdateFileContentsCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -17617,7 +17617,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		}
 		return nil
 
-	case *ReposCreateOrUpdateFileContentsApplicationJSONNotFound:
+	case *ReposCreateOrUpdateFileContentsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -17629,7 +17629,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		}
 		return nil
 
-	case *ReposCreateOrUpdateFileContentsApplicationJSONConflict:
+	case *ReposCreateOrUpdateFileContentsConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -17840,7 +17840,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		}
 		return nil
 
-	case *ReposCreateWebhookApplicationJSONForbidden:
+	case *ReposCreateWebhookForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -17852,7 +17852,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		}
 		return nil
 
-	case *ReposCreateWebhookApplicationJSONNotFound:
+	case *ReposCreateWebhookNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -17895,7 +17895,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 
 		return nil
 
-	case *ReposDeclineInvitationApplicationJSONForbidden:
+	case *ReposDeclineInvitationForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -17907,7 +17907,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		}
 		return nil
 
-	case *ReposDeclineInvitationApplicationJSONNotFound:
+	case *ReposDeclineInvitationNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -17919,7 +17919,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		}
 		return nil
 
-	case *ReposDeclineInvitationApplicationJSONConflict:
+	case *ReposDeclineInvitationConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -17944,7 +17944,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *ReposDeleteApplicationJSONTemporaryRedirect:
+	case *ReposDeleteTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
 		span.SetStatus(codes.Ok, http.StatusText(307))
@@ -17968,7 +17968,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *ReposDeleteApplicationJSONNotFound:
+	case *ReposDeleteNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -18182,7 +18182,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		}
 		return nil
 
-	case *ReposDeleteFileApplicationJSONNotFound:
+	case *ReposDeleteFileNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -18194,7 +18194,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		}
 		return nil
 
-	case *ReposDeleteFileApplicationJSONConflict:
+	case *ReposDeleteFileConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -18481,7 +18481,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		}
 		return nil
 
-	case *ReposGetApplicationJSONMovedPermanently:
+	case *ReposGetMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
@@ -18493,7 +18493,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		}
 		return nil
 
-	case *ReposGetApplicationJSONForbidden:
+	case *ReposGetForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -18505,7 +18505,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		}
 		return nil
 
-	case *ReposGetApplicationJSONNotFound:
+	case *ReposGetNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -18716,7 +18716,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ReposGetBranchApplicationJSONMovedPermanently:
+	case *ReposGetBranchMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		span.SetStatus(codes.Ok, http.StatusText(301))
@@ -18728,7 +18728,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ReposGetBranchApplicationJSONNotFound:
+	case *ReposGetBranchNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -18932,7 +18932,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ReposGetCommitApplicationJSONNotFound:
+	case *ReposGetCommitNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -18956,7 +18956,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		}
 		return nil
 
-	case *ReposGetCommitApplicationJSONInternalServerError:
+	case *ReposGetCommitInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -20210,7 +20210,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		}
 		return nil
 
-	case *ReposListCommitsApplicationJSONBadRequest:
+	case *ReposListCommitsBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
@@ -20222,7 +20222,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		}
 		return nil
 
-	case *ReposListCommitsApplicationJSONNotFound:
+	case *ReposListCommitsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -20234,7 +20234,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		}
 		return nil
 
-	case *ReposListCommitsApplicationJSONConflict:
+	case *ReposListCommitsConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
@@ -20246,7 +20246,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		}
 		return nil
 
-	case *ReposListCommitsApplicationJSONInternalServerError:
+	case *ReposListCommitsInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
@@ -20306,7 +20306,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 
 		return nil
 
-	case *ReposListContributorsApplicationJSONForbidden:
+	case *ReposListContributorsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -20318,7 +20318,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		}
 		return nil
 
-	case *ReposListContributorsApplicationJSONNotFound:
+	case *ReposListContributorsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -20481,7 +20481,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 
 		return nil
 
-	case *ReposListForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ReposListForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -20493,7 +20493,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		}
 		return nil
 
-	case *ReposListForAuthenticatedUserApplicationJSONForbidden:
+	case *ReposListForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -20727,7 +20727,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 
 		return nil
 
-	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
+	case *ReposListInvitationsForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -20739,7 +20739,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		}
 		return nil
 
-	case *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden:
+	case *ReposListInvitationsForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -20751,7 +20751,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		}
 		return nil
 
-	case *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound:
+	case *ReposListInvitationsForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -21496,7 +21496,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		}
 		return nil
 
-	case *ReposRenameBranchApplicationJSONForbidden:
+	case *ReposRenameBranchForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -21508,7 +21508,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		}
 		return nil
 
-	case *ReposRenameBranchApplicationJSONNotFound:
+	case *ReposRenameBranchNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -21806,7 +21806,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *ReposUpdateApplicationJSONTemporaryRedirect:
+	case *ReposUpdateTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
 		span.SetStatus(codes.Ok, http.StatusText(307))
@@ -21818,7 +21818,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *ReposUpdateApplicationJSONForbidden:
+	case *ReposUpdateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -21830,7 +21830,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *ReposUpdateApplicationJSONNotFound:
+	case *ReposUpdateNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -21873,7 +21873,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		}
 		return nil
 
-	case *ReposUpdateBranchProtectionApplicationJSONForbidden:
+	case *ReposUpdateBranchProtectionForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -21885,7 +21885,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		}
 		return nil
 
-	case *ReposUpdateBranchProtectionApplicationJSONNotFound:
+	case *ReposUpdateBranchProtectionNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -22159,7 +22159,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 
 		return nil
 
-	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
+	case *ScimDeleteUserFromOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -22171,7 +22171,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		}
 		return nil
 
-	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
+	case *ScimDeleteUserFromOrgNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -22367,7 +22367,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 
 		return nil
 
-	case *SearchLabelsApplicationJSONForbidden:
+	case *SearchLabelsForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -22379,7 +22379,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *SearchLabelsApplicationJSONNotFound:
+	case *SearchLabelsNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -23606,7 +23606,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		}
 		return nil
 
-	case *TeamsListChildLegacyApplicationJSONForbidden:
+	case *TeamsListChildLegacyForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -23618,7 +23618,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		}
 		return nil
 
-	case *TeamsListChildLegacyApplicationJSONNotFound:
+	case *TeamsListChildLegacyNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -23834,7 +23834,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 
 		return nil
 
-	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
+	case *TeamsListForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -23846,7 +23846,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		}
 		return nil
 
-	case *TeamsListForAuthenticatedUserApplicationJSONNotFound:
+	case *TeamsListForAuthenticatedUserNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -23877,7 +23877,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		}
 		return nil
 
-	case *TeamsListIdpGroupsForLegacyApplicationJSONForbidden:
+	case *TeamsListIdpGroupsForLegacyForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -23889,7 +23889,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		}
 		return nil
 
-	case *TeamsListIdpGroupsForLegacyApplicationJSONNotFound:
+	case *TeamsListIdpGroupsForLegacyNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24487,7 +24487,7 @@ func encodeTeamsUpdateInOrgResponse(response *TeamFull, w http.ResponseWriter, s
 
 func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsUpdateLegacyApplicationJSONOK:
+	case *TeamsUpdateLegacyOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24499,7 +24499,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		}
 		return nil
 
-	case *TeamsUpdateLegacyApplicationJSONCreated:
+	case *TeamsUpdateLegacyCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
@@ -24511,7 +24511,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		}
 		return nil
 
-	case *TeamsUpdateLegacyApplicationJSONForbidden:
+	case *TeamsUpdateLegacyForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24523,7 +24523,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		}
 		return nil
 
-	case *TeamsUpdateLegacyApplicationJSONNotFound:
+	case *TeamsUpdateLegacyNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24572,7 +24572,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 
 		return nil
 
-	case *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersAddEmailForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24584,7 +24584,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		}
 		return nil
 
-	case *UsersAddEmailForAuthenticatedApplicationJSONForbidden:
+	case *UsersAddEmailForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24596,7 +24596,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		}
 		return nil
 
-	case *UsersAddEmailForAuthenticatedApplicationJSONNotFound:
+	case *UsersAddEmailForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24639,7 +24639,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 
 		return nil
 
-	case *UsersBlockApplicationJSONUnauthorized:
+	case *UsersBlockUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24651,7 +24651,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *UsersBlockApplicationJSONForbidden:
+	case *UsersBlockForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24663,7 +24663,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		}
 		return nil
 
-	case *UsersBlockApplicationJSONNotFound:
+	case *UsersBlockNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24706,7 +24706,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 
 		return nil
 
-	case *UsersCheckBlockedApplicationJSONUnauthorized:
+	case *UsersCheckBlockedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24718,7 +24718,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		}
 		return nil
 
-	case *UsersCheckBlockedApplicationJSONForbidden:
+	case *UsersCheckBlockedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24730,7 +24730,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		}
 		return nil
 
-	case *UsersCheckBlockedApplicationJSONNotFound:
+	case *UsersCheckBlockedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24780,7 +24780,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 
 		return nil
 
-	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
+	case *UsersCheckPersonIsFollowedByAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24792,7 +24792,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		}
 		return nil
 
-	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden:
+	case *UsersCheckPersonIsFollowedByAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24804,7 +24804,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		}
 		return nil
 
-	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound:
+	case *UsersCheckPersonIsFollowedByAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24841,7 +24841,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 
 		return nil
 
-	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersCreateGpgKeyForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24853,7 +24853,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		}
 		return nil
 
-	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden:
+	case *UsersCreateGpgKeyForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24865,7 +24865,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		}
 		return nil
 
-	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound:
+	case *UsersCreateGpgKeyForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24914,7 +24914,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 
 		return nil
 
-	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24926,7 +24926,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		}
 		return nil
 
-	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
+	case *UsersCreatePublicSSHKeyForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -24938,7 +24938,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		}
 		return nil
 
-	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
+	case *UsersCreatePublicSSHKeyForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -24981,7 +24981,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 
 		return nil
 
-	case *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersDeleteEmailForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -24993,7 +24993,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		}
 		return nil
 
-	case *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden:
+	case *UsersDeleteEmailForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25005,7 +25005,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		}
 		return nil
 
-	case *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound:
+	case *UsersDeleteEmailForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25048,7 +25048,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 
 		return nil
 
-	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersDeleteGpgKeyForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25060,7 +25060,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		}
 		return nil
 
-	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden:
+	case *UsersDeleteGpgKeyForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25072,7 +25072,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		}
 		return nil
 
-	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound:
+	case *UsersDeleteGpgKeyForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25115,7 +25115,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 
 		return nil
 
-	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25127,7 +25127,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		}
 		return nil
 
-	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
+	case *UsersDeletePublicSSHKeyForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25139,7 +25139,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		}
 		return nil
 
-	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
+	case *UsersDeletePublicSSHKeyForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25170,7 +25170,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 
 		return nil
 
-	case *UsersFollowApplicationJSONUnauthorized:
+	case *UsersFollowUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25182,7 +25182,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *UsersFollowApplicationJSONForbidden:
+	case *UsersFollowForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25194,7 +25194,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		}
 		return nil
 
-	case *UsersFollowApplicationJSONNotFound:
+	case *UsersFollowNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25231,7 +25231,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 
 		return nil
 
-	case *UsersGetAuthenticatedApplicationJSONUnauthorized:
+	case *UsersGetAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25243,7 +25243,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		}
 		return nil
 
-	case *UsersGetAuthenticatedApplicationJSONForbidden:
+	case *UsersGetAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25366,7 +25366,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 
 		return nil
 
-	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersGetGpgKeyForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25378,7 +25378,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		}
 		return nil
 
-	case *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden:
+	case *UsersGetGpgKeyForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25390,7 +25390,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		}
 		return nil
 
-	case *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound:
+	case *UsersGetGpgKeyForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25427,7 +25427,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 
 		return nil
 
-	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersGetPublicSSHKeyForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25439,7 +25439,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		}
 		return nil
 
-	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden:
+	case *UsersGetPublicSSHKeyForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25451,7 +25451,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		}
 		return nil
 
-	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound:
+	case *UsersGetPublicSSHKeyForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25536,7 +25536,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 
 		return nil
 
-	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
+	case *UsersListBlockedByAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25548,7 +25548,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		}
 		return nil
 
-	case *UsersListBlockedByAuthenticatedApplicationJSONForbidden:
+	case *UsersListBlockedByAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25560,7 +25560,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		}
 		return nil
 
-	case *UsersListBlockedByAuthenticatedApplicationJSONNotFound:
+	case *UsersListBlockedByAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25632,7 +25632,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 
 		return nil
 
-	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersListEmailsForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25644,7 +25644,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		}
 		return nil
 
-	case *UsersListEmailsForAuthenticatedApplicationJSONForbidden:
+	case *UsersListEmailsForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25656,7 +25656,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		}
 		return nil
 
-	case *UsersListEmailsForAuthenticatedApplicationJSONNotFound:
+	case *UsersListEmailsForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -25716,7 +25716,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 
 		return nil
 
-	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
+	case *UsersListFollowedByAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25728,7 +25728,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		}
 		return nil
 
-	case *UsersListFollowedByAuthenticatedApplicationJSONForbidden:
+	case *UsersListFollowedByAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25788,7 +25788,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 
 		return nil
 
-	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
+	case *UsersListFollowersForAuthenticatedUserUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25800,7 +25800,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		}
 		return nil
 
-	case *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden:
+	case *UsersListFollowersForAuthenticatedUserForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25932,7 +25932,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 
 		return nil
 
-	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersListGpgKeysForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -25944,7 +25944,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		}
 		return nil
 
-	case *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden:
+	case *UsersListGpgKeysForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -25956,7 +25956,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		}
 		return nil
 
-	case *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound:
+	case *UsersListGpgKeysForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -26052,7 +26052,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 
 		return nil
 
-	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersListPublicEmailsForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -26064,7 +26064,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		}
 		return nil
 
-	case *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden:
+	case *UsersListPublicEmailsForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -26076,7 +26076,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		}
 		return nil
 
-	case *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound:
+	case *UsersListPublicEmailsForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -26172,7 +26172,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 
 		return nil
 
-	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersListPublicSSHKeysForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -26184,7 +26184,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		}
 		return nil
 
-	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden:
+	case *UsersListPublicSSHKeysForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -26196,7 +26196,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		}
 		return nil
 
-	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound:
+	case *UsersListPublicSSHKeysForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -26233,7 +26233,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 
 		return nil
 
-	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized:
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -26245,7 +26245,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		}
 		return nil
 
-	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden:
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -26257,7 +26257,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		}
 		return nil
 
-	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound:
+	case *UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -26300,7 +26300,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 
 		return nil
 
-	case *UsersUnblockApplicationJSONUnauthorized:
+	case *UsersUnblockUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -26312,7 +26312,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *UsersUnblockApplicationJSONForbidden:
+	case *UsersUnblockForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -26324,7 +26324,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		}
 		return nil
 
-	case *UsersUnblockApplicationJSONNotFound:
+	case *UsersUnblockNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -26355,7 +26355,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 
 		return nil
 
-	case *UsersUnfollowApplicationJSONUnauthorized:
+	case *UsersUnfollowUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -26367,7 +26367,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *UsersUnfollowApplicationJSONForbidden:
+	case *UsersUnfollowForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -26379,7 +26379,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		}
 		return nil
 
-	case *UsersUnfollowApplicationJSONNotFound:
+	case *UsersUnfollowNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
@@ -26416,7 +26416,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 
 		return nil
 
-	case *UsersUpdateAuthenticatedApplicationJSONUnauthorized:
+	case *UsersUpdateAuthenticatedUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		span.SetStatus(codes.Error, http.StatusText(401))
@@ -26428,7 +26428,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		}
 		return nil
 
-	case *UsersUpdateAuthenticatedApplicationJSONForbidden:
+	case *UsersUpdateAuthenticatedForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
@@ -26440,7 +26440,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		}
 		return nil
 
-	case *UsersUpdateAuthenticatedApplicationJSONNotFound:
+	case *UsersUpdateAuthenticatedNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))

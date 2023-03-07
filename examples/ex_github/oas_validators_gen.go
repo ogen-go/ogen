@@ -3152,13 +3152,13 @@ func (s CheckSuiteStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ChecksCreateSuiteApplicationJSONCreated) Validate() error {
+func (s *ChecksCreateSuiteCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ChecksCreateSuiteApplicationJSONOK) Validate() error {
+func (s *ChecksCreateSuiteOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -8588,13 +8588,13 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	}
 	return nil
 }
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -8644,13 +8644,13 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Val
 	}
 	return nil
 }
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -12057,13 +12057,13 @@ func (s ReactionContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForCommitCommentCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ReactionsCreateForCommitCommentApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForCommitCommentOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -12109,25 +12109,13 @@ func (s ReactionsCreateForCommitCommentReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ReactionsCreateForIssueApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForIssueCommentCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ReactionsCreateForIssueApplicationJSONOK) Validate() error {
-	if err := s.Validate(); err != nil {
-		return err
-	}
-	return nil
-}
-func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) Validate() error {
-	if err := s.Validate(); err != nil {
-		return err
-	}
-	return nil
-}
-func (s *ReactionsCreateForIssueCommentApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForIssueCommentOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -12173,6 +12161,18 @@ func (s ReactionsCreateForIssueCommentReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s *ReactionsCreateForIssueCreated) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+func (s *ReactionsCreateForIssueOK) Validate() error {
+	if err := s.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
 func (s *ReactionsCreateForIssueReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -12213,13 +12213,13 @@ func (s ReactionsCreateForIssueReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -12265,13 +12265,13 @@ func (s ReactionsCreateForPullRequestReviewCommentReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ReactionsCreateForReleaseApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForReleaseCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ReactionsCreateForReleaseApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForReleaseOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -12313,13 +12313,13 @@ func (s ReactionsCreateForReleaseReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -12405,13 +12405,13 @@ func (s ReactionsCreateForTeamDiscussionCommentLegacyReqContent) Validate() erro
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
@@ -17073,13 +17073,13 @@ func (s TeamsUpdateInOrgReqPrivacy) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s *TeamsUpdateLegacyApplicationJSONCreated) Validate() error {
+func (s *TeamsUpdateLegacyCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s *TeamsUpdateLegacyApplicationJSONOK) Validate() error {
+func (s *TeamsUpdateLegacyOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}

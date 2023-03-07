@@ -919,13 +919,13 @@ func (s *TestFloatValidation) Validate() error {
 	}
 	return nil
 }
-func (s TestNullableOneofsApplicationJSONCreated) Validate() error {
+func (s TestNullableOneofsCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s TestNullableOneofsApplicationJSONOK) Validate() error {
+func (s TestNullableOneofsOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
