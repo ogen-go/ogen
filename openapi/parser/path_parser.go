@@ -68,7 +68,7 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 		path = normalized
 	}
 
-	return (&pathParser[*openapi.Parameter]{
+	parts, err := (&pathParser[*openapi.Parameter]{
 		path: path,
 		lookup: func(name string) (*openapi.Parameter, bool) {
 			return xslices.FindFunc(params, func(p *openapi.Parameter) bool {
@@ -76,6 +76,24 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 			})
 		},
 	}).Parse()
+	if err != nil {
+		return nil, err
+	}
+
+	paramNames := make(map[string]struct{}, len(parts))
+	for _, p := range parts {
+		if !p.IsParam() {
+			continue
+		}
+
+		name := p.Param.Name
+		if _, ok := paramNames[name]; ok {
+			return nil, errors.Errorf("parameter %q referenced multiple times", name)
+		}
+		paramNames[name] = struct{}{}
+	}
+
+	return parts, nil
 }
 
 func parseServerURL(u string, lookup func(name string) (openapi.ServerVariable, bool)) (openapi.ServerURL, error) {
