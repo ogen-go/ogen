@@ -113,17 +113,18 @@ func (p *pathParser[P]) parse() error {
 	if !utf8.ValidString(p.path) {
 		return errInvalidPathUTF8
 	}
+
 	for _, r := range p.path {
 		switch r {
 		case '/':
 			if p.param {
-				return errors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path %q: unexpected %q", p.path, r)
 			}
 			p.part = append(p.part, r)
 
 		case '{':
 			if p.param {
-				return errors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path %q: unexpected %q", p.path, r)
 			}
 			if err := p.push(); err != nil {
 				return err
@@ -132,7 +133,7 @@ func (p *pathParser[P]) parse() error {
 
 		case '}':
 			if !p.param {
-				return errors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path %q: unexpected %q", p.path, r)
 			}
 			if err := p.push(); err != nil {
 				return err
@@ -145,7 +146,7 @@ func (p *pathParser[P]) parse() error {
 	}
 
 	if p.param {
-		return errors.Errorf("invalid path: %s", p.path)
+		return errors.Errorf("invalid path %q: expected '}'", p.path)
 	}
 
 	return p.push()

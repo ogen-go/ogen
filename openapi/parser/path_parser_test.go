@@ -102,27 +102,27 @@ func TestPathParser(t *testing.T) {
 		},
 		{
 			Path:      "/foo/{",
-			ExpectErr: `invalid path: /foo/{`,
+			ExpectErr: `invalid path "/foo/{": expected '}'`,
 		},
 		{
 			Path:      "/foo/{{",
-			ExpectErr: `invalid path: /foo/{{`,
+			ExpectErr: `invalid path "/foo/{{": unexpected '{'`,
 		},
 		{
 			Path:      "/foo/{{}",
-			ExpectErr: `invalid path: /foo/{{}`,
+			ExpectErr: `invalid path "/foo/{{}": unexpected '{'`,
 		},
 		{
 			Path:      "/foo/{}}",
-			ExpectErr: `invalid path: /foo/{}}`,
+			ExpectErr: `invalid path "/foo/{}}": unexpected '}'`,
 		},
 		{
 			Path:      "/foo/{{}}",
-			ExpectErr: `invalid path: /foo/{{}}`,
+			ExpectErr: `invalid path "/foo/{{}}": unexpected '{'`,
 		},
 		{
 			Path:      "/foo/{/",
-			ExpectErr: `invalid path: /foo/{/`,
+			ExpectErr: `invalid path "/foo/{/": unexpected '/'`,
 		},
 		{
 			Path:      "foo/",
