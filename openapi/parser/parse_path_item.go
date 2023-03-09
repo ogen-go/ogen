@@ -111,6 +111,12 @@ func (p *parser) parseOp(
 
 	op.Path, err = parsePath(up.path, op.Parameters)
 	if err != nil {
+		// Special case: point to the operation "parameters" what caused the error.
+		// It is helpful, since one Path Item may contain multiple operations.
+		if pe, ok := errors.Into[*pathParameterNotSpecifiedError](err); ok {
+			return nil, p.wrapField("parameters", p.file(ctx), locator, pe)
+		}
+
 		err := errors.Wrapf(err, "parse path %q", up)
 		return nil, p.wrapLocation(up.file, up.loc, err)
 	}

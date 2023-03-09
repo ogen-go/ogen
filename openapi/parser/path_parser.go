@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"net/url"
 	"strings"
 	"unicode/utf8"
@@ -150,6 +151,14 @@ func (p *pathParser[P]) parse() error {
 	return p.push()
 }
 
+type pathParameterNotSpecifiedError struct {
+	Name string
+}
+
+func (p *pathParameterNotSpecifiedError) Error() string {
+	return fmt.Sprintf("parameter %q not specified", p.Name)
+}
+
 func (p *pathParser[P]) push() error {
 	if len(p.part) == 0 {
 		return nil
@@ -163,7 +172,7 @@ func (p *pathParser[P]) push() error {
 
 	param, found := p.lookup(string(p.part))
 	if !found {
-		return errors.Errorf("path parameter not specified: %q", string(p.part))
+		return &pathParameterNotSpecifiedError{Name: string(p.part)}
 	}
 
 	p.parts = append(p.parts, openapi.PathPart[P]{Param: param})

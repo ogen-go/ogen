@@ -98,7 +98,7 @@ func TestPathParser(t *testing.T) {
 		{
 			Path:      "/foo/{bar}/{baz}",
 			Params:    []*openapi.Parameter{bar},
-			ExpectErr: `path parameter not specified: "baz"`,
+			ExpectErr: `parameter "baz" not specified`,
 		},
 		{
 			Path:      "/foo/{",
