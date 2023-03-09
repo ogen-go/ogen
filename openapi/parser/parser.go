@@ -187,7 +187,12 @@ func (p *parser) parsePathItems() error {
 			return p.wrapLocation(p.rootFile, pathsLoc.Key(path), err)
 		}
 
-		ops, err := p.parsePathItem(path, item, p.resolveCtx())
+		up := unparsedPath{
+			path: path,
+			loc:  pathsLoc.Key(path),
+			file: p.rootFile,
+		}
+		ops, err := p.parsePathItem(up, item, p.resolveCtx())
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
 			return p.wrapLocation(p.rootFile, pathsLoc.Field(path), err)

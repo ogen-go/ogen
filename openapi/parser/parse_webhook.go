@@ -11,7 +11,7 @@ import (
 
 func (p *parser) parseWebhook(name string, item *ogen.PathItem, ctx *jsonpointer.ResolveCtx) (openapi.Webhook, error) {
 	// FIXME(tdakkota): we are passing "/" path, but webhook has no path.
-	pi, err := p.parsePathItem("/", item, ctx)
+	pi, err := p.parsePathItem(unparsedPath{path: "/"}, item, ctx)
 	if err != nil {
 		return openapi.Webhook{}, errors.Wrap(err, "parse pathItem")
 	}
