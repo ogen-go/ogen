@@ -5,6 +5,7 @@ package api
 import (
 	"context"
 	"net/url"
+	"strings"
 	"time"
 
 	"github.com/go-faster/errors"
@@ -32,12 +33,19 @@ var _ Handler = struct {
 	*Client
 }{}
 
+func trimTrailingSlashes(u *url.URL) {
+	u.Path = strings.TrimRight(u.Path, "/")
+	u.RawPath = strings.TrimRight(u.RawPath, "/")
+}
+
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
+	trimTrailingSlashes(u)
+
 	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
@@ -192,6 +200,7 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 	if err != nil {
 		return res, errors.Wrap(err, "parse target URL")
 	}
+	trimTrailingSlashes(u)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "GET", u, nil)
@@ -258,6 +267,7 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	if err != nil {
 		return res, errors.Wrap(err, "parse target URL")
 	}
+	trimTrailingSlashes(u)
 
 	stage = "EncodeRequest"
 	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
@@ -325,6 +335,7 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 	if err != nil {
 		return res, errors.Wrap(err, "parse target URL")
 	}
+	trimTrailingSlashes(u)
 
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
