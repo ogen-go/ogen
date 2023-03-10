@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"net/url"
 	"strings"
 	"unicode/utf8"
@@ -68,7 +69,7 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 		path = normalized
 	}
 
-	return (&pathParser[*openapi.Parameter]{
+	parts, err := (&pathParser[*openapi.Parameter]{
 		path: path,
 		lookup: func(name string) (*openapi.Parameter, bool) {
 			return xslices.FindFunc(params, func(p *openapi.Parameter) bool {
@@ -76,6 +77,24 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 			})
 		},
 	}).Parse()
+	if err != nil {
+		return nil, err
+	}
+
+	paramNames := make(map[string]struct{}, len(parts))
+	for _, p := range parts {
+		if !p.IsParam() {
+			continue
+		}
+
+		name := p.Param.Name
+		if _, ok := paramNames[name]; ok {
+			return nil, errors.Errorf("parameter %q referenced multiple times", name)
+		}
+		paramNames[name] = struct{}{}
+	}
+
+	return parts, nil
 }
 
 func parseServerURL(u string, lookup func(name string) (openapi.ServerVariable, bool)) (openapi.ServerURL, error) {
@@ -94,17 +113,18 @@ func (p *pathParser[P]) parse() error {
 	if !utf8.ValidString(p.path) {
 		return errInvalidPathUTF8
 	}
+
 	for _, r := range p.path {
 		switch r {
 		case '/':
 			if p.param {
-				return errors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path %q: unexpected %q", p.path, r)
 			}
 			p.part = append(p.part, r)
 
 		case '{':
 			if p.param {
-				return errors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path %q: unexpected %q", p.path, r)
 			}
 			if err := p.push(); err != nil {
 				return err
@@ -113,7 +133,7 @@ func (p *pathParser[P]) parse() error {
 
 		case '}':
 			if !p.param {
-				return errors.Errorf("invalid path: %s", p.path)
+				return errors.Errorf("invalid path %q: unexpected %q", p.path, r)
 			}
 			if err := p.push(); err != nil {
 				return err
@@ -126,10 +146,18 @@ func (p *pathParser[P]) parse() error {
 	}
 
 	if p.param {
-		return errors.Errorf("invalid path: %s", p.path)
+		return errors.Errorf("invalid path %q: expected '}'", p.path)
 	}
 
 	return p.push()
+}
+
+type pathParameterNotSpecifiedError struct {
+	Name string
+}
+
+func (p *pathParameterNotSpecifiedError) Error() string {
+	return fmt.Sprintf("parameter %q not specified", p.Name)
 }
 
 func (p *pathParser[P]) push() error {
@@ -145,7 +173,7 @@ func (p *pathParser[P]) push() error {
 
 	param, found := p.lookup(string(p.part))
 	if !found {
-		return errors.Errorf("path parameter not specified: %q", string(p.part))
+		return &pathParameterNotSpecifiedError{Name: string(p.part)}
 	}
 
 	p.parts = append(p.parts, openapi.PathPart[P]{Param: param})

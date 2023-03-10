@@ -98,31 +98,31 @@ func TestPathParser(t *testing.T) {
 		{
 			Path:      "/foo/{bar}/{baz}",
 			Params:    []*openapi.Parameter{bar},
-			ExpectErr: `path parameter not specified: "baz"`,
+			ExpectErr: `parameter "baz" not specified`,
 		},
 		{
 			Path:      "/foo/{",
-			ExpectErr: `invalid path: /foo/{`,
+			ExpectErr: `invalid path "/foo/{": expected '}'`,
 		},
 		{
 			Path:      "/foo/{{",
-			ExpectErr: `invalid path: /foo/{{`,
+			ExpectErr: `invalid path "/foo/{{": unexpected '{'`,
 		},
 		{
 			Path:      "/foo/{{}",
-			ExpectErr: `invalid path: /foo/{{}`,
+			ExpectErr: `invalid path "/foo/{{}": unexpected '{'`,
 		},
 		{
 			Path:      "/foo/{}}",
-			ExpectErr: `invalid path: /foo/{}}`,
+			ExpectErr: `invalid path "/foo/{}}": unexpected '}'`,
 		},
 		{
 			Path:      "/foo/{{}}",
-			ExpectErr: `invalid path: /foo/{{}}`,
+			ExpectErr: `invalid path "/foo/{{}}": unexpected '{'`,
 		},
 		{
 			Path:      "/foo/{/",
-			ExpectErr: `invalid path: /foo/{/`,
+			ExpectErr: `invalid path "/foo/{/": unexpected '/'`,
 		},
 		{
 			Path:      "foo/",

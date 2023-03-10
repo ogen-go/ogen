@@ -9,10 +9,21 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-type pathItem = []*openapi.Operation
+type (
+	pathItem     = []*openapi.Operation
+	unparsedPath struct {
+		path string
+		loc  location.Locator
+		file location.File
+	}
+)
+
+func (up unparsedPath) String() string {
+	return up.path
+}
 
 func (p *parser) parsePathItem(
-	path string,
+	up unparsedPath,
 	item *ogen.PathItem,
 	ctx *jsonpointer.ResolveCtx,
 ) (_ pathItem, rerr error) {
@@ -25,7 +36,7 @@ func (p *parser) parsePathItem(
 	}()
 
 	if ref := item.Ref; ref != "" {
-		ops, err := p.resolvePathItem(path, ref, ctx)
+		ops, err := p.resolvePathItem(up, ref, ctx)
 		if err != nil {
 			return nil, p.wrapRef(p.file(ctx), locator, err)
 		}
@@ -52,7 +63,7 @@ func (p *parser) parsePathItem(
 			p.operationIDs[id] = struct{}{}
 		}
 
-		parsedOp, err := p.parseOp(path, method, op, itemParams, ctx)
+		parsedOp, err := p.parseOp(up, method, op, itemParams, ctx)
 		if err != nil {
 			if op.OperationID != "" {
 				return errors.Wrapf(err, "operation %q", op.OperationID)
@@ -70,7 +81,8 @@ func (p *parser) parsePathItem(
 }
 
 func (p *parser) parseOp(
-	path, httpMethod string,
+	up unparsedPath,
+	httpMethod string,
 	spec ogen.Operation,
 	itemParams []*openapi.Parameter,
 	ctx *jsonpointer.ResolveCtx,
@@ -97,9 +109,16 @@ func (p *parser) parseOp(
 	// Merge operation parameters with pathItem parameters.
 	op.Parameters = mergeParams(opParams, itemParams)
 
-	op.Path, err = parsePath(path, op.Parameters)
+	op.Path, err = parsePath(up.path, op.Parameters)
 	if err != nil {
-		return nil, errors.Wrapf(err, "parse path %q", path)
+		// Special case: point to the operation "parameters" what caused the error.
+		// It is helpful, since one Path Item may contain multiple operations.
+		if pe, ok := errors.Into[*pathParameterNotSpecifiedError](err); ok {
+			return nil, p.wrapField("parameters", p.file(ctx), locator, pe)
+		}
+
+		err := errors.Wrapf(err, "parse path %q", up)
+		return nil, p.wrapLocation(up.file, up.loc, err)
 	}
 
 	if spec.RequestBody != nil {

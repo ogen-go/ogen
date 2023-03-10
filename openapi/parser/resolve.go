@@ -236,7 +236,8 @@ func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) 
 }
 
 func (p *parser) resolvePathItem(
-	itemPath, ref string,
+	itemPath unparsedPath,
+	ref string,
 	ctx *jsonpointer.ResolveCtx,
 ) (pathItem, error) {
 	const prefix = "#/components/pathItems/"

@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xslices"
@@ -32,6 +33,7 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 		Spec:        spec,
 	}
 
+	vetPathParametersUsed(g.log, op.Spec.Path, spec.Parameters)
 	// Convert []openapi.Parameter to []*ir.Parameter.
 	op.Params, err = g.generateParameters(ctx, op.Name, spec.Parameters)
 	if err != nil {
@@ -39,7 +41,7 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	}
 
 	// Convert []openapi.PathPart to []*ir.PathPart
-	op.PathParts = convertPathParts(op.Spec.Path, op.PathParams())
+	op.PathParts = convertPathParts(op.Spec.Path, op.Params)
 
 	if spec.RequestBody != nil {
 		op.Request, err = g.generateRequest(ctx, op.Name, spec.RequestBody)
@@ -59,6 +61,28 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	}
 
 	return op, nil
+}
+
+func vetPathParametersUsed(log *zap.Logger, parts openapi.Path, params []*openapi.Parameter) {
+	used := map[string]struct{}{}
+	for _, p := range parts {
+		if !p.IsParam() || !p.Param.In.Path() {
+			continue
+		}
+		used[p.Param.Name] = struct{}{}
+	}
+
+	for _, p := range params {
+		if !p.In.Path() {
+			continue
+		}
+		if _, ok := used[p.Name]; !ok {
+			log.Warn("Path parameter is not used",
+				zap.String("name", p.Name),
+				zapPosition(p),
+			)
+		}
+	}
 }
 
 func convertPathParts(parts openapi.Path, params []*ir.Parameter) []*ir.PathPart {
