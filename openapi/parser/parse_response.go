@@ -19,7 +19,7 @@ func (p *parser) parseResponses(
 	}
 
 	result = openapi.Responses{
-		StatusCode: map[int]*openapi.Response{},
+		Pointer: locator.Pointer(p.file(ctx)),
 	}
 	for pattern, response := range responses {
 		resp, err := p.parseResponse(response, ctx)

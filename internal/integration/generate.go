@@ -7,7 +7,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --no-client             --target sample_api_nc   ../../_testdata/positive/sample.json
 //go:generate go run ../../cmd/ogen -v --debug.ignoreNotImplemented "enum format" --infer-types --clean --no-server --no-client --target sample_api_nsnc ../../_testdata/positive/sample.json
 
-//go:generate go run ../../cmd/ogen -v --clean --target sample_err ../../_testdata/positive/errors.json
+//go:generate go run ../../cmd/ogen -v --clean --convenient-errors --target sample_err ../../_testdata/positive/errors.json
 //go:generate go run ../../cmd/ogen -v --clean --package techempower --generate-tests --target techempower ../../_testdata/examples/techempower.json
 
 // Tests

@@ -172,11 +172,13 @@ func run() error {
 	logOptions.RegisterFlags(set)
 
 	var (
-		ctAliases gen.ContentTypeAliases
+		ctAliases        gen.ContentTypeAliases
+		convenientErrors gen.ConvenientErrors
 
 		filterPath    *regexp.Regexp
 		filterMethods []string
 	)
+	set.Var(&convenientErrors, "convenient-errors", `Convenient errors mode: on, off or auto (default)`)
 	set.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
 	set.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
 		filterPath, err = regexp.Compile(s)
@@ -267,6 +269,7 @@ func run() error {
 			Methods:   filterMethods,
 		},
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
+		ConvenientErrors:     convenientErrors,
 		ContentTypeAliases:   ctAliases,
 		Logger:               logger,
 	}
