@@ -357,6 +357,41 @@ func TestServerURLOverride(t *testing.T) {
 	a.Equal(testData, resp.Content)
 }
 
+func TestServerURLTrimSlashes(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	testData := "bababoi"
+	srv, err := api.NewServer(testHTTPRequests{})
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	hclient := s.Client()
+	for _, u := range []string{
+		s.URL,
+		s.URL + "/",
+		s.URL + "//",
+	} {
+		u := u
+		t.Logf("Server: %q", u)
+
+		client, err := api.NewClient(u, api.WithClient(hclient))
+		a.NoError(err)
+
+		resp, err := client.MaskContentType(ctx, &api.MaskContentTypeReqWithContentType{
+			ContentType: "application/json",
+			Content: api.MaskContentTypeReq{
+				Data: strings.NewReader(testData),
+			},
+		})
+		a.NoError(err)
+		a.Equal("application/json", resp.ContentType)
+		a.Equal(testData, resp.Content)
+	}
+}
+
 func TestRequestJSONStreaming(t *testing.T) {
 	a := require.New(t)
 	ctx := context.Background()
