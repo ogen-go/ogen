@@ -26,12 +26,19 @@ var _ Handler = struct{
 }{}
 {{- end }}
 
+func trimTrailingSlashes(u *url.URL) {
+	u.Path = strings.TrimRight(u.Path, "/")
+	u.RawPath = strings.TrimRight(u.RawPath, "/")
+}
+
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
+	trimTrailingSlashes(u)
+
 	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
@@ -197,6 +204,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "parse target URL")
 	}
+	trimTrailingSlashes(u)
 	{{- else }}
 		{{- template "encode_path_parameters" $op }}
 	{{- end }}
