@@ -17,22 +17,7 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.20'
-
-      - name: Get Go environment
-        id: go-env
-        run: |
-          echo "::set-output name=cache::$(go env GOCACHE)"
-          echo "::set-output name=modcache::$(go env GOMODCACHE)"
-
-      - name: Set up cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ steps.go-env.outputs.cache }}
-            ${{ steps.go-env.outputs.modcache }}
-          key: test-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            test-${{ runner.os }}-go-
+          cache: true
 
       - name: List dependencies
         run: go list -json -m all > go.list
