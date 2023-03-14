@@ -1356,21 +1356,21 @@ func (s *TestFloatValidation) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TestNullableOneofsApplicationJSONCreated) SetFake() {
+func (s *TestNullableOneofsCreated) SetFake() {
 	var unwrapped OneOfWithNullable
 	{
 		unwrapped.SetFake()
 	}
-	*s = TestNullableOneofsApplicationJSONCreated(unwrapped)
+	*s = TestNullableOneofsCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TestNullableOneofsApplicationJSONOK) SetFake() {
+func (s *TestNullableOneofsOK) SetFake() {
 	var unwrapped OneOfWithNullable
 	{
 		unwrapped.SetFake()
 	}
-	*s = TestNullableOneofsApplicationJSONOK(unwrapped)
+	*s = TestNullableOneofsOK(unwrapped)
 }
 
 // SetFake set fake values.

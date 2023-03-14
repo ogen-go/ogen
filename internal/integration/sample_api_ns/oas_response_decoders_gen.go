@@ -1037,7 +1037,7 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TestNullableOneofsApplicationJSONOK
+			var response TestNullableOneofsOK
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -1072,7 +1072,7 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response TestNullableOneofsApplicationJSONCreated
+			var response TestNullableOneofsCreated
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

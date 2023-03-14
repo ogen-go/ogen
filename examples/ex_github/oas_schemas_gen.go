@@ -213,13 +213,13 @@ func (*ActionsAddSelectedRepoToOrgSecretNoContent) actionsAddSelectedRepoToOrgSe
 // ActionsAddSelfHostedRunnerToGroupForOrgNoContent is response for ActionsAddSelfHostedRunnerToGroupForOrg operation.
 type ActionsAddSelfHostedRunnerToGroupForOrgNoContent struct{}
 
-type ActionsApproveWorkflowRunApplicationJSONForbidden BasicError
+type ActionsApproveWorkflowRunForbidden BasicError
 
-func (*ActionsApproveWorkflowRunApplicationJSONForbidden) actionsApproveWorkflowRunRes() {}
+func (*ActionsApproveWorkflowRunForbidden) actionsApproveWorkflowRunRes() {}
 
-type ActionsApproveWorkflowRunApplicationJSONNotFound BasicError
+type ActionsApproveWorkflowRunNotFound BasicError
 
-func (*ActionsApproveWorkflowRunApplicationJSONNotFound) actionsApproveWorkflowRunRes() {}
+func (*ActionsApproveWorkflowRunNotFound) actionsApproveWorkflowRunRes() {}
 
 // Ref: #/components/schemas/actions-billing-usage
 type ActionsBillingUsage struct {
@@ -2015,19 +2015,9 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalText(da
 	}
 }
 
-type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden BasicError
+type ActivityCheckRepoIsStarredByAuthenticatedUserForbidden BasicError
 
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) activityCheckRepoIsStarredByAuthenticatedUserRes() {
-}
-
-type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound BasicError
-
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) activityCheckRepoIsStarredByAuthenticatedUserRes() {
-}
-
-type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserRes() {
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
 // ActivityCheckRepoIsStarredByAuthenticatedUserNoContent is response for ActivityCheckRepoIsStarredByAuthenticatedUser operation.
@@ -2036,55 +2026,58 @@ type ActivityCheckRepoIsStarredByAuthenticatedUserNoContent struct{}
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
+type ActivityCheckRepoIsStarredByAuthenticatedUserNotFound BasicError
+
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserNotFound) activityCheckRepoIsStarredByAuthenticatedUserRes() {
+}
+
+type ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized BasicError
+
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserRes() {
+}
+
 // ActivityDeleteRepoSubscriptionNoContent is response for ActivityDeleteRepoSubscription operation.
 type ActivityDeleteRepoSubscriptionNoContent struct{}
 
-type ActivityDeleteThreadSubscriptionApplicationJSONForbidden BasicError
+type ActivityDeleteThreadSubscriptionForbidden BasicError
 
-func (*ActivityDeleteThreadSubscriptionApplicationJSONForbidden) activityDeleteThreadSubscriptionRes() {
-}
-
-type ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized BasicError
-
-func (*ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) activityDeleteThreadSubscriptionRes() {
-}
+func (*ActivityDeleteThreadSubscriptionForbidden) activityDeleteThreadSubscriptionRes() {}
 
 // ActivityDeleteThreadSubscriptionNoContent is response for ActivityDeleteThreadSubscription operation.
 type ActivityDeleteThreadSubscriptionNoContent struct{}
 
 func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionRes() {}
 
+type ActivityDeleteThreadSubscriptionUnauthorized BasicError
+
+func (*ActivityDeleteThreadSubscriptionUnauthorized) activityDeleteThreadSubscriptionRes() {}
+
 // ActivityGetRepoSubscriptionNotFound is response for ActivityGetRepoSubscription operation.
 type ActivityGetRepoSubscriptionNotFound struct{}
 
 func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionRes() {}
 
-type ActivityGetThreadApplicationJSONForbidden BasicError
+type ActivityGetThreadForbidden BasicError
 
-func (*ActivityGetThreadApplicationJSONForbidden) activityGetThreadRes() {}
+func (*ActivityGetThreadForbidden) activityGetThreadRes() {}
 
-type ActivityGetThreadApplicationJSONUnauthorized BasicError
+type ActivityGetThreadSubscriptionForAuthenticatedUserForbidden BasicError
 
-func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadRes() {}
-
-type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden BasicError
-
-func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) activityGetThreadSubscriptionForAuthenticatedUserRes() {
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
-type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized BasicError
 
-func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
-type ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden BasicError
+type ActivityGetThreadUnauthorized BasicError
 
-func (*ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) activityListNotificationsForAuthenticatedUserRes() {
-}
+func (*ActivityGetThreadUnauthorized) activityGetThreadRes() {}
 
-type ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type ActivityListNotificationsForAuthenticatedUserForbidden BasicError
 
-func (*ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) activityListNotificationsForAuthenticatedUserRes() {
+func (*ActivityListNotificationsForAuthenticatedUserForbidden) activityListNotificationsForAuthenticatedUserRes() {
 }
 
 // ActivityListNotificationsForAuthenticatedUserOKHeaders wraps []Thread with response headers.
@@ -2116,20 +2109,23 @@ func (s *ActivityListNotificationsForAuthenticatedUserOKHeaders) SetResponse(val
 func (*ActivityListNotificationsForAuthenticatedUserOKHeaders) activityListNotificationsForAuthenticatedUserRes() {
 }
 
-type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
+type ActivityListNotificationsForAuthenticatedUserUnauthorized BasicError
 
-func (*ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) activityListPublicEventsForRepoNetworkRes() {
+func (*ActivityListNotificationsForAuthenticatedUserUnauthorized) activityListNotificationsForAuthenticatedUserRes() {
 }
 
-type ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently BasicError
+type ActivityListPublicEventsForRepoNetworkForbidden BasicError
 
-func (*ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) activityListPublicEventsForRepoNetworkRes() {
+func (*ActivityListPublicEventsForRepoNetworkForbidden) activityListPublicEventsForRepoNetworkRes() {}
+
+type ActivityListPublicEventsForRepoNetworkMovedPermanently BasicError
+
+func (*ActivityListPublicEventsForRepoNetworkMovedPermanently) activityListPublicEventsForRepoNetworkRes() {
 }
 
-type ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound BasicError
+type ActivityListPublicEventsForRepoNetworkNotFound BasicError
 
-func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityListPublicEventsForRepoNetworkRes() {
-}
+func (*ActivityListPublicEventsForRepoNetworkNotFound) activityListPublicEventsForRepoNetworkRes() {}
 
 type ActivityListPublicEventsForRepoNetworkOKApplicationJSON []Event
 
@@ -2166,16 +2162,6 @@ func (s *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) SetResponse
 	s.Response = val
 }
 
-type ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden BasicError
-
-func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) activityListReposStarredByAuthenticatedUserRes() {
-}
-
-type ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) activityListReposStarredByAuthenticatedUserRes() {
-}
-
 type ActivityListReposStarredByAuthenticatedUserDirection string
 
 const (
@@ -2207,6 +2193,11 @@ func (s *ActivityListReposStarredByAuthenticatedUserDirection) UnmarshalText(dat
 	default:
 		return errors.Errorf("invalid value: %q", data)
 	}
+}
+
+type ActivityListReposStarredByAuthenticatedUserForbidden BasicError
+
+func (*ActivityListReposStarredByAuthenticatedUserForbidden) activityListReposStarredByAuthenticatedUserRes() {
 }
 
 // ActivityListReposStarredByAuthenticatedUserOKHeaders wraps []Repository with response headers.
@@ -2271,6 +2262,11 @@ func (s *ActivityListReposStarredByAuthenticatedUserSort) UnmarshalText(data []b
 	}
 }
 
+type ActivityListReposStarredByAuthenticatedUserUnauthorized BasicError
+
+func (*ActivityListReposStarredByAuthenticatedUserUnauthorized) activityListReposStarredByAuthenticatedUserRes() {
+}
+
 // ActivityListReposWatchedByUserOKHeaders wraps []MinimalRepository with response headers.
 type ActivityListReposWatchedByUserOKHeaders struct {
 	Link     OptString
@@ -2297,14 +2293,9 @@ func (s *ActivityListReposWatchedByUserOKHeaders) SetResponse(val []MinimalRepos
 	s.Response = val
 }
 
-type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
+type ActivityListWatchedReposForAuthenticatedUserForbidden BasicError
 
-func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) activityListWatchedReposForAuthenticatedUserRes() {
-}
-
-type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
+func (*ActivityListWatchedReposForAuthenticatedUserForbidden) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 // ActivityListWatchedReposForAuthenticatedUserOKHeaders wraps []MinimalRepository with response headers.
@@ -2334,6 +2325,11 @@ func (s *ActivityListWatchedReposForAuthenticatedUserOKHeaders) SetResponse(val 
 }
 
 func (*ActivityListWatchedReposForAuthenticatedUserOKHeaders) activityListWatchedReposForAuthenticatedUserRes() {
+}
+
+type ActivityListWatchedReposForAuthenticatedUserUnauthorized BasicError
+
+func (*ActivityListWatchedReposForAuthenticatedUserUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
 // ActivityListWatchersForRepoOKHeaders wraps []SimpleUser with response headers.
@@ -2378,15 +2374,9 @@ func (s *ActivityMarkNotificationsAsReadAccepted) SetMessage(val OptString) {
 
 func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadRes() {}
 
-type ActivityMarkNotificationsAsReadApplicationJSONForbidden BasicError
+type ActivityMarkNotificationsAsReadForbidden BasicError
 
-func (*ActivityMarkNotificationsAsReadApplicationJSONForbidden) activityMarkNotificationsAsReadRes() {
-}
-
-type ActivityMarkNotificationsAsReadApplicationJSONUnauthorized BasicError
-
-func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadRes() {
-}
+func (*ActivityMarkNotificationsAsReadForbidden) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkNotificationsAsReadReq struct {
 	// Describes the last point that notifications were checked.
@@ -2419,6 +2409,10 @@ func (s *ActivityMarkNotificationsAsReadReq) SetRead(val OptBool) {
 type ActivityMarkNotificationsAsReadResetContent struct{}
 
 func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadRes() {}
+
+type ActivityMarkNotificationsAsReadUnauthorized BasicError
+
+func (*ActivityMarkNotificationsAsReadUnauthorized) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkRepoNotificationsAsReadAccepted struct {
 	Message OptString `json:"message"`
@@ -2502,13 +2496,9 @@ func (s *ActivitySetRepoSubscriptionReq) SetIgnored(val OptBool) {
 	s.Ignored = val
 }
 
-type ActivitySetThreadSubscriptionApplicationJSONForbidden BasicError
+type ActivitySetThreadSubscriptionForbidden BasicError
 
-func (*ActivitySetThreadSubscriptionApplicationJSONForbidden) activitySetThreadSubscriptionRes() {}
-
-type ActivitySetThreadSubscriptionApplicationJSONUnauthorized BasicError
-
-func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionRes() {}
+func (*ActivitySetThreadSubscriptionForbidden) activitySetThreadSubscriptionRes() {}
 
 type ActivitySetThreadSubscriptionReq struct {
 	// Whether to block all notifications from a thread.
@@ -2525,45 +2515,44 @@ func (s *ActivitySetThreadSubscriptionReq) SetIgnored(val OptBool) {
 	s.Ignored = val
 }
 
-type ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
+type ActivitySetThreadSubscriptionUnauthorized BasicError
 
-func (*ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) activityStarRepoForAuthenticatedUserRes() {
-}
+func (*ActivitySetThreadSubscriptionUnauthorized) activitySetThreadSubscriptionRes() {}
 
-type ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
+type ActivityStarRepoForAuthenticatedUserForbidden BasicError
 
-func (*ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) activityStarRepoForAuthenticatedUserRes() {
-}
-
-type ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityStarRepoForAuthenticatedUserRes() {
-}
+func (*ActivityStarRepoForAuthenticatedUserForbidden) activityStarRepoForAuthenticatedUserRes() {}
 
 // ActivityStarRepoForAuthenticatedUserNoContent is response for ActivityStarRepoForAuthenticatedUser operation.
 type ActivityStarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserRes() {}
 
-type ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
+type ActivityStarRepoForAuthenticatedUserNotFound BasicError
 
-func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) activityUnstarRepoForAuthenticatedUserRes() {
-}
+func (*ActivityStarRepoForAuthenticatedUserNotFound) activityStarRepoForAuthenticatedUserRes() {}
 
-type ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
+type ActivityStarRepoForAuthenticatedUserUnauthorized BasicError
 
-func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) activityUnstarRepoForAuthenticatedUserRes() {
-}
+func (*ActivityStarRepoForAuthenticatedUserUnauthorized) activityStarRepoForAuthenticatedUserRes() {}
 
-type ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type ActivityUnstarRepoForAuthenticatedUserForbidden BasicError
 
-func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityUnstarRepoForAuthenticatedUserRes() {
-}
+func (*ActivityUnstarRepoForAuthenticatedUserForbidden) activityUnstarRepoForAuthenticatedUserRes() {}
 
 // ActivityUnstarRepoForAuthenticatedUserNoContent is response for ActivityUnstarRepoForAuthenticatedUser operation.
 type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserRes() {}
+
+type ActivityUnstarRepoForAuthenticatedUserNotFound BasicError
+
+func (*ActivityUnstarRepoForAuthenticatedUserNotFound) activityUnstarRepoForAuthenticatedUserRes() {}
+
+type ActivityUnstarRepoForAuthenticatedUserUnauthorized BasicError
+
+func (*ActivityUnstarRepoForAuthenticatedUserUnauthorized) activityUnstarRepoForAuthenticatedUserRes() {
+}
 
 // Actor.
 // Ref: #/components/schemas/actor
@@ -4295,18 +4284,18 @@ func (s *ApplicationGrantApp) SetURL(val url.URL) {
 	s.URL = val
 }
 
-type AppsAddRepoToInstallationApplicationJSONForbidden BasicError
+type AppsAddRepoToInstallationForbidden BasicError
 
-func (*AppsAddRepoToInstallationApplicationJSONForbidden) appsAddRepoToInstallationRes() {}
-
-type AppsAddRepoToInstallationApplicationJSONNotFound BasicError
-
-func (*AppsAddRepoToInstallationApplicationJSONNotFound) appsAddRepoToInstallationRes() {}
+func (*AppsAddRepoToInstallationForbidden) appsAddRepoToInstallationRes() {}
 
 // AppsAddRepoToInstallationNoContent is response for AppsAddRepoToInstallation operation.
 type AppsAddRepoToInstallationNoContent struct{}
 
 func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationRes() {}
+
+type AppsAddRepoToInstallationNotFound BasicError
+
+func (*AppsAddRepoToInstallationNotFound) appsAddRepoToInstallationRes() {}
 
 type AppsCheckTokenReq struct {
 	// The access_token of the OAuth application.
@@ -4323,17 +4312,17 @@ func (s *AppsCheckTokenReq) SetAccessToken(val string) {
 	s.AccessToken = val
 }
 
-type AppsCreateContentAttachmentApplicationJSONForbidden BasicError
+type AppsCreateContentAttachmentForbidden BasicError
 
-func (*AppsCreateContentAttachmentApplicationJSONForbidden) appsCreateContentAttachmentRes() {}
+func (*AppsCreateContentAttachmentForbidden) appsCreateContentAttachmentRes() {}
 
-type AppsCreateContentAttachmentApplicationJSONGone BasicError
+type AppsCreateContentAttachmentGone BasicError
 
-func (*AppsCreateContentAttachmentApplicationJSONGone) appsCreateContentAttachmentRes() {}
+func (*AppsCreateContentAttachmentGone) appsCreateContentAttachmentRes() {}
 
-type AppsCreateContentAttachmentApplicationJSONNotFound BasicError
+type AppsCreateContentAttachmentNotFound BasicError
 
-func (*AppsCreateContentAttachmentApplicationJSONNotFound) appsCreateContentAttachmentRes() {}
+func (*AppsCreateContentAttachmentNotFound) appsCreateContentAttachmentRes() {}
 
 type AppsCreateContentAttachmentReq struct {
 	// The title of the attachment.
@@ -4670,20 +4659,13 @@ func (s *AppsCreateFromManifestCreatedPermissionsAdditional) init() AppsCreateFr
 
 type AppsCreateFromManifestReq struct{}
 
-type AppsCreateInstallationAccessTokenApplicationJSONForbidden BasicError
+type AppsCreateInstallationAccessTokenForbidden BasicError
 
-func (*AppsCreateInstallationAccessTokenApplicationJSONForbidden) appsCreateInstallationAccessTokenRes() {
-}
+func (*AppsCreateInstallationAccessTokenForbidden) appsCreateInstallationAccessTokenRes() {}
 
-type AppsCreateInstallationAccessTokenApplicationJSONNotFound BasicError
+type AppsCreateInstallationAccessTokenNotFound BasicError
 
-func (*AppsCreateInstallationAccessTokenApplicationJSONNotFound) appsCreateInstallationAccessTokenRes() {
-}
-
-type AppsCreateInstallationAccessTokenApplicationJSONUnauthorized BasicError
-
-func (*AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) appsCreateInstallationAccessTokenRes() {
-}
+func (*AppsCreateInstallationAccessTokenNotFound) appsCreateInstallationAccessTokenRes() {}
 
 type AppsCreateInstallationAccessTokenReq struct {
 	// List of repository names that the token should have access to.
@@ -4722,6 +4704,10 @@ func (s *AppsCreateInstallationAccessTokenReq) SetRepositoryIds(val []int) {
 func (s *AppsCreateInstallationAccessTokenReq) SetPermissions(val OptAppPermissions) {
 	s.Permissions = val
 }
+
+type AppsCreateInstallationAccessTokenUnauthorized BasicError
+
+func (*AppsCreateInstallationAccessTokenUnauthorized) appsCreateInstallationAccessTokenRes() {}
 
 // AppsDeleteAuthorizationNoContent is response for AppsDeleteAuthorization operation.
 type AppsDeleteAuthorizationNoContent struct{}
@@ -4768,23 +4754,17 @@ func (s *AppsDeleteTokenReq) SetAccessToken(val string) {
 	s.AccessToken = val
 }
 
-type AppsGetBySlugApplicationJSONForbidden BasicError
+type AppsGetBySlugForbidden BasicError
 
-func (*AppsGetBySlugApplicationJSONForbidden) appsGetBySlugRes() {}
+func (*AppsGetBySlugForbidden) appsGetBySlugRes() {}
 
-type AppsGetBySlugApplicationJSONNotFound BasicError
+type AppsGetBySlugNotFound BasicError
 
-func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugRes() {}
+func (*AppsGetBySlugNotFound) appsGetBySlugRes() {}
 
-type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
+type AppsGetSubscriptionPlanForAccountNotFound BasicError
 
-func (*AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) appsGetSubscriptionPlanForAccountRes() {
-}
-
-type AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized BasicError
-
-func (*AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) appsGetSubscriptionPlanForAccountRes() {
-}
+func (*AppsGetSubscriptionPlanForAccountNotFound) appsGetSubscriptionPlanForAccountRes() {}
 
 // AppsGetSubscriptionPlanForAccountStubbedNotFound is response for AppsGetSubscriptionPlanForAccountStubbed operation.
 type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
@@ -4792,13 +4772,9 @@ type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
-type AppsListAccountsForPlanApplicationJSONNotFound BasicError
+type AppsGetSubscriptionPlanForAccountUnauthorized BasicError
 
-func (*AppsListAccountsForPlanApplicationJSONNotFound) appsListAccountsForPlanRes() {}
-
-type AppsListAccountsForPlanApplicationJSONUnauthorized BasicError
-
-func (*AppsListAccountsForPlanApplicationJSONUnauthorized) appsListAccountsForPlanRes() {}
+func (*AppsGetSubscriptionPlanForAccountUnauthorized) appsGetSubscriptionPlanForAccountRes() {}
 
 type AppsListAccountsForPlanDirection string
 
@@ -4832,6 +4808,10 @@ func (s *AppsListAccountsForPlanDirection) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type AppsListAccountsForPlanNotFound BasicError
+
+func (*AppsListAccountsForPlanNotFound) appsListAccountsForPlanRes() {}
 
 // AppsListAccountsForPlanOKHeaders wraps []MarketplacePurchase with response headers.
 type AppsListAccountsForPlanOKHeaders struct {
@@ -4988,14 +4968,18 @@ func (s *AppsListAccountsForPlanStubbedSort) UnmarshalText(data []byte) error {
 	}
 }
 
-type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
+type AppsListAccountsForPlanUnauthorized BasicError
 
-func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) appsListInstallationReposForAuthenticatedUserRes() {
+func (*AppsListAccountsForPlanUnauthorized) appsListAccountsForPlanRes() {}
+
+type AppsListInstallationReposForAuthenticatedUserForbidden BasicError
+
+func (*AppsListInstallationReposForAuthenticatedUserForbidden) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-type AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound BasicError
+type AppsListInstallationReposForAuthenticatedUserNotFound BasicError
 
-func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserRes() {
+func (*AppsListInstallationReposForAuthenticatedUserNotFound) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListInstallationReposForAuthenticatedUserOK struct {
@@ -5063,13 +5047,9 @@ func (s *AppsListInstallationReposForAuthenticatedUserOKHeaders) SetResponse(val
 func (*AppsListInstallationReposForAuthenticatedUserOKHeaders) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-type AppsListPlansApplicationJSONNotFound BasicError
+type AppsListPlansNotFound BasicError
 
-func (*AppsListPlansApplicationJSONNotFound) appsListPlansRes() {}
-
-type AppsListPlansApplicationJSONUnauthorized BasicError
-
-func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansRes() {}
+func (*AppsListPlansNotFound) appsListPlansRes() {}
 
 // AppsListPlansOKHeaders wraps []MarketplaceListingPlan with response headers.
 type AppsListPlansOKHeaders struct {
@@ -5127,15 +5107,13 @@ func (s *AppsListPlansStubbedOKHeaders) SetResponse(val []MarketplaceListingPlan
 
 func (*AppsListPlansStubbedOKHeaders) appsListPlansStubbedRes() {}
 
-type AppsListReposAccessibleToInstallationApplicationJSONForbidden BasicError
+type AppsListPlansUnauthorized BasicError
 
-func (*AppsListReposAccessibleToInstallationApplicationJSONForbidden) appsListReposAccessibleToInstallationRes() {
-}
+func (*AppsListPlansUnauthorized) appsListPlansRes() {}
 
-type AppsListReposAccessibleToInstallationApplicationJSONUnauthorized BasicError
+type AppsListReposAccessibleToInstallationForbidden BasicError
 
-func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationRes() {
-}
+func (*AppsListReposAccessibleToInstallationForbidden) appsListReposAccessibleToInstallationRes() {}
 
 type AppsListReposAccessibleToInstallationOK struct {
 	TotalCount          int          `json:"total_count"`
@@ -5201,14 +5179,14 @@ func (s *AppsListReposAccessibleToInstallationOKHeaders) SetResponse(val AppsLis
 
 func (*AppsListReposAccessibleToInstallationOKHeaders) appsListReposAccessibleToInstallationRes() {}
 
-type AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound BasicError
+type AppsListReposAccessibleToInstallationUnauthorized BasicError
 
-func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) appsListSubscriptionsForAuthenticatedUserRes() {
+func (*AppsListReposAccessibleToInstallationUnauthorized) appsListReposAccessibleToInstallationRes() {
 }
 
-type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type AppsListSubscriptionsForAuthenticatedUserNotFound BasicError
 
-func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
+func (*AppsListSubscriptionsForAuthenticatedUserNotFound) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
 // AppsListSubscriptionsForAuthenticatedUserOKHeaders wraps []UserMarketplacePurchase with response headers.
@@ -5269,22 +5247,27 @@ func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) SetResponse(
 func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
+type AppsListSubscriptionsForAuthenticatedUserUnauthorized BasicError
+
+func (*AppsListSubscriptionsForAuthenticatedUserUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
+}
+
 type AppsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
 func (*AppsListWebhookDeliveriesOKApplicationJSON) appsListWebhookDeliveriesRes() {}
 
-type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
+type AppsRemoveRepoFromInstallationForbidden BasicError
 
-func (*AppsRemoveRepoFromInstallationApplicationJSONForbidden) appsRemoveRepoFromInstallationRes() {}
-
-type AppsRemoveRepoFromInstallationApplicationJSONNotFound BasicError
-
-func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFromInstallationRes() {}
+func (*AppsRemoveRepoFromInstallationForbidden) appsRemoveRepoFromInstallationRes() {}
 
 // AppsRemoveRepoFromInstallationNoContent is response for AppsRemoveRepoFromInstallation operation.
 type AppsRemoveRepoFromInstallationNoContent struct{}
 
 func (*AppsRemoveRepoFromInstallationNoContent) appsRemoveRepoFromInstallationRes() {}
+
+type AppsRemoveRepoFromInstallationNotFound BasicError
+
+func (*AppsRemoveRepoFromInstallationNotFound) appsRemoveRepoFromInstallationRes() {}
 
 type AppsResetTokenReq struct {
 	// The access_token of the OAuth application.
@@ -5304,17 +5287,13 @@ func (s *AppsResetTokenReq) SetAccessToken(val string) {
 // AppsRevokeInstallationAccessTokenNoContent is response for AppsRevokeInstallationAccessToken operation.
 type AppsRevokeInstallationAccessTokenNoContent struct{}
 
-type AppsScopeTokenApplicationJSONForbidden BasicError
+type AppsScopeTokenForbidden BasicError
 
-func (*AppsScopeTokenApplicationJSONForbidden) appsScopeTokenRes() {}
+func (*AppsScopeTokenForbidden) appsScopeTokenRes() {}
 
-type AppsScopeTokenApplicationJSONNotFound BasicError
+type AppsScopeTokenNotFound BasicError
 
-func (*AppsScopeTokenApplicationJSONNotFound) appsScopeTokenRes() {}
-
-type AppsScopeTokenApplicationJSONUnauthorized BasicError
-
-func (*AppsScopeTokenApplicationJSONUnauthorized) appsScopeTokenRes() {}
+func (*AppsScopeTokenNotFound) appsScopeTokenRes() {}
 
 type AppsScopeTokenReq struct {
 	// The OAuth access token used to authenticate to the GitHub API.
@@ -5393,6 +5372,10 @@ func (s *AppsScopeTokenReq) SetRepositoryIds(val []int) {
 func (s *AppsScopeTokenReq) SetPermissions(val OptAppPermissions) {
 	s.Permissions = val
 }
+
+type AppsScopeTokenUnauthorized BasicError
+
+func (*AppsScopeTokenUnauthorized) appsScopeTokenRes() {}
 
 // AppsSuspendInstallationNoContent is response for AppsSuspendInstallation operation.
 type AppsSuspendInstallationNoContent struct{}
@@ -9450,13 +9433,13 @@ func (s *CheckSuiteStatus) UnmarshalText(data []byte) error {
 	}
 }
 
-type ChecksCreateSuiteApplicationJSONCreated CheckSuite
+type ChecksCreateSuiteCreated CheckSuite
 
-func (*ChecksCreateSuiteApplicationJSONCreated) checksCreateSuiteRes() {}
+func (*ChecksCreateSuiteCreated) checksCreateSuiteRes() {}
 
-type ChecksCreateSuiteApplicationJSONOK CheckSuite
+type ChecksCreateSuiteOK CheckSuite
 
-func (*ChecksCreateSuiteApplicationJSONOK) checksCreateSuiteRes() {}
+func (*ChecksCreateSuiteOK) checksCreateSuiteRes() {}
 
 type ChecksCreateSuiteReq struct {
 	// The sha of the head commit.
@@ -11215,33 +11198,33 @@ type CodeScanningAnalysisToolVersion string
 
 type CodeScanningAnalysisURL url.URL
 
-type CodeScanningDeleteAnalysisApplicationJSONBadRequest BasicError
+type CodeScanningDeleteAnalysisBadRequest BasicError
 
-func (*CodeScanningDeleteAnalysisApplicationJSONBadRequest) codeScanningDeleteAnalysisRes() {}
+func (*CodeScanningDeleteAnalysisBadRequest) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningDeleteAnalysisApplicationJSONForbidden BasicError
+type CodeScanningDeleteAnalysisForbidden BasicError
 
-func (*CodeScanningDeleteAnalysisApplicationJSONForbidden) codeScanningDeleteAnalysisRes() {}
+func (*CodeScanningDeleteAnalysisForbidden) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
+type CodeScanningDeleteAnalysisNotFound BasicError
 
-func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
+func (*CodeScanningDeleteAnalysisNotFound) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningGetAlertApplicationJSONForbidden BasicError
+type CodeScanningGetAlertForbidden BasicError
 
-func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertRes() {}
+func (*CodeScanningGetAlertForbidden) codeScanningGetAlertRes() {}
 
-type CodeScanningGetAlertApplicationJSONNotFound BasicError
+type CodeScanningGetAlertNotFound BasicError
 
-func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertRes() {}
+func (*CodeScanningGetAlertNotFound) codeScanningGetAlertRes() {}
 
-type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
+type CodeScanningGetAnalysisForbidden BasicError
 
-func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisRes() {}
+func (*CodeScanningGetAnalysisForbidden) codeScanningGetAnalysisRes() {}
 
-type CodeScanningGetAnalysisApplicationJSONNotFound BasicError
+type CodeScanningGetAnalysisNotFound BasicError
 
-func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisRes() {}
+func (*CodeScanningGetAnalysisNotFound) codeScanningGetAnalysisRes() {}
 
 type CodeScanningGetAnalysisOKApplicationJSONSarif struct {
 	Data io.Reader
@@ -11261,37 +11244,37 @@ type CodeScanningGetSarifNotFound struct{}
 
 func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
 
-type CodeScanningListAlertInstancesApplicationJSONForbidden BasicError
+type CodeScanningListAlertInstancesForbidden BasicError
 
-func (*CodeScanningListAlertInstancesApplicationJSONForbidden) codeScanningListAlertInstancesRes() {}
+func (*CodeScanningListAlertInstancesForbidden) codeScanningListAlertInstancesRes() {}
 
-type CodeScanningListAlertInstancesApplicationJSONNotFound BasicError
+type CodeScanningListAlertInstancesNotFound BasicError
 
-func (*CodeScanningListAlertInstancesApplicationJSONNotFound) codeScanningListAlertInstancesRes() {}
+func (*CodeScanningListAlertInstancesNotFound) codeScanningListAlertInstancesRes() {}
 
 type CodeScanningListAlertInstancesOKApplicationJSON []CodeScanningAlertInstance
 
 func (*CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
 
-type CodeScanningListAlertsForRepoApplicationJSONForbidden BasicError
+type CodeScanningListAlertsForRepoForbidden BasicError
 
-func (*CodeScanningListAlertsForRepoApplicationJSONForbidden) codeScanningListAlertsForRepoRes() {}
+func (*CodeScanningListAlertsForRepoForbidden) codeScanningListAlertsForRepoRes() {}
 
-type CodeScanningListAlertsForRepoApplicationJSONNotFound BasicError
+type CodeScanningListAlertsForRepoNotFound BasicError
 
-func (*CodeScanningListAlertsForRepoApplicationJSONNotFound) codeScanningListAlertsForRepoRes() {}
+func (*CodeScanningListAlertsForRepoNotFound) codeScanningListAlertsForRepoRes() {}
 
 type CodeScanningListAlertsForRepoOKApplicationJSON []CodeScanningAlertItems
 
 func (*CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
 
-type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
+type CodeScanningListRecentAnalysesForbidden BasicError
 
-func (*CodeScanningListRecentAnalysesApplicationJSONForbidden) codeScanningListRecentAnalysesRes() {}
+func (*CodeScanningListRecentAnalysesForbidden) codeScanningListRecentAnalysesRes() {}
 
-type CodeScanningListRecentAnalysesApplicationJSONNotFound BasicError
+type CodeScanningListRecentAnalysesNotFound BasicError
 
-func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRecentAnalysesRes() {}
+func (*CodeScanningListRecentAnalysesNotFound) codeScanningListRecentAnalysesRes() {}
 
 type CodeScanningListRecentAnalysesOKApplicationJSON []CodeScanningAnalysis
 
@@ -11394,13 +11377,13 @@ func (s *CodeScanningSarifsStatusProcessingStatus) UnmarshalText(data []byte) er
 	}
 }
 
-type CodeScanningUpdateAlertApplicationJSONForbidden BasicError
+type CodeScanningUpdateAlertForbidden BasicError
 
-func (*CodeScanningUpdateAlertApplicationJSONForbidden) codeScanningUpdateAlertRes() {}
+func (*CodeScanningUpdateAlertForbidden) codeScanningUpdateAlertRes() {}
 
-type CodeScanningUpdateAlertApplicationJSONNotFound BasicError
+type CodeScanningUpdateAlertNotFound BasicError
 
-func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertRes() {}
+func (*CodeScanningUpdateAlertNotFound) codeScanningUpdateAlertRes() {}
 
 type CodeScanningUpdateAlertReq struct {
 	State           CodeScanningAlertSetState              `json:"state"`
@@ -11427,18 +11410,18 @@ func (s *CodeScanningUpdateAlertReq) SetDismissedReason(val OptNilCodeScanningAl
 	s.DismissedReason = val
 }
 
-type CodeScanningUploadSarifApplicationJSONForbidden BasicError
-
-func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifRes() {}
-
-type CodeScanningUploadSarifApplicationJSONNotFound BasicError
-
-func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifRes() {}
-
 // CodeScanningUploadSarifBadRequest is response for CodeScanningUploadSarif operation.
 type CodeScanningUploadSarifBadRequest struct{}
 
 func (*CodeScanningUploadSarifBadRequest) codeScanningUploadSarifRes() {}
+
+type CodeScanningUploadSarifForbidden BasicError
+
+func (*CodeScanningUploadSarifForbidden) codeScanningUploadSarifRes() {}
+
+type CodeScanningUploadSarifNotFound BasicError
+
+func (*CodeScanningUploadSarifNotFound) codeScanningUploadSarifRes() {}
 
 type CodeScanningUploadSarifReq struct {
 	CommitSha CodeScanningAnalysisCommitSha `json:"commit_sha"`
@@ -19927,21 +19910,13 @@ type GistsCheckIsStarredNotFound struct{}
 
 func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
-type GistsCreateApplicationJSONForbidden BasicError
+type GistsCreateCommentForbidden BasicError
 
-func (*GistsCreateApplicationJSONForbidden) gistsCreateRes() {}
+func (*GistsCreateCommentForbidden) gistsCreateCommentRes() {}
 
-type GistsCreateApplicationJSONNotFound BasicError
+type GistsCreateCommentNotFound BasicError
 
-func (*GistsCreateApplicationJSONNotFound) gistsCreateRes() {}
-
-type GistsCreateCommentApplicationJSONForbidden BasicError
-
-func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentRes() {}
-
-type GistsCreateCommentApplicationJSONNotFound BasicError
-
-func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentRes() {}
+func (*GistsCreateCommentNotFound) gistsCreateCommentRes() {}
 
 type GistsCreateCommentReq struct {
 	// The comment text.
@@ -19957,6 +19932,14 @@ func (s *GistsCreateCommentReq) GetBody() string {
 func (s *GistsCreateCommentReq) SetBody(val string) {
 	s.Body = val
 }
+
+type GistsCreateForbidden BasicError
+
+func (*GistsCreateForbidden) gistsCreateRes() {}
+
+type GistsCreateNotFound BasicError
+
+func (*GistsCreateNotFound) gistsCreateRes() {}
 
 type GistsCreateReq struct {
 	// Description of the gist.
@@ -20122,55 +20105,55 @@ func (s *GistsCreateReqPublic1) UnmarshalText(data []byte) error {
 	}
 }
 
-type GistsDeleteApplicationJSONForbidden BasicError
+type GistsDeleteCommentForbidden BasicError
 
-func (*GistsDeleteApplicationJSONForbidden) gistsDeleteRes() {}
-
-type GistsDeleteApplicationJSONNotFound BasicError
-
-func (*GistsDeleteApplicationJSONNotFound) gistsDeleteRes() {}
-
-type GistsDeleteCommentApplicationJSONForbidden BasicError
-
-func (*GistsDeleteCommentApplicationJSONForbidden) gistsDeleteCommentRes() {}
-
-type GistsDeleteCommentApplicationJSONNotFound BasicError
-
-func (*GistsDeleteCommentApplicationJSONNotFound) gistsDeleteCommentRes() {}
+func (*GistsDeleteCommentForbidden) gistsDeleteCommentRes() {}
 
 // GistsDeleteCommentNoContent is response for GistsDeleteComment operation.
 type GistsDeleteCommentNoContent struct{}
 
 func (*GistsDeleteCommentNoContent) gistsDeleteCommentRes() {}
 
+type GistsDeleteCommentNotFound BasicError
+
+func (*GistsDeleteCommentNotFound) gistsDeleteCommentRes() {}
+
+type GistsDeleteForbidden BasicError
+
+func (*GistsDeleteForbidden) gistsDeleteRes() {}
+
 // GistsDeleteNoContent is response for GistsDelete operation.
 type GistsDeleteNoContent struct{}
 
 func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
-type GistsForkApplicationJSONForbidden BasicError
+type GistsDeleteNotFound BasicError
 
-func (*GistsForkApplicationJSONForbidden) gistsForkRes() {}
+func (*GistsDeleteNotFound) gistsDeleteRes() {}
 
-type GistsForkApplicationJSONNotFound BasicError
+type GistsForkForbidden BasicError
 
-func (*GistsForkApplicationJSONNotFound) gistsForkRes() {}
+func (*GistsForkForbidden) gistsForkRes() {}
 
-type GistsGetRevisionApplicationJSONForbidden BasicError
+type GistsForkNotFound BasicError
 
-func (*GistsGetRevisionApplicationJSONForbidden) gistsGetRevisionRes() {}
+func (*GistsForkNotFound) gistsForkRes() {}
 
-type GistsGetRevisionApplicationJSONNotFound BasicError
+type GistsGetRevisionForbidden BasicError
 
-func (*GistsGetRevisionApplicationJSONNotFound) gistsGetRevisionRes() {}
+func (*GistsGetRevisionForbidden) gistsGetRevisionRes() {}
 
-type GistsListCommentsApplicationJSONForbidden BasicError
+type GistsGetRevisionNotFound BasicError
 
-func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsRes() {}
+func (*GistsGetRevisionNotFound) gistsGetRevisionRes() {}
 
-type GistsListCommentsApplicationJSONNotFound BasicError
+type GistsListCommentsForbidden BasicError
 
-func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
+func (*GistsListCommentsForbidden) gistsListCommentsRes() {}
+
+type GistsListCommentsNotFound BasicError
+
+func (*GistsListCommentsNotFound) gistsListCommentsRes() {}
 
 // GistsListCommentsOKHeaders wraps []GistComment with response headers.
 type GistsListCommentsOKHeaders struct {
@@ -20200,13 +20183,13 @@ func (s *GistsListCommentsOKHeaders) SetResponse(val []GistComment) {
 
 func (*GistsListCommentsOKHeaders) gistsListCommentsRes() {}
 
-type GistsListCommitsApplicationJSONForbidden BasicError
+type GistsListCommitsForbidden BasicError
 
-func (*GistsListCommitsApplicationJSONForbidden) gistsListCommitsRes() {}
+func (*GistsListCommitsForbidden) gistsListCommitsRes() {}
 
-type GistsListCommitsApplicationJSONNotFound BasicError
+type GistsListCommitsNotFound BasicError
 
-func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
+func (*GistsListCommitsNotFound) gistsListCommitsRes() {}
 
 // GistsListCommitsOKHeaders wraps []GistCommit with response headers.
 type GistsListCommitsOKHeaders struct {
@@ -20264,13 +20247,13 @@ func (s *GistsListForUserOKHeaders) SetResponse(val []BaseGist) {
 
 func (*GistsListForUserOKHeaders) gistsListForUserRes() {}
 
-type GistsListForksApplicationJSONForbidden BasicError
+type GistsListForksForbidden BasicError
 
-func (*GistsListForksApplicationJSONForbidden) gistsListForksRes() {}
+func (*GistsListForksForbidden) gistsListForksRes() {}
 
-type GistsListForksApplicationJSONNotFound BasicError
+type GistsListForksNotFound BasicError
 
-func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
+func (*GistsListForksNotFound) gistsListForksRes() {}
 
 // GistsListForksOKHeaders wraps []GistSimple with response headers.
 type GistsListForksOKHeaders struct {
@@ -20356,13 +20339,9 @@ func (s *GistsListPublicOKHeaders) SetResponse(val []BaseGist) {
 
 func (*GistsListPublicOKHeaders) gistsListPublicRes() {}
 
-type GistsListStarredApplicationJSONForbidden BasicError
+type GistsListStarredForbidden BasicError
 
-func (*GistsListStarredApplicationJSONForbidden) gistsListStarredRes() {}
-
-type GistsListStarredApplicationJSONUnauthorized BasicError
-
-func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
+func (*GistsListStarredForbidden) gistsListStarredRes() {}
 
 // GistsListStarredOKHeaders wraps []BaseGist with response headers.
 type GistsListStarredOKHeaders struct {
@@ -20392,31 +20371,35 @@ func (s *GistsListStarredOKHeaders) SetResponse(val []BaseGist) {
 
 func (*GistsListStarredOKHeaders) gistsListStarredRes() {}
 
-type GistsStarApplicationJSONForbidden BasicError
+type GistsListStarredUnauthorized BasicError
 
-func (*GistsStarApplicationJSONForbidden) gistsStarRes() {}
+func (*GistsListStarredUnauthorized) gistsListStarredRes() {}
 
-type GistsStarApplicationJSONNotFound BasicError
+type GistsStarForbidden BasicError
 
-func (*GistsStarApplicationJSONNotFound) gistsStarRes() {}
+func (*GistsStarForbidden) gistsStarRes() {}
 
 // GistsStarNoContent is response for GistsStar operation.
 type GistsStarNoContent struct{}
 
 func (*GistsStarNoContent) gistsStarRes() {}
 
-type GistsUnstarApplicationJSONForbidden BasicError
+type GistsStarNotFound BasicError
 
-func (*GistsUnstarApplicationJSONForbidden) gistsUnstarRes() {}
+func (*GistsStarNotFound) gistsStarRes() {}
 
-type GistsUnstarApplicationJSONNotFound BasicError
+type GistsUnstarForbidden BasicError
 
-func (*GistsUnstarApplicationJSONNotFound) gistsUnstarRes() {}
+func (*GistsUnstarForbidden) gistsUnstarRes() {}
 
 // GistsUnstarNoContent is response for GistsUnstar operation.
 type GistsUnstarNoContent struct{}
 
 func (*GistsUnstarNoContent) gistsUnstarRes() {}
+
+type GistsUnstarNotFound BasicError
+
+func (*GistsUnstarNotFound) gistsUnstarRes() {}
 
 type GistsUpdateCommentReq struct {
 	// The comment text.
@@ -20772,17 +20755,17 @@ func (s *GitCommitVerification) SetPayload(val NilString) {
 	s.Payload = val
 }
 
-type GitCreateBlobApplicationJSONConflict BasicError
+type GitCreateBlobConflict BasicError
 
-func (*GitCreateBlobApplicationJSONConflict) gitCreateBlobRes() {}
+func (*GitCreateBlobConflict) gitCreateBlobRes() {}
 
-type GitCreateBlobApplicationJSONForbidden BasicError
+type GitCreateBlobForbidden BasicError
 
-func (*GitCreateBlobApplicationJSONForbidden) gitCreateBlobRes() {}
+func (*GitCreateBlobForbidden) gitCreateBlobRes() {}
 
-type GitCreateBlobApplicationJSONNotFound BasicError
+type GitCreateBlobNotFound BasicError
 
-func (*GitCreateBlobApplicationJSONNotFound) gitCreateBlobRes() {}
+func (*GitCreateBlobNotFound) gitCreateBlobRes() {}
 
 type GitCreateBlobReq struct {
 	// The new blob's content.
@@ -21165,13 +21148,13 @@ func (s *GitCreateTagReqType) UnmarshalText(data []byte) error {
 	}
 }
 
-type GitCreateTreeApplicationJSONForbidden BasicError
+type GitCreateTreeForbidden BasicError
 
-func (*GitCreateTreeApplicationJSONForbidden) gitCreateTreeRes() {}
+func (*GitCreateTreeForbidden) gitCreateTreeRes() {}
 
-type GitCreateTreeApplicationJSONNotFound BasicError
+type GitCreateTreeNotFound BasicError
 
-func (*GitCreateTreeApplicationJSONNotFound) gitCreateTreeRes() {}
+func (*GitCreateTreeNotFound) gitCreateTreeRes() {}
 
 type GitCreateTreeReq struct {
 	// Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.
@@ -21379,13 +21362,13 @@ type GitDeleteRefNoContent struct{}
 
 func (*GitDeleteRefNoContent) gitDeleteRefRes() {}
 
-type GitGetBlobApplicationJSONForbidden BasicError
+type GitGetBlobForbidden BasicError
 
-func (*GitGetBlobApplicationJSONForbidden) gitGetBlobRes() {}
+func (*GitGetBlobForbidden) gitGetBlobRes() {}
 
-type GitGetBlobApplicationJSONNotFound BasicError
+type GitGetBlobNotFound BasicError
 
-func (*GitGetBlobApplicationJSONNotFound) gitGetBlobRes() {}
+func (*GitGetBlobNotFound) gitGetBlobRes() {}
 
 // GitListMatchingRefsOKHeaders wraps []GitRef with response headers.
 type GitListMatchingRefsOKHeaders struct {
@@ -26339,29 +26322,17 @@ type IssuesCheckUserCanBeAssignedNoContent struct{}
 
 func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedRes() {}
 
-type IssuesCreateApplicationJSONForbidden BasicError
+type IssuesCreateCommentForbidden BasicError
 
-func (*IssuesCreateApplicationJSONForbidden) issuesCreateRes() {}
+func (*IssuesCreateCommentForbidden) issuesCreateCommentRes() {}
 
-type IssuesCreateApplicationJSONGone BasicError
+type IssuesCreateCommentGone BasicError
 
-func (*IssuesCreateApplicationJSONGone) issuesCreateRes() {}
+func (*IssuesCreateCommentGone) issuesCreateCommentRes() {}
 
-type IssuesCreateApplicationJSONNotFound BasicError
+type IssuesCreateCommentNotFound BasicError
 
-func (*IssuesCreateApplicationJSONNotFound) issuesCreateRes() {}
-
-type IssuesCreateCommentApplicationJSONForbidden BasicError
-
-func (*IssuesCreateCommentApplicationJSONForbidden) issuesCreateCommentRes() {}
-
-type IssuesCreateCommentApplicationJSONGone BasicError
-
-func (*IssuesCreateCommentApplicationJSONGone) issuesCreateCommentRes() {}
-
-type IssuesCreateCommentApplicationJSONNotFound BasicError
-
-func (*IssuesCreateCommentApplicationJSONNotFound) issuesCreateCommentRes() {}
+func (*IssuesCreateCommentNotFound) issuesCreateCommentRes() {}
 
 type IssuesCreateCommentReq struct {
 	// The contents of the comment.
@@ -26377,6 +26348,14 @@ func (s *IssuesCreateCommentReq) GetBody() string {
 func (s *IssuesCreateCommentReq) SetBody(val string) {
 	s.Body = val
 }
+
+type IssuesCreateForbidden BasicError
+
+func (*IssuesCreateForbidden) issuesCreateRes() {}
+
+type IssuesCreateGone BasicError
+
+func (*IssuesCreateGone) issuesCreateRes() {}
 
 type IssuesCreateLabelReq struct {
 	// The name of the label. Emoji can be added to label names, using either native emoji or colon-style
@@ -26506,6 +26485,10 @@ func (s *IssuesCreateMilestoneReqState) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type IssuesCreateNotFound BasicError
+
+func (*IssuesCreateNotFound) issuesCreateRes() {}
 
 type IssuesCreateReq struct {
 	// The title of the issue.
@@ -26838,29 +26821,29 @@ type IssuesDeleteMilestoneNoContent struct{}
 
 func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneRes() {}
 
-type IssuesGetApplicationJSONGone BasicError
+type IssuesGetEventForbidden BasicError
 
-func (*IssuesGetApplicationJSONGone) issuesGetRes() {}
+func (*IssuesGetEventForbidden) issuesGetEventRes() {}
 
-type IssuesGetApplicationJSONMovedPermanently BasicError
+type IssuesGetEventGone BasicError
 
-func (*IssuesGetApplicationJSONMovedPermanently) issuesGetRes() {}
+func (*IssuesGetEventGone) issuesGetEventRes() {}
 
-type IssuesGetApplicationJSONNotFound BasicError
+type IssuesGetEventNotFound BasicError
 
-func (*IssuesGetApplicationJSONNotFound) issuesGetRes() {}
+func (*IssuesGetEventNotFound) issuesGetEventRes() {}
 
-type IssuesGetEventApplicationJSONForbidden BasicError
+type IssuesGetGone BasicError
 
-func (*IssuesGetEventApplicationJSONForbidden) issuesGetEventRes() {}
+func (*IssuesGetGone) issuesGetRes() {}
 
-type IssuesGetEventApplicationJSONGone BasicError
+type IssuesGetMovedPermanently BasicError
 
-func (*IssuesGetEventApplicationJSONGone) issuesGetEventRes() {}
+func (*IssuesGetMovedPermanently) issuesGetRes() {}
 
-type IssuesGetEventApplicationJSONNotFound BasicError
+type IssuesGetNotFound BasicError
 
-func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventRes() {}
+func (*IssuesGetNotFound) issuesGetRes() {}
 
 // IssuesListAssigneesOKHeaders wraps []SimpleUser with response headers.
 type IssuesListAssigneesOKHeaders struct {
@@ -26889,14 +26872,6 @@ func (s *IssuesListAssigneesOKHeaders) SetResponse(val []SimpleUser) {
 }
 
 func (*IssuesListAssigneesOKHeaders) issuesListAssigneesRes() {}
-
-type IssuesListCommentsApplicationJSONGone BasicError
-
-func (*IssuesListCommentsApplicationJSONGone) issuesListCommentsRes() {}
-
-type IssuesListCommentsApplicationJSONNotFound BasicError
-
-func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsRes() {}
 
 type IssuesListCommentsForRepoDirection string
 
@@ -26991,6 +26966,14 @@ func (s *IssuesListCommentsForRepoSort) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type IssuesListCommentsGone BasicError
+
+func (*IssuesListCommentsGone) issuesListCommentsRes() {}
+
+type IssuesListCommentsNotFound BasicError
+
+func (*IssuesListCommentsNotFound) issuesListCommentsRes() {}
 
 // IssuesListCommentsOKHeaders wraps []IssueComment with response headers.
 type IssuesListCommentsOKHeaders struct {
@@ -27530,14 +27513,6 @@ func (s *IssuesListForOrgState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesListForRepoApplicationJSONMovedPermanently BasicError
-
-func (*IssuesListForRepoApplicationJSONMovedPermanently) issuesListForRepoRes() {}
-
-type IssuesListForRepoApplicationJSONNotFound BasicError
-
-func (*IssuesListForRepoApplicationJSONNotFound) issuesListForRepoRes() {}
-
 type IssuesListForRepoDirection string
 
 const (
@@ -27570,6 +27545,14 @@ func (s *IssuesListForRepoDirection) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type IssuesListForRepoMovedPermanently BasicError
+
+func (*IssuesListForRepoMovedPermanently) issuesListForRepoRes() {}
+
+type IssuesListForRepoNotFound BasicError
+
+func (*IssuesListForRepoNotFound) issuesListForRepoRes() {}
 
 // IssuesListForRepoOKHeaders wraps []IssueSimple with response headers.
 type IssuesListForRepoOKHeaders struct {
@@ -27998,22 +27981,22 @@ func (s *IssuesListState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesLockApplicationJSONForbidden BasicError
+type IssuesLockForbidden BasicError
 
-func (*IssuesLockApplicationJSONForbidden) issuesLockRes() {}
+func (*IssuesLockForbidden) issuesLockRes() {}
 
-type IssuesLockApplicationJSONGone BasicError
+type IssuesLockGone BasicError
 
-func (*IssuesLockApplicationJSONGone) issuesLockRes() {}
-
-type IssuesLockApplicationJSONNotFound BasicError
-
-func (*IssuesLockApplicationJSONNotFound) issuesLockRes() {}
+func (*IssuesLockGone) issuesLockRes() {}
 
 // IssuesLockNoContent is response for IssuesLock operation.
 type IssuesLockNoContent struct{}
 
 func (*IssuesLockNoContent) issuesLockRes() {}
+
+type IssuesLockNotFound BasicError
+
+func (*IssuesLockNotFound) issuesLockRes() {}
 
 type IssuesLockReq struct {
 	// The reason for locking the issue or pull request conversation. Lock will fail if you don't use one
@@ -28107,46 +28090,30 @@ func (s *IssuesRemoveAssigneesReq) SetAssignees(val []string) {
 	s.Assignees = val
 }
 
-type IssuesRemoveLabelApplicationJSONGone BasicError
+type IssuesRemoveLabelGone BasicError
 
-func (*IssuesRemoveLabelApplicationJSONGone) issuesRemoveLabelRes() {}
+func (*IssuesRemoveLabelGone) issuesRemoveLabelRes() {}
 
-type IssuesRemoveLabelApplicationJSONNotFound BasicError
+type IssuesRemoveLabelNotFound BasicError
 
-func (*IssuesRemoveLabelApplicationJSONNotFound) issuesRemoveLabelRes() {}
+func (*IssuesRemoveLabelNotFound) issuesRemoveLabelRes() {}
 
 type IssuesRemoveLabelOKApplicationJSON []Label
 
 func (*IssuesRemoveLabelOKApplicationJSON) issuesRemoveLabelRes() {}
 
-type IssuesUnlockApplicationJSONForbidden BasicError
+type IssuesUnlockForbidden BasicError
 
-func (*IssuesUnlockApplicationJSONForbidden) issuesUnlockRes() {}
-
-type IssuesUnlockApplicationJSONNotFound BasicError
-
-func (*IssuesUnlockApplicationJSONNotFound) issuesUnlockRes() {}
+func (*IssuesUnlockForbidden) issuesUnlockRes() {}
 
 // IssuesUnlockNoContent is response for IssuesUnlock operation.
 type IssuesUnlockNoContent struct{}
 
 func (*IssuesUnlockNoContent) issuesUnlockRes() {}
 
-type IssuesUpdateApplicationJSONForbidden BasicError
+type IssuesUnlockNotFound BasicError
 
-func (*IssuesUpdateApplicationJSONForbidden) issuesUpdateRes() {}
-
-type IssuesUpdateApplicationJSONGone BasicError
-
-func (*IssuesUpdateApplicationJSONGone) issuesUpdateRes() {}
-
-type IssuesUpdateApplicationJSONMovedPermanently BasicError
-
-func (*IssuesUpdateApplicationJSONMovedPermanently) issuesUpdateRes() {}
-
-type IssuesUpdateApplicationJSONNotFound BasicError
-
-func (*IssuesUpdateApplicationJSONNotFound) issuesUpdateRes() {}
+func (*IssuesUnlockNotFound) issuesUnlockRes() {}
 
 type IssuesUpdateCommentReq struct {
 	// The contents of the comment.
@@ -28162,6 +28129,14 @@ func (s *IssuesUpdateCommentReq) GetBody() string {
 func (s *IssuesUpdateCommentReq) SetBody(val string) {
 	s.Body = val
 }
+
+type IssuesUpdateForbidden BasicError
+
+func (*IssuesUpdateForbidden) issuesUpdateRes() {}
+
+type IssuesUpdateGone BasicError
+
+func (*IssuesUpdateGone) issuesUpdateRes() {}
 
 type IssuesUpdateLabelReq struct {
 	// The new name of the label. Emoji can be added to label names, using either native emoji or
@@ -28291,6 +28266,14 @@ func (s *IssuesUpdateMilestoneReqState) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type IssuesUpdateMovedPermanently BasicError
+
+func (*IssuesUpdateMovedPermanently) issuesUpdateRes() {}
+
+type IssuesUpdateNotFound BasicError
+
+func (*IssuesUpdateNotFound) issuesUpdateRes() {}
 
 type IssuesUpdateReq struct {
 	// The title of the issue.
@@ -29734,13 +29717,13 @@ type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
 
 func (*LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
 
-type LicensesGetApplicationJSONForbidden BasicError
+type LicensesGetForbidden BasicError
 
-func (*LicensesGetApplicationJSONForbidden) licensesGetRes() {}
+func (*LicensesGetForbidden) licensesGetRes() {}
 
-type LicensesGetApplicationJSONNotFound BasicError
+type LicensesGetNotFound BasicError
 
-func (*LicensesGetApplicationJSONNotFound) licensesGetRes() {}
+func (*LicensesGetNotFound) licensesGetRes() {}
 
 // Hypermedia Link.
 // Ref: #/components/schemas/link
@@ -31118,25 +31101,25 @@ func (*Migration) migrationsStartForOrgRes()                   {}
 // MigrationsCancelImportNoContent is response for MigrationsCancelImport operation.
 type MigrationsCancelImportNoContent struct{}
 
-type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
+type MigrationsDeleteArchiveForAuthenticatedUserForbidden BasicError
 
-func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsDeleteArchiveForAuthenticatedUserRes() {
-}
-
-type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound BasicError
-
-func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) migrationsDeleteArchiveForAuthenticatedUserRes() {
-}
-
-type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsDeleteArchiveForAuthenticatedUserRes() {
+func (*MigrationsDeleteArchiveForAuthenticatedUserForbidden) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 // MigrationsDeleteArchiveForAuthenticatedUserNoContent is response for MigrationsDeleteArchiveForAuthenticatedUser operation.
 type MigrationsDeleteArchiveForAuthenticatedUserNoContent struct{}
 
 func (*MigrationsDeleteArchiveForAuthenticatedUserNoContent) migrationsDeleteArchiveForAuthenticatedUserRes() {
+}
+
+type MigrationsDeleteArchiveForAuthenticatedUserNotFound BasicError
+
+func (*MigrationsDeleteArchiveForAuthenticatedUserNotFound) migrationsDeleteArchiveForAuthenticatedUserRes() {
+}
+
+type MigrationsDeleteArchiveForAuthenticatedUserUnauthorized BasicError
+
+func (*MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
 // MigrationsDeleteArchiveForOrgNoContent is response for MigrationsDeleteArchiveForOrg operation.
@@ -31149,14 +31132,9 @@ type MigrationsDownloadArchiveForOrgFound struct{}
 
 func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgRes() {}
 
-type MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
+type MigrationsGetArchiveForAuthenticatedUserForbidden BasicError
 
-func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsGetArchiveForAuthenticatedUserRes() {
-}
-
-type MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetArchiveForAuthenticatedUserRes() {
+func (*MigrationsGetArchiveForAuthenticatedUserForbidden) migrationsGetArchiveForAuthenticatedUserRes() {
 }
 
 // MigrationsGetArchiveForAuthenticatedUserFound is response for MigrationsGetArchiveForAuthenticatedUser operation.
@@ -31164,23 +31142,28 @@ type MigrationsGetArchiveForAuthenticatedUserFound struct{}
 
 func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserRes() {}
 
+type MigrationsGetArchiveForAuthenticatedUserUnauthorized BasicError
+
+func (*MigrationsGetArchiveForAuthenticatedUserUnauthorized) migrationsGetArchiveForAuthenticatedUserRes() {
+}
+
 type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
 
 func (*MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
 
-type MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden BasicError
+type MigrationsGetStatusForAuthenticatedUserForbidden BasicError
 
-func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) migrationsGetStatusForAuthenticatedUserRes() {
+func (*MigrationsGetStatusForAuthenticatedUserForbidden) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-type MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound BasicError
+type MigrationsGetStatusForAuthenticatedUserNotFound BasicError
 
-func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) migrationsGetStatusForAuthenticatedUserRes() {
+func (*MigrationsGetStatusForAuthenticatedUserNotFound) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type MigrationsGetStatusForAuthenticatedUserUnauthorized BasicError
 
-func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
+func (*MigrationsGetStatusForAuthenticatedUserUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
 // Allowed values that can be passed to the exclude param.
@@ -31211,15 +31194,9 @@ func (s *MigrationsGetStatusForOrgExcludeItem) UnmarshalText(data []byte) error 
 	}
 }
 
-type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
+type MigrationsListForAuthenticatedUserForbidden BasicError
 
-func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserRes() {
-}
-
-type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
-}
+func (*MigrationsListForAuthenticatedUserForbidden) migrationsListForAuthenticatedUserRes() {}
 
 // MigrationsListForAuthenticatedUserOKHeaders wraps []Migration with response headers.
 type MigrationsListForAuthenticatedUserOKHeaders struct {
@@ -31248,6 +31225,10 @@ func (s *MigrationsListForAuthenticatedUserOKHeaders) SetResponse(val []Migratio
 }
 
 func (*MigrationsListForAuthenticatedUserOKHeaders) migrationsListForAuthenticatedUserRes() {}
+
+type MigrationsListForAuthenticatedUserUnauthorized BasicError
+
+func (*MigrationsListForAuthenticatedUserUnauthorized) migrationsListForAuthenticatedUserRes() {}
 
 // Allowed values that can be passed to the exclude param.
 type MigrationsListForOrgExcludeItem string
@@ -31437,15 +31418,9 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) UnmarshalText(data []byte) error {
 	}
 }
 
-type MigrationsStartForAuthenticatedUserApplicationJSONForbidden BasicError
+type MigrationsStartForAuthenticatedUserForbidden BasicError
 
-func (*MigrationsStartForAuthenticatedUserApplicationJSONForbidden) migrationsStartForAuthenticatedUserRes() {
-}
-
-type MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) migrationsStartForAuthenticatedUserRes() {
-}
+func (*MigrationsStartForAuthenticatedUserForbidden) migrationsStartForAuthenticatedUserRes() {}
 
 type MigrationsStartForAuthenticatedUserReq struct {
 	// Lock the repositories being migrated at the start of the migration.
@@ -31548,6 +31523,10 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) UnmarshalText(data [
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type MigrationsStartForAuthenticatedUserUnauthorized BasicError
+
+func (*MigrationsStartForAuthenticatedUserUnauthorized) migrationsStartForAuthenticatedUserRes() {}
 
 type MigrationsStartForOrgReq struct {
 	// A list of arrays indicating which repositories should be migrated.
@@ -31766,25 +31745,25 @@ func (s *MigrationsStartImportReqVcs) UnmarshalText(data []byte) error {
 	}
 }
 
-type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden BasicError
+type MigrationsUnlockRepoForAuthenticatedUserForbidden BasicError
 
-func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) migrationsUnlockRepoForAuthenticatedUserRes() {
-}
-
-type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound BasicError
-
-func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) migrationsUnlockRepoForAuthenticatedUserRes() {
-}
-
-type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migrationsUnlockRepoForAuthenticatedUserRes() {
+func (*MigrationsUnlockRepoForAuthenticatedUserForbidden) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 // MigrationsUnlockRepoForAuthenticatedUserNoContent is response for MigrationsUnlockRepoForAuthenticatedUser operation.
 type MigrationsUnlockRepoForAuthenticatedUserNoContent struct{}
 
 func (*MigrationsUnlockRepoForAuthenticatedUserNoContent) migrationsUnlockRepoForAuthenticatedUserRes() {
+}
+
+type MigrationsUnlockRepoForAuthenticatedUserNotFound BasicError
+
+func (*MigrationsUnlockRepoForAuthenticatedUserNotFound) migrationsUnlockRepoForAuthenticatedUserRes() {
+}
+
+type MigrationsUnlockRepoForAuthenticatedUserUnauthorized BasicError
+
+func (*MigrationsUnlockRepoForAuthenticatedUserUnauthorized) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
 // MigrationsUnlockRepoForOrgNoContent is response for MigrationsUnlockRepoForOrg operation.
@@ -39289,20 +39268,13 @@ func (s *NullableTeamSimple) SetLdapDn(val OptString) {
 	s.LdapDn = val
 }
 
-type OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden BasicError
+type OAuthAuthorizationsCreateAuthorizationForbidden BasicError
 
-func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) oAuthAuthorizationsCreateAuthorizationRes() {
-}
+func (*OAuthAuthorizationsCreateAuthorizationForbidden) oAuthAuthorizationsCreateAuthorizationRes() {}
 
-type OAuthAuthorizationsCreateAuthorizationApplicationJSONGone BasicError
+type OAuthAuthorizationsCreateAuthorizationGone BasicError
 
-func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) oAuthAuthorizationsCreateAuthorizationRes() {
-}
-
-type OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized BasicError
-
-func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsCreateAuthorizationRes() {
-}
+func (*OAuthAuthorizationsCreateAuthorizationGone) oAuthAuthorizationsCreateAuthorizationRes() {}
 
 type OAuthAuthorizationsCreateAuthorizationReq struct {
 	// A list of scopes that this authorization is in.
@@ -39380,61 +39352,62 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) SetFingerprint(val OptString
 	s.Fingerprint = val
 }
 
-type OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden BasicError
+type OAuthAuthorizationsCreateAuthorizationUnauthorized BasicError
 
-func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) oAuthAuthorizationsDeleteAuthorizationRes() {
+func (*OAuthAuthorizationsCreateAuthorizationUnauthorized) oAuthAuthorizationsCreateAuthorizationRes() {
 }
 
-type OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized BasicError
+type OAuthAuthorizationsDeleteAuthorizationForbidden BasicError
 
-func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsDeleteAuthorizationRes() {
-}
+func (*OAuthAuthorizationsDeleteAuthorizationForbidden) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
 // OAuthAuthorizationsDeleteAuthorizationNoContent is response for OAuthAuthorizationsDeleteAuthorization operation.
 type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
-type OAuthAuthorizationsDeleteGrantApplicationJSONForbidden BasicError
+type OAuthAuthorizationsDeleteAuthorizationUnauthorized BasicError
 
-func (*OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) oAuthAuthorizationsDeleteGrantRes() {}
-
-type OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized BasicError
-
-func (*OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) oAuthAuthorizationsDeleteGrantRes() {
+func (*OAuthAuthorizationsDeleteAuthorizationUnauthorized) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
+
+type OAuthAuthorizationsDeleteGrantForbidden BasicError
+
+func (*OAuthAuthorizationsDeleteGrantForbidden) oAuthAuthorizationsDeleteGrantRes() {}
 
 // OAuthAuthorizationsDeleteGrantNoContent is response for OAuthAuthorizationsDeleteGrant operation.
 type OAuthAuthorizationsDeleteGrantNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantRes() {}
 
-type OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden BasicError
+type OAuthAuthorizationsDeleteGrantUnauthorized BasicError
 
-func (*OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) oAuthAuthorizationsGetAuthorizationRes() {
+func (*OAuthAuthorizationsDeleteGrantUnauthorized) oAuthAuthorizationsDeleteGrantRes() {}
+
+type OAuthAuthorizationsGetAuthorizationForbidden BasicError
+
+func (*OAuthAuthorizationsGetAuthorizationForbidden) oAuthAuthorizationsGetAuthorizationRes() {}
+
+type OAuthAuthorizationsGetAuthorizationUnauthorized BasicError
+
+func (*OAuthAuthorizationsGetAuthorizationUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {}
+
+type OAuthAuthorizationsGetGrantForbidden BasicError
+
+func (*OAuthAuthorizationsGetGrantForbidden) oAuthAuthorizationsGetGrantRes() {}
+
+type OAuthAuthorizationsGetGrantUnauthorized BasicError
+
+func (*OAuthAuthorizationsGetGrantUnauthorized) oAuthAuthorizationsGetGrantRes() {}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated AuthorizationHeaders
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
 }
 
-type OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized BasicError
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK AuthorizationHeaders
 
-func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {
-}
-
-type OAuthAuthorizationsGetGrantApplicationJSONForbidden BasicError
-
-func (*OAuthAuthorizationsGetGrantApplicationJSONForbidden) oAuthAuthorizationsGetGrantRes() {}
-
-type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
-
-func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
-
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated AuthorizationHeaders
-
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
-}
-
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK AuthorizationHeaders
-
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
 }
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
@@ -39488,24 +39461,19 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Set
 	s.NoteURL = val
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated AuthorizationHeaders
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated AuthorizationHeaders
 
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden BasicError
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden BasicError
 
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK AuthorizationHeaders
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppOK AuthorizationHeaders
 
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
-}
-
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized BasicError
-
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
@@ -39572,20 +39540,18 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) SetFingerprint(va
 	s.Fingerprint = val
 }
 
-type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized BasicError
 
-func (*OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) oAuthAuthorizationsListAuthorizationsRes() {
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound BasicError
+type OAuthAuthorizationsListAuthorizationsForbidden BasicError
 
-func (*OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) oAuthAuthorizationsListAuthorizationsRes() {
-}
+func (*OAuthAuthorizationsListAuthorizationsForbidden) oAuthAuthorizationsListAuthorizationsRes() {}
 
-type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
+type OAuthAuthorizationsListAuthorizationsNotFound BasicError
 
-func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
-}
+func (*OAuthAuthorizationsListAuthorizationsNotFound) oAuthAuthorizationsListAuthorizationsRes() {}
 
 // OAuthAuthorizationsListAuthorizationsOKHeaders wraps []Authorization with response headers.
 type OAuthAuthorizationsListAuthorizationsOKHeaders struct {
@@ -39615,17 +39581,18 @@ func (s *OAuthAuthorizationsListAuthorizationsOKHeaders) SetResponse(val []Autho
 
 func (*OAuthAuthorizationsListAuthorizationsOKHeaders) oAuthAuthorizationsListAuthorizationsRes() {}
 
-type OAuthAuthorizationsListGrantsApplicationJSONForbidden BasicError
+type OAuthAuthorizationsListAuthorizationsUnauthorized BasicError
 
-func (*OAuthAuthorizationsListGrantsApplicationJSONForbidden) oAuthAuthorizationsListGrantsRes() {}
+func (*OAuthAuthorizationsListAuthorizationsUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
+}
 
-type OAuthAuthorizationsListGrantsApplicationJSONNotFound BasicError
+type OAuthAuthorizationsListGrantsForbidden BasicError
 
-func (*OAuthAuthorizationsListGrantsApplicationJSONNotFound) oAuthAuthorizationsListGrantsRes() {}
+func (*OAuthAuthorizationsListGrantsForbidden) oAuthAuthorizationsListGrantsRes() {}
 
-type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
+type OAuthAuthorizationsListGrantsNotFound BasicError
 
-func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsRes() {}
+func (*OAuthAuthorizationsListGrantsNotFound) oAuthAuthorizationsListGrantsRes() {}
 
 // OAuthAuthorizationsListGrantsOKHeaders wraps []ApplicationGrant with response headers.
 type OAuthAuthorizationsListGrantsOKHeaders struct {
@@ -39654,6 +39621,10 @@ func (s *OAuthAuthorizationsListGrantsOKHeaders) SetResponse(val []ApplicationGr
 }
 
 func (*OAuthAuthorizationsListGrantsOKHeaders) oAuthAuthorizationsListGrantsRes() {}
+
+type OAuthAuthorizationsListGrantsUnauthorized BasicError
+
+func (*OAuthAuthorizationsListGrantsUnauthorized) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsUpdateAuthorizationReq struct {
 	// A list of scopes that this authorization is in.
@@ -61933,23 +61904,21 @@ func (s *OrgsGetAuditLogOrder) UnmarshalText(data []byte) error {
 	}
 }
 
-type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
+type OrgsGetMembershipForAuthenticatedUserForbidden BasicError
 
-func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) orgsGetMembershipForAuthenticatedUserRes() {
-}
+func (*OrgsGetMembershipForAuthenticatedUserForbidden) orgsGetMembershipForAuthenticatedUserRes() {}
 
-type OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound BasicError
+type OrgsGetMembershipForAuthenticatedUserNotFound BasicError
 
-func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) orgsGetMembershipForAuthenticatedUserRes() {
-}
+func (*OrgsGetMembershipForAuthenticatedUserNotFound) orgsGetMembershipForAuthenticatedUserRes() {}
 
-type OrgsGetMembershipForUserApplicationJSONForbidden BasicError
+type OrgsGetMembershipForUserForbidden BasicError
 
-func (*OrgsGetMembershipForUserApplicationJSONForbidden) orgsGetMembershipForUserRes() {}
+func (*OrgsGetMembershipForUserForbidden) orgsGetMembershipForUserRes() {}
 
-type OrgsGetMembershipForUserApplicationJSONNotFound BasicError
+type OrgsGetMembershipForUserNotFound BasicError
 
-func (*OrgsGetMembershipForUserApplicationJSONNotFound) orgsGetMembershipForUserRes() {}
+func (*OrgsGetMembershipForUserNotFound) orgsGetMembershipForUserRes() {}
 
 type OrgsListBlockedUsersOKApplicationJSON []SimpleUser
 
@@ -61983,13 +61952,9 @@ func (s *OrgsListFailedInvitationsOKHeaders) SetResponse(val []OrganizationInvit
 
 func (*OrgsListFailedInvitationsOKHeaders) orgsListFailedInvitationsRes() {}
 
-type OrgsListForAuthenticatedUserApplicationJSONForbidden BasicError
+type OrgsListForAuthenticatedUserForbidden BasicError
 
-func (*OrgsListForAuthenticatedUserApplicationJSONForbidden) orgsListForAuthenticatedUserRes() {}
-
-type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserRes() {}
+func (*OrgsListForAuthenticatedUserForbidden) orgsListForAuthenticatedUserRes() {}
 
 // OrgsListForAuthenticatedUserOKHeaders wraps []OrganizationSimple with response headers.
 type OrgsListForAuthenticatedUserOKHeaders struct {
@@ -62018,6 +61983,10 @@ func (s *OrgsListForAuthenticatedUserOKHeaders) SetResponse(val []OrganizationSi
 }
 
 func (*OrgsListForAuthenticatedUserOKHeaders) orgsListForAuthenticatedUserRes() {}
+
+type OrgsListForAuthenticatedUserUnauthorized BasicError
+
+func (*OrgsListForAuthenticatedUserUnauthorized) orgsListForAuthenticatedUserRes() {}
 
 // OrgsListForUserOKHeaders wraps []OrganizationSimple with response headers.
 type OrgsListForUserOKHeaders struct {
@@ -62190,14 +62159,9 @@ func (s *OrgsListMembersRole) UnmarshalText(data []byte) error {
 	}
 }
 
-type OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden BasicError
+type OrgsListMembershipsForAuthenticatedUserForbidden BasicError
 
-func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) orgsListMembershipsForAuthenticatedUserRes() {
-}
-
-type OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) orgsListMembershipsForAuthenticatedUserRes() {
+func (*OrgsListMembershipsForAuthenticatedUserForbidden) orgsListMembershipsForAuthenticatedUserRes() {
 }
 
 // OrgsListMembershipsForAuthenticatedUserOKHeaders wraps []OrgMembership with response headers.
@@ -62260,6 +62224,11 @@ func (s *OrgsListMembershipsForAuthenticatedUserState) UnmarshalText(data []byte
 	default:
 		return errors.Errorf("invalid value: %q", data)
 	}
+}
+
+type OrgsListMembershipsForAuthenticatedUserUnauthorized BasicError
+
+func (*OrgsListMembershipsForAuthenticatedUserUnauthorized) orgsListMembershipsForAuthenticatedUserRes() {
 }
 
 // OrgsListOKHeaders wraps []OrganizationSimple with response headers.
@@ -62445,18 +62414,18 @@ type OrgsRemoveMemberNoContent struct{}
 
 func (*OrgsRemoveMemberNoContent) orgsRemoveMemberRes() {}
 
-type OrgsRemoveMembershipForUserApplicationJSONForbidden BasicError
+type OrgsRemoveMembershipForUserForbidden BasicError
 
-func (*OrgsRemoveMembershipForUserApplicationJSONForbidden) orgsRemoveMembershipForUserRes() {}
-
-type OrgsRemoveMembershipForUserApplicationJSONNotFound BasicError
-
-func (*OrgsRemoveMembershipForUserApplicationJSONNotFound) orgsRemoveMembershipForUserRes() {}
+func (*OrgsRemoveMembershipForUserForbidden) orgsRemoveMembershipForUserRes() {}
 
 // OrgsRemoveMembershipForUserNoContent is response for OrgsRemoveMembershipForUser operation.
 type OrgsRemoveMembershipForUserNoContent struct{}
 
 func (*OrgsRemoveMembershipForUserNoContent) orgsRemoveMembershipForUserRes() {}
+
+type OrgsRemoveMembershipForUserNotFound BasicError
+
+func (*OrgsRemoveMembershipForUserNotFound) orgsRemoveMembershipForUserRes() {}
 
 // OrgsRemoveOutsideCollaboratorNoContent is response for OrgsRemoveOutsideCollaborator operation.
 type OrgsRemoveOutsideCollaboratorNoContent struct{}
@@ -62560,14 +62529,14 @@ func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMember
 // OrgsUnblockUserNoContent is response for OrgsUnblockUser operation.
 type OrgsUnblockUserNoContent struct{}
 
-type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
+type OrgsUpdateMembershipForAuthenticatedUserForbidden BasicError
 
-func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) orgsUpdateMembershipForAuthenticatedUserRes() {
+func (*OrgsUpdateMembershipForAuthenticatedUserForbidden) orgsUpdateMembershipForAuthenticatedUserRes() {
 }
 
-type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound BasicError
+type OrgsUpdateMembershipForAuthenticatedUserNotFound BasicError
 
-func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) orgsUpdateMembershipForAuthenticatedUserRes() {
+func (*OrgsUpdateMembershipForAuthenticatedUserNotFound) orgsUpdateMembershipForAuthenticatedUserRes() {
 }
 
 type OrgsUpdateMembershipForAuthenticatedUserReq struct {
@@ -63270,25 +63239,20 @@ func (s *PackagesBillingUsage) SetIncludedGigabytesBandwidth(val int) {
 	s.IncludedGigabytesBandwidth = val
 }
 
-type PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden BasicError
+type PackagesDeletePackageForAuthenticatedUserForbidden BasicError
 
-func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) packagesDeletePackageForAuthenticatedUserRes() {
-}
-
-type PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound BasicError
-
-func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) packagesDeletePackageForAuthenticatedUserRes() {
-}
-
-type PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) packagesDeletePackageForAuthenticatedUserRes() {
+func (*PackagesDeletePackageForAuthenticatedUserForbidden) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
 // PackagesDeletePackageForAuthenticatedUserNoContent is response for PackagesDeletePackageForAuthenticatedUser operation.
 type PackagesDeletePackageForAuthenticatedUserNoContent struct{}
 
 func (*PackagesDeletePackageForAuthenticatedUserNoContent) packagesDeletePackageForAuthenticatedUserRes() {
+}
+
+type PackagesDeletePackageForAuthenticatedUserNotFound BasicError
+
+func (*PackagesDeletePackageForAuthenticatedUserNotFound) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
 type PackagesDeletePackageForAuthenticatedUserPackageType string
@@ -63348,22 +63312,23 @@ func (s *PackagesDeletePackageForAuthenticatedUserPackageType) UnmarshalText(dat
 	}
 }
 
-type PackagesDeletePackageForOrgApplicationJSONForbidden BasicError
+type PackagesDeletePackageForAuthenticatedUserUnauthorized BasicError
 
-func (*PackagesDeletePackageForOrgApplicationJSONForbidden) packagesDeletePackageForOrgRes() {}
+func (*PackagesDeletePackageForAuthenticatedUserUnauthorized) packagesDeletePackageForAuthenticatedUserRes() {
+}
 
-type PackagesDeletePackageForOrgApplicationJSONNotFound BasicError
+type PackagesDeletePackageForOrgForbidden BasicError
 
-func (*PackagesDeletePackageForOrgApplicationJSONNotFound) packagesDeletePackageForOrgRes() {}
-
-type PackagesDeletePackageForOrgApplicationJSONUnauthorized BasicError
-
-func (*PackagesDeletePackageForOrgApplicationJSONUnauthorized) packagesDeletePackageForOrgRes() {}
+func (*PackagesDeletePackageForOrgForbidden) packagesDeletePackageForOrgRes() {}
 
 // PackagesDeletePackageForOrgNoContent is response for PackagesDeletePackageForOrg operation.
 type PackagesDeletePackageForOrgNoContent struct{}
 
 func (*PackagesDeletePackageForOrgNoContent) packagesDeletePackageForOrgRes() {}
+
+type PackagesDeletePackageForOrgNotFound BasicError
+
+func (*PackagesDeletePackageForOrgNotFound) packagesDeletePackageForOrgRes() {}
 
 type PackagesDeletePackageForOrgPackageType string
 
@@ -63422,22 +63387,22 @@ func (s *PackagesDeletePackageForOrgPackageType) UnmarshalText(data []byte) erro
 	}
 }
 
-type PackagesDeletePackageForUserApplicationJSONForbidden BasicError
+type PackagesDeletePackageForOrgUnauthorized BasicError
 
-func (*PackagesDeletePackageForUserApplicationJSONForbidden) packagesDeletePackageForUserRes() {}
+func (*PackagesDeletePackageForOrgUnauthorized) packagesDeletePackageForOrgRes() {}
 
-type PackagesDeletePackageForUserApplicationJSONNotFound BasicError
+type PackagesDeletePackageForUserForbidden BasicError
 
-func (*PackagesDeletePackageForUserApplicationJSONNotFound) packagesDeletePackageForUserRes() {}
-
-type PackagesDeletePackageForUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesDeletePackageForUserApplicationJSONUnauthorized) packagesDeletePackageForUserRes() {}
+func (*PackagesDeletePackageForUserForbidden) packagesDeletePackageForUserRes() {}
 
 // PackagesDeletePackageForUserNoContent is response for PackagesDeletePackageForUser operation.
 type PackagesDeletePackageForUserNoContent struct{}
 
 func (*PackagesDeletePackageForUserNoContent) packagesDeletePackageForUserRes() {}
+
+type PackagesDeletePackageForUserNotFound BasicError
+
+func (*PackagesDeletePackageForUserNotFound) packagesDeletePackageForUserRes() {}
 
 type PackagesDeletePackageForUserPackageType string
 
@@ -63496,25 +63461,24 @@ func (s *PackagesDeletePackageForUserPackageType) UnmarshalText(data []byte) err
 	}
 }
 
-type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
+type PackagesDeletePackageForUserUnauthorized BasicError
 
-func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) packagesDeletePackageVersionForAuthenticatedUserRes() {
-}
+func (*PackagesDeletePackageForUserUnauthorized) packagesDeletePackageForUserRes() {}
 
-type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound BasicError
+type PackagesDeletePackageVersionForAuthenticatedUserForbidden BasicError
 
-func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) packagesDeletePackageVersionForAuthenticatedUserRes() {
-}
-
-type PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) packagesDeletePackageVersionForAuthenticatedUserRes() {
+func (*PackagesDeletePackageVersionForAuthenticatedUserForbidden) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
 // PackagesDeletePackageVersionForAuthenticatedUserNoContent is response for PackagesDeletePackageVersionForAuthenticatedUser operation.
 type PackagesDeletePackageVersionForAuthenticatedUserNoContent struct{}
 
 func (*PackagesDeletePackageVersionForAuthenticatedUserNoContent) packagesDeletePackageVersionForAuthenticatedUserRes() {
+}
+
+type PackagesDeletePackageVersionForAuthenticatedUserNotFound BasicError
+
+func (*PackagesDeletePackageVersionForAuthenticatedUserNotFound) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
 type PackagesDeletePackageVersionForAuthenticatedUserPackageType string
@@ -63574,25 +63538,23 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) UnmarshalT
 	}
 }
 
-type PackagesDeletePackageVersionForOrgApplicationJSONForbidden BasicError
+type PackagesDeletePackageVersionForAuthenticatedUserUnauthorized BasicError
 
-func (*PackagesDeletePackageVersionForOrgApplicationJSONForbidden) packagesDeletePackageVersionForOrgRes() {
+func (*PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageVersionForOrgApplicationJSONNotFound BasicError
+type PackagesDeletePackageVersionForOrgForbidden BasicError
 
-func (*PackagesDeletePackageVersionForOrgApplicationJSONNotFound) packagesDeletePackageVersionForOrgRes() {
-}
-
-type PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized BasicError
-
-func (*PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) packagesDeletePackageVersionForOrgRes() {
-}
+func (*PackagesDeletePackageVersionForOrgForbidden) packagesDeletePackageVersionForOrgRes() {}
 
 // PackagesDeletePackageVersionForOrgNoContent is response for PackagesDeletePackageVersionForOrg operation.
 type PackagesDeletePackageVersionForOrgNoContent struct{}
 
 func (*PackagesDeletePackageVersionForOrgNoContent) packagesDeletePackageVersionForOrgRes() {}
+
+type PackagesDeletePackageVersionForOrgNotFound BasicError
+
+func (*PackagesDeletePackageVersionForOrgNotFound) packagesDeletePackageVersionForOrgRes() {}
 
 type PackagesDeletePackageVersionForOrgPackageType string
 
@@ -63651,25 +63613,22 @@ func (s *PackagesDeletePackageVersionForOrgPackageType) UnmarshalText(data []byt
 	}
 }
 
-type PackagesDeletePackageVersionForUserApplicationJSONForbidden BasicError
+type PackagesDeletePackageVersionForOrgUnauthorized BasicError
 
-func (*PackagesDeletePackageVersionForUserApplicationJSONForbidden) packagesDeletePackageVersionForUserRes() {
-}
+func (*PackagesDeletePackageVersionForOrgUnauthorized) packagesDeletePackageVersionForOrgRes() {}
 
-type PackagesDeletePackageVersionForUserApplicationJSONNotFound BasicError
+type PackagesDeletePackageVersionForUserForbidden BasicError
 
-func (*PackagesDeletePackageVersionForUserApplicationJSONNotFound) packagesDeletePackageVersionForUserRes() {
-}
-
-type PackagesDeletePackageVersionForUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) packagesDeletePackageVersionForUserRes() {
-}
+func (*PackagesDeletePackageVersionForUserForbidden) packagesDeletePackageVersionForUserRes() {}
 
 // PackagesDeletePackageVersionForUserNoContent is response for PackagesDeletePackageVersionForUser operation.
 type PackagesDeletePackageVersionForUserNoContent struct{}
 
 func (*PackagesDeletePackageVersionForUserNoContent) packagesDeletePackageVersionForUserRes() {}
+
+type PackagesDeletePackageVersionForUserNotFound BasicError
+
+func (*PackagesDeletePackageVersionForUserNotFound) packagesDeletePackageVersionForUserRes() {}
 
 type PackagesDeletePackageVersionForUserPackageType string
 
@@ -63728,19 +63687,18 @@ func (s *PackagesDeletePackageVersionForUserPackageType) UnmarshalText(data []by
 	}
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden BasicError
+type PackagesDeletePackageVersionForUserUnauthorized BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+func (*PackagesDeletePackageVersionForUserUnauthorized) packagesDeletePackageVersionForUserRes() {}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON []PackageVersion
@@ -63838,19 +63796,19 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) U
 	}
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON []PackageVersion
@@ -63948,19 +63906,19 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) UnmarshalText(d
 	}
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound BasicError
 
-func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON []PackageVersion
@@ -64023,6 +63981,11 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) Unmarsha
 	default:
 		return errors.Errorf("invalid value: %q", data)
 	}
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
 type PackagesGetPackageForAuthenticatedUserPackageType string
@@ -64463,15 +64426,9 @@ func (s *PackagesListPackagesForAuthenticatedUserVisibility) UnmarshalText(data 
 	}
 }
 
-type PackagesListPackagesForOrganizationApplicationJSONForbidden BasicError
+type PackagesListPackagesForOrganizationForbidden BasicError
 
-func (*PackagesListPackagesForOrganizationApplicationJSONForbidden) packagesListPackagesForOrganizationRes() {
-}
-
-type PackagesListPackagesForOrganizationApplicationJSONUnauthorized BasicError
-
-func (*PackagesListPackagesForOrganizationApplicationJSONUnauthorized) packagesListPackagesForOrganizationRes() {
-}
+func (*PackagesListPackagesForOrganizationForbidden) packagesListPackagesForOrganizationRes() {}
 
 type PackagesListPackagesForOrganizationOKApplicationJSON []Package
 
@@ -64535,6 +64492,10 @@ func (s *PackagesListPackagesForOrganizationPackageType) UnmarshalText(data []by
 	}
 }
 
+type PackagesListPackagesForOrganizationUnauthorized BasicError
+
+func (*PackagesListPackagesForOrganizationUnauthorized) packagesListPackagesForOrganizationRes() {}
+
 type PackagesListPackagesForOrganizationVisibility string
 
 const (
@@ -64574,13 +64535,9 @@ func (s *PackagesListPackagesForOrganizationVisibility) UnmarshalText(data []byt
 	}
 }
 
-type PackagesListPackagesForUserApplicationJSONForbidden BasicError
+type PackagesListPackagesForUserForbidden BasicError
 
-func (*PackagesListPackagesForUserApplicationJSONForbidden) packagesListPackagesForUserRes() {}
-
-type PackagesListPackagesForUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesListPackagesForUserApplicationJSONUnauthorized) packagesListPackagesForUserRes() {}
+func (*PackagesListPackagesForUserForbidden) packagesListPackagesForUserRes() {}
 
 type PackagesListPackagesForUserOKApplicationJSON []Package
 
@@ -64643,6 +64600,10 @@ func (s *PackagesListPackagesForUserPackageType) UnmarshalText(data []byte) erro
 	}
 }
 
+type PackagesListPackagesForUserUnauthorized BasicError
+
+func (*PackagesListPackagesForUserUnauthorized) packagesListPackagesForUserRes() {}
+
 type PackagesListPackagesForUserVisibility string
 
 const (
@@ -64682,25 +64643,20 @@ func (s *PackagesListPackagesForUserVisibility) UnmarshalText(data []byte) error
 	}
 }
 
-type PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden BasicError
+type PackagesRestorePackageForAuthenticatedUserForbidden BasicError
 
-func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) packagesRestorePackageForAuthenticatedUserRes() {
-}
-
-type PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound BasicError
-
-func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) packagesRestorePackageForAuthenticatedUserRes() {
-}
-
-type PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) packagesRestorePackageForAuthenticatedUserRes() {
+func (*PackagesRestorePackageForAuthenticatedUserForbidden) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
 // PackagesRestorePackageForAuthenticatedUserNoContent is response for PackagesRestorePackageForAuthenticatedUser operation.
 type PackagesRestorePackageForAuthenticatedUserNoContent struct{}
 
 func (*PackagesRestorePackageForAuthenticatedUserNoContent) packagesRestorePackageForAuthenticatedUserRes() {
+}
+
+type PackagesRestorePackageForAuthenticatedUserNotFound BasicError
+
+func (*PackagesRestorePackageForAuthenticatedUserNotFound) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
 type PackagesRestorePackageForAuthenticatedUserPackageType string
@@ -64760,22 +64716,23 @@ func (s *PackagesRestorePackageForAuthenticatedUserPackageType) UnmarshalText(da
 	}
 }
 
-type PackagesRestorePackageForOrgApplicationJSONForbidden BasicError
+type PackagesRestorePackageForAuthenticatedUserUnauthorized BasicError
 
-func (*PackagesRestorePackageForOrgApplicationJSONForbidden) packagesRestorePackageForOrgRes() {}
+func (*PackagesRestorePackageForAuthenticatedUserUnauthorized) packagesRestorePackageForAuthenticatedUserRes() {
+}
 
-type PackagesRestorePackageForOrgApplicationJSONNotFound BasicError
+type PackagesRestorePackageForOrgForbidden BasicError
 
-func (*PackagesRestorePackageForOrgApplicationJSONNotFound) packagesRestorePackageForOrgRes() {}
-
-type PackagesRestorePackageForOrgApplicationJSONUnauthorized BasicError
-
-func (*PackagesRestorePackageForOrgApplicationJSONUnauthorized) packagesRestorePackageForOrgRes() {}
+func (*PackagesRestorePackageForOrgForbidden) packagesRestorePackageForOrgRes() {}
 
 // PackagesRestorePackageForOrgNoContent is response for PackagesRestorePackageForOrg operation.
 type PackagesRestorePackageForOrgNoContent struct{}
 
 func (*PackagesRestorePackageForOrgNoContent) packagesRestorePackageForOrgRes() {}
+
+type PackagesRestorePackageForOrgNotFound BasicError
+
+func (*PackagesRestorePackageForOrgNotFound) packagesRestorePackageForOrgRes() {}
 
 type PackagesRestorePackageForOrgPackageType string
 
@@ -64834,22 +64791,22 @@ func (s *PackagesRestorePackageForOrgPackageType) UnmarshalText(data []byte) err
 	}
 }
 
-type PackagesRestorePackageForUserApplicationJSONForbidden BasicError
+type PackagesRestorePackageForOrgUnauthorized BasicError
 
-func (*PackagesRestorePackageForUserApplicationJSONForbidden) packagesRestorePackageForUserRes() {}
+func (*PackagesRestorePackageForOrgUnauthorized) packagesRestorePackageForOrgRes() {}
 
-type PackagesRestorePackageForUserApplicationJSONNotFound BasicError
+type PackagesRestorePackageForUserForbidden BasicError
 
-func (*PackagesRestorePackageForUserApplicationJSONNotFound) packagesRestorePackageForUserRes() {}
-
-type PackagesRestorePackageForUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesRestorePackageForUserApplicationJSONUnauthorized) packagesRestorePackageForUserRes() {}
+func (*PackagesRestorePackageForUserForbidden) packagesRestorePackageForUserRes() {}
 
 // PackagesRestorePackageForUserNoContent is response for PackagesRestorePackageForUser operation.
 type PackagesRestorePackageForUserNoContent struct{}
 
 func (*PackagesRestorePackageForUserNoContent) packagesRestorePackageForUserRes() {}
+
+type PackagesRestorePackageForUserNotFound BasicError
+
+func (*PackagesRestorePackageForUserNotFound) packagesRestorePackageForUserRes() {}
 
 type PackagesRestorePackageForUserPackageType string
 
@@ -64908,25 +64865,24 @@ func (s *PackagesRestorePackageForUserPackageType) UnmarshalText(data []byte) er
 	}
 }
 
-type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden BasicError
+type PackagesRestorePackageForUserUnauthorized BasicError
 
-func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) packagesRestorePackageVersionForAuthenticatedUserRes() {
-}
+func (*PackagesRestorePackageForUserUnauthorized) packagesRestorePackageForUserRes() {}
 
-type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound BasicError
+type PackagesRestorePackageVersionForAuthenticatedUserForbidden BasicError
 
-func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) packagesRestorePackageVersionForAuthenticatedUserRes() {
-}
-
-type PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) packagesRestorePackageVersionForAuthenticatedUserRes() {
+func (*PackagesRestorePackageVersionForAuthenticatedUserForbidden) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
 // PackagesRestorePackageVersionForAuthenticatedUserNoContent is response for PackagesRestorePackageVersionForAuthenticatedUser operation.
 type PackagesRestorePackageVersionForAuthenticatedUserNoContent struct{}
 
 func (*PackagesRestorePackageVersionForAuthenticatedUserNoContent) packagesRestorePackageVersionForAuthenticatedUserRes() {
+}
+
+type PackagesRestorePackageVersionForAuthenticatedUserNotFound BasicError
+
+func (*PackagesRestorePackageVersionForAuthenticatedUserNotFound) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
 type PackagesRestorePackageVersionForAuthenticatedUserPackageType string
@@ -64986,25 +64942,23 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) Unmarshal
 	}
 }
 
-type PackagesRestorePackageVersionForOrgApplicationJSONForbidden BasicError
+type PackagesRestorePackageVersionForAuthenticatedUserUnauthorized BasicError
 
-func (*PackagesRestorePackageVersionForOrgApplicationJSONForbidden) packagesRestorePackageVersionForOrgRes() {
+func (*PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageVersionForOrgApplicationJSONNotFound BasicError
+type PackagesRestorePackageVersionForOrgForbidden BasicError
 
-func (*PackagesRestorePackageVersionForOrgApplicationJSONNotFound) packagesRestorePackageVersionForOrgRes() {
-}
-
-type PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized BasicError
-
-func (*PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) packagesRestorePackageVersionForOrgRes() {
-}
+func (*PackagesRestorePackageVersionForOrgForbidden) packagesRestorePackageVersionForOrgRes() {}
 
 // PackagesRestorePackageVersionForOrgNoContent is response for PackagesRestorePackageVersionForOrg operation.
 type PackagesRestorePackageVersionForOrgNoContent struct{}
 
 func (*PackagesRestorePackageVersionForOrgNoContent) packagesRestorePackageVersionForOrgRes() {}
+
+type PackagesRestorePackageVersionForOrgNotFound BasicError
+
+func (*PackagesRestorePackageVersionForOrgNotFound) packagesRestorePackageVersionForOrgRes() {}
 
 type PackagesRestorePackageVersionForOrgPackageType string
 
@@ -65063,25 +65017,22 @@ func (s *PackagesRestorePackageVersionForOrgPackageType) UnmarshalText(data []by
 	}
 }
 
-type PackagesRestorePackageVersionForUserApplicationJSONForbidden BasicError
+type PackagesRestorePackageVersionForOrgUnauthorized BasicError
 
-func (*PackagesRestorePackageVersionForUserApplicationJSONForbidden) packagesRestorePackageVersionForUserRes() {
-}
+func (*PackagesRestorePackageVersionForOrgUnauthorized) packagesRestorePackageVersionForOrgRes() {}
 
-type PackagesRestorePackageVersionForUserApplicationJSONNotFound BasicError
+type PackagesRestorePackageVersionForUserForbidden BasicError
 
-func (*PackagesRestorePackageVersionForUserApplicationJSONNotFound) packagesRestorePackageVersionForUserRes() {
-}
-
-type PackagesRestorePackageVersionForUserApplicationJSONUnauthorized BasicError
-
-func (*PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) packagesRestorePackageVersionForUserRes() {
-}
+func (*PackagesRestorePackageVersionForUserForbidden) packagesRestorePackageVersionForUserRes() {}
 
 // PackagesRestorePackageVersionForUserNoContent is response for PackagesRestorePackageVersionForUser operation.
 type PackagesRestorePackageVersionForUserNoContent struct{}
 
 func (*PackagesRestorePackageVersionForUserNoContent) packagesRestorePackageVersionForUserRes() {}
+
+type PackagesRestorePackageVersionForUserNotFound BasicError
+
+func (*PackagesRestorePackageVersionForUserNotFound) packagesRestorePackageVersionForUserRes() {}
 
 type PackagesRestorePackageVersionForUserPackageType string
 
@@ -65139,6 +65090,10 @@ func (s *PackagesRestorePackageVersionForUserPackageType) UnmarshalText(data []b
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type PackagesRestorePackageVersionForUserUnauthorized BasicError
+
+func (*PackagesRestorePackageVersionForUserUnauthorized) packagesRestorePackageVersionForUserRes() {}
 
 // The configuration for GitHub Pages for a repository.
 // Ref: #/components/schemas/page
@@ -67523,22 +67478,18 @@ func (s *ProjectOrganizationPermission) UnmarshalText(data []byte) error {
 	}
 }
 
-type ProjectsAddCollaboratorApplicationJSONForbidden BasicError
+type ProjectsAddCollaboratorForbidden BasicError
 
-func (*ProjectsAddCollaboratorApplicationJSONForbidden) projectsAddCollaboratorRes() {}
-
-type ProjectsAddCollaboratorApplicationJSONNotFound BasicError
-
-func (*ProjectsAddCollaboratorApplicationJSONNotFound) projectsAddCollaboratorRes() {}
-
-type ProjectsAddCollaboratorApplicationJSONUnauthorized BasicError
-
-func (*ProjectsAddCollaboratorApplicationJSONUnauthorized) projectsAddCollaboratorRes() {}
+func (*ProjectsAddCollaboratorForbidden) projectsAddCollaboratorRes() {}
 
 // ProjectsAddCollaboratorNoContent is response for ProjectsAddCollaborator operation.
 type ProjectsAddCollaboratorNoContent struct{}
 
 func (*ProjectsAddCollaboratorNoContent) projectsAddCollaboratorRes() {}
+
+type ProjectsAddCollaboratorNotFound BasicError
+
+func (*ProjectsAddCollaboratorNotFound) projectsAddCollaboratorRes() {}
 
 type ProjectsAddCollaboratorReq struct {
 	// The permission to grant the collaborator.
@@ -67595,13 +67546,13 @@ func (s *ProjectsAddCollaboratorReqPermission) UnmarshalText(data []byte) error 
 	}
 }
 
-type ProjectsCreateColumnApplicationJSONForbidden BasicError
+type ProjectsAddCollaboratorUnauthorized BasicError
 
-func (*ProjectsCreateColumnApplicationJSONForbidden) projectsCreateColumnRes() {}
+func (*ProjectsAddCollaboratorUnauthorized) projectsAddCollaboratorRes() {}
 
-type ProjectsCreateColumnApplicationJSONUnauthorized BasicError
+type ProjectsCreateColumnForbidden BasicError
 
-func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnRes() {}
+func (*ProjectsCreateColumnForbidden) projectsCreateColumnRes() {}
 
 type ProjectsCreateColumnReq struct {
 	// Name of the project column.
@@ -67618,15 +67569,13 @@ func (s *ProjectsCreateColumnReq) SetName(val string) {
 	s.Name = val
 }
 
-type ProjectsCreateForAuthenticatedUserApplicationJSONForbidden BasicError
+type ProjectsCreateColumnUnauthorized BasicError
 
-func (*ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) projectsCreateForAuthenticatedUserRes() {
-}
+func (*ProjectsCreateColumnUnauthorized) projectsCreateColumnRes() {}
 
-type ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type ProjectsCreateForAuthenticatedUserForbidden BasicError
 
-func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserRes() {
-}
+func (*ProjectsCreateForAuthenticatedUserForbidden) projectsCreateForAuthenticatedUserRes() {}
 
 type ProjectsCreateForAuthenticatedUserReq struct {
 	// Name of the project.
@@ -67655,21 +67604,21 @@ func (s *ProjectsCreateForAuthenticatedUserReq) SetBody(val OptNilString) {
 	s.Body = val
 }
 
-type ProjectsCreateForOrgApplicationJSONForbidden BasicError
+type ProjectsCreateForAuthenticatedUserUnauthorized BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONForbidden) projectsCreateForOrgRes() {}
+func (*ProjectsCreateForAuthenticatedUserUnauthorized) projectsCreateForAuthenticatedUserRes() {}
 
-type ProjectsCreateForOrgApplicationJSONGone BasicError
+type ProjectsCreateForOrgForbidden BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONGone) projectsCreateForOrgRes() {}
+func (*ProjectsCreateForOrgForbidden) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForOrgApplicationJSONNotFound BasicError
+type ProjectsCreateForOrgGone BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONNotFound) projectsCreateForOrgRes() {}
+func (*ProjectsCreateForOrgGone) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForOrgApplicationJSONUnauthorized BasicError
+type ProjectsCreateForOrgNotFound BasicError
 
-func (*ProjectsCreateForOrgApplicationJSONUnauthorized) projectsCreateForOrgRes() {}
+func (*ProjectsCreateForOrgNotFound) projectsCreateForOrgRes() {}
 
 type ProjectsCreateForOrgReq struct {
 	// The name of the project.
@@ -67698,21 +67647,21 @@ func (s *ProjectsCreateForOrgReq) SetBody(val OptString) {
 	s.Body = val
 }
 
-type ProjectsCreateForRepoApplicationJSONForbidden BasicError
+type ProjectsCreateForOrgUnauthorized BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONForbidden) projectsCreateForRepoRes() {}
+func (*ProjectsCreateForOrgUnauthorized) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForRepoApplicationJSONGone BasicError
+type ProjectsCreateForRepoForbidden BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONGone) projectsCreateForRepoRes() {}
+func (*ProjectsCreateForRepoForbidden) projectsCreateForRepoRes() {}
 
-type ProjectsCreateForRepoApplicationJSONNotFound BasicError
+type ProjectsCreateForRepoGone BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONNotFound) projectsCreateForRepoRes() {}
+func (*ProjectsCreateForRepoGone) projectsCreateForRepoRes() {}
 
-type ProjectsCreateForRepoApplicationJSONUnauthorized BasicError
+type ProjectsCreateForRepoNotFound BasicError
 
-func (*ProjectsCreateForRepoApplicationJSONUnauthorized) projectsCreateForRepoRes() {}
+func (*ProjectsCreateForRepoNotFound) projectsCreateForRepoRes() {}
 
 type ProjectsCreateForRepoReq struct {
 	// The name of the project.
@@ -67741,25 +67690,9 @@ func (s *ProjectsCreateForRepoReq) SetBody(val OptString) {
 	s.Body = val
 }
 
-type ProjectsDeleteApplicationJSONGone BasicError
+type ProjectsCreateForRepoUnauthorized BasicError
 
-func (*ProjectsDeleteApplicationJSONGone) projectsDeleteRes() {}
-
-type ProjectsDeleteApplicationJSONNotFound BasicError
-
-func (*ProjectsDeleteApplicationJSONNotFound) projectsDeleteRes() {}
-
-type ProjectsDeleteApplicationJSONUnauthorized BasicError
-
-func (*ProjectsDeleteApplicationJSONUnauthorized) projectsDeleteRes() {}
-
-type ProjectsDeleteCardApplicationJSONNotFound BasicError
-
-func (*ProjectsDeleteCardApplicationJSONNotFound) projectsDeleteCardRes() {}
-
-type ProjectsDeleteCardApplicationJSONUnauthorized BasicError
-
-func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardRes() {}
+func (*ProjectsCreateForRepoUnauthorized) projectsCreateForRepoRes() {}
 
 type ProjectsDeleteCardForbidden struct {
 	Message          OptString `json:"message"`
@@ -67804,18 +67737,26 @@ type ProjectsDeleteCardNoContent struct{}
 
 func (*ProjectsDeleteCardNoContent) projectsDeleteCardRes() {}
 
-type ProjectsDeleteColumnApplicationJSONForbidden BasicError
+type ProjectsDeleteCardNotFound BasicError
 
-func (*ProjectsDeleteColumnApplicationJSONForbidden) projectsDeleteColumnRes() {}
+func (*ProjectsDeleteCardNotFound) projectsDeleteCardRes() {}
 
-type ProjectsDeleteColumnApplicationJSONUnauthorized BasicError
+type ProjectsDeleteCardUnauthorized BasicError
 
-func (*ProjectsDeleteColumnApplicationJSONUnauthorized) projectsDeleteColumnRes() {}
+func (*ProjectsDeleteCardUnauthorized) projectsDeleteCardRes() {}
+
+type ProjectsDeleteColumnForbidden BasicError
+
+func (*ProjectsDeleteColumnForbidden) projectsDeleteColumnRes() {}
 
 // ProjectsDeleteColumnNoContent is response for ProjectsDeleteColumn operation.
 type ProjectsDeleteColumnNoContent struct{}
 
 func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnRes() {}
+
+type ProjectsDeleteColumnUnauthorized BasicError
+
+func (*ProjectsDeleteColumnUnauthorized) projectsDeleteColumnRes() {}
 
 type ProjectsDeleteForbidden struct {
 	Message          OptString `json:"message"`
@@ -67855,62 +67796,66 @@ func (s *ProjectsDeleteForbidden) SetErrors(val []string) {
 
 func (*ProjectsDeleteForbidden) projectsDeleteRes() {}
 
+type ProjectsDeleteGone BasicError
+
+func (*ProjectsDeleteGone) projectsDeleteRes() {}
+
 // ProjectsDeleteNoContent is response for ProjectsDelete operation.
 type ProjectsDeleteNoContent struct{}
 
 func (*ProjectsDeleteNoContent) projectsDeleteRes() {}
 
-type ProjectsGetApplicationJSONForbidden BasicError
+type ProjectsDeleteNotFound BasicError
 
-func (*ProjectsGetApplicationJSONForbidden) projectsGetRes() {}
+func (*ProjectsDeleteNotFound) projectsDeleteRes() {}
 
-type ProjectsGetApplicationJSONUnauthorized BasicError
+type ProjectsDeleteUnauthorized BasicError
 
-func (*ProjectsGetApplicationJSONUnauthorized) projectsGetRes() {}
+func (*ProjectsDeleteUnauthorized) projectsDeleteRes() {}
 
-type ProjectsGetCardApplicationJSONForbidden BasicError
+type ProjectsGetCardForbidden BasicError
 
-func (*ProjectsGetCardApplicationJSONForbidden) projectsGetCardRes() {}
+func (*ProjectsGetCardForbidden) projectsGetCardRes() {}
 
-type ProjectsGetCardApplicationJSONNotFound BasicError
+type ProjectsGetCardNotFound BasicError
 
-func (*ProjectsGetCardApplicationJSONNotFound) projectsGetCardRes() {}
+func (*ProjectsGetCardNotFound) projectsGetCardRes() {}
 
-type ProjectsGetCardApplicationJSONUnauthorized BasicError
+type ProjectsGetCardUnauthorized BasicError
 
-func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardRes() {}
+func (*ProjectsGetCardUnauthorized) projectsGetCardRes() {}
 
-type ProjectsGetColumnApplicationJSONForbidden BasicError
+type ProjectsGetColumnForbidden BasicError
 
-func (*ProjectsGetColumnApplicationJSONForbidden) projectsGetColumnRes() {}
+func (*ProjectsGetColumnForbidden) projectsGetColumnRes() {}
 
-type ProjectsGetColumnApplicationJSONNotFound BasicError
+type ProjectsGetColumnNotFound BasicError
 
-func (*ProjectsGetColumnApplicationJSONNotFound) projectsGetColumnRes() {}
+func (*ProjectsGetColumnNotFound) projectsGetColumnRes() {}
 
-type ProjectsGetColumnApplicationJSONUnauthorized BasicError
+type ProjectsGetColumnUnauthorized BasicError
 
-func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnRes() {}
+func (*ProjectsGetColumnUnauthorized) projectsGetColumnRes() {}
 
-type ProjectsGetPermissionForUserApplicationJSONForbidden BasicError
+type ProjectsGetForbidden BasicError
 
-func (*ProjectsGetPermissionForUserApplicationJSONForbidden) projectsGetPermissionForUserRes() {}
+func (*ProjectsGetForbidden) projectsGetRes() {}
 
-type ProjectsGetPermissionForUserApplicationJSONNotFound BasicError
+type ProjectsGetPermissionForUserForbidden BasicError
 
-func (*ProjectsGetPermissionForUserApplicationJSONNotFound) projectsGetPermissionForUserRes() {}
+func (*ProjectsGetPermissionForUserForbidden) projectsGetPermissionForUserRes() {}
 
-type ProjectsGetPermissionForUserApplicationJSONUnauthorized BasicError
+type ProjectsGetPermissionForUserNotFound BasicError
 
-func (*ProjectsGetPermissionForUserApplicationJSONUnauthorized) projectsGetPermissionForUserRes() {}
+func (*ProjectsGetPermissionForUserNotFound) projectsGetPermissionForUserRes() {}
 
-type ProjectsListCardsApplicationJSONForbidden BasicError
+type ProjectsGetPermissionForUserUnauthorized BasicError
 
-func (*ProjectsListCardsApplicationJSONForbidden) projectsListCardsRes() {}
+func (*ProjectsGetPermissionForUserUnauthorized) projectsGetPermissionForUserRes() {}
 
-type ProjectsListCardsApplicationJSONUnauthorized BasicError
+type ProjectsGetUnauthorized BasicError
 
-func (*ProjectsListCardsApplicationJSONUnauthorized) projectsListCardsRes() {}
+func (*ProjectsGetUnauthorized) projectsGetRes() {}
 
 type ProjectsListCardsArchivedState string
 
@@ -67951,6 +67896,10 @@ func (s *ProjectsListCardsArchivedState) UnmarshalText(data []byte) error {
 	}
 }
 
+type ProjectsListCardsForbidden BasicError
+
+func (*ProjectsListCardsForbidden) projectsListCardsRes() {}
+
 // ProjectsListCardsOKHeaders wraps []ProjectCard with response headers.
 type ProjectsListCardsOKHeaders struct {
 	Link     OptString
@@ -67978,6 +67927,10 @@ func (s *ProjectsListCardsOKHeaders) SetResponse(val []ProjectCard) {
 }
 
 func (*ProjectsListCardsOKHeaders) projectsListCardsRes() {}
+
+type ProjectsListCardsUnauthorized BasicError
+
+func (*ProjectsListCardsUnauthorized) projectsListCardsRes() {}
 
 type ProjectsListCollaboratorsAffiliation string
 
@@ -68018,17 +67971,13 @@ func (s *ProjectsListCollaboratorsAffiliation) UnmarshalText(data []byte) error 
 	}
 }
 
-type ProjectsListCollaboratorsApplicationJSONForbidden BasicError
+type ProjectsListCollaboratorsForbidden BasicError
 
-func (*ProjectsListCollaboratorsApplicationJSONForbidden) projectsListCollaboratorsRes() {}
+func (*ProjectsListCollaboratorsForbidden) projectsListCollaboratorsRes() {}
 
-type ProjectsListCollaboratorsApplicationJSONNotFound BasicError
+type ProjectsListCollaboratorsNotFound BasicError
 
-func (*ProjectsListCollaboratorsApplicationJSONNotFound) projectsListCollaboratorsRes() {}
-
-type ProjectsListCollaboratorsApplicationJSONUnauthorized BasicError
-
-func (*ProjectsListCollaboratorsApplicationJSONUnauthorized) projectsListCollaboratorsRes() {}
+func (*ProjectsListCollaboratorsNotFound) projectsListCollaboratorsRes() {}
 
 // ProjectsListCollaboratorsOKHeaders wraps []SimpleUser with response headers.
 type ProjectsListCollaboratorsOKHeaders struct {
@@ -68058,13 +68007,13 @@ func (s *ProjectsListCollaboratorsOKHeaders) SetResponse(val []SimpleUser) {
 
 func (*ProjectsListCollaboratorsOKHeaders) projectsListCollaboratorsRes() {}
 
-type ProjectsListColumnsApplicationJSONForbidden BasicError
+type ProjectsListCollaboratorsUnauthorized BasicError
 
-func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsRes() {}
+func (*ProjectsListCollaboratorsUnauthorized) projectsListCollaboratorsRes() {}
 
-type ProjectsListColumnsApplicationJSONUnauthorized BasicError
+type ProjectsListColumnsForbidden BasicError
 
-func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() {}
+func (*ProjectsListColumnsForbidden) projectsListColumnsRes() {}
 
 // ProjectsListColumnsOKHeaders wraps []ProjectColumn with response headers.
 type ProjectsListColumnsOKHeaders struct {
@@ -68093,6 +68042,10 @@ func (s *ProjectsListColumnsOKHeaders) SetResponse(val []ProjectColumn) {
 }
 
 func (*ProjectsListColumnsOKHeaders) projectsListColumnsRes() {}
+
+type ProjectsListColumnsUnauthorized BasicError
+
+func (*ProjectsListColumnsUnauthorized) projectsListColumnsRes() {}
 
 // ProjectsListForOrgOKHeaders wraps []Project with response headers.
 type ProjectsListForOrgOKHeaders struct {
@@ -68161,21 +68114,17 @@ func (s *ProjectsListForOrgState) UnmarshalText(data []byte) error {
 	}
 }
 
-type ProjectsListForRepoApplicationJSONForbidden BasicError
+type ProjectsListForRepoForbidden BasicError
 
-func (*ProjectsListForRepoApplicationJSONForbidden) projectsListForRepoRes() {}
+func (*ProjectsListForRepoForbidden) projectsListForRepoRes() {}
 
-type ProjectsListForRepoApplicationJSONGone BasicError
+type ProjectsListForRepoGone BasicError
 
-func (*ProjectsListForRepoApplicationJSONGone) projectsListForRepoRes() {}
+func (*ProjectsListForRepoGone) projectsListForRepoRes() {}
 
-type ProjectsListForRepoApplicationJSONNotFound BasicError
+type ProjectsListForRepoNotFound BasicError
 
-func (*ProjectsListForRepoApplicationJSONNotFound) projectsListForRepoRes() {}
-
-type ProjectsListForRepoApplicationJSONUnauthorized BasicError
-
-func (*ProjectsListForRepoApplicationJSONUnauthorized) projectsListForRepoRes() {}
+func (*ProjectsListForRepoNotFound) projectsListForRepoRes() {}
 
 // ProjectsListForRepoOKHeaders wraps []Project with response headers.
 type ProjectsListForRepoOKHeaders struct {
@@ -68243,6 +68192,10 @@ func (s *ProjectsListForRepoState) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type ProjectsListForRepoUnauthorized BasicError
+
+func (*ProjectsListForRepoUnauthorized) projectsListForRepoRes() {}
 
 // ProjectsListForUserOKHeaders wraps []Project with response headers.
 type ProjectsListForUserOKHeaders struct {
@@ -68502,17 +68455,13 @@ func (s *ProjectsMoveCardServiceUnavailableErrorsItem) SetMessage(val OptString)
 	s.Message = val
 }
 
-type ProjectsMoveColumnApplicationJSONForbidden BasicError
-
-func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnRes() {}
-
-type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
-
-func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
-
 type ProjectsMoveColumnCreated struct{}
 
 func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
+
+type ProjectsMoveColumnForbidden BasicError
+
+func (*ProjectsMoveColumnForbidden) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnReq struct {
 	// The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to
@@ -68530,42 +68479,34 @@ func (s *ProjectsMoveColumnReq) SetPosition(val string) {
 	s.Position = val
 }
 
-type ProjectsRemoveCollaboratorApplicationJSONForbidden BasicError
+type ProjectsMoveColumnUnauthorized BasicError
 
-func (*ProjectsRemoveCollaboratorApplicationJSONForbidden) projectsRemoveCollaboratorRes() {}
+func (*ProjectsMoveColumnUnauthorized) projectsMoveColumnRes() {}
 
-type ProjectsRemoveCollaboratorApplicationJSONNotFound BasicError
+type ProjectsRemoveCollaboratorForbidden BasicError
 
-func (*ProjectsRemoveCollaboratorApplicationJSONNotFound) projectsRemoveCollaboratorRes() {}
-
-type ProjectsRemoveCollaboratorApplicationJSONUnauthorized BasicError
-
-func (*ProjectsRemoveCollaboratorApplicationJSONUnauthorized) projectsRemoveCollaboratorRes() {}
+func (*ProjectsRemoveCollaboratorForbidden) projectsRemoveCollaboratorRes() {}
 
 // ProjectsRemoveCollaboratorNoContent is response for ProjectsRemoveCollaborator operation.
 type ProjectsRemoveCollaboratorNoContent struct{}
 
 func (*ProjectsRemoveCollaboratorNoContent) projectsRemoveCollaboratorRes() {}
 
-type ProjectsUpdateApplicationJSONGone BasicError
+type ProjectsRemoveCollaboratorNotFound BasicError
 
-func (*ProjectsUpdateApplicationJSONGone) projectsUpdateRes() {}
+func (*ProjectsRemoveCollaboratorNotFound) projectsRemoveCollaboratorRes() {}
 
-type ProjectsUpdateApplicationJSONUnauthorized BasicError
+type ProjectsRemoveCollaboratorUnauthorized BasicError
 
-func (*ProjectsUpdateApplicationJSONUnauthorized) projectsUpdateRes() {}
+func (*ProjectsRemoveCollaboratorUnauthorized) projectsRemoveCollaboratorRes() {}
 
-type ProjectsUpdateCardApplicationJSONForbidden BasicError
+type ProjectsUpdateCardForbidden BasicError
 
-func (*ProjectsUpdateCardApplicationJSONForbidden) projectsUpdateCardRes() {}
+func (*ProjectsUpdateCardForbidden) projectsUpdateCardRes() {}
 
-type ProjectsUpdateCardApplicationJSONNotFound BasicError
+type ProjectsUpdateCardNotFound BasicError
 
-func (*ProjectsUpdateCardApplicationJSONNotFound) projectsUpdateCardRes() {}
-
-type ProjectsUpdateCardApplicationJSONUnauthorized BasicError
-
-func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardRes() {}
+func (*ProjectsUpdateCardNotFound) projectsUpdateCardRes() {}
 
 type ProjectsUpdateCardReq struct {
 	// The project card's note.
@@ -68594,13 +68535,13 @@ func (s *ProjectsUpdateCardReq) SetArchived(val OptBool) {
 	s.Archived = val
 }
 
-type ProjectsUpdateColumnApplicationJSONForbidden BasicError
+type ProjectsUpdateCardUnauthorized BasicError
 
-func (*ProjectsUpdateColumnApplicationJSONForbidden) projectsUpdateColumnRes() {}
+func (*ProjectsUpdateCardUnauthorized) projectsUpdateCardRes() {}
 
-type ProjectsUpdateColumnApplicationJSONUnauthorized BasicError
+type ProjectsUpdateColumnForbidden BasicError
 
-func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnRes() {}
+func (*ProjectsUpdateColumnForbidden) projectsUpdateColumnRes() {}
 
 type ProjectsUpdateColumnReq struct {
 	// Name of the project column.
@@ -68616,6 +68557,10 @@ func (s *ProjectsUpdateColumnReq) GetName() string {
 func (s *ProjectsUpdateColumnReq) SetName(val string) {
 	s.Name = val
 }
+
+type ProjectsUpdateColumnUnauthorized BasicError
+
+func (*ProjectsUpdateColumnUnauthorized) projectsUpdateColumnRes() {}
 
 type ProjectsUpdateForbidden struct {
 	Message          OptString `json:"message"`
@@ -68654,6 +68599,10 @@ func (s *ProjectsUpdateForbidden) SetErrors(val []string) {
 }
 
 func (*ProjectsUpdateForbidden) projectsUpdateRes() {}
+
+type ProjectsUpdateGone BasicError
+
+func (*ProjectsUpdateGone) projectsUpdateRes() {}
 
 // ProjectsUpdateNotFound is response for ProjectsUpdate operation.
 type ProjectsUpdateNotFound struct{}
@@ -68768,6 +68717,10 @@ func (s *ProjectsUpdateReqOrganizationPermission) UnmarshalText(data []byte) err
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type ProjectsUpdateUnauthorized BasicError
+
+func (*ProjectsUpdateUnauthorized) projectsUpdateRes() {}
 
 // Branch protections protect branches.
 // Ref: #/components/schemas/protected-branch
@@ -75662,13 +75615,13 @@ func (s *PullsDismissReviewReq) SetEvent(val OptString) {
 	s.Event = val
 }
 
-type PullsGetApplicationJSONInternalServerError BasicError
+type PullsGetInternalServerError BasicError
 
-func (*PullsGetApplicationJSONInternalServerError) pullsGetRes() {}
+func (*PullsGetInternalServerError) pullsGetRes() {}
 
-type PullsGetApplicationJSONNotFound BasicError
+type PullsGetNotFound BasicError
 
-func (*PullsGetApplicationJSONNotFound) pullsGetRes() {}
+func (*PullsGetNotFound) pullsGetRes() {}
 
 // PullsListCommentsForReviewOKHeaders wraps []ReviewComment with response headers.
 type PullsListCommentsForReviewOKHeaders struct {
@@ -76113,14 +76066,6 @@ func (s *PullsListState) UnmarshalText(data []byte) error {
 	}
 }
 
-type PullsMergeApplicationJSONForbidden BasicError
-
-func (*PullsMergeApplicationJSONForbidden) pullsMergeRes() {}
-
-type PullsMergeApplicationJSONNotFound BasicError
-
-func (*PullsMergeApplicationJSONNotFound) pullsMergeRes() {}
-
 type PullsMergeConflict struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
@@ -76148,6 +76093,10 @@ func (s *PullsMergeConflict) SetDocumentationURL(val OptString) {
 
 func (*PullsMergeConflict) pullsMergeRes() {}
 
+type PullsMergeForbidden BasicError
+
+func (*PullsMergeForbidden) pullsMergeRes() {}
+
 type PullsMergeMethodNotAllowed struct {
 	Message          OptString `json:"message"`
 	DocumentationURL OptString `json:"documentation_url"`
@@ -76174,6 +76123,10 @@ func (s *PullsMergeMethodNotAllowed) SetDocumentationURL(val OptString) {
 }
 
 func (*PullsMergeMethodNotAllowed) pullsMergeRes() {}
+
+type PullsMergeNotFound BasicError
+
+func (*PullsMergeNotFound) pullsMergeRes() {}
 
 type PullsMergeReq struct {
 	// Title for the automatic commit message.
@@ -76293,13 +76246,13 @@ func (s *PullsRemoveRequestedReviewersReq) SetTeamReviewers(val []string) {
 	s.TeamReviewers = val
 }
 
-type PullsSubmitReviewApplicationJSONForbidden BasicError
+type PullsSubmitReviewForbidden BasicError
 
-func (*PullsSubmitReviewApplicationJSONForbidden) pullsSubmitReviewRes() {}
+func (*PullsSubmitReviewForbidden) pullsSubmitReviewRes() {}
 
-type PullsSubmitReviewApplicationJSONNotFound BasicError
+type PullsSubmitReviewNotFound BasicError
 
-func (*PullsSubmitReviewApplicationJSONNotFound) pullsSubmitReviewRes() {}
+func (*PullsSubmitReviewNotFound) pullsSubmitReviewRes() {}
 
 type PullsSubmitReviewReq struct {
 	// The body text of the pull request review.
@@ -77001,13 +76954,13 @@ func (s *ReactionRollup) SetRocket(val int) {
 	s.Rocket = val
 }
 
-type ReactionsCreateForCommitCommentApplicationJSONCreated Reaction
+type ReactionsCreateForCommitCommentCreated Reaction
 
-func (*ReactionsCreateForCommitCommentApplicationJSONCreated) reactionsCreateForCommitCommentRes() {}
+func (*ReactionsCreateForCommitCommentCreated) reactionsCreateForCommitCommentRes() {}
 
-type ReactionsCreateForCommitCommentApplicationJSONOK Reaction
+type ReactionsCreateForCommitCommentOK Reaction
 
-func (*ReactionsCreateForCommitCommentApplicationJSONOK) reactionsCreateForCommitCommentRes() {}
+func (*ReactionsCreateForCommitCommentOK) reactionsCreateForCommitCommentRes() {}
 
 type ReactionsCreateForCommitCommentReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
@@ -77096,21 +77049,13 @@ func (s *ReactionsCreateForCommitCommentReqContent) UnmarshalText(data []byte) e
 	}
 }
 
-type ReactionsCreateForIssueApplicationJSONCreated Reaction
+type ReactionsCreateForIssueCommentCreated Reaction
 
-func (*ReactionsCreateForIssueApplicationJSONCreated) reactionsCreateForIssueRes() {}
+func (*ReactionsCreateForIssueCommentCreated) reactionsCreateForIssueCommentRes() {}
 
-type ReactionsCreateForIssueApplicationJSONOK Reaction
+type ReactionsCreateForIssueCommentOK Reaction
 
-func (*ReactionsCreateForIssueApplicationJSONOK) reactionsCreateForIssueRes() {}
-
-type ReactionsCreateForIssueCommentApplicationJSONCreated Reaction
-
-func (*ReactionsCreateForIssueCommentApplicationJSONCreated) reactionsCreateForIssueCommentRes() {}
-
-type ReactionsCreateForIssueCommentApplicationJSONOK Reaction
-
-func (*ReactionsCreateForIssueCommentApplicationJSONOK) reactionsCreateForIssueCommentRes() {}
+func (*ReactionsCreateForIssueCommentOK) reactionsCreateForIssueCommentRes() {}
 
 type ReactionsCreateForIssueCommentReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
@@ -77199,6 +77144,14 @@ func (s *ReactionsCreateForIssueCommentReqContent) UnmarshalText(data []byte) er
 	}
 }
 
+type ReactionsCreateForIssueCreated Reaction
+
+func (*ReactionsCreateForIssueCreated) reactionsCreateForIssueRes() {}
+
+type ReactionsCreateForIssueOK Reaction
+
+func (*ReactionsCreateForIssueOK) reactionsCreateForIssueRes() {}
+
 type ReactionsCreateForIssueReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
 	// issue.
@@ -77286,14 +77239,14 @@ func (s *ReactionsCreateForIssueReqContent) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated Reaction
+type ReactionsCreateForPullRequestReviewCommentCreated Reaction
 
-func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) reactionsCreateForPullRequestReviewCommentRes() {
+func (*ReactionsCreateForPullRequestReviewCommentCreated) reactionsCreateForPullRequestReviewCommentRes() {
 }
 
-type ReactionsCreateForPullRequestReviewCommentApplicationJSONOK Reaction
+type ReactionsCreateForPullRequestReviewCommentOK Reaction
 
-func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) reactionsCreateForPullRequestReviewCommentRes() {
+func (*ReactionsCreateForPullRequestReviewCommentOK) reactionsCreateForPullRequestReviewCommentRes() {
 }
 
 type ReactionsCreateForPullRequestReviewCommentReq struct {
@@ -77383,13 +77336,13 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) UnmarshalText(dat
 	}
 }
 
-type ReactionsCreateForReleaseApplicationJSONCreated Reaction
+type ReactionsCreateForReleaseCreated Reaction
 
-func (*ReactionsCreateForReleaseApplicationJSONCreated) reactionsCreateForReleaseRes() {}
+func (*ReactionsCreateForReleaseCreated) reactionsCreateForReleaseRes() {}
 
-type ReactionsCreateForReleaseApplicationJSONOK Reaction
+type ReactionsCreateForReleaseOK Reaction
 
-func (*ReactionsCreateForReleaseApplicationJSONOK) reactionsCreateForReleaseRes() {}
+func (*ReactionsCreateForReleaseOK) reactionsCreateForReleaseRes() {}
 
 type ReactionsCreateForReleaseReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
@@ -77466,14 +77419,14 @@ func (s *ReactionsCreateForReleaseReqContent) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated Reaction
+type ReactionsCreateForTeamDiscussionCommentInOrgCreated Reaction
 
-func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionCommentInOrgRes() {
+func (*ReactionsCreateForTeamDiscussionCommentInOrgCreated) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
 
-type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK Reaction
+type ReactionsCreateForTeamDiscussionCommentInOrgOK Reaction
 
-func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionCommentInOrgRes() {
+func (*ReactionsCreateForTeamDiscussionCommentInOrgOK) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgReq struct {
@@ -77650,15 +77603,13 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) UnmarshalText(
 	}
 }
 
-type ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated Reaction
+type ReactionsCreateForTeamDiscussionInOrgCreated Reaction
 
-func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionInOrgRes() {
-}
+func (*ReactionsCreateForTeamDiscussionInOrgCreated) reactionsCreateForTeamDiscussionInOrgRes() {}
 
-type ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK Reaction
+type ReactionsCreateForTeamDiscussionInOrgOK Reaction
 
-func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionInOrgRes() {
-}
+func (*ReactionsCreateForTeamDiscussionInOrgOK) reactionsCreateForTeamDiscussionInOrgRes() {}
 
 type ReactionsCreateForTeamDiscussionInOrgReq struct {
 	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
@@ -77852,22 +77803,22 @@ type ReactionsDeleteForTeamDiscussionCommentNoContent struct{}
 // ReactionsDeleteForTeamDiscussionNoContent is response for ReactionsDeleteForTeamDiscussion operation.
 type ReactionsDeleteForTeamDiscussionNoContent struct{}
 
-type ReactionsDeleteLegacyApplicationJSONForbidden BasicError
+type ReactionsDeleteLegacyForbidden BasicError
 
-func (*ReactionsDeleteLegacyApplicationJSONForbidden) reactionsDeleteLegacyRes() {}
+func (*ReactionsDeleteLegacyForbidden) reactionsDeleteLegacyRes() {}
 
-type ReactionsDeleteLegacyApplicationJSONGone BasicError
+type ReactionsDeleteLegacyGone BasicError
 
-func (*ReactionsDeleteLegacyApplicationJSONGone) reactionsDeleteLegacyRes() {}
-
-type ReactionsDeleteLegacyApplicationJSONUnauthorized BasicError
-
-func (*ReactionsDeleteLegacyApplicationJSONUnauthorized) reactionsDeleteLegacyRes() {}
+func (*ReactionsDeleteLegacyGone) reactionsDeleteLegacyRes() {}
 
 // ReactionsDeleteLegacyNoContent is response for ReactionsDeleteLegacy operation.
 type ReactionsDeleteLegacyNoContent struct{}
 
 func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
+
+type ReactionsDeleteLegacyUnauthorized BasicError
+
+func (*ReactionsDeleteLegacyUnauthorized) reactionsDeleteLegacyRes() {}
 
 type ReactionsListForCommitCommentContent string
 
@@ -77965,14 +77916,6 @@ func (s *ReactionsListForCommitCommentOKHeaders) SetResponse(val []Reaction) {
 }
 
 func (*ReactionsListForCommitCommentOKHeaders) reactionsListForCommitCommentRes() {}
-
-type ReactionsListForIssueApplicationJSONGone BasicError
-
-func (*ReactionsListForIssueApplicationJSONGone) reactionsListForIssueRes() {}
-
-type ReactionsListForIssueApplicationJSONNotFound BasicError
-
-func (*ReactionsListForIssueApplicationJSONNotFound) reactionsListForIssueRes() {}
 
 type ReactionsListForIssueCommentContent string
 
@@ -78139,6 +78082,14 @@ func (s *ReactionsListForIssueContent) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type ReactionsListForIssueGone BasicError
+
+func (*ReactionsListForIssueGone) reactionsListForIssueRes() {}
+
+type ReactionsListForIssueNotFound BasicError
+
+func (*ReactionsListForIssueNotFound) reactionsListForIssueRes() {}
 
 // ReactionsListForIssueOKHeaders wraps []Reaction with response headers.
 type ReactionsListForIssueOKHeaders struct {
@@ -80164,22 +80115,22 @@ func (s *RepoSearchResultItemPermissions) SetPull(val bool) {
 	s.Pull = val
 }
 
-type ReposAcceptInvitationApplicationJSONConflict BasicError
+type ReposAcceptInvitationConflict BasicError
 
-func (*ReposAcceptInvitationApplicationJSONConflict) reposAcceptInvitationRes() {}
+func (*ReposAcceptInvitationConflict) reposAcceptInvitationRes() {}
 
-type ReposAcceptInvitationApplicationJSONForbidden BasicError
+type ReposAcceptInvitationForbidden BasicError
 
-func (*ReposAcceptInvitationApplicationJSONForbidden) reposAcceptInvitationRes() {}
-
-type ReposAcceptInvitationApplicationJSONNotFound BasicError
-
-func (*ReposAcceptInvitationApplicationJSONNotFound) reposAcceptInvitationRes() {}
+func (*ReposAcceptInvitationForbidden) reposAcceptInvitationRes() {}
 
 // ReposAcceptInvitationNoContent is response for ReposAcceptInvitation operation.
 type ReposAcceptInvitationNoContent struct{}
 
 func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
+
+type ReposAcceptInvitationNotFound BasicError
+
+func (*ReposAcceptInvitationNotFound) reposAcceptInvitationRes() {}
 
 type ReposAddAppAccessRestrictionsOKApplicationJSON []Integration
 
@@ -80371,13 +80322,13 @@ func (s *ReposAddCollaboratorReqPermission) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposAddStatusCheckContextsApplicationJSONForbidden BasicError
+type ReposAddStatusCheckContextsForbidden BasicError
 
-func (*ReposAddStatusCheckContextsApplicationJSONForbidden) reposAddStatusCheckContextsRes() {}
+func (*ReposAddStatusCheckContextsForbidden) reposAddStatusCheckContextsRes() {}
 
-type ReposAddStatusCheckContextsApplicationJSONNotFound BasicError
+type ReposAddStatusCheckContextsNotFound BasicError
 
-func (*ReposAddStatusCheckContextsApplicationJSONNotFound) reposAddStatusCheckContextsRes() {}
+func (*ReposAddStatusCheckContextsNotFound) reposAddStatusCheckContextsRes() {}
 
 type ReposAddStatusCheckContextsOKApplicationJSON []string
 
@@ -80660,13 +80611,13 @@ type ReposCheckVulnerabilityAlertsNotFound struct{}
 
 func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsRes() {}
 
-type ReposCompareCommitsApplicationJSONInternalServerError BasicError
+type ReposCompareCommitsInternalServerError BasicError
 
-func (*ReposCompareCommitsApplicationJSONInternalServerError) reposCompareCommitsRes() {}
+func (*ReposCompareCommitsInternalServerError) reposCompareCommitsRes() {}
 
-type ReposCompareCommitsApplicationJSONNotFound BasicError
+type ReposCompareCommitsNotFound BasicError
 
-func (*ReposCompareCommitsApplicationJSONNotFound) reposCompareCommitsRes() {}
+func (*ReposCompareCommitsNotFound) reposCompareCommitsRes() {}
 
 type ReposCreateAutolinkReq struct {
 	// The prefix appended by a number will generate a link any time it is found in an issue, pull
@@ -81390,24 +81341,17 @@ func (s *ReposCreateDispatchEventReqClientPayload) init() ReposCreateDispatchEve
 	return m
 }
 
-type ReposCreateForAuthenticatedUserApplicationJSONBadRequest BasicError
+type ReposCreateForAuthenticatedUserBadRequest BasicError
 
-func (*ReposCreateForAuthenticatedUserApplicationJSONBadRequest) reposCreateForAuthenticatedUserRes() {
-}
+func (*ReposCreateForAuthenticatedUserBadRequest) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForAuthenticatedUserApplicationJSONForbidden BasicError
+type ReposCreateForAuthenticatedUserForbidden BasicError
 
-func (*ReposCreateForAuthenticatedUserApplicationJSONForbidden) reposCreateForAuthenticatedUserRes() {
-}
+func (*ReposCreateForAuthenticatedUserForbidden) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForAuthenticatedUserApplicationJSONNotFound BasicError
+type ReposCreateForAuthenticatedUserNotFound BasicError
 
-func (*ReposCreateForAuthenticatedUserApplicationJSONNotFound) reposCreateForAuthenticatedUserRes() {}
-
-type ReposCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) reposCreateForAuthenticatedUserRes() {
-}
+func (*ReposCreateForAuthenticatedUserNotFound) reposCreateForAuthenticatedUserRes() {}
 
 type ReposCreateForAuthenticatedUserReq struct {
 	// The name of the repository.
@@ -81629,17 +81573,21 @@ func (s *ReposCreateForAuthenticatedUserReq) SetIsTemplate(val OptBool) {
 	s.IsTemplate = val
 }
 
-type ReposCreateForkApplicationJSONBadRequest BasicError
+type ReposCreateForAuthenticatedUserUnauthorized BasicError
 
-func (*ReposCreateForkApplicationJSONBadRequest) reposCreateForkRes() {}
+func (*ReposCreateForAuthenticatedUserUnauthorized) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForkApplicationJSONForbidden BasicError
+type ReposCreateForkBadRequest BasicError
 
-func (*ReposCreateForkApplicationJSONForbidden) reposCreateForkRes() {}
+func (*ReposCreateForkBadRequest) reposCreateForkRes() {}
 
-type ReposCreateForkApplicationJSONNotFound BasicError
+type ReposCreateForkForbidden BasicError
 
-func (*ReposCreateForkApplicationJSONNotFound) reposCreateForkRes() {}
+func (*ReposCreateForkForbidden) reposCreateForkRes() {}
+
+type ReposCreateForkNotFound BasicError
+
+func (*ReposCreateForkNotFound) reposCreateForkRes() {}
 
 type ReposCreateForkReq struct {
 	// Optional parameter to specify the organization name if forking into an organization.
@@ -81944,21 +81892,21 @@ func (s *ReposCreateInOrgReqVisibility) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposCreateOrUpdateFileContentsApplicationJSONConflict BasicError
+type ReposCreateOrUpdateFileContentsConflict BasicError
 
-func (*ReposCreateOrUpdateFileContentsApplicationJSONConflict) reposCreateOrUpdateFileContentsRes() {}
+func (*ReposCreateOrUpdateFileContentsConflict) reposCreateOrUpdateFileContentsRes() {}
 
-type ReposCreateOrUpdateFileContentsApplicationJSONCreated FileCommit
+type ReposCreateOrUpdateFileContentsCreated FileCommit
 
-func (*ReposCreateOrUpdateFileContentsApplicationJSONCreated) reposCreateOrUpdateFileContentsRes() {}
+func (*ReposCreateOrUpdateFileContentsCreated) reposCreateOrUpdateFileContentsRes() {}
 
-type ReposCreateOrUpdateFileContentsApplicationJSONNotFound BasicError
+type ReposCreateOrUpdateFileContentsNotFound BasicError
 
-func (*ReposCreateOrUpdateFileContentsApplicationJSONNotFound) reposCreateOrUpdateFileContentsRes() {}
+func (*ReposCreateOrUpdateFileContentsNotFound) reposCreateOrUpdateFileContentsRes() {}
 
-type ReposCreateOrUpdateFileContentsApplicationJSONOK FileCommit
+type ReposCreateOrUpdateFileContentsOK FileCommit
 
-func (*ReposCreateOrUpdateFileContentsApplicationJSONOK) reposCreateOrUpdateFileContentsRes() {}
+func (*ReposCreateOrUpdateFileContentsOK) reposCreateOrUpdateFileContentsRes() {}
 
 type ReposCreateOrUpdateFileContentsReq struct {
 	// The commit message.
@@ -82354,13 +82302,13 @@ func (s *ReposCreateUsingTemplateReq) SetPrivate(val OptBool) {
 	s.Private = val
 }
 
-type ReposCreateWebhookApplicationJSONForbidden BasicError
+type ReposCreateWebhookForbidden BasicError
 
-func (*ReposCreateWebhookApplicationJSONForbidden) reposCreateWebhookRes() {}
+func (*ReposCreateWebhookForbidden) reposCreateWebhookRes() {}
 
-type ReposCreateWebhookApplicationJSONNotFound BasicError
+type ReposCreateWebhookNotFound BasicError
 
-func (*ReposCreateWebhookApplicationJSONNotFound) reposCreateWebhookRes() {}
+func (*ReposCreateWebhookNotFound) reposCreateWebhookRes() {}
 
 type ReposCreateWebhookReq struct {
 	// Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.
@@ -82487,22 +82435,22 @@ func (s *ReposCreateWebhookReqConfig) SetDigest(val OptString) {
 	s.Digest = val
 }
 
-type ReposDeclineInvitationApplicationJSONConflict BasicError
+type ReposDeclineInvitationConflict BasicError
 
-func (*ReposDeclineInvitationApplicationJSONConflict) reposDeclineInvitationRes() {}
+func (*ReposDeclineInvitationConflict) reposDeclineInvitationRes() {}
 
-type ReposDeclineInvitationApplicationJSONForbidden BasicError
+type ReposDeclineInvitationForbidden BasicError
 
-func (*ReposDeclineInvitationApplicationJSONForbidden) reposDeclineInvitationRes() {}
-
-type ReposDeclineInvitationApplicationJSONNotFound BasicError
-
-func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationRes() {}
+func (*ReposDeclineInvitationForbidden) reposDeclineInvitationRes() {}
 
 // ReposDeclineInvitationNoContent is response for ReposDeclineInvitation operation.
 type ReposDeclineInvitationNoContent struct{}
 
 func (*ReposDeclineInvitationNoContent) reposDeclineInvitationRes() {}
+
+type ReposDeclineInvitationNotFound BasicError
+
+func (*ReposDeclineInvitationNotFound) reposDeclineInvitationRes() {}
 
 // ReposDeleteAccessRestrictionsNoContent is response for ReposDeleteAccessRestrictions operation.
 type ReposDeleteAccessRestrictionsNoContent struct{}
@@ -82514,14 +82462,6 @@ func (*ReposDeleteAdminBranchProtectionNoContent) reposDeleteAdminBranchProtecti
 
 // ReposDeleteAnEnvironmentNoContent is response for ReposDeleteAnEnvironment operation.
 type ReposDeleteAnEnvironmentNoContent struct{}
-
-type ReposDeleteApplicationJSONNotFound BasicError
-
-func (*ReposDeleteApplicationJSONNotFound) reposDeleteRes() {}
-
-type ReposDeleteApplicationJSONTemporaryRedirect BasicError
-
-func (*ReposDeleteApplicationJSONTemporaryRedirect) reposDeleteRes() {}
 
 // ReposDeleteAutolinkNoContent is response for ReposDeleteAutolink operation.
 type ReposDeleteAutolinkNoContent struct{}
@@ -82551,13 +82491,13 @@ type ReposDeleteDeploymentNoContent struct{}
 
 func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentRes() {}
 
-type ReposDeleteFileApplicationJSONConflict BasicError
+type ReposDeleteFileConflict BasicError
 
-func (*ReposDeleteFileApplicationJSONConflict) reposDeleteFileRes() {}
+func (*ReposDeleteFileConflict) reposDeleteFileRes() {}
 
-type ReposDeleteFileApplicationJSONNotFound BasicError
+type ReposDeleteFileNotFound BasicError
 
-func (*ReposDeleteFileApplicationJSONNotFound) reposDeleteFileRes() {}
+func (*ReposDeleteFileNotFound) reposDeleteFileRes() {}
 
 type ReposDeleteFileReq struct {
 	// The commit message.
@@ -82713,6 +82653,10 @@ type ReposDeleteNoContent struct{}
 
 func (*ReposDeleteNoContent) reposDeleteRes() {}
 
+type ReposDeleteNotFound BasicError
+
+func (*ReposDeleteNotFound) reposDeleteRes() {}
+
 // ReposDeletePagesSiteNoContent is response for ReposDeletePagesSite operation.
 type ReposDeletePagesSiteNoContent struct{}
 
@@ -82728,6 +82672,10 @@ type ReposDeleteReleaseAssetNoContent struct{}
 
 // ReposDeleteReleaseNoContent is response for ReposDeleteRelease operation.
 type ReposDeleteReleaseNoContent struct{}
+
+type ReposDeleteTemporaryRedirect BasicError
+
+func (*ReposDeleteTemporaryRedirect) reposDeleteRes() {}
 
 // ReposDeleteWebhookNoContent is response for ReposDeleteWebhook operation.
 type ReposDeleteWebhookNoContent struct{}
@@ -82788,30 +82736,18 @@ type ReposGetAllStatusCheckContextsOKApplicationJSON []string
 
 func (*ReposGetAllStatusCheckContextsOKApplicationJSON) reposGetAllStatusCheckContextsRes() {}
 
-type ReposGetApplicationJSONForbidden BasicError
-
-func (*ReposGetApplicationJSONForbidden) reposGetRes() {}
-
-type ReposGetApplicationJSONMovedPermanently BasicError
-
-func (*ReposGetApplicationJSONMovedPermanently) reposGetRes() {}
-
-type ReposGetApplicationJSONNotFound BasicError
-
-func (*ReposGetApplicationJSONNotFound) reposGetRes() {}
-
 type ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON []Integration
 
 func (*ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) reposGetAppsWithAccessToProtectedBranchRes() {
 }
 
-type ReposGetBranchApplicationJSONMovedPermanently BasicError
+type ReposGetBranchMovedPermanently BasicError
 
-func (*ReposGetBranchApplicationJSONMovedPermanently) reposGetBranchRes() {}
+func (*ReposGetBranchMovedPermanently) reposGetBranchRes() {}
 
-type ReposGetBranchApplicationJSONNotFound BasicError
+type ReposGetBranchNotFound BasicError
 
-func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchRes() {}
+func (*ReposGetBranchNotFound) reposGetBranchRes() {}
 
 type ReposGetClonesPer string
 
@@ -82860,17 +82796,29 @@ type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
 func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
-type ReposGetCommitApplicationJSONInternalServerError BasicError
+type ReposGetCommitInternalServerError BasicError
 
-func (*ReposGetCommitApplicationJSONInternalServerError) reposGetCommitRes() {}
+func (*ReposGetCommitInternalServerError) reposGetCommitRes() {}
 
-type ReposGetCommitApplicationJSONNotFound BasicError
+type ReposGetCommitNotFound BasicError
 
-func (*ReposGetCommitApplicationJSONNotFound) reposGetCommitRes() {}
+func (*ReposGetCommitNotFound) reposGetCommitRes() {}
 
 type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
 func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
+
+type ReposGetForbidden BasicError
+
+func (*ReposGetForbidden) reposGetRes() {}
+
+type ReposGetMovedPermanently BasicError
+
+func (*ReposGetMovedPermanently) reposGetRes() {}
+
+type ReposGetNotFound BasicError
+
+func (*ReposGetNotFound) reposGetRes() {}
 
 // ReposGetPagesHealthCheckBadRequest is response for ReposGetPagesHealthCheck operation.
 type ReposGetPagesHealthCheckBadRequest struct{}
@@ -83122,21 +83070,21 @@ func (s *ReposListCommitStatusesForRefOKHeaders) SetResponse(val []Status) {
 
 func (*ReposListCommitStatusesForRefOKHeaders) reposListCommitStatusesForRefRes() {}
 
-type ReposListCommitsApplicationJSONBadRequest BasicError
+type ReposListCommitsBadRequest BasicError
 
-func (*ReposListCommitsApplicationJSONBadRequest) reposListCommitsRes() {}
+func (*ReposListCommitsBadRequest) reposListCommitsRes() {}
 
-type ReposListCommitsApplicationJSONConflict BasicError
+type ReposListCommitsConflict BasicError
 
-func (*ReposListCommitsApplicationJSONConflict) reposListCommitsRes() {}
+func (*ReposListCommitsConflict) reposListCommitsRes() {}
 
-type ReposListCommitsApplicationJSONInternalServerError BasicError
+type ReposListCommitsInternalServerError BasicError
 
-func (*ReposListCommitsApplicationJSONInternalServerError) reposListCommitsRes() {}
+func (*ReposListCommitsInternalServerError) reposListCommitsRes() {}
 
-type ReposListCommitsApplicationJSONNotFound BasicError
+type ReposListCommitsNotFound BasicError
 
-func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsRes() {}
+func (*ReposListCommitsNotFound) reposListCommitsRes() {}
 
 // ReposListCommitsOKHeaders wraps []Commit with response headers.
 type ReposListCommitsOKHeaders struct {
@@ -83166,18 +83114,18 @@ func (s *ReposListCommitsOKHeaders) SetResponse(val []Commit) {
 
 func (*ReposListCommitsOKHeaders) reposListCommitsRes() {}
 
-type ReposListContributorsApplicationJSONForbidden BasicError
+type ReposListContributorsForbidden BasicError
 
-func (*ReposListContributorsApplicationJSONForbidden) reposListContributorsRes() {}
-
-type ReposListContributorsApplicationJSONNotFound BasicError
-
-func (*ReposListContributorsApplicationJSONNotFound) reposListContributorsRes() {}
+func (*ReposListContributorsForbidden) reposListContributorsRes() {}
 
 // ReposListContributorsNoContent is response for ReposListContributors operation.
 type ReposListContributorsNoContent struct{}
 
 func (*ReposListContributorsNoContent) reposListContributorsRes() {}
+
+type ReposListContributorsNotFound BasicError
+
+func (*ReposListContributorsNotFound) reposListContributorsRes() {}
 
 // ReposListContributorsOKHeaders wraps []Contributor with response headers.
 type ReposListContributorsOKHeaders struct {
@@ -83287,14 +83235,6 @@ func (s *ReposListDeploymentsOKHeaders) SetResponse(val []Deployment) {
 	s.Response = val
 }
 
-type ReposListForAuthenticatedUserApplicationJSONForbidden BasicError
-
-func (*ReposListForAuthenticatedUserApplicationJSONForbidden) reposListForAuthenticatedUserRes() {}
-
-type ReposListForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ReposListForAuthenticatedUserApplicationJSONUnauthorized) reposListForAuthenticatedUserRes() {}
-
 type ReposListForAuthenticatedUserDirection string
 
 const (
@@ -83327,6 +83267,10 @@ func (s *ReposListForAuthenticatedUserDirection) UnmarshalText(data []byte) erro
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type ReposListForAuthenticatedUserForbidden BasicError
+
+func (*ReposListForAuthenticatedUserForbidden) reposListForAuthenticatedUserRes() {}
 
 type ReposListForAuthenticatedUserOKApplicationJSON []Repository
 
@@ -83427,6 +83371,10 @@ func (s *ReposListForAuthenticatedUserType) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type ReposListForAuthenticatedUserUnauthorized BasicError
+
+func (*ReposListForAuthenticatedUserUnauthorized) reposListForAuthenticatedUserRes() {}
 
 type ReposListForAuthenticatedUserVisibility string
 
@@ -83850,19 +83798,14 @@ func (s *ReposListForksSort) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
+type ReposListInvitationsForAuthenticatedUserForbidden BasicError
 
-func (*ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) reposListInvitationsForAuthenticatedUserRes() {
+func (*ReposListInvitationsForAuthenticatedUserForbidden) reposListInvitationsForAuthenticatedUserRes() {
 }
 
-type ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound BasicError
+type ReposListInvitationsForAuthenticatedUserNotFound BasicError
 
-func (*ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) reposListInvitationsForAuthenticatedUserRes() {
-}
-
-type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicError
-
-func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
+func (*ReposListInvitationsForAuthenticatedUserNotFound) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 // ReposListInvitationsForAuthenticatedUserOKHeaders wraps []RepositoryInvitation with response headers.
@@ -83892,6 +83835,11 @@ func (s *ReposListInvitationsForAuthenticatedUserOKHeaders) SetResponse(val []Re
 }
 
 func (*ReposListInvitationsForAuthenticatedUserOKHeaders) reposListInvitationsForAuthenticatedUserRes() {
+}
+
+type ReposListInvitationsForAuthenticatedUserUnauthorized BasicError
+
+func (*ReposListInvitationsForAuthenticatedUserUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
 
 // ReposListInvitationsOKHeaders wraps []RepositoryInvitation with response headers.
@@ -84576,13 +84524,13 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) SetUsers(val []string) {
 	s.Users = val
 }
 
-type ReposRenameBranchApplicationJSONForbidden BasicError
+type ReposRenameBranchForbidden BasicError
 
-func (*ReposRenameBranchApplicationJSONForbidden) reposRenameBranchRes() {}
+func (*ReposRenameBranchForbidden) reposRenameBranchRes() {}
 
-type ReposRenameBranchApplicationJSONNotFound BasicError
+type ReposRenameBranchNotFound BasicError
 
-func (*ReposRenameBranchApplicationJSONNotFound) reposRenameBranchRes() {}
+func (*ReposRenameBranchNotFound) reposRenameBranchRes() {}
 
 type ReposRenameBranchReq struct {
 	// The new name of the branch.
@@ -84997,25 +84945,13 @@ func (s *ReposTransferReq) SetTeamIds(val []int) {
 	s.TeamIds = val
 }
 
-type ReposUpdateApplicationJSONForbidden BasicError
+type ReposUpdateBranchProtectionForbidden BasicError
 
-func (*ReposUpdateApplicationJSONForbidden) reposUpdateRes() {}
+func (*ReposUpdateBranchProtectionForbidden) reposUpdateBranchProtectionRes() {}
 
-type ReposUpdateApplicationJSONNotFound BasicError
+type ReposUpdateBranchProtectionNotFound BasicError
 
-func (*ReposUpdateApplicationJSONNotFound) reposUpdateRes() {}
-
-type ReposUpdateApplicationJSONTemporaryRedirect BasicError
-
-func (*ReposUpdateApplicationJSONTemporaryRedirect) reposUpdateRes() {}
-
-type ReposUpdateBranchProtectionApplicationJSONForbidden BasicError
-
-func (*ReposUpdateBranchProtectionApplicationJSONForbidden) reposUpdateBranchProtectionRes() {}
-
-type ReposUpdateBranchProtectionApplicationJSONNotFound BasicError
-
-func (*ReposUpdateBranchProtectionApplicationJSONNotFound) reposUpdateBranchProtectionRes() {}
+func (*ReposUpdateBranchProtectionNotFound) reposUpdateBranchProtectionRes() {}
 
 type ReposUpdateBranchProtectionReq struct {
 	// Require status checks to pass before merging. Set to `null` to disable.
@@ -85303,6 +85239,10 @@ func (s *ReposUpdateCommitCommentReq) SetBody(val string) {
 	s.Body = val
 }
 
+type ReposUpdateForbidden BasicError
+
+func (*ReposUpdateForbidden) reposUpdateRes() {}
+
 type ReposUpdateInvitationReq struct {
 	// The permissions that the associated user will have on the repository. Valid values are `read`,
 	// `write`, `maintain`, `triage`, and `admin`.
@@ -85371,6 +85311,10 @@ func (s *ReposUpdateInvitationReqPermissions) UnmarshalText(data []byte) error {
 		return errors.Errorf("invalid value: %q", data)
 	}
 }
+
+type ReposUpdateNotFound BasicError
+
+func (*ReposUpdateNotFound) reposUpdateRes() {}
 
 type ReposUpdatePullRequestReviewProtectionReq struct {
 	// Specify which users and teams can dismiss pull request reviews. Pass an empty
@@ -85966,6 +85910,10 @@ func (s *ReposUpdateStatusCheckProtectionReq) SetStrict(val OptBool) {
 func (s *ReposUpdateStatusCheckProtectionReq) SetContexts(val []string) {
 	s.Contexts = val
 }
+
+type ReposUpdateTemporaryRedirect BasicError
+
+func (*ReposUpdateTemporaryRedirect) reposUpdateRes() {}
 
 type ReposUpdateWebhookConfigForRepoReq struct {
 	URL         OptWebhookConfigURL         `json:"url"`
@@ -89551,18 +89499,18 @@ func (s *RunnerLabelsItemType) UnmarshalText(data []byte) error {
 	}
 }
 
-type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
+type ScimDeleteUserFromOrgForbidden ScimError
 
-func (*ScimDeleteUserFromOrgApplicationJSONForbidden) scimDeleteUserFromOrgRes() {}
-
-type ScimDeleteUserFromOrgApplicationJSONNotFound ScimError
-
-func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgRes() {}
+func (*ScimDeleteUserFromOrgForbidden) scimDeleteUserFromOrgRes() {}
 
 // ScimDeleteUserFromOrgNoContent is response for ScimDeleteUserFromOrg operation.
 type ScimDeleteUserFromOrgNoContent struct{}
 
 func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
+
+type ScimDeleteUserFromOrgNotFound ScimError
+
+func (*ScimDeleteUserFromOrgNotFound) scimDeleteUserFromOrgRes() {}
 
 // Ref: #/components/schemas/scim-enterprise-group
 type ScimEnterpriseGroup struct {
@@ -90867,13 +90815,13 @@ func (s *SearchIssuesAndPullRequestsSort) UnmarshalText(data []byte) error {
 	}
 }
 
-type SearchLabelsApplicationJSONForbidden BasicError
+type SearchLabelsForbidden BasicError
 
-func (*SearchLabelsApplicationJSONForbidden) searchLabelsRes() {}
+func (*SearchLabelsForbidden) searchLabelsRes() {}
 
-type SearchLabelsApplicationJSONNotFound BasicError
+type SearchLabelsNotFound BasicError
 
-func (*SearchLabelsApplicationJSONNotFound) searchLabelsRes() {}
+func (*SearchLabelsNotFound) searchLabelsRes() {}
 
 type SearchLabelsOK struct {
 	TotalCount        int                     `json:"total_count"`
@@ -96100,13 +96048,13 @@ func (s *TeamsListChildInOrgOKHeaders) SetResponse(val []Team) {
 	s.Response = val
 }
 
-type TeamsListChildLegacyApplicationJSONForbidden BasicError
+type TeamsListChildLegacyForbidden BasicError
 
-func (*TeamsListChildLegacyApplicationJSONForbidden) teamsListChildLegacyRes() {}
+func (*TeamsListChildLegacyForbidden) teamsListChildLegacyRes() {}
 
-type TeamsListChildLegacyApplicationJSONNotFound BasicError
+type TeamsListChildLegacyNotFound BasicError
 
-func (*TeamsListChildLegacyApplicationJSONNotFound) teamsListChildLegacyRes() {}
+func (*TeamsListChildLegacyNotFound) teamsListChildLegacyRes() {}
 
 // TeamsListChildLegacyOKHeaders wraps []Team with response headers.
 type TeamsListChildLegacyOKHeaders struct {
@@ -96372,13 +96320,13 @@ func (s *TeamsListDiscussionsLegacyOKHeaders) SetResponse(val []TeamDiscussion) 
 	s.Response = val
 }
 
-type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
+type TeamsListForAuthenticatedUserForbidden BasicError
 
-func (*TeamsListForAuthenticatedUserApplicationJSONForbidden) teamsListForAuthenticatedUserRes() {}
+func (*TeamsListForAuthenticatedUserForbidden) teamsListForAuthenticatedUserRes() {}
 
-type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
+type TeamsListForAuthenticatedUserNotFound BasicError
 
-func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserRes() {}
+func (*TeamsListForAuthenticatedUserNotFound) teamsListForAuthenticatedUserRes() {}
 
 // TeamsListForAuthenticatedUserOKHeaders wraps []TeamFull with response headers.
 type TeamsListForAuthenticatedUserOKHeaders struct {
@@ -96408,13 +96356,13 @@ func (s *TeamsListForAuthenticatedUserOKHeaders) SetResponse(val []TeamFull) {
 
 func (*TeamsListForAuthenticatedUserOKHeaders) teamsListForAuthenticatedUserRes() {}
 
-type TeamsListIdpGroupsForLegacyApplicationJSONForbidden BasicError
+type TeamsListIdpGroupsForLegacyForbidden BasicError
 
-func (*TeamsListIdpGroupsForLegacyApplicationJSONForbidden) teamsListIdpGroupsForLegacyRes() {}
+func (*TeamsListIdpGroupsForLegacyForbidden) teamsListIdpGroupsForLegacyRes() {}
 
-type TeamsListIdpGroupsForLegacyApplicationJSONNotFound BasicError
+type TeamsListIdpGroupsForLegacyNotFound BasicError
 
-func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyRes() {}
+func (*TeamsListIdpGroupsForLegacyNotFound) teamsListIdpGroupsForLegacyRes() {}
 
 // TeamsListMembersInOrgOKHeaders wraps []SimpleUser with response headers.
 type TeamsListMembersInOrgOKHeaders struct {
@@ -97023,21 +96971,21 @@ func (s *TeamsUpdateInOrgReqPrivacy) UnmarshalText(data []byte) error {
 	}
 }
 
-type TeamsUpdateLegacyApplicationJSONCreated TeamFull
+type TeamsUpdateLegacyCreated TeamFull
 
-func (*TeamsUpdateLegacyApplicationJSONCreated) teamsUpdateLegacyRes() {}
+func (*TeamsUpdateLegacyCreated) teamsUpdateLegacyRes() {}
 
-type TeamsUpdateLegacyApplicationJSONForbidden BasicError
+type TeamsUpdateLegacyForbidden BasicError
 
-func (*TeamsUpdateLegacyApplicationJSONForbidden) teamsUpdateLegacyRes() {}
+func (*TeamsUpdateLegacyForbidden) teamsUpdateLegacyRes() {}
 
-type TeamsUpdateLegacyApplicationJSONNotFound BasicError
+type TeamsUpdateLegacyNotFound BasicError
 
-func (*TeamsUpdateLegacyApplicationJSONNotFound) teamsUpdateLegacyRes() {}
+func (*TeamsUpdateLegacyNotFound) teamsUpdateLegacyRes() {}
 
-type TeamsUpdateLegacyApplicationJSONOK TeamFull
+type TeamsUpdateLegacyOK TeamFull
 
-func (*TeamsUpdateLegacyApplicationJSONOK) teamsUpdateLegacyRes() {}
+func (*TeamsUpdateLegacyOK) teamsUpdateLegacyRes() {}
 
 type TeamsUpdateLegacyReq struct {
 	// The name of the team.
@@ -98265,21 +98213,17 @@ func (s *UserSearchResultItem) SetSuspendedAt(val OptNilDateTime) {
 	s.SuspendedAt = val
 }
 
-type UsersAddEmailForAuthenticatedApplicationJSONForbidden BasicError
-
-func (*UsersAddEmailForAuthenticatedApplicationJSONForbidden) usersAddEmailForAuthenticatedRes() {}
-
-type UsersAddEmailForAuthenticatedApplicationJSONNotFound BasicError
-
-func (*UsersAddEmailForAuthenticatedApplicationJSONNotFound) usersAddEmailForAuthenticatedRes() {}
-
-type UsersAddEmailForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) usersAddEmailForAuthenticatedRes() {}
-
 type UsersAddEmailForAuthenticatedCreatedApplicationJSON []Email
 
 func (*UsersAddEmailForAuthenticatedCreatedApplicationJSON) usersAddEmailForAuthenticatedRes() {}
+
+type UsersAddEmailForAuthenticatedForbidden BasicError
+
+func (*UsersAddEmailForAuthenticatedForbidden) usersAddEmailForAuthenticatedRes() {}
+
+type UsersAddEmailForAuthenticatedNotFound BasicError
+
+func (*UsersAddEmailForAuthenticatedNotFound) usersAddEmailForAuthenticatedRes() {}
 
 // UsersAddEmailForAuthenticatedReq represents sum type.
 type UsersAddEmailForAuthenticatedReq struct {
@@ -98394,39 +98338,43 @@ func (s *UsersAddEmailForAuthenticatedReq0) SetEmails(val []string) {
 	s.Emails = val
 }
 
-type UsersBlockApplicationJSONForbidden BasicError
+type UsersAddEmailForAuthenticatedUnauthorized BasicError
 
-func (*UsersBlockApplicationJSONForbidden) usersBlockRes() {}
+func (*UsersAddEmailForAuthenticatedUnauthorized) usersAddEmailForAuthenticatedRes() {}
 
-type UsersBlockApplicationJSONNotFound BasicError
+type UsersBlockForbidden BasicError
 
-func (*UsersBlockApplicationJSONNotFound) usersBlockRes() {}
-
-type UsersBlockApplicationJSONUnauthorized BasicError
-
-func (*UsersBlockApplicationJSONUnauthorized) usersBlockRes() {}
+func (*UsersBlockForbidden) usersBlockRes() {}
 
 // UsersBlockNoContent is response for UsersBlock operation.
 type UsersBlockNoContent struct{}
 
 func (*UsersBlockNoContent) usersBlockRes() {}
 
-type UsersCheckBlockedApplicationJSONForbidden BasicError
+type UsersBlockNotFound BasicError
 
-func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedRes() {}
+func (*UsersBlockNotFound) usersBlockRes() {}
 
-type UsersCheckBlockedApplicationJSONNotFound BasicError
+type UsersBlockUnauthorized BasicError
 
-func (*UsersCheckBlockedApplicationJSONNotFound) usersCheckBlockedRes() {}
+func (*UsersBlockUnauthorized) usersBlockRes() {}
 
-type UsersCheckBlockedApplicationJSONUnauthorized BasicError
+type UsersCheckBlockedForbidden BasicError
 
-func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedRes() {}
+func (*UsersCheckBlockedForbidden) usersCheckBlockedRes() {}
 
 // UsersCheckBlockedNoContent is response for UsersCheckBlocked operation.
 type UsersCheckBlockedNoContent struct{}
 
 func (*UsersCheckBlockedNoContent) usersCheckBlockedRes() {}
+
+type UsersCheckBlockedNotFound BasicError
+
+func (*UsersCheckBlockedNotFound) usersCheckBlockedRes() {}
+
+type UsersCheckBlockedUnauthorized BasicError
+
+func (*UsersCheckBlockedUnauthorized) usersCheckBlockedRes() {}
 
 // UsersCheckFollowingForUserNoContent is response for UsersCheckFollowingForUser operation.
 type UsersCheckFollowingForUserNoContent struct{}
@@ -98438,19 +98386,9 @@ type UsersCheckFollowingForUserNotFound struct{}
 
 func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserRes() {}
 
-type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden BasicError
+type UsersCheckPersonIsFollowedByAuthenticatedForbidden BasicError
 
-func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) usersCheckPersonIsFollowedByAuthenticatedRes() {
-}
-
-type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound BasicError
-
-func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) usersCheckPersonIsFollowedByAuthenticatedRes() {
-}
-
-type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) usersCheckPersonIsFollowedByAuthenticatedRes() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedForbidden) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
 // UsersCheckPersonIsFollowedByAuthenticatedNoContent is response for UsersCheckPersonIsFollowedByAuthenticated operation.
@@ -98459,20 +98397,23 @@ type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+type UsersCheckPersonIsFollowedByAuthenticatedNotFound BasicError
 
-func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) usersCreateGpgKeyForAuthenticatedRes() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedNotFound) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+type UsersCheckPersonIsFollowedByAuthenticatedUnauthorized BasicError
 
-func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) usersCreateGpgKeyForAuthenticatedRes() {
+func (*UsersCheckPersonIsFollowedByAuthenticatedUnauthorized) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersCreateGpgKeyForAuthenticatedForbidden BasicError
 
-func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersCreateGpgKeyForAuthenticatedRes() {
-}
+func (*UsersCreateGpgKeyForAuthenticatedForbidden) usersCreateGpgKeyForAuthenticatedRes() {}
+
+type UsersCreateGpgKeyForAuthenticatedNotFound BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedNotFound) usersCreateGpgKeyForAuthenticatedRes() {}
 
 type UsersCreateGpgKeyForAuthenticatedReq struct {
 	// A GPG key in ASCII-armored format.
@@ -98489,19 +98430,18 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) SetArmoredPublicKey(val string) {
 	s.ArmoredPublicKey = val
 }
 
-type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
+type UsersCreateGpgKeyForAuthenticatedUnauthorized BasicError
 
-func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersCreatePublicSSHKeyForAuthenticatedRes() {
+func (*UsersCreateGpgKeyForAuthenticatedUnauthorized) usersCreateGpgKeyForAuthenticatedRes() {}
+
+type UsersCreatePublicSSHKeyForAuthenticatedForbidden BasicError
+
+func (*UsersCreatePublicSSHKeyForAuthenticatedForbidden) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+type UsersCreatePublicSSHKeyForAuthenticatedNotFound BasicError
 
-func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersCreatePublicSSHKeyForAuthenticatedRes() {
-}
-
-type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersCreatePublicSSHKeyForAuthenticatedRes() {
+func (*UsersCreatePublicSSHKeyForAuthenticatedNotFound) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
 
 type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
@@ -98531,25 +98471,23 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) SetKey(val string) {
 	s.Key = val
 }
 
-type UsersDeleteEmailForAuthenticatedApplicationJSONForbidden BasicError
+type UsersCreatePublicSSHKeyForAuthenticatedUnauthorized BasicError
 
-func (*UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) usersDeleteEmailForAuthenticatedRes() {
+func (*UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersDeleteEmailForAuthenticatedApplicationJSONNotFound BasicError
+type UsersDeleteEmailForAuthenticatedForbidden BasicError
 
-func (*UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) usersDeleteEmailForAuthenticatedRes() {
-}
-
-type UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) usersDeleteEmailForAuthenticatedRes() {
-}
+func (*UsersDeleteEmailForAuthenticatedForbidden) usersDeleteEmailForAuthenticatedRes() {}
 
 // UsersDeleteEmailForAuthenticatedNoContent is response for UsersDeleteEmailForAuthenticated operation.
 type UsersDeleteEmailForAuthenticatedNoContent struct{}
 
 func (*UsersDeleteEmailForAuthenticatedNoContent) usersDeleteEmailForAuthenticatedRes() {}
+
+type UsersDeleteEmailForAuthenticatedNotFound BasicError
+
+func (*UsersDeleteEmailForAuthenticatedNotFound) usersDeleteEmailForAuthenticatedRes() {}
 
 // UsersDeleteEmailForAuthenticatedReq represents sum type.
 type UsersDeleteEmailForAuthenticatedReq struct {
@@ -98665,39 +98603,30 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) SetEmails(val []string) {
 	s.Emails = val
 }
 
-type UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+type UsersDeleteEmailForAuthenticatedUnauthorized BasicError
 
-func (*UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) usersDeleteGpgKeyForAuthenticatedRes() {
-}
+func (*UsersDeleteEmailForAuthenticatedUnauthorized) usersDeleteEmailForAuthenticatedRes() {}
 
-type UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+type UsersDeleteGpgKeyForAuthenticatedForbidden BasicError
 
-func (*UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) usersDeleteGpgKeyForAuthenticatedRes() {
-}
-
-type UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersDeleteGpgKeyForAuthenticatedRes() {
-}
+func (*UsersDeleteGpgKeyForAuthenticatedForbidden) usersDeleteGpgKeyForAuthenticatedRes() {}
 
 // UsersDeleteGpgKeyForAuthenticatedNoContent is response for UsersDeleteGpgKeyForAuthenticated operation.
 type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
 
 func (*UsersDeleteGpgKeyForAuthenticatedNoContent) usersDeleteGpgKeyForAuthenticatedRes() {}
 
-type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
+type UsersDeleteGpgKeyForAuthenticatedNotFound BasicError
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersDeletePublicSSHKeyForAuthenticatedRes() {
-}
+func (*UsersDeleteGpgKeyForAuthenticatedNotFound) usersDeleteGpgKeyForAuthenticatedRes() {}
 
-type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+type UsersDeleteGpgKeyForAuthenticatedUnauthorized BasicError
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersDeletePublicSSHKeyForAuthenticatedRes() {
-}
+func (*UsersDeleteGpgKeyForAuthenticatedUnauthorized) usersDeleteGpgKeyForAuthenticatedRes() {}
 
-type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersDeletePublicSSHKeyForAuthenticatedForbidden BasicError
 
-func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersDeletePublicSSHKeyForAuthenticatedRes() {
+func (*UsersDeletePublicSSHKeyForAuthenticatedForbidden) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
 // UsersDeletePublicSSHKeyForAuthenticatedNoContent is response for UsersDeletePublicSSHKeyForAuthenticated operation.
@@ -98706,30 +98635,36 @@ type UsersDeletePublicSSHKeyForAuthenticatedNoContent struct{}
 func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersFollowApplicationJSONForbidden BasicError
+type UsersDeletePublicSSHKeyForAuthenticatedNotFound BasicError
 
-func (*UsersFollowApplicationJSONForbidden) usersFollowRes() {}
+func (*UsersDeletePublicSSHKeyForAuthenticatedNotFound) usersDeletePublicSSHKeyForAuthenticatedRes() {
+}
 
-type UsersFollowApplicationJSONNotFound BasicError
+type UsersDeletePublicSSHKeyForAuthenticatedUnauthorized BasicError
 
-func (*UsersFollowApplicationJSONNotFound) usersFollowRes() {}
+func (*UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) usersDeletePublicSSHKeyForAuthenticatedRes() {
+}
 
-type UsersFollowApplicationJSONUnauthorized BasicError
+type UsersFollowForbidden BasicError
 
-func (*UsersFollowApplicationJSONUnauthorized) usersFollowRes() {}
+func (*UsersFollowForbidden) usersFollowRes() {}
 
 // UsersFollowNoContent is response for UsersFollow operation.
 type UsersFollowNoContent struct{}
 
 func (*UsersFollowNoContent) usersFollowRes() {}
 
-type UsersGetAuthenticatedApplicationJSONForbidden BasicError
+type UsersFollowNotFound BasicError
 
-func (*UsersGetAuthenticatedApplicationJSONForbidden) usersGetAuthenticatedRes() {}
+func (*UsersFollowNotFound) usersFollowRes() {}
 
-type UsersGetAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersFollowUnauthorized BasicError
 
-func (*UsersGetAuthenticatedApplicationJSONUnauthorized) usersGetAuthenticatedRes() {}
+func (*UsersFollowUnauthorized) usersFollowRes() {}
+
+type UsersGetAuthenticatedForbidden BasicError
+
+func (*UsersGetAuthenticatedForbidden) usersGetAuthenticatedRes() {}
 
 // UsersGetAuthenticatedOK represents sum type.
 type UsersGetAuthenticatedOK struct {
@@ -98800,6 +98735,10 @@ func NewPublicUserUsersGetAuthenticatedOK(v PublicUser) UsersGetAuthenticatedOK 
 }
 
 func (*UsersGetAuthenticatedOK) usersGetAuthenticatedRes() {}
+
+type UsersGetAuthenticatedUnauthorized BasicError
+
+func (*UsersGetAuthenticatedUnauthorized) usersGetAuthenticatedRes() {}
 
 // UsersGetByUsernameOK represents sum type.
 type UsersGetByUsernameOK struct {
@@ -98912,65 +98851,53 @@ func (s *UsersGetContextForUserSubjectType) UnmarshalText(data []byte) error {
 	}
 }
 
-type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+type UsersGetGpgKeyForAuthenticatedForbidden BasicError
 
-func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedRes() {}
+func (*UsersGetGpgKeyForAuthenticatedForbidden) usersGetGpgKeyForAuthenticatedRes() {}
 
-type UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+type UsersGetGpgKeyForAuthenticatedNotFound BasicError
 
-func (*UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) usersGetGpgKeyForAuthenticatedRes() {}
+func (*UsersGetGpgKeyForAuthenticatedNotFound) usersGetGpgKeyForAuthenticatedRes() {}
 
-type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersGetGpgKeyForAuthenticatedUnauthorized BasicError
 
-func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedRes() {
-}
+func (*UsersGetGpgKeyForAuthenticatedUnauthorized) usersGetGpgKeyForAuthenticatedRes() {}
 
-type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
+type UsersGetPublicSSHKeyForAuthenticatedForbidden BasicError
 
-func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {
-}
+func (*UsersGetPublicSSHKeyForAuthenticatedForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
-type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+type UsersGetPublicSSHKeyForAuthenticatedNotFound BasicError
 
-func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersGetPublicSSHKeyForAuthenticatedRes() {
-}
+func (*UsersGetPublicSSHKeyForAuthenticatedNotFound) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
-type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersGetPublicSSHKeyForAuthenticatedUnauthorized BasicError
 
-func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {
-}
+func (*UsersGetPublicSSHKeyForAuthenticatedUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
-type UsersListBlockedByAuthenticatedApplicationJSONForbidden BasicError
+type UsersListBlockedByAuthenticatedForbidden BasicError
 
-func (*UsersListBlockedByAuthenticatedApplicationJSONForbidden) usersListBlockedByAuthenticatedRes() {
-}
+func (*UsersListBlockedByAuthenticatedForbidden) usersListBlockedByAuthenticatedRes() {}
 
-type UsersListBlockedByAuthenticatedApplicationJSONNotFound BasicError
+type UsersListBlockedByAuthenticatedNotFound BasicError
 
-func (*UsersListBlockedByAuthenticatedApplicationJSONNotFound) usersListBlockedByAuthenticatedRes() {}
-
-type UsersListBlockedByAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedRes() {
-}
+func (*UsersListBlockedByAuthenticatedNotFound) usersListBlockedByAuthenticatedRes() {}
 
 type UsersListBlockedByAuthenticatedOKApplicationJSON []SimpleUser
 
 func (*UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
 
-type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
+type UsersListBlockedByAuthenticatedUnauthorized BasicError
 
-func (*UsersListEmailsForAuthenticatedApplicationJSONForbidden) usersListEmailsForAuthenticatedRes() {
-}
+func (*UsersListBlockedByAuthenticatedUnauthorized) usersListBlockedByAuthenticatedRes() {}
 
-type UsersListEmailsForAuthenticatedApplicationJSONNotFound BasicError
+type UsersListEmailsForAuthenticatedForbidden BasicError
 
-func (*UsersListEmailsForAuthenticatedApplicationJSONNotFound) usersListEmailsForAuthenticatedRes() {}
+func (*UsersListEmailsForAuthenticatedForbidden) usersListEmailsForAuthenticatedRes() {}
 
-type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersListEmailsForAuthenticatedNotFound BasicError
 
-func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedRes() {
-}
+func (*UsersListEmailsForAuthenticatedNotFound) usersListEmailsForAuthenticatedRes() {}
 
 // UsersListEmailsForAuthenticatedOKHeaders wraps []Email with response headers.
 type UsersListEmailsForAuthenticatedOKHeaders struct {
@@ -99000,15 +98927,13 @@ func (s *UsersListEmailsForAuthenticatedOKHeaders) SetResponse(val []Email) {
 
 func (*UsersListEmailsForAuthenticatedOKHeaders) usersListEmailsForAuthenticatedRes() {}
 
-type UsersListFollowedByAuthenticatedApplicationJSONForbidden BasicError
+type UsersListEmailsForAuthenticatedUnauthorized BasicError
 
-func (*UsersListFollowedByAuthenticatedApplicationJSONForbidden) usersListFollowedByAuthenticatedRes() {
-}
+func (*UsersListEmailsForAuthenticatedUnauthorized) usersListEmailsForAuthenticatedRes() {}
 
-type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersListFollowedByAuthenticatedForbidden BasicError
 
-func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedRes() {
-}
+func (*UsersListFollowedByAuthenticatedForbidden) usersListFollowedByAuthenticatedRes() {}
 
 // UsersListFollowedByAuthenticatedOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowedByAuthenticatedOKHeaders struct {
@@ -99038,15 +98963,13 @@ func (s *UsersListFollowedByAuthenticatedOKHeaders) SetResponse(val []SimpleUser
 
 func (*UsersListFollowedByAuthenticatedOKHeaders) usersListFollowedByAuthenticatedRes() {}
 
-type UsersListFollowersForAuthenticatedUserApplicationJSONForbidden BasicError
+type UsersListFollowedByAuthenticatedUnauthorized BasicError
 
-func (*UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) usersListFollowersForAuthenticatedUserRes() {
-}
+func (*UsersListFollowedByAuthenticatedUnauthorized) usersListFollowedByAuthenticatedRes() {}
 
-type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicError
+type UsersListFollowersForAuthenticatedUserForbidden BasicError
 
-func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserRes() {
-}
+func (*UsersListFollowersForAuthenticatedUserForbidden) usersListFollowersForAuthenticatedUserRes() {}
 
 // UsersListFollowersForAuthenticatedUserOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowersForAuthenticatedUserOKHeaders struct {
@@ -99075,6 +98998,11 @@ func (s *UsersListFollowersForAuthenticatedUserOKHeaders) SetResponse(val []Simp
 }
 
 func (*UsersListFollowersForAuthenticatedUserOKHeaders) usersListFollowersForAuthenticatedUserRes() {}
+
+type UsersListFollowersForAuthenticatedUserUnauthorized BasicError
+
+func (*UsersListFollowersForAuthenticatedUserUnauthorized) usersListFollowersForAuthenticatedUserRes() {
+}
 
 // UsersListFollowersForUserOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowersForUserOKHeaders struct {
@@ -99128,20 +99056,13 @@ func (s *UsersListFollowingForUserOKHeaders) SetResponse(val []SimpleUser) {
 	s.Response = val
 }
 
-type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
+type UsersListGpgKeysForAuthenticatedForbidden BasicError
 
-func (*UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) usersListGpgKeysForAuthenticatedRes() {
-}
+func (*UsersListGpgKeysForAuthenticatedForbidden) usersListGpgKeysForAuthenticatedRes() {}
 
-type UsersListGpgKeysForAuthenticatedApplicationJSONNotFound BasicError
+type UsersListGpgKeysForAuthenticatedNotFound BasicError
 
-func (*UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) usersListGpgKeysForAuthenticatedRes() {
-}
-
-type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
-}
+func (*UsersListGpgKeysForAuthenticatedNotFound) usersListGpgKeysForAuthenticatedRes() {}
 
 // UsersListGpgKeysForAuthenticatedOKHeaders wraps []GpgKey with response headers.
 type UsersListGpgKeysForAuthenticatedOKHeaders struct {
@@ -99170,6 +99091,10 @@ func (s *UsersListGpgKeysForAuthenticatedOKHeaders) SetResponse(val []GpgKey) {
 }
 
 func (*UsersListGpgKeysForAuthenticatedOKHeaders) usersListGpgKeysForAuthenticatedRes() {}
+
+type UsersListGpgKeysForAuthenticatedUnauthorized BasicError
+
+func (*UsersListGpgKeysForAuthenticatedUnauthorized) usersListGpgKeysForAuthenticatedRes() {}
 
 // UsersListGpgKeysForUserOKHeaders wraps []GpgKey with response headers.
 type UsersListGpgKeysForUserOKHeaders struct {
@@ -99225,20 +99150,13 @@ func (s *UsersListOKHeaders) SetResponse(val []SimpleUser) {
 
 func (*UsersListOKHeaders) usersListRes() {}
 
-type UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden BasicError
+type UsersListPublicEmailsForAuthenticatedForbidden BasicError
 
-func (*UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) usersListPublicEmailsForAuthenticatedRes() {
-}
+func (*UsersListPublicEmailsForAuthenticatedForbidden) usersListPublicEmailsForAuthenticatedRes() {}
 
-type UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound BasicError
+type UsersListPublicEmailsForAuthenticatedNotFound BasicError
 
-func (*UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) usersListPublicEmailsForAuthenticatedRes() {
-}
-
-type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
-}
+func (*UsersListPublicEmailsForAuthenticatedNotFound) usersListPublicEmailsForAuthenticatedRes() {}
 
 // UsersListPublicEmailsForAuthenticatedOKHeaders wraps []Email with response headers.
 type UsersListPublicEmailsForAuthenticatedOKHeaders struct {
@@ -99268,6 +99186,11 @@ func (s *UsersListPublicEmailsForAuthenticatedOKHeaders) SetResponse(val []Email
 
 func (*UsersListPublicEmailsForAuthenticatedOKHeaders) usersListPublicEmailsForAuthenticatedRes() {}
 
+type UsersListPublicEmailsForAuthenticatedUnauthorized BasicError
+
+func (*UsersListPublicEmailsForAuthenticatedUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
+}
+
 // UsersListPublicKeysForUserOKHeaders wraps []KeySimple with response headers.
 type UsersListPublicKeysForUserOKHeaders struct {
 	Link     OptString
@@ -99294,20 +99217,13 @@ func (s *UsersListPublicKeysForUserOKHeaders) SetResponse(val []KeySimple) {
 	s.Response = val
 }
 
-type UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden BasicError
+type UsersListPublicSSHKeysForAuthenticatedForbidden BasicError
 
-func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) usersListPublicSSHKeysForAuthenticatedRes() {
-}
+func (*UsersListPublicSSHKeysForAuthenticatedForbidden) usersListPublicSSHKeysForAuthenticatedRes() {}
 
-type UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound BasicError
+type UsersListPublicSSHKeysForAuthenticatedNotFound BasicError
 
-func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) usersListPublicSSHKeysForAuthenticatedRes() {
-}
-
-type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
-}
+func (*UsersListPublicSSHKeysForAuthenticatedNotFound) usersListPublicSSHKeysForAuthenticatedRes() {}
 
 // UsersListPublicSSHKeysForAuthenticatedOKHeaders wraps []Key with response headers.
 type UsersListPublicSSHKeysForAuthenticatedOKHeaders struct {
@@ -99337,19 +99253,19 @@ func (s *UsersListPublicSSHKeysForAuthenticatedOKHeaders) SetResponse(val []Key)
 
 func (*UsersListPublicSSHKeysForAuthenticatedOKHeaders) usersListPublicSSHKeysForAuthenticatedRes() {}
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden BasicError
+type UsersListPublicSSHKeysForAuthenticatedUnauthorized BasicError
 
-func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+func (*UsersListPublicSSHKeysForAuthenticatedUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound BasicError
+type UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden BasicError
 
-func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound BasicError
 
-func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
 }
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON []Email
@@ -99406,51 +99322,52 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) UnmarshalT
 	}
 }
 
-type UsersUnblockApplicationJSONForbidden BasicError
+type UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized BasicError
 
-func (*UsersUnblockApplicationJSONForbidden) usersUnblockRes() {}
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
+}
 
-type UsersUnblockApplicationJSONNotFound BasicError
+type UsersUnblockForbidden BasicError
 
-func (*UsersUnblockApplicationJSONNotFound) usersUnblockRes() {}
-
-type UsersUnblockApplicationJSONUnauthorized BasicError
-
-func (*UsersUnblockApplicationJSONUnauthorized) usersUnblockRes() {}
+func (*UsersUnblockForbidden) usersUnblockRes() {}
 
 // UsersUnblockNoContent is response for UsersUnblock operation.
 type UsersUnblockNoContent struct{}
 
 func (*UsersUnblockNoContent) usersUnblockRes() {}
 
-type UsersUnfollowApplicationJSONForbidden BasicError
+type UsersUnblockNotFound BasicError
 
-func (*UsersUnfollowApplicationJSONForbidden) usersUnfollowRes() {}
+func (*UsersUnblockNotFound) usersUnblockRes() {}
 
-type UsersUnfollowApplicationJSONNotFound BasicError
+type UsersUnblockUnauthorized BasicError
 
-func (*UsersUnfollowApplicationJSONNotFound) usersUnfollowRes() {}
+func (*UsersUnblockUnauthorized) usersUnblockRes() {}
 
-type UsersUnfollowApplicationJSONUnauthorized BasicError
+type UsersUnfollowForbidden BasicError
 
-func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowRes() {}
+func (*UsersUnfollowForbidden) usersUnfollowRes() {}
 
 // UsersUnfollowNoContent is response for UsersUnfollow operation.
 type UsersUnfollowNoContent struct{}
 
 func (*UsersUnfollowNoContent) usersUnfollowRes() {}
 
-type UsersUpdateAuthenticatedApplicationJSONForbidden BasicError
+type UsersUnfollowNotFound BasicError
 
-func (*UsersUpdateAuthenticatedApplicationJSONForbidden) usersUpdateAuthenticatedRes() {}
+func (*UsersUnfollowNotFound) usersUnfollowRes() {}
 
-type UsersUpdateAuthenticatedApplicationJSONNotFound BasicError
+type UsersUnfollowUnauthorized BasicError
 
-func (*UsersUpdateAuthenticatedApplicationJSONNotFound) usersUpdateAuthenticatedRes() {}
+func (*UsersUnfollowUnauthorized) usersUnfollowRes() {}
 
-type UsersUpdateAuthenticatedApplicationJSONUnauthorized BasicError
+type UsersUpdateAuthenticatedForbidden BasicError
 
-func (*UsersUpdateAuthenticatedApplicationJSONUnauthorized) usersUpdateAuthenticatedRes() {}
+func (*UsersUpdateAuthenticatedForbidden) usersUpdateAuthenticatedRes() {}
+
+type UsersUpdateAuthenticatedNotFound BasicError
+
+func (*UsersUpdateAuthenticatedNotFound) usersUpdateAuthenticatedRes() {}
 
 type UsersUpdateAuthenticatedReq struct {
 	// The new name of the user.
@@ -99550,6 +99467,10 @@ func (s *UsersUpdateAuthenticatedReq) SetHireable(val OptBool) {
 func (s *UsersUpdateAuthenticatedReq) SetBio(val OptString) {
 	s.Bio = val
 }
+
+type UsersUpdateAuthenticatedUnauthorized BasicError
+
+func (*UsersUpdateAuthenticatedUnauthorized) usersUpdateAuthenticatedRes() {}
 
 // Validation Error.
 // Ref: #/components/schemas/validation-error

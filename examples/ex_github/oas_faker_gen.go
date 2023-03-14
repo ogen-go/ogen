@@ -161,21 +161,21 @@ func (s *Accepted) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) SetFake() {
+func (s *ActionsApproveWorkflowRunForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActionsApproveWorkflowRunApplicationJSONForbidden(unwrapped)
+	*s = ActionsApproveWorkflowRunForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) SetFake() {
+func (s *ActionsApproveWorkflowRunNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActionsApproveWorkflowRunApplicationJSONNotFound(unwrapped)
+	*s = ActionsApproveWorkflowRunNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -931,129 +931,129 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivityCheckRepoIsStarredByAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = ActivityCheckRepoIsStarredByAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) SetFake() {
+func (s *ActivityDeleteThreadSubscriptionForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityDeleteThreadSubscriptionApplicationJSONForbidden(unwrapped)
+	*s = ActivityDeleteThreadSubscriptionForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityDeleteThreadSubscriptionUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityDeleteThreadSubscriptionUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityGetThreadApplicationJSONForbidden) SetFake() {
+func (s *ActivityGetThreadForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityGetThreadApplicationJSONForbidden(unwrapped)
+	*s = ActivityGetThreadForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityGetThreadApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityGetThreadApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityGetThreadSubscriptionForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityGetThreadUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityGetThreadUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivityListNotificationsForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivityListNotificationsForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityListNotificationsForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityListNotificationsForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) SetFake() {
+func (s *ActivityListPublicEventsForRepoNetworkForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden(unwrapped)
+	*s = ActivityListPublicEventsForRepoNetworkForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) SetFake() {
+func (s *ActivityListPublicEventsForRepoNetworkMovedPermanently) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently(unwrapped)
+	*s = ActivityListPublicEventsForRepoNetworkMovedPermanently(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) SetFake() {
+func (s *ActivityListPublicEventsForRepoNetworkNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound(unwrapped)
+	*s = ActivityListPublicEventsForRepoNetworkNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1089,39 +1089,39 @@ func (s *ActivityListPublicEventsOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivityListReposStarredByAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivityListReposStarredByAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityListReposStarredByAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityListReposStarredByAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivityListWatchedReposForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivityListWatchedReposForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityListWatchedReposForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityListWatchedReposForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1134,21 +1134,12 @@ func (s *ActivityMarkNotificationsAsReadAccepted) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActivityMarkNotificationsAsReadApplicationJSONForbidden) SetFake() {
+func (s *ActivityMarkNotificationsAsReadForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityMarkNotificationsAsReadApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ActivityMarkNotificationsAsReadApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityMarkNotificationsAsReadForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1163,6 +1154,15 @@ func (s *ActivityMarkNotificationsAsReadReq) SetFake() {
 			s.Read.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *ActivityMarkNotificationsAsReadUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ActivityMarkNotificationsAsReadUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1203,21 +1203,12 @@ func (s *ActivitySetRepoSubscriptionReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActivitySetThreadSubscriptionApplicationJSONForbidden) SetFake() {
+func (s *ActivitySetThreadSubscriptionForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivitySetThreadSubscriptionApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ActivitySetThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
+	*s = ActivitySetThreadSubscriptionForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1230,57 +1221,66 @@ func (s *ActivitySetThreadSubscriptionReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivitySetThreadSubscriptionUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivitySetThreadSubscriptionUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *ActivityStarRepoForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = ActivityStarRepoForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityStarRepoForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityStarRepoForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ActivityStarRepoForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ActivityStarRepoForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *ActivityUnstarRepoForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = ActivityUnstarRepoForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ActivityUnstarRepoForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ActivityUnstarRepoForAuthenticatedUserNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ActivityUnstarRepoForAuthenticatedUserUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ActivityUnstarRepoForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1747,21 +1747,21 @@ func (s *ApplicationGrantApp) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsAddRepoToInstallationApplicationJSONForbidden) SetFake() {
+func (s *AppsAddRepoToInstallationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsAddRepoToInstallationApplicationJSONForbidden(unwrapped)
+	*s = AppsAddRepoToInstallationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsAddRepoToInstallationApplicationJSONNotFound) SetFake() {
+func (s *AppsAddRepoToInstallationNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsAddRepoToInstallationApplicationJSONNotFound(unwrapped)
+	*s = AppsAddRepoToInstallationNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1774,30 +1774,30 @@ func (s *AppsCheckTokenReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsCreateContentAttachmentApplicationJSONForbidden) SetFake() {
+func (s *AppsCreateContentAttachmentForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsCreateContentAttachmentApplicationJSONForbidden(unwrapped)
+	*s = AppsCreateContentAttachmentForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsCreateContentAttachmentApplicationJSONGone) SetFake() {
+func (s *AppsCreateContentAttachmentGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsCreateContentAttachmentApplicationJSONGone(unwrapped)
+	*s = AppsCreateContentAttachmentGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsCreateContentAttachmentApplicationJSONNotFound) SetFake() {
+func (s *AppsCreateContentAttachmentNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsCreateContentAttachmentApplicationJSONNotFound(unwrapped)
+	*s = AppsCreateContentAttachmentNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1976,30 +1976,21 @@ func (s *AppsCreateFromManifestReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsCreateInstallationAccessTokenApplicationJSONForbidden) SetFake() {
+func (s *AppsCreateInstallationAccessTokenForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsCreateInstallationAccessTokenApplicationJSONForbidden(unwrapped)
+	*s = AppsCreateInstallationAccessTokenForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsCreateInstallationAccessTokenApplicationJSONNotFound) SetFake() {
+func (s *AppsCreateInstallationAccessTokenNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsCreateInstallationAccessTokenApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = AppsCreateInstallationAccessTokenApplicationJSONUnauthorized(unwrapped)
+	*s = AppsCreateInstallationAccessTokenNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -2036,6 +2027,15 @@ func (s *AppsCreateInstallationAccessTokenReq) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *AppsCreateInstallationAccessTokenUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = AppsCreateInstallationAccessTokenUnauthorized(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *AppsDeleteAuthorizationReq) SetFake() {
 	{
 		{
@@ -2054,75 +2054,75 @@ func (s *AppsDeleteTokenReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsGetBySlugApplicationJSONForbidden) SetFake() {
+func (s *AppsGetBySlugForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsGetBySlugApplicationJSONForbidden(unwrapped)
+	*s = AppsGetBySlugForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsGetBySlugApplicationJSONNotFound) SetFake() {
+func (s *AppsGetBySlugNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsGetBySlugApplicationJSONNotFound(unwrapped)
+	*s = AppsGetBySlugNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) SetFake() {
+func (s *AppsGetSubscriptionPlanForAccountNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsGetSubscriptionPlanForAccountApplicationJSONNotFound(unwrapped)
+	*s = AppsGetSubscriptionPlanForAccountNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) SetFake() {
+func (s *AppsGetSubscriptionPlanForAccountUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized(unwrapped)
+	*s = AppsGetSubscriptionPlanForAccountUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListAccountsForPlanApplicationJSONNotFound) SetFake() {
+func (s *AppsListAccountsForPlanNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListAccountsForPlanApplicationJSONNotFound(unwrapped)
+	*s = AppsListAccountsForPlanNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) SetFake() {
+func (s *AppsListAccountsForPlanUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListAccountsForPlanApplicationJSONUnauthorized(unwrapped)
+	*s = AppsListAccountsForPlanUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *AppsListInstallationReposForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = AppsListInstallationReposForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *AppsListInstallationReposForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = AppsListInstallationReposForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -2152,39 +2152,30 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsListPlansApplicationJSONNotFound) SetFake() {
+func (s *AppsListPlansNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListPlansApplicationJSONNotFound(unwrapped)
+	*s = AppsListPlansNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListPlansApplicationJSONUnauthorized) SetFake() {
+func (s *AppsListPlansUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListPlansApplicationJSONUnauthorized(unwrapped)
+	*s = AppsListPlansUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) SetFake() {
+func (s *AppsListReposAccessibleToInstallationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListReposAccessibleToInstallationApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = AppsListReposAccessibleToInstallationApplicationJSONUnauthorized(unwrapped)
+	*s = AppsListReposAccessibleToInstallationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -2214,21 +2205,30 @@ func (s *AppsListReposAccessibleToInstallationOK) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *AppsListReposAccessibleToInstallationUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = AppsListReposAccessibleToInstallationUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *AppsListSubscriptionsForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = AppsListSubscriptionsForAuthenticatedUserNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *AppsListSubscriptionsForAuthenticatedUserUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = AppsListSubscriptionsForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -2248,21 +2248,21 @@ func (s *AppsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsRemoveRepoFromInstallationApplicationJSONForbidden) SetFake() {
+func (s *AppsRemoveRepoFromInstallationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsRemoveRepoFromInstallationApplicationJSONForbidden(unwrapped)
+	*s = AppsRemoveRepoFromInstallationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) SetFake() {
+func (s *AppsRemoveRepoFromInstallationNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsRemoveRepoFromInstallationApplicationJSONNotFound(unwrapped)
+	*s = AppsRemoveRepoFromInstallationNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -2275,30 +2275,21 @@ func (s *AppsResetTokenReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsScopeTokenApplicationJSONForbidden) SetFake() {
+func (s *AppsScopeTokenForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsScopeTokenApplicationJSONForbidden(unwrapped)
+	*s = AppsScopeTokenForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *AppsScopeTokenApplicationJSONNotFound) SetFake() {
+func (s *AppsScopeTokenNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = AppsScopeTokenApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsScopeTokenApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = AppsScopeTokenApplicationJSONUnauthorized(unwrapped)
+	*s = AppsScopeTokenNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -2347,6 +2338,15 @@ func (s *AppsScopeTokenReq) SetFake() {
 			s.Permissions.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *AppsScopeTokenUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = AppsScopeTokenUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -4135,21 +4135,21 @@ func (s *CheckSuiteStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ChecksCreateSuiteApplicationJSONCreated) SetFake() {
+func (s *ChecksCreateSuiteCreated) SetFake() {
 	var unwrapped CheckSuite
 	{
 		unwrapped.SetFake()
 	}
-	*s = ChecksCreateSuiteApplicationJSONCreated(unwrapped)
+	*s = ChecksCreateSuiteCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ChecksCreateSuiteApplicationJSONOK) SetFake() {
+func (s *ChecksCreateSuiteOK) SetFake() {
 	var unwrapped CheckSuite
 	{
 		unwrapped.SetFake()
 	}
-	*s = ChecksCreateSuiteApplicationJSONOK(unwrapped)
+	*s = ChecksCreateSuiteOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -4923,84 +4923,84 @@ func (s *CodeScanningAnalysisURL) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) SetFake() {
+func (s *CodeScanningDeleteAnalysisBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningDeleteAnalysisApplicationJSONBadRequest(unwrapped)
+	*s = CodeScanningDeleteAnalysisBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningDeleteAnalysisApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningDeleteAnalysisForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningDeleteAnalysisApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningDeleteAnalysisForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningDeleteAnalysisNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningDeleteAnalysisApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningDeleteAnalysisNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningGetAlertApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningGetAlertForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningGetAlertApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningGetAlertForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningGetAlertApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningGetAlertNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningGetAlertApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningGetAlertNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningGetAnalysisApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningGetAnalysisForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningGetAnalysisApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningGetAnalysisForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningGetAnalysisApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningGetAnalysisNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningGetAnalysisApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningGetAnalysisNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningListAlertInstancesForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningListAlertInstancesApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningListAlertInstancesForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningListAlertInstancesApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningListAlertInstancesNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningListAlertInstancesApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningListAlertInstancesNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -5020,21 +5020,21 @@ func (s *CodeScanningListAlertInstancesOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningListAlertsForRepoApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningListAlertsForRepoForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningListAlertsForRepoApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningListAlertsForRepoForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningListAlertsForRepoApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningListAlertsForRepoNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningListAlertsForRepoApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningListAlertsForRepoNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -5054,21 +5054,21 @@ func (s *CodeScanningListAlertsForRepoOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningListRecentAnalysesApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningListRecentAnalysesForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningListRecentAnalysesApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningListRecentAnalysesForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningListRecentAnalysesApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningListRecentAnalysesNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningListRecentAnalysesApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningListRecentAnalysesNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -5130,21 +5130,21 @@ func (s *CodeScanningSarifsStatusProcessingStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningUpdateAlertApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningUpdateAlertForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningUpdateAlertApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningUpdateAlertForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningUpdateAlertApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningUpdateAlertNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningUpdateAlertApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningUpdateAlertNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -5162,21 +5162,21 @@ func (s *CodeScanningUpdateAlertReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningUploadSarifApplicationJSONForbidden) SetFake() {
+func (s *CodeScanningUploadSarifForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningUploadSarifApplicationJSONForbidden(unwrapped)
+	*s = CodeScanningUploadSarifForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *CodeScanningUploadSarifApplicationJSONNotFound) SetFake() {
+func (s *CodeScanningUploadSarifNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningUploadSarifApplicationJSONNotFound(unwrapped)
+	*s = CodeScanningUploadSarifNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9174,39 +9174,21 @@ func (s *GistsCheckIsStarredNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsCreateApplicationJSONForbidden) SetFake() {
+func (s *GistsCreateCommentForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsCreateApplicationJSONForbidden(unwrapped)
+	*s = GistsCreateCommentForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsCreateApplicationJSONNotFound) SetFake() {
+func (s *GistsCreateCommentNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsCreateApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsCreateCommentApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = GistsCreateCommentApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsCreateCommentApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = GistsCreateCommentApplicationJSONNotFound(unwrapped)
+	*s = GistsCreateCommentNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9216,6 +9198,24 @@ func (s *GistsCreateCommentReq) SetFake() {
 			s.Body = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *GistsCreateForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = GistsCreateForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *GistsCreateNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = GistsCreateNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9273,183 +9273,183 @@ func (s *GistsCreateReqPublic1) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsDeleteApplicationJSONForbidden) SetFake() {
+func (s *GistsDeleteCommentForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsDeleteApplicationJSONForbidden(unwrapped)
+	*s = GistsDeleteCommentForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsDeleteApplicationJSONNotFound) SetFake() {
+func (s *GistsDeleteCommentNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsDeleteApplicationJSONNotFound(unwrapped)
+	*s = GistsDeleteCommentNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsDeleteCommentApplicationJSONForbidden) SetFake() {
+func (s *GistsDeleteForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsDeleteCommentApplicationJSONForbidden(unwrapped)
+	*s = GistsDeleteForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsDeleteCommentApplicationJSONNotFound) SetFake() {
+func (s *GistsDeleteNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsDeleteCommentApplicationJSONNotFound(unwrapped)
+	*s = GistsDeleteNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsForkApplicationJSONForbidden) SetFake() {
+func (s *GistsForkForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsForkApplicationJSONForbidden(unwrapped)
+	*s = GistsForkForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsForkApplicationJSONNotFound) SetFake() {
+func (s *GistsForkNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsForkApplicationJSONNotFound(unwrapped)
+	*s = GistsForkNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsGetRevisionApplicationJSONForbidden) SetFake() {
+func (s *GistsGetRevisionForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsGetRevisionApplicationJSONForbidden(unwrapped)
+	*s = GistsGetRevisionForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsGetRevisionApplicationJSONNotFound) SetFake() {
+func (s *GistsGetRevisionNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsGetRevisionApplicationJSONNotFound(unwrapped)
+	*s = GistsGetRevisionNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListCommentsApplicationJSONForbidden) SetFake() {
+func (s *GistsListCommentsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListCommentsApplicationJSONForbidden(unwrapped)
+	*s = GistsListCommentsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListCommentsApplicationJSONNotFound) SetFake() {
+func (s *GistsListCommentsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListCommentsApplicationJSONNotFound(unwrapped)
+	*s = GistsListCommentsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListCommitsApplicationJSONForbidden) SetFake() {
+func (s *GistsListCommitsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListCommitsApplicationJSONForbidden(unwrapped)
+	*s = GistsListCommitsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListCommitsApplicationJSONNotFound) SetFake() {
+func (s *GistsListCommitsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListCommitsApplicationJSONNotFound(unwrapped)
+	*s = GistsListCommitsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListForksApplicationJSONForbidden) SetFake() {
+func (s *GistsListForksForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListForksApplicationJSONForbidden(unwrapped)
+	*s = GistsListForksForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListForksApplicationJSONNotFound) SetFake() {
+func (s *GistsListForksNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListForksApplicationJSONNotFound(unwrapped)
+	*s = GistsListForksNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListStarredApplicationJSONForbidden) SetFake() {
+func (s *GistsListStarredForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListStarredApplicationJSONForbidden(unwrapped)
+	*s = GistsListStarredForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsListStarredApplicationJSONUnauthorized) SetFake() {
+func (s *GistsListStarredUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsListStarredApplicationJSONUnauthorized(unwrapped)
+	*s = GistsListStarredUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsStarApplicationJSONForbidden) SetFake() {
+func (s *GistsStarForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsStarApplicationJSONForbidden(unwrapped)
+	*s = GistsStarForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsStarApplicationJSONNotFound) SetFake() {
+func (s *GistsStarNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsStarApplicationJSONNotFound(unwrapped)
+	*s = GistsStarNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsUnstarApplicationJSONForbidden) SetFake() {
+func (s *GistsUnstarForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsUnstarApplicationJSONForbidden(unwrapped)
+	*s = GistsUnstarForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GistsUnstarApplicationJSONNotFound) SetFake() {
+func (s *GistsUnstarNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GistsUnstarApplicationJSONNotFound(unwrapped)
+	*s = GistsUnstarNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9618,30 +9618,30 @@ func (s *GitCommitVerification) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GitCreateBlobApplicationJSONConflict) SetFake() {
+func (s *GitCreateBlobConflict) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitCreateBlobApplicationJSONConflict(unwrapped)
+	*s = GitCreateBlobConflict(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GitCreateBlobApplicationJSONForbidden) SetFake() {
+func (s *GitCreateBlobForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitCreateBlobApplicationJSONForbidden(unwrapped)
+	*s = GitCreateBlobForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GitCreateBlobApplicationJSONNotFound) SetFake() {
+func (s *GitCreateBlobNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitCreateBlobApplicationJSONNotFound(unwrapped)
+	*s = GitCreateBlobNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9810,21 +9810,21 @@ func (s *GitCreateTagReqType) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GitCreateTreeApplicationJSONForbidden) SetFake() {
+func (s *GitCreateTreeForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitCreateTreeApplicationJSONForbidden(unwrapped)
+	*s = GitCreateTreeForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GitCreateTreeApplicationJSONNotFound) SetFake() {
+func (s *GitCreateTreeNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitCreateTreeApplicationJSONNotFound(unwrapped)
+	*s = GitCreateTreeNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9888,21 +9888,21 @@ func (s *GitCreateTreeReqTreeItemType) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GitGetBlobApplicationJSONForbidden) SetFake() {
+func (s *GitGetBlobForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitGetBlobApplicationJSONForbidden(unwrapped)
+	*s = GitGetBlobForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *GitGetBlobApplicationJSONNotFound) SetFake() {
+func (s *GitGetBlobNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = GitGetBlobApplicationJSONNotFound(unwrapped)
+	*s = GitGetBlobNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12117,57 +12117,30 @@ func (s *IssuesAddAssigneesReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesCreateApplicationJSONForbidden) SetFake() {
+func (s *IssuesCreateCommentForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesCreateApplicationJSONForbidden(unwrapped)
+	*s = IssuesCreateCommentForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesCreateApplicationJSONGone) SetFake() {
+func (s *IssuesCreateCommentGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesCreateApplicationJSONGone(unwrapped)
+	*s = IssuesCreateCommentGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesCreateApplicationJSONNotFound) SetFake() {
+func (s *IssuesCreateCommentNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesCreateApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesCreateCommentApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesCreateCommentApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesCreateCommentApplicationJSONGone) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesCreateCommentApplicationJSONGone(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesCreateCommentApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesCreateCommentApplicationJSONNotFound(unwrapped)
+	*s = IssuesCreateCommentNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12177,6 +12150,24 @@ func (s *IssuesCreateCommentReq) SetFake() {
 			s.Body = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *IssuesCreateForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesCreateForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *IssuesCreateGone) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesCreateGone(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12225,6 +12216,15 @@ func (s *IssuesCreateMilestoneReq) SetFake() {
 // SetFake set fake values.
 func (s *IssuesCreateMilestoneReqState) SetFake() {
 	*s = IssuesCreateMilestoneReqStateOpen
+}
+
+// SetFake set fake values.
+func (s *IssuesCreateNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesCreateNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12330,120 +12330,120 @@ func (s *IssuesCreateReqTitle) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesGetApplicationJSONGone) SetFake() {
+func (s *IssuesGetEventForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesGetApplicationJSONGone(unwrapped)
+	*s = IssuesGetEventForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesGetApplicationJSONMovedPermanently) SetFake() {
+func (s *IssuesGetEventGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesGetApplicationJSONMovedPermanently(unwrapped)
+	*s = IssuesGetEventGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesGetApplicationJSONNotFound) SetFake() {
+func (s *IssuesGetEventNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesGetApplicationJSONNotFound(unwrapped)
+	*s = IssuesGetEventNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesGetEventApplicationJSONForbidden) SetFake() {
+func (s *IssuesGetGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesGetEventApplicationJSONForbidden(unwrapped)
+	*s = IssuesGetGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesGetEventApplicationJSONGone) SetFake() {
+func (s *IssuesGetMovedPermanently) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesGetEventApplicationJSONGone(unwrapped)
+	*s = IssuesGetMovedPermanently(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesGetEventApplicationJSONNotFound) SetFake() {
+func (s *IssuesGetNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesGetEventApplicationJSONNotFound(unwrapped)
+	*s = IssuesGetNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesListCommentsApplicationJSONGone) SetFake() {
+func (s *IssuesListCommentsGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesListCommentsApplicationJSONGone(unwrapped)
+	*s = IssuesListCommentsGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesListCommentsApplicationJSONNotFound) SetFake() {
+func (s *IssuesListCommentsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesListCommentsApplicationJSONNotFound(unwrapped)
+	*s = IssuesListCommentsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesListForRepoApplicationJSONMovedPermanently) SetFake() {
+func (s *IssuesListForRepoMovedPermanently) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesListForRepoApplicationJSONMovedPermanently(unwrapped)
+	*s = IssuesListForRepoMovedPermanently(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesListForRepoApplicationJSONNotFound) SetFake() {
+func (s *IssuesListForRepoNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesListForRepoApplicationJSONNotFound(unwrapped)
+	*s = IssuesListForRepoNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesLockApplicationJSONForbidden) SetFake() {
+func (s *IssuesLockForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesLockApplicationJSONForbidden(unwrapped)
+	*s = IssuesLockForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesLockApplicationJSONGone) SetFake() {
+func (s *IssuesLockGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesLockApplicationJSONGone(unwrapped)
+	*s = IssuesLockGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesLockApplicationJSONNotFound) SetFake() {
+func (s *IssuesLockNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesLockApplicationJSONNotFound(unwrapped)
+	*s = IssuesLockNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12477,21 +12477,21 @@ func (s *IssuesRemoveAssigneesReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesRemoveLabelApplicationJSONGone) SetFake() {
+func (s *IssuesRemoveLabelGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesRemoveLabelApplicationJSONGone(unwrapped)
+	*s = IssuesRemoveLabelGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesRemoveLabelApplicationJSONNotFound) SetFake() {
+func (s *IssuesRemoveLabelNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesRemoveLabelApplicationJSONNotFound(unwrapped)
+	*s = IssuesRemoveLabelNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12511,57 +12511,21 @@ func (s *IssuesRemoveLabelOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesUnlockApplicationJSONForbidden) SetFake() {
+func (s *IssuesUnlockForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesUnlockApplicationJSONForbidden(unwrapped)
+	*s = IssuesUnlockForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *IssuesUnlockApplicationJSONNotFound) SetFake() {
+func (s *IssuesUnlockNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = IssuesUnlockApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesUpdateApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesUpdateApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesUpdateApplicationJSONGone) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesUpdateApplicationJSONGone(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesUpdateApplicationJSONMovedPermanently) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesUpdateApplicationJSONMovedPermanently(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesUpdateApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = IssuesUpdateApplicationJSONNotFound(unwrapped)
+	*s = IssuesUnlockNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12571,6 +12535,24 @@ func (s *IssuesUpdateCommentReq) SetFake() {
 			s.Body = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *IssuesUpdateForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesUpdateForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *IssuesUpdateGone) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesUpdateGone(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12619,6 +12601,24 @@ func (s *IssuesUpdateMilestoneReq) SetFake() {
 // SetFake set fake values.
 func (s *IssuesUpdateMilestoneReqState) SetFake() {
 	*s = IssuesUpdateMilestoneReqStateOpen
+}
+
+// SetFake set fake values.
+func (s *IssuesUpdateMovedPermanently) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesUpdateMovedPermanently(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *IssuesUpdateNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = IssuesUpdateNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -13239,21 +13239,21 @@ func (s *LicensesGetAllCommonlyUsedOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *LicensesGetApplicationJSONForbidden) SetFake() {
+func (s *LicensesGetForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = LicensesGetApplicationJSONForbidden(unwrapped)
+	*s = LicensesGetForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *LicensesGetApplicationJSONNotFound) SetFake() {
+func (s *LicensesGetNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = LicensesGetApplicationJSONNotFound(unwrapped)
+	*s = LicensesGetNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -13832,48 +13832,48 @@ func (s *Migration) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *MigrationsDeleteArchiveForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = MigrationsDeleteArchiveForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *MigrationsDeleteArchiveForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = MigrationsDeleteArchiveForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = MigrationsDeleteArchiveForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *MigrationsGetArchiveForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = MigrationsGetArchiveForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *MigrationsGetArchiveForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = MigrationsGetArchiveForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -13893,48 +13893,48 @@ func (s *MigrationsGetCommitAuthorsOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *MigrationsGetStatusForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = MigrationsGetStatusForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *MigrationsGetStatusForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = MigrationsGetStatusForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *MigrationsGetStatusForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = MigrationsGetStatusForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *MigrationsListForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = MigrationsListForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *MigrationsListForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = MigrationsListForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -13966,21 +13966,12 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *MigrationsStartForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsStartForAuthenticatedUserApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = MigrationsStartForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -14034,6 +14025,15 @@ func (s *MigrationsStartForAuthenticatedUserReq) SetFake() {
 // SetFake set fake values.
 func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) SetFake() {
 	*s = MigrationsStartForAuthenticatedUserReqExcludeItemRepositories
+}
+
+// SetFake set fake values.
+func (s *MigrationsStartForAuthenticatedUserUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = MigrationsStartForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -14124,30 +14124,30 @@ func (s *MigrationsStartImportReqVcs) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *MigrationsUnlockRepoForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = MigrationsUnlockRepoForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *MigrationsUnlockRepoForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = MigrationsUnlockRepoForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *MigrationsUnlockRepoForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = MigrationsUnlockRepoForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -17068,30 +17068,21 @@ func (s *NullableTeamSimple) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsCreateAuthorizationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsCreateAuthorizationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone) SetFake() {
+func (s *OAuthAuthorizationsCreateAuthorizationGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsCreateAuthorizationApplicationJSONGone(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsCreateAuthorizationGone(unwrapped)
 }
 
 // SetFake set fake values.
@@ -17129,75 +17120,84 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsCreateAuthorizationUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsCreateAuthorizationUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) SetFake() {
+func (s *OAuthAuthorizationsDeleteAuthorizationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsDeleteAuthorizationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsDeleteAuthorizationUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsDeleteGrantApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsDeleteAuthorizationUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) SetFake() {
+func (s *OAuthAuthorizationsDeleteGrantForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsDeleteGrantForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsDeleteGrantUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsDeleteGrantUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) SetFake() {
+func (s *OAuthAuthorizationsGetAuthorizationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsGetAuthorizationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetGrantApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsGetAuthorizationUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsGetGrantApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsGetAuthorizationUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) SetFake() {
+func (s *OAuthAuthorizationsGetGrantForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsGetGrantApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsGetGrantForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *OAuthAuthorizationsGetGrantUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = OAuthAuthorizationsGetGrantUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -17225,21 +17225,12 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Set
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -17272,57 +17263,66 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) SetFake() {
+func (s *OAuthAuthorizationsListAuthorizationsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound(unwrapped)
+	*s = OAuthAuthorizationsListAuthorizationsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) SetFake() {
+func (s *OAuthAuthorizationsListAuthorizationsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsListAuthorizationsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) SetFake() {
+func (s *OAuthAuthorizationsListAuthorizationsUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsListGrantsApplicationJSONForbidden(unwrapped)
+	*s = OAuthAuthorizationsListAuthorizationsUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListGrantsApplicationJSONNotFound) SetFake() {
+func (s *OAuthAuthorizationsListGrantsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsListGrantsApplicationJSONNotFound(unwrapped)
+	*s = OAuthAuthorizationsListGrantsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) SetFake() {
+func (s *OAuthAuthorizationsListGrantsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OAuthAuthorizationsListGrantsApplicationJSONUnauthorized(unwrapped)
+	*s = OAuthAuthorizationsListGrantsNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *OAuthAuthorizationsListGrantsUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = OAuthAuthorizationsListGrantsUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -20961,39 +20961,39 @@ func (s *OrgsCreateWebhookReqConfig) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *OrgsGetMembershipForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = OrgsGetMembershipForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *OrgsGetMembershipForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = OrgsGetMembershipForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsGetMembershipForUserApplicationJSONForbidden) SetFake() {
+func (s *OrgsGetMembershipForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsGetMembershipForUserApplicationJSONForbidden(unwrapped)
+	*s = OrgsGetMembershipForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsGetMembershipForUserApplicationJSONNotFound) SetFake() {
+func (s *OrgsGetMembershipForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsGetMembershipForUserApplicationJSONNotFound(unwrapped)
+	*s = OrgsGetMembershipForUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21013,39 +21013,39 @@ func (s *OrgsListBlockedUsersOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *OrgsListForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = OrgsListForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *OrgsListForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = OrgsListForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *OrgsListMembershipsForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = OrgsListMembershipsForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *OrgsListMembershipsForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = OrgsListMembershipsForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21065,21 +21065,21 @@ func (s *OrgsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsRemoveMembershipForUserApplicationJSONForbidden) SetFake() {
+func (s *OrgsRemoveMembershipForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsRemoveMembershipForUserApplicationJSONForbidden(unwrapped)
+	*s = OrgsRemoveMembershipForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) SetFake() {
+func (s *OrgsRemoveMembershipForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsRemoveMembershipForUserApplicationJSONNotFound(unwrapped)
+	*s = OrgsRemoveMembershipForUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21111,21 +21111,21 @@ func (s *OrgsSetMembershipForUserReqRole) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *OrgsUpdateMembershipForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = OrgsUpdateMembershipForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *OrgsUpdateMembershipForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = OrgsUpdateMembershipForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21425,192 +21425,183 @@ func (s *PackagesBillingUsage) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesDeletePackageForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesDeletePackageForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesDeletePackageForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesDeletePackageForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesDeletePackageForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesDeletePackageForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) SetFake() {
+func (s *PackagesDeletePackageForOrgForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForOrgApplicationJSONForbidden(unwrapped)
+	*s = PackagesDeletePackageForOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForOrgApplicationJSONNotFound) SetFake() {
+func (s *PackagesDeletePackageForOrgNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForOrgApplicationJSONNotFound(unwrapped)
+	*s = PackagesDeletePackageForOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesDeletePackageForOrgUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForOrgApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesDeletePackageForOrgUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesDeletePackageForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesDeletePackageForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesDeletePackageForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesDeletePackageForUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesDeletePackageForUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageForUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesDeletePackageForUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesDeletePackageVersionForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesDeletePackageVersionForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesDeletePackageVersionForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesDeletePackageVersionForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesDeletePackageVersionForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForOrgApplicationJSONForbidden) SetFake() {
+func (s *PackagesDeletePackageVersionForOrgForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForOrgApplicationJSONForbidden(unwrapped)
+	*s = PackagesDeletePackageVersionForOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForOrgApplicationJSONNotFound) SetFake() {
+func (s *PackagesDeletePackageVersionForOrgNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForOrgApplicationJSONNotFound(unwrapped)
+	*s = PackagesDeletePackageVersionForOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesDeletePackageVersionForOrgUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesDeletePackageVersionForOrgUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesDeletePackageVersionForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesDeletePackageVersionForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesDeletePackageVersionForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesDeletePackageVersionForUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesDeletePackageVersionForUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesDeletePackageVersionForUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21630,30 +21621,30 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplic
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21673,30 +21664,30 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Set
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21716,21 +21707,21 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Se
 }
 
 // SetFake set fake values.
-func (s *PackagesListPackagesForOrganizationApplicationJSONForbidden) SetFake() {
+func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesListPackagesForOrganizationApplicationJSONForbidden(unwrapped)
+	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesListPackagesForOrganizationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesListPackagesForOrganizationApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesListPackagesForOrganizationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21750,21 +21741,21 @@ func (s *PackagesListPackagesForOrganizationOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PackagesListPackagesForUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesListPackagesForOrganizationUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesListPackagesForUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesListPackagesForOrganizationUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesListPackagesForUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesListPackagesForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesListPackagesForUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesListPackagesForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21784,165 +21775,174 @@ func (s *PackagesListPackagesForUserOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesListPackagesForUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesListPackagesForUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesRestorePackageForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesRestorePackageForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesRestorePackageForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesRestorePackageForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) SetFake() {
+func (s *PackagesRestorePackageForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForOrgApplicationJSONForbidden(unwrapped)
+	*s = PackagesRestorePackageForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForOrgApplicationJSONNotFound) SetFake() {
+func (s *PackagesRestorePackageForOrgForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForOrgApplicationJSONNotFound(unwrapped)
+	*s = PackagesRestorePackageForOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesRestorePackageForOrgNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForOrgApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesRestorePackageForOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesRestorePackageForOrgUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesRestorePackageForOrgUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesRestorePackageForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesRestorePackageForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesRestorePackageForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageForUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesRestorePackageForUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesRestorePackageForUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesRestorePackageForUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesRestorePackageVersionForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesRestorePackageVersionForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesRestorePackageVersionForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesRestorePackageVersionForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForOrgApplicationJSONForbidden) SetFake() {
+func (s *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForOrgApplicationJSONForbidden(unwrapped)
+	*s = PackagesRestorePackageVersionForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForOrgApplicationJSONNotFound) SetFake() {
+func (s *PackagesRestorePackageVersionForOrgForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForOrgApplicationJSONNotFound(unwrapped)
+	*s = PackagesRestorePackageVersionForOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesRestorePackageVersionForOrgNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesRestorePackageVersionForOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) SetFake() {
+func (s *PackagesRestorePackageVersionForOrgUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForUserApplicationJSONForbidden(unwrapped)
+	*s = PackagesRestorePackageVersionForOrgUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForUserApplicationJSONNotFound) SetFake() {
+func (s *PackagesRestorePackageVersionForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForUserApplicationJSONNotFound(unwrapped)
+	*s = PackagesRestorePackageVersionForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) SetFake() {
+func (s *PackagesRestorePackageVersionForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PackagesRestorePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
+	*s = PackagesRestorePackageVersionForUserNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PackagesRestorePackageVersionForUserUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = PackagesRestorePackageVersionForUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -22974,30 +22974,21 @@ func (s *ProjectOrganizationPermission) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsAddCollaboratorApplicationJSONForbidden) SetFake() {
+func (s *ProjectsAddCollaboratorForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsAddCollaboratorApplicationJSONForbidden(unwrapped)
+	*s = ProjectsAddCollaboratorForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsAddCollaboratorApplicationJSONNotFound) SetFake() {
+func (s *ProjectsAddCollaboratorNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsAddCollaboratorApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsAddCollaboratorApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsAddCollaboratorNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23015,21 +23006,21 @@ func (s *ProjectsAddCollaboratorReqPermission) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateColumnApplicationJSONForbidden) SetFake() {
+func (s *ProjectsAddCollaboratorUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateColumnApplicationJSONForbidden(unwrapped)
+	*s = ProjectsAddCollaboratorUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateColumnApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsCreateColumnForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateColumnApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsCreateColumnForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23042,21 +23033,21 @@ func (s *ProjectsCreateColumnReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ProjectsCreateColumnUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ProjectsCreateColumnUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsCreateForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsCreateForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23074,39 +23065,39 @@ func (s *ProjectsCreateForAuthenticatedUserReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForOrgApplicationJSONForbidden) SetFake() {
+func (s *ProjectsCreateForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForOrgApplicationJSONForbidden(unwrapped)
+	*s = ProjectsCreateForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForOrgApplicationJSONGone) SetFake() {
+func (s *ProjectsCreateForOrgForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForOrgApplicationJSONGone(unwrapped)
+	*s = ProjectsCreateForOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForOrgApplicationJSONNotFound) SetFake() {
+func (s *ProjectsCreateForOrgGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForOrgApplicationJSONNotFound(unwrapped)
+	*s = ProjectsCreateForOrgGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsCreateForOrgNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForOrgApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsCreateForOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23124,39 +23115,39 @@ func (s *ProjectsCreateForOrgReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForRepoApplicationJSONForbidden) SetFake() {
+func (s *ProjectsCreateForOrgUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForRepoApplicationJSONForbidden(unwrapped)
+	*s = ProjectsCreateForOrgUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForRepoApplicationJSONGone) SetFake() {
+func (s *ProjectsCreateForRepoForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForRepoApplicationJSONGone(unwrapped)
+	*s = ProjectsCreateForRepoForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForRepoApplicationJSONNotFound) SetFake() {
+func (s *ProjectsCreateForRepoGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForRepoApplicationJSONNotFound(unwrapped)
+	*s = ProjectsCreateForRepoGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsCreateForRepoNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsCreateForRepoApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsCreateForRepoNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23174,48 +23165,12 @@ func (s *ProjectsCreateForRepoReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsDeleteApplicationJSONGone) SetFake() {
+func (s *ProjectsCreateForRepoUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsDeleteApplicationJSONGone(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsDeleteApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsDeleteApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsDeleteApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsDeleteApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsDeleteCardApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsDeleteCardApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsDeleteCardApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsDeleteCardApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsCreateForRepoUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23245,21 +23200,39 @@ func (s *ProjectsDeleteCardForbidden) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsDeleteColumnApplicationJSONForbidden) SetFake() {
+func (s *ProjectsDeleteCardNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsDeleteColumnApplicationJSONForbidden(unwrapped)
+	*s = ProjectsDeleteCardNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsDeleteCardUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsDeleteColumnApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsDeleteCardUnauthorized(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ProjectsDeleteColumnForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsDeleteColumnForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ProjectsDeleteColumnUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsDeleteColumnUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23289,201 +23262,228 @@ func (s *ProjectsDeleteForbidden) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetApplicationJSONForbidden) SetFake() {
+func (s *ProjectsDeleteGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetApplicationJSONForbidden(unwrapped)
+	*s = ProjectsDeleteGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsDeleteNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsDeleteNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetCardApplicationJSONForbidden) SetFake() {
+func (s *ProjectsDeleteUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetCardApplicationJSONForbidden(unwrapped)
+	*s = ProjectsDeleteUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetCardApplicationJSONNotFound) SetFake() {
+func (s *ProjectsGetCardForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetCardApplicationJSONNotFound(unwrapped)
+	*s = ProjectsGetCardForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetCardApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsGetCardNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetCardApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsGetCardNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetColumnApplicationJSONForbidden) SetFake() {
+func (s *ProjectsGetCardUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetColumnApplicationJSONForbidden(unwrapped)
+	*s = ProjectsGetCardUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetColumnApplicationJSONNotFound) SetFake() {
+func (s *ProjectsGetColumnForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetColumnApplicationJSONNotFound(unwrapped)
+	*s = ProjectsGetColumnForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetColumnApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsGetColumnNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetColumnApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsGetColumnNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetPermissionForUserApplicationJSONForbidden) SetFake() {
+func (s *ProjectsGetColumnUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetPermissionForUserApplicationJSONForbidden(unwrapped)
+	*s = ProjectsGetColumnUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetPermissionForUserApplicationJSONNotFound) SetFake() {
+func (s *ProjectsGetForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetPermissionForUserApplicationJSONNotFound(unwrapped)
+	*s = ProjectsGetForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsGetPermissionForUserApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsGetPermissionForUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsGetPermissionForUserApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsGetPermissionForUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCardsApplicationJSONForbidden) SetFake() {
+func (s *ProjectsGetPermissionForUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListCardsApplicationJSONForbidden(unwrapped)
+	*s = ProjectsGetPermissionForUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCardsApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsGetPermissionForUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListCardsApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsGetPermissionForUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCollaboratorsApplicationJSONForbidden) SetFake() {
+func (s *ProjectsGetUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListCollaboratorsApplicationJSONForbidden(unwrapped)
+	*s = ProjectsGetUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCollaboratorsApplicationJSONNotFound) SetFake() {
+func (s *ProjectsListCardsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListCollaboratorsApplicationJSONNotFound(unwrapped)
+	*s = ProjectsListCardsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsListCardsUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListCollaboratorsApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsListCardsUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListColumnsApplicationJSONForbidden) SetFake() {
+func (s *ProjectsListCollaboratorsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListColumnsApplicationJSONForbidden(unwrapped)
+	*s = ProjectsListCollaboratorsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListColumnsApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsListCollaboratorsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListColumnsApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsListCollaboratorsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListForRepoApplicationJSONForbidden) SetFake() {
+func (s *ProjectsListCollaboratorsUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListForRepoApplicationJSONForbidden(unwrapped)
+	*s = ProjectsListCollaboratorsUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListForRepoApplicationJSONGone) SetFake() {
+func (s *ProjectsListColumnsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListForRepoApplicationJSONGone(unwrapped)
+	*s = ProjectsListColumnsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListForRepoApplicationJSONNotFound) SetFake() {
+func (s *ProjectsListColumnsUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListForRepoApplicationJSONNotFound(unwrapped)
+	*s = ProjectsListColumnsUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListForRepoApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsListForRepoForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsListForRepoApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsListForRepoForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ProjectsListForRepoGone) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsListForRepoGone(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ProjectsListForRepoNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsListForRepoNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ProjectsListForRepoUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsListForRepoUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23600,25 +23600,16 @@ func (s *ProjectsMoveCardServiceUnavailableErrorsItem) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsMoveColumnApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsMoveColumnApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsMoveColumnApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsMoveColumnApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ProjectsMoveColumnCreated) SetFake() {
+}
+
+// SetFake set fake values.
+func (s *ProjectsMoveColumnForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsMoveColumnForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23631,75 +23622,57 @@ func (s *ProjectsMoveColumnReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsRemoveCollaboratorApplicationJSONForbidden) SetFake() {
+func (s *ProjectsMoveColumnUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsRemoveCollaboratorApplicationJSONForbidden(unwrapped)
+	*s = ProjectsMoveColumnUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsRemoveCollaboratorApplicationJSONNotFound) SetFake() {
+func (s *ProjectsRemoveCollaboratorForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsRemoveCollaboratorApplicationJSONNotFound(unwrapped)
+	*s = ProjectsRemoveCollaboratorForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsRemoveCollaboratorNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsRemoveCollaboratorApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsRemoveCollaboratorNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsUpdateApplicationJSONGone) SetFake() {
+func (s *ProjectsRemoveCollaboratorUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsUpdateApplicationJSONGone(unwrapped)
+	*s = ProjectsRemoveCollaboratorUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsUpdateApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsUpdateCardForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsUpdateApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsUpdateCardForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsUpdateCardApplicationJSONForbidden) SetFake() {
+func (s *ProjectsUpdateCardNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsUpdateCardApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsUpdateCardApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsUpdateCardApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsUpdateCardApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ProjectsUpdateCardApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsUpdateCardNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23717,21 +23690,21 @@ func (s *ProjectsUpdateCardReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsUpdateColumnApplicationJSONForbidden) SetFake() {
+func (s *ProjectsUpdateCardUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsUpdateColumnApplicationJSONForbidden(unwrapped)
+	*s = ProjectsUpdateCardUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) SetFake() {
+func (s *ProjectsUpdateColumnForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ProjectsUpdateColumnApplicationJSONUnauthorized(unwrapped)
+	*s = ProjectsUpdateColumnForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23741,6 +23714,15 @@ func (s *ProjectsUpdateColumnReq) SetFake() {
 			s.Name = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *ProjectsUpdateColumnUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsUpdateColumnUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23767,6 +23749,15 @@ func (s *ProjectsUpdateForbidden) SetFake() {
 			}
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *ProjectsUpdateGone) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsUpdateGone(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23801,6 +23792,15 @@ func (s *ProjectsUpdateReq) SetFake() {
 // SetFake set fake values.
 func (s *ProjectsUpdateReqOrganizationPermission) SetFake() {
 	*s = ProjectsUpdateReqOrganizationPermissionRead
+}
+
+// SetFake set fake values.
+func (s *ProjectsUpdateUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ProjectsUpdateUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -26976,39 +26976,21 @@ func (s *PullsDismissReviewReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PullsGetApplicationJSONInternalServerError) SetFake() {
+func (s *PullsGetInternalServerError) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PullsGetApplicationJSONInternalServerError(unwrapped)
+	*s = PullsGetInternalServerError(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PullsGetApplicationJSONNotFound) SetFake() {
+func (s *PullsGetNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PullsGetApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PullsMergeApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = PullsMergeApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PullsMergeApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = PullsMergeApplicationJSONNotFound(unwrapped)
+	*s = PullsGetNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27026,6 +27008,15 @@ func (s *PullsMergeConflict) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *PullsMergeForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = PullsMergeForbidden(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *PullsMergeMethodNotAllowed) SetFake() {
 	{
 		{
@@ -27037,6 +27028,15 @@ func (s *PullsMergeMethodNotAllowed) SetFake() {
 			s.DocumentationURL.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PullsMergeNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = PullsMergeNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27097,21 +27097,21 @@ func (s *PullsRemoveRequestedReviewersReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PullsSubmitReviewApplicationJSONForbidden) SetFake() {
+func (s *PullsSubmitReviewForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PullsSubmitReviewApplicationJSONForbidden(unwrapped)
+	*s = PullsSubmitReviewForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *PullsSubmitReviewApplicationJSONNotFound) SetFake() {
+func (s *PullsSubmitReviewNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = PullsSubmitReviewApplicationJSONNotFound(unwrapped)
+	*s = PullsSubmitReviewNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27374,21 +27374,21 @@ func (s *ReactionRollup) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) SetFake() {
+func (s *ReactionsCreateForCommitCommentCreated) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForCommitCommentApplicationJSONCreated(unwrapped)
+	*s = ReactionsCreateForCommitCommentCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForCommitCommentApplicationJSONOK) SetFake() {
+func (s *ReactionsCreateForCommitCommentOK) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForCommitCommentApplicationJSONOK(unwrapped)
+	*s = ReactionsCreateForCommitCommentOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27406,39 +27406,21 @@ func (s *ReactionsCreateForCommitCommentReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForIssueApplicationJSONCreated) SetFake() {
+func (s *ReactionsCreateForIssueCommentCreated) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForIssueApplicationJSONCreated(unwrapped)
+	*s = ReactionsCreateForIssueCommentCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForIssueApplicationJSONOK) SetFake() {
+func (s *ReactionsCreateForIssueCommentOK) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForIssueApplicationJSONOK(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) SetFake() {
-	var unwrapped Reaction
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReactionsCreateForIssueCommentApplicationJSONCreated(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsCreateForIssueCommentApplicationJSONOK) SetFake() {
-	var unwrapped Reaction
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReactionsCreateForIssueCommentApplicationJSONOK(unwrapped)
+	*s = ReactionsCreateForIssueCommentOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27456,6 +27438,24 @@ func (s *ReactionsCreateForIssueCommentReqContent) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ReactionsCreateForIssueCreated) SetFake() {
+	var unwrapped Reaction
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReactionsCreateForIssueCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReactionsCreateForIssueOK) SetFake() {
+	var unwrapped Reaction
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReactionsCreateForIssueOK(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *ReactionsCreateForIssueReq) SetFake() {
 	{
 		{
@@ -27470,21 +27470,21 @@ func (s *ReactionsCreateForIssueReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) SetFake() {
+func (s *ReactionsCreateForPullRequestReviewCommentCreated) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated(unwrapped)
+	*s = ReactionsCreateForPullRequestReviewCommentCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) SetFake() {
+func (s *ReactionsCreateForPullRequestReviewCommentOK) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForPullRequestReviewCommentApplicationJSONOK(unwrapped)
+	*s = ReactionsCreateForPullRequestReviewCommentOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27502,21 +27502,21 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForReleaseApplicationJSONCreated) SetFake() {
+func (s *ReactionsCreateForReleaseCreated) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForReleaseApplicationJSONCreated(unwrapped)
+	*s = ReactionsCreateForReleaseCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForReleaseApplicationJSONOK) SetFake() {
+func (s *ReactionsCreateForReleaseOK) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForReleaseApplicationJSONOK(unwrapped)
+	*s = ReactionsCreateForReleaseOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27534,21 +27534,21 @@ func (s *ReactionsCreateForReleaseReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) SetFake() {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated(unwrapped)
+	*s = ReactionsCreateForTeamDiscussionCommentInOrgCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) SetFake() {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgOK) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK(unwrapped)
+	*s = ReactionsCreateForTeamDiscussionCommentInOrgOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27580,21 +27580,21 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) SetFake() {
+func (s *ReactionsCreateForTeamDiscussionInOrgCreated) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated(unwrapped)
+	*s = ReactionsCreateForTeamDiscussionInOrgCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) SetFake() {
+func (s *ReactionsCreateForTeamDiscussionInOrgOK) SetFake() {
 	var unwrapped Reaction
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK(unwrapped)
+	*s = ReactionsCreateForTeamDiscussionInOrgOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27626,48 +27626,48 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsDeleteLegacyApplicationJSONForbidden) SetFake() {
+func (s *ReactionsDeleteLegacyForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsDeleteLegacyApplicationJSONForbidden(unwrapped)
+	*s = ReactionsDeleteLegacyForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsDeleteLegacyApplicationJSONGone) SetFake() {
+func (s *ReactionsDeleteLegacyGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsDeleteLegacyApplicationJSONGone(unwrapped)
+	*s = ReactionsDeleteLegacyGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) SetFake() {
+func (s *ReactionsDeleteLegacyUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsDeleteLegacyApplicationJSONUnauthorized(unwrapped)
+	*s = ReactionsDeleteLegacyUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsListForIssueApplicationJSONGone) SetFake() {
+func (s *ReactionsListForIssueGone) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsListForIssueApplicationJSONGone(unwrapped)
+	*s = ReactionsListForIssueGone(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReactionsListForIssueApplicationJSONNotFound) SetFake() {
+func (s *ReactionsListForIssueNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReactionsListForIssueApplicationJSONNotFound(unwrapped)
+	*s = ReactionsListForIssueNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -28355,30 +28355,30 @@ func (s *RepoSearchResultItemPermissions) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposAcceptInvitationApplicationJSONConflict) SetFake() {
+func (s *ReposAcceptInvitationConflict) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposAcceptInvitationApplicationJSONConflict(unwrapped)
+	*s = ReposAcceptInvitationConflict(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposAcceptInvitationApplicationJSONForbidden) SetFake() {
+func (s *ReposAcceptInvitationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposAcceptInvitationApplicationJSONForbidden(unwrapped)
+	*s = ReposAcceptInvitationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposAcceptInvitationApplicationJSONNotFound) SetFake() {
+func (s *ReposAcceptInvitationNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposAcceptInvitationApplicationJSONNotFound(unwrapped)
+	*s = ReposAcceptInvitationNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -28443,21 +28443,21 @@ func (s *ReposAddCollaboratorReqPermission) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposAddStatusCheckContextsApplicationJSONForbidden) SetFake() {
+func (s *ReposAddStatusCheckContextsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposAddStatusCheckContextsApplicationJSONForbidden(unwrapped)
+	*s = ReposAddStatusCheckContextsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposAddStatusCheckContextsApplicationJSONNotFound) SetFake() {
+func (s *ReposAddStatusCheckContextsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposAddStatusCheckContextsApplicationJSONNotFound(unwrapped)
+	*s = ReposAddStatusCheckContextsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -28587,21 +28587,21 @@ func (s *ReposAddUserAccessRestrictionsReq0) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCompareCommitsApplicationJSONInternalServerError) SetFake() {
+func (s *ReposCompareCommitsInternalServerError) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCompareCommitsApplicationJSONInternalServerError(unwrapped)
+	*s = ReposCompareCommitsInternalServerError(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCompareCommitsApplicationJSONNotFound) SetFake() {
+func (s *ReposCompareCommitsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCompareCommitsApplicationJSONNotFound(unwrapped)
+	*s = ReposCompareCommitsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -28851,39 +28851,30 @@ func (s *ReposCreateDispatchEventReqClientPayload) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForAuthenticatedUserApplicationJSONBadRequest) SetFake() {
+func (s *ReposCreateForAuthenticatedUserBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForAuthenticatedUserApplicationJSONBadRequest(unwrapped)
+	*s = ReposCreateForAuthenticatedUserBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ReposCreateForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ReposCreateForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *ReposCreateForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForAuthenticatedUserApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ReposCreateForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -28981,30 +28972,39 @@ func (s *ReposCreateForAuthenticatedUserReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForkApplicationJSONBadRequest) SetFake() {
+func (s *ReposCreateForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForkApplicationJSONBadRequest(unwrapped)
+	*s = ReposCreateForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForkApplicationJSONForbidden) SetFake() {
+func (s *ReposCreateForkBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForkApplicationJSONForbidden(unwrapped)
+	*s = ReposCreateForkBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForkApplicationJSONNotFound) SetFake() {
+func (s *ReposCreateForkForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForkApplicationJSONNotFound(unwrapped)
+	*s = ReposCreateForkForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReposCreateForkNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposCreateForkNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29116,39 +29116,39 @@ func (s *ReposCreateInOrgReqVisibility) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONConflict) SetFake() {
+func (s *ReposCreateOrUpdateFileContentsConflict) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateOrUpdateFileContentsApplicationJSONConflict(unwrapped)
+	*s = ReposCreateOrUpdateFileContentsConflict(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONCreated) SetFake() {
+func (s *ReposCreateOrUpdateFileContentsCreated) SetFake() {
 	var unwrapped FileCommit
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateOrUpdateFileContentsApplicationJSONCreated(unwrapped)
+	*s = ReposCreateOrUpdateFileContentsCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONNotFound) SetFake() {
+func (s *ReposCreateOrUpdateFileContentsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateOrUpdateFileContentsApplicationJSONNotFound(unwrapped)
+	*s = ReposCreateOrUpdateFileContentsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateOrUpdateFileContentsApplicationJSONOK) SetFake() {
+func (s *ReposCreateOrUpdateFileContentsOK) SetFake() {
 	var unwrapped FileCommit
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateOrUpdateFileContentsApplicationJSONOK(unwrapped)
+	*s = ReposCreateOrUpdateFileContentsOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29320,21 +29320,21 @@ func (s *ReposCreateUsingTemplateReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateWebhookApplicationJSONForbidden) SetFake() {
+func (s *ReposCreateWebhookForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateWebhookApplicationJSONForbidden(unwrapped)
+	*s = ReposCreateWebhookForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposCreateWebhookApplicationJSONNotFound) SetFake() {
+func (s *ReposCreateWebhookNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateWebhookApplicationJSONNotFound(unwrapped)
+	*s = ReposCreateWebhookNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29403,66 +29403,48 @@ func (s *ReposCreateWebhookReqConfig) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposDeclineInvitationApplicationJSONConflict) SetFake() {
+func (s *ReposDeclineInvitationConflict) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposDeclineInvitationApplicationJSONConflict(unwrapped)
+	*s = ReposDeclineInvitationConflict(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposDeclineInvitationApplicationJSONForbidden) SetFake() {
+func (s *ReposDeclineInvitationForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposDeclineInvitationApplicationJSONForbidden(unwrapped)
+	*s = ReposDeclineInvitationForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposDeclineInvitationApplicationJSONNotFound) SetFake() {
+func (s *ReposDeclineInvitationNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposDeclineInvitationApplicationJSONNotFound(unwrapped)
+	*s = ReposDeclineInvitationNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposDeleteApplicationJSONNotFound) SetFake() {
+func (s *ReposDeleteFileConflict) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposDeleteApplicationJSONNotFound(unwrapped)
+	*s = ReposDeleteFileConflict(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposDeleteApplicationJSONTemporaryRedirect) SetFake() {
+func (s *ReposDeleteFileNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposDeleteApplicationJSONTemporaryRedirect(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteFileApplicationJSONConflict) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposDeleteFileApplicationJSONConflict(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteFileApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposDeleteFileApplicationJSONNotFound(unwrapped)
+	*s = ReposDeleteFileNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29537,6 +29519,24 @@ func (s *ReposDeleteForbidden) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ReposDeleteNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposDeleteNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReposDeleteTemporaryRedirect) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposDeleteTemporaryRedirect(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) SetFake() {
 	var unwrapped []string
 	{
@@ -29550,33 +29550,6 @@ func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) SetFake() {
 		}
 	}
 	*s = ReposGetAllStatusCheckContextsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposGetApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposGetApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposGetApplicationJSONMovedPermanently) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposGetApplicationJSONMovedPermanently(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposGetApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposGetApplicationJSONNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29596,21 +29569,21 @@ func (s *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposGetBranchApplicationJSONMovedPermanently) SetFake() {
+func (s *ReposGetBranchMovedPermanently) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposGetBranchApplicationJSONMovedPermanently(unwrapped)
+	*s = ReposGetBranchMovedPermanently(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposGetBranchApplicationJSONNotFound) SetFake() {
+func (s *ReposGetBranchNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposGetBranchApplicationJSONNotFound(unwrapped)
+	*s = ReposGetBranchNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29646,21 +29619,21 @@ func (s *ReposGetCommitActivityStatsOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposGetCommitApplicationJSONInternalServerError) SetFake() {
+func (s *ReposGetCommitInternalServerError) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposGetCommitApplicationJSONInternalServerError(unwrapped)
+	*s = ReposGetCommitInternalServerError(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposGetCommitApplicationJSONNotFound) SetFake() {
+func (s *ReposGetCommitNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposGetCommitApplicationJSONNotFound(unwrapped)
+	*s = ReposGetCommitNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29677,6 +29650,33 @@ func (s *ReposGetContributorsStatsOKApplicationJSON) SetFake() {
 		}
 	}
 	*s = ReposGetContributorsStatsOKApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReposGetForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposGetForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReposGetMovedPermanently) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposGetMovedPermanently(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReposGetNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposGetNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29776,75 +29776,66 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListCommitsApplicationJSONBadRequest) SetFake() {
+func (s *ReposListCommitsBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListCommitsApplicationJSONBadRequest(unwrapped)
+	*s = ReposListCommitsBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListCommitsApplicationJSONConflict) SetFake() {
+func (s *ReposListCommitsConflict) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListCommitsApplicationJSONConflict(unwrapped)
+	*s = ReposListCommitsConflict(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListCommitsApplicationJSONInternalServerError) SetFake() {
+func (s *ReposListCommitsInternalServerError) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListCommitsApplicationJSONInternalServerError(unwrapped)
+	*s = ReposListCommitsInternalServerError(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListCommitsApplicationJSONNotFound) SetFake() {
+func (s *ReposListCommitsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListCommitsApplicationJSONNotFound(unwrapped)
+	*s = ReposListCommitsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListContributorsApplicationJSONForbidden) SetFake() {
+func (s *ReposListContributorsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListContributorsApplicationJSONForbidden(unwrapped)
+	*s = ReposListContributorsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListContributorsApplicationJSONNotFound) SetFake() {
+func (s *ReposListContributorsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListContributorsApplicationJSONNotFound(unwrapped)
+	*s = ReposListContributorsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ReposListForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ReposListForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29864,30 +29855,39 @@ func (s *ReposListForAuthenticatedUserOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *ReposListForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = ReposListForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *ReposListInvitationsForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = ReposListInvitationsForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *ReposListInvitationsForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = ReposListInvitationsForAuthenticatedUserNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ReposListInvitationsForAuthenticatedUserUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposListInvitationsForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30103,21 +30103,21 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposRenameBranchApplicationJSONForbidden) SetFake() {
+func (s *ReposRenameBranchForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposRenameBranchApplicationJSONForbidden(unwrapped)
+	*s = ReposRenameBranchForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposRenameBranchApplicationJSONNotFound) SetFake() {
+func (s *ReposRenameBranchNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposRenameBranchApplicationJSONNotFound(unwrapped)
+	*s = ReposRenameBranchNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30335,48 +30335,21 @@ func (s *ReposTransferReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposUpdateApplicationJSONForbidden) SetFake() {
+func (s *ReposUpdateBranchProtectionForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposUpdateApplicationJSONForbidden(unwrapped)
+	*s = ReposUpdateBranchProtectionForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ReposUpdateApplicationJSONNotFound) SetFake() {
+func (s *ReposUpdateBranchProtectionNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposUpdateApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposUpdateApplicationJSONTemporaryRedirect) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposUpdateApplicationJSONTemporaryRedirect(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposUpdateBranchProtectionApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposUpdateBranchProtectionApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = ReposUpdateBranchProtectionApplicationJSONNotFound(unwrapped)
+	*s = ReposUpdateBranchProtectionNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30546,6 +30519,15 @@ func (s *ReposUpdateCommitCommentReq) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ReposUpdateForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposUpdateForbidden(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *ReposUpdateInvitationReq) SetFake() {
 	{
 		{
@@ -30557,6 +30539,15 @@ func (s *ReposUpdateInvitationReq) SetFake() {
 // SetFake set fake values.
 func (s *ReposUpdateInvitationReqPermissions) SetFake() {
 	*s = ReposUpdateInvitationReqPermissionsRead
+}
+
+// SetFake set fake values.
+func (s *ReposUpdateNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposUpdateNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30819,6 +30810,15 @@ func (s *ReposUpdateStatusCheckProtectionReq) SetFake() {
 			}
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *ReposUpdateTemporaryRedirect) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ReposUpdateTemporaryRedirect(unwrapped)
 }
 
 // SetFake set fake values.
@@ -32426,21 +32426,21 @@ func (s *RunnerLabelsItemType) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) SetFake() {
+func (s *ScimDeleteUserFromOrgForbidden) SetFake() {
 	var unwrapped ScimError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ScimDeleteUserFromOrgApplicationJSONForbidden(unwrapped)
+	*s = ScimDeleteUserFromOrgForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) SetFake() {
+func (s *ScimDeleteUserFromOrgNotFound) SetFake() {
 	var unwrapped ScimError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ScimDeleteUserFromOrgApplicationJSONNotFound(unwrapped)
+	*s = ScimDeleteUserFromOrgNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -33103,21 +33103,21 @@ func (s *SearchIssuesAndPullRequestsOK) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *SearchLabelsApplicationJSONForbidden) SetFake() {
+func (s *SearchLabelsForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = SearchLabelsApplicationJSONForbidden(unwrapped)
+	*s = SearchLabelsForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *SearchLabelsApplicationJSONNotFound) SetFake() {
+func (s *SearchLabelsNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = SearchLabelsApplicationJSONNotFound(unwrapped)
+	*s = SearchLabelsNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -35228,57 +35228,57 @@ func (s *TeamsCreateReqPrivacy) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsListChildLegacyApplicationJSONForbidden) SetFake() {
+func (s *TeamsListChildLegacyForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsListChildLegacyApplicationJSONForbidden(unwrapped)
+	*s = TeamsListChildLegacyForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsListChildLegacyApplicationJSONNotFound) SetFake() {
+func (s *TeamsListChildLegacyNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsListChildLegacyApplicationJSONNotFound(unwrapped)
+	*s = TeamsListChildLegacyNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *TeamsListForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = TeamsListForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) SetFake() {
+func (s *TeamsListForAuthenticatedUserNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsListForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+	*s = TeamsListForAuthenticatedUserNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) SetFake() {
+func (s *TeamsListIdpGroupsForLegacyForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsListIdpGroupsForLegacyApplicationJSONForbidden(unwrapped)
+	*s = TeamsListIdpGroupsForLegacyForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) SetFake() {
+func (s *TeamsListIdpGroupsForLegacyNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsListIdpGroupsForLegacyApplicationJSONNotFound(unwrapped)
+	*s = TeamsListIdpGroupsForLegacyNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -35367,39 +35367,39 @@ func (s *TeamsUpdateInOrgReqPrivacy) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsUpdateLegacyApplicationJSONCreated) SetFake() {
+func (s *TeamsUpdateLegacyCreated) SetFake() {
 	var unwrapped TeamFull
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsUpdateLegacyApplicationJSONCreated(unwrapped)
+	*s = TeamsUpdateLegacyCreated(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsUpdateLegacyApplicationJSONForbidden) SetFake() {
+func (s *TeamsUpdateLegacyForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsUpdateLegacyApplicationJSONForbidden(unwrapped)
+	*s = TeamsUpdateLegacyForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsUpdateLegacyApplicationJSONNotFound) SetFake() {
+func (s *TeamsUpdateLegacyNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsUpdateLegacyApplicationJSONNotFound(unwrapped)
+	*s = TeamsUpdateLegacyNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *TeamsUpdateLegacyApplicationJSONOK) SetFake() {
+func (s *TeamsUpdateLegacyOK) SetFake() {
 	var unwrapped TeamFull
 	{
 		unwrapped.SetFake()
 	}
-	*s = TeamsUpdateLegacyApplicationJSONOK(unwrapped)
+	*s = TeamsUpdateLegacyOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -35957,33 +35957,6 @@ func (s *UserSearchResultItem) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersAddEmailForAuthenticatedApplicationJSONForbidden) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = UsersAddEmailForAuthenticatedApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersAddEmailForAuthenticatedApplicationJSONNotFound) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = UsersAddEmailForAuthenticatedApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = UsersAddEmailForAuthenticatedApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *UsersAddEmailForAuthenticatedCreatedApplicationJSON) SetFake() {
 	var unwrapped []Email
 	{
@@ -35997,6 +35970,24 @@ func (s *UsersAddEmailForAuthenticatedCreatedApplicationJSON) SetFake() {
 		}
 	}
 	*s = UsersAddEmailForAuthenticatedCreatedApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *UsersAddEmailForAuthenticatedForbidden) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = UsersAddEmailForAuthenticatedForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *UsersAddEmailForAuthenticatedNotFound) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = UsersAddEmailForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36026,111 +36017,111 @@ func (s *UsersAddEmailForAuthenticatedReq0) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersBlockApplicationJSONForbidden) SetFake() {
+func (s *UsersAddEmailForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersBlockApplicationJSONForbidden(unwrapped)
+	*s = UsersAddEmailForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersBlockApplicationJSONNotFound) SetFake() {
+func (s *UsersBlockForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersBlockApplicationJSONNotFound(unwrapped)
+	*s = UsersBlockForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersBlockApplicationJSONUnauthorized) SetFake() {
+func (s *UsersBlockNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersBlockApplicationJSONUnauthorized(unwrapped)
+	*s = UsersBlockNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCheckBlockedApplicationJSONForbidden) SetFake() {
+func (s *UsersBlockUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCheckBlockedApplicationJSONForbidden(unwrapped)
+	*s = UsersBlockUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCheckBlockedApplicationJSONNotFound) SetFake() {
+func (s *UsersCheckBlockedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCheckBlockedApplicationJSONNotFound(unwrapped)
+	*s = UsersCheckBlockedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCheckBlockedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersCheckBlockedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCheckBlockedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersCheckBlockedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersCheckBlockedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersCheckBlockedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersCheckPersonIsFollowedByAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersCheckPersonIsFollowedByAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersCheckPersonIsFollowedByAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersCheckPersonIsFollowedByAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersCheckPersonIsFollowedByAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersCheckPersonIsFollowedByAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersCreateGpgKeyForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersCreateGpgKeyForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersCreateGpgKeyForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersCreateGpgKeyForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36143,30 +36134,30 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersCreateGpgKeyForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersCreateGpgKeyForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersCreatePublicSSHKeyForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersCreatePublicSSHKeyForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36184,30 +36175,30 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeleteEmailForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersCreatePublicSSHKeyForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersDeleteEmailForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeleteEmailForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersDeleteEmailForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersDeleteEmailForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersDeleteEmailForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36237,102 +36228,102 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersDeleteEmailForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersDeleteEmailForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersDeleteGpgKeyForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersDeleteGpgKeyForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersDeleteGpgKeyForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersDeleteGpgKeyForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersDeleteGpgKeyForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersDeleteGpgKeyForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersDeletePublicSSHKeyForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersDeletePublicSSHKeyForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersDeletePublicSSHKeyForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersDeletePublicSSHKeyForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersFollowApplicationJSONForbidden) SetFake() {
+func (s *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersFollowApplicationJSONForbidden(unwrapped)
+	*s = UsersDeletePublicSSHKeyForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersFollowApplicationJSONNotFound) SetFake() {
+func (s *UsersFollowForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersFollowApplicationJSONNotFound(unwrapped)
+	*s = UsersFollowForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersFollowApplicationJSONUnauthorized) SetFake() {
+func (s *UsersFollowNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersFollowApplicationJSONUnauthorized(unwrapped)
+	*s = UsersFollowNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersFollowUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersFollowUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersGetAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersGetAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36346,6 +36337,15 @@ func (s *UsersGetAuthenticatedOK) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *UsersGetAuthenticatedUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = UsersGetAuthenticatedUnauthorized(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *UsersGetByUsernameOK) SetFake() {
 	var elem PrivateUser
 
@@ -36356,84 +36356,75 @@ func (s *UsersGetByUsernameOK) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersGetGpgKeyForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersGetGpgKeyForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersGetGpgKeyForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersGetGpgKeyForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersGetGpgKeyForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersGetGpgKeyForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersGetPublicSSHKeyForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersGetPublicSSHKeyForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersGetPublicSSHKeyForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersGetPublicSSHKeyForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersGetPublicSSHKeyForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersGetPublicSSHKeyForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListBlockedByAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListBlockedByAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListBlockedByAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListBlockedByAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListBlockedByAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersListBlockedByAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListBlockedByAuthenticatedApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) SetFake() {
-	var unwrapped BasicError
-	{
-		unwrapped.SetFake()
-	}
-	*s = UsersListBlockedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListBlockedByAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36453,174 +36444,174 @@ func (s *UsersListBlockedByAuthenticatedOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersListEmailsForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListBlockedByAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListBlockedByAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListEmailsForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersListEmailsForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersListEmailsForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersListEmailsForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListEmailsForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListEmailsForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListEmailsForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersListFollowedByAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListFollowedByAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) SetFake() {
+func (s *UsersListFollowedByAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListFollowersForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+	*s = UsersListFollowedByAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
+func (s *UsersListFollowersForAuthenticatedUserForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListFollowersForAuthenticatedUserForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListFollowersForAuthenticatedUserUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListGpgKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListFollowersForAuthenticatedUserUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersListGpgKeysForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListGpgKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersListGpgKeysForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersListGpgKeysForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListGpgKeysForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListGpgKeysForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListGpgKeysForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersListPublicEmailsForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersListPublicEmailsForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersListPublicEmailsForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListPublicEmailsForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListPublicEmailsForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListPublicEmailsForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersListPublicSSHKeysForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersListPublicSSHKeysForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersListPublicSSHKeysForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersListPublicSSHKeysForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersListPublicSSHKeysForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersListPublicSSHKeysForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36654,84 +36645,84 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) SetFake() 
 }
 
 // SetFake set fake values.
-func (s *UsersUnblockApplicationJSONForbidden) SetFake() {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUnblockApplicationJSONForbidden(unwrapped)
+	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUnblockApplicationJSONNotFound) SetFake() {
+func (s *UsersUnblockForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUnblockApplicationJSONNotFound(unwrapped)
+	*s = UsersUnblockForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUnblockApplicationJSONUnauthorized) SetFake() {
+func (s *UsersUnblockNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUnblockApplicationJSONUnauthorized(unwrapped)
+	*s = UsersUnblockNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUnfollowApplicationJSONForbidden) SetFake() {
+func (s *UsersUnblockUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUnfollowApplicationJSONForbidden(unwrapped)
+	*s = UsersUnblockUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUnfollowApplicationJSONNotFound) SetFake() {
+func (s *UsersUnfollowForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUnfollowApplicationJSONNotFound(unwrapped)
+	*s = UsersUnfollowForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUnfollowApplicationJSONUnauthorized) SetFake() {
+func (s *UsersUnfollowNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUnfollowApplicationJSONUnauthorized(unwrapped)
+	*s = UsersUnfollowNotFound(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUpdateAuthenticatedApplicationJSONForbidden) SetFake() {
+func (s *UsersUnfollowUnauthorized) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUpdateAuthenticatedApplicationJSONForbidden(unwrapped)
+	*s = UsersUnfollowUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUpdateAuthenticatedApplicationJSONNotFound) SetFake() {
+func (s *UsersUpdateAuthenticatedForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUpdateAuthenticatedApplicationJSONNotFound(unwrapped)
+	*s = UsersUpdateAuthenticatedForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *UsersUpdateAuthenticatedApplicationJSONUnauthorized) SetFake() {
+func (s *UsersUpdateAuthenticatedNotFound) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = UsersUpdateAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	*s = UsersUpdateAuthenticatedNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -36776,6 +36767,15 @@ func (s *UsersUpdateAuthenticatedReq) SetFake() {
 			s.Bio.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *UsersUpdateAuthenticatedUnauthorized) SetFake() {
+	var unwrapped BasicError
+	{
+		unwrapped.SetFake()
+	}
+	*s = UsersUpdateAuthenticatedUnauthorized(unwrapped)
 }
 
 // SetFake set fake values.
