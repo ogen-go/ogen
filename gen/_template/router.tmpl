@@ -8,9 +8,11 @@
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	elemIsEscaped := false
 	if rawPath := r.URL.RawPath; rawPath != "" {
 		if normalized, ok := uri.NormalizeEscapedPath(rawPath); ok {
 			elem = normalized
+			elemIsEscaped = strings.ContainsRune(elem, '%')
 		}
 	}
 	if prefix := s.cfg.Prefix; len(prefix) > 0 {
@@ -121,7 +123,7 @@ func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *htt
 		switch r.Method {
 		{{- range $route := $methods.Routes }}{{ $op := $route.Operation }}
 		case {{ quote $route.Method }}:
-			s.handle{{ $op.Name }}Request([{{ $op.PathParamsCount }}]string{}, w, r)
+			s.handle{{ $op.Name }}Request([{{ $op.PathParamsCount }}]string{}, false, w, r)
 		{{- end }}
 		default:
 			return false
@@ -167,7 +169,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		{{- range $i, $_ := times $op.PathParamsCount }}
 			args[{{ $i }}],
 		{{- end }}
-		}, w, r)
+		}, elemIsEscaped, w, r)
 	{{- end }}
 	default:
 		s.notAllowed(w, r, {{ quote $.AllowedMethods }})

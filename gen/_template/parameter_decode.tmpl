@@ -20,7 +20,7 @@ func unpack{{ $.Name }}Params(packed middleware.Parameters) (params {{ $.Name }}
 	return params
 }
 
-func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Request) (params {{ $.Name }}Params, _ error) {
+func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped bool, r *http.Request) (params {{ $.Name }}Params, _ error) {
 	{{- if $.HasQueryParams }}
 		q := uri.NewQueryDecoder(r.URL.Query())
 	{{- end }}
@@ -74,9 +74,13 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 	{{- /* If we cannot find such path parameter, defined path parameter is not used */ -}}
 	{{- $idx := $.PathParamIndex $p.Spec.Name }}
 	{{- if ge $idx 0 }}
-		param, err := url.PathUnescape(args[{{ $idx }}])
-		if err != nil {
-			return errors.Wrap(err, "unescape path")
+		param := args[{{ $idx }}]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[{{ $idx }}])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
 		}
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
